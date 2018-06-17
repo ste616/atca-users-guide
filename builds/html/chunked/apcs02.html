@@ -1,0 +1,325 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>C.2. SPD Commands</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="apc.html" title="Appendix C. SPD reference"><link rel="prev" href="apc.html" title="Appendix C. SPD reference"><link rel="next" href="apd.html" title="Appendix D. vis"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">C.2. SPD Commands</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apc.html">Prev</a> </td><th width="60%" align="center">Appendix C. SPD reference</th><td width="20%" align="right"> <a accesskey="n" href="apd.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="SPD-Commands"></a>C.2. SPD Commands</h2></div></div></div>
+    
+    <p>
+      <a class="indexterm" name="idm46395603381920"></a>
+      Type the following commands (minimum match applies) in response to the prompt:
+      <code class="literal">SPD&gt;</code>
+    </p>
+
+    <p>
+      SPD has a standard command line editing and prior command recall facility.
+    </p>
+    <div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">SPD&gt; mode</code></span></dt><dd>
+	  <p>
+	    Defines the mode in which the <code class="literal">select</code> command operates in selecting products to
+	    display.
+	    </p><div class="informaltable">
+	      <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; mode v</code></td><td>selection by variable or product number.</td></tr><tr><td><code class="literal">SPD&gt; mode b</code></td><td>selection by baseline and/or polarisation.</td></tr><tr><td><code class="literal">SPD&gt; mode</code></td><td>show current mode setting.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; select</code></span></dt><dd>
+	  <p>
+	    Selects which products to display.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>1. Selection by product number ( <code class="literal">mode v</code> ):</strong></span>
+	  </p>
+
+	  <p>
+	    In the following examples, the letters refer to the type of display. viz.
+	  </p>
+	  <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: bullet; "><li class="listitem" style="list-style-type: disc">
+	      <p>
+		l - The lag spectrum, i.e. correlation function.
+	      </p>
+	    </li><li class="listitem" style="list-style-type: disc">
+	      <p>
+		a - The amplitude of the frequency spectrum.
+	      </p>
+	    </li><li class="listitem" style="list-style-type: disc">
+	      <p>
+		r - The real part of the frequency spectrum.
+	      </p>
+	    </li><li class="listitem" style="list-style-type: disc">
+	      <p>
+		i - The imaginary part of the frequency spectrum.
+	      </p>
+	    </li><li class="listitem" style="list-style-type: disc">
+	      <p>
+		p - The phase of the frequency spectrum.
+	      </p>
+	    </li><li class="listitem" style="list-style-type: disc">
+	      <p>
+		d - The amplitude difference of the frequency spectrum, using a previously stored reference.
+	      </p>
+	    </li><li class="listitem" style="list-style-type: disc">
+	      <p>
+		q - The amplitude quotient of the frequency spectrum, using a previously stored reference.
+	      </p>
+	    </li></ul></div>
+	  <p>
+	    The numbers refer to the product numbers in the order they appear in the correlator/spectrometer configuration.
+	    If only numbers are used, then the display type is set to the global display type (see below).
+	  </p>
+
+	  <p>
+	    <span class="emphasis"><em>Examples:</em></span>
+	    </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; select 2 5 7</code></td><td>displays spectra of products 2, 5 &amp; 7 on separate plot panels.</td></tr><tr><td><code class="literal">SPD&gt; select 4&gt;12</code></td><td>displays spectra of products 4 to 12 on separate plot panels.</td></tr><tr><td><code class="literal">SPD&gt; select l1 a1</code></td><td>displays lag and frequency spectra of product 1 on separate plot panels.</td></tr><tr><td><code class="literal">SPD&gt; select a1&amp;2</code></td><td>displays frequency spectrum of products 1 &amp; 2 on one plot panel.</td></tr><tr><td><code class="literal">SPD&gt; select a1&amp;2 a3&amp;4</code></td><td>displays frequency spectra in two panels, each containing two products.</td></tr><tr><td><code class="literal">SPD&gt; select a2-1</code></td><td>displays the difference frequency spectrum between two products.</td></tr><tr><td><code class="literal">SPD&gt; select 1-2 4+5</code></td><td>displays difference and sum frequency spectra in two panels.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+
+	  <p>
+	    <span class="emphasis"><em>Special Parkes Multibeam Selection:</em></span>
+	    </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; select mbN</code></td><td>displays lag or frequency spectra of N beams, two polarisations per plot panel, in the special Parkes multibeam layout.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>2. Selection by frequency band/baseline/polarisation ( <code class="literal">mode b</code> ):</strong></span>
+	  </p>
+
+	  <p>
+	    A new plot panel is created for each baseline and frequency band selected.
+	  </p>
+
+	  <p>
+	    <span class="emphasis"><em>Examples:</em></span>
+	  </p>
+
+	  <p>
+	    Baseline, polarisation, frequency selection:
+            </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; select 1aa</code></td><td>displays all baselines with antenna 1, polarisation AA, frequency 1.</td></tr><tr><td><code class="literal">SPD&gt; select 12ba</code></td><td>displays baseline 1*2, polarisation BA, frequency 1.</td></tr><tr><td><code class="literal">SPD&gt; select 14cc</code></td><td>displays baseline 1*4, polarisation AA, frequency 2.</td></tr><tr><td><code class="literal">SPD&gt; select cd</code></td><td>displays all baselines, polarisation AB, frequency 2.</td></tr><tr><td><code class="literal">SPD&gt; select 24</code></td><td>displays baseline 2*4, all polarisations.</td></tr><tr><td><code class="literal">SPD&gt; select *</code></td><td>displays all active products</td></tr></tbody></table>
+            </div><p>
+	  </p>
+
+	  <p>
+	    Frequency only selection, displaying all previously selected baselines/polarisations for the selected frequencies:
+            </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; select f2</code></td><td>display frequency 2 only.</td></tr><tr><td><code class="literal">SPD&gt; select f1 f3</code></td><td>display frequencies 1 and 3 only.</td></tr><tr><td><code class="literal">SPD&gt; select f1-4</code></td><td>display frequencies 1 to 4 only.</td></tr><tr><td><code class="literal">SPD&gt; select f*</code></td><td>display all frequencies.</td></tr><tr><td><code class="literal">SPD&gt; select z1</code></td><td>display CABB zoom band 1 only.</td></tr><tr><td><code class="literal">SPD&gt; select z1 z3</code></td><td>display CABB zoom bands 1 and 3 only.</td></tr><tr><td><code class="literal">SPD&gt; select z1-2</code></td><td>display CABB zoom bands 1 to 2 only.</td></tr><tr><td><code class="literal">SPD&gt; select z*</code></td><td>display all CABB zoom bands.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Note:</strong></span> The polarisation types must be enabled with the <code class="literal">ON/OFF</code> command
+	    (see below). Initially only AA, BB, CC and DD are enabled. The use of C and D to
+	    denote the A &amp; B polarisations of the second frequency is allowed only for certain
+	    two frequency operating modes. It is not allowed in cases where more than two
+	    frequencies may be available, for example with MOPS and CABB. In these cases
+	    control of which frequencies are displayed is via the <code class="literal">fn</code> parameter of
+	    the <code class="literal">ON/OFF</code> command.
+	  </p>
+
+	  <p>
+	    Then use one of the global display type commands (see below) to select the
+	    display type.
+            </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; select bp11</code></td><td>displays the time bin profiles for baseline 1*1, all polarisations.</td></tr><tr><td><code class="literal">SPD&gt; select pp11</code></td><td>equivalent to above.</td></tr><tr><td><code class="literal">SPD&gt; select dp</code></td><td>displays the de-dispersed pulsar bin profiles for all baselines and polarisations.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+
+	  <p>
+	    The bin profile plots the integral over frequency of the amplitude spectrum
+	    against bin number. The limits of the integral (by default the entire spectrum)
+	    can be defined by the <code class="literal">bchannels</code> command. <code class="literal">bchannels</code> also defines
+	    the frequency range over which the de-dispersion is carried out.
+            </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; select bi</code></td><td>displays the time bin image for all polarisations.</td></tr><tr><td><code class="literal">SPD&gt; select biaa</code></td><td>displays the time bin image for polarisation AA.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+
+	  <p>
+	    The bin image shows colour coded amplitude difference as a function of bin number
+	    on the X-axis and frequency channel on the Y-axis. The amplitude difference is
+	    obtained by subtracting the band shape, computed from an average of the spectra of
+	    all bins included in the plot, from the spectrum of each bin. X-axis limits are
+	    set by the bpbins command. Y-axis limits are set by the bchannels command.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; l or SPD&gt; a or SPD&gt; p or SPD&gt; d or SPD&gt; r or SPD&gt; i</code></span></dt><dd>
+	  <p>
+	    Sets the global display type and changes all current panels to this display type.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; x</code></span></dt><dd>
+	  <p>
+	    For frequency domain plots, toggles the X axis units between frequency and channel
+	    number.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; array</code></span></dt><dd>
+	  <p>
+	    In baseline mode, defines the currently active antennas.
+	  </p>
+
+	  <p>
+	    <span class="emphasis"><em>Examples:</em></span>
+	    </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; array 1346</code></td><td>antenna 1,3,4,6 active, antenna 2,5 inactive.</td></tr><tr><td><code class="literal">SPD&gt; array</code></td><td>show the currently active antenna.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; bins</code></span></dt><dd>
+	  <p>
+	    In baseline mode, and when time or pulsar binning is active, defines the currently
+	    selected time bins.
+	  </p>
+
+	  <p>
+	    <span class="emphasis"><em>Examples:</em></span>
+            </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; bins 1-5 10-16</code></td><td>selects bins 1 to 5 for frequency one, 10 to 16 for frequency 2.</td></tr><tr><td><code class="literal">SPD&gt; bins 1.3.5 10.11</code></td><td>selects bins 1,3 &amp; 5 for frequency one, 10 &amp; 11 for frequency 2.</td></tr><tr><td><code class="literal">SPD&gt; bins</code></td><td>show the currently selected bins.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; on OR SPD&gt; off</code></span></dt><dd>
+	  <p>
+	    In baseline mode, defines which frequencies and polarisations are displayed, and
+	    whether auto-correlations and/or cross-correlations are displayed.
+	  </p>
+
+	  <p>
+	    <span class="emphasis"><em>Examples:</em></span>
+            </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; on ab ba cd dc</code></td><td>turn on display of all cross polarisation products.</td></tr><tr><td><code class="literal">SPD&gt; off cc cd dc dd</code></td><td>turn off all second frequency polarisation products.</td></tr><tr><td><code class="literal">SPD&gt; on f1 f4</code></td><td>turn on display of frequencies 1 and 4.</td></tr><tr><td><code class="literal">SPD&gt; on ccs</code></td><td>turn on cross-correlations.</td></tr><tr><td><code class="literal">SPD&gt; off acs</code></td><td>turn off auto-correlations.</td></tr><tr><td><code class="literal">SPD&gt; on</code></td><td>display which types are currently displayed.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Note:</strong></span> The <code class="literal">on</code> or <code class="literal">off</code> commands for frequencies are probably
+	    more conveniently carried out with the '<code class="literal">select fN</code>' command (see above).
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; scale</code></span></dt><dd>
+	  <p>
+	    Allows the plots to be scaled on the Y axis. The default is auto-scaling.
+	  </p>
+
+	  <p>
+	    <span class="emphasis"><em>Examples:</em></span>
+	    </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; scale l -0.01 0.01</code></td><td>scale lag plots to cover the range -0.01 to 0.01</td></tr><tr><td><code class="literal">SPD&gt; scale b 0 200</code></td><td>scale bin profile plots to cover the range 0 to 200</td></tr><tr><td><code class="literal">SPD&gt; scale a</code></td><td>return to auto-scaling for amplitude plots.</td></tr><tr><td><code class="literal">SPD&gt; scale</code></td><td>autoscale all plots.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; freq</code></span></dt><dd>
+	  <p>
+	    For frequency domain plots, allows a selection of a range of frequencies to plot. The default is the full frequency range of the spectrum.
+	  </p>
+
+	  <p>
+	    <span class="emphasis"><em>Examples:</em></span>
+            </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; freq [f1] 1146 2125</code></td><td>display the frequency range 1146 MHz to 2125 MHz for band 1.</td></tr><tr><td><code class="literal">SPD&gt; freq f2 1146 2126</code></td><td>ditto for frequency band 2.</td></tr><tr><td><code class="literal">SPD&gt; freq</code></td><td>reset to full band for all frequency bands.</td></tr><tr><td><code class="literal">SPD&gt; freq f3</code></td><td>reset to full band for frequency band 3.</td></tr><tr><td><code class="literal">SPD&gt; freq z2 1410 1420</code></td><td>set frequency range to plot for CABB zoom band 2.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; channels</code></span></dt><dd>
+	  <p>
+	    Allows a selection of a range of frequency channels to plot. The default is all
+	    channels.
+	  </p>
+
+	  <p>
+	    <span class="emphasis"><em>Examples:</em></span>
+	    </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; channels [f1] 100 200</code></td><td>display channel range 100 to 200 for frequency band 1.</td></tr><tr><td><code class="literal">SPD&gt; channels f2 200 500</code></td><td>display channel range 200 to 500 for frequency band 2.</td></tr><tr><td><code class="literal">SPD&gt; channels 100 200 300 500</code></td><td>display channel range 100 to 200 for frequency band 1  AND channel range 300 to 500 for frequency band 2.</td></tr><tr><td><code class="literal">SPD&gt; channels</code></td><td>reset channel selections to defaults.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; bchannels</code></span></dt><dd>
+	  <p>
+	    Allows the selection of a range of frequency channels to be used to compute the
+	    bin or pulsar profile. The default is the range of channels defined by the
+	    '<code class="literal">channels</code>' command. The format is the same as the '<code class="literal">channels</code>' command.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; lags</code></span></dt><dd>
+	  <p>
+	    Allows a selection of a range of lag channels to plot. The default is all channels.
+	  </p>
+
+	  <p>
+	    <span class="emphasis"><em>Examples:</em></span>
+            </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; lags [f1] -800 100</code></td><td>display lag channel range -800 to 100 for frequency band 1.</td></tr><tr><td><code class="literal">SPD&gt; lags f2 -100 500</code></td><td>display lag channel range -100 to 500 for frequency band 2.</td></tr><tr><td><code class="literal">SPD&gt; lags -200 200 -100 100</code></td><td>display lag channel range -200 to 200 for frequency band 1  AND lag channel range -100 to 100 for frequency band 2</td></tr><tr><td><code class="literal">SPD&gt; lags</code></td><td>reset lag channel selections to default.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; bpbins OR SPD&gt; ppbins</code></span></dt><dd>
+	  <p>
+	    In baseline mode, and when time or pulsar binning is active, defines the range
+	    of bins over which bin profiles and bin images are plotted.
+	  </p>
+
+	  <p>
+	    <span class="emphasis"><em>Examples:</em></span>
+            </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; bpbins 20 30</code></td><td>displays the bin profile for bins 20 to 30.</td></tr><tr><td><code class="literal">SPD&gt; ppbins</code></td><td>reset to the full range of available bins.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; avg</code></span></dt><dd>
+	  <p>
+	    When the next data arrives, resets the averaging buffers and starts a vector
+	    averaging in time of the frequency spectra. This also results in a time
+	    averaging of bin profile and bin image displays.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; noavg</code></span></dt><dd>
+	  <p>
+	    When the next data arrives, reverts to non-averaging mode.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; save</code></span></dt><dd>
+	  <p>
+	    Saves the current frequency spectra amplitudes in a stored reference area.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; rsave</code></span></dt><dd>
+	  <p>
+	    Repetitively saves the previous frequency spectra amplitudes in a stored
+	    reference area. This provides a means to continuously monitor changes, using
+	    for example the difference display. Mainly useful for debugging problems, or
+	    looking at how RFI is changing with time.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; auto</code></span></dt><dd>
+	  <p>
+	    When the next data arrives, resets the averaging buffers and enables an
+	    automatic averaging mode where the averaging is reset at the start of each scan.
+	    If the selected display is frequency spectrum amplitude and a scan is on a
+	    reference position then the averaged data will be saved in the reference area
+	    and subsequent signal scans will be displayed as quotient spectra.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; noauto</code></span></dt><dd>
+	  <p>
+	    Disable automatic averaging mode.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; layout</code></span></dt><dd>
+	  <p>
+	    Controls the layout of plot panels. The default layout is the smallest square
+	    (NxN) layout which will contain the number of plot panels (with the exception
+	    that a two panel layout defaults to 1x2) representing :
+	    (number of panels in X) x (number of panels in Y). The maximum number of panels
+	    is currently set to 16.
+	  </p>
+
+	  <p>
+	    <span class="emphasis"><em>Examples:</em></span>
+            </p><div class="informaltable">
+              <table class="informaltable" border="1"><colgroup><col><col></colgroup><tbody><tr><td><code class="literal">SPD&gt; layout 3x4</code></td><td>3 panels in X by 4 panels in Y.</td></tr><tr><td><code class="literal">SPD&gt; layout [0x0]</code></td><td>revert to default layout.</td></tr></tbody></table>
+            </div><p>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; write [[no]c[olour]] [filename]</code></span></dt><dd>
+	  <p>
+	    Writes a colour (the default) or <code class="literal">nocolour</code>=greyscale postscript file of the
+	    current display to the filename (if given), otherwise to a constructed filename
+	    which includes date and time. The path used is the environment variable
+	    <code class="envar">$SPD_HARDCOPY</code> (if defined), otherwise the directory from which SPD was
+	    started. A message is printed identifying the actual filename used.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; ss</code></span></dt><dd>
+	  <p>
+	    Set SPD into "single shot" mode. The automatic update of the display is
+	    disabled. Entering a further ss command causes the display to be updated. This
+	    command is particularly useful when using SPD over slow links, to reduce
+	    data flow.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; noss</code></span></dt><dd>
+	  <p>
+	    Cancel "single shot" mode and resume continuous updates of the display.
+	  </p>
+	</dd><dt><span class="term"><code class="literal">SPD&gt; quit</code></span></dt><dd>
+	  <p>
+	    Exits the program.
+	  </p>
+	</dd></dl></div>
+  </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apc.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apc.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apd.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix C. SPD reference </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix D. vis</td></tr></table></div></body></html>

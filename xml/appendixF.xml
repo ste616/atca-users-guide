@@ -1,0 +1,594 @@
+<appendix id="Observatory-Coordinates">
+  <info>
+    <title>Observatory Coordinates</title>
+    <date>$Date: 2014-06-03 06:26:17 +1000 (Tue, 03 Jun 2014) $</date>
+    <revhistory>
+      <revision>
+	<revnumber>1.0</revnumber>
+	<date>2014 Mar 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Initial Docbook revision</revremark>
+      </revision>
+    </revhistory>
+  </info>
+  <para>
+  <indexterm role="cp"><primary>ATCA</primary><secondary>coordinates</secondary></indexterm>
+  <indexterm role="cp"><primary>Mopra</primary></indexterm>
+  <indexterm role="cp"><primary>Parkes</primary></indexterm></para>
+
+  <section id="Site-Location">
+    <info>
+      <title>Site Location</title>
+    </info>
+    <section id="Cartesian-Coordinates">
+      <info>
+	<title>Cartesian Coordinates</title>
+      </info>
+      <para>
+	For accurate work, Cartesian (XYZ) coordinates are much to be preferred,
+	since the use of latitude, longitude and height entails a number of possible
+	uncertainties and ambiguities. In particular, there are two families of
+	commonly-used geodetic coordinate systems (lat/long/height) that can
+	differ by as much as 200m. (The fact that the ATCA site survey in 1984
+	fell into just this trap emphasises the point.)
+      </para>
+
+      <para>
+	The choice of the correct type of geodetic coordinate depends on the
+	application. In most cases, the geocentric WGS84 given below will probably
+	be appropriate (eg in the calculation of LST). The non-geocentric
+	system AGD84/AHD currently used by Australian cartographers and surveyors
+	is unlikely to be relevant for astronomy, but is included for completeness
+	and to allow comparison with existing physical surveys.
+      </para>
+
+      <informaltable frame="all">
+	<tgroup cols="7" align="center" colsep="1" rowsep="1">
+	  <colspec colname="ref"/>
+	  <colspec colname="X"/>
+	  <colspec colname="eX"/>
+	  <colspec colname="Y"/>
+	  <colspec colname="eY"/>
+	  <colspec colname="Z"/>
+	  <colspec colname="eZ"/>
+	  <thead>
+	    <row>
+	      <entry>Ref</entry>
+	      <entry>X(m)</entry>
+	      <entry>e(X)</entry>
+	      <entry>Y(m)</entry>
+	      <entry>e(Y)</entry>
+	      <entry>Z(m)</entry>
+	      <entry>e(Z)</entry>
+	    </row>
+	  </thead>
+	  <tbody>
+	    <row>
+	      <entry>W196</entry>
+	      <entry>-4750915.837</entry>
+	      <entry>&#x223C;2</entry>
+	      <entry>2792906.182</entry>
+	      <entry>&#x223C;2</entry>
+	      <entry>-3200483.747</entry>
+	      <entry>&#x223C;2</entry>
+	    </row>
+	    <row>
+	      <entry>W196_vlbi</entry>
+	      <entry>-4750924.9</entry>
+	      <entry>&#x223C;2</entry>
+	      <entry>2792911.5</entry>
+	      <entry>&#x223C;2</entry>
+	      <entry>-3200489.9</entry>
+	      <entry>&#x223C;2</entry>
+	    </row>
+	    <row>
+	      <entry>MOPRA</entry>
+	      <entry>-4682768.1</entry>
+	      <entry>&#x223C;1</entry>
+	      <entry>2802618.8</entry>
+	      <entry>&#x223C;1</entry>
+	      <entry>-3291759.2</entry>
+	      <entry>&#x223C;2</entry>
+	    </row>
+	    <row>
+	      <entry>PARKES</entry>
+	      <entry>-4554231.533</entry>
+	      <entry>.031</entry>
+	      <entry>2816759.109</entry>
+	      <entry>.018</entry>
+	      <entry>-3454036.323</entry>
+	      <entry>.025</entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </informaltable>
+      
+      <para>
+	Notes: The coordinates are in a conventional geocentric right-handed Cartesian
+	system, with the Z axis parallel to the mean rotation axis (North)
+	and the X-axis aligned towards the intersection of the Greenwich
+	meridian and the equator.
+      </para>
+
+      <para>
+	W196 refers to the centroid of the four pier-tops of station W196
+	of the ATCA. The listed position is that currently in use by CAOBS
+	in the STATION.COORDINATES file. The position is derived from a
+	physical survey (pre-GPS: see ATNF documents AT/15.6.1/001-003,
+	AT/15.6.2/012) and is uncertain at the &#x223C;2m level although the
+	relative positions of the CA stations are accurate at the &#x223C;mm
+	level. The reference frame of the survey is unstated, but is
+	probably AGD66. However, for consistency with existing coordinates
+	in use at the ATCA it is assumed to be AGD84 (&#x223C;2m differences against
+	AGD66). The geoidal height used in the survey (N[ANS]=11.4m) has also
+	been retained for consistency (though more accurate estimates are
+	since available).
+      </para>
+
+      <para>
+	The antenna coordinates used by CAOBS for array pointing prior to
+	October 1991 were all approximately 200m in error (mostly a uniform
+	translation) owing to a misconception of references systems in the
+	surveyors' report. The coordinates currently in use are consistent
+	with the position given here for W196.
+      </para>
+
+      <para>
+	Station W196 is the logical choice to define a single position for the
+	entire array. It is exactly midway between the two outer stations
+	(W0 and W392) and is the only station for which the four support piers lie
+	in the true local horizontal plane to make the antenna azimuth axis
+	strictly vertical. It should therefore be used to define local sidereal
+	time (LST) for the whole array so that all antenna azimuth and elevation
+	angles are consistent. (The azimuth axes of antennas on the other
+	stations are all parallel to that of station W196 and are therefore
+	progressively tilted from the vertical.)
+      </para>
+
+      <para>
+	W196_vlbi refers to a point 10 metres above the centroid of the
+	pier tops, approximating the position of the intersection of the
+	elevation and azimuth axes (relevant for VLBI). A more accurate
+	estimate of the geoidal height has also been used (N[ANS]=13.5m or
+	N[WGS84]=29.7m, based on OSU86E). This position will be improved
+	by further VLBI observations (once an H-maser is available).
+      </para>
+
+      <para>
+	The MOPRA and Parkes positions both derive from VLBI measurements
+	and hence refer in both instances to the point of axial intersection.
+	The Parkes position was obtained from S/X Mark-III VLBI data in
+	January 1992 (Parkes-Hobart-DSS45) and is nominally on the ITRF frame.
+	The Mopra position was derived from 4.8 GHz Mark-II data from May 1993.
+      </para>
+    </section>
+    <section>
+      <info>
+	<title>Geodetic Coordinates on WGS84</title>
+      </info>
+      
+      <informaltable frame="all">
+	<tgroup cols="4" align="center" colsep="1" rowsep="1">
+	  <colspec colname="ref"/>
+	  <colspec colname="longitude"/>
+	  <colspec colname="latitude"/>
+	  <colspec colname="height"/>
+	  <thead>
+	    <row>
+	      <entry morerows="1">Ref</entry>
+	      <entry>Longitude</entry>
+	      <entry>Latitude</entry>
+	      <entry>Spheroidal</entry>
+	    </row>
+	    <row>
+	      <entry>(degs/dms)</entry>
+	      <entry>(degs/dms)</entry>
+	      <entry>Height (WGS84)</entry>
+	    </row>
+	  </thead>
+	  <tbody>
+	    <row>
+	      <entry morerows="1">W196</entry>
+	      <entry>149.5501388</entry>
+	      <entry>-30.3128846</entry>
+	      <entry morerows="1">236.87m</entry>
+	    </row>
+	    <row>
+	      <entry>149 33 00.500</entry>
+	      <entry>-30 18 46.385</entry>
+	    </row>
+	    <row>
+	      <entry morerows="1">MOPRA</entry>
+	      <entry>149.0996405</entry>
+	      <entry>-31.2678132</entry>
+	      <entry morerows="1">866.44m</entry>
+	    </row>
+	    <row>
+	      <entry>149 05 58.706</entry>
+	      <entry>-31 16 04.127</entry>
+	    </row>
+	    <row>
+	      <entry morerows="1">PARKES</entry>
+	      <entry>148.2635101</entry>
+	      <entry>-32.9984064</entry>
+	      <entry morerows="1">414.80m</entry>
+	    </row>
+	    <row>
+	      <entry>148 15 48.636</entry>
+	      <entry>-32 59 54.263</entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </informaltable>
+
+      <para>
+	Notes: these figures are derived from the preceding Cartesian coordinates
+	using the WGS84 figure for the Earth. This is close to the
+	frame often used by GPS but note that some GPS receivers display
+	position data in local coordinate systems (eg AGD84/ANS).
+      </para>
+    </section>
+
+    <section>
+      <info>
+	<title>Coordinates on AGD84</title>
+      </info>
+      
+      <informaltable frame="all">
+	<tgroup cols="4" align="center" colsep="1" rowsep="1">
+	  <colspec colname="ref"/>
+	  <colspec colname="longitude"/>
+	  <colspec colname="latitude"/>
+	  <colspec colname="height"/>
+	  <thead>
+	    <row>
+	      <entry morerows="1">Ref</entry>
+	      <entry>Longitude</entry>
+	      <entry>Latitude</entry>
+	      <entry>AHD height</entry>
+	    </row>
+	    <row>
+	      <entry>(degs/dms)</entry>
+	      <entry>(degs/dms)</entry>
+	      <entry>(above sea level)</entry>
+	    </row>
+	  </thead>
+	  <tbody>
+	    <row>
+	      <entry morerows="1">W196</entry>
+	      <entry>149.5489798</entry>
+	      <entry>-30.3144576</entry>
+	      <entry morerows="1">209.30m</entry>
+	    </row>
+	    <row>
+	      <entry>149 32 56.327</entry>
+	      <entry>-30 18 52.048</entry>
+	    </row>
+	    <row>
+	      <entry morerows="1">MOPRA</entry>
+	      <entry>149.0984643</entry>
+	      <entry>-31.2693808</entry>
+	      <entry morerows="1">837.94m</entry>
+	    </row>
+	    <row>
+	      <entry>149 05 54.472</entry>
+	      <entry>-31 16 09.771</entry>
+	    </row>
+	    <row>
+	      <entry morerows="1">PARKES</entry>
+	      <entry>148.2623007</entry>
+	      <entry>-32.9999629</entry>
+	      <entry morerows="1">391.52m</entry>
+	    </row>
+	    <row>
+	      <entry>148 15 44.283</entry>
+	      <entry>-32 59 59.866</entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </informaltable>
+
+      <para>
+	Notes: The figures are derived from geocentric Cartesian coordinates using
+	the Higgins (1987) seven-parameter transformation of WGS84 to
+	AGD84. The latter is a coordinate system specific to Australia,
+	using a non-geocentric spheroidal fit to the local geoid 
+	(the ANS, or Australian National Spheroid). The AHD height is
+	height above mean sea-level or (equivalently) height above the
+	geoid. For Narrabri, the AHD is that quoted in the surveyors'
+	report (AT/15.6.1/003, AT/15.6.2/012). For Parkes and Mopra,
+	values of N[WGS84] (height of the geoid above the WGS84 spheroid)
+	are were interpolated on AUSGEOID93 (from OSU91).
+      </para>
+       
+      <para>
+       Latitudes and longitudes read from Australian topographic maps
+       are invariably in the above system or a precursor (eg AGD66). Some GPS 
+       receivers also allow positional data to be displayed in this system.
+      </para>
+    </section>
+
+    <section>
+      <info>
+	<title>Station Locations</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>station</primary><secondary>locations</secondary></indexterm>
+	<indexterm role="cp"><primary>ATCA</primary><secondary>station locations</secondary></indexterm>
+	<indexterm role="cp"><primary>antenna</primary><secondary>station locations</secondary></indexterm>
+	The names of Station Posts on the East-West track are generated 
+	from their distance, in multiples of 15.306 metres,
+	from the eastern most station post on the Compact Array (W0).
+	Similarly, the names of station posts on the North Spur are 
+	generated from their increment from the southernmost station 
+	post on the north spur (W106).
+      </para>
+
+      <informaltable frame="all">
+	<tgroup cols="3" align="center" rowsep="1" colsep="1">
+	  <colspec colname="station"/>
+	  <colspec colname="d"/>
+	  <colspec colname="oldname"/>
+	  <thead>
+	    <row>
+	      <entry>Station</entry>
+	      <entry>d (m)</entry>
+	      <entry>Old name</entry>
+	    </row>
+	  </thead>
+	  <tbody>
+	    <row>
+	      <entry>W0</entry>
+	      <entry>0.000</entry>
+	      <entry>(Station 1)</entry>
+	    </row>
+	    <row>
+	      <entry>W2</entry>
+	      <entry>30.612</entry>
+	      <entry>(Station 2)</entry>
+	    </row>
+	    <row>
+	      <entry>W4</entry>
+	      <entry>61.224</entry>
+	      <entry>(Station 3)</entry>
+	    </row>
+	    <row>
+	      <entry>W6</entry>
+	      <entry>91.837</entry>
+	      <entry>(Station 4)</entry>
+	    </row>
+	    <row>
+	      <entry>W8</entry>
+	      <entry>122.449</entry>
+	      <entry>(Station 5)</entry>
+	    </row>
+	    <row>
+	      <entry>W10</entry>
+	      <entry>153.061</entry>
+	      <entry>(Station 6)</entry>
+	    </row>
+	    <row>
+	      <entry>W12</entry>
+	      <entry>183.673</entry>
+	      <entry>(Station 7)</entry>
+	    </row>
+	    <row>
+	      <entry>W14</entry>
+	      <entry>214.286</entry>
+	      <entry>(Station 8)</entry>
+	    </row>
+	    <row>
+	      <entry>W16</entry>
+	      <entry>244.898</entry>
+	      <entry>(Station 9)</entry>
+	    </row>
+	    <row>
+	      <entry>W32</entry>
+	      <entry>489.796</entry>
+	      <entry>(Station 10)</entry>
+	    </row>
+	    <row>
+	      <entry>W45</entry>
+	      <entry>688.776</entry>
+	      <entry>(Station 11)</entry>
+	    </row>
+	    <row>
+	      <entry>W64</entry>
+	      <entry>979.592</entry>
+	      <entry>(Station 12)</entry>
+	    </row>
+	    <row>
+	      <entry>W84</entry>
+	      <entry>1285.714</entry>
+	      <entry>(Station 13)</entry>
+	    </row>
+	    <row>
+	      <entry>W98</entry>
+	      <entry>1500.000</entry>
+	      <entry>(Station 14)</entry>
+	    </row>
+	    <row>
+	      <entry>W100</entry>
+	      <entry>1530.612</entry>
+	      <entry>(Station 15)</entry>
+	    </row>
+	    <row>
+	      <entry>W102</entry>
+	      <entry>1561.224</entry>
+	      <entry>(Station 16)</entry>
+	    </row>
+	    <row>
+	      <entry>W104</entry>
+	      <entry>1591.837</entry>
+	      <entry></entry>
+	    </row>
+	    <row>
+	      <entry>W106</entry>
+	      <entry>1622.449</entry>
+	      <entry></entry>
+	    </row>
+	    <row>
+	      <entry>W109</entry>
+	      <entry>1668.367</entry>
+	      <entry>(Station 17)</entry>
+	    </row>
+	    <row>
+	      <entry>W110</entry>
+	      <entry>1683.673</entry>
+	      <entry>(Station 18)</entry>
+	    </row>
+	    <row>
+	      <entry>W111</entry>
+	      <entry>1698.980</entry>
+	      <entry>(Station 19)</entry>
+	    </row>
+	    <row>
+	      <entry>W112</entry>
+	      <entry>1714.286</entry>
+	      <entry>(Station 20)</entry>
+	    </row>
+	    <row>
+	      <entry>W113</entry>
+	      <entry>1729.592</entry>
+	      <entry>(Station 21)</entry>
+	    </row>
+	    <row>
+	      <entry>W124</entry>
+	      <entry>1897.959</entry>
+	      <entry></entry>
+	    </row>
+	    <row>
+	      <entry>W125</entry>
+	      <entry>1913.265</entry>
+	      <entry></entry>
+	    </row>
+	    <row>
+	      <entry>W128</entry>
+	      <entry>1959.184</entry>
+	      <entry>(Station 22)</entry>
+	    </row>
+	    <row>
+	      <entry>W129</entry>
+	      <entry>1974.490</entry>
+	      <entry>(Station 23)</entry>
+	    </row>
+	    <row>
+	      <entry>W140</entry>
+	      <entry>2142.857</entry>
+	      <entry>(Station 24)</entry>
+	    </row>
+	    <row>
+	      <entry>W147</entry>
+	      <entry>2250.000</entry>
+	      <entry>(Station 25)</entry>
+	    </row>
+	    <row>
+	      <entry>W148</entry>
+	      <entry>2265.306</entry>
+	      <entry>(Station 26)</entry>
+	    </row>
+	    <row>
+	      <entry>W163</entry>
+	      <entry>2494.898</entry>
+	      <entry>(Station 27)</entry>
+	    </row>
+	    <row>
+	      <entry>W168</entry>
+	      <entry>2571.429</entry>
+	      <entry>(Station 28)</entry>
+	    </row>
+	    <row>
+	      <entry>W172</entry>
+	      <entry>2632.653</entry>
+	      <entry>(Station 29)</entry>
+	    </row>
+	    <row>
+	      <entry>W173</entry>
+	      <entry>2647.959</entry>
+	      <entry>(Station 30)</entry>
+	    </row>
+	    <row>
+	      <entry>W182</entry>
+	      <entry>2785.714</entry>
+	      <entry>(Station 31)</entry>
+	    </row>
+	    <row>
+	      <entry>W189</entry>
+	      <entry>2892.857</entry>
+	      <entry>(Station 32)</entry>
+	    </row>
+	    <row>
+	      <entry>W190</entry>
+	      <entry>2908.163</entry>
+	      <entry>(Station 33)</entry>
+	    </row>
+	    <row>
+	      <entry>W195</entry>
+	      <entry>2984.694</entry>
+	      <entry>(Station 34)</entry>
+	    </row>
+	    <row>
+	      <entry>W196</entry>
+	      <entry>3000.000</entry>
+	      <entry>(Station 35)</entry>
+	    </row>
+	    <row>
+	      <entry>W392</entry>
+	      <entry>6000.000</entry>
+	      <entry>(Station 37)</entry>
+	    </row>
+	    <row>
+	      <entry>N2</entry>
+	      <entry>30.612</entry>
+	      <entry></entry>
+	    </row>
+	    <row>
+	      <entry>N5</entry><entry>76.531</entry>
+	      <entry></entry>
+	    </row>
+	    <row>
+	      <entry>N7</entry>
+	      <entry>107.143</entry>
+	      <entry></entry>
+	    </row>
+	    <row>
+	      <entry>N11</entry>
+	      <entry>168.367</entry>
+	      <entry></entry>
+	    </row>
+	    <row>
+	      <entry>N14</entry>
+	      <entry>214.286</entry>
+	      <entry></entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </informaltable>
+
+      <para>
+	Notes:
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    Antennas 1 to 5 are confined to stations W0 to W196 and N spur stations.
+	    Antenna 6 is permanently stationed on station W392. Antennas must be
+	    separated by &#x2265;30 m.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    d is the distance in metres from W0 at the eastern end of the array,
+	    or, for N stations, the distance from the EW track.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Old names were used before 2002.
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </section>
+  </section>
+</appendix>

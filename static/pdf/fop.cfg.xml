@@ -1,0 +1,12 @@
+<fop version="0.95">
+    <renderers>
+            <renderer mime="application/pdf">
+	                <filterList>
+			                <value>flate</value>
+					            </filterList>
+						                <fonts>
+								                <auto-detect/>
+										            </fonts>
+											            </renderer>
+												        </renderers>
+													</fop>

@@ -1,0 +1,150 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Chapter 3. Observing</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="index.html" title="ATCA Users Guide"><link rel="prev" href="ch02s06.html" title="2.6. Pre-observation Checklist"><link rel="next" href="ch03s02.html" title="3.2. Setting up"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 3. Observing</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s06.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch03s02.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="Observing"></a>Chapter 3. Observing</h1></div><div><div class="revhistory"><table style="border-style:solid; width:100%;" summary="Revision History"><tr><th align="left" valign="top" colspan="3"><b>Revision History</b></th></tr>
+      <tr><td align="left">Revision 1.5</td><td align="left">2018 March 15</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">Add a section describing unattended observing, and update information on PMon wind stows</td></tr>
+      <tr><td align="left">Revision 1.4</td><td align="left">2016 May 31</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">Document how to use the ATCA alarm Twitter feed</td></tr>
+      <tr><td align="left">Revision 1.3</td><td align="left">2015 Nov 24</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">Add description of how to set CABB attenuators for 16cm</td></tr>
+      <tr><td align="left">Revision 1.2</td><td align="left">2015 Oct 23</td><td align="left">rmw, sb, klw</td></tr><tr><td align="left" colspan="3">Substantial revision of content and layout</td></tr>
+      <tr><td align="left">Revision 1.1</td><td align="left">2014 Jul 09</td><td align="left">rmw</td></tr><tr><td align="left" colspan="3">Substantial revision of content and layout</td></tr>
+      <tr><td align="left">Revision 1.0</td><td align="left">2014 Mar 20</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">Initial Docbook revision</td></tr>
+    </table></div></div></div></div>
+  
+
+  <p>
+    <a class="indexterm" name="idm46395605758896"></a>
+    This chapter describes the steps necessary to observe with the
+    <acronym class="acronym">ATCA</acronym>. It assumes that observing strategy has been determined and
+    schedule files created. See <a class="xref" href="ch02.html" title="Chapter 2. Preparing for Observations">Chapter 2</a> for information on determining
+    observing strategy and <a class="xref" href="ch02s03.html" title="2.3. Scheduling your observations">Section 2.3</a> for information on creating schedule files.
+  </p>
+
+  <p>
+    In general, observing takes place in the <acronym class="acronym">SOC</acronym> in Marsfield.
+    It is possible to remote observe from anywhere with adequate network and
+    phone connectivity: see the
+    <a class="ulink" href="http://www.narrabri.atnf.csiro.au/observing/remote.html" target="_top">
+      remote observing web page</a> for details on remote observing.
+    <a class="indexterm" name="idm46395605754352"></a>
+  </p>
+
+  <p>
+    We are currently in the process of creating ATCA Tutorial videos that are available on our
+    <a class="ulink" href="https://www.youtube.com/channel/UCGQGZz-opJQM4jU7rNsuacA" target="_top">YouTube channel</a>.  These videos
+    are intended to help new observers familiarise themselves with the various applications and operational
+    processes related to the ATCA and are provided as &#8220;refresher courses&#8221; for more experienced observers.
+  </p>
+  
+  <p>
+    Observers are responsible for the collection of their own data and appropriate
+    checks to ensure the quality of the data. They are also expected to ensure
+    the safety of the array (to the best of their ability).
+    <span class="bold"><strong>This is always secondary to any personal safety concerns.</strong></span>
+  </p>
+
+  <p>
+    An <acronym class="acronym">ATNF</acronym> staff astronomer or student is rostered to support
+    observers with setting up and training new observers to use the array
+    (the Duty Astronomer or <acronym class="acronym">DA</acronym>).
+    The <acronym class="acronym">DA</acronym> should be the first point of call if there are problems or
+    queries with observations.
+  </p>
+
+  <p>
+    <a class="indexterm" name="idm46395605747712"></a>
+    The steps to observe with the compact array are:
+  </p>
+  <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+      <p>
+        taking control from the previous observer
+      </p>
+    </li><li class="listitem">
+      <p>
+        set up and calibrate the array
+      </p>
+    </li><li class="listitem">
+      <p>
+        observe target source(s)
+      </p>
+    </li><li class="listitem">
+      <p>
+        monitor observations for problems
+      </p>
+    </li><li class="listitem">
+      <p>
+        end observations
+      </p>
+    </li></ul></div>
+
+  <div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="Changeover"></a>3.1. Changeover</h2></div></div></div>
+    
+
+    <p>
+      Before the start of observations, observers need to log into the 
+      <a class="ulink" href="https://ca-ops.atnf.csiro.au/PORTAL/login.php?return=/PORTAL/index.php" target="_top"> ATCA Portal</a>.
+    </p>
+    <p>
+      <a class="indexterm" name="idm46395605737472"></a>
+      Two VNC sessions are set up for control of the array:
+    </p>
+    <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+        <p>
+          The xbones session runs <span class="command"><strong>caobs</strong></span>, <span class="command"><strong>vis</strong></span>, <span class="command"><strong>assistance</strong></span> 
+	  and <span class="command"><strong>winds</strong></span>.
+        </p>
+      </li><li class="listitem">
+        <p>
+          The <span class="hardware">caccc1</span> session runs tasks associated with the correlator.
+        </p>
+      </li></ul></div>
+    <p>
+      If observations are remote, these should be connected to before the start of observations. 
+      See <a class="ulink" href="http://www.narrabri.atnf.csiro.au/observing/rem_obs.html" target="_top">
+	http://www.narrabri.atnf.csiro.au/observing/rem_obs.html
+      </a> for information on setting up remote observations
+      (In Marsfield the necessary windows are already set up on <span class="hardware">Ara</span> in the SOC, 
+      along with a number of additional windows with additional information and observing tasks.)
+    </p>
+
+    <p>
+      </p><div class="figure"><a name="pericles"></a><div class="figure-contents">
+	
+	<div class="mediaobject"><img src="figures/pericles.jpg" alt="Typical display from the pericles desktop at Narrabri."></div>
+      </div><p class="title"><b>Figure 3.1. Typical display from the <span class="hardware">pericles</span> desktop at Narrabri.</b></p></div><p><br class="figure-break">
+    </p>
+
+    <p>
+      When it is time to take over, check on the portal and chat with the previous observer or observatory
+      staff if it is ok to get going. The Duty Astronomer should be on hand to help inexperienced observers set
+      up their observations. <a class="indexterm" name="idm46395605724992"></a>
+    </p>
+
+    <p>
+      The main observing program that the observer interacts with is <span class="command"><strong>caobs</strong></span>.
+      <span class="command"><strong>caobs</strong></span> usually runs in a black screen with yellow writing in the xbones
+      VNC session. The program <span class="command"><strong>cacor</strong></span> is the interface to the correlator.  <span class="command"><strong>cacor</strong></span>
+      commands can be executed for <span class="command"><strong>caobs</strong></span> by prefixing the command with <code class="literal">corr [command]</code>.
+      Other programs that observers need to use include <span class="command"><strong>spd</strong></span>, <span class="command"><strong>vis</strong></span> and <span class="application">MoniCA</span>.
+    </p>
+
+    <p>
+      For details on using these programs see <a class="xref" href="apa.html" title="Appendix A. caobs reference">Appendix A</a>, <a class="xref" href="apb.html" title="Appendix B. cacor reference">Appendix B</a>,
+      <a class="xref" href="apc.html" title="Appendix C. SPD reference">Appendix C</a>, <a class="xref" href="apd.html" title="Appendix D. vis">Appendix D</a> and <a class="xref" href="ape.html" title="Appendix E. MoniCA">Appendix E</a>.
+    </p>
+
+    <p>
+      To start observing, load a schedule with a strong calibrator into <span class="command"><strong>caobs</strong></span> and drive to the source:
+    </p>
+    <div class="command-table">
+      <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs<code class="literal">&gt; set file 
+	    <em class="replaceable"><code>sched_filename</code></em></code></td><td>loads the schedule file</td></tr><tr><td> </td><td>caobs<code class="literal">&gt; track #</code></td><td>drives the telescope to scan # in the schedule file</td></tr></tbody></table>
+    </div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+</div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s06.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch03s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.6. Pre-observation Checklist </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 3.2. Setting up</td></tr></table></div></body></html>

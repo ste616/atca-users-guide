@@ -1,0 +1,489 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>2.5. Rapid Response Mode</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="ch02.html" title="Chapter 2. Preparing for Observations"><link rel="prev" href="ch02s04.html" title="2.4. Running a schedule"><link rel="next" href="ch02s06.html" title="2.6. Pre-observation Checklist"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.5. Rapid Response Mode</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s04.html">Prev</a> </td><th width="60%" align="center">Chapter 2. Preparing for Observations</th><td width="20%" align="right"> <a accesskey="n" href="ch02s06.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="rapid-response-mode"></a>2.5. Rapid Response Mode</h2></div></div></div>
+    
+    <p>
+      <a class="indexterm" name="idm46395605920544"></a>
+      <a class="indexterm" name="idm46395605919680"></a>
+      For the 2017APR semester, a rapid response mode was introduced. This is designed to allow the
+      <acronym class="acronym">ATCA</acronym> to respond almost instantly to a request for a <acronym class="acronym">NAPA</acronym> over-ride.
+      This section describes how to use this mode.
+    </p>
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395605917120"></a>2.5.1. Who can use the rapid response mode?</h3></div></div></div>
+      
+      <p>
+	The <acronym class="acronym">ATCA</acronym> rapid response mode is only available to proposers who have submitted a
+	<acronym class="acronym">NAPA</acronym> proposal for the current semester. If you are interested in being granted
+	permission to use the rapid response mode for your <acronym class="acronym">NAPA</acronym> proposal, please talk
+	to Jamie Stevens (<code class="email">&lt;<a class="email" href="mailto:Jamie.Stevens@csiro.au">Jamie.Stevens@csiro.au</a>&gt;</code>).
+      </p>
+    </div>
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395605912992"></a>2.5.2. How does the rapid response mode work?</h3></div></div></div>
+      
+      <p>
+	The rapid response mode is designed to take a user-made schedule, and get it onto the telescope
+	as soon as possible after the request has been made. Getting the telescope to stop one schedule
+	and start another is very easy; determining when "as soon as possible" actually starts is the
+	tricky part. The rest of this section describes the process which takes place to perform an
+	over-ride observation.
+      </p>
+      <p>
+	</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+	    <p>
+	      You submit a <acronym class="acronym">NAPA</acronym> science case to the <acronym class="acronym">ATNF</acronym>
+	      <acronym class="acronym">TAC</acronym>, which gives you a ranking grade for the semester.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      You ask for, and are supplied with an authorisation token which will allow you to
+	      request an over-ride through the rapid response service.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      At some point during the semester, you decide to trigger your <acronym class="acronym">NAPA</acronym> proposal.
+	      You (or more likely your software) creates a <acronym class="acronym">CABB</acronym> schedule that
+	      observes both the target of interest and a nearby phase calibrator.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      You submit this schedule to the ATCA rapid response web service.
+	    </p>
+	    <p>
+	      </p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem">
+		  <p>
+		    The service checks that you are an authorised user, and rejects the request if not.
+		  </p>
+		</li><li class="listitem">
+		  <p>
+		    The minimum amount of time that you have requested is still available to be
+		    scheduled for your project, considering the amount of time you requested from
+		    the TAC, and the amount of time you have used before this request. If you do
+		    not have sufficient time, the request is rejected.
+		  </p>
+		</li><li class="listitem">
+		  <p>
+		    A start time is determined where
+		    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+			<p>
+			  the source is above the <acronym class="acronym">ATCA</acronym> lower elevation limit,
+			</p>
+		      </li><li class="listitem">
+			<p>
+			  the project that must be over-ridden has a lower grade than the
+			  <acronym class="acronym">NAPA</acronym>,
+			</p>
+		      </li><li class="listitem">
+			<p>
+			  and that the schedule can be executed for at least the minimum required
+			  amount of time while still meeting the above conditions.
+			</p>
+		      </li></ul></div><p>
+		    The search for this suitable start time is limited to either 100 hours after the
+		    request submission, or to a user-specified duration, if it is less than 100 hours.
+		    The 100 hour limit is designed to allow for an automated response even for long
+		    weekends where the proposers may not be available for a manual over-ride, while
+		    the user-specified duration can indicate that an observation that can't be made
+		    within some time frame would no longer be scientifically interesting.
+		  </p>
+		  <p>
+		    If a suitable start time cannot be found, the request is rejected.
+		  </p>
+		</li><li class="listitem">
+		  <p>
+		    An estimate is made of when the flux-density and bandpass calibrators should
+		    be observed, given the start time. The schedule is altered to insert those scans.
+		  </p>
+		</li><li class="listitem">
+		  <p>
+		    If the request has not been rejected by this point, the request is approved.
+		  </p>
+		</li></ol></div><p>
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      At the start time determined in the previous step, several additional checks
+	      are made.
+	    </p>
+	    <p>
+	      </p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem">
+		  <p>
+		    All scheduled scans will be above the <acronym class="acronym">ATCA</acronym> lower elevation
+		    limit at their expected start time, for at least the minimum required time.
+		  </p>
+		</li><li class="listitem">
+		  <p>
+		    The project currently being observed has a grade that is lower than the grade
+		    of the <acronym class="acronym">NAPA</acronym>.
+		  </p>
+		</li><li class="listitem">
+		  <p>
+		    The array is not stowed due to weather conditions.
+		  </p>
+		</li><li class="listitem">
+		  <p>
+		    <acronym class="acronym">CABB</acronym> is configured in either 1 MHz continuum mode, or
+		    1 MHz zooms mode.
+		  </p>
+		</li></ol></div><p>
+	    </p>
+	    <p>
+	      If any of these conditions is not met, then the start time of the project is delayed
+	      from between 5 seconds and 10 minutes, at which point each of the checks are made again.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      When all checks from the previous step are satisfied, a final set of schedule alterations
+	      are made.
+	    </p>
+	    <p>
+	      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+		  <p>
+		    The schedule is shortened if necessary, to fit in the time available at this start
+		    time. The amount of time scheduled will always at least the minimum required.
+		  </p>
+		</li><li class="listitem">
+		  <p>
+		    If the user has requested to use the same frequency configuration as the project
+		    being over-ridden, and
+		    </p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem">
+			<p>
+			  the band currently being observed (or that was last observed) is not 7mm
+			  or 3mm,
+			</p>
+		      </li><li class="listitem">
+			<p>
+			  the array is not currently split between two bands,
+			</p>
+		      </li><li class="listitem">
+			<p>
+			  and the project that is currently being observed (or that was last observed)
+			  is not C999,
+			</p>
+		      </li></ol></div><p>
+		    then the over-ride schedule is altered to use the same frequency configuration
+		    as is currently listed. Otherwise, the frequency configuration is left as specified
+		    in the request.
+		  </p>
+		</li><li class="listitem">
+		  <p>
+		    If the slew from the current position to the first scan of the schedule is less
+		    than 20 seconds, and the delays need to be reset because the user-specified
+		    frequencies are being used instead of the currently configured frequencies,
+		    an additional &#8220;Normal&#8221; scan of 40 seconds is inserted at the
+		    beginning of the schedule. This scan is named &#8220;setup&#8221; so it can
+		    easily be identified and discarded during later data reduction.
+		  </p>
+		</li><li class="listitem">
+		  <p>
+		    The first scan in the schedule is altered, in the following ways.
+		    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+			<p>
+			  The command <code class="literal">focus default</code> is added, to ensure the focus
+			  is set correctly.
+			</p>
+		      </li><li class="listitem">
+			<p>
+			  If the scheduled frequencies are not the same as those that were observed
+			  before the over-ride, the command <code class="literal">corr reset delays</code> is
+			  added, and the tv-channels are set to be 1020 to 1022 in each
+			  <acronym class="acronym">IF</acronym>.
+			</p>
+		      </li></ul></div><p>
+		  </p>
+		</li></ul></div><p>
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      The altered schedule is copied into the right place, <span class="command"><strong>caobs</strong></span> detects
+	      this new schedule file and immediately begins executing it. Over-ride schedules are
+	      started at scan 1, and continue through until the last scan, and will not loop.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      While the schedule is being executed, an automatic monitoring system will watch that
+	      the schedule is progressing, and will attempt to automatically restart the schedule
+	      in the event that it gets stopped.
+	    </p>
+	  </li></ol></div><p>
+      </p>
+    </div>
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395605867536"></a>2.5.3. Can I over-ride any scheduled block?</h3></div></div></div>
+      
+      <p>
+	All scheduled slots that have a project code starting with &#8220;C&#8221; can be over-ridden
+	by the rapid response mode, provided that your <acronym class="acronym">TAC</acronym> score is sufficiently
+	high and <acronym class="acronym">CABB</acronym> is in the correct mode.
+      </p>
+      <p>
+	Blocks of time scheduled for reconfigures, maintenance and VLBI cannot be over-ridden.
+      </p>
+      <p>
+	In the 2017APR semester, it is not possible to over-ride time scheduled for legacy projects,
+	but this will change in the 2017OCT semester, so that any over-ride project that has a score
+	higher than or equal to the lowest score given to a scheduled project may over-ride successfully.
+      </p>
+    </div>
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395605863280"></a>2.5.4. How can I make a schedule file automatically?</h3></div></div></div>
+      
+      <p>
+	As part of the project to develop this rapid response mode, a library for creating and
+	manipulating <acronym class="acronym">CABB</acronym> schedules was developed. It can be found
+	<a class="ulink" href="https://github.com/ste616/cabb-schedule-api" target="_top">on GitHub</a>, and is
+	free for use.
+      </p>
+      <p>
+	Because many of the existing libraries that astronomers use to deal with transient
+	event streams are written in Python, the choice was made to focus first on providing
+	a Python library for schedule manipulation. This library is targetted toward Python
+	2.7.
+      </p>
+      <p>
+	Documentation on how to use the library in your own code is part of the GitHub repository.
+      </p>
+    </div>
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395605859072"></a>2.5.5. What is this authorisation token that I need?</h3></div></div></div>
+      
+      <p>
+	To ensure that only those projects that have been pre-approved can perform over-rides on
+	the <acronym class="acronym">ATCA</acronym>, any request for over-ride time needs to be accompanied by
+	a valid authorisation token. This can only be obtained by emailing
+	<code class="email">&lt;<a class="email" href="mailto:Jamie.Stevens@csiro.au">Jamie.Stevens@csiro.au</a>&gt;</code>.
+      </p>
+      <p>
+	There are two types of authorisation token available. The first is a test token, which
+	allows you to submit a request, and go through the entire process of the over-ride, but
+	not actually get time on the telescope. This is designed to be used while you are trying
+	to develop and perfect your automated trigger routines. You may issue as many requests
+	as you like with a test token.
+      </p>
+      <p>
+	The second token will allow your request to allocate time on the telescope. This type of
+	token will not be issued until you have demonstrated that your code can properly submit
+	a test request. You will need to work with Jamie Stevens during this process.
+      </p>
+      <p>
+	Authorisation tokens are valid only for a specific project and semester, and will be
+	rejected if used outside those bounds.
+      </p>
+      <p>
+	The authorisation token itself is a
+	<a class="ulink" href="https://jwt.io/introduction" target="_top"><acronym class="acronym">JSON</acronym> Web Token</a>.
+	You will be supplied with a normal <acronym class="acronym">ASCII</acronym> file that will need to be
+	passed back to the service whenever you make a request.
+      </p>
+    </div>
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395605853776"></a>2.5.6. But how do I make a request?</h3></div></div></div>
+      
+      <p>
+	All requests to trigger an over-ride observation are submitted through a web service.
+	The exact format of the request won't be documented here, and we suggest that you use
+	the Python code we provide when you are building your trigger response software.
+      </p>
+      <p>
+	The library which makes it easy to submit over-ride requests can be found
+	<a class="ulink" href="https://github.com/ste616/atca-rapid-response-api" target="_top">on GitHub</a>, along
+	with documentation and examples.
+      </p>
+    </div>
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395605849472"></a>2.5.7. How can I find out what the service is doing?</h3></div></div></div>
+      
+      <p>
+	If your request is unable to be scheduled given the bounds you provided, you will receive
+	your rejection in the response from the web service.
+      </p>
+      <p>
+	If the web service doesn't reject your request, your schedule will enter the queue to be
+	executed. At this point, two emails will be sent to this effect. As with all emails sent by
+	the rapid response service, they will be from Jamie.Stevens@csiro.au and will go to all
+	the members of the NAPA team (as specified on its OPAL coversheet), along with all the
+	members of each project that will need to be displaced.
+      </p>
+      <p>
+	The first email will have the subject &#8220;ATCA rapid response mode triggered for Cxxxx
+	&#8221;, where of course the real NAPA project code will be specified instead of &#8220;
+	Cxxxx&#8221;. The second email will have the subject &#8220;Your ATCA rapid response
+	over-ride request has been queued for execution.&#8221;.
+      </p>
+      <p>
+	The first email will look something like this.
+	</p><div class="blockquote"><blockquote class="blockquote">
+	  <p>
+	    The ATCA rapid response mode was requested by the NAPA project C008 at UTC 2017-03-31 04:14:14.
+	  </p>
+	  <p>
+	    This over-ride has been scheduled to begin at UTC 2017-03-31 04:14:14 and end at approximately UTC 2017-03-31 04:27:06.
+	  </p>
+	  <p>
+	    This over-ride has been assigned the ID xaap6yuacy10ltg9lc3g.
+	  </p>
+	  <p>
+	    This will displace time from the project C007.
+	  </p>
+	  <p>
+	    The observations will be automatically started without any user intervention. While the observations are running, please do not intervene unless advised to by observatory staff.
+	  </p>
+	  <p>
+	    You will receive another email when the observations have started, and another when the over-ride observations have ended. Messages to the same effect will also appear in the ATCA Portal chat.
+	  </p>
+	  <p>
+	    Please send any feedback about this system by replying to this email.
+	  </p>
+	</blockquote></div><p>
+      </p>
+      <p>
+	As you can see, the time of the request, and the expected start and end times are all listed, along
+	with the unique ID assigned to the over-ride, and a list of all the projects that will be displaced.
+      </p>
+      <p>
+	The next email will look similar to the following.
+	</p><div class="blockquote"><blockquote class="blockquote">
+	  <p>
+	    This email is from the ATCA rapid response system.
+	  </p>
+	  <p>
+	    What follows is a log of the progress of your requested over-ride experiment.
+	  </p>
+	  <p>
+	    Project code: C008
+	  </p>
+	  <p>
+	    Over-ride ID: xaap6yuacy10ltg9lc3g
+	  </p>
+	  <p>
+	    2017-03-31_04:14:14: Your experiment has been placed in the queue, and should start at 2017/3/31 04:14:14. You will receive another email at that time.
+	  </p>
+	  <p>
+	    If you have any concerns about this experiment, please reply to this email.
+	  </p>
+	</blockquote></div><p>
+      </p>
+      <p>
+	This second email introduces the time-stamped log of the progress of the over-ride. All subsequent
+	email communication will contain this log, as it was when the email was sent. The log will have
+	entries for all the important actions made by the rapid response service, and entries that will be
+	useful for later data reduction.
+      </p>
+      <p>
+	At the start time, the service will either start or delay the schedule, and in either case an email
+	will be sent. If the schedule is started, the email will have the subject &#8220;An ATCA rapid
+	response over-ride is now being observed&#8221;, while if the schedule is delayed the subject will
+	be &#8220;Your ATCA rapid response over-ride request has been delayed&#8221;; the reasons for the
+	delay will be included in the log. If the schedule is started, the name of the schedule will be given
+	in the email, and you may load it in the CABB web scheduler to see how the service has altered it.
+      </p>
+      <p>
+	No emails will be sent while the schedule is running, except if the service encounters a problem.
+	In that case, you will get an email with the subject &#8220;There has been a problem while
+	executing your ATCA rapid response over-ride&#8221;.
+      </p>
+      <p>
+	When the schedule finishes, the service will send out one final email, with the subject
+	&#8220;ATCA rapid response over-ride is now complete&#8221;. This email contains the full
+	log, which will include the name of the RPFITS files that contain the data.
+      </p>
+      <p>
+	If for some reason the service is unable to perform the scheduled over-ride (for example, if the
+	antennas are weather stowed for an extended period of time), then the schedule might expire and
+	be removed from the queue. If this happens you will get an email with the subject
+	&#8220;Your ATCA rapid response over-ride request has expired&#8221;.
+      </p>
+    </div>
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="OverrideScheduleStrategy"></a>2.5.8. What is the recommended strategy for a rapid response schedule?</h3></div></div></div>
+      
+      <p>
+	The schedule you make depends on what type of observation you are trying to perform. What follows
+	are some general recommendations for rapid response schedules.
+	</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+	    <p>
+	      <span class="bold"><strong>Select the frequencies that will give you the best science, rather
+	      than ask for the frequency configuration that is being used when the telescope is over-ridden.
+	      </strong></span>
+	      There is no actual need to have a perfectly calibrated array when doing an observation with
+	      the <acronym class="acronym">ATCA</acronym>. As long as the delays can be measured while observing a strong
+	      calibrator, you will be able to correct for those delays in <span class="application">Miriad</span>.
+	      If you specify the frequencies you want, the service will ensure that the delays are set back
+	      to their defaults at the start of your observation, which will always produce a dataset that
+	      can be successfully calibrated.
+	    </p>
+	    <p>
+	      To ensure that the observations can be monitored effectively with default delays, the
+	      tvchannel range is limited to 1020 - 1022 in each <acronym class="acronym">IF</acronym>. This 3 MHz of
+	      bandwidth near the band centre is sufficient to measure the system temperature and to show
+	      the calibrator's flux density in <span class="application">vis</span>. You will not need to
+	      specify this when creating the schedule, as the service will automatically do this for you.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      <span class="bold"><strong>If measuring very early prompt emission is important to your
+	      science, ensure that you visit the target source first, before your first scan on the
+	      gain calibrator.</strong></span>
+	      Observing your target for a few minutes before going to the gain calibrator should not
+	      be a problem, as the gains can be reliably extrapolated at cm wavelengths. Also, if you are
+	      observing in the 16cm band, there is a very good chance you will have a source in your field
+	      that is bright enough to allow for self-calibration.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      <span class="bold"><strong>Keep your scans short so the service can easily cut it to fit the
+	      earliest available slot.</strong></span>
+	      If authorised to do so, the service can automatically shorten the schedule you provide in
+	      order to fit it into the earliest possible available slot; how it does this is described in
+	      <a class="xref" href="ch02s05.html#ScheduleShortening" title="2.5.9. How does the service shorten my schedule?">Section 2.5.9</a>. If you keep your scans short (ie. don't have
+	      hour long scans between visits to your calibrator) then the shortener will act much more
+	      reliably.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      <span class="bold"><strong>Do not include a flux density calibrator in your schedule.</strong></span>
+	      The service will automatically add the appropriate flux density calibrator to your schedule,
+	      depending on frequency and sidereal time.
+	    </p>
+	  </li></ol></div><p>
+      </p>
+    </div>
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="ScheduleShortening"></a>2.5.9. How does the service shorten my schedule?</h3></div></div></div>
+      
+      <p>
+	The service shortens a schedule in four stages.
+	</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+	    <p>
+	      The hard end time of the available slot is determined. This may be because the source has
+	      set, or a project has started with a score higher than that of your project. All scans that
+	      end after that hard end time are immediately deleted from the schedule, except if it is the
+	      flux density calibrator scan that the service added.
+	    </p>
+	    <p>
+	      As mentioned in <a class="xref" href="ch02s05.html#OverrideScheduleStrategy" title="2.5.8. What is the recommended strategy for a rapid response schedule?">Section 2.5.8</a>, this step can cause problems
+	      if your scans are too long. Consider a scenario where the scan that ends after the hard end time
+	      is scheduled to run for 1 hour. Even if the hard end time is only 10 minutes from the scheduled
+	      end of this scan, the entire scan is cut, and you have lost a potential 50 minutes of observing
+	      time.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      If the schedule is still too long at this point, all scans on the nominated calibration source
+	      may be shortened to have a dwell length of 1 minute. This is done from the first scan and
+	      continues until all the calibrator scans have been shortened, or the schedule now finishes before
+	      the hard end time.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      If the schedule is still too long at this point, then the scan on the flux density calibrator
+	      is shortened by 1 minute.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      If the schedule is still too long at this point, then the source scans are shortened.
+	      The service calculates the amount of time that needs to be cut for the schedule to fit in
+	      the slot, and then subtracts as much time as possible from the last remaining source scan.
+	      If the last remaining source scan is longer than the cut time, then the scan survives,
+	      otherwise it, and the following calibrator scan, are removed entirely. This process repeats
+	      until the schedule finishes before the hard end time.
+	    </p>
+	  </li></ol></div><p>
+      </p>
+      <p>
+	If at the end of this process, the schedule length falls below the specified minimum useful
+	time required, the start time will be delayed and the schedule restored to its original
+	specification.
+      </p>
+    </div>
+  </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.4. Running a schedule </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.6. Pre-observation Checklist</td></tr></table></div></body></html>

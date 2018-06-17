@@ -1,0 +1,604 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>2.4. Running a schedule</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="ch02.html" title="Chapter 2. Preparing for Observations"><link rel="prev" href="ch02s03.html" title="2.3. Scheduling your observations"><link rel="next" href="ch02s05.html" title="2.5. Rapid Response Mode"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.4. Running a schedule</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s03.html">Prev</a> </td><th width="60%" align="center">Chapter 2. Preparing for Observations</th><td width="20%" align="right"> <a accesskey="n" href="ch02s05.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="observations-execution"></a>2.4. Running a schedule</h2></div></div></div>
+    
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395606118400"></a>2.4.1. How can I calculate how much data will be produced?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606115520"></a>
+	The data rate during <acronym class="acronym">CABB</acronym> observations can be calculated with the
+	formula:
+	</p><div class="equation"><a name="equation_dataratecycle"></a><p class="title"><b>Equation 2.3. <acronym class="acronym">CABB</acronym> data rate per cycle</b></p><div class="equation-contents">
+	  
+	  <script type="math/tex; mode=display">
+	    \mathrm{b}_{\mathrm{cycle}} = \mathrm{b}_{\mathrm{corr}} \times \left(\sum_{i=1}^{N_{\mathrm{IFs}}} N_{\mathrm{channels}}(i) \times \sum_{j=1}^{N_{\mathrm{Stokes}}(i)}\sum_{k=1}^{N_{\mathrm{products}}(i)} N_{\mathrm{bins}}(i,j,k)\right),
+	  </script>
+	</div></div><p><br class="equation-break">
+	where 
+	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	    <p>
+	      <script type="math/tex">\mathrm{b}_{\mathrm{cycle}}</script>
+	      is the number of bytes produced per integration cycle,
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      <script type="math/tex">\mathrm{b}_{\mathrm{corr}}</script>
+	      is the number of bytes per correlation product, and 
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      <script type="math/tex">N_{\mathrm{IFs}}</script>
+	      is the number of IFs,
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      <script type="math/tex">N_{\mathrm{channels}}(i)</script>
+	      is the number of channels in IF
+	      <script type="math/tex">i</script>,
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      <script type="math/tex">N_{\mathrm{Stokes}}(i)</script>
+	      is the number of Stokes quantities in IF
+	      <script type="math/tex">i</script>,
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      <script type="math/tex">N_{\mathrm{products}}(i)</script>
+	      is the number of correlation products in IF
+	      <script type="math/tex">i</script>,
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      <script type="math/tex">N_{\mathrm{bins}}(i,j,k)</script>
+	      is the number of bins in IF
+	      <script type="math/tex">i</script>,
+	      Stokes parameter
+	      <script type="math/tex">j</script> and
+	      correlation product
+	      <script type="math/tex">k</script>.
+	    </p>
+	  </li></ul></div><p>
+      </p>
+
+      <p>
+	The data-rate per second is thus:
+	</p><div class="informalequation">
+	  <script type="math/tex; mode=display">
+	    \frac{\mathrm{b}}{1 \mathrm{\,second}} = \mathrm{b}_{\mathrm{cycle}}\frac{t_{\mathrm{cycle}}}{1 \mathrm{\,second}},
+	  </script>
+	</div><p>
+	where <script type="math/tex">t_{\mathrm{cycle}}</script>
+	the cycle time of the correlator.
+      </p>
+
+      <p>
+	A few example calculations are given below. In all cases it is assumed that
+	<script type="math/tex">\mathrm{b}_{\mathrm{corr}}=8</script>
+	bytes (in all modes, 4 bytes are recorded for each of the complex visibilities, and 4
+	bytes are recorded for the weight component), and
+	<script type="math/tex">t_{\mathrm{cycle}}=10</script>
+	seconds.
+      </p>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606087856"></a>2.4.1.1. How much data is produced for a typical continuum observation?</h4></div></div></div>
+	
+	
+	<p>
+	  <a class="indexterm" name="idm46395606085840"></a>
+	  For a typical continuum observation, we have:
+	  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	      <p>
+		2 IFs
+		(<script type="math/tex">N_{\mathrm{IFs}}=2</script>),
+		each with
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+		    <p>
+		      2049 channels
+		      (<script type="math/tex">N_{\mathrm{channels}}(1-2)=2049</script>),
+		    </p>
+		  </li><li class="listitem">
+		    <p>
+		      4 Stokes parameters (XX, YY, XY, YX;
+		      <script type="math/tex">N_{\mathrm{Stokes}}(1-2)=4</script>),
+		    </p>
+		  </li><li class="listitem">
+		    <p>
+		      21 correlator products
+		      (6 auto-correlation and 15 cross-correlation spectra;
+		      <script type="math/tex">N_{\mathrm{products}}(1-2)=21</script>).
+		      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: square; "><li class="listitem">
+			  <p>
+			    Each auto-correlation same-polarisation (XX, YY) spectrum has 2 bins (noise diode on and
+			    noise diode off;
+			    <script type="math/tex">N_{\mathrm{bins}}(1-2,1-2,1-6)=2</script>).
+			  </p>
+			</li><li class="listitem">
+			  <p>
+			    Each auto-correlation cross-polarisation (XY, YX) spectrum has 1 bin 
+			    <script type="math/tex">N_{\mathrm{bins}}(1-2,3-4,1-6)=1</script>).
+			  </p>
+			</li><li class="listitem">
+			  <p>
+			    Each cross-correlation spectrum has 1 bin
+			    (<script type="math/tex">N_{\mathrm{bins}}(1-2,1-4,7-21)=1</script>).
+			  </p>
+			</li></ul></div><p>
+		    </p>
+		  </li></ul></div><p>
+	      </p>
+	    </li></ul></div><p>
+	</p>
+	
+	<p>
+	  Putting this in <a class="xref" href="ch02s04.html#equation_dataratecycle" title="Equation 2.3. CABB data rate per cycle">Equation 2.3</a> we get
+	  </p><div class="informalequation">
+	    <script type="math/tex; mode=display">
+	      \mathrm{b}_{\mathrm{cycle}} = 8 \times \left(2\times 2049 \times \left(2 \times 6 \times 2 + 2 \times 6 \times 1 + 4 \times 15 \times 1\right)\right) = 3,147,264.
+	    </script>
+	  </div><p>
+	</p>
+
+	<p>
+	  This works out to be a data rate of 0.300 MiB per second, or roughly 1.055 GiB per hour.
+	  <span class="bold"><strong>Note:</strong></span> we use the binary prefixes MiB and GiB (the mebibyte and
+	  gibibyte) for data sizes. See <a class="ulink" href="https://en.wikipedia.org/wiki/Gibibyte" target="_top">Wikipedia</a>
+	  for a better explanation.
+	</p>
+
+	<p>
+	  Since <acronym class="acronym">CABB</acronym> data files will automatically close when they reach
+	  4.0 GiB in size, it would take approximately 3 h 47 m to fill one file (not accounting
+	  for the overhead consumed by the header information).
+	</p>
+      </div>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606064448"></a>2.4.1.2. How much data is produced for an observation with all zooms individually recorded?</h4></div></div></div>
+	
+	
+	<p>
+	  <a class="indexterm" name="idm46395606063168"></a>
+	  <a class="indexterm" name="idm46395606061040"></a>
+	  For an observation where each of the 16 zooms in each IF is recorded, and no zooms
+	  are consolidated, we have:
+	  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	      <p>
+		34 IFs
+		(<script type="math/tex">N_{\mathrm{IFs}}=34</script>).
+		Two of these are the continuum IFs, each having
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+		    <p>
+		      2049 channels
+		      (<script type="math/tex">N_{\mathrm{channels}}(1-2)=2049</script>),
+		    </p>
+		  </li><li class="listitem">
+		    <p>
+		      4 Stokes parameters (XX, YY, XY, YX;
+		      <script type="math/tex">N_{\mathrm{Stokes}}(1-2)=4</script>),
+		    </p>
+		  </li><li class="listitem">
+		    <p>
+		      21 correlator products
+		      (6 auto-correlation and 15 cross-correlation spectra;
+		      <script type="math/tex">N_{\mathrm{products}}(1-2)=21</script>).
+		      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: square; "><li class="listitem">
+			  <p>
+			    Each auto-correlation same-polarisation (XX, YY) spectrum has 2 bins (noise diode on and
+			    noise diode off;
+			    <script type="math/tex">N_{\mathrm{bins}}(1-2,1-2,1-6)=2</script>).
+			  </p>
+			</li><li class="listitem">
+			  <p>
+			    Each auto-correlation cross-polarisation (XY, YX) spectrum has 1 bin 
+			    <script type="math/tex">N_{\mathrm{bins}}(1-2,3-4,1-6)=1</script>).
+			  </p>
+			</li><li class="listitem">
+			  <p>
+			    Each cross-correlation spectrum has 1 bin
+			    (<script type="math/tex">N_{\mathrm{bins}}(1-2,1-4,7-21)=1</script>).
+			  </p>
+			</li></ul></div><p>
+		    </p>
+		  </li></ul></div><p>
+	      </p>
+	    </li><li class="listitem">
+	      <p>
+		The other 32 IFs are the zoom bands, each having
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+		    <p>
+		      2049 channels
+		      (<script type="math/tex">N_{\mathrm{channels}}(3-34)=2049</script>),
+		    </p>
+		  </li><li class="listitem">
+		    <p>
+		      4 Stokes parameters (XX, YY, XY, YX;
+		      <script type="math/tex">N_{\mathrm{Stokes}}(3-34)=4</script>),
+		    </p>
+		  </li><li class="listitem">
+		    <p>
+		      21 correlator products
+		      (6 auto-correlation and 15 cross-correlation spectra;
+		      <script type="math/tex">N_{\mathrm{products}}(3-34)=21</script>).
+		      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: square; "><li class="listitem">
+			  <p>
+			    Each spectrum has 1 bin
+			    (<script type="math/tex">N_{\mathrm{bins}}(3-34,1-4,1-21)=1</script>).
+			  </p>
+			</li></ul></div><p>
+		    </p>
+		  </li></ul></div><p>
+	      </p>
+	    </li></ul></div><p>
+	</p>
+	
+	<p>
+	  Putting this in <a class="xref" href="ch02s04.html#equation_dataratecycle" title="Equation 2.3. CABB data rate per cycle">Equation 2.3</a> we get
+	  </p><div class="informalequation">
+	    <script type="math/tex; mode=display">
+	      \mathrm{b}_{\mathrm{cycle}} = 8 \times \left(2\times 2049 \times \left(2 \times 6 \times 2 + 2 \times 6 \times 1 + 4 \times 15 \times 1\right) + 32 \times 2049 \times 4 \times 21 \times 1\right) = 4.5635344 \times 10^{7}.
+	    </script>
+	  </div><p>
+	</p>
+
+	<p>
+	  This works out to be a data rate of 4.352 MiB per second, or roughly 15.3 GiB per hour.
+	  Since <acronym class="acronym">CABB</acronym> data files will automatically close when they reach
+	  4.0 GiB in size, it would take approximately 15 m to fill one file (not accounting
+	  for the overhead consumed by the header information).
+	</p>
+      </div>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606031376"></a>2.4.1.3. How much data is produced for a pulsar-binning observation?</h4></div></div></div>
+	
+	
+	<p>
+	  <a class="indexterm" name="idm46395606029728"></a>
+	  For an observation using <acronym class="acronym">CABB</acronym>s pulsar-binning mode, we have:
+	  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	      <p>
+		4 IFs
+		(<script type="math/tex">N_{\mathrm{IFs}}=4</script>).
+		Two of these are the normal continuum IFs, each having
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+		    <p>
+		      2049 channels
+		      (<script type="math/tex">N_{\mathrm{channels}}(1-2)=2049</script>),
+		    </p>
+		  </li><li class="listitem">
+		    <p>
+		      4 Stokes parameters (XX, YY, XY, YX;
+		      <script type="math/tex">N_{\mathrm{Stokes}}(1-2)=4</script>),
+		    </p>
+		  </li><li class="listitem">
+		    <p>
+		      21 correlator products
+		      (6 auto-correlation and 15 cross-correlation spectra;
+		      <script type="math/tex">N_{\mathrm{products}}(1-2)=21</script>).
+		      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: square; "><li class="listitem">
+			  <p>
+			    Each auto-correlation same-polarisation (XX, YY) spectrum has 2 bins (noise diode on and
+			    noise diode off;
+			    <script type="math/tex">N_{\mathrm{bins}}(1-2,1-2,1-6)=2</script>).
+			  </p>
+			</li><li class="listitem">
+			  <p>
+			    Each auto-correlation cross-polarisation (XY, YX) spectrum has 1 bin 
+			    <script type="math/tex">N_{\mathrm{bins}}(1-2,3-4,1-6)=1</script>).
+			  </p>
+			</li><li class="listitem">
+			  <p>
+			    Each cross-correlation spectrum has 1 bin
+			    (<script type="math/tex">N_{\mathrm{bins}}(1-2,1-4,7-21)=1</script>).
+			  </p>
+			</li></ul></div><p>
+		    </p>
+		  </li></ul></div><p>
+	      </p>
+	    </li><li class="listitem">
+	      <p>
+		The other two IFs are the pulsar-binned continuum bands, each having
+		</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+		    <p>
+		      513 channels (each of them being the average of 4 of the normal continuum channels)
+		      (<script type="math/tex">N_{\mathrm{channels}}(3-4)=513</script>),
+		    </p>
+		  </li><li class="listitem">
+		    <p>
+		      4 Stokes parameters (XX, YY, XY, YX;
+		      <script type="math/tex">N_{\mathrm{Stokes}}(3-4)=4</script>),
+		    </p>
+		  </li><li class="listitem">
+		    <p>
+		      15 correlator products
+		      (15 cross-correlation spectra;
+		      <script type="math/tex">N_{\mathrm{products}}(3-4)=15</script>).
+		      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: square; "><li class="listitem">
+			  <p>
+			    Each cross-correlation spectrum has 32 bins across the pulse period
+			    (<script type="math/tex">N_{\mathrm{bins}}(3-4,1-4,1-15)=32</script>).
+			  </p>
+			</li></ul></div><p>
+		    </p>
+		  </li></ul></div><p>
+	      </p>
+	    </li></ul></div><p>
+	</p>
+	
+	<p>
+	  Putting this in <a class="xref" href="ch02s04.html#equation_dataratecycle" title="Equation 2.3. CABB data rate per cycle">Equation 2.3</a> we get
+	  </p><div class="informalequation">
+	    <script type="math/tex; mode=display">
+	      \mathrm{b}_{\mathrm{cycle}} = 8 \times \left(2\times 2049 \times \left(2 \times 6 \times 2 + 2 \times 6 \times 1 + 4 \times 15 \times 1\right) + 2 \times 513 \times 4 \times 15 \times 32\right) = 1.8906624 \times 10^{7}.
+	    </script>
+	  </div><p>
+	</p>
+
+	<p>
+	  This works out to be a data rate of 1.803 MiB per second, or roughly 6.339 GiB per hour.
+	  Since <acronym class="acronym">CABB</acronym> data files will automatically close when they reach
+	  4.0 GiB in size, it would take approximately 37 m to fill one file (not accounting
+	  for the overhead consumed by the header information).
+	</p>
+      </div>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395606000368"></a>2.4.2. How can I quickly determine how much data will be produced?</h3></div></div></div>
+      
+	
+      <p>
+	<a class="indexterm" name="idm46395605998608"></a>
+	Since all modes give you the continuum IFs, you start off with one of two base
+	data rates, per cycle. For the 1 MHz modes, the base data rate is:
+	</p><div class="informalequation">
+	  <script type="math/tex; mode=display">
+	    \mathrm{b}_{\mathrm{cycle}}(1\mathrm{\,MHz}) = 1.573632 \times 10^{6}
+	  </script>
+	</div><p>
+	bytes per IF. For the 64 MHz modes, the base data rate is:
+	</p><div class="informalequation">
+	  <script type="math/tex; mode=display">
+	    \mathrm{b}_{\mathrm{cycle}}(64\mathrm{\,MHz}) = 2.5344 \times 10^{4}
+	  </script>
+	</div><p>
+	bytes per IF.
+      </p>
+      
+      <p>
+	For each pulsar-binned IF you have (only available in 1 MHz mode) you add:
+	</p><div class="informalequation">
+	  <script type="math/tex; mode=display">
+	    \mathrm{b}_{\mathrm{cycle}}(\mathrm{pulsar\, binning}) = 7.87968 \times 10^{6}.
+	  </script>
+	</div><p>
+      </p>
+      
+      <p>
+	For each single zoom you have (i.e. zooms with a width of 1) you add:
+	</p><div class="informalequation">
+	  <script type="math/tex; mode=display">
+	    \mathrm{b}_{\mathrm{cycle}}(\mathrm{zoom}) = 1.376928 \times 10^{6}.
+	  </script>
+	</div><p>
+      </p>
+      
+      <p>
+	For each consolidated zoom you have (i.e. zooms with a width of 2 or more) you 
+	begin by adding:
+	</p><div class="informalequation">
+	  <script type="math/tex; mode=display">
+	    \mathrm{b}_{\mathrm{cycle}}(\mathrm{base\,czoom}) = 6.888 \times 10^{5}.
+	  </script>
+	</div><p>
+	Then, for each zoom band in the consolidated zoom, you add:
+	</p><div class="informalequation">
+	  <script type="math/tex; mode=display">
+	    \mathrm{b}_{\mathrm{cycle}}(\mathrm{extra\,czoom}) = 6.88128 \times 10^{5}.
+	  </script>
+	</div><p>
+	For example, if you had a consolidated zoom with a width of 5, it would produce
+	</p><div class="informalequation">
+	  <script type="math/tex; mode=display">
+	    \mathrm{b}_{\mathrm{cycle}}(\mathrm{czoom\,of\,width\,5}) = 6.888 \times 10^{5} + 5 \times 6.88128 \times 10^{5} = 4.12944 \times 10^{6}
+	  </script>
+	</div><p>
+	bytes per cycle.
+      </p>
+      
+      <p>
+	<span class="bold"><strong>Example:</strong></span> If you were using the 1 MHz/64 MHz
+	hybrid <acronym class="acronym">CABB</acronym> configuration, and had one zoom of width 1 and
+	one consolidated zoom of width 12 in the 64 MHz IF your total data usage would
+	be:
+	</p><div class="informalequation">
+	  <script type="math/tex; mode=display">
+	    \mathrm{b}_{\mathrm{cycle}} = \mathrm{b}_{\mathrm{cycle}}(1\mathrm{\,MHz}) + \mathrm{b}_{\mathrm{cycle}}(64\mathrm{\,MHz}) + \mathrm{b}_{\mathrm{cycle}}(\mathrm{zoom}) + \mathrm{b}_{\mathrm{cycle}}(\mathrm{base\,czoom}) + 12 \times \mathrm{b}_{\mathrm{cycle}}(\mathrm{extra\,czoom}).
+	  </script>
+	</div><p>
+	Doing the sum gives
+	
+	  <script type="math/tex">\mathrm{b}_{\mathrm{cycle}} = 1.192224\times10^{7}</script>
+	
+	bytes per cycle. Assuming a 10 second cycle time, this would generate 3.997 GiB per hour,
+	which would give you roughly one new <acronym class="acronym">CABB</acronym> data file every hour.
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395605982048"></a>2.4.3. Do I have to do the observations myself?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395605979808"></a>
+	Users of the <acronym class="acronym">ATCA</acronym> are expected to organise the execution of the observations.
+	Any member of the team that proposed the experiment is eligible to observe from the Marsfield
+	<acronym class="acronym">SOC</acronym>, or any other researcher that the primary investigator might like to nominate.
+	If the researcher has
+	not previously observed with the <acronym class="acronym">ATCA</acronym> and <acronym class="acronym">CABB</acronym>, or has not
+	observed within the past 12 months, they will have to travel to the <acronym class="acronym">SOC</acronym> to be trained.
+	<a class="indexterm" name="idm46395605976176"></a>
+      </p>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395605974672"></a>2.4.3.1. Do I need to be trained to use the <acronym class="acronym">ATCA</acronym>?</h4></div></div></div>
+	
+	<p>
+	  <a class="indexterm" name="idm46395605971936"></a>
+	  Yes. It is recommended that observers unfamiliar with the <acronym class="acronym">ATCA</acronym> arrive at
+	  the <acronym class="acronym">SOC</acronym> at least two full weekdays before their observations, in order for them to
+	  become familiar with how to use the array and who to talk to if things go wrong.
+	</p>
+      </div>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395605969504"></a>2.4.3.2. What if we can't make it to the <acronym class="acronym">SOC</acronym>?</h4></div></div></div>
+	
+	<p>
+	  <a class="indexterm" name="idm46395605966912"></a>
+	  If it is not possible for any of your team members to come to the <acronym class="acronym">SOC</acronym> for your allocated
+	  observing time, but you have visited <acronym class="acronym">SOC</acronym> sometime in the 12 months prior to your
+	  observations, you may be granted permission to
+	  do your observations remotely (<a class="xref" href="ch02s04.html#running-remotely" title="2.4.4. Can I do my observations from my home institution?">Section 2.4.4</a>).
+	</p>
+
+      </div>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395605963760"></a>2.4.3.3. Can't someone do the observations for me?</h4></div></div></div>
+	
+
+	<p>
+	  <a class="indexterm" name="idm46395605961664"></a>
+	  We expect that observers are members of the team that proposed the experiment. Said another way,
+	  if you require someone to do your observations, we fully expect that that person would become
+	  a collaborator, and would be included on any publications derived from those observations. If this
+	  is what you require, you will need to alert <acronym class="acronym">ATNF</acronym> staff well ahead of your
+	  scheduled time (4 weeks at least).
+	</p>
+      </div>
+	
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395605959600"></a>2.4.3.4. I was planning to come, but I've just had an emergency. What can I do?</h4></div></div></div>
+	
+	<p>
+	  We understand that plans can change on short timescales and without warning. We recommend
+	  first trying to recruit another member of your team to do the observations, but should that not
+	  be possible, please alert <acronym class="acronym">ATNF</acronym> staff.
+	</p>
+
+	<p>
+	  It may be possible to do a short-notice scheduling swap with another project, leaving you to
+	  do your observations at a later date. If this is not possible, we may be able to find a
+	  replacement observer, with the understanding that whomever does the observing will become
+	  a collaborator on the experiment, and will receive due credit on any publications derived from
+	  the observations.
+	</p>
+      </div>
+
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="running-remotely"></a>2.4.4. Can I do my observations from my home institution?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395605953424"></a>
+	Remote observing is available for experienced <acronym class="acronym">ATCA</acronym> observers. We will consider
+	granting a request for remote observations if the observer:
+	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	    <p>
+	      Has observed from the <acronym class="acronym">SOC</acronym> at least once in the 12 months prior
+	      to the date of the proposed remote observations, or
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      Usually observes more than 3 times per semester, or on at least 10 days per semester,
+	      and has observed from the <acronym class="acronym">SOC</acronym> at least once in the 18 months prior
+	      to the date of the proposed remote observations.
+	    </p>
+	  </li></ul></div><p>
+      </p>
+
+      <p>
+	Applications to do a remote observation must be made <span class="bold"><strong>at least 2 weeks before the
+	observations</strong></span>. This is so observatory staff can check for possible network
+	disruptions during your observations, and advise you if remote observing will not be possible.
+	The later you leave your remote observing application, the less time you will have
+	to change your plans should your request for remote observations be refused.
+      </p>
+
+      <p>
+	Permission to do your observations remotely is given at the discretion of science operations staff,
+	and you should not presume that permission will be forthcoming. Should permission be refused and
+	you are not able to come to the observatory, you may need to find a local collaborator to do the
+	observations for you. Your observing &#8220;friend&#8221;
+	<a class="indexterm" name="idm46395605945824"></a>
+	<a class="indexterm" name="idm46395605945072"></a>
+	will not generally be available to do your observations. The duty astronomer is also
+	under no obligation to observe for your project if you are unable to.
+      </p>
+
+      <p>
+	To apply to make an observation remotely, use the &#8220;Booking&#8221; tab on the
+	<a class="ulink" href="https://ca-ops.atnf.csiro.au/PORTAL/" target="_top"><acronym class="acronym">ATCA</acronym> observing PORTAL</a>,
+	which will look something like <a class="xref" href="ch02s04.html#portal-booking-tab" title="Figure 2.2. The &#8220;Booking&#8221; tab on the ATCA observing PORTAL.">Figure 2.2</a>.
+	First, fill out the &#8220;Booking details&#8221; form (which is revealed by clicking on that
+	button), and hit the &#8220;Book&#8221; button in the &#8220;Status&#8221; column.
+      </p>
+
+      <p>
+	</p><div class="figure"><a name="portal-booking-tab"></a><div class="figure-contents">
+	  
+	  <div class="mediaobject"><img src="figures/portal-booking-tab.jpg" alt="The &#8220;Booking&#8221; tab on the ATCA observing PORTAL."></div>
+	</div><p class="title"><b>Figure 2.2. The &#8220;Booking&#8221; tab on the <acronym class="acronym">ATCA</acronym> observing PORTAL.</b></p></div><p><br class="figure-break">
+      </p>
+
+      <p>
+	  Remote observers must
+	  have their own <acronym class="acronym">ATNF</acronym> UNIX account and remember their password for this account.
+	  The <acronym class="acronym">ATCA</acronym> website has pages describing
+	  <a class="ulink" href="http://www.narrabri.atnf.csiro.au/observing/remote_conditions.html" target="_top">current remote observing conditions</a>
+	  and
+	  <a class="ulink" href="http://www.narrabri.atnf.csiro.au/observing/rem_obs.html" target="_top">instructions for observing remotely</a>.
+      </p>
+      
+      <p>
+	<a class="indexterm" name="idm46395605934176"></a>
+	To be sure of a successful remote observing session, all observers are required to test their
+	remote observing setup at least a week before their observations.
+      </p>
+
+      <p>
+	At a minimum, you will require the following for remote observing:
+      </p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	  <p>
+	    A computer with SSH software, capable of running a VNC viewer, on a high bandwidth connection,
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    A telephone near to the computer, that can make calls to, and accept calls from the observatory.
+	  </p>
+	</li></ul></div>
+
+      <p>
+	Remote observations will be easier if you also have:
+      </p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	  <p>
+	    Two or more monitors attached to their computer,
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    A computer with X-Windows software,
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    A hands-free speakerphone or headset.
+	  </p>
+	</li></ul></div>
+
+      <p>
+	<a class="indexterm" name="idm46395605925392"></a>
+	To test your setup, you should contact the duty astronomer and ask to be allowed
+	to login and perform the test. If the test will not disturb current observations, you  should follow
+	the instructions on remote observing found in Chapter 3
+	to ensure that you can monitor and control all the required VNC sessions. If problems
+	are encountered here, and the duty astronomer can't help you resolve them,
+	contact the observatory staff with a description of the problems and ask for advice.
+      </p>
+    </div>
+  </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.3. Scheduling your observations </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.5. Rapid Response Mode</td></tr></table></div></body></html>

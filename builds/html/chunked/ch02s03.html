@@ -1,0 +1,1490 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>2.3. Scheduling your observations</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="ch02.html" title="Chapter 2. Preparing for Observations"><link rel="prev" href="ch02s02.html" title="2.2. Calibration"><link rel="next" href="ch02s04.html" title="2.4. Running a schedule"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.3. Scheduling your observations</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s02.html">Prev</a> </td><th width="60%" align="center">Chapter 2. Preparing for Observations</th><td width="20%" align="right"> <a accesskey="n" href="ch02s04.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="observations-scheduling"></a>2.3. Scheduling your observations</h2></div></div></div>
+    
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395606637552"></a>2.3.1. What is meant by &#8220;schedule&#8221;?</h3></div></div></div>
+      
+
+      <p>
+	Observations on the <acronym class="acronym">ATCA</acronym> normally consist of a sequence of
+	<a class="indexterm" name="idm46395606633920"></a>
+	<a class="indexterm" name="idm46395606632912"></a>
+	<em class="firstterm">scans</em>: a scan is a period of observing where the telescope configuration
+	stays the same. A complete observation is made up of a
+	number of scans.  Observations typically alternate between scans on the
+	scientifically interesting sources and scans on one or more calibrators. 
+	The configuration of the scans and their order are kept in a
+	<em class="wordasword">schedule file</em>.
+      </p>
+
+      <p>
+	<a class="indexterm" name="idm46395606629856"></a>
+	The main observing task, <span class="command"><strong>caobs</strong></span>, reads the schedule file in order to
+	determine what sources are to be observed, for how long, and in what
+	order. The schedule file also defines the frequencies and
+	correlator setup for each scan and can also be used to make the system automatically
+	execute commands.
+	<a class="indexterm" name="idm46395606628352"></a>
+	<a class="indexterm" name="idm46395606627008"></a>
+	The 
+	<a class="ulink" href="http://www.narrabri.atnf.csiro.au/observing/sched/cabb/" target="_top"> <acronym class="acronym">ATCA</acronym> web scheduler</a>
+	is the tool to use to create <acronym class="acronym">ATCA</acronym> schedule files in the <acronym class="acronym">CABB</acronym> era.
+	Schedules made with the old <span class="command"><strong>sched</strong></span> program are no longer understood by
+	the <acronym class="acronym">CABB</acronym> version of <span class="command"><strong>caobs</strong></span> and thus cannot be used. However, it is
+	possible for the web scheduler to read in old schedules and save them
+	for use with the new system. Please also note that an active <acronym class="acronym">ATNF</acronym> username
+	and password is required to gain access to the web scheduler page.
+      </p>
+
+      <p>
+	Generally, users will want to prepare <span class="bold"><strong>at least</strong></span> two schedule files:
+      </p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	  <p>
+	    A schedule file for setting up (delay calibration etc.) and flux density calibration.
+	    It should include the appropriate flux density calibrator (<a class="xref" href="ch02s02.html#calibration-flux-density" title="2.2.4. How do I calibrate the flux density of my observations?">Section 2.2.4</a>),
+	    and if the flux density calibrator cannot be used as a bandpass calibrator, another stronger calibrator
+	    that can be used for array setup and bandpass calibration.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    A schedule file containing the science program source(s) and gain calibrator(s)
+	    (<a class="xref" href="ch02s02.html#calibration-gains" title="2.2.5. How do I best calibrate the time-varying gains?">Section 2.2.5</a>).
+	  </p>
+	</li></ul></div>
+
+      <p>
+	You may also want to prepare contingency schedule files in case your preferred frequency is seriously
+	affected by interference, or the selected calibrator proves to be resolved.
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="scheduling-snapshots"></a>2.3.2. How do I best observe if I want to image compact sources?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606614144"></a>
+	If your goal is to make a high-quality image of a source that has an angular extent much smaller than the
+	size of the primary beam of the <acronym class="acronym">ATCA</acronym> antennas, then you should observe your source
+	in &#8220;snapshots&#8221;. The same strategy can be applied if you want to image a small number of
+	sources that are separated in the sky.
+      </p>
+
+      <p>
+	Snapshot observations will allow you to obtain a wide range of uv coverage without having to spend all
+	your observing time on source. This is necessary because you will need to obtain calibration data
+	within your time allocation. Generally, a snapshot consists of one or more calibration scans,
+	followed by some integration time on the science target, followed by a gain calibration scan. These
+	snapshots are repeated until your observations are complete.
+      </p>
+
+      <p>
+	Snapshot observing is best illustrated with examples.
+      </p>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606610640"></a>2.3.2.1. Example 1: Imaging a single source in the 16cm band</h4></div></div></div>
+	
+
+	<p>
+	  This is essentially the simplest form of snapshot observing. All you need to do is integrate on the
+	  target, and occasionally visit a gain calibrator to ensure that you keep track of any phase changes.
+	  A single snapshot might therefore be:
+	  </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>2 minutes integration on a gain calibrator.</p></li><li class="listitem"><p>40 minutes integration on the target.</p></li><li class="listitem"><p>2 minutes integration on a gain calibrator.</p></li></ol></div><p>
+	  This set of scans can be repeated as many times as possible within the allocated time. 
+	</p>
+
+	<p>
+	  These scans will give you enough data to properly calibrate the gains during your observing, and
+	  the polarisation as well, provided you get more than three snapshots in your allocated time.
+	  However you will need to spend some time observing the flux density calibrator (which also works
+	  as a bandpass calibrator) at some time during your allocated time.
+	</p>
+      </div>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606604992"></a>2.3.2.2. Example 2: Imaging several sources in the 4cm band</h4></div></div></div>
+	
+	
+	<p>
+	  Imaging several sources is basically the same as imaging a single source, except you have
+	  multiple snapshot sets to get through. For each source that you have, you will have an
+	  associated nearby gain calibrator. Then, you will have multiple sets that look like:
+	  </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>2 minutes integration on gain calibrator for source 1.</p></li><li class="listitem"><p>20 minutes integration on the target source 1.</p></li><li class="listitem"><p>2 minutes integration on gain calibrator for source 1.</p></li></ol></div><p>
+	</p>
+
+	<p>
+	  During the allocated observing time, each set of scans will be observed multiple times, but
+	  it is best to interleave them to ensure you get the widest possible coverage of azimuths and
+	  elevations for each set. And once again, you must remember to get some time on the flux
+	  density calibrator.
+	</p>
+      </div>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606599632"></a>2.3.2.3. Example 3: Imaging several sources in the 7mm band</h4></div></div></div>
+	
+	  
+	<p>
+	  Changing to the higher frequency 7mm band means that you must start doing online
+	  pointing correction scans. The basic set of scans is still the same, as in example
+	  2, but now you have to occasionally add in a pointing scan. For example, if your
+	  normal scan set takes 20 minutes (e.g. 16 minutes on source, 4 minutes on the
+	  gain calibrator), then you could observe this set three times between pointing
+	  scans, as it is recommended that you don't use a pointing solution for more than
+	  an hour.
+	</p>
+
+	<p>
+	  If your sources are all within 20° of each other, you may be able to
+	  find a single source that can be used as the pointing correction calibrator, and
+	  you will only need to do this once per hour.
+	</p>
+
+	<p>
+	  If your sources are spread around the sky you will need to do a pointing correction
+	  for each source. If you are only visiting your sources once per hour, then the
+	  pointing correction scan can simply be built into your snapshot set. However if you
+	  are looking at each source multiple times per hour, but you want to observe the sources
+	  interleaved with each other, you will need to be careful.
+	</p>
+
+	<p>
+	  Usually, when you do a pointing correction scan, the corrections that are determined
+	  are applied immediately and all subsequent scans (well, those that have 
+	  <code class="literal">Pointing</code> set to &#8220;Offset&#8221;) will use those corrections.
+	  This would be a problem if you are observing a source that is more than 20°
+	  away from the location of the most recent pointing scan, even if it was within 20° of the
+	  location of a pointing scan that was done less than an hour ago; such a scan would
+	  use the wrong pointing corrections!
+	</p>
+
+	<p>
+	  The solution to this is to set <code class="literal">Pointing</code> to &#8220;Offpnt&#8221;
+	  for the scan. In this case, <span class="command"><strong>caobs</strong></span> will find the most recent
+	  pointing corrections that are close to the location of the current scan, and use those
+	  corrections for that scan.
+	</p>
+      </div>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606592256"></a>2.3.2.4. Example 4: Imaging a single source in the 3mm band</h4></div></div></div>
+	
+
+	<p>
+	  In the 3mm band, not only do you need to do pointing corrections every hour, you
+	  need to do frequent observations of the paddle. The frequency of your paddle
+	  observations is determined by the conditions during your allocated time, and is
+	  related somewhat to the required frequency of your gain calibrator observations.
+	  That is, if the atmosphere is turbulent, then you may only be able to spend
+	  a few minutes away from a gain calibrator. And in such a case, the system temperature
+	  may be changing on a similar timescale. It is therefore usually a good idea to
+	  include a paddle scan in every snapshot set. Such a set might look like this:
+	  </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>Measurement of the paddle.</p></li><li class="listitem"><p>2 minutes integration on the gain calibrator.</p></li><li class="listitem"><p>8 minutes integration on the target source.</p></li><li class="listitem"><p>Measurement of the paddle.</p></li><li class="listitem"><p>2 minutes integration on the gain calibrator.</p></li></ol></div><p>
+	</p>
+
+	<p>
+	  Since the apparent brightness of the sources you are observing will depend
+	  on the system temperature measured by the paddle scan, it is very important to
+	  ensure that you do the paddle measurement <span class="bold"><strong>before</strong></span>
+	  you observe the sources. It is however not really necessary to ensure the
+	  measured amplitudes are accurate before doing a pointing scan.
+	</p>
+      </div>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395606584496"></a>2.3.3. How do I best image a source with a large angular extent, or a wide field
+	region?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606582400"></a>
+	<a class="indexterm" name="idm46395606581376"></a>
+	If the source you will image is bigger than a small fraction of the
+	<acronym class="acronym">ATCA</acronym> primary beam, or the region you want an image for is
+	considerably larger than the primary beam, you will need to use the
+	<acronym class="acronym">ATCA</acronym>'s mosaicing functionality.
+      </p>
+
+      <p>
+	In interferometry adjacent pointings are not independent and so
+	we can get fundamentally better images by processing the
+	different pointings together. Necessary information about the
+	pointing grid pattern to use for proper Nyquist sampling and
+	the time to be spent on each position to optimise tangential
+	uv coverage can be found in 
+	<a class="ulink" href="http://www.atnf.csiro.au/computing/software/miriad/userguide/node175.html" target="_top">Chapter 21</a>
+	of the <span class="application">Miriad</span> Users Guide.
+      </p>
+
+      <p>
+	For close-packed mosaicing (pointing centres every
+	half-beamwidth), drive times are determined by the
+	acceleration limit of 800°/min². Half the drive
+	time is spent accelerating and half decelerating. For drive
+	times much further than 108&#8242; in azimuth or 27&#8242;
+	in elevation, the drive times are dominated by the slew rate
+	limits of 38°/min in elevation and 19°/min in
+	azimuth. For example, a 16&#8242; drive for a 16cm mosaic
+	will take, depending on the elevation and azimuth of the
+	source, approximately 2.2 seconds. Data taken during the
+	off-source period is blanked in the correlator using a
+	predicted drive time. As drive times can be a significant
+	overhead, care should be taken to not move the array more than
+	necessary.
+      </p>
+
+      <p>
+	Mosaicing is less useful if frequency switching is desired, as
+	no frequency changes can occur during the mosaic scan. Since
+	slew times are often much greater than the time it takes for
+	the correlator to switch frequencies, the overheads involved
+	in repeating a mosaic scan for each separate frequency might
+	quickly negate the normal benefits of mosaicing.
+      </p>
+
+      <p>
+	Mosaicing mode can also be useful when a large
+	number of nearby sources are to be observed, as observing
+	overheads are reduced. Other applications include holography
+	and source surveys using one dimensional cuts. 
+      </p>
+
+      <p>
+	When scheduling a mosaic observation, the &#8220;snapshot&#8221; strategy
+	should be used in order to get calibration data. That is, a point source
+	calibrator should be observed periodically between observations of the
+	mosaic pointings.
+      </p>
+
+      <p>
+	If you are mapping a very large, regularly-shaped region at
+	low frequency, where the slew time between each pointing centre
+	is dominated by the maximum speed of the antenna rather than
+	the acceleration/deceleration rate, then you may get a significant
+	reduction in overhead by using <em class="firstterm">on-the-fly mosaicing</em>.
+      </p>
+
+      <p>
+	<a class="indexterm" name="idm46395606572448"></a>
+	<a class="indexterm" name="idm46395606571136"></a>
+	On-the-fly (<acronym class="acronym">OTF</acronym>) mosaicing has a couple of important differences to
+	traditional mosaicing. Most importantly, although the
+	mosaic pattern should be broadly the same &#8211; the hexagonal pattern is still
+	the optimal sampling &#8211; the order of observations should be such that the
+	telescope scans in a straight line for as long a distance as possible.
+      </p>
+
+      <p>
+	During an <acronym class="acronym">OTF</acronym> mosaic, the phase center follows the mosaic points as specified,
+	and the pointing center moves continuously across the pointings. In effect the
+	primary beam of the antennas becomes elongated (to 1.5 beams) in the scanning
+	direction.
+      </p>
+
+      <p>
+	To satisfy proper sampling of the sky, the antennas should not move by more than
+	half a beam per integration cycle, so the spacing of pointings in the mosaic file
+	should be the same as before. Because <span class="command"><strong>caobs</strong></span> assumes
+	you are scanning in rows or columns, the direction of scanning is inferred from
+	the next point. At the last point of a row or column the previous direction is
+	maintained to complete the scan. One extra point, marked with the name 
+	&#8220;<code class="literal">TURN</code>&#8221;, needs
+	to be specified at the start of the next row/column, to allow for the antennas
+	to change direction and scan at the correct speed again.
+      </p>
+
+      <p>
+	The primary advantage of <acronym class="acronym">OTF</acronym> mosaicing over regular mosaicing is its speed in
+	covering a large area of sky, making it possible to get good uv coverage
+	of a large field in a single observing run. It will not usually provide any better
+	sensitivity than a carefully crafted regular mosaic.
+      </p>
+
+      <p>
+	Although <acronym class="acronym">OTF</acronym> mosaicing is most useful at low frequencies where the slew time
+	between mosaicing points are a significant fraction of the total integration
+	time, this mode could also be used for mm observations by using bin mode and
+	moving the antennas by e.g., 16 beams in a single integration with 32 time bins.
+	The <span class="application">Miriad</span> program atlod will need some work to properly record the
+	phase center and pointing center in this case (ie. such a mode is not currently supported,
+	but may be if demand for it is high).
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="scheduling-mosaics"></a>2.3.4. How do I schedule a mosaic observation?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606560720"></a>
+	<a class="indexterm" name="idm46395606559856"></a>
+	<a class="indexterm" name="idm46395606558672"></a>
+	Mosaic observations use a standard schedule file and an additional file,
+	called the <em class="firstterm">mosaic file</em>, 
+        which lists the positions of the mosaic field centres. 
+        Up to 2048 fields can be specified in a single file.
+	This mosaic file must consist of one line per pointing centre in the
+	mosaic pattern. Lines beginning with the &#8220;<code class="literal">#</code>&#8221; character
+	are ignored and can be used for comments.
+      </p>
+
+      <p>
+	The general mosaic file format is:
+      </p>
+      <p>
+	</p><pre class="screen">
+# Comments  .... ignored by the software
+#
+d(RA)  d(DEC)  INT  $FIELD_1
+d(RA)  d(DEC)  INT  $FIELD_2
+d(RA)  d(DEC)  INT  $FIELD_3
+d(RA)  d(DEC)  INT  $FIELD_4
+</pre><p>
+      </p>
+
+      <p>
+	The items in each line are:
+      </p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	  <p>
+	    &#8220;<code class="literal">d(RA)</code>&#8221;
+	    the offset Right Ascension of the pointing centre,
+	    in &#8220;degrees of polar rotation&#8221;, from the reference position.
+	    For example, <code class="literal">d(RA) = +15.00</code> will move +1 hr in RA at
+	    all declinations.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    &#8220;<code class="literal">d(DEC)</code>&#8221;
+	    the offset declination of the pointing centre,
+	    in degrees, from the  reference position.
+	    e.g. <code class="literal">d(DEC) = +1.000</code> will move the pointing centre one degree
+	    north.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    &#8220;<code class="literal">INT</code>&#8221;
+	    the integral number of integration cycles to spend on each
+	    pointing centre.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    &#8220;<code class="literal">$FIELD_n</code>&#8221;
+	    the name of the field.
+	    The &#8220;<code class="literal">$</code>&#8221; symbol is a prefix to the field name, and indicates that
+	    scans will follow in the order as they are listed in the mosaic file.
+	    The field name must be different for each pointing centre and must
+	    have 9 or fewer characters (naturally, &#8220;<code class="literal">$</code>&#8221; can not be used as the
+	    first character of the field name).
+	    <span class="bold"><strong>Note:</strong></span>
+	    If you wish to use the &#8220;<code class="literal">mosaic</code>&#8221; option in the 
+	    <span class="application">Miriad</span> task
+	    <span class="command"><strong>uvsplit</strong></span> (to keep the mosaic pointings together in one uv data
+	    file), the field name strings should differ by only the
+	    &#8220;<code class="literal">_n</code>&#8221; part of the name, where 
+	    &#8220;<code class="literal">n</code>&#8221; is an integer.
+	    The field name given within the mosaic file does not need to match
+	    the source name given in the schedule file.
+	  </p>
+	</li></ul></div>
+
+      <p>
+	This file should be named &#8220;<code class="literal">mosnam.mos</code>&#8221;.  The
+	&#8220;<code class="literal">.mos</code>&#8221; suffix is required, or
+	<span class="command"><strong>caobs</strong></span> will not find the file.  The
+	&#8220;<code class="literal">mosnam</code>&#8221; part of the name
+	<span class="emphasis"><em>must</em></span> match the source name given in the
+	schedule file.
+      </p>
+
+      <p>
+	To include a mosaic in a schedule file, insert a scan and set:
+      </p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	  <p>
+	    &#8220;<code class="literal">Source</code>&#8221;
+	    to the name of the mosaic file, excluding the &#8220;<code class="literal">.mos</code>&#8221; extension,
+	    i.e. &#8220;<code class="literal">mosnam</code>&#8221;.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    &#8220;<code class="literal">ScanType</code>&#8221;
+	    to &#8220;<code class="literal">Mosaic</code>&#8221;
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    &#8220;<code class="literal">RA</code>&#8221; and &#8220;<code class="literal">Dec</code>&#8221;
+	    to the reference position for the mosaic, i.e. the position that all
+	    the mosaic field centres are offset from. Check this carefully.
+	    Then check it again. Although the reference position is usually
+	    included as a comment in the mosaic file, <span class="command"><strong>caobs</strong></span> reads only
+	    the coordinate offsets from the mosaic file. Therefore, if the reference position
+	    is set incorrectly in the schedule file, <span class="command"><strong>caobs</strong></span> will not warn you,
+	    and your observations will fail.
+	  </p>
+	</li></ul></div>
+
+      <p>
+	All other scan settings have their usual effect, including the
+	&#8220;<code class="literal">Pointing</code>&#8221; mode, and the observing
+	frequencies.
+	<a class="indexterm" name="idm46395606531408"></a>
+	The mosaic file must be placed
+	in the <code class="literal">/atca/mosaic</code> directory on <span class="hardware">xbones</span> so
+	that <span class="command"><strong>caobs</strong></span> can locate it during the
+	observations.  The mosaic file name must be completely in
+	lowercase letters, even if the corresponding source name in
+	the schedule has uppercase letters;
+	<span class="command"><strong>caobs</strong></span> will report that the mosaic file
+	could not be found unless it has an all-lowercase file name.
+	The &#8220;<code class="literal">.mos</code>&#8221; suffix is required, or
+	<span class="command"><strong>caobs</strong></span> will not find the file.
+      </p>
+      
+      <p>
+	<a class="indexterm" name="idm46395606527072"></a>
+	The file can be copied into position manually, but there is also a
+	<a class="ulink" href="https://www.narrabri.atnf.csiro.au/observing/sched/mosaic/" target="_top">web interface</a>
+	that will ensure your mosaic files are put in the correct location.
+      </p>
+
+      <p>
+	The time specified in the &#8220;<code class="literal">ScanLength</code>&#8221; field
+	in the schedule file will determine how many times the mosaic
+	is looped through in a single scan. <span class="command"><strong>caobs</strong></span>
+	calculates this by dividing the &#8220;<code class="literal">ScanLength</code>&#8221;
+	time by the total length of the mosaic and rounding this to
+	the nearest integer; this will be the number of times the
+	mosaic is repeated during this scan. The mosaic is always observed at least
+	once, regardless of the &#8220;<code class="literal">ScanLength</code>&#8221;.
+      </p>
+
+      <p>
+	It should be noted, in particular for mosaic files containing sources
+	spread over a range of RAs, that if <span class="command"><strong>caobs</strong></span> encounters a source in
+	that has set (or not risen), it will skip to the
+	next scan in the schedule file, not to the next source in the
+	mosaic file.
+      </p>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606520848"></a>2.3.4.1. Can I see an example mosaic file?</h4></div></div></div>
+	
+
+	<p>
+	  The following example shows a mosaic file specifying a four pointing
+	  centre pattern on a 0.25° grid. Note that the RA offsets
+	  are coordinate increments not sky distances.
+	</p>
+
+	<p>
+	  <a class="indexterm" name="idm46395606517984"></a>
+	</p>
+	<div class="informaltable">
+	  <table class="informaltable" border="0"><colgroup><col class="left"><col class="dRA"><col class="dDec"><col class="int"><col class="field"></colgroup><tbody><tr><td rowspan="7">Mosaic file: <code class="literal">mymap.mos</code></td><td colspan="4">
+		  <code class="literal"># mymap.mos by P. Smith</code>
+		</td></tr><tr><td colspan="4">
+		  <code class="literal"># A four pointing centre mosaic</code>
+		</td></tr><tr><td colspan="4">
+		  <code class="literal"># Ref. Position = 05:21:33, -65:56:41</code>
+		</td></tr><tr><td><code class="literal">0.0000</code></td><td><code class="literal">0.000</code></td><td><code class="literal">2</code></td><td><code class="literal">$mymap_1</code></td></tr><tr><td><code class="literal">0.6133</code></td><td><code class="literal">0.000</code></td><td><code class="literal">2</code></td><td><code class="literal">$mymap_2</code></td></tr><tr><td><code class="literal">0.6133</code></td><td><code class="literal">-0.250</code></td><td><code class="literal">2</code></td><td><code class="literal">$mymap_3</code></td></tr><tr><td><code class="literal">0.0000</code></td><td><code class="literal">-0.250</code></td><td><code class="literal">2</code></td><td><code class="literal">$mymap_4</code></td></tr></tbody></table>
+	</div>
+
+	<p>
+	  The scan in the corresponding schedule file might have the
+	  parameters:
+	</p>
+	<div class="informaltable">
+	  <table class="informaltable" border="0"><colgroup><col><col><col><col><col><col><col></colgroup><tbody><tr><td rowspan="7"><span class="bold"><strong>Scheduler fields:</strong></span></td><td><code class="literal">Source:</code></td><td><code class="literal">mymap</code></td><td><code class="literal">Observer:</code></td><td><code class="literal">Smith</code></td><td><code class="literal">Project:</code></td><td><code class="literal">C555</code></td></tr><tr><td><code class="literal">RA:</code></td><td><code class="literal">05:21:33</code></td><td class="auto-generated"> </td><td class="auto-generated"> </td><td class="auto-generated"> </td><td class="auto-generated"> </td></tr><tr><td><code class="literal">Dec:</code></td><td><code class="literal">-65:56:41</code></td><td class="auto-generated"> </td><td class="auto-generated"> </td><td class="auto-generated"> </td><td class="auto-generated"> </td></tr><tr><td><code class="literal">Epoch:</code></td><td><code class="literal">J2000</code></td><td class="auto-generated"> </td><td class="auto-generated"> </td><td class="auto-generated"> </td><td class="auto-generated"> </td></tr><tr><td><code class="literal">ScanLength:</code></td><td><code class="literal">00:30:00</code></td><td class="auto-generated"> </td><td class="auto-generated"> </td><td class="auto-generated"> </td><td class="auto-generated"> </td></tr><tr><td><code class="literal">ScanType:</code></td><td><code class="literal">Mosaic</code></td><td class="auto-generated"> </td><td class="auto-generated"> </td><td class="auto-generated"> </td><td class="auto-generated"> </td></tr><tr><td><code class="literal">Pointing:</code></td><td><code class="literal">Global</code></td><td class="auto-generated"> </td><td class="auto-generated"> </td><td class="auto-generated"> </td><td class="auto-generated"> </td></tr></tbody></table>
+	</div>
+
+	<p>
+	  With these settings, and with the default integration time of 10
+	  seconds, the four pointing centres will be observed every 80 seconds.
+	  Since the &#8220;<code class="literal">ScanLength</code>&#8221; is 30 minutes, the mosaic will be repeated
+	  23 times (22.5 is rounded up), but if the &#8220;<code class="literal">ScanLength</code>&#8221; was 29.5
+	  minutes, the mosaic would only be repeated 22 times (22.125 is rounded
+	  down).
+	</p>
+
+      </div>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606469216"></a>2.3.4.2. Can I see an example on-the-fly mosaic file?</h4></div></div></div>
+	
+
+	<p>
+	  Here is a 3x3 pointing grid around a source; we use 1934-638, but the same offsets
+	  could be used for any source.
+	</p>
+
+      <p>
+	<a class="indexterm" name="idm46395606466560"></a>
+	</p><pre class="screen">
+0.0000    0.00    2  $@1934-on C
+-0.1812  -0.16    1  $TURN-10
+-0.1812  -0.08    1  $1934-11
+-0.1812   0.00    1  $1934-12
+-0.1812   0.08    1  $1934-13
+0.0000    0.16    1  $TURN-24
+0.0000    0.08    1  $1934-23
+0.0000    0.00    1  $1934-22
+0.0000   -0.08    1  $1934-21
+0.1812   -0.16    1  $TURN-30
+0.1812   -0.08    1  $1934-31
+0.1812    0.00    1  $1934-32
+0.1812    0.08    1  $1934-33
+</pre><p>
+      </p>
+
+      <p>
+	Note that you can specify a non-scanning position in an <acronym class="acronym">OTF</acronym> mosaic file by starting
+	the field name with a &#8220;@&#8221;, like the 2 cycle calibration on 
+	&#8220;<code class="literal">1934-on</code>&#8221; above. Also
+	note the fields marked with &#8220;<code class="literal">TURN</code>&#8221; - these are the extra 
+	points required at the
+	start of each scanning row/column to give the antennas time to get to the correct position
+	and scanning speed. They should be discarded when processing the data.
+      </p>
+
+      <p>
+	Note also that all other pointing centres in the <acronym class="acronym">OTF</acronym> mosaic file
+	are only observed for 1 cycle. This cannot be changed, since the antenna will be
+	moving while it observes each pointing.
+      </p>
+
+      <p>
+	To use
+	the <acronym class="acronym">OTF</acronym> mosaic mode, specify a scantype of 
+	&#8220;<code class="literal">OTFMos</code>&#8221; in the web scheduler and
+	put a mosaic file like the one above in &#8220;<code class="literal">/atca/mosaic</code>&#8221; on 
+	<span class="hardware">xbones</span>.
+      </p>
+
+      </div>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606458496"></a>2.3.4.3. Is there an easy way to make a mosaic file?</h4></div></div></div>
+	
+
+	<p>
+	  <a class="indexterm" name="idm46395606455968"></a>
+	  The <span class="application">Miriad</span> tasks 
+	  <a class="ulink" href="http://www.atnf.csiro.au/computing/software/miriad/doc/mosgen.html" target="_top">
+	    <span class="command"><strong>mosgen</strong></span></a> and
+	    <a class="ulink" href="http://www.atnf.csiro.au/computing/software/miriad/doc/atmos.html" target="_top">
+	      <span class="command"><strong>atmos</strong></span></a> may be useful when you are preparing your mosaic file.
+	</p>
+	
+	<p>
+	  <a class="indexterm" name="idm46395606451856"></a>
+	  <a class="indexterm" name="idm46395606450672"></a>
+	  If you need to map a region of known size around a known sky location,
+	  you will want to use <span class="command"><strong>mosgen</strong></span>. It will overlap each pointing
+	  correctly with hexagonal tiling, and will ensure that the pointings are
+	  observed with minimal overhead.
+	</p>
+
+	<p>
+	  <a class="indexterm" name="idm46395606448176"></a>
+	  <a class="indexterm" name="idm46395606446992"></a>
+	  If you have a number of specific locations you want to observe, you will
+	  want to use <span class="command"><strong>atmos</strong></span>, as it will ensure that the offsets are correct
+	  and that the route between the pointings is optimised (the &#8220;travelling
+	  salesman&#8221; problem).
+	</p>
+
+	<p>
+	  <span class="bold"><strong>We do not recommend that you manually calculate the offset positions
+	  for your mosaic.</strong></span> An error in calculating the offsets will likely ruin your
+	  observations. Such an error is easily avoidable by using the <span class="application">Miriad</span>
+	  tasks.
+	</p>
+
+      </div>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395606562784"></a>2.3.5. How do I best map regions of spectral line emission?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606440992"></a>
+	How large the mapping region is will determine whether you can image using
+	standard snapshot observations, or if you will need to use mosaicing. In either
+	case, the imaging strategy is no different to that of a continuum observation,
+	but you may need more frequent calibration to ensure you get a sufficient signal
+	to noise ratio for your lines; <acronym class="acronym">CABB</acronym>'s extra bandwidth doesn't
+	help you observe a single line at known redshift!
+      </p>
+
+      <p>
+	<a class="indexterm" name="idm46395606438416"></a>
+	If you're looking for your spectral line in one of the <acronym class="acronym">CABB</acronym> continuum
+	<acronym class="acronym">IF</acronym>s, one of the most important things to consider is where the line
+	to be observed will fall within the bandpass, ie. which channel(s) it will
+	appear in. There are several channels in the <acronym class="acronym">CABB</acronym> continuum
+	<acronym class="acronym">IF</acronym>s that are always flagged, and
+	several more that are often contaminated with self-generated interference, and
+	these should be avoided when observing spectral lines.
+      </p>
+
+      <p>
+	The <acronym class="acronym">CABB</acronym> correlator always flags the centre continuum channel and each of the
+	quarter-band channels. If you select a <acronym class="acronym">CABB</acronym> mode that provides 1 MHz continuum
+	channels, the flagged channels will be 513, 1025 and 1537. For <acronym class="acronym">CABB</acronym> modes that
+	provide 64 MHz continuum channels, the flagged channels will be 17, 33 and 49.
+	You should avoid making the central <acronym class="acronym">CABB</acronym>
+	continuum frequency the same as the expected frequency of the line.
+      </p>
+
+      <p>
+	<a class="indexterm" name="idm46395606432224"></a>
+	Self-generated interference will likely be present in the 1 MHz continuum channels 129, 157, 257,
+	641, 769, 1153, 1177, 1281, 1409, 1793 and 1921. All these channels can be
+	easily flagged with the online correlator software (and they routinely are) and the interference does
+	not leak into the adjacent channels.
+	<a class="indexterm" name="idm46395606430640"></a>
+      </p>
+
+      <p>
+	<a class="indexterm" name="idm46395606429040"></a>
+	<a class="indexterm" name="idm46395606427888"></a>
+	If you are using the <acronym class="acronym">CABB</acronym> zoom bands to detect your spectral line, you should
+	again avoid using one of the continuum channels listed above, especially the quarter- and half-band
+	channels. The zoom bands derived from those channels will usually have a very large spike at the
+	centre of the zoom, and this spike may leak into adjacent channels since the zoom channels are
+	not perfectly square.
+      </p>
+
+      <p>
+	<a class="indexterm" name="idm46395606425488"></a>
+	It is important to note that <acronym class="acronym">ATCA</acronym> is not able to Doppler track. You will need
+	to ask for enough frequency coverage to ensure that your line will not drift out of the band due
+	to observatory velocity changes.
+      </p>
+      
+      <p>
+	Calibration of spectral-line observations is done with the same
+	&#8220;snapshot&#8221; strategy that was described in
+	<a class="xref" href="ch02s03.html#scheduling-snapshots" title="2.3.2. How do I best observe if I want to image compact sources?">Section 2.3.2</a>. It is important to note however that
+	the calibration itself is slightly different. Because accurate measurements of
+	a spectral line requires good bandpass characterisation, but in general you are dealing
+	with much smaller bandwidths than for continuum observations, you will need to observe
+	much brighter calibrators, observe the calibrators for longer, or observe the calibrators
+	more often in order to get a sufficient signal-to-noise ratio.
+      </p>
+    </div>
+      
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="strategy-frequency-switching"></a>2.3.6. Are there limits to the frequencies I can observe?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606420080"></a>
+	There are many restrictions on the frequencies that can be observed with the
+	<acronym class="acronym">CABB</acronym> system. The most basic restriction is that only two
+	2048 MHz <acronym class="acronym">IF</acronym>s can be observed simultaneously. All of the additional
+	zoom bands must lie within these <acronym class="acronym">IF</acronym>s, so they do not count as
+	&#8220;extra&#8221; bandwidth. You can only specify the central continuum
+	frequencies to the nearest MHz.
+      </p>
+
+      <p>
+	If you want to use the entire array at the same frequencies, then there are
+	band-specific restrictions on the frequencies that can be observed.
+	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	    <p>
+	      In the 16cm band, the central frequency of each continuum <acronym class="acronym">IF</acronym>
+	      must obey
+	      <script type="math/tex">\nu_{\mathrm{C}} \geq 1728</script>
+	      
+	      MHz.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      In the 4cm band, the central frequency of each continuum <acronym class="acronym">IF</acronym> must obey
+	      <script type="math/tex">4928 \leq \nu_{\mathrm{C}} \leq 10928</script>
+	       MHz.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      In each of the mm bands, the centre frequencies of the two continuum
+	      <acronym class="acronym">IF</acronym>s cannot be separated by more than 6000 MHz, ie.
+	      <script type="math/tex">|\nu_{\mathrm{C}1} - \nu_{\mathrm{C}2}| \leq 6000
+	      </script> MHz.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      In the 15mm band, the central frequency of each continuum <acronym class="acronym">IF</acronym> must obey
+	      <script type="math/tex">16001 \leq \nu_{\mathrm{C}} \leq 25472
+	      </script> MHz.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      In the 7mm band, the central frequency of each continuum <acronym class="acronym">IF</acronym> must obey
+	      <script type="math/tex">30001 \leq \nu_{\mathrm{C}} \leq 49999
+	      </script> MHz.
+	    </p>
+	    
+	    <p>
+	      In addition, the <acronym class="acronym">IF</acronym> centre frequencies must both be below 40673 MHz, 
+	      or both be above 41227 MHz.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      In the 3mm band, the central frequency of each continuum <acronym class="acronym">IF</acronym>
+	      must obey
+	      <script type="math/tex">82501 \leq \nu_{\mathrm{C}} \leq 117699
+	      </script> MHz.
+	    </p>
+	  </li></ul></div><p>
+      </p>
+
+      <p>
+	<a class="indexterm" name="idm46395606400128"></a>
+	If you don't need all the baselines at each frequency, it is possible to split the array up
+	so you can observe in two bands simultaneously. For each of the two <acronym class="acronym">CABB</acronym>
+	continuum <acronym class="acronym">IF</acronym>s you can select a set of antennas to use with the
+	<span class="command"><strong>caobs</strong></span> command &#8220;<code class="literal">set band1_antennas</code>&#8221;.
+	In this way you can specify a frequency in <acronym class="acronym">IF</acronym>1 that is in a different band
+	to the frequency specified in <acronym class="acronym">IF</acronym>2. The antennas specified in the
+	&#8220;<code class="literal">band1_antennas</code>&#8221; would use the <acronym class="acronym">IF</acronym>1
+	band, while the rest of the array would use the <acronym class="acronym">IF</acronym>2 band.
+      </p>
+
+      <p>
+	The primary restriction in this mode is the central site oscillator. Since there is only one
+	central site oscillator that feeds the entire array's L86 modules, if you want to observe in more
+	than one mm band simultaneously, both the frequencies must be observable with the same
+	central site frequency.
+	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	    <p>
+	      You cannot observe in both the 15mm and 3mm bands simultaneously.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      Observing in the 15mm and 7mm bands simultaneously is possible if the 15mm central
+	      continuum frequency obeys
+	      <script type="math/tex">16092 \leq \nu_{\mathrm{C}15\mathrm{mm}} \leq 25472</script>
+	       MHz, and the 7mm central frequency obeys either
+	      <script type="math/tex">30001 \leq \nu_{\mathrm{C}7\mathrm{mm}} \leq 40673</script>
+	       MHz, or
+	      <script type="math/tex">45458 \leq \nu_{\mathrm{C}7\mathrm{mm}} \leq 49999</script>
+	       MHz.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      Observing in the 7mm and 3mm bands simultaneously is possible if the 7mm central
+	      continuum frequency obeys either
+	      <script type="math/tex">30001 \leq \nu_{\mathrm{C}7\mathrm{mm}} \leq 35152</script>
+	       MHz, or
+	      <script type="math/tex">41708 \leq \nu_{\mathrm{C}7\mathrm{mm}} \leq 49999</script>
+	       MHz, and the 3mm central frequency obeys either
+	      <script type="math/tex">87152 \leq \nu_{\mathrm{C}3\mathrm{mm}} \leq 101952</script>
+	       MHz, or
+	      <script type="math/tex">103008 \leq \nu_{\mathrm{C}3\mathrm{mm}} \leq 117699</script>
+	       MHz.
+	    </p>
+	  </li></ul></div><p>
+      </p>
+
+      <p>
+	Since neither the 16cm or 4cm bands need the central site synthesiser, there are no special
+	frequency restrictions when one of the simultaneous bands is 16cm or 4cm.
+      </p>
+
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395606382512"></a>2.3.7. Can I change between frequencies during my observations?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606380800"></a>
+	<a class="indexterm" name="idm46395606379536"></a>
+	It isn't possible with <acronym class="acronym">CABB</acronym> to observe more than 4096 MHz of bandwidth
+	simultaneously, but it is possible to quickly switch between frequencies within
+	a single band, and also to swap between different bands with only a moderate
+	loss of simultaneity.
+      </p>
+      
+      <p>
+	<a class="indexterm" name="idm46395606377504"></a>
+	If you want to change frequencies, you will need to start a new scan in the schedule. This
+	restriction makes it impossible to change frequencies within a mosaic. Whenever you change
+	scans you will experience two integration cycles of overhead, and if you are changing frequencies within
+	a band, this is the only applicable overhead. For example, if you changed your central
+	continuum frequencies from 5500 &amp; 7500 MHz to 6500 &amp; 8500 MHz, you will only need
+	to incur two cycles of overhead as the scan is changed.
+      </p>
+
+      <p>
+	<a class="indexterm" name="idm46395606375488"></a>
+	There is also no extra overhead when changing the zoom band configuration, which is simply
+	viewed as a change of frequency within the same band.
+      </p>
+
+      <p>
+	<a class="indexterm" name="idm46395606373648"></a>
+	<a class="indexterm" name="idm46395606372416"></a>
+	<a class="indexterm" name="idm46395606371408"></a>
+	<a class="indexterm" name="idm46395606370240"></a>
+	If you are changing bands, you will likely incur more overhead. In this case, the turret
+	on the antennas will need to rotate to put the new receiver at the right position, and if
+	you are changing to or from the 7mm band the mm receiver package will need to be
+	moved using the translator as well. Turret rotations will usually add only a few cycles of
+	overhead at most, since the turret can be rotating during the normal two cycle overhead
+	that occurs at every change of cycle. Translating the receiver to go to or from the 7mm
+	band takes much longer: between 2 and 3 minutes.
+      </p>
+
+      <p>
+	<a class="indexterm" name="idm46395606368240"></a>
+	<a class="indexterm" name="idm46395606366960"></a>
+	When you change bands you may also have to refocus the antenna by moving the subreflector.
+	When going to or from the 4cm band, antennas CA03 and CA05 need to be refocused, and this
+	takes approximately 90 seconds. When going to or from the 3mm band, antenna CA01 needs to
+	be refocused, and will take approximately 40 seconds.
+      </p>
+
+      <p>
+	<span class="bold"><strong>WARNING:</strong></span> Movement of the turret does produce wear on the
+	bearing, and it would be extremely difficult to replace it should it fail. We therefore ask
+	that observers not change bands more than once every 15 minutes.
+      </p>
+      
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395606364080"></a>2.3.8. How do I observe a planet in our Solar System?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606363600"></a>
+	To schedule an observation of a major planetary object, simply put
+	its name in the &#8220;<code class="literal">Source</code>&#8221; field of a scan. During the observations,
+	<span class="command"><strong>caobs</strong></span> will interpret this name and calculate where the planet, Sun
+	or Moon is and point the array towards it.
+      </p>
+
+      <p>
+	The scheduler will not automatically calculate where the planet will be during
+	the scheduling process, unless you enter the appropriate date and LST or UTC and then
+	click on the &#8220;<code class="literal">Listing</code>&#8221; tab. At this point, the
+	scheduler will determine the planet's position and fill the &#8220;RA&#8221; and
+	&#8220;<code class="literal">Dec</code>&#8221; fields. Alternatively, you could use 
+	the <span class="application">Miriad</span> task <span class="command"><strong>planets</strong></span>.
+	<a class="indexterm" name="idm46395606357472"></a>
+      </p>
+
+      <p>
+	It is useful to note again that the &#8220;<code class="literal">RA</code>&#8221; and
+	&#8220;<code class="literal">Dec</code>&#8221; fields are ignored by <span class="command"><strong>caobs</strong></span>
+	when the source name is recognised as a planet, the Sun or the Moon, as
+	<span class="command"><strong>caobs</strong></span> will compute the appropriate position for the body in
+	real time. There is no reason therefore to prefer absolute time scheduling when
+	observing planets.
+      </p>
+
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395606353216"></a>2.3.9. How do I observe a minor object in our Solar System?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606351136"></a>
+	Solar system objects differ from most astronomical sources in that the
+	proper motions are large enough that the object position changes in the
+	course of an observation. When observing such objects, the schedule file
+	should be created in absolute time mode to ensure that <span class="command"><strong>caobs</strong></span>
+	correctly tracks the object. <span class="command"><strong>caobs</strong></span> has the ability to phase track
+	an object with a non-sidereal rate. Note, however, the pointing centre
+	used during a scan does not track the source (the pointing centre used
+	is the mid-position of the object during the scan). Thus the scans must
+	be short enough that there is not significant motion of the source within
+	the primary beam during a scan (the scheduler does not check this).
+      </p>
+
+      <p>
+	For minor bodies, <span class="command"><strong>caobs</strong></span> cannot compute a position, so the correct
+	position must be provided by the user. In absolute time mode, the scheduler
+	treats source names beginning with the @ symbol (eg. a source name of
+	<code class="literal">@hbopp</code>) as pointing to an external ephemeris file (eg. a file
+	<code class="literal">$ATCA_EPHEM:hbopp.eph</code>).
+      </p>
+
+      <p>
+	Ephemerides for minor solar system bodies can be computed before scheduling
+	using
+	<a class="ulink" href="http://ssd.jpl.nasa.gov/?horizons" target="_top">JPL's Horizons on-line system</a>.
+	<a class="indexterm" name="idm46395606345168"></a>
+	Only the <span class="command"><strong>telnet</strong></span> (terminal-based) access method is described here, but there
+	is also a web-interface method available from the
+	<a class="ulink" href="http://ssd.jpl.nasa.gov/?horizons" target="_top">web page</a>
+	that is self-explanatory.
+      </p>
+
+      <p>
+	Horizons asks the user a series of questions. To generate an ephemeris file
+	for <acronym class="acronym">ATCA</acronym> observations:
+      </p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	  <p>
+	    </p><pre class="programlisting">telnet horizons.jpl.nasa.gov 6775</pre><p>
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    First select an object by giving the source name (followed by a
+	    semi-colon for minor bodies) or by source number.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    In response to prompts, select &#8220;<code class="literal">Ephemeris</code>&#8221;, then
+	    &#8220;<code class="literal">Observe</code>&#8221;, then 
+	    &#8220;<code class="literal">Geo</code>&#8221; to select geocentric RA/Dec ephemerides.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    Give the start time of interest, in UTC, in the format
+	    suggested by the prompt. At the next prompt give the end time, and then the
+	    time increment; typically 1 hour is more than adequate, and the scheduler
+	    uses simple linear interpolation of the ephemeris values. The ephemeris
+	    supplied to the scheduler must start at least two time increments before
+	    the scheduled start time, and must extend beyond its end time.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    Accept &#8220;<code class="literal">default output</code>&#8221;, and at the
+	    &#8220;<code class="literal">Select table quantities</code>&#8221; prompt, enter 
+	    &#8220;<code class="literal">1,20</code>&#8221; to get RA, Dec,
+	    distance and velocity of the object.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    Horizons will then display the ephemeris in the terminal. To get it
+	    to email the ephemeris, press &#8220;<code class="literal">q</code>&#8221; and the main menu will be displayed
+	    again. Then select &#8220;<code class="literal">[M]ail</code>&#8221; and enter the email address to send the
+	    ephemeris to.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    To log out of Horizons, press &#8220;<code class="literal">Ctrl-D</code>&#8221; (the terminal hangup signal).
+	  </p>
+	</li></ul></div>
+      <p>
+	The ephemeris file produced by Horizons needs to be massaged into the format
+	that the scheduler requires. This is best achieved with the <span class="command"><strong>ephformat</strong></span>
+	command available on <span class="hardware">xbones</span>.
+      </p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	  <p>
+	    First, copy the ephemeris from the email sent by Horizons into a plain
+	    text file on <span class="hardware">xbones</span>.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    Run the command <span class="command"><strong>ephformat</strong></span> with no arguments.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    At the first prompt, give the name of the text file with the Horizons
+	    ephemeris (including file extension). At the second prompt, give a short
+	    descriptive name for the output ephemeris file (excluding any file extension).
+	    <span class="command"><strong>ephformat</strong></span> will then write out the appropriate ephemeris file to
+	    &#8220;<code class="literal">$ATCA_EPHEM:file.eph</code>&#8221; where 
+	    &#8220;<code class="literal">file</code>&#8221; is the name entered at the
+	    second prompt.
+	  </p>
+	</li></ul></div>
+
+      <p>
+	To use the ephemeris you just created in the schedule, enter the name of the
+	ephemeris (the &#8220;<code class="literal">file</code>&#8221; name described in the last
+	dot point above), preceded by the &#8220;<code class="literal">@</code>&#8221; symbol, into
+	the &#8220;<code class="literal">Source</code>&#8221; field of the web scheduler.
+      </p>
+
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="scheduling-antenna-wraps"></a>2.3.10. What are the antenna &#8220;wraps&#8221;?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606317808"></a>
+	<a class="indexterm" name="idm46395606316704"></a>
+	There is a limit to how far the antennas can slew in azimuth.
+	The limit arises because of all the cabling inside the antenna which
+	passes up the centre of the structure to the receiving and cryogenic
+	equipment in the vertex room.
+	<a class="indexterm" name="idm46395606315312"></a>
+	There is a limit to how far these cables can wrap around in either direction,
+	(similar to the head of an owl).
+      </p>
+      
+      <p>
+	The wrap limits for the <acronym class="acronym">ATCA</acronym> antennas are CCW=152.5° and
+	CW=327.5° as shown in <a class="xref" href="ch02s03.html#wraplimits" title="Figure 2.1. Wrap limits for the Compact Array and Mopra antennas.">Figure 2.1</a>.
+      </p>
+      
+      <p>
+	</p><div class="figure"><a name="wraplimits"></a><div class="figure-contents">
+	  
+	  <div class="mediaobject"><img src="figures/wrap.jpg" alt="Wrap limits for the Compact Array and Mopra antennas."></div>
+	</div><p class="title"><b>Figure 2.1. Wrap limits for the Compact Array and Mopra antennas.</b></p></div><p><br class="figure-break">
+      </p>
+      
+      <p>
+	It is a good idea to check what wrap the telescope is in at the
+	start of your observations, as &#8220;unwrapping&#8221; can take up to 10 minutes.
+	To determine the wrap you are in, consult <span class="application">MoniCA</span> or <span class="command"><strong>atdrivemon</strong></span>.
+	<span class="application">MoniCA</span> shows the wrap explicitly, on the 
+	&#8220;<acronym class="acronym">ATCA</acronym> Summary&#8221; page.
+	<span class="command"><strong>atdrivemon</strong></span> shows the azimuth using the <acronym class="acronym">ATCA</acronym> convention &#8212;
+	while in the South wrap azimuths are expressed as positive angles,
+	and negative angles in the North wrap.
+      </p>
+
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395606305392"></a>2.3.11. How do I prepare a schedule file?</h3></div></div></div>
+      
+      <p>
+	<a class="indexterm" name="idm46395606303488"></a>
+	<a class="indexterm" name="idm46395606302384"></a>
+	<a class="indexterm" name="idm46395606300992"></a>
+	The <a class="ulink" href="http://www.narrabri.atnf.csiro.au/observing/sched/cabb/" target="_top">
+	<acronym class="acronym">CABB</acronym> web scheduler</a>
+	is used to prepare schedule files. The web scheduler
+	checks the schedule for completeness and, where
+	possible, checks choices such as observing frequency for hardware
+	compatibility. Drive times, and source azimuths and elevations can also
+	be computed to enable you to estimate overheads and observability.
+      </p>
+
+      <p>
+	Three steps are involved in using the web scheduler:
+      </p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	  <p>
+	    A new scan is added to the schedule.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    The details of the scan are changed as desired.
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    When all the scans have been defined, the entire schedule is written to file.
+	  </p>
+	</li></ul></div>
+      <p>
+	When constructing a schedule, consider:
+      </p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	  <p>
+	    Is the sequence of sources sensible, and how much time is
+	    expended on slewing?
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    Does the schedule contain all the sources, and at the
+	    appropriate frequencies and bandwidths?
+	  </p>
+	</li></ul></div>
+      <p>
+	The web scheduler can produce a listing to help answer these questions.
+	It is a good idea to study these listings very
+	carefully before observing commences. The scheduler considers drive times:
+	all coordinate entries are automatically followed by a calculation of the
+	azimuth and elevation of the source, as well as the drive time from
+	the previous source, using the entered value for LST. When making
+	a schedule file, the integration times are specified
+	for each source (and calibrator source). Note that,
+	except in the case of mosaic schedules and <code class="literal">Dwell</code> scan types,
+	these integration times
+	include drive times, so the specified time must be somewhat longer
+	than the amount of integration on source required. This is
+	particularly important for secondary calibrators, when the drive time
+	(up to a minute or so) may be comparable to the integration time
+	(one to three minutes). Alternatively, the <code class="literal">ScanType</code> field can
+	be set to <code class="literal">Dwell</code> to ensure a source or calibrator
+	is tracked for the specified scan duration.
+      </p>
+
+      <p>
+	The schedule file submitted to <span class="command"><strong>caobs</strong></span> (the online Compact Array control
+	task) need have no specific start time. Rather, the schedule file asks
+	<span class="command"><strong>caobs</strong></span> to start the first scan as soon as possible. The sequence of
+	scans will be exactly as specified in the schedule file. However, when
+	using the web scheduler, the calculation of azimuths, elevations and drive times
+	is possible only if the starting sidereal time is known (at least
+	approximately). The sidereal time for the first scan in the schedule
+	can be set in the web scheduler by giving the time in the <code class="literal">Time</code> field,
+	and setting <code class="literal">TimeCode</code> to <code class="literal">LST</code>. Alternatively, the starting UT
+	may be specified by setting <code class="literal">TimeCode</code> to <code class="literal">UT</code>, and by setting
+	the <code class="literal">Date</code> to the appropriate start date by clicking on it and using
+	the calendar that appears. Note that when viewing any scan other than the
+	first in the schedule, the fields <code class="literal">Time</code>, <code class="literal">TimeCode</code> and
+	<code class="literal">Date</code> all become read-only.
+      </p>
+
+      <p>
+	The environment flag can be used to instruct the online software to
+	remember certain settings, such as attenuators, and to recall them whenever
+	a scan with the same environment flag is encountered. However, this is
+	generally not required, as the online software will remember user settings,
+	and recall them when the same conditions are encountered again. There are
+	at least 128 slots for user settings, so for a normal schedule, the
+	environment flag will probably not need to be used.
+      </p>
+
+      <p>
+	See <a class="xref" href="apf.html" title="Appendix F. Web Scheduler">Appendix F</a> for a complete guide to all the functionality
+	available in the web scheduler.
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Continuum-Schedule-Example"></a>2.3.12. Could I see an example continuum schedule file?</h3></div></div></div>
+      
+      <p>
+	Yes! In this section a simple continuum schedule file is constructed. It will contain
+	three sources: a program source and two calibration sources. The
+	following observing sequence will be specified:
+      </p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	  <p>
+	    Setup calibrator (0537-441, a catalogued source) for 5 minutes,
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    Program source (R.A. 05:21:35.5, Dec. -21:24:27.1 (J2000)) for 30 mins,
+	  </p>
+	</li><li class="listitem">
+	  <p>
+	    A gain calibrator for 5 minutes.
+	  </p>
+	</li></ul></div>
+      <p>
+	These sources will be observed at the standard 4cm band frequencies of
+	5500/9000 MHz.
+	To create this schedule file, perform the following steps (instructions are given in
+	bold, and the results of the instruction, or important caveats, and described below it):
+      </p>
+      <div class="variablelist"><dl class="variablelist"><dt><span class="term">
+	    <span class="bold"><strong>Navigate to the <a class="ulink" href="http://www.narrabri.atnf.csiro.au/observing/sched/cabb/" target="_top">
+	    <acronym class="acronym">CABB</acronym> web scheduler</a> in a web browser.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The first screen is displayed.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Change the <code class="literal">Source</code> field to <code class="literal">test</code>,
+	    the <code class="literal">RA</code> field to <code class="literal">05:21:35.5</code> 
+	    and the <code class="literal">Dec</code> field to <code class="literal">-21:24:27.1</code>.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The delimiter for coordinates must
+	      be a colon, and the default <code class="literal">Epoch</code> of <code class="literal">J2000</code> should only be
+	      changed if necessary.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Change <code class="literal">ScanLength</code> to 00:30:00
+	    and change the <code class="literal">ScanType</code> to <code class="literal">Dwell</code>.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This ensures that	30 minutes are spent on source, regardless of slewing times.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Ensure <code class="literal">Pointing</code> is set to <code class="literal">Global</code>.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      Offset pointing is not required for low-frequency observations.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Change the <code class="literal">Observer</code> field to <code class="literal">Wild</code>,
+	    the <code class="literal">Project</code> code to <code class="literal">C123</code>.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      These fields should be set in the first source - they will propagate to
+	      the other sources as they are added.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Change the <code class="literal">Time</code> field to <code class="literal">02:00:00</code>,
+	    and the <code class="literal">TimeCode</code> field to <code class="literal">LST</code>.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This indicates that the schedule will be started at an approximate LST of 2h.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click the <code class="literal">Freq1 Setup</code> bar.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This brings up the frequency selection fields.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Enter <code class="literal">5500</code> in the <code class="literal">Continuum</code> frequency box, 
+	    and keep the <code class="literal">Chn. BW</code> selection box to <code class="literal">1</code> MHz.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The velocity resolution should be calculated to be 55 km/s, and the
+	      velocity range will be 111632 km/s.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click the <code class="literal">Freq2 Setup</code> bar.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This brings up the frequency selection fields.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Enter <code class="literal">9000</code> in the <code class="literal">Continuum</code> frequency 
+	    box, and keep the <code class="literal">Chn. BW</code> selection box to <code class="literal">1</code> MHz.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The velocity resolution should be calculated to be 33 km/s, and the
+	      velocity range will be 68219 km/s.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click the <code class="literal">Scan Parameters</code> bar.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This brings up the scan details.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click the <code class="literal">Search Cal</code> button.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This presents a list of
+	      nearby calibrators to the right of the scan details, sorted by distance
+	      to the source. The closest strong (&gt; 1 Jy) source to the program source is
+	      shown to be 0454-234, at a distance of 6.02°.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click on the <code class="literal">0454-234</code> button.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The details for this source are displayed from the calibrator database
+	      below the source list. This source is a suitable gain calibrator
+	      as it is strong, has a defect less than 0.1% and a closure phase less than
+	      0.3%.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click on the <code class="literal">0454-234</code> button again.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      Clicking on the button twice (without clicking another source button
+	      between clicks) inserts this source into the schedule above the currently
+	      selected source.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Select source 1, and change the <code class="literal">ScanLength</code>
+	    field to 00:05:00.</strong></span>
+	  , </span><span class="term">
+	    <span class="bold"><strong>To copy this source to the end of the schedule, click on the 
+	    <code class="literal">Edit</code> menu and select <code class="literal">Copy</code>, then select the 
+	    <code class="literal">test</code> source, click on <code class="literal">Edit</code> and select 
+	    <code class="literal">Paste</code>.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The schedule should now have three sources (in order): 0454-234, test,
+	      0454-234. The first source needs to be changed to 0537-441.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Select source 1</strong></span>
+	  , </span><span class="term">
+	    <span class="bold"><strong>Change the <code class="literal">Source</code> field to 0537-441 and press 
+	    <code class="literal">TAB</code>.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The scheduler will automatically put the source coordinates for
+	      this known calibrator in the <code class="literal">RA</code> and <code class="literal">Dec</code> fields.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click on the <code class="literal">File</code> menu and select <code class="literal">Save As</code>.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The <code class="literal">Schedule file selector</code> window will appear.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>The schedule will be called c123_test.sch, so enter this into the 
+	    <code class="literal">Filter</code> box to ensure that there is not already a schedule with this name.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      If there is another schedule with the
+	      desired name, consider changing it.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Enter <code class="literal">c123_test.sch</code> into the <code class="literal">Schedule</code> 
+	    box and press the <code class="literal">Save</code> button.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The file selection window will
+	      disappear, and the name of the schedule should now appear at the top
+	      of the window.
+	    </p>
+	  </dd></dl></div>
+      <p>
+	To produce a listing of the schedule, in order to check that the
+	schedule proceeds as expected, click on the <code class="literal">Listing</code> tab.
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Zoom-Mode-Schedule-Example"></a>2.3.13. Could I see an example spectral-line schedule file?</h3></div></div></div>
+      
+      <p>
+	Yes! This example adds to the example from the previous section; ensure that the
+	schedule created in the previous section is in the scheduler before continuing.
+      </p>
+      
+      <p>
+	Now the aim is to observe 1 zoom band in each <acronym class="acronym">IF</acronym>, each covering at least
+	70 km/s. The galaxy
+	&#8220;test&#8221; is actually at an LSR recessional velocity of 25000 km/s,
+	and these observations will look for CH<sub>3</sub>OH methanol and 
+	HC<sub>3</sub>N cyanoacetylene lines.
+      </p>
+
+      <p>
+	To create a schedule that can perform suitable observations for this situation,
+	follow the steps:
+      </p>
+      <div class="variablelist"><dl class="variablelist"><dt><span class="term">
+	    <span class="bold"><strong>Select the first scan in the schedule.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This should be 0537-441.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Select the <code class="literal">Global change</code> menu item from 
+	    the <code class="literal">Tools</code> menu before
+	    changing the <code class="literal">Date</code> of this scan to 30/11/2014.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The date that the observation will be performed is required to ensure that
+	      the observatory velocity is computed correctly.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Hit the <code class="literal">Global Apply</code> button.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The date will now change for all the sources in the schedule.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Select the <code class="literal">Advanced view</code> menu item from
+	    the <code class="literal">Tools</code> menu.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      You should now see many more input fields.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Select the &#8220;<code class="literal">test</code>&#8221; source in the schedule,
+	    then enter &#8220;<code class="literal">25000</code>&#8221; into the <code class="literal">CatVel</code> field, and
+	    press TAB.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The entry in the <code class="literal">CatVel</code> field should now read
+	      &#8220;<code class="literal">25000 lsr radio</code>&#8221; as the default frame is LSR, in the
+	      radio convention.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click the <code class="literal">Freq1 5500MHz</code> bar.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This brings up the IF1 frequency selection fields.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click the topmost <code class="literal">Velo</code> button.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This brings up the velocity calculator.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Select the <code class="literal">CH3OH</code> line from the <code class="literal">Spectral Line</code> 
+	    dropdown box.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The rest frequency of this line (6668.518) appears in the <code class="literal">Rest Frequency</code>
+	      box below.
+	      The <code class="literal">Sky Frequency</code> will be updated to 6112.092 MHz, and the zoom band
+	      frequency will be calculated as the nearest half-MHz, in this case as <code class="literal">6112</code> MHz.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click the <code class="literal">Apply</code> button in the velocity calculator.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The velocity calculator will disappear and information will be inserted into the
+	      first zoom band. In this case, the <code class="literal">6112</code> MHz frequency translates into
+	      the channel <code class="literal">3273</code>. The velocity resolution is given as 0.024 km/s, and the
+	      velocity range is listed as 49 km/s.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Select the zoom band width to be <code class="literal">2</code> from the width drop box.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The velocity range now increases to 73.6 km/s.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click the <code class="literal">Freq2 9000MHz</code> bar.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This brings up the IF2 frequency selection fields.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click the topmost <code class="literal">Velo</code> button.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This brings up the velocity calculator as before.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Select the <code class="literal">HC3N</code> line from the <code class="literal">Spectral Line</code> 
+	    dropdown box.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The rest frequency of this line (9098.332) appears in the <code class="literal">Rest Frequency</code>
+	      box below, and the <code class="literal">Sky Frequency</code> will be updated to 8339.161 MHz. The
+	      zoom band frequency will be calculated to be <code class="literal">8339</code> MHz.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click the <code class="literal">Apply</code> button in the velocity calculator.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The velocity calculator will disappear and information will be inserted into the
+	      first zoom band. In this case, the <code class="literal">8339</code> MHz frequency translates into
+	      the channel <code class="literal">727</code>. The velocity resolution is given as 0.018 km/s, and the
+	      velocity range is listed as 36 km/s.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Select the zoom band width to be <code class="literal">3</code> from the width drop box.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      The velocity range now increases to 71.9 km/s, comparable to the width provided
+	      for the IF1 zoom band.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Click the <code class="literal">Scan Parameters</code> bar.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This brings up the scan details.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Select the <code class="literal">Master1</code> option from the <code class="literal">FreqConfig</code>
+	    dropdown box.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      This signifies that the frequency configuration, including the zoom modes, from
+	      this scan, should be defined as the master configuration.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Select the <code class="literal">0537-441</code> source from the schedule,
+	    then elect the <code class="literal">Slave-1</code> option from the 
+	    <code class="literal">FreqConfig</code> dropdown box.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      Now this scan will exactly mirror the frequency and zoom mode configuration from
+	      the <code class="literal">test</code> scan, even if the configuration of the <code class="literal">test</code> scan is
+	      changed. When a scan is set as a slave scan, the <code class="literal">Freq</code> panels will display
+	      a message describing which frequency and scan it is slaved to.
+	    </p>
+	  </dd><dt><span class="term">
+	    <span class="bold"><strong>Select the <code class="literal">0454-234</code> source from the schedule,
+	    then select the <code class="literal">Slave-1</code> option from the <code class="literal">FreqConfig</code> dropdown box.</strong></span>
+	  </span></dt><dd>
+	    <p>
+	      Now this scan will exactly mirror the frequency and zoom mode configuration from
+	      the <code class="literal">test</code> scan.
+	    </p>
+	  </dd></dl></div>
+      <p>
+	At this point, the schedule would correctly describe a zoom mode observation.
+      </p>
+    </div>
+
+  </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.2. Calibration </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.4. Running a schedule</td></tr></table></div></body></html>

@@ -1,0 +1,243 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>1.4. Choosing Angular and Frequency Resolution</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="ch01.html" title="Chapter 1. The Australia Telescope Compact Array"><link rel="prev" href="ch01s03.html" title="1.3. Choosing an Observing Frequency"><link rel="next" href="ch01s05.html" title="1.5. Centimetre Observations (16&#8211;4 cm bands)"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.4. Choosing Angular and Frequency Resolution</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s03.html">Prev</a> </td><th width="60%" align="center">Chapter 1. The Australia Telescope Compact Array</th><td width="20%" align="right"> <a accesskey="n" href="ch01s05.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="Choosing-Angular-and-Frequency-Resolution"></a>1.4. Choosing Angular and Frequency Resolution</h2></div></div></div>
+    
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Image-Complexity"></a>1.4.1. Image Complexity, Angular Resolution and Observing Time</h3></div></div></div>
+      
+      <p>
+	A synthesis imaging telescope such as the Compact Array provides a
+	great deal of flexibility when deciding how to image an object. In
+	addition to the well-known trade-off between observing time and
+	sensitivity, we have trade-offs with maximum resolution and with the
+	sampling interval in the visibility plane.
+      </p>
+
+      <p>
+	<a class="indexterm" name="idm46395607391888"></a>
+	The choice of angular resolution is fairly straightforward. Increased
+	angular resolution (resulting from longer baselines) leaves the
+	point-source sensitivity constant, but decreases brightness
+	sensitivity in proportion to the beam area (see <a class="xref" href="ch01s05.html#table_brightness_temperature" title="Table 1.4.  Continuum brightness temperature sensitivity (12 hr integration) for bandwidth specified in Table 1.1, for various arrays.">Table 1.4</a>).
+      </p>
+
+      <p>
+	The choice of (u,v)-plane coverage is more difficult. The
+	amount of independent information needed to specify the image should
+	not exceed the number of independent (u,v)-plane samples. But
+	unfortunately neither of these &#8220;independents&#8221; is easily defined. At
+	one extreme, consider making a high resolution image of a complex
+	source filling the entire primary beam.  In this case full
+	(u,v)-coverage is obtained by using all baselines between 30m
+	and 6000m in increments of 15m. Although this was theoretically
+	possible (it takes 25 separate array configurations), it was never
+	attempted and, since the decommissioning of the second 6km station,
+	is no longer actually possible!
+      </p>
+
+      <p>
+	If on the other hand the image is smaller than the primary beam then
+	<a class="indexterm" name="idm46395607388480"></a>
+	<a class="indexterm" name="idm46395607387200"></a>
+	the Nyquist sampling interval is larger and the number of
+	(u,v)-samples required is reduced. The observing time can then
+	be reduced either by decreasing the number of configurations or the
+	amount of hour angle coverage, depending on the array configuration.
+	For east-west arrays, reducing the total number of configurations is
+	the more practical option. If the source is large but partly empty it
+	can be considered to have a size corresponding to its area.
+      </p>
+      
+      <p>
+	For ordinary observations Table 1.4 gives the maximum sizes of structures that
+	can be reliably imaged for typical sets of observing configurations.
+	This is only a rough guide since the actual coverage needed depends on
+	details of the 2-dimensional brightness distribution, on the actual
+	distribution of baselines, and on the type of deconvolution.
+	Additionally, other techniques such as <a class="link" href="ch01s07.html#Mosaicing" title="1.7.3. Mosaicing">mosaicing</a>
+	and <a class="link" href="ch01s07.html#Multi-frequency-Synthesis" title="1.7.4. Multi-frequency Synthesis">multi-frequency synthesis</a>,
+	can be extremely effective at improving (u,v)-coverage.
+      </p>
+
+      <p>
+	A further consideration is the minimum spacing available. This is
+	never less than 30 m and for a given configuration can be much larger.
+	This acts as a high-pass filter removing all Fourier components less
+	than the minimum spacing.  If this is a serious problem, short
+	baseline information (e.g., from a single dish) can be added
+	separately during processing.
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Array-Configurations-and-Baselines"></a>1.4.2. Array Configurations and Baselines</h3></div></div></div>
+      
+      <p>
+	Antenna 6 sits permanently on station W392. Maximum baselines to this
+	antenna (the last 5 columns) are shown for all configurations in
+	<a class="xref" href="aph.html" title="Appendix H. ATCA Configurations">Appendix H</a>, but
+	form part of a designed array only for configurations 6.0A to 6.0D.
+	<a class="indexterm" name="idm46395607379264"></a>
+	The antennas can be moved to, and set up on, a limited number of fixed
+	stations. Because of this and other physical restraints, the shortest
+	spacing available is 30 m, the longest is 6 km, and the minimum
+	grating increment is 15 m.  
+
+From 2006 October, the standard set
+	of configurations has been:
+      </p>
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+          <p>1  hybrid configuration with a nominal maximum baseline of  75 m (H75)</p>
+        </li><li class="listitem">
+          <p>1  hybrid configuration with a nominal maximum baseline of 168 m (H168)</p>
+        </li><li class="listitem">
+          <p>1  hybrid configuration with a nominal maximum baseline of 214 m (H214)</p>
+        </li><li class="listitem">
+          <p>2  east-west configurations with a maximum baseline of about  375 m</p>
+        </li><li class="listitem">
+          <p>4  east-west configurations with a maximum baseline of about  750 m</p>
+        </li><li class="listitem">
+          <p>4  east-west configurations with a maximum baseline of about 1500 m</p>
+        </li><li class="listitem">
+          <p>4  east-west configurations with a maximum baseline of about 6000 m.</p>
+        </li></ul></div>
+      <p>
+	Snapshot observations using the Northern spur in hybrid configurations
+	<a class="indexterm" name="idm46395607370240"></a>
+	<a class="indexterm" name="idm46395607368768"></a>
+	will generate a two-dimensional sampling of the (u,v)-plane. The
+	Northern spur was installed so that good coverage of the
+	(u,v)-plane was achievable for observations which are limited to
+	hour-angles near transit. Observations at mm wavelengths should be
+	limited to higher elevations to avoid large atmospheric
+	opacities. Hybrid arrays are also useful for observations of northern
+	sources which are similarly restricted in hour-angle range.
+      </p>
+
+      <p>
+	The 6 km antenna may also be added to any of the shorter
+	configurations, but in these cases the distribution of array spacings
+	is bi-modal.
+      </p>
+
+      <p>
+	The predetermined set of configurations offered for forthcoming
+	observing terms will assist in planning multi-configuration proposals.
+	Details of previous configurations and those being offered in coming
+	semesters can be found
+	<a class="ulink" href="http://www.narrabri.atnf.csiro.au/observing/configs.html" target="_top">on our website</a>,
+	or see <a class="xref" href="ch01s04.html#upcoming_configurations" title="Table 1.3. Array configurations that will be offered in future semesters.">Table 1.3</a>.
+      </p>
+
+      <p>
+	Note that proposals requiring two or more configurations will usually
+	be allotted two or more widely separated times; therefore, expect to
+	make two or more observing visits, or conduct the second observation
+	using remote observing. If you are not allotted all the configurations
+	requested, you should re-apply in the next term, as the proposal will
+	not be automatically reconsidered.
+      </p>
+
+      <p>
+	The overall philosophy is that, in each semester, there will be a 6km,
+	1.5km, and 750m configuration, and for these baselines, the full set
+	of 4 configurations will generally be covered in three semesters.
+	Each semester will also contain at least one 375m configuration.
+	Analysis of user preferences for the past few years show some
+	configurations to be more generally useful (e.g., providing better
+	single-configuration (u,v)-coverage), and it is desirable to
+	offer these more frequently.  Millimetre observing conditions are
+	optimal in the (southern hemisphere) winter, so arrays of 214m or
+	smaller will be offered mainly in the April semester.
+      </p>
+
+      <p>
+	</p><div class="table"><a name="upcoming_configurations"></a><p class="title"><b>Table 1.3. Array configurations that will be offered in future semesters.</b></p><div class="table-contents">
+	  
+	  <table class="table" summary="Array configurations that will be offered in future semesters." border="1"><colgroup><col align="center" class="array"><col align="center" class="sem1"><col align="center" class="sem2"><col align="center" class="sem3"><col align="center" class="sem4"><col align="center" class="sem5"></colgroup><thead><tr><th rowspan="2" align="center" valign="middle">Array</th><th colspan="5" align="center">Semester</th></tr><tr><th align="center">2016OCTS</th><th align="center">2017APRS</th><th align="center">2017OCTS</th><th align="center">2018APRS</th><th align="center">2018OCTS</th></tr></thead><tbody><tr><td align="center">6A</td><td align="center">&#8226;</td><td align="center">&#8226;</td><td align="center">&#8226;</td><td align="center">&#8226;</td><td align="center">&#8226;</td></tr><tr><td align="center">6B</td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td><td align="center"> </td><td align="center">&#8226;</td></tr><tr><td align="center">6C</td><td align="center"> </td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td><td align="center"> </td></tr><tr><td align="center">6D</td><td align="center">&#8226;</td><td align="center"> </td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td></tr><tr><td align="center">1.5A</td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td></tr><tr><td align="center">1.5B</td><td align="center"> </td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td><td align="center"> </td></tr><tr><td align="center">1.5C</td><td align="center">&#8226;</td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td><td align="center"> </td></tr><tr><td align="center">1.5D</td><td align="center">&#8226;</td><td align="center"> </td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td></tr><tr><td align="center">750A</td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td><td align="center"> </td><td align="center">&#8226;</td></tr><tr><td align="center">750B</td><td align="center">&#8226;</td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td><td align="center"> </td></tr><tr><td align="center">750C</td><td align="center">&#8226;</td><td align="center"> </td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td></tr><tr><td align="center">750D</td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td></tr><tr><td align="center">EW367</td><td align="center">&#8226;</td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td><td align="center">&#8226;</td></tr><tr><td align="center">EW352</td><td align="center">&#8226;</td><td align="center">&#8226;</td><td align="center">&#8226;</td><td align="center">&#8226;</td><td align="center">&#8226;</td></tr><tr><td align="center">H214</td><td align="center">&#8226;</td><td align="center">&#8226;</td><td align="center"> </td><td align="center">&#8226;</td><td align="center">&#8226;</td></tr><tr><td align="center">H168</td><td align="center"> </td><td align="center">&#8226;</td><td align="center">&#8226;</td><td align="center">&#8226;</td><td align="center"> </td></tr><tr><td align="center">H75</td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td><td align="center">&#8226;</td><td align="center"> </td></tr></tbody></table>
+	</div></div><p><br class="table-break">
+      </p>
+      <p>
+	<a class="indexterm" name="idm46395607302064"></a>
+	Besides the predetermined configurations, you can request any standard
+	or non-standard configuration in any term.  When writing your
+	application, your scientific justification should include a very
+	convincing argument of why you need to use a special array
+	configuration, rather than one of those offered for the term.  If you
+	realise the need for such a &#8220;wildcard&#8221; request for a significant
+	amount of observing time (e.g., more than 5 x 12h), you can enhance
+	the probability of it being scheduled if you contact <acronym class="acronym">ATNF</acronym> well in
+	advance of the deadline (preferably even before the call for proposals
+	announcement).  The wildcard can then be advertised as a potential
+	additional configuration for the term, which may then lead to other
+	proposers requesting it, and making its scheduling viable.
+      </p>
+
+      <p>
+	For those who wish to improve their (u,v)-coverage by
+	re-observing on different days with different antenna configurations,
+	specific sets of configurations combines well, e.g., 6A, 6C, 1.5B and
+	1.5D &#8212; for more details see <a class="xref" href="aph.html" title="Appendix H. ATCA Configurations">Appendix H</a>.
+      </p>
+      <p>
+	<a class="indexterm" name="idm46395607298160"></a>
+	An interactive tool, the 
+	<a class="ulink" href="http://www.narrabri.atnf.csiro.au/astronomy/vri.html" target="_top"><em class="firstterm">Virtual Radio Interferometer</em></a> (<acronym class="acronym">VRI</acronym>),
+	  is available to assist users in exploring the
+	  (u,v)-coverage of standard
+	  (and non-standard) configurations.
+      </p>
+
+      <p>
+	It is strongly recommended that the proposer gives a clear indication of
+	the maximum extent of their sources. You should also specify the
+	maximum and minimum baselines, and the number of configurations (days)
+	needed.
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Bandwidths-and-correlator"></a>1.4.3. Bandwidths and correlator</h3></div></div></div>
+      
+      <p>
+	<a class="indexterm" name="idm46395607293120"></a>
+	The <acronym class="acronym">CABB</acronym> now provides a variety of
+	frequency resolutions. The available
+	resolution options are more commonly denoted by the <acronym class="acronym">CABB</acronym> configuration that
+	is used to provide them. When development of <acronym class="acronym">CABB</acronym> is complete,
+	four correlator configurations will be offered:
+      </p>
+      <div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="bold"><strong>Currently available modes</strong></span></span></dt><dd>
+            <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                <p>
+		  <span class="bold"><strong>CFB 1M-0.5k</strong></span>: 2048 channels per 2048 MHz continuum IF (1 MHz coarse resolution),
+		  and 2048 channels per 1 MHz zoom band (0.5 kHz fine resolution).
+		</p>
+              </li><li class="listitem">
+                <p>
+		  <span class="bold"><strong>CFB 64M-32k</strong></span>: 32 channels per 2048 MHz continuum IF (64 MHz coarse resolution),
+and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
+		</p>
+                <p>
+		  There is also a &#8220;hybrid" mode available which provides one continuum 2048 × 1 MHz
+		  IF (with no zoom bands), and a second continuum 32 × 64 MHz IF (with up to sixteen 64 MHz zoom bands).
+		</p>
+              </li></ul></div>
+          </dd><dt><span class="term"><span class="bold"><strong>Modes available in the future</strong></span></span></dt><dd>
+            <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                <p>
+		  <span class="bold"><strong>CFB 16M-8k</strong></span>: 128 channels per 2048 MHz continuum IF (16 MHz coarse resolution),
+		  and 2048 channels per 16 MHz zoom band (8 kHz fine resolution).
+		</p>
+              </li><li class="listitem">
+                <p>
+		  <span class="bold"><strong>CFB 4M-2k</strong></span>: 512 channels per 2048 MHz continuum IF (4 MHz coarse resolution),
+		  and 2048 channels per 4 MHz zoom band (2 kHz fine resolution).
+		</p>
+              </li></ul></div>
+          </dd></dl></div>
+      <p>
+	It should be noted that the correlator routinely computes double the number of channels
+	as is recorded. This second set of channels is offset from the available set by half the
+	channel width, and are there to provide flexibility in choosing the zoom band frequency,
+	as well as to ensure that it will always be possible to avoid observing a spectral line at the
+	edge of a channel. It is also possible to combine a number of overlapping zoom bands that are separated
+	by half a continuum channel into a seamless single zoom band.
+      </p>
+    </div>
+  </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch01s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.3. Choosing an Observing Frequency </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.5. Centimetre Observations (16&#8211;4 cm bands)</td></tr></table></div></body></html>

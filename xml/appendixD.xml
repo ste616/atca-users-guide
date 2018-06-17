@@ -1,0 +1,921 @@
+<appendix id="vis">
+  <info>
+    <title>vis</title>
+    <date>$Date: 2016-04-26 14:43:44 +1000 (Tue, 26 Apr 2016) $</date>
+    <revhistory>
+      <revision>
+        <revnumber>1.2</revnumber>
+        <date>2016 Apr 21</date>
+        <authorinitials>jbs</authorinitials>
+        <revremark>Describe the new rainbow command</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.1</revnumber>
+        <date>2015 Oct 22</date>
+        <authorinitials>klw</authorinitials>
+        <revremark>Addition of plotting inputs</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.0</revnumber>
+	<date>2014 Mar 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Initial Docbook revision</revremark>
+      </revision>
+    </revhistory>
+  </info>
+  <section id="VIS-Commands">
+    <info>
+      <title>VIS Commands</title>
+    </info>
+    <para>
+      <indexterm role="cp"><primary>vis</primary><secondary>commands</secondary></indexterm>
+      Commands can be concatenated together by delimiting them with
+      semi&#x2013;colons (;). The available commands and plotting input are summarised in the following two tables.  More detailed explanations of each command are listed at the end of this appendix.
+      <!-- CHANGE THIS -->
+      <!-- \htmlref{summarised}{ch8_t_viscomm}\latex{ in Table~\ref{ch8_t_viscomm}}. -->
+      <informaltable>
+	<tgroup cols="2">
+          <colspec colwidth="20*"></colspec>
+          <colspec colwidth="80*"></colspec>
+          <thead>
+            <row>
+              <entry>Command</entry>
+              <entry>Function</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>array</entry>
+              <entry>Specifies which antennas to use</entry>
+            </row>
+            <row>
+              <entry>bells</entry>
+              <entry>Toggles the bells and whistles (border accessories)</entry>
+            </row>
+            <row>
+              <entry>caget</entry>
+              <entry>Show the ID number and time stamp of last datum received</entry>
+            </row>
+            <row>
+              <entry>concat</entry>
+              <entry>Concatenates cycles together</entry>
+            </row>
+            <row>
+              <entry>cycles</entry>
+              <entry>Restricts the CAGET database (default/max=5000)</entry>
+            </row>
+            <row>
+              <entry>define</entry>
+              <entry>Assigns a monitor point to a user definable quantity
+	      <indexterm role="cp"><primary>vis</primary><secondary>printing</secondary></indexterm></entry>
+            </row>
+            <row>
+              <entry>dump</entry>
+              <entry>Sends a hardcopy of the display to the printer</entry>
+            </row>
+            <row>
+              <entry>expert</entry>
+              <entry>Make assumptions about experience of the user</entry>
+            </row>
+            <row>
+              <entry>filter</entry>
+              <entry>Toggles data filtering (doesn't plot bad data)</entry>
+            </row>
+            <row>
+              <entry>forward</entry>
+              <entry>Moves 1 `screen' forward in time</entry>
+            </row>
+            <row>
+              <entry>frequency</entry>
+              <entry>Apply polarisation correction (use with <literal>stokes</literal>)</entry>
+            </row>
+            <row>
+              <entry>grid</entry>
+              <entry>Plots a faint background grid</entry>
+            </row>
+            <row>
+              <entry>history</entry>
+              <entry>Controls the amount of data (in time) that is displayed</entry>
+            </row>
+            <row>
+              <entry>help</entry>
+              <entry>Accesses the on-line help information</entry>
+            </row>
+            <row>
+              <entry>labels</entry>
+              <entry>Show data only (no axes). Only used for remote observing.</entry>
+            </row>
+            <row>
+              <entry>lines</entry>
+              <entry>Forces lines to be drawn between plotted points</entry>
+            </row>
+            <row>
+              <entry>list</entry>
+              <entry>List all the sources on record</entry>
+            </row>
+            <row>
+              <entry>lock</entry>
+              <entry>Lock the left hand edge of a time based graph</entry>
+            </row>
+            <row>
+              <entry>measure</entry>
+              <entry>Measures the coordinates of a pixel</entry>
+            </row>
+            <row>
+              <entry>onsource</entry>
+              <entry>Causes data to be plotted, only when the array is `on-source'</entry>
+            </row>
+            <row>
+              <entry>phase</entry>
+              <entry>Toggles phase-tracking</entry>
+            </row>
+            <row>
+              <entry>print</entry>
+              <entry>Print a hard copy of the current page in CAMON</entry>
+            </row>
+            <row>
+              <entry>polcal</entry>
+              <entry>Use with <literal>stokes</literal> command. Calibrate stokes data to be plotted.</entry>
+            </row>
+            <row>
+              <entry>quit</entry>
+              <entry>Exits the program gracefully</entry>
+            </row>
+	    <row>
+	      <entry>rainbow</entry>
+	      <entry>Toggles the use of a rainbow colour map for the baselines, according to baseline length order.</entry>
+	    </row>
+            <row>
+              <entry>recall</entry>
+              <entry>Recalls a previously saved state</entry>
+            </row>
+            <row>
+              <entry>redraw</entry>
+              <entry>Clears and redraws the graph(s)</entry>
+            </row>
+            <row>
+              <entry>ref</entry>
+              <entry>Specifies a reference baseline</entry>
+            </row>
+            <row>
+              <entry>reset</entry>
+              <entry>Resets the VIS display to the original state</entry>
+            </row>
+            <row>
+              <entry>rewind</entry>
+              <entry>Moves 1 `screen' back in time</entry>
+            </row>
+            <row>
+              <entry>save</entry>
+              <entry>Saves a graphics state</entry>
+            </row>
+            <row>
+              <entry>scale</entry>
+              <entry>Sets the scale of a graph (to scale Time, use <literal>history</literal>)</entry>
+            </row>
+            <row>
+              <entry>sctype</entry>
+              <entry>Only plot data of that scan type</entry>
+            </row>
+            <row>
+              <entry>select</entry>
+              <entry>Specifies the baselines to be displayed</entry>
+            </row>
+            <row>
+              <entry>sort</entry>
+              <entry>Orders the baselines into length order</entry>
+            </row>
+            <row>
+              <entry>source</entry>
+              <entry>Causes only data from the specified source to be shown</entry>
+            </row>
+            <row>
+              <entry>squared</entry>
+              <entry>Forces aspect ratio to 1</entry>
+            </row>
+            <row>
+              <entry>status</entry>
+              <entry>Displays the current status of the VIS program</entry>
+            </row>
+            <row>
+              <entry>stokes</entry>
+              <entry>Enable display of Stokes parameters (see <literal>polcal</literal></entry>
+            </row>
+            <row>
+              <entry>suppress</entry>
+              <entry>Kills non-normal baselines</entry>
+            </row>
+            <row>
+              <entry>suspend</entry>
+              <entry>Halts graph updates</entry>
+            </row>
+            <row>
+              <entry>time</entry>
+              <entry>Sets the time standard/zone used</entry>
+            </row>
+            <row>
+              <entry>uv:</entry>
+              <entry>Plots a quantity on the uv plane</entry>
+            </row>
+            <row>
+              <entry>verbose</entry>
+              <entry>Message reports lengthen.</entry>
+            </row>
+            <row>
+              <entry>zoom</entry>
+              <entry>Use mouse or cursor to scale a plot</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
+    
+    <para>
+        <informaltable>
+            <tgroup cols="2">
+                <colspec colwidth="20*"></colspec>
+                <colspec colwidth="80*"></colspec>
+                <thead>
+                    <row>
+                        <entry>Input</entry>
+                        <entry>Axis Label</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>a</entry>
+                        <entry>amplitude</entry>
+                    </row>
+                    <row>
+                        <entry>b</entry>
+                        <entry>baseline</entry>
+                    </row>
+                    <row>
+                        <entry>c</entry>
+                        <entry>closure phase</entry>
+                    </row>
+                    <row>
+                        <entry>d</entry>
+                        <entry>delay</entry>
+                    </row>
+                    <row>
+                        <entry>e</entry>
+                        <entry>elevation</entry>
+                    </row>
+                    <row>
+                        <entry>f</entry>
+                        <entry>frequency</entry>
+                    </row>
+                    <row>
+                        <entry>g</entry>
+                        <entry>gain (power)</entry>
+                    </row>
+                    <row>
+                        <entry>h</entry>
+                        <entry>hour angle</entry>
+                    </row>
+                    <row>
+                        <entry>i</entry>
+                        <entry>imaginary</entry>
+                    </row>
+                    <row>
+                        <entry>j</entry>
+                        <entry>--</entry>
+                    </row>
+                    <row>
+                        <entry>k</entry>
+                        <entry>paralactic angle</entry>
+                    </row>
+                    <row>
+                        <entry>l</entry>
+                        <entry>1-way LO phase</entry>
+                    </row>
+                    <row>
+                        <entry>m</entry>
+                        <entry>--</entry>
+                    </row>
+                    <row>
+                        <entry>n</entry>
+                        <entry>CAGET cycles</entry>
+                    </row>
+                    <row>
+                        <entry>o</entry>
+                        <entry>--</entry>
+                    </row>
+                    <row>
+                        <entry>p</entry>
+                        <entry>phase</entry>
+                    </row>
+                    <row>
+                        <entry>q</entry>
+                        <entry>tied array coherence</entry>
+                    </row>
+                    <row>
+                        <entry>r</entry>
+                        <entry>real</entry>
+                    </row>
+                    <row>
+                        <entry>s</entry>
+                        <entry>tied array amplitude</entry>
+                    </row>
+                    <row>
+                        <entry>t</entry>
+                        <entry>time</entry>
+                    </row>
+                    <row>
+                        <entry>u</entry>
+                        <entry>u</entry>
+                    </row>
+                    <row>
+                        <entry>v </entry>
+                        <entry>v</entry>
+                    </row>
+                    <row>
+                        <entry>w</entry>
+                        <entry>w</entry>
+                    </row>
+                    <row>
+                        <entry>x</entry>
+                        <entry>right ascension</entry>
+                    </row>
+                    <row>
+                        <entry>y</entry>
+                        <entry>declination</entry>
+                    </row>
+                    <row>
+                        <entry>z</entry>
+                        <entry>azimuth</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+    </para>
+    
+    
+    <variablelist>
+      <varlistentry>
+	<term><literal>array [1|2|3|4|5|6]</literal></term>
+	<listitem>
+	  <para>
+	    Specifies which antennas constitute a
+	    valid array. Subsequent use of the <literal>select</literal> command will
+	    automatically
+	    exclude the non-selected antennas. If no argument is specified, the
+	    default (all antennas) is restored.
+	    Related commands: <literal>onsource</literal>.
+	    Examples:
+	    VIS<literal>&gt; array 1235</literal>  &#x2013; excludes antennas 4 and 6. If
+	    <literal>select aa</literal> was issued, only
+	    baselines 12AA, 13AA, 15AA, 23AA, 25AA and 35AA would be selected.
+	    VIS<literal>&gt; array</literal> &#x2013; restore the setting
+	    to the default (all antennas). Note this is equivalent
+	    to VIS<literal>&gt; array 123456</literal>.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>bells [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    <literal>bells</literal> puts additional information around the borders of the
+	    graphs. If no argument is specified, then the state will toggle.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>caget</literal></term>
+	<listitem>
+	  <para>
+	    Displays a one line message about the current caget
+	    cycle. It may be used as a diagnostic and is of little use to the
+	    observer. It is useful when the underlying data acquisition process
+	    seems to have failed. The <literal>caget</literal> command provides a very
+	    quick means of
+	    examining the last recovered cycle, and you can watch for increments
+	    as a sign of a properly working system. Of course, if the Compact
+	    Array is not operating the cycles won't increment. The data the
+	    <literal>caget</literal> command presents is also shown in the output of the
+	    <literal>status</literal> command.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>concat [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    May be used for concatenating cycles together.
+	    Its primary use is to examine data from similar sources without
+	    interspersed spaces. <literal>concat</literal> only affects data in which
+	    integration cycles (option `n') is one of the axes. <literal>concat</literal>
+	    requires <literal>suspend</literal> to be turned on.  
+	    Example: use <literal>source</literal> to select only your calibrator,
+	    use <literal>suspend</literal> to halt updating,
+	    set the <literal>history</literal> to 12 hours and, using <literal>concat</literal>,
+	    display
+	    a <literal>tad</literal> graph.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>cycles c</literal></term>
+	<listitem>
+	  <para>
+	    Allows the user to control how many cycles of history
+	    will be looked at. Primarily used for speed considerations or software
+	    diagnosis.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>dump [b&amp;w]</literal></term>
+	<listitem>
+	  <para>
+	    Creates a PostScript file of the current graph. It
+	    will be saved as <literal>~/vis.ps</literal>. The file will automatically be spooled
+	    to a printer. Default is colour PostScript. You can also ask for black
+	    and white plots: use the argument <literal>b&amp;w</literal>.
+	  </para>
+	  
+	  <para>
+	    Related commands: <literal>print</literal>.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>exit</literal></term>
+	<listitem>
+	  <para>
+	    Exit the program.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>expert [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Enable (<literal>on</literal>) or disable (<literal>off</literal>) display of standard information.
+	    For example, polarisation visabilities are usually not displayed, but can
+	    be by enabling expert mode. Another expample is the aspect ratio of
+	    plots which will be 1:1 for a non-<literal>expert</literal> user
+	  </para>
+  
+	  <para>
+	    Related commands: <literal>stokes, select</literal>.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>filter [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Suppresses inappropriate data from being plotted.
+	    The default is ON. Note that <literal>onsource</literal> will not work if
+	    <literal>filter</literal>
+	    is OFF. If no argument is specified the current state will toggle.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>forward</literal></term>
+	<listitem>
+	  <para>
+	    Shifts the history forward in time by one `screen-width'.
+	    It will not let you set the time scale into the future (giving an
+	    appropriate warning). See also <emphasis role="bold">history</emphasis>.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>frequency [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Normalise the phases for the observing frequency.
+	    That is, it divides astronomical phase by frequency in GHz and plots
+	    result as round trip phase. Shows how much LO phase noise is leaking into
+	    the astronomical phase.  If no argument is specified, the current state
+	    will toggle.   Related commands: <literal>phase</literal>.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>grid [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Plots a faint grid behind the graph (no argument
+	    toggles the grid <literal>on</literal> and <literal>off</literal>).
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>history HHhMMmSSs [HHhMMmSSs]</literal></term>
+	<listitem>
+	  <para>
+	    Allows the user control over the size
+	    of the horizontal axis (e.g., time or the `time depth' of a graph which
+	    does not have time as one of its axes). VIS allows you to specify a second
+	    argument in the same format that represents the offset from the current
+	    plot time. If the <literal>lock</literal> command is activated, the first
+	    argument of
+	    the history command is ignored.  The only acceptable formats are those
+	    with `hms' or `:' delimiters, using the latter, the first numeric field
+	    is hours.  
+	    Related commands: <literal>forward, rewind, zoom</literal>.
+	    Examples: 
+	    VIS<literal>&gt; history 10m 1h30m</literal> &#x2013; to look at 10 minutes
+	    of data that ended 1 and a half hours ago.  
+	    VIS<literal>&gt; history 25m</literal> or
+	    VIS<literal>&gt; history 0:25</literal> &#x2013; the most recent 25 minutes of data
+	    displayed.
+	    You cannot use <literal>scale</literal> to adjust a time axis.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>labels [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Turn <literal>on/off</literal> labels on the graph.
+	    No argument toggles the state
+	    <literal>on/off</literal>.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>lines [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Ordinarily, points are only joined by lines if
+	    they have time specified as one of the axes. By turning lines <literal>on</literal>,
+	    you force connecting lines on non-time based plots. If no argument is
+	    specified, the state will toggle.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>list</literal></term>
+	<listitem>
+	  <para>
+	    This command will cause VIS to search through all its available
+	    records and print a listing of the sources it can find. For surveys,
+	    this may be a lot!
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>lock [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    This command locks the graphical display to a
+	    time. This will cause all subsequent plots to access data back to this
+	    time, regardless of the <literal>history</literal> command. This command is
+	    very useful
+	    in stopping data from `rolling' off the end of a chronological
+	    display. By setting it at the start of a run, the incoming data will
+	    continue to squeeze in, so that at the completion, the display will
+	    have the entire run. To use this mode, it must be started when the
+	    telescope is off source. If no argument, the state will toggle.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>measure [top|middle|bottom]</literal></term>
+	<listitem>
+	  <para>
+	    This enables you to get a
+	    precise measurement of any point on a graph. As there may be more than
+	    one graph on the screen at any given time, you must specify which one,
+	    using <literal>top, middle</literal> or <literal>bottom</literal>. If there are two graphs,
+	    <literal>middle</literal> is not valid, and if there is only one, then no arguments
+	    should be specified. Once entered, the program will instruct you to click
+	    at the appropriate point in the selected graph. This may be done with the
+	    mouse, or the cursor keys. To select a point, any mouse button or any
+	    non-cursor key may be used. The coordinates of the selected point will be
+	    displayed appropriately.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>onsource [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    When <literal>onsource</literal> is activated and
+	    <literal>filter</literal> is <literal>off</literal>, only data
+	    obtained while the antennas specified by the array command are on
+	    source will be plotted. That is, slew time, antenna drive failure,
+	    etc. will be blanked out.  If no argument, the state will toggle.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>phase [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Phase tracking. This prevents sudden 360
+	    degree phase jumps caused by VIS trying to contain the astronomical
+	    phase within the -180^\circ to 180^\circ range. The algorithm works by
+	    comparing each datum with the datum immediately before it. If a jump
+	    of more than 270^\circ is detected, VIS will move (360-jump)^\circ
+	    in the other direction. If no argument is specified, then the phase
+	    tracking state will toggle.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>polcal [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Apply the latest polarisation calibration (no
+	    argument will toggle the state). The calibration applied is in the
+	    file <literal>at$log:leakage.log</literal>. If no argument, the state will
+	    toggle.
+	    Related commands: <literal>stokes</literal>.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>quit</literal></term>
+	<listitem>
+	  <para>
+	    Exits the program gracefully.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>rainbow [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    <command>vis</command> sorts baselines into length order before plotting them,
+	    and assigns a colour to each rank, and this colour-rank mapping is always the same,
+	    regardless of the actual baseline length it represents. Normally, the colour-rank
+	    mapping is quasi-random, and there isn't an intuitive way to identify the comparitive
+	    rank of two different colours. Using the <literal>rainbow on</literal> command, you
+	    can make <command>vis</command> map the baseline length ranks to a more intuitive
+	    colour scheme. You can toggle this colour mapping by not giving an argument.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>recall [name|list]</literal></term>
+	<listitem>
+	  <para>
+	    Recovers data from the time when a <literal>save</literal>
+	    command to the same <literal>name</literal> was entered. If the requested name
+	    is <literal>list</literal>, then all the saved states that are remembered are
+	    listed - BE WARNED: this may be a lot!
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>redraw</literal></term>
+	<listitem>
+	  <para>
+	    Replots the screen. Useful after resizing a window.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>ref [##XX]</literal></term>
+	<listitem>
+	  <para>
+	    Sets a reference baseline. All data will have
+	    the corresponding point of the reference baseline subtracted from
+	    them. The reference baseline may be specified as the full 4 character
+	    designation (e.g., 34CC). To remove the reference baseline, enter
+	    <literal>ref</literal> without any arguments.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>reset</literal></term>
+	<listitem>
+	  <para>
+	    Returns VIS to its default (startup) settings.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>rewind</literal></term>
+	<listitem>
+	  <para>
+	    Causes the <literal>history</literal> offset to be increased by the <literal>history</literal>
+	    value. This effectively causes a move of one `screen-width' back in time.
+	    Useful for use with the <literal>lock</literal> command. Not useful with
+	    non-chronological graphs.
+	    Related commands: <literal>forward</literal>.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>save name</literal></term>
+	<listitem>
+	  <para>
+	    Remembers the setting of the current display. May be
+	    recalled using the <literal>recall</literal> command. <literal>name</literal> can be a
+	    maximum of 32 characters.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>scale [qty] [min max]</literal></term>
+	<listitem>
+	  <para>
+	    The <literal>scale</literal> command lets you scale
+	    vertical axes manually. The program keeps track of which quantity has been
+	    manually set rather than the actual graph axis. Thus it is possible to
+	    scale the amplitudes, look at the <wordasword>uv</wordasword> coverage, and then return to the
+	    amplitudes with the old scaling remembered. To invoke this feature you
+	    need to specify the quantity to scale and the minimum and maximum
+	    values. It is possible to reverse the max. and min. but the graph will
+	    be inverted. To cancel manual scaling, enter <literal>scale</literal> without any
+	    arguments. This will not automatically redraw the screen (use
+	    <literal>redraw</literal>). To cancel the scaling for only one quantity, enter
+	    <literal>scale qty</literal> (the screen will be redrawn in this case). 
+	    WARNING:  Setting the scales can be a trap as you might not see data
+	    outside the scaled region that would otherwise concern you.
+	    Related commands: <literal>history</literal>. 
+	    Examples: 
+	    <literal>scale a 0 1</literal> &#x2013; set amplitude scale between 0 and 1. 
+	    <literal>scale a</literal> &#x2013; set amplitude to autoscale.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>select[#][#][x][x] [,[-][#][#][x][x]]</literal></term>
+	<listitem>
+	  <para>
+	    Allows you to
+	    specify which baselines are displayed for the majority of quantities
+	    (where antenna based quantities are plotted the <literal>array</literal>
+	    command should
+	    be used). The arguments are full or partial baseline
+	    specifications. Baseline specifications can be negated with a minus
+	    (-) sign. There is a maximum of 15 baselines that can be plotted
+	    simultaneously. See also the <literal>array</literal> and <literal>suppress</literal>
+	    commands. 
+	    Examples: 
+	    VIS<literal>&gt; select 25aa</literal> &#x2013; select (plot) only the baseline 25AA.
+	    VIS<literal>&gt; select bb,-4</literal> &#x2013; plot all the frequency 1, YY polarisation
+	    baselines, but exclude those baselines that involve antenna 4.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>sort [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Allows traces to be sorted in logical
+	    (12,13,14,...) order &#x2013; <literal>off</literal>, or baseline (shortest to longest)
+	    order
+	    &#x2013; <literal>on</literal>. This may be useful on an amplitude <wordasword>vs</wordasword> baseline
+	    (a&#x2013;b) plot. No
+	    argument will toggle the value.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>source [name]</literal></term>
+	<listitem>
+	  <para>
+	    By specifying a name, VIS will only plot data
+	    obtained on a scan with a source of that <literal>name</literal>. The
+	    remainder will be
+	    left blank. It may be deactivated by typing <literal>source</literal> with no
+	    arguments.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>squared on|off</literal></term>
+	<listitem>
+	  <para>
+	    For expert users only, this command gives the
+	    option of forcing both axes to use the same scale. It is not
+	    particularly suitable for graphs involving time or cycles. It may be
+	    useful for Real-Imaginary or <wordasword>uv</wordasword> plots. It has the potential of
+	    messing-up the display. Use with caution.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>status</literal></term>
+	<listitem>
+	  <para>
+	    Shows you the current status of VIS. It indicates
+	    what options have been selected, any scaling information and how much
+	    data is being displayed.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>stokes [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Enable the stokes parameters (I, Q, U and V)
+	    instead of conventional linear polarisations (AA, BB, AB, BA).  Stokes
+	    parameters can then be selected using the <literal>select</literal> command.
+	    Related commands: <literal>select</literal>, <literal>polcal</literal> and
+	    <literal>expert</literal>.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>suppress [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Suppresses non-standard phases such as
+	    34AD or 11AA (no argument will toggle the value). If you turn the
+	    suppression <literal>off</literal> VIS expects that you are an expert user &#x2013;
+	    the novice may cause it to crash!
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>suspend on|off</literal></term>
+	<listitem>
+	  <para>
+	    VIS typically updates the screen as new data
+	    comes in. It is possible to suspend these updates and thus is
+	    especially useful when looking back through the history.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>time [AEST|UT|EDST|GMST|LST]</literal></term>
+	<listitem>
+	  <para>
+	    Change the time standard
+	    used to plot the labels on a time axis. (UTC &amp; GMT are converted to UT)
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>uv:a</literal></term>
+	<listitem>
+	  <para>
+	    Plot the amplitude on a <wordasword>uv</wordasword> grid. The grid is then
+	    displayed as a grey-scale 2D plot. <literal>uv:a</literal> only works for a specific
+	    source (see <literal>source</literal>), with onsource tracking
+	    (<literal>onsource</literal>) and
+	    suspended updating (<literal>suspend</literal>). It will not work under AB,CD, etc.
+	    baselines. All AA or CC polarisations are suggested. It will conform to
+	    any scale commands, but the units of <wordasword>u</wordasword> and <wordasword>v</wordasword> are in grid pixels.
+	    Amplitude can also be scaled.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>verbose [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Explanations of every command executed will
+	    be given if the state is <literal>on</literal>.  If no argument is specified, the
+	    state will toggle.
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>zoom [top|middle|bottom] [x][y]</literal></term>
+	<listitem>
+	  <para>
+	    This enables you to use the
+	    mouse/cursor in order to scale a graph. As there may be more than one
+	    graph on the screen at any given time, you must specify which one,
+	    using <literal>top, middle</literal> or <literal>bottom</literal>. If there are only
+	    two graphs,
+	    <literal>middle</literal> is not valid, and if there is only one, then no arguments
+	    should be specified. The second set of arguments determines whether the
+	    zoom will be on the x-axis, y-axis or both (default).
+	  </para>
+	  
+	  <para>
+	    The program will instruct you to click at the lower/left corner of the
+	    region to zoom in on, followed by a request for a second click at the
+	    upper/right corner. This may be done with the mouse, or the cursor keys.
+	    To select a point, any mouse button or any non-cursor key may be used.
+	    When the above sequence has been performed, the window will be scaled
+	    and redrawn appropriately.
+	  </para>
+	  
+	  <para>
+	    Note that, if you intend to zoom on the time axis, the <literal>suspend</literal>
+	    command must be used first to prevent rapid screen updating. <literal>zoom</literal>
+	    will not work on the XDISP display.
+	  </para>
+	  
+	  <para>
+	    To `un-zoom' use the <literal>scale</literal> command. 
+	    Examples: 
+	    VIS<literal>&gt; apd-t</literal> or <literal>tdpa</literal> &#x2013; select three graphs
+	    (Amplitude, Phase and
+	    Delay) versus Time. 
+	    To have a closer look at the phases: VIS<literal>&gt; zoom m y</literal>
+	    gives mouse control over the middle (centre) graph &#x2013; namely the `phase'
+	    plot. It will allow the selection of a new vertical scale (specified
+	    by the `y'). Then use VIS<literal>&gt; scale p</literal> (i.e., with
+	    no limits) to reinstate auto-scaling on the phase display.
+	  </para>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+</appendix>

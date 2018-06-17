@@ -1,0 +1,2881 @@
+<appendix id="ATCA-Array-Configurations">
+  <info>
+    <title>ATCA Configurations</title>
+    <date>$Date: 2014-07-10 11:34:22 +1000 (Thu, 10 Jul 2014) $</date>
+    <revhistory>
+      <revision>
+	<revnumber>1.1</revnumber>
+	<date>2014 Apr 15</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Reformat all the array details into individual tables</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.0</revnumber>
+	<date>2014 Mar 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Initial Docbook revision</revremark>
+      </revision>
+    </revhistory>
+  </info>
+  <section id="Array-Station-Configurations">
+    <info>
+      <title>Array Configurations</title>
+    </info>
+    
+    <para>
+      <indexterm role="cp"><primary>configurations</primary><secondary>baselines</secondary></indexterm>
+      <indexterm role="cp"><primary>configurations</primary><secondary>ATCA</secondary></indexterm>
+      <indexterm role="cp"><primary>configurations</primary></indexterm>
+      Each of the <acronym>ATCA</acronym>'s possible array configurations are listed below.
+      For each array, the station locations are listed for each antenna, and whenever
+      an antenna can be located on multiple stations in that configuration, all the variants
+      that have been used are listed. For the most used variant of each configuration, the
+      baseline lengths are shown, in metres.
+    </para>
+
+    <para>
+      Configurations within each group of 4 (ie. 6A, 6B, 6C, 6D), or in one
+      of the complementary array groups (designated as a, b, c, d and e) form
+      complementary sets for multi-day observations.
+      <emphasis role="bold">Note:</emphasis> This is for single-frequency observations.
+      For a more sophisticated approach, see the section on bandwidth and
+      multi-frequency synthesis.
+    </para>
+
+    <para>
+      <acronym>CA</acronym>06 sits permanently on station W392. Baselines to this
+      antenna are shown for all configurations, but form part of the design only
+      for the 6 km configurations (6A, 6B, 6C and 6D).
+    </para>
+
+    <variablelist>
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 6A</term>
+	<listitem>
+	  <para>
+	    This array is part of the a and b complementary array groups.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>6A</entry>
+		    <entry>W4</entry>
+		    <entry>W45</entry>
+		    <entry>W102</entry>
+		    <entry>W173</entry>
+		    <entry>W196</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>6A</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>627.6</entry>
+		    <entry>1500.0</entry>
+		    <entry>2586.7</entry>
+		    <entry>2923.5</entry>
+		    <entry>5938.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>872.40</entry>
+		    <entry>1959.2</entry>
+		    <entry>2295.9</entry>
+		    <entry>5311.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>1086.7</entry>
+		    <entry>1423.5</entry>
+		    <entry>4438.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>336.7</entry>
+		    <entry>3352.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>3015.3</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 6B</term>
+	<listitem>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>6B</entry>
+		    <entry>W2</entry>
+		    <entry>W64</entry>
+		    <entry>W147</entry>
+		    <entry>W182</entry>
+		    <entry>W196</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>6B</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>949.0</entry>
+		    <entry>2219.4</entry>
+		    <entry>2755.1</entry>
+		    <entry>2969.4</entry>
+		    <entry>5969.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>1270.4</entry>
+		    <entry>1860.1</entry>
+		    <entry>2020.4</entry>
+		    <entry>5020.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>537.7</entry>
+		    <entry>750.0</entry>
+		    <entry>3750.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>214.3</entry>
+		    <entry>3214.3</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>3000.0</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 6C</term>
+	<listitem>
+	  <para>
+	    This array is part of the a and b complementary array groups.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>6C</entry>
+		    <entry>W0</entry>
+		    <entry>W10</entry>
+		    <entry>W113</entry>
+		    <entry>W140</entry>
+		    <entry>W182</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>6C</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>153.1</entry>
+		    <entry>1729.6</entry>
+		    <entry>2142.9</entry>
+		    <entry>2785.7</entry>
+		    <entry>6000.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>1576.5</entry>
+		    <entry>1989.8</entry>
+		    <entry>2632.7</entry>
+		    <entry>5846.9</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>413.3</entry>
+		    <entry>1056.1</entry>
+		    <entry>4270.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>642.9</entry>
+		    <entry>3857.1</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>3214.3</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 6D</term>
+	<listitem>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>6D</entry>
+		    <entry>W8</entry>
+		    <entry>W32</entry>
+		    <entry>W84</entry>
+		    <entry>W168</entry>
+		    <entry>W173</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>6D</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>367.3</entry>
+		    <entry>1163.3</entry>
+		    <entry>2449.0</entry>
+		    <entry>2525.5</entry>
+		    <entry>5877.5</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>795.9</entry>
+		    <entry>2081.6</entry>
+		    <entry>2158.2</entry>
+		    <entry>5510.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>1285.7</entry>
+		    <entry>1362.2</entry>
+		    <entry>4714.3</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>76.5</entry>
+		    <entry>3428.6</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>3352.0</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 1.5A</term>
+	<listitem>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>1.5A</entry>
+		    <entry>W100</entry>
+		    <entry>W110</entry>
+		    <entry>W147</entry>
+		    <entry>W168</entry>
+		    <entry>W196</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>1.5A</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>153.1</entry>
+		    <entry>719.4</entry>
+		    <entry>1040.8</entry>
+		    <entry>1469.4</entry>
+		    <entry>4469.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>566.3</entry>
+		    <entry>887.8</entry>
+		    <entry>1316.3</entry>
+		    <entry>4316.3</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>321.4</entry>
+		    <entry>750.0</entry>
+		    <entry>3750.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>428.6</entry>
+		    <entry>3428.6</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>3000.0</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 1.5B</term>
+	<listitem>
+	  <para>
+	    This array is part of the a and b complementary array groups.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>1.5B</entry>
+		    <entry>W111</entry>
+		    <entry>W113</entry>
+		    <entry>W163</entry>
+		    <entry>W182</entry>
+		    <entry>W195</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>1.5B</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>30.6</entry>
+		    <entry>795.9</entry>
+		    <entry>1086.7</entry>
+		    <entry>1285.7</entry>
+		    <entry>4301.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>765.3</entry>
+		    <entry>1056.1</entry>
+		    <entry>1255.1</entry>
+		    <entry>4270.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>290.8</entry>
+		    <entry>489.8</entry>
+		    <entry>3505.1</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>199.0</entry>
+		    <entry>3214.3</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>3015.3</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 1.5C</term>
+	<listitem>
+	  <para>
+	    This array is part of the a and c complementary array groups.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>1.5C</entry>
+		    <entry>W98</entry>
+		    <entry>W128</entry>
+		    <entry>W173</entry>
+		    <entry>W190</entry>
+		    <entry>W195</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>1.5C</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>459.2</entry>
+		    <entry>1148.0</entry>
+		    <entry>1408.2</entry>
+		    <entry>1484.7</entry>
+		    <entry>4500.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>688.8</entry>
+		    <entry>949.0</entry>
+		    <entry>1025.5</entry>
+		    <entry>4040.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>260.2</entry>
+		    <entry>336.7</entry>
+		    <entry>3352.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>76.5</entry>
+		    <entry>3091.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>3015.3</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 1.5D</term>
+	<listitem>
+	  <para>
+	    This array is part of the b and c complementary array groups.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>1.5D</entry>
+		    <entry>W102</entry>
+		    <entry>W109</entry>
+		    <entry>W140</entry>
+		    <entry>W182</entry>
+		    <entry>W196</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>1.5D</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>107.1</entry>
+		    <entry>581.6</entry>
+		    <entry>1224.5</entry>
+		    <entry>1438.8</entry>
+		    <entry>4438.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>474.5</entry>
+		    <entry>1117.3</entry>
+		    <entry>1331.6</entry>
+		    <entry>4331.6</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>642.9</entry>
+		    <entry>857.1</entry>
+		    <entry>3857.1</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>214.3</entry>
+		    <entry>3214.3</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>3000.0</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 750A</term>
+	<listitem>
+	  <para>
+	    This array is part of the c complementary array group.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>750A</entry>
+		    <entry>W147</entry>
+		    <entry>W163</entry>
+		    <entry>W172</entry>
+		    <entry>W190</entry>
+		    <entry>W195</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>1.5A</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>244.9</entry>
+		    <entry>382.7</entry>
+		    <entry>658.2</entry>
+		    <entry>734.7</entry>
+		    <entry>3750.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>137.8</entry>
+		    <entry>413.3</entry>
+		    <entry>489.8</entry>
+		    <entry>3505.1</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>275.5</entry>
+		    <entry>352.0</entry>
+		    <entry>3367.3</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>76.5</entry>
+		    <entry>3091.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>3015.3</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 750B</term>
+	<listitem>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>750B</entry>
+		    <entry>W98</entry>
+		    <entry>W109</entry>
+		    <entry>W113</entry>
+		    <entry>W140</entry>
+		    <entry>W148</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>750B</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>168.4</entry>
+		    <entry>229.6</entry>
+		    <entry>642.9</entry>
+		    <entry>765.3</entry>
+		    <entry>4500.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>61.2</entry>
+		    <entry>474.5</entry>
+		    <entry>596.9</entry>
+		    <entry>4331.6</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>413.3</entry>
+		    <entry>535.7</entry>
+		    <entry>4270.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>122.4</entry>
+		    <entry>3857.1</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>3734.7</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 750C</term>
+	<listitem>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>750C</entry>
+		    <entry>W64</entry>
+		    <entry>W84</entry>
+		    <entry>W100</entry>
+		    <entry>W110</entry>
+		    <entry>W113</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>750C</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>306.1</entry>
+		    <entry>551.0</entry>
+		    <entry>704.1</entry>
+		    <entry>750.0</entry>
+		    <entry>5020.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>244.9</entry>
+		    <entry>398.0</entry>
+		    <entry>443.9</entry>
+		    <entry>4714.3</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>153.1</entry>
+		    <entry>199.0</entry>
+		    <entry>4469.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>45.9</entry>
+		    <entry>4316.3</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>4270.4</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 750D</term>
+	<listitem>
+	  <para>
+	    This array is part of the c complementary array group.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>750D</entry>
+		    <entry>W100</entry>
+		    <entry>W102</entry>
+		    <entry>W128</entry>
+		    <entry>W140</entry>
+		    <entry>W147</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>750D</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>30.6</entry>
+		    <entry>428.6</entry>
+		    <entry>612.2</entry>
+		    <entry>719.4</entry>
+		    <entry>4469.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>398.0</entry>
+		    <entry>581.6</entry>
+		    <entry>688.8</entry>
+		    <entry>4438.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>183.7</entry>
+		    <entry>290.8</entry>
+		    <entry>4040.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>107.1</entry>
+		    <entry>3857.1</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>3750.0</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> EW367</term>
+	<listitem>
+	  <para>
+	    This array is part of the d complementary array group.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>EW367</entry>
+		    <entry>W104</entry>
+		    <entry>W110</entry>
+		    <entry>W113</entry>
+		    <entry>W124</entry>
+		    <entry>W128</entry>
+		    <entry>W392</entry>
+		  </row>
+		  <row>
+		    <entry>EW367B</entry>
+		    <entry>W124</entry>
+		    <entry>W104</entry>
+		    <entry>W110</entry>
+		    <entry>W113</entry>
+		    <entry>W128</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>EW367</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>91.8</entry>
+		    <entry>137.8</entry>
+		    <entry>306.1</entry>
+		    <entry>367.3</entry>
+		    <entry>4408.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>45.9</entry>
+		    <entry>214.3</entry>
+		    <entry>275.5</entry>
+		    <entry>4316.3</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>168.4</entry>
+		    <entry>229.6</entry>
+		    <entry>4270.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>61.2</entry>
+		    <entry>4102.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>4040.8</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> EW352</term>
+	<listitem>
+	  <para>
+	    This array is part of the d complementary array group.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>EW352</entry>
+		    <entry>W102</entry>
+		    <entry>W104</entry>
+		    <entry>W109</entry>
+		    <entry>W112</entry>
+		    <entry>W125</entry>
+		    <entry>W392</entry>
+		  </row>
+		  <row>
+		    <entry>EW352B</entry>
+		    <entry>W112</entry>
+		    <entry>W102</entry>
+		    <entry>W104</entry>
+		    <entry>W109</entry>
+		    <entry>W125</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>EW352</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>30.6</entry>
+		    <entry>107.1</entry>
+		    <entry>153.1</entry>
+		    <entry>352.0</entry>
+		    <entry>4438.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>76.5</entry>
+		    <entry>122.4</entry>
+		    <entry>321.4</entry>
+		    <entry>4408.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>45.9</entry>
+		    <entry>244.9</entry>
+		    <entry>4331.6</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>199.0</entry>
+		    <entry>4285.7</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>4086.7</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> EW214</term>
+	<listitem>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>EW214</entry>
+		    <entry>W98</entry>
+		    <entry>W102</entry>
+		    <entry>W104</entry>
+		    <entry>W109</entry>
+		    <entry>W112</entry>
+		    <entry>W392</entry>
+		  </row>
+		  <row>
+		    <entry>EW214B</entry>
+		    <entry>W109</entry>
+		    <entry>W98</entry>
+		    <entry>W102</entry>
+		    <entry>W104</entry>
+		    <entry>W112</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>EW214</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>61.2</entry>
+		    <entry>91.8</entry>
+		    <entry>168.3</entry>
+		    <entry>214.2</entry>
+		    <entry>4498.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>30.6</entry>
+		    <entry>107.1</entry>
+		    <entry>153.0</entry>
+		    <entry>4437.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>76.5</entry>
+		    <entry>122.4</entry>
+		    <entry>4406.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>45.9</entry>
+		    <entry>4329.9</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>4284.0</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> NS214</term>
+	<listitem>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>NS214</entry>
+		    <entry>W106</entry>
+		    <entry>N2</entry>
+		    <entry>N7</entry>
+		    <entry>N11</entry>
+		    <entry>N14</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>NS214</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>30.6</entry>
+		    <entry>107.1</entry>
+		    <entry>168.3</entry>
+		    <entry>214.2</entry>
+		    <entry>4377.5</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>76.5</entry>
+		    <entry>137.7</entry>
+		    <entry>183.6</entry>
+		    <entry>4377.7</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>61.2</entry>
+		    <entry>107.1</entry>
+		    <entry>4378.9</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>45.9</entry>
+		    <entry>4380.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>4382.8</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> H214</term>
+	<listitem>
+	  <para>
+	    This array is part of the e complementary array group.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>H214</entry>
+		    <entry>W98</entry>
+		    <entry>W104</entry>
+		    <entry>W113</entry>
+		    <entry>N5</entry>
+		    <entry>N14</entry>
+		    <entry>W392</entry>
+		  </row>
+		  <row>
+		    <entry>H214B</entry>
+		    <entry>W98</entry>
+		    <entry>W104</entry>
+		    <entry>N14</entry>
+		    <entry>N5</entry>
+		    <entry>W113</entry>
+		    <entry>W392</entry>
+		  </row>
+		  <row>
+		    <entry>H214C</entry>
+		    <entry>W98</entry>
+		    <entry>N5</entry>
+		    <entry>N14</entry>
+		    <entry>W104</entry>
+		    <entry>W113</entry>
+		    <entry>W392</entry>
+		  </row>
+		  <row>
+		    <entry>H214D</entry>
+		    <entry>W98</entry>
+		    <entry>N14</entry>
+		    <entry>N5</entry>
+		    <entry>W104</entry>
+		    <entry>W113</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>H214D</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>246.8</entry>
+		    <entry>144.4</entry>
+		    <entry>91.8</entry>
+		    <entry>229.6</entry>
+		    <entry>4500.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>137.8</entry>
+		    <entry>216.5</entry>
+		    <entry>239.6</entry>
+		    <entry>4382.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>82.4</entry>
+		    <entry>131.7</entry>
+		    <entry>4378.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>137.8</entry>
+		    <entry>4408.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>4270.4</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> H168</term>
+	<listitem>
+	  <para>
+	    This array is part of the e complementary array group.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>H168</entry>
+		    <entry>W100</entry>
+		    <entry>W104</entry>
+		    <entry>W111</entry>
+		    <entry>N7</entry>
+		    <entry>N11</entry>
+		    <entry>W392</entry>
+		  </row>
+		  <row>
+		    <entry>H168B</entry>
+		    <entry>W100</entry>
+		    <entry>W104</entry>
+		    <entry>N11</entry>
+		    <entry>N7</entry>
+		    <entry>W111</entry>
+		    <entry>W392</entry>
+		  </row>
+		  <row>
+		    <entry>H168C</entry>
+		    <entry>W100</entry>
+		    <entry>N7</entry>
+		    <entry>N11</entry>
+		    <entry>W104</entry>
+		    <entry>W111</entry>
+		    <entry>W392</entry>
+		  </row>
+		  <row>
+		    <entry>H168D</entry>
+		    <entry>W100</entry>
+		    <entry>N11</entry>
+		    <entry>N7</entry>
+		    <entry>W104</entry>
+		    <entry>W111</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>H168D</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>191.8</entry>
+		    <entry>141.1</entry>
+		    <entry>61.2</entry>
+		    <entry>168.4</entry>
+		    <entry>4469.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>61.2</entry>
+		    <entry>171.1</entry>
+		    <entry>184.9</entry>
+		    <entry>4380.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>111.4</entry>
+		    <entry>131.7</entry>
+		    <entry>4378.9</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>107.1</entry>
+		    <entry>4408.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>4301.0</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> H75</term>
+	<listitem>
+	  <para>
+	    This array is part of the e complementary array group.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>H75</entry>
+		    <entry>W104</entry>
+		    <entry>W106</entry>
+		    <entry>W109</entry>
+		    <entry>N2</entry>
+		    <entry>N5</entry>
+		    <entry>W392</entry>
+		  </row>
+		  <row>
+		    <entry>H75B</entry>
+		    <entry>W104</entry>
+		    <entry>N5</entry>
+		    <entry>N2</entry>
+		    <entry>W106</entry>
+		    <entry>W109</entry>
+		    <entry>W392</entry>
+		  </row>
+		  <row>
+		    <entry>H75C</entry>
+		    <entry>W104</entry>
+		    <entry>N2</entry>
+		    <entry>N5</entry>
+		    <entry>W106</entry>
+		    <entry>W109</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>H75C</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>43.3</entry>
+		    <entry>82.4</entry>
+		    <entry>30.6</entry>
+		    <entry>76.5</entry>
+		    <entry>4408.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>45.9</entry>
+		    <entry>30.6</entry>
+		    <entry>55.2</entry>
+		    <entry>4377.7</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>76.5</entry>
+		    <entry>89.2</entry>
+		    <entry>4378.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>45.9</entry>
+		    <entry>4377.5</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>4331.6</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 122C</term>
+	<listitem>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>122C</entry>
+		    <entry>W98</entry>
+		    <entry>W100</entry>
+		    <entry>W102</entry>
+		    <entry>W104</entry>
+		    <entry>W106</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>122C</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>30.6</entry>
+		    <entry>61.2</entry>
+		    <entry>91.8</entry>
+		    <entry>122.4</entry>
+		    <entry>4498.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>30.6</entry>
+		    <entry>61.2</entry>
+		    <entry>91.8</entry>
+		    <entry>4467.6</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>30.6</entry>
+		    <entry>61.2</entry>
+		    <entry>4437.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>30.6</entry>
+		    <entry>4406.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>4375.8</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 375</term>
+	<listitem>
+	  <para>
+	    <emphasis role="bold">This is an obsolete array.</emphasis>
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>375</entry>
+		    <entry>W2</entry>
+		    <entry>W10</entry>
+		    <entry>W14</entry>
+		    <entry>W16</entry>
+		    <entry>W32</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>375</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>122.4</entry>
+		    <entry>183.6</entry>
+		    <entry>214.2</entry>
+		    <entry>459.0</entry>
+		    <entry>5967.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>61.2</entry>
+		    <entry>91.8</entry>
+		    <entry>336.6</entry>
+		    <entry>5844.6</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>30.6</entry>
+		    <entry>275.4</entry>
+		    <entry>5783.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>244.8</entry>
+		    <entry>5752.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>5508.0</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 210</term>
+	<listitem>
+	  <para>
+	    <emphasis role="bold">This is an obsolete array.</emphasis>
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>210</entry>
+		    <entry>W98</entry>
+		    <entry>W100</entry>
+		    <entry>W102</entry>
+		    <entry>W109</entry>
+		    <entry>W112</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>210</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>30.6</entry>
+		    <entry>61.2</entry>
+		    <entry>168.3</entry>
+		    <entry>214.2</entry>
+		    <entry>4498.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>30.6</entry>
+		    <entry>137.7</entry>
+		    <entry>183.6</entry>
+		    <entry>4467.6</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>107.1</entry>
+		    <entry>153.0</entry>
+		    <entry>4437.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>45.9</entry>
+		    <entry>4329.9</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>4284.0</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 122A</term>
+	<listitem>
+	  <para>
+	    <emphasis role="bold">This is an obsolete array.</emphasis> Prior to July 1996,
+	    this configuration was known as 122.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>122A</entry>
+		    <entry>W0</entry>
+		    <entry>W2</entry>
+		    <entry>W4</entry>
+		    <entry>W6</entry>
+		    <entry>W8</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>122A</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>30.6</entry>
+		    <entry>61.2</entry>
+		    <entry>91.8</entry>
+		    <entry>122.4</entry>
+		    <entry>5997.6</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>30.6</entry>
+		    <entry>61.2</entry>
+		    <entry>91.8</entry>
+		    <entry>5967.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>30.6</entry>
+		    <entry>61.2</entry>
+		    <entry>5936.4</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>30.6</entry>
+		    <entry>5905.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>5875.2</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><emphasis role="bold">Array:</emphasis> 122B</term>
+	<listitem>
+	  <para>
+	    <emphasis role="bold">This is an obsolete array.</emphasis> Prior to July 1996,
+	    this configuration was known as 120.
+	  </para>
+	  <para>
+	    <informaltable frame="all">
+	      <tgroup cols="7" align="center" rowsep="1" colsep="1">
+		<colspec colname="variant"/>
+		<colspec colname="ca01"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>Variant</entry>
+		    <entry>CA01</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>122B</entry>
+		    <entry>W8</entry>
+		    <entry>W10</entry>
+		    <entry>W12</entry>
+		    <entry>W14</entry>
+		    <entry>W16</entry>
+		    <entry>W392</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	  <para>
+	    Baseline lengths are in metres.
+	  </para>
+	  <para>
+	    <informaltable>
+	      <tgroup cols="6" align="center" rowsep="1" colsep="1">
+		<colspec colname="otherant"/>
+		<colspec colname="ca02"/>
+		<colspec colname="ca03"/>
+		<colspec colname="ca04"/>
+		<colspec colname="ca05"/>
+		<colspec colname="ca06"/>
+		<thead>
+		  <row>
+		    <entry>122B</entry>
+		    <entry>CA02</entry>
+		    <entry>CA03</entry>
+		    <entry>CA04</entry>
+		    <entry>CA05</entry>
+		    <entry>CA06</entry>
+		  </row>
+		</thead>
+		<tbody>
+		  <row>
+		    <entry>CA01</entry>
+		    <entry>30.6</entry>
+		    <entry>61.2</entry>
+		    <entry>91.8</entry>
+		    <entry>122.4</entry>
+		    <entry>5875.2</entry>
+		  </row>
+		  <row>
+		    <entry>CA02</entry>
+		    <entry></entry>
+		    <entry>30.6</entry>
+		    <entry>61.2</entry>
+		    <entry>91.8</entry>
+		    <entry>5845.0</entry>
+		  </row>
+		  <row>
+		    <entry>CA03</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>30.6</entry>
+		    <entry>61.2</entry>
+		    <entry>5814.8</entry>
+		  </row>
+		  <row>
+		    <entry>CA04</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>30.6</entry>
+		    <entry>5784.6</entry>
+		  </row>
+		  <row>
+		    <entry>CA05</entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry></entry>
+		    <entry>5754.4</entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </informaltable>
+	  </para>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+
+  </section>
+  
+  <section id="Shadowing-Diagrams">
+    <info>
+      <title>Shadowing Diagrams</title>
+    </info>
+
+    <para>
+      The diagrams in this section can allow you to quickly determine how long you
+      can observe a source with a particular array before you have problems with
+      shadowing.
+    </para>
+
+    <para>
+      These diagrams are to read as follows.
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    The grey area on each plot is where the source is above the
+	    12&#x00B0; elevation limit and there is no shadowing on any antenna.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    For any source at a particular declination, you can determine the
+	    hour angle at which the source sets, or an antenna becomes shadowed,
+	    by reading off the hour angle at the edge of the grey area. The
+	    hour angle for the elevation limit or shadowing is symmetrical
+	    around zero.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Each of the hybrid arrays has its own shadowing diagram, but you can
+	    use the first diagram for any east-west array with baselines
+	    shorter than 61.2 m.
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </para>
+    
+    <para>
+      <figure id="ew_arrays">
+	<title>East-West Elevation and Shadowing Limits for the ATCA.</title>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="figures/ew.jpg" format="JPG">
+	    </imagedata>
+	  </imageobject>
+	</mediaobject>
+      </figure>
+    </para>
+
+    <para>
+      <figure id="h214">
+	<title>H214 Array Elevation and Shadowing Limits for the ATCA.</title>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="figures/h214.jpg" format="JPG">
+	    </imagedata>
+	  </imageobject>
+	</mediaobject>
+      </figure>
+    </para>
+
+    <para>
+      <figure id="h168">
+	<title>H168 Array Elevation and Shadowing Limits for the ATCA.</title>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="figures/h168.jpg" format="JPG">
+	    </imagedata>
+	  </imageobject>
+	</mediaobject>
+      </figure>
+    </para>
+
+    <para>
+      <figure id="h275">
+	<title>H75 Array Elevation and Shadowing Limits for the ATCA.</title>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="figures/h75.jpg" format="JPG">
+	    </imagedata>
+	  </imageobject>
+	</mediaobject>
+      </figure>
+    </para>
+    
+  </section>
+</appendix>

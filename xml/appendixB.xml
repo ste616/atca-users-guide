@@ -1,0 +1,2112 @@
+<appendix id="cacor">
+  <info>
+    <title><command>cacor</command> reference</title>
+    <date>$Date: 2015-11-24 09:27:53 +1100 (Tue, 24 Nov 2015) $</date>
+    <revhistory>
+      <revision>
+	<revnumber>1.2</revnumber>
+	<date>2015 Oct 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Fix some typos</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.1</revnumber>
+	<date>2014 Apr 13</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Cleanup the text, and update the command list for the currently used cacor versions</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.0</revnumber>
+	<date>2014 Mar 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Initial Docbook revision</revremark>
+      </revision>
+    </revhistory>
+  </info>
+  <para>
+    The <command>cacor</command> program controls the correlator and correlator functions.
+    It runs on <hardware>caccc1</hardware> and is normally displayed on a VNC display.
+  </para>
+  
+  <para>
+    <indexterm role="cp"><primary>caobs</primary><secondary>starting</secondary></indexterm>
+    <command>cacor</command> will normally already be running before you start observing.
+    If it isn't, start it by typing:
+    <programlisting>caccc1:~&gt; cacor</programlisting>
+  </para>
+  
+  <para>
+    A display similar to that shown in <xref linkend="cacor_display"></xref> should now 
+    be visible on the <hardware>caccc1</hardware> VNC screen.
+  </para>
+
+  <para>
+    If you restart <command>cacor</command>, then <command>caobs</command> will also
+    need to be restarted afterwards. For instructions on how to do this, please consult
+    <xref linkend="caobs"></xref>.
+  </para>
+  
+  <para>
+    <figure id="cacor_display">
+      <title>A typical <command>cacor</command> display.</title>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="figures/cacor.jpg" format="JPG">
+	  </imagedata>
+	</imageobject>
+      </mediaobject>
+    </figure>
+  </para>
+  
+  <para>
+    The <command>cacor</command> window has five panels:
+  </para>
+  
+  <section id="cacor-Status-Panel">
+    <info>
+      <title><command>cacor</command> Status Panel</title>
+    </info>
+    <para>
+      The top panel in the <command>cacor</command> GUI gives information on the correlator
+      status.
+      <!-- This includes information on the length of the -->
+    </para>
+  </section>
+  
+  <section id="cacor-Data-Panel">
+    <info>
+      <title><command>cacor</command> Data Panel</title>
+    </info>
+  </section>
+  
+  <section id="cacor-Timing-Panel">
+    <info>
+      <title><command>cacor</command> Timing Panel</title>
+    </info>
+  </section>
+
+  <section id="cacor-Log-Panel">
+    <info>
+      <title><command>cacor</command> Log Panel</title>
+    </info>
+  </section>
+
+  <section id="cacor-Command-Panel">
+    <info>
+      <title><command>cacor</command> Command Panel</title>
+    </info>
+  </section>
+
+  <section id="cacor-Commands">
+    <info>
+      <title><command>cacor</command> Commands</title>
+    </info>
+    <para>
+      <indexterm role="cp"><primary>cacor</primary><secondary>commands</secondary></indexterm>
+      Observers can interact with <command>cacor</command> through the text input box located
+      at the bottom of the GUI, between the &#x201C;<emphasis role="bold">Command:</emphasis>&#x201D;
+      label, and the &#x201C;QUIT&#x201D; button. We call this the &#x201C;Command&#x201D;
+      entry box. The full list of commands that can be issued through this interface is below.
+    </para>
+    <variablelist>
+      <varlistentry>
+	<term>
+	  <literal>abphase <replaceable>n m</replaceable></literal>
+	</term>
+	<listitem>
+	  <para>
+	    Set the desired phase offset (in degrees) to insert between the A and B polarisations of each
+	    antenna, where <replaceable>n</replaceable> is the desired offset in <acronym>IF</acronym>1, and
+	    <replaceable>m</replaceable> is the desired offset in <acronym>IF</acronym>2. 
+	    The phase offset will not be inserted however until a &#x201C;<literal>pcal</literal>&#x201D;
+	    command is issued.
+	  </para>
+
+	  <para>
+	    The most useful purpose for this command is to switch between linear
+	    polarisation (for which <replaceable>n</replaceable> and <replaceable>m</replaceable> are both 0) 
+	    and circular polarisation, which requires a phase shift of &#x00B1;90&#x00B0; between the
+	    linear feeds, depending on the sideband. This is most commonly used for <acronym>VLBI</acronym> experiments,
+	    which record circular polarisation.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> The command 
+	    &#x201C;<literal>abph -90 -90</literal>&#x201D; will produce circular polarisation 
+	    output from the tied array units, for <acronym>USB</acronym> frequencies.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>pcal, catie pol</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>acal <replaceable>n m</replaceable> [a-z]</literal></term>
+	<listitem>
+	  <para>
+	    Tells the correlator that the average flux density of the source currently being observed
+	    is <replaceable>n</replaceable> Jy over the <literal>tvchannels</literal> set in <acronym>IF</acronym>1, and 
+	    <replaceable>m</replaceable> Jy over the <literal>tvchannels</literal> set in <acronym>IF</acronym>2.
+	    The correlator uses this information when calculating the system temperature
+	    that it writes into the <acronym>RPFITS</acronym> files.
+	  </para>
+	  
+	  <para>
+	    If the command is given with or without a trailing &#x201C;<literal>a</literal>&#x201D; option, 
+	    then the correlator will apply the calibration. 
+	    If the trailing option is specified as any letter other than &#x201C;<literal>a</literal>&#x201D;, 
+	    the correlator will display the corrections it would make, but will not apply them.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>dcal, pcal, tvchannels, reset acal, calband</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry id="cacor_command_att">
+	<term>
+	  <literal>att<replaceable>f</replaceable> ca0<replaceable>#</replaceable> <replaceable>n m</replaceable></literal>
+	</term>
+	<listitem>
+	  <para>
+	    Set the amount of <acronym>CABB</acronym> attenuation on <acronym>IF</acronym>1 (&#x201C;<literal>att1</literal>&#x201D;) or 
+	    <acronym>IF</acronym>2 (&#x201C;<literal>att2</literal>&#x201D;), for antenna
+	    CA0<replaceable>#</replaceable>, to be <replaceable>n</replaceable> dB for polarisation A 
+	    and <replaceable>m</replaceable> dB for polarisation B.
+	  </para>
+	    
+	  <para>
+	    The current <acronym>CABB</acronym> attenuator settings are shown in the &#x201C;Sampler Levels&#x201D; tab in
+	    the data panel.
+	  </para>
+
+	  <para>
+	    There is an attenuator servoing command that will adjust the <acronym>CABB</acronym> attenuation
+	    automatically to equalise signal levels across antennas and polarisations.
+	    This command is &#x201C;<literal>attservo</literal>&#x201D;.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>attservo, tattservo</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>attservo [on|off]</literal></term>
+	<listitem>
+	  <para>
+	    Attenuator servoing will make the correlator attempt to bring the sampler/<acronym>GTP</acronym>
+	    statistics into line with the target that was set with the
+	    &#x201C;<literal>tatts</literal>&#x201D; command. It does
+	    this by adding or removing <acronym>CABB</acronym> attenuation on a per-antenna, per-polarisation,
+	    per-<acronym>IF</acronym> basis. It may take a relatively large number of cycles (more than 5)
+	    to accomplish this, and may not be able to precisely meet the target specified.
+	  </para>
+
+	  <para>
+	    Without arguments, this command returns the current state of the attenuator
+	    servoing mechanism (which can also be found in the status panel). To start/stop
+	    the servoing mechanism, issue this command with the 
+	    &#x201C;<literal>on</literal>/<literal>off</literal>&#x201D;
+	    argument respectively.
+	    It is important to check the resultant attenuation levels (shown on the
+	    "Sampler Levels" tab in the data panel) for potential problems during
+	    this process.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>tattservo, userms, usegtp</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>calband [<replaceable>n m</replaceable>]</literal></term>
+	<listitem>
+	  <para>
+	    This command changes the <acronym>IF</acronym>s that the correlator uses to determine the
+	    delays, phases and amplitudes. The setting that you can make here depends
+	    on the <command>cacor</command> version, and the correlator configuration.
+	  </para>
+
+	  <para>
+	    While observing with a configuration that provides the 2 GHz continuum 
+	    <acronym>IF</acronym>s with 1 MHz resolution (eg. &#x201C;<literal role="bold">ca_2048_2048_2f</literal>&#x201D;),
+	    these quantities should be calculated from the continuum <acronym>IF</acronym>s at all times. To ensure this,
+	    <replaceable>n</replaceable> and <replaceable>m</replaceable> should both be set to
+	    &#x201C;<literal>f</literal>&#x201D; if the <command>cacor</command> version is
+	    not one designated for <acronym>VLBI</acronym> use,
+	    or &#x201C;<literal>0</literal>&#x201D; otherwise.
+	  </para>
+	  
+	  <para>
+	    If the frequency resolution of the 2 GHz continuum <acronym>IF</acronym>s is worse than 1 MHz 
+	    (eg. &#x201C;<literal>cfb_64_32_2f_zm16</literal>&#x201D;), or if the
+	    correlator configuration does not provide the 2 GHz continuum <acronym>IF</acronym>s
+	    (eg. &#x201C;<literal role="bold">cfb64_vlbi</literal>&#x201D;), then it 
+	    may be necessary to use the zoom bands to compute and/or correct the delays and phases.
+	    In this case, both <replaceable>n</replaceable> and <replaceable>m</replaceable>
+	    should be set to &#x201C;<literal>z</literal>&#x201D; in non-<acronym>VLBI</acronym>
+	    <command>cacor</command> versions, or <replaceable>n</replaceable><literal>=3</literal>
+	    (the first zoom <acronym>IF</acronym>)
+	    and <replaceable>m</replaceable><literal>=4</literal> (the second zoom <acronym>IF</acronym>) otherwise.
+	  </para>
+	  
+	  <para>
+	    All the commands that affect the computation of delay, phase and amplitude
+	    (eg. <literal>tvchannels, dcal, pcal, acal, delavg</literal>) will apply to the
+	    <acronym>IF</acronym> that is specified by this command.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Note:</emphasis> When in a non-<acronym>VLBI</acronym> <command>cacor</command>
+	    version, the &#x201C;<literal>z</literal>&#x201D; setting for <replaceable>n</replaceable>
+	    or <replaceable>m</replaceable> can only be used if the first specified zoom in
+	    that <acronym>IF</acronym> has a width of 1 (i.e. the zoom band is not a composite zoom). If this is not
+	    the case, the correlator will return an error message.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>acal, dcal, pcal, tvchannels, abphase, delavg</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>calfreq [<replaceable>f</replaceable>]</literal></term>
+        <listitem>
+          <para>
+	    Specify which <acronym>IF</acronym> (1 or 2) to use when manually correcting the delay with the
+	    &#x201C;<literal>doffset</literal>&#x201D; command. Without arguments,
+	    this command will return the currently selected <acronym>IF</acronym>.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>calpol, doffset</literal>
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>calpol [<replaceable>p</replaceable>]</literal></term>
+        <listitem>
+          <para>
+	    Specify the polarisation (a or b) to use when manually correcting the delay with
+	    the &#x201C;<literal>doffset</literal>&#x201D; command. Without arguments,
+	    this command will return the currently selected polarisation.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>calfreq, doffset</literal>
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>calrefant [<replaceable>#</replaceable>]</literal></term>
+        <listitem>
+          <para>
+	    Set the reference antenna for calibration purposes to be 
+	    CA0<replaceable>#</replaceable>.
+	    As with &#x201C;<literal>refant</literal>&#x201D;, this is usually best set 
+	    to antenna 2, if it is included in the array. If this command is issued without 
+	    arguments, it returns the current setting of this variable.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>refant, dcal, pcal</literal>
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>[ca]tie [<replaceable>command</replaceable> [<replaceable>##</replaceable>]]</literal></term>
+        <listitem>
+	  <para>
+	    The correlator can be take the signals from each of the <acronym>ATCA</acronym>
+	    antennas and combine them in real time to form a single output phased up towards
+	    a nominated phase centre: this is called the &#x201C;tied array&#x201D;,
+	    and is usually configured for <acronym>VLBI</acronym> observations. The
+	    &#x201C;<literal>catie</literal>&#x201D; commands configure this tied array.
+	  </para>
+
+	  <para>
+	    The tied array commands can be prefixed with
+	    &#x201C;<literal>catie</literal>&#x201D;, or, in a slight reversal of the
+	    usual minimum-match pattern recognition, it can be shortened to
+	    &#x201C;<literal>tie</literal>&#x201D;. When issued without an argument,
+	    <command>cacor</command> will return the current configuration of the tied
+	    array.
+	  </para>
+	  
+	  <para>
+	    The tied array commands and their optional arguments are described below.
+	    Each of the tied array commands take two optional arguments, which control
+	    each of the two <acronym>IF</acronym>s. It is not possible however to control one <acronym>IF</acronym> with these
+	    commands without simultaneously having to set the state of the other <acronym>IF</acronym>.
+	  </para>
+	  
+	  <variablelist>
+            <varlistentry>
+              <term>
+		<literal>[ca]tie array [<replaceable>## ##</replaceable>]</literal>
+	      </term>
+              <listitem>
+		<para>
+		  Tie the signals from antenna(s) <literal>##</literal> into the tied array 
+		  output, per <acronym>IF</acronym>.
+		</para>
+		
+		<para>
+		  <emphasis role="bold">Example:</emphasis> The command
+		  &#x201C;<literal>tie array 123 245</literal>&#x201D;
+		  ties the signals from CA01, CA02 and CA03 into the <acronym>IF</acronym>1 tied array output,
+		  and from CA02, CA04 and CA05 into the <acronym>IF</acronym>2 tied array output.
+		</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>
+		<literal>[ca]tie pol [<replaceable>t t</replaceable>]</literal>
+	      </term>
+              <listitem>
+		<para>
+		  Configures the tied array to either output directly the two
+		  linear polarisations (<replaceable>t</replaceable><literal>=l</literal>),
+		  or to combine the two linear polarisations together to output
+		  circular polarisations (<replaceable>t</replaceable><literal>=c</literal>).
+		</para>
+
+		<para>
+		  <emphasis role="bold">Example:</emphasis> The command
+		  &#x201C;<literal>tie pol l c</literal>&#x201D;
+		  would leave the linear pols as is for the tied array output of <acronym>IF</acronym>1,
+		  and form circular polarisations for the tied array output of <acronym>IF</acronym>2.
+		</para>
+
+		<para>
+		  <emphasis role="bold">Note:</emphasis> The 
+		  &#x201C;circular&#x201D; polarisation setting here
+		  does not automatically form circular polarisations; it simply
+		  combines the two linear polarisations together with the current
+		  cross-polarisation phases. This command must be used together with
+		  the &#x201C;<literal>abphase</literal>&#x201D; command to properly
+		  form circular polarisations.
+		</para>
+
+		<para>
+		  <emphasis role="bold">Related commands:</emphasis> <literal>abphase</literal>
+		</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>
+		<literal>[ca]tie gain [<replaceable>n n</replaceable>|auto]</literal>
+	      </term>
+              <listitem>
+		<para>
+		  Sets the gain for the tied array output for each <acronym>IF</acronym> to be
+		  <replaceable>n</replaceable>, where
+		  0 &lt; <replaceable>n</replaceable> &#x2264; 1.
+		  This gain setting, combined with the <acronym>GTP</acronym>
+		  sampler statistics, is able to vary the amount of power fed into the
+		  <acronym>DAS</acronym> units.
+		</para>
+
+		<para>
+		  If all antennas are tied, and the <acronym>GTP</acronym> statistics
+		  are around 30, then a gain of 0.1 is recommended.
+		</para>
+
+		<para>
+		  <emphasis role="bold">Example:</emphasis> The command
+		  &#x201C;<literal>tie gain 0.1 0.09</literal>&#x201D; will
+		  set the tied array gains to 0.1 and 0.09 on <acronym>IF</acronym>1 and <acronym>IF</acronym>2
+		  respectively.
+		</para>
+
+		<para>
+		  The gain can be set to change automatically by
+		  supplying the <literal>auto</literal> argument instead of the <acronym>IF</acronym> gains.
+		  Automatic gain control can only be set to work for both <acronym>IF</acronym>s simultaneously;
+		  it cannot work for a single <acronym>IF</acronym> only.
+		</para>
+
+		<para>
+		  <emphasis role="bold">Related commands:</emphasis> <literal>tattservo, attservo</literal>
+		</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>
+		<literal>[ca]tie reset</literal>
+	      </term>
+              <listitem>
+		<para>
+		  Resets the output from the tied array output module in the correlator.
+		  The configuration of the tied array outputs will not change.
+		</para>
+              </listitem>
+            </varlistentry>
+	  </variablelist>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+	  <literal>cf [<replaceable>n m</replaceable>]</literal>
+	</term>
+        <listitem>
+	  <para>
+	    The <acronym>CABB</acronym> system's primary frequency band corresponds
+	    exactly to the 4cm band, where 3904 MHz &#x2264; &#x03BD; &#x2264; 11952 MHz;
+	    all other frequency bands are mixed into this range using front-end
+	    <acronym>LO</acronym>s. To select the two 2048 MHz intermediate frequency ranges
+	    (the <acronym>CABB IF</acronym>s), we use the <acronym>CL1 LO</acronym> modules,
+	    which can be tuned between 4928 MHz &#x2264; &#x03BD; &#x2264; 10928 MHz.
+	  </para>
+	  
+	  <para>
+	    This command either lists (if no arguments are supplied), or sets the
+	    <acronym>CL1</acronym> frequency to <replaceable>n</replaceable> MHz for
+	    <acronym>IF</acronym>1, and <replaceable>m</replaceable> MHz for
+	    <acronym>IF</acronym>2.
+	  </para>
+
+	  <para>
+	    You must set the <acronym>CL1</acronym> frequency for both IFs when you
+	    issue this command. If one or both of the frequencies are out of the
+	    accepted range, the command will not work. <command>cacor</command> will
+	    output the new <acronym>LO</acronym> frequencies after this command is
+	    given.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Note:</emphasis> The <acronym>IF</acronym>
+	    frequencies are set by <command>caobs</command>, not <command>cacor</command>,
+	    so changes to the centre frequencies using this command will not be
+	    reflected in the output data file.
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>[no]czabs</literal></term>
+        <listitem>
+          <para>
+	    This command enables (with &#x201C;<literal>czabs</literal>&#x201D;) or 
+	    disables (with &#x201C;<literal>noczabs</literal>&#x201D;)
+	    the correlator's auto-correction and online application of the zoom bandpasses.
+	    Since the zoom bands are digitally constructed, their bandpass shapes can be
+	    accurately determined during the observation, and corrected before being
+	    written out to the data file.
+	  </para>
+
+	  <para>
+	    Use this command to disable this behaviour, as it is enabled by default.
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>dcal [a-z]</literal></term>
+        <listitem>
+          <para>
+	    Tells the correlator to estimate the delay in each of the <acronym>IF</acronym>s
+	    set with the &#x201C;<literal>calband</literal>&#x201D; command,
+	    using the data in the &#x201C;<literal>tvchannels</literal>&#x201D; range, 
+	    boxcar averaged over &#x201C;<literal>delavg</literal>&#x201D; channels,
+	    for the previous &#x201C;<literal>nncal</literal>&#x201D; cycles, with respect
+	    to the reference antenna set by the &#x201C;<literal>calrefant</literal>&#x201D;
+	    command.
+	  </para>
+
+	  <para>
+	    If the command is given with or without a trailing &#x201C;<literal>a</literal>&#x201D; option,
+	    then the correlator will apply a correction to compensate for the calculated delays.
+	    If the trailing option is specified as any letter other than &#x201C;<literal>a</literal>&#x201D;,
+	    the correlator will display the calculated delays, but will not apply them.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>acal, pcal, tvchannels, delavg, calband, nncal, reset delays, calrefant</literal>
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>delavg [<replaceable>n</replaceable>]</literal></term>
+        <listitem>
+          <para>
+	    To calculate the delay in any particular <acronym>IF</acronym>,
+	    <command>cacor</command> looks at the phase in each channel in the
+	    &#x201C;<literal>tvchannels</literal>&#x201D; range and fits a line to
+	    the phase as a function of frequency; the slope of this line is the delay.
+	  </para>
+
+	  <para>
+	    If the noise on the phase is high (due to a faint source or poor weather, for example),
+	    or there is some strong unavoidable RFI in the &#x201C;<literal>tvchannels</literal>&#x201D;
+	    range, then the least-squares line of best fit may not accurately represent the real
+	    slope due to the delay. 
+	  </para>
+
+	  <para>
+	    To reduce the noise, or to average out the effect of the RFI, you
+	    can use this command. This command tells <command>cacor</command> to first
+	    average together each <replaceable>n</replaceable> channels in the
+	    &#x201C;<literal>tvchannels</literal>&#x201D; range before calculating the
+	    slope.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> Suppose the
+	    &#x201C;<literal>tvchannels</literal>&#x201D; are set to include channels
+	    513 to 1537 (a total of 1025 channels). With a &#x201C;<literal>delavg</literal>&#x201D;
+	    of 1, the delay fit would use 1025 points. If you set
+	    &#x201C;<literal>delavg</literal>&#x201D; to 4, then the delay fit would use
+	    only 256 points, and each point would have a signal-to-noise ratio 2 times better
+	    than with &#x201C;<literal>delavg</literal>&#x201D;=1.
+	  </para>
+
+          <para>
+	    This command is especially useful at higher frequencies, and is almost
+	    necessary in the 3mm band, due to the lower sensitivity of that receiver.
+	    It is also very useful when doing the delay calibration using a single 64 MHz
+	    zoom, since the bandwidth of each channel is greatly reduced.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>tvchannels, dcal, calband</literal>
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>[no]delscan f<replaceable>f offset,incr</replaceable></literal></term>
+        <listitem>
+          <para>
+	    If it isn't possible for some reason to have <command>cacor</command>
+	    automatically compute delay corrections, it is possible to use this command
+	    in order to manually determine the delay between each antenna and the
+	    reference.
+	  </para>
+
+	  <para>
+	    This command makes <command>cacor</command> cycle through a range of
+	    delay offsets for <acronym>IF</acronym><replaceable>f</replaceable>,
+	    starting at -<replaceable>offset</replaceable> ns (compared to the
+	    current setting per antenna), and adding <replaceable>incr</replaceable> ns
+	    of delay to each antenna at each subsequent cycle. 
+	  </para>
+
+	  <para>
+	    By looking at the amplitudes at each cycle, it is then
+	    possible to determine which offset is closest to the systemic delay for
+	    each antenna. These offsets can be added into the correlator with the
+	    &#x201C;<literal>doffset</literal>&#x201D; command.
+	  </para>
+
+	  <para>
+	    This command will continue to operate until
+	    the &#x201C;<literal>nodelscan</literal>&#x201D; command is issued.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> The command
+            &#x201C;<literal>delscan f1 -40 4</literal>&#x201D;
+	    will make <command>cacor</command> subtract 40ns of delay from each
+	    antenna (except the reference antenna as set by
+	    &#x201C;<literal>calrefant</literal>&#x201D;), and then add 4ns of delay
+	    every subsequent cycle.
+	  </para>
+
+          <para>
+	    <emphasis role="bold">Note:</emphasis> This command is not usually necessary during
+	    normal setup procedures. There is almost always a way to use
+	    &#x201C;<literal>dcal</literal>&#x201D; to perform delay corrections.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>doffset, dcal, calrefant</literal>
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>diginit {all|ca0<replaceable>#</replaceable> [<replaceable>fp</replaceable>]}</literal></term>
+        <listitem>
+          <para>
+	    Resynchronises the specified digitisers; the more information you supply to this command,
+	    the more specific the specification. To select one specific digitiser you must supply
+	    the antenna number <replaceable>#</replaceable>, the <acronym>IF</acronym>
+	    <replaceable>f</replaceable> (either 1 or 2) and the polarisation
+	    <replaceable>p</replaceable> (either <literal>a</literal> or <literal>b</literal>).
+	    If you don't specify the polarisation, then both digitisers for that antenna and
+	    <acronym>IF</acronym> will be resynchronised. If you don't specify the
+	    <acronym>IF</acronym>, all four digitisers on the antenna will be resynchronised.
+	  </para>
+
+	  <para>
+	    If you want to select all digitisers on all the antennas, use the argument
+	    &#x201C;<literal>all</literal>&#x201D;.
+	  </para>
+
+	  <para>
+	    The state of the antenna in <command>caobs</command> (eg.
+	    off-line, disabled) does not affect this command; the digitisers in an
+	    antenna can be resynchronised at any time.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Note:</emphasis> Resynchronising a digitiser will almost always
+	    change the delay to that antenna and polarisation in that <acronym>IF</acronym>. It is
+	    not recommended to use this command unless you know what you are doing.
+	    This command is most appropriately used if the input shown in the "Data
+	    Links" tab is coloured red, and an &#x201C;<literal>rtminit</literal>&#x201D;
+	    of that input has failed to restore it. That is, it is generally advisable to 
+	    attempt an &#x201C;<literal>rtminit</literal>&#x201D;
+	    before attempting a &#x201C;<literal>diginit</literal>&#x201D;.
+	  </para>
+	  
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>rtminit</literal>
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>doffset [ca0<replaceable>#</replaceable>=<replaceable>d</replaceable>]</literal></term>
+        <listitem>
+          <para>
+	    Allows for manual correction of delay offsets. Without arguments, this
+	    command will print all the current delay offset numbers for the current <acronym>IF</acronym>
+	    (selected by &#x201C;<literal>calfreq</literal>&#x201D;) and polarisation 
+	    (selected by &#x201C;<literal>calpol</literal>&#x201D;).
+	    This command allows you to directly set these delay offsets with respect to the
+	    reference antenna; the reference antenna will always
+	    have a delay offset of 0. A positive offset then means that the correlator will receive
+	    a particular wavefront from that antenna before the reference antenna, and a negative offset
+	    means that the correlator will receive the same wavefront from that antenna after
+	    the reference antenna.
+	  </para>
+	  
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> Giving <command>cacor</command> the following commands:
+            <screen>
+	      calfreq 1
+	      calpol b
+	      doffset ca01=-432
+	    </screen>
+	    tells the correlator to expect the signal from <acronym>CA</acronym>01, 
+	    <acronym>IF</acronym>1, B polarisation 432 ns after
+	    that of the reference antenna.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Note:</emphasis> The delay is not merely a function of
+	    geometric delay, but will also include the travel time along the cables from the
+	    antenna to the correlator, etc. It is therefore not easily apriori calculable by non-experts.
+	  </para>
+
+          <para>
+	    <emphasis role="bold">Note:</emphasis> This command is most useful for rough correction of delay
+	    if the phase is wrapping too quickly for the correlator to determine the appropriate delay
+	    correction automatically with the &#x201C;<literal>dcal</literal>&#x201D; command. It is not usually
+	    necessary for this command to be used. Instead, you may find success by using the
+	    &#x201C;<literal>rtminit</literal>&#x201D; and &#x201C;<literal>diginit</literal>&#x201D;
+	    commands to bring the delays into a range that <command>cacor</command> can correct automatically.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>calfreq, calpol, dcal, delscan, diginit, rtminit</literal>
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>f[un]flag [f<replaceable>f</replaceable> [{<replaceable>n</replaceable>|<replaceable>n</replaceable>-<replaceable>m</replaceable>|default|birdies}]]</literal></term>
+        <listitem>
+          <para>
+	    Flag (&#x201C;<literal>fflag</literal>&#x201D;) or unflag 
+	    (&#x201C;<literal>funflag</literal>&#x201D;) channel <replaceable>n</replaceable>, or
+	    channel range <replaceable>n</replaceable>-<replaceable>m</replaceable> (inclusive)
+	    from <acronym>IF</acronym><replaceable>f</replaceable>.
+	  </para>
+	  
+	  <para>
+	    By flagging a channel, it no
+	    longer contributes to the phase, delay or amplitude calculated by the
+	    correlator, even if it lies within the &#x201C;<literal>tvchannels</literal>&#x201D; range. A flagged
+	    channel also is written out to the RPFITS file as having precisely 0 real and imaginary
+	    components, and has its flagged bit set. 
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> The command
+	    &#x201C;<literal>fflag f1 1187 2001</literal>&#x201D; would flag out channels 1187 and 2001 
+	    from <acronym>IF</acronym>1.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> The command
+	    &#x201C;<literal>funflag f2 1800-1840</literal>
+	    would unflag all channels between 1800 and 1840 inclusive.
+	  </para>
+
+          <para>
+	    There are two arguments &#x2013; &#x201C;<literal>default</literal>&#x201D; and 
+	    &#x201C;<literal>birdies</literal>&#x201D; &#x2013; that flag
+	    specific channels that are known to often or always be bad. For
+	    &#x201C;<literal>default</literal>&#x201D; these channels are 513, 1025 and 1537. 
+	    For &#x201C;<literal>birdies</literal>&#x201D;
+	    these channels are 129, 157, 257, 641, 769, 1153, 1177, 1281, 1409, 1793
+	    and 1921. The &#x201C;<literal>default</literal>&#x201D; argument is normally not required to be issued,
+	    but can be useful when you want to reset the flagging.
+	    The &#x201C;<literal>birdies</literal>&#x201D; argument
+	    is always recommended in any 2 GHz continuum band with 1 MHz frequency
+	    resolution.
+	  </para>
+
+	  <para>
+	    Without arguments, this command returns the current number of unflagged
+	    channels in both <acronym>IF</acronym>s, which should never be more than 2047 (2049 channels
+	    total - 3 always flagged <literal>default</literal> channels).
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>tvchannels</literal>
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>nncal [<replaceable>n</replaceable>]</literal></term>
+	<listitem>
+	  <para>
+	    When commanded to calculate the delays, phases or amplitude calibration
+	    offsets with one of the &#x201C;<literal>dcal</literal>&#x201D;,
+	    &#x201C;<literal>pcal</literal>&#x201D; or
+	    &#x201C;<literal>acal</literal>&#x201D; commands, <command>cacor</command>
+	    uses the average over the most recent <replaceable>n</replaceable> cycles for
+	    computation. By default, <replaceable>n</replaceable>=3, but you can use
+	    this command to change this number.
+	  </para>
+
+	  <para>
+	    When self-calibration of the phases is required,
+	    it is more accurate to only consider the latest cycle, so
+	    <replaceable>n</replaceable> should usually be set to 1 in this case. 
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Note:</emphasis> This command is rarely useful,
+	    and increasing &#x201C;<literal>delavg</literal>&#x201D; is probably a
+	    better option if more signal-to-noise is required for calibration.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>selfcal, delavg</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>pcal [a-z]</literal></term>
+	<listitem>
+	  <para>
+	    Tells the correlator to estimate the phase in each of the <acronym>IF</acronym>s
+	    set with the &#x201C;<literal>calband</literal>&#x201D; command,
+	    using the data in the &#x201C;<literal>tvchannels</literal>&#x201D; range, 
+	    for the previous &#x201C;<literal>nncal</literal>&#x201D; cycles, with
+	    respect to the reference antenna set by the &#x201C;<literal>calrefant</literal>&#x201D;
+	    command.
+	  </para>
+
+	  <para>
+	    If the command is given with or without a trailing &#x201C;<literal>a</literal>&#x201D;
+	    option, then the correlator will apply a correction to compensate for the calculated
+	    phases.
+	    If the trailing option is specified as any letter other than 
+	    &#x201C;<literal>a</literal>&#x201D;, the correlator
+	    will display the calculated phases, but will not apply them.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Note:</emphasis> <command>cacor</command> will always attempt to
+	    make phase corrections such that a single wavefront from a point source will arrive at
+	    0 phase on each antenna. For the phase between the A and B polarisations on a single
+	    antenna however, this command will use the current setting of
+	    &#x201C;<literal>abphase</literal>&#x201D; when choosing the corrections.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>acal, dcal, tvchannels, calband, nncal, abphase, calrefant</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>phoffset [ca0<replaceable>#</replaceable>=<replaceable>p</replaceable>]</literal></term>
+	<listitem>
+	  <para>
+	    Allows for manual correction of phase offsets. Without arguments, this
+	    command will print all the current phase offset numbers for the current
+	    <acronym>IF</acronym> (selected by &#x201C;<literal>calfreq</literal>&#x201D;)
+	    and polarisation (selected by &#x201C;<literal>calpol</literal>&#x201D;).
+	    This command allows you to directly set these phase offsets with respect
+	    to the reference antenna; the reference antenna will always have a phase
+	    offset of 0. 
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> Giving <command>cacor</command> the following
+	    commands:
+	    <screen>
+	      calfreq 1
+	      calpol b
+	      phoffset ca01=18
+	    </screen>
+	    tells the correlator to make the phase offset on antenna 1,
+	    <acronym>IF</acronym>1, B polarisation, 18 degrees.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Note:</emphasis> This command is most useful for rough 
+	    correction of phase. It is not usually necessary for this command to be used as
+	    automatic correction with the &#x201C;<literal>pcal</literal>&#x201D; command
+	    should almost always work.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>calfreq, calpol, pcal</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>refant [<replaceable>#</replaceable>]</literal></term>
+	<listitem>
+	  <para>
+	    Make antenna <acronym>CA</acronym>0<replaceable>#</replaceable> the
+	    <indexterm role="cp"><primary>antenna</primary><secondary>reference</secondary></indexterm>
+	    reference antenna. This command also simultaneously sets the calibration
+	    reference antenna in the same way as &#x201C;<literal>calrefant</literal>&#x201D;.
+	  </para>
+
+	  <para>
+	    If the argument is not given, the current
+	    reference antenna is displayed. 
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Note:</emphasis> The reference antenna in this context is
+	    actually only useful when forming the tied array output, as the tied array signal
+	    will appear to be coming from the location of this reference antenna. If you want
+	    to set the antenna to use as the calibration reference antenna, use the
+	    &#x201C;<literal>calrefant</literal>&#x201D; command separately.
+	  </para>
+	  
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>calrefant</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>reset [<replaceable>command</replaceable>]</literal></term>
+	<listitem>
+	  <para>
+	    Sometimes the correlator can get into a state that is not easy to
+	    recover from. The &#x201C;<literal>reset</literal>&#x201D; commands
+	    can be used to put the correlator back to a default state, from which you
+	    should be able to redo the calibration successfully.
+	  </para>
+
+	  <para>
+	    Each of the available reset commands are described below. None of the commands
+	    take arguments.
+	  </para>
+
+	  <variablelist>
+	    <varlistentry>
+	      <term>
+		<literal>reset</literal>
+	      </term>
+	      <listitem>
+		<para>
+		  <emphasis role="bold">DO NOT ISSUE THIS COMMAND WITHOUT ARGUMENTS.
+		  THIS WILL CAUSE THE CORRELATOR GUI TO
+		  FAIL (REQUIRING A RESTART) AND THE UNIVERSE TO MORPH INTO A CATERPILLAR.</emphasis>
+		</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term><literal>reset abdelay</literal></term>
+	      <listitem>
+		<para>
+		  Reset only the cross-polarisation delays.
+		</para>
+
+		<para>
+		  <emphasis role="bold">Related commands:</emphasis> <literal>reset delays, dcal</literal>
+		</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term><literal>reset acal</literal></term>
+	      <listitem>
+		<para>
+		  Reset the gain to amplitude scaling factors (essentially the strength of the
+		  noise diode on each antenna) that are set after doing an
+		  &#x201C;<literal>acal</literal>&#x201D;.
+		</para>
+
+		<para>
+		  <emphasis role="bold">Related commands:</emphasis> <literal>acal</literal>
+		</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term><literal>reset delays</literal></term>
+	      <listitem>
+		<para>
+		  Reset the correlator delay offsets back to their geometric default. This
+		  command can be useful if a &#x201C;<literal>dcal</literal>&#x201D; has apparently 
+		  made the delay worse,
+		  to the point that it has become very difficult or impossible for the
+		  correlator to calculate the remaining delay.
+		</para>
+
+		<para>
+		  <emphasis role="bold">Related commands:</emphasis> <literal>reset abdelay, dcal</literal>
+		</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<literal>reset mem</literal>
+	      </term>
+	      <listitem>
+		<para>
+		  This command resets the memory chips on the correlator blocks. When observing
+		  with the correlator configured to use the pulsar binning mode, this command
+		  can be used to fix a problem that manifests itself as large numbers of bad
+		  channels in alternate cycles.
+		</para>
+
+		<para>
+		  <emphasis role="bold">Note:</emphasis> This command can only be used while
+		  the correlator is stopped, and may need to be used several times before the
+		  problem goes away.
+		</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>rtminit {all|ca0<replaceable>#</replaceable> [<replaceable>fp</replaceable>]}</literal></term>
+	<listitem>
+	  <para>
+	    Resynchronises the &#x201C;rear transition module&#x201D; (<acronym>RTM</acronym>);
+	    the more information you supply to this command,
+	    the more specific the specification. To select one specific <acronym>RTM</acronym> you must supply
+	    the antenna number <replaceable>#</replaceable>, the <acronym>IF</acronym>
+	    <replaceable>f</replaceable> (either 1 or 2) and the polarisation
+	    <replaceable>p</replaceable> (either <literal>a</literal> or <literal>b</literal>).
+	    If you don't specify the polarisation, then both <acronym>RTM</acronym>s for that antenna and
+	    <acronym>IF</acronym> will be resynchronised. If you don't specify the
+	    <acronym>IF</acronym>, all four <acronym>RTM</acronym>s for the antenna will be resynchronised.
+	  </para>
+         
+	  <para>
+	    If you want to select all <acronym>RTM</acronym>s on all the antennas, use the argument
+	    &#x201C;<literal>all</literal>&#x201D;.
+	  </para>
+
+	  <para>
+	    The state of the antenna in <command>caobs</command> (eg.
+	    off-line, disabled) does not affect this command; the <acronym>RTM</acronym>s for an
+	    antenna can be resynchronised at any time.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Note:</emphasis> Resynchronising an
+	    <acronym>RTM</acronym> will almost always
+	    change the delay to that antenna and polarisation in that <acronym>IF</acronym>. It is
+	    not recommended to use this command unless you know what you are doing.
+	    This command is most appropriately used if the input shown in the "Data
+	    Links" tab is coloured red, but if the &#x201C;<literal>rtminit</literal>&#x201D;
+	    for that input fails to restore it you may need to consider doing a
+	    &#x201C;<literal>diginit</literal>&#x201D;
+	    before reattempting an &#x201C;<literal>rtminit</literal>&#x201D; again.
+	  </para>
+
+	  <para>
+	    This command is also useful if the &#x201C;<literal>1ms</literal>&#x201D; values for some
+	    of the input(s) shown in the &#x201C;Data Links&#x201D; tabs are very much different from the
+	    expected values.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>rtmreset, diginit</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>rtmreset</literal></term>
+	<listitem>
+	  <para>
+	    Reset the sync error counts in the &#x201C;Data Links&#x201D; tabs in the data panel.
+	    This can be useful if the error counts are high, but it is not clear whether
+	    they are continuing to increase. This command will immediately (ie. on the
+	    next cycle) reset the counts to 0, so if any counts remain non-zero after
+	    this command, errors are still present.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>rtminit, diginit</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>selfcal [{<replaceable>f g</replaceable>|{on|off}}]</literal></term>
+	<listitem>
+	  <para>
+	    The correlator is able to continuously adjust the phases on a cycle-by-cycle
+	    basis in order to keep them as close to zero as possible. This is only possible
+	    while observing a bright calibrator or spacecraft, and is only really useful
+	    for <acronym>VLBI</acronym> and NASA spacecraft tracking.
+	  </para>
+
+	  <para>
+	    By default, the correlator will determine the average phase over the most
+	    recent &#x201C;<literal>nncal</literal>&#x201D; cycles in each
+	    <acronym>IF</acronym>, and then apply an opposite phase offset to that same
+	    <acronym>IF</acronym>. It is possible though to use the phase measured in
+	    one <acronym>IF</acronym> to correct the phase in another
+	    <acronym>IF</acronym>. This command requires two arguments in that case,
+	    one for each <acronym>IF</acronym>, and each being the
+	    <acronym>IF</acronym> used to correct the phase. That is,
+	    <replaceable>f</replaceable> is the <acronym>IF</acronym> to use to correct
+	    <acronym>IF</acronym>1, and <replaceable>g</replaceable> is the
+	    <acronym>IF</acronym> to use to correct <acronym>IF</acronym>2.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> The command
+	    &#x201C;<literal>selfcal 1 1</literal>&#x201D; will use the phase
+	    observed in <acronym>IF</acronym>1 to correct both
+	    <acronym>IF</acronym>1 and 2.
+	  </para>
+
+	  <para>
+	    Once the command is configured, you can enable or disable self calibration
+	    by supplying either &#x201C;<literal>on</literal>&#x201D; or
+	    &#x201C;<literal>off</literal>&#x201D; as the argument to this command
+	    respectively.
+	  </para>
+
+	  <para>
+	    Issuing the command without arguments will
+	    return the current self-calibration state.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>nncal, tvchannels, calband</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>tatts [<replaceable>t</replaceable>]</literal></term>
+	<listitem>
+	  <para>
+	    Sets the target sampler <acronym>RMS</acronym>/<acronym>GTP</acronym> levels to 
+	    be <replaceable>t</replaceable> for <acronym>IF</acronym>1 and
+	    <acronym>IF</acronym>2. After these targets have been altered, the command 
+	    &#x201C;<literal>attservo</literal>&#x201D; should
+	    be given to have <command>cacor</command> change the <acronym>CABB</acronym>
+	    attenuation in order to reach this target.
+	  </para>
+
+	  <para>
+	    Using &#x201C;<literal>tatts</literal>&#x201D; without arguments will return the current
+	    target. The default sampler level target is 20.0 for each <acronym>IF</acronym>.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>attservo, calband, userms, usegtp</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>tvchannels [f<replaceable>f</replaceable>] {<replaceable>n m</replaceable> [<replaceable>o p</replaceable>]|default}</literal></term>
+	<listitem>
+	  <para>
+	    <indexterm role="cp"><primary>tvchannels</primary><secondary>setting</secondary></indexterm>
+	    The data in the &#x201C;<literal>tvchannels</literal>&#x201D; range
+	    are used by <command>cacor</command> to calculate the average amplitudes and phases on each
+	    baseline, and to measure the delay. These quantities are displayed on <command>vis</command>,
+	    are checked by <command>assistance</command>, and are used by <command>catag</command> for 
+	    pointing corrections.
+	    The data is also used to calculate the sampler <acronym>GTP</acronym> values, and of course
+	    any corrections made by the commands &#x201C;<literal>dcal</literal>&#x201D;,
+	    &#x201C;<literal>pcal</literal>&#x201D; or &#x201C;<literal>acal</literal>&#x201D; are
+	    calculated using this data.
+	  </para>
+
+	  <para>
+	    You can change the &#x201C;<literal>tvchannels</literal>&#x201D; for a single
+	    <acronym>IF</acronym> by specifying the <acronym>IF</acronym> number
+	    <replaceable>f</replaceable> and then the start and end channels (inclusive)
+	    <replaceable>n</replaceable> and <replaceable>m</replaceable> respectively. Or you can set the
+	    &#x201C;<literal>tvchannels</literal>&#x201D; for both <acronym>IF</acronym>s
+	    at the same time by specifying the start and end channels
+	    <replaceable>n</replaceable> and <replaceable>m</replaceable> respectively for
+	    <acronym>IF</acronym>1, and <replaceable>o</replaceable> and <replaceable>p</replaceable>
+	    respectively for <acronym>IF</acronym>2.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> The command
+	    &#x201C;<literal>tvchannels f1 500 1600</literal>&#x201D;
+	    will set the <acronym>IF</acronym>1 &#x201C;<literal>tvchannels</literal>&#x201D;
+	    to cover the range 500-1600 inclusive. 
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> The command
+	    &#x201C;<literal>tvchannels 500 1600 900 1400</literal>&#x201D;
+	    will set the <acronym>IF</acronym>1 &#x201C;<literal>tvchannels</literal>&#x201D; to 
+	    cover the range 500-1600 inclusive, and the <acronym>IF</acronym>2
+	    &#x201C;<literal>tvchannels</literal>&#x201D; to cover the range 900-1400 inclusive.
+	  </para>
+
+	  <para>
+	    The default &#x201C;<literal>tvchannels</literal>&#x201D; usually
+	    cover the entire central half of the band (ie. channels 513-1537 in the 1 MHz
+	    continuum bands or 64 MHz zoom bands, or 9-25 in the 64 MHz continuum bands). To reset
+	    the &#x201C;<literal>tvchannels</literal>&#x201D; to this, substitute the channel
+	    specification with &#x201C;<literal>default</literal>&#x201D;.
+	    <indexterm role="cp"><primary>tvchannels</primary><secondary>resetting</secondary></indexterm>
+	  </para>
+
+	  <para>
+	    To determine what the &#x201C;<literal>tvchannels</literal>&#x201D;
+	    are currently set to, either look at the status panel, or issue this command
+	    without arguments.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>calband, delavg</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>usegtp</literal></term>
+	<listitem>
+	  <para>
+	    This command makes <command>cacor</command> display the gated total power (<acronym>GTP</acronym>)
+	    in the &#x201C;<literal>tvchannels</literal>&#x201D; range for each input 
+	    (antenna, <acronym>IF</acronym>, polarisation) in
+	    the &#x201C;Sampler Levels&#x201D; tab in the data panel.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>userms, tatts, attservo</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>userms</literal></term>
+	<listitem>
+	  <para>
+	    This command makes <command>cacor</command>  display the voltage RMS value from the
+	    digitisers on each input (antenna, <acronym>IF</acronym>, polarisation) in the
+	    &#x201C;Sampler Levels&#x201D; tab in the data panel.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>usegtp, tatts, attservo</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><literal>where {filterbank|channel|zoom} {f|z}<replaceable>f</replaceable> <replaceable>c</replaceable></literal></term>
+	<listitem>
+	  <para>
+	    When the correlator develops a problem in a zoom or continuum channel, you may
+	    need to identify which correlator block is responsible for computing the bad
+	    channel so it can be reprogrammed and fixed. This command lets you specify the
+	    bad channel location and it will return the block responsible.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> To find the block responsible for channel 430 in 
+	    the continuum band <acronym>IF</acronym>1, you would use the command:
+	    &#x201C;<literal>where channel f1 430</literal>&#x201D;. It will return something like:
+	    &#x201C;<literal>WHERE CHANNEL F1 430 - processed in block 8 (block on-line)</literal>&#x201D;.
+	    This tells you that CABB block 8 is responsible for the channel, and that the block is still
+	    on-line and active.
+	  </para>
+
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> To find the block responsible for channel 912 in 
+	    the zoom band z11, you would use the command:
+	    &#x201C;<literal>where zoom z11 912</literal>&#x201D;. It will return something like:
+	    &#x201C;<literal>WHERE ZOOM Z11 912 - processed in block 15 (block on-line)</literal>&#x201D;.
+	    This tells you that CABB block 11 is responsible for the channel, and that the block is still
+	    on-line and active.
+	  </para>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+
+  <section id="changing-cor-configs">
+    <info>
+      <title>Changing Correlator Configs</title>
+    </info>
+    
+    <para>
+      Changing CABB modes is not (yet) simply a matter of selecting the desired mode in the CABB scheduler. (In fact, currently you cannot select a mode in the CABB scheduler.) Nor can you select a mode in the CACOR gui and hit the config button, this has intentionally been disabled. 
+      <indexterm role="cp"><primary>CABB</primary><secondary>reprogramming</secondary><tertiary>generic</tertiary></indexterm> 
+
+    </para>
+
+    <para>
+      To change modes it is necessary to:
+      <itemizedlist>
+          <listitem>
+            <para>stop the current scan</para>
+          </listitem>
+          <listitem>
+            <para>check the cccversion</para>
+	    <para><emphasis role="italics">To check the cccversion: <emphasis role="bold">caccc&gt; cccversion</emphasis>. It should be <emphasis role="bold">&#x201C;newzmsy&#x201D;</emphasis> for all modes except <acronym>VLBI</acronym> and <emphasis role="bold">&#x201C;VLBItwommlos&#x201D;</emphasis> for <acronym>VLBI</acronym> observing.</emphasis>  </para>
+          </listitem>
+          <listitem>
+            <para>in cacor, open the edit menu</para>
+	    <para>select the edit button in the cacor gui,</para>
+	    <para>
+	    <itemizedlist>
+	      <listitem>
+	      <para> select the appropriate config </para>
+	      <para> <emphasis role="bold">edit&gt; get &lt;config-name&gt;</emphasis> </para>
+	      </listitem>
+              <listitem>
+              <para>and program the correlator</para>
+	      <para> <emphasis role="bold">edit&gt; prog</emphasis> </para>
+	      <para> Check that all blocks program correctly. If any blocks report an error, they need to be programmed again, e.g.: </para>
+	      <para> <emphasis role="bold">edit&gt; prog 8</emphasis> or <emphasis role="bold">edit&gt; prog 8 27</emphasis>  </para>
+              </listitem>
+              <listitem>
+              <para>if you are having problems with a block you can try</para>
+              <para>  <emphasis role="bold">edit&gt; prog N cal</emphasis> which just reprograms the calibration (sometimes works) </para>
+              </listitem>
+              <listitem>
+              <para>&lt;CR&gt; to return out of the edit menu</para>
+              </listitem>
+	    </itemizedlist>
+	    </para>
+	  </listitem>
+	  <listitem>
+            <para>If required (64MHz modes), set calbands, e.g.</para>
+	    <para> <emphasis role="bold">cacor&gt; calband z z </emphasis> (z for zoom) </para>
+            <para><emphasis role="italics"><emphasis role="bold">NOTE:</emphasis> calband resets to the default (f f) every time you exit from the edit menu</emphasis>  </para>
+	  </listitem>
+          <listitem>
+            <para>start observing a strong calibrator, e.g.</para>
+	    <para> <emphasis role="bold">caobs&gt; track 1 </emphasis></para>
+          </listitem>
+          <listitem>
+            <para>Check for rear transition module (rtm) problems</para>
+	    <para> F1 and F2 Datalinks (separate tabs in the CACOR gui) should not have red error messages, and the 1ms values are in the range 2000 - 13000 (i.e. not 260 000). Fix with:</para>
+	    <para> <emphasis role="bold">cacor&gt; rtminit </emphasis></para>
+          </listitem>
+          <listitem>
+            <para>Check (in spd) for &#x201C;big humps&#x201D;</para>
+	    <para> F1 and F2 datalinks list the antennas, frequencies (1 or 2) and pols (A or B) and the block associated with that ant/freq/pol. Reprogram that block to fix big humps.</para>
+          </listitem>
+          <listitem>
+            <para>Check (in spd) individual baseline amplitudes and phases for discontinuities and fix by reprogramming relevant blocks</para>
+          </listitem>
+          <listitem>
+            <para>Setup standard flagging</para>
+            <para><emphasis role="italics"><emphasis role="bold">NOTE:</emphasis> all flagging is cleared every time you exit from the edit menu</emphasis>  </para>
+          </listitem>
+          <listitem>
+            <para>Check that tvch is set to appropriate values</para>
+          </listitem>
+          <listitem>
+            <para>Check that delavg is set to an appropriate value</para>
+          </listitem>
+          <listitem>
+            <para>Standard setup follows (i.e. check sampler levels, and for fringes, then dcal, acal, pcal etc.)</para>
+         </listitem>
+       </itemizedlist>
+    </para>
+
+    
+  </section>
+
+
+  <section id="changing-cor-configs-1MHz-cont">
+    <info>
+      <title>Changing to 1MHz, No Zooms</title>
+    </info>
+    
+    <para>
+      <emphasis role="bold">IMPORTANT:</emphasis> 1MHz continuum observations can be done with either: <emphasis role="bold"> ca_2048_2048_2f </emphasis> or <emphasis role="bold"> ca_2048_2048_2f_zm16 </emphasis>. <emphasis role="bold"> If CABB is in the ca_2048_2048_2f_zm16 config do NOT reprogram for 1MHz (non-zoom) continuum observations. </emphasis>
+      <indexterm role="cp"><primary>CABB</primary><secondary>reprogramming</secondary><tertiary>1MHz no zooms</tertiary></indexterm> 
+    </para>
+
+    <para>
+      To change modes it is necessary to:
+      <itemizedlist>
+          <listitem>
+            <para>stop the current scan</para>
+          </listitem>
+          <listitem>
+            <para>check the cccversion</para>
+	    <para><emphasis role="italics">To check the cccversion: <emphasis role="bold">caccc&gt; cccversion</emphasis>. It should be <emphasis role="bold">&#x201C;newzmsy&#x201D;</emphasis> for all modes except <acronym>VLBI</acronym> and <emphasis role="bold">&#x201C;VLBItwommlos&#x201D;</emphasis> for <acronym>VLBI</acronym> observing.</emphasis>  </para>
+          </listitem>
+          <listitem>
+            <para>in cacor, open the edit menu</para>
+	    <para>select the edit button in the cacor gui,</para>
+	    <para>
+	    <itemizedlist>
+	      <listitem>
+	      <para> select the continuum config</para>
+	      <para> <emphasis role="bold">edit&gt; get ca_2048_2048_2f</emphasis> </para>
+	      </listitem>
+              <listitem>
+              <para>and program the correlator</para>
+	      <para> <emphasis role="bold">edit&gt; prog</emphasis> </para>
+	      <para> Check that all blocks program correctly. If any blocks report an error, they need to be programmed again, e.g.: </para>
+	      <para> <emphasis role="bold">edit&gt; prog 8</emphasis> or <emphasis role="bold">edit&gt; prog 8 27</emphasis>  </para>
+              </listitem>
+              <listitem>
+              <para>&lt;CR&gt; to return out of the edit menu</para>
+              </listitem>
+	    </itemizedlist>
+	    </para>
+	  </listitem>
+	  <listitem>
+            <para>Calband should be <emphasis role="bold">&#x201C;f f&#x201D;</emphasis> as this happens automatically whenever you exit from the edit menu. This is what you need for this config, but you can check with:</para>
+	    <para> <emphasis role="bold">cacor&gt; calband</emphasis></para>
+	  </listitem>
+          <listitem>
+            <para>start observing a strong calibrator, e.g.</para>
+	    <para> <emphasis role="bold">caobs&gt; track 1 </emphasis></para>
+          </listitem>
+          <listitem>
+            <para>Check for rear transition module (rtm) problems</para>
+	    <para> F1 and F2 Datalinks (separate tabs in the CACOR gui) should not have red error messages, and the 1ms values are in the range 2000 - 13000 (i.e. not 260 000). Fix with:</para>
+	    <para> <emphasis role="bold">cacor&gt; rtminit </emphasis></para>
+          </listitem>
+          <listitem>
+            <para>Check (in spd) for &#x201C;big humps&#x201D;</para>
+	    <para> F1 and F2 datalinks list the antennas, frequencies (1 or 2) and pols (A or B) and the block associated with that ant/freq/pol. Reprogram that block to fix big humps.</para>
+          </listitem>
+          <listitem>
+            <para>Check (in spd) individual baseline amplitudes and phases for discontinuities and fix by reprogramming relevant blocks</para>
+          </listitem>
+          <listitem>
+            <para>Setup standard flagging</para>
+	    <para> <emphasis role="bold">cacor&gt; fflag f1 birdies </emphasis></para>
+	    <para> <emphasis role="bold">cacor&gt; fflag f2 birdies </emphasis></para>
+            <para><emphasis role="italics"><emphasis role="bold">NOTE:</emphasis> all flagging is cleared every time you exit from the edit menu</emphasis>  </para>
+          </listitem>
+          <listitem>
+            <para>Check that tvch is set to appropriate values</para>
+          </listitem>
+          <listitem>
+            <para>Check that delavg is set to an appropriate value</para>
+          </listitem>
+          <listitem>
+            <para>Standard setup follows (i.e. check sampler levels, and for fringes, then dcal, acal, pcal etc.)</para>
+         </listitem>
+       </itemizedlist>
+    </para>
+
+    
+  </section>
+
+
+  <section id="changing-cor-configs-64MHz-zooms">
+    <info>
+      <title>Changing to 64MHz Zooms</title>
+    </info>
+    
+    <para>
+      <emphasis role="bold">Note:</emphasis> do NOT use 0823-500 for setting up 64MHz zooms at 16cm.
+      <indexterm role="cp"><primary>CABB</primary><secondary>reprogramming</secondary><tertiary>64MHz zooms</tertiary></indexterm> 
+    </para>
+
+    <para>
+      To change modes it is necessary to:
+      <itemizedlist>
+          <listitem>
+            <para>stop the current scan</para>
+          </listitem>
+          <listitem>
+            <para>check the cccversion</para>
+	    <para><emphasis role="italics">To check the cccversion: <emphasis role="bold">caccc&gt; cccversion</emphasis>. It should be <emphasis role="bold">&#x201C;newzmsy&#x201D;</emphasis> for all modes except <acronym>VLBI</acronym> and <emphasis role="bold">&#x201C;VLBItwommlos&#x201D;</emphasis> for <acronym>VLBI</acronym> observing.</emphasis>  </para>
+          </listitem>
+          <listitem>
+            <para>in cacor, open the edit menu</para>
+	    <para>select the edit button in the cacor gui,</para>
+	    <para>
+	    <itemizedlist>
+	      <listitem>
+	      <para> select the 64MHz zoom config</para>
+	      <para> <emphasis role="bold">edit&gt; get cfb_64_32_2f_zm16</emphasis> </para>
+	      </listitem>
+              <listitem>
+              <para>and program the correlator</para>
+	      <para> <emphasis role="bold">edit&gt; prog</emphasis> </para>
+	      <para> Check that all blocks program correctly. If any blocks report an error, they need to be programmed again, e.g.: </para>
+	      <para> <emphasis role="bold">edit&gt; prog 8</emphasis> or <emphasis role="bold">edit&gt; prog 8 27</emphasis>  </para>
+              </listitem>
+              <listitem>
+              <para>&lt;CR&gt; to return out of the edit menu</para>
+              </listitem>
+	    </itemizedlist>
+	    </para>
+	  </listitem>
+	  <listitem>
+            <para>There is no extra flagging needed in this config </para>
+	  </listitem>
+          <listitem>
+            <para>start observing a strong calibrator, e.g.</para>
+	    <para> <emphasis role="bold">caobs&gt; track 1 </emphasis></para>
+	    <para><emphasis role="italics">There are several &#x201C;standard&#x201D; schedule files with a set of zooms for setting - e.g. <emphasis role="bold">setup_1934_64</emphasis> (and similar). </emphasis> </para>
+          </listitem>
+          <listitem>
+            <para>Check for rear transition module (rtm) problems</para>
+	    <para> F1 and F2 Datalinks (separate tabs in the CACOR gui) should not have red error messages, and the 1ms values are in the range 2000 - 13000 (i.e. not 260 000). Fix with:</para>
+	    <para> <emphasis role="bold">cacor&gt; rtminit </emphasis></para>
+          </listitem>
+          <listitem>
+            <para>Check (in spd) for &#x201C;big humps&#x201D;</para>
+	    <para> F1 and F2 datalinks list the antennas, frequencies (1 or 2) and pols (A or B) and the block associated with that ant/freq/pol. Reprogram that block to fix big humps.</para>
+          </listitem>
+          <listitem>
+            <para>Check (in spd) zoom amplitudes and phases - continuum phases and amplitudes will probably be a mess, but zoom products should be clean.</para>
+	    <itemizedlist>
+	      <listitem>
+		<para>Check every zoom that will be used in at least two consecutive cycles. </para>
+		<para>If there are a significant number of zooms, it is often quicker to set up differences: </para>
+		<para> <emphasis role="bold">spd&gt; rsave </emphasis> Saves every cycle into a reference so that you display a running difference of the current cycle against previous cycle.</para>
+		<para> <emphasis role="bold">spd&gt; d -100 100 </emphasis> To actually see the difference</para>
+		<para><emphasis role="italics"><emphasis role="bold">Note:</emphasis>You need to wait several cycles after a reprogram until you are actually getting a relevant difference.</emphasis></para> 
+
+		<para>To work out which block needs programming, use the cacor &#x201C;where&#x201D; command: </para>
+		<para> <emphasis role="bold">cacor&gt; where zoom z<subscript>n</subscript> chan</emphasis> </para>
+		<itemizedlist>
+		  <listitem>
+		    <para> z<subscript>n</subscript> is the offending zoom (e.g. z21) </para>
+		  </listitem>
+		  <listitem>
+		    <para> chan is a channel in the range of bad data - for single zooms this can be any channel in the band, but you will need to be more specific for stitched zooms </para>
+		  </listitem>
+		</itemizedlist>
+	      </listitem>
+	      <listitem>
+		<para>To reprogramming a block: </para>
+		<para> <emphasis role="bold">config&gt; prog <emphasis role="italics">[offending block]</emphasis> calc</emphasis> or </para>
+		<para> <emphasis role="bold">config&gt; prog <emphasis role="italics">[offending block]</emphasis> x 7,8</emphasis> or </para>
+		<para> <emphasis role="bold">config&gt; prog <emphasis role="italics">[offending block]</emphasis></emphasis> </para>
+		<para> <emphasis role="italics">Note: <emphasis role="bold">calc</emphasis> resets the c bus;<emphasis role="bold">x 7,8</emphasis> resets CABB board memory controllers; and No swith will reprogram the whole block, (delays need to be recalculated)</emphasis></para> 
+	      </listitem>
+	      <listitem>
+		<para> Iterate until all is good </para>
+	      </listitem>	
+	    </itemizedlist>  
+	  </listitem>
+          <listitem>
+	    <para>The reprogramming is finished......... but array calibration is still to be done - and is more complicated than continuum or 1MHz zoom calibration.</para>
+	  </listitem>
+       </itemizedlist>
+    </para>
+   
+
+   <section id="64MHz-zoom-cal">
+    <info>
+      <title>64MHz Zoom Calibration</title>
+    </info>
+    
+    <para> The issue is that, unless the delays are small, the phases will wrap by more than a turn within a single continuum channel - resulting in the phases just being noise. </para>
+    
+    <para>To calibrate, first check (in spd) that the delays aren't already more-or-less calibrated..... Observe a strong source: If the phase across the first zoom in each frequency more-or-less flat (i.e. significantly less than one turn across the band), no extra calibration is needed and you can just proceed as normal. </para>
+    <para>Assuming that the delays are large, they need to be determined in two steps: 
+    <itemizedlist>
+      <listitem>
+	<para> First across a zoom band (i.e. one continuum channel) </para>
+      </listitem>
+      <listitem>
+	<para> Then across the whole continuum band </para>
+      </listitem>
+    </itemizedlist>
+    </para>
+
+    <para> The setup scan needs to be on a strong calibrator with the continuum frequency at the same centre frequency as the observations <emphasis role="bold">and the first zoom, in each frequency must be 1 zoom wide (you cannot do the zoom calibration with stitched zooms)</emphasis>. </para>
+    <para>
+    <itemizedlist>
+      <listitem>
+	<para>Set calbands to &#x201C;z z&#x201D;</para>
+	<para><emphasis role="bold">cacor&gt; calband z z</emphasis></para>
+      </listitem>
+      <listitem>
+	<para>In spd, check the phases in the first zoom of each frequency (z<subscript>1</subscript> and z<subscript>[n+1]</subscript> where n is the number of zooms in the first frequency)</para>
+      </listitem>
+      <listitem>
+	<para>If these are not clean, that problem needs to be sorted before going any further. (Stop/Start is often a good thing to try first.)</para>
+      </listitem>
+      <listitem>
+	<para>In vis check that the delays are flat in all pols</para>
+	<para>(if they are noisy but spd looks good, the first thing to check will be delavg: increasing delavg will give better signal to noise, but it will need to be decreased if the phases are wrapping quickly).</para>
+      </listitem>
+      <listitem>
+	<para>When they are clean, delay calibrate:</para>
+	<para><emphasis role="bold">caobs&gt; corr dcal</emphasis></para>
+	<para>This applies the delay found in the single zoom (z<subscript>1</subscript> and z<subscript>[n+1]</subscript>) to the whole continuum band in each frequency.</para>
+	<para>The delays should now be sufficiently small that the phases in the continuum bands (f1 and f2) should be fairly clean and possible to calculate a linear slope across the band. (Again, if the delays in vis are noisy, there is a problem and it needs to be sorted out before going any further.)</para>
+      </listitem>
+      <listitem>
+	<para>Set calband back to &#x201C;f f&#x201D; - i.e. using the whole continuum band to calculate delays (and Tsys etc.)</para>
+	<para><emphasis role="bold">cacor&gt; calband f f</emphasis></para>
+	<para><emphasis role="italics"><emphasis role="bold">Check delavg:</emphasis> If it had to be increased for the zoom calibration, it will probably be too large for continuum</emphasis></para>
+      </listitem>
+      <listitem>
+	<para>Check (in spd) baseline amplitudes and phases</para>
+      </listitem>	
+      <listitem>
+	<para>Check that tvch is set to appropriate values</para>
+      </listitem>	
+      <listitem>
+	<para>Check that delavg is set to an appropriate value</para>
+      </listitem>	
+    </itemizedlist>
+    </para>
+
+    <para>Standard setup follows (i.e. dcal, acal, pcal etc.)</para>
+    <para>If you get to the end of the calibration, and appear to have a working system, but that the Tsyss are high, check that the noise diode phases are flat.</para>
+    <para>
+      <itemizedlist>
+	<listitem>
+	  <para>In spd, select the autocorrelation ab products (i.e. the noise diode products)</para>
+	  <para><emphasis role="italics"><emphasis role="bold">Note:</emphasis> The AB products  are only generated when in the continuum calband (i.e. calband f )</emphasis></para>
+	  <para><emphasis role="bold">spd&gt; acs on</emphasis></para>
+	  <para><emphasis role="bold">spd&gt; sel ab</emphasis></para>
+	  <para><emphasis role="bold">spd&gt; p -200 200</emphasis></para>
+	  <para>Check that the phases are not wrapping.</para>
+	  <para><emphasis role="italics"><emphasis role="bold">(Note:</emphasis>Though the phases generally wrap over many channels in the cross correlation products, they can be wrapping quite quickly in the auto-correlation products and delavg may need to be a small number, which may mean that you need a stronger calibrator to sort this out.)</emphasis></para>
+	</listitem>
+      </itemizedlist>
+    </para>	
+   </section>
+
+  </section>
+ 
+
+
+  <section id="changing-cor-configs-hybrid-mode">
+    <info>
+      <title>Changing to Hybrid Config (1MHz Continuum and 64MHz Zoom Mode)</title>
+    </info>
+    
+    <para>
+      <emphasis role="bold">Note:</emphasis> do NOT use 0823-500 for setting up 64MHz zooms at 16cm.
+      <indexterm role="cp"><primary>CABB</primary><secondary>reprogramming</secondary><tertiary>hybrid mode</tertiary></indexterm> 
+    </para>
+
+    <para>
+      To change modes it is necessary to:
+      <itemizedlist>
+          <listitem>
+            <para>stop the current scan</para>
+          </listitem>
+          <listitem>
+            <para>check the cccversion</para>
+	    <para><emphasis role="italics">To check the cccversion: <emphasis role="bold">caccc&gt; cccversion</emphasis>. It should be <emphasis role="bold">&#x201C;newzmsy&#x201D;</emphasis> for all modes except <acronym>VLBI</acronym> and <emphasis role="bold">&#x201C;VLBItwommlos&#x201D;</emphasis> for <acronym>VLBI</acronym> observing.</emphasis>  </para>
+          </listitem>
+          <listitem>
+            <para>in cacor, open the edit menu</para>
+	    <para>select the edit button in the cacor gui,</para>
+	    <para>
+	    <itemizedlist>
+	      <listitem>
+	      <para> select the hybrid config</para>
+	      <para> <emphasis role="bold">edit&gt; get cfb_1-cbf_64_zm16</emphasis> </para>
+	      </listitem>
+              <listitem>
+              <para>and program the correlator</para>
+	      <para> <emphasis role="bold">edit&gt; prog</emphasis> </para>
+	      <para> Check that all blocks program correctly. If any blocks report an error, they need to be programmed again, e.g.: </para>
+	      <para> <emphasis role="bold">edit&gt; prog 8</emphasis> or <emphasis role="bold">edit&gt; prog 8 27</emphasis>  </para>
+              </listitem>
+              <listitem>
+              <para>&lt;CR&gt; to return out of the edit menu</para>
+              </listitem>
+	    </itemizedlist>
+	    </para>
+	  </listitem>
+	  <listitem>
+            <para>There is no extra flagging needed in this config </para>
+	  </listitem>
+          <listitem>
+            <para>start observing a strong calibrator, e.g.</para>
+	    <para> <emphasis role="bold">caobs&gt; track 1 </emphasis></para>
+	    <para><emphasis role="italics">There are several &#x201C;standard&#x201D; schedule files with a set of zooms for setting - e.g. <emphasis role="bold">setup_1934_64</emphasis> (and similar). </emphasis> </para>
+          </listitem>
+          <listitem>
+            <para>Check for rear transition module (rtm) problems</para>
+	    <para> F1 and F2 Datalinks (separate tabs in the CACOR gui) should not have red error messages, and the 1ms values are in the range 2000 - 13000 (i.e. not 260 000). Fix with:</para>
+	    <para> <emphasis role="bold">cacor&gt; rtminit </emphasis></para>
+          </listitem>
+          <listitem>
+            <para>Check (in spd) for &#x201C;big humps&#x201D;</para>
+	    <para> F1 and F2 datalinks list the antennas, frequencies (1 or 2) and pols (A or B) and the block associated with that ant/freq/pol. Reprogram that block to fix big humps.</para>
+          </listitem>
+          <listitem>
+            <para>Check (in spd) zoom amplitudes and phases - continuum phases and amplitudes will probably be a mess, but zoom products should be clean.</para>
+	    <itemizedlist>
+	      <listitem>
+		<para>Check every zoom that will be used in at least two consecutive cycles. </para>
+		<para>If there are a significant number of zooms, it is often quicker to set up differences:</para>
+		<para> <emphasis role="bold">spd&gt; rsave </emphasis> Saves every cycle into a reference so that you display a running difference of the current cycle against previous cycle.</para>
+		<para> <emphasis role="bold">spd&gt; d -100 100 </emphasis> To actually see the difference</para>
+		<para><emphasis role="italics"><emphasis role="bold">Note:</emphasis>You need to wait several cycles after a reprogram until you are actually getting a relevant difference.</emphasis></para> 
+
+		<para>To work out which block needs programming, use the cacor &#x201C;where&#x201D; command: </para>
+		<para> <emphasis role="bold">cacor&gt; where zoom z<subscript>n</subscript> chan</emphasis> </para>
+		<itemizedlist>
+		  <listitem>
+		    <para> z<subscript>n</subscript> is the offending zoom (e.g. z21) </para>
+		  </listitem>
+		  <listitem>
+		    <para> chan is a channel in the range of bad data - for single zooms this can be any channel in the band, but you will need to be more specific for stitched zooms </para>
+		  </listitem>
+		</itemizedlist>
+	      </listitem>
+	      <listitem>
+		<para>To reprogramming a block: </para>
+		<para> <emphasis role="bold">config&gt; prog <emphasis role="italics">[offending block]</emphasis> calc</emphasis> or </para>
+		<para> <emphasis role="bold">config&gt; prog <emphasis role="italics">[offending block]</emphasis> x 7,8</emphasis> or </para>
+		<para> <emphasis role="bold">config&gt; prog <emphasis role="italics">[offending block]</emphasis></emphasis> </para>
+		<para> <emphasis role="italics">Note: <emphasis role="bold">calc</emphasis> resets the c bus;<emphasis role="bold">x 7,8</emphasis> resets CABB board memory controllers; and No swith will reprogram the whole block, (delays need to be recalculated)</emphasis></para> 
+	      </listitem>
+	      <listitem>
+		<para> Iterate until all is good </para>
+	      </listitem>	
+	    </itemizedlist>  
+	  </listitem>
+          <listitem>
+	    <para>The reprogramming is finished......... but array calibration is still to be done - and is more complicated than continuum or 1MHz zoom calibration.</para>
+	  </listitem>
+       </itemizedlist>
+    </para>
+  
+
+   <section id="hybrid-cal">
+    <info>
+      <title>64MHz Zoom/Continuum Hybrid Calibration</title>
+    </info>
+    
+    <para> The issue is that, unless the delays are small, the phases will wrap by more than a turn within a single continuum channel - resulting in the phases just being noise. </para>
+    
+    <para>To calibrate, first check (in spd) that the delays aren't already more-or-less calibrated..... If the slope across continuum band phase plot in spd is not noisy and the delays in vis are small (&lt;2nsec) for all polarisations, you can just proceed as normal. </para>
+    <para>Assuming that the delays are large, they need to be determined in two steps: 
+    <itemizedlist>
+      <listitem>
+	<para> First across a zoom band (i.e. one continuum channel) </para>
+      </listitem>
+      <listitem>
+	<para> Then across the whole continuum band </para>
+      </listitem>
+    </itemizedlist>
+    </para>
+
+    <para> The setup scan needs to be on a strong calibrator with the continuum frequency at the same centre frequency as the observations <emphasis role="bold">and the first zoom, in each frequency must be 1 zoom wide (you cannot do the zoom calibration with stitched zooms)</emphasis>. </para>
+    <para>
+    <itemizedlist>
+      <listitem>
+	<para>Set calbands to &#x201C;f z&#x201D;</para>
+	<para><emphasis role="bold">cacor&gt; calband f z</emphasis></para>
+      </listitem>
+      <listitem>
+	<para>Start observing a strong calibrator:</para>
+	<para><emphasis role="bold">caobs&gt; track 1</emphasis></para>
+      </listitem>	
+      <listitem>
+	<para>In spd, check the phases in the first zoom of each frequency (z<subscript>1</subscript> and z<subscript>[n+1]</subscript> where n is the number of zooms in the first frequency)</para>
+      </listitem>
+      <listitem>
+	<para>If these are not clean, that problem needs to be sorted before going any further. (Stop/Start is often a good thing to try first.)</para>
+      </listitem>
+      <listitem>
+	<para>In vis check that the delays are flat in all pols</para>
+	<para>(if they are noisy but spd looks good, the first thing to check will be delavg: increasing delavg will give better signal to noise, but it will need to be decreased if the phases are wrapping quickly).</para>
+      </listitem>
+      <listitem>
+	<para>When they are clean, delay calibrate:</para>
+	<para><emphasis role="bold">caobs&gt; corr dcal</emphasis></para>
+	<para>This applies the delay found in the single zoom (z<subscript>1</subscript> and z<subscript>[n+1]</subscript>) to the whole continuum band in each frequency.</para>
+	<para>The delays should now be sufficiently small that the phases should be farily clean and the slope accross the band less than one turn per (64MHz continuum) channel. (Again, if the delays in vis are noisy, there is a problem and it needs to be sorted out before going any further.)</para>
+      </listitem>
+      <listitem>
+	<para>Set calband back to &#x201C;f f&#x201D; - i.e. using the whole continuum band to calculate delays (and T<subscript>sys</subscript> etc.)</para>
+	<para><emphasis role="bold">cacor&gt; calband f f</emphasis></para>
+	<para><emphasis role="italics"><emphasis role="bold">Check delavg:</emphasis> If it had to be increased for the zoom calibration, it will probably be too large for continuum</emphasis></para>
+      </listitem>
+      <listitem>
+	<para>Check (in spd) baseline amplitudes and phases</para>
+      </listitem>	
+      <listitem>
+	<para>Check that tvch is set to appropriate values</para>
+      </listitem>	
+      <listitem>
+	<para>Check that delavg is set to an appropriate value</para>
+      </listitem>	
+    </itemizedlist>
+    </para>
+    <para>Standard setup follows (i.e. dcal, acal, pcal etc.)</para>
+    <para>If you get to the end of the calibration, and appear to have a working system, but that the Tsyss are high, check that the noise diode phases are flat.</para>
+    <para>
+      <itemizedlist>
+	<listitem>
+	  <para>In spd, select the autocorrelation ab products (i.e. the noise diode products)</para>
+	  <para><emphasis role="italics"><emphasis role="bold">Note:</emphasis> The AB products  are only generated when in the continuum calband (i.e. calband f )</emphasis></para>
+	  <para><emphasis role="bold">spd&gt; acs on</emphasis></para>
+	  <para><emphasis role="bold">spd&gt; sel ab</emphasis></para>
+	  <para><emphasis role="bold">spd&gt; p -200 200</emphasis></para>
+	  <para>Check that the phases are not wrapping.</para>
+	  <para><emphasis role="italics"><emphasis role="bold">(Note:</emphasis>Though the phases generally wrap over many channels in the cross correlation products, they can be wrapping quite quickly in the auto-correlation products and delavg may need to be a small number, which may mean that you need a stronger calibrator to sort this out.)</emphasis></para>
+	</listitem>
+      </itemizedlist>
+    </para>	
+   </section>
+
+  </section> 
+
+
+  <section id="changing-cor-configs-pulsar">
+    <info>
+      <title>Changing to Pulsar Binned mode</title>
+    </info>
+    
+    <para><emphasis role="bold">IMPORTANT:</emphasis> In order for CABB to fold pulsar data correctly, a predictor file is needed:  
+    <itemizedlist>
+      <listitem>
+	<para>On caccc1, type: </para>
+	<para> <emphasis role="bold">caccc1&gt; psrpred</emphasis> </para>
+      </listitem>
+      <listitem>
+	<para> Choose the pulsar name, e.g.: </para>
+	<para> <emphasis role="bold">psrpred&gt; J1302-6350</emphasis> or  </para>
+	<para> <emphasis role="bold">psrpred&gt; J0835-4510</emphasis> for Vela  </para>
+      </listitem>
+      <listitem>
+	<para> follow the defaults thereafter</para>
+      </listitem>
+    </itemizedlist>	
+	    
+    </para>
+    <para>
+    </para>  
+    <para>
+    </para>  
+    <para>
+    </para>  
+
+    <para>
+      To change modes it is necessary to:
+      <itemizedlist>
+          <listitem>
+            <para>stop the current scan</para>
+          </listitem>
+          <listitem>
+            <para>cccversion: pulsar mode works in any version.</para>
+          </listitem>
+          <listitem>
+            <para>in cacor, open the edit menu</para>
+	    <para>select the edit button in the cacor gui,</para>
+	    <para>
+	    <itemizedlist>
+	      <listitem>
+	      <para> select the appropriate config</para>
+	      <para> <emphasis role="bold">edit&gt; get psr32_2f_favg4</emphasis> </para>
+	      <para> <emphasis role="italics">The psr32_2f_favg4 config has 4 &#x201C;frequencies&#x201D;. F1 and F3 are continuum bands with 2048 1MHz wide channels. F2 and F4 are the pulsar data - the continuum data is averaged into 4MHz wide channels, then each channel binned into time bins as defined by the predictor file. </emphasis></para>
+	      </listitem>
+              <listitem>
+              <para>and program the correlator</para>
+	      <para> <emphasis role="bold">edit&gt; prog</emphasis> </para>
+	      <para> Check that all blocks program correctly. If any blocks report an error, they need to be programmed again, e.g.: </para>
+	      <para> <emphasis role="bold">edit&gt; prog 8</emphasis> or <emphasis role="bold">edit&gt; prog 8 27</emphasis>  </para>
+              </listitem>
+              <listitem>
+              <para>if you are having problems with a block you can try</para>
+              <para>  <emphasis role="bold">edit&gt; prog N cal</emphasis> which just reprograms the calibration (sometimes works) </para>
+              </listitem>
+              <listitem>
+              <para>&lt;CR&gt; to return out of the edit menu</para>
+              </listitem>
+	    </itemizedlist>
+	    </para>
+	  </listitem>
+	  <listitem>
+            <para>Calband will be set to the default values - which is what is required</para>
+	  </listitem>
+          <listitem>
+            <para>start observing a strong calibrator, e.g.</para>
+	    <para> <emphasis role="bold">caobs&gt; track 1 </emphasis></para>
+          </listitem>
+          <listitem>
+            <para>Check for rear transition module (rtm) problems</para>
+	    <para> F1 and F2 Datalinks (separate tabs in the CACOR gui) should not have red error messages, and the 1ms values are in the range 2000 - 13000 (i.e. not 260 000). Fix with:</para>
+	    <para> <emphasis role="bold">cacor&gt; rtminit </emphasis></para>
+          </listitem>
+          <listitem>
+            <para>Check (from non-binned autocorrelations (F1, F3) in spd) for &#x201C;big humps&#x201D;. To fix, reprogram the relevant block.</para>
+	    <para>To determine the block, note antenna, frequency (1 or 2), and polarization (A or B) - then read off the block from the relevant Datalink tab on the CABB GUI. </para>
+          </listitem>
+          <listitem>
+            <para>Check (in spd) individual baseline amplitudes and phases for discontinuities and fix by reprogramming relevant blocks</para>
+          </listitem>
+	  <listitem>
+	    <para>Check for memory problems - every second cycle is obviously bad. Fix with: </para>
+	    <para> <emphasis role="bold">cacor&gt; reset mem </emphasis></para>
+	  </listitem>  
+          <listitem>
+            <para>Setup standard flagging</para>
+	    <para> <emphasis role="bold">cacor&gt; fflag f1 birdies </emphasis></para>
+	    <para> <emphasis role="bold">cacor&gt; fflag f2 birdies </emphasis></para>
+            <para><emphasis role="italics"><emphasis role="bold">NOTE:</emphasis> all flagging is cleared every time you exit from the edit menu</emphasis>  </para>
+          </listitem>
+          <listitem>
+            <para>Check that tvch is set to appropriate values</para>
+          </listitem>
+          <listitem>
+            <para>Check that delavg is set to an appropriate value</para>
+          </listitem>
+          <listitem>
+            <para>Standard setup follows (i.e. check sampler levels, and for fringes, then dcal, acal, pcal etc.)</para>
+         </listitem>
+	 <listitem>
+	   <para> <emphasis role="italics"> <emphasis role="bold">Note:</emphasis> As of end October, 2013, there is a bug in the cacor software that means that the T<subscript>sys</subscript> is not being calculated correctly for the second (F3) frequency.</emphasis></para>
+	 </listitem>
+       </itemizedlist>
+    </para>
+    
+  </section>
+
+  <section id="changing-cor-configs-1MHz-zooms">
+    <info>
+      <title>Changing to 1MHz Zooms</title>
+    </info>
+    
+    <para>
+      <emphasis role="bold">Note:</emphasis> This is really for experts - if you haven't been trained for it, don't try it!
+      <indexterm role="cp"><primary>CABB</primary><secondary>reprogramming</secondary><tertiary>1MHz zooms</tertiary></indexterm> 
+    </para>
+
+    <para>
+      To change modes it is necessary to:
+      <itemizedlist>
+          <listitem>
+            <para>stop the current scan</para>
+          </listitem>
+          <listitem>
+            <para>cccversion: 1MHz mode works in either standard version</para>
+	    <para><emphasis role="italics">To check the cccversion: <emphasis role="bold">caccc&gt; cccversion</emphasis>. Standard versions are <emphasis role="bold">&#x201C;newzmsy&#x201D;</emphasis> and <emphasis role="bold">&#x201C;VLBItwommlos&#x201D;</emphasis>.</emphasis>  </para>
+          </listitem>
+          <listitem>
+            <para>in cacor, open the edit menu</para>
+	    <para>select the edit button in the cacor gui,</para>
+	    <para>
+	    <itemizedlist>
+	      <listitem>
+	      <para> select the 1MHz zoom config</para>
+	      <para> <emphasis role="bold">edit&gt; get ca_2048_2048_2f_zm16</emphasis> </para>
+	      </listitem>
+              <listitem>
+              <para>and program the correlator</para>
+	      <para> <emphasis role="bold">edit&gt; prog</emphasis> </para>
+	      <para> Check that all blocks program correctly. If any blocks report an error, they need to be programmed again, e.g.: </para>
+	      <para> <emphasis role="bold">edit&gt; prog 8</emphasis> or <emphasis role="bold">edit&gt; prog 8 27</emphasis>  </para>
+              </listitem>
+              <listitem>
+              <para>&lt;CR&gt; to return out of the edit menu</para>
+              </listitem>
+	    </itemizedlist>
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>Calbands should be the default as this happens automatically whenever you exit from the edit menu. This is what you need for this config.</para>
+	  </listitem>
+          <listitem>
+            <para>start observing a strong calibrator, e.g.</para>
+	    <para> <emphasis role="bold">caobs&gt; track 1 </emphasis></para>
+	    <para><emphasis role="italics"><emphasis role="bold">Note: Wz16_cb16_5500</emphasis> is a zoom schedule file with a set of calibrators for setting up.</emphasis> </para>
+          </listitem>
+          <listitem>
+            <para>Check for rear transition module (rtm) problems</para>
+	    <para> F1 and F2 Datalinks (separate tabs in the CACOR gui) should not have red error messages, and the 1ms values are in the range 2000 - 13000 (i.e. not 260 000). Fix with:</para>
+	    <para> <emphasis role="bold">cacor&gt; rtminit </emphasis> (e.g. <emphasis role="bold">cacor&gt; rtminit ca03 2a</emphasis>)</para>
+          </listitem>
+          <listitem>
+            <para>Check (in spd) for &#x201C;big humps&#x201D;</para>
+	    <para> To fix, reprogram the relevant block. To determine the block, note antenna, frequency (1 or 2), and polarization (A or B) - then read off the block from the relevant Datalink tab on the CABB GUI. </para>
+          </listitem>
+	  <listitem>
+	    <para>#Check (in spd - look at the zoom autocorrelations) for &#x201C;small humps&#x201D;. To fix, reprogram the relevant block. </para>
+	  </listitem>
+	  <listitem>
+	    <para>Still looking at the autocorrelation continuum spectrums, check for spikes.</para>
+	    <para>Use differences:</para>
+	    <para> <emphasis role="bold">spd&gt; rsave </emphasis> Saves every cycle into a reference so that you display a running difference of the current cycle against previous cycle.</para>
+	    <para> <emphasis role="bold">spd&gt; d -100 100 </emphasis> To actually see the difference</para>
+	    <para><emphasis role="italics"><emphasis role="bold">Note:</emphasis>You need to wait several cycles after a reprogram until you are actually getting a relevant difference.</emphasis></para> 
+	    <para> To fix, work out which block is involved with the where command:</para>
+	    <para> <emphasis role="bold">cacor&gt; where zoom f# channel# </emphasis></para>
+	    <para>(e.g.<emphasis role="bold">cacor&gt; where channel f1 430</emphasis> returns the block that is correlating channel 430 in IF1)</para>
+ 	    <para>Program block with:</para>
+	    <para> <emphasis role="bold">edit&gt; prog # calc</emphasis></para>
+	    <para>Iterate until all spikes are cleaned up</para>
+	    <para><emphasis role="italics"><emphasis role="bold">Note:</emphasis>There are problems with block 8 and 28 which mean that the autocorrelations on CA03 are never really clean</emphasis></para>
+	  </listitem>
+	  <listitem>
+	    <para>When ok, calibrate the delays [dcal]</para>
+	    <para>Still in autocorrelation, difference mode, look for spikes and blocks of bad data in z1 and z2. Identify any offending blocks using the <emphasis role="bold">where</emphasis> command.</para>
+	  </listitem>  
+	  <listitem>
+	    <para>To reprogramming a block: </para>
+	    <para> <emphasis role="bold">config&gt; prog <emphasis role="italics">[offending block]</emphasis> calc</emphasis> or </para>
+	    <para> <emphasis role="bold">config&gt; prog <emphasis role="italics">[offending block]</emphasis> x 7,8</emphasis> or </para>
+	    <para> <emphasis role="bold">config&gt; prog <emphasis role="italics">[offending block]</emphasis></emphasis> </para>
+	    <para> <emphasis role="italics">Note: <emphasis role="bold">calc</emphasis> resets the c bus; <emphasis role="bold">x 7,8</emphasis> resets CABB board memory controllers; and No swith will reprogram the whole block, (delays need to be recalculated)</emphasis></para> 
+	  </listitem>
+	   <listitem>
+	     <para> Iterate until all is good </para>
+	   </listitem>	
+	   <listitem>
+	     <para>Now that the autocorrelations are done, time for the cross correlations. Again, check (in spd) which channels are causing problems, and determine (from where) which blocks need reprogramming - and program again </para>
+	     <para>Iterate again</para>
+	   </listitem>
+	   <listitem>
+	     <para>And finally (well almost finally) the cross products</para>
+	     <para>Set this up with:</para>
+	    <para> <emphasis role="bold">spd&gt; on ab ba</emphasis> </para>
+	    <para> <emphasis role="bold">spd&gt; sel *</emphasis> </para>
+	    <para>Look for spikes</para>
+	    <para>You can't do much about a single spike - but average for 20-30 cycles and look for a rash of spikes</para>
+	    <para>And again, determine (from where) which blocks need reprogramming - and program again.</para>
+	    <para>Iterate!</para>
+	   </listitem>
+	   <listitem>
+	     <para>And finally (finally) check (in vis) that the amplitudes are stable over time. Determine which antenna/frequency/polarisation are unstable, and reprogram the block indicated by the datalink tabs in CACOR </para>
+	     <para>Then, the observer comes along with a different zoom setup from what you have set up with and problems may occur. So, try to get hold of their schedule and check that it still works. </para>
+	   </listitem>  
+	   <listitem>
+            <para>Setup standard flagging</para>
+	    <para> <emphasis role="bold">cacor&gt; fflag f1 birdies </emphasis></para>
+	    <para> <emphasis role="bold">cacor&gt; fflag f2 birdies </emphasis></para>
+            <para><emphasis role="italics"><emphasis role="bold">NOTE:</emphasis> all flagging is cleared every time you exit from the edit menu</emphasis>  </para>
+	   </listitem>
+	   <listitem>
+	     <para>Check (in spd) baseline amplitudes and phases</para>
+	   </listitem>	
+	   <listitem>
+	     <para>Check that tvch is set to appropriate values</para>
+	   </listitem>	
+	   <listitem>
+	     <para>Check that delavg is set to an appropriate value</para>
+	   </listitem>
+	   <listitem>
+	     <para>Standard setup follows (i.e. dcal, acal, pcal etc.)</para>
+	   </listitem>  
+      </itemizedlist>
+    </para>
+ 
+  </section>
+
+
+
+  <section id="changing-cor-configs-issues">
+    <info>
+      <title>CABB issues</title>
+    </info>
+    
+    <para>
+      <itemizedlist>
+	<listitem>
+	  <para><emphasis role="bold">Central birdie:</emphasis>There will often be a large birdie in the central channel immediately after changing config. Stop/Start often helps with this.</para> 
+	    <indexterm role="cp"><primary>CABB</primary><secondary>reprogramming</secondary><tertiary>issues</tertiary></indexterm> 
+	</listitem>
+	<listitem>
+	  <para><emphasis role="bold">Flagging:</emphasis> Whenever you select EDIT in the correlator, the flagging is reset so, you will need to redo the flagging.  </para>
+	</listitem>
+	<listitem>
+	  <para><emphasis role="bold">Rear Transfer Module (rtm) Problems:</emphasis> If you have some baselines with spikes, but no power (in the amplitude plot in spd), you may need to initialize a Rear Transfer Modules. Check the &#x201C;Data Links&#x201D; tab in the cacor gui. Modules that need to be initialised will generally have red text and large numbers (&gt;100000) in the 1ms column. To reinitialize:</para>
+	  <para><emphasis role="bold">cacor&gt; rtminit ca0# freq pol</emphasis> (e.g. <emphasis role="bold">cacor&gt; rtminit ca03 2b</emphasis>).</para>
+	  <para>If this fails, it is sometimes necessary to reset the digitiser itself:</para>
+	  <para> <emphasis role="bold">cacor&gt; diginit ca0# freq pol</emphasis> (e.g. <emphasis role="bold">cacor&gt; diginit ca03 2b</emphasis>).
+  </para>
+	</listitem>
+	<listitem>
+	  <para><emphasis role="bold">Lost Delay Calibration:</emphasis> It seems to be possible to drive the delay calibration so far away from the correct value that you start calibrating on something(?) else. The first symptom is often noisy data (or high T<subscript>sys</subscript>). Solution is to reset delays (<emphasis role="bold">cacor&gt; reset delays</emphasis>) and restart calibration. </para>
+	</listitem>
+	<listitem>
+	  <para><emphasis role="bold">Amplitude Glitches:</emphasis> Check for amplitude &#x201C;glitches&#x201D; in vis. Reprogram suspicious IFs.   </para>
+	</listitem>
+	<listitem>
+	  <para><emphasis role="bold">Memory Problems (mostly in pulsar configs): </emphasis>If every second cycle is different (e.g. the spd amplitude plot looks good one cycle, then RS the next (then good the next.....), you may have a memory problem. To solve this: 
+	  <itemizedlist>
+	    <listitem>
+	      <para>stop caobs </para>
+	      <para><emphasis role="bold">caobs&gt; stop</emphasis></para>
+	      <para>then rest the correlator memory</para>
+	      <para><emphasis role="bold">caobs&gt; rest mem</emphasis></para>
+	      <para>This is only recommended for pulsar modes (though in times of desperation it may be worth a try in other modes, but Warwick isn't confident that it will help!)</para>
+	    </listitem>
+	  </itemizedlist>  
+	  </para>
+	</listitem>
+
+
+
+	<listitem>
+	  <para><emphasis role="bold">Commands in High Time Resolution Configs:</emphasis> 
+	  <itemizedlist>
+	    <listitem>
+	      <para><emphasis role="bold">Cisleep:</emphasis> In high time resolution modes with many channels(&gt;100), it may take up to 2 seconds at the start of the cycle to transfer the data. This data transfer interferes with setting the fringe rotation, and therefore the fringe rotation needs to be deferred. 4 seconds should be sufficient.</para>
+	      <para> <emphasis role="bold">cacor&gt; cisl<emphasis role="italics">[eep]</emphasis> 4</emphasis> sets the delay to 4 seconds</para>
+	      <para> <emphasis role="bold">cacor&gt; cisl<emphasis role="italics">[eep]</emphasis> </emphasis> returns the current value</para>
+	    </listitem>
+	    <listitem>
+	      <para><emphasis role="bold">Archiving High Time Resolution Data:</emphasis> The high time resolution data will only be saved to disk if <emphasis role="bold">carhtr</emphasis> is turned on. It is turned on by default, but in observations with very fast sample rates, it should be turned off when the high data rate is not required</para>
+	      <para> <emphasis role="bold">cacor&gt; carhtr on | off</emphasis> turns the archiving on or off</para>
+	      <para> <emphasis role="bold">cacor&gt; carhtr </emphasis> returns current setting</para>
+	    </listitem>  
+	  </itemizedlist>  
+	  </para>
+	</listitem>
+	<listitem>
+	  <para><emphasis role="bold">&#x201C;Big Humps&#x201D;:</emphasis> If an autocorrelation spectrum has a hump (~10<superscript>5</superscript>) in the amplitude around channel 1800, the datalink block for that input needs to be reprogrammed
+	  <itemizedlist>
+	    <listitem>
+	      <para>Determine which block needs reprogramming from the CABB datalinks tab - </para>
+	    </listitem>
+	    <listitem>
+	      <para>select the EDIT button</para>
+	    </listitem>
+	    <listitem>
+	      <para>reprogram the bus calibration for the block - </para>
+	      <para><emphasis role="bold">&gt; prog # cal</emphasis></para>
+	    </listitem>
+	    <listitem>
+	      <para>restart the scan and inspect the data (again) in spd. It takes a few cycles before the spd display updates.</para>
+	    </listitem>  
+	  </itemizedlist>    
+	  </para>
+	</listitem>
+	<listitem>
+	  <para><emphasis role="bold">In everything, always remember to check both frequencies.</emphasis>  </para>
+	</listitem>
+      </itemizedlist> 
+    </para>
+
+
+  </section>
+
+
+
+
+</appendix>
+    

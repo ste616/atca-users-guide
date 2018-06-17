@@ -1,0 +1,102 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>B.12. Changing to 1MHz Zooms</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="apb.html" title="Appendix B. cacor reference"><link rel="prev" href="apbs11.html" title="B.11. Changing to Pulsar Binned mode"><link rel="next" href="apbs13.html" title="B.13. CABB issues"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">B.12. Changing to 1MHz Zooms</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apbs11.html">Prev</a> </td><th width="60%" align="center">Appendix B. <span class="command"><strong>cacor</strong></span> reference</th><td width="20%" align="right"> <a accesskey="n" href="apbs13.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="changing-cor-configs-1MHz-zooms"></a>B.12. Changing to 1MHz Zooms</h2></div></div></div>
+    
+    
+    <p>
+      <span class="bold"><strong>Note:</strong></span> This is really for experts - if you haven't been trained for it, don't try it!
+      <a class="indexterm" name="idm46395603508032"></a> 
+    </p>
+
+    <p>
+      To change modes it is necessary to:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+            <p>stop the current scan</p>
+          </li><li class="listitem">
+            <p>cccversion: 1MHz mode works in either standard version</p>
+	    <p><span class="italics">To check the cccversion: <span class="bold"><strong>caccc&gt; cccversion</strong></span>. Standard versions are <span class="bold"><strong>&#8220;newzmsy&#8221;</strong></span> and <span class="bold"><strong>&#8220;VLBItwommlos&#8221;</strong></span>.</span>  </p>
+          </li><li class="listitem">
+            <p>in cacor, open the edit menu</p>
+	    <p>select the edit button in the cacor gui,</p>
+	    <p>
+	    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+	      <p> select the 1MHz zoom config</p>
+	      <p> <span class="bold"><strong>edit&gt; get ca_2048_2048_2f_zm16</strong></span> </p>
+	      </li><li class="listitem">
+              <p>and program the correlator</p>
+	      <p> <span class="bold"><strong>edit&gt; prog</strong></span> </p>
+	      <p> Check that all blocks program correctly. If any blocks report an error, they need to be programmed again, e.g.: </p>
+	      <p> <span class="bold"><strong>edit&gt; prog 8</strong></span> or <span class="bold"><strong>edit&gt; prog 8 27</strong></span>  </p>
+              </li><li class="listitem">
+              <p>&lt;CR&gt; to return out of the edit menu</p>
+              </li></ul></div><p>
+	    </p>
+	  </li><li class="listitem">
+	    <p>Calbands should be the default as this happens automatically whenever you exit from the edit menu. This is what you need for this config.</p>
+	  </li><li class="listitem">
+            <p>start observing a strong calibrator, e.g.</p>
+	    <p> <span class="bold"><strong>caobs&gt; track 1 </strong></span></p>
+	    <p><span class="italics"><span class="bold"><strong>Note: Wz16_cb16_5500</strong></span> is a zoom schedule file with a set of calibrators for setting up.</span> </p>
+          </li><li class="listitem">
+            <p>Check for rear transition module (rtm) problems</p>
+	    <p> F1 and F2 Datalinks (separate tabs in the CACOR gui) should not have red error messages, and the 1ms values are in the range 2000 - 13000 (i.e. not 260 000). Fix with:</p>
+	    <p> <span class="bold"><strong>cacor&gt; rtminit </strong></span> (e.g. <span class="bold"><strong>cacor&gt; rtminit ca03 2a</strong></span>)</p>
+          </li><li class="listitem">
+            <p>Check (in spd) for &#8220;big humps&#8221;</p>
+	    <p> To fix, reprogram the relevant block. To determine the block, note antenna, frequency (1 or 2), and polarization (A or B) - then read off the block from the relevant Datalink tab on the CABB GUI. </p>
+          </li><li class="listitem">
+	    <p>#Check (in spd - look at the zoom autocorrelations) for &#8220;small humps&#8221;. To fix, reprogram the relevant block. </p>
+	  </li><li class="listitem">
+	    <p>Still looking at the autocorrelation continuum spectrums, check for spikes.</p>
+	    <p>Use differences:</p>
+	    <p> <span class="bold"><strong>spd&gt; rsave </strong></span> Saves every cycle into a reference so that you display a running difference of the current cycle against previous cycle.</p>
+	    <p> <span class="bold"><strong>spd&gt; d -100 100 </strong></span> To actually see the difference</p>
+	    <p><span class="italics"><span class="bold"><strong>Note:</strong></span>You need to wait several cycles after a reprogram until you are actually getting a relevant difference.</span></p> 
+	    <p> To fix, work out which block is involved with the where command:</p>
+	    <p> <span class="bold"><strong>cacor&gt; where zoom f# channel# </strong></span></p>
+	    <p>(e.g.<span class="bold"><strong>cacor&gt; where channel f1 430</strong></span> returns the block that is correlating channel 430 in IF1)</p>
+ 	    <p>Program block with:</p>
+	    <p> <span class="bold"><strong>edit&gt; prog # calc</strong></span></p>
+	    <p>Iterate until all spikes are cleaned up</p>
+	    <p><span class="italics"><span class="bold"><strong>Note:</strong></span>There are problems with block 8 and 28 which mean that the autocorrelations on CA03 are never really clean</span></p>
+	  </li><li class="listitem">
+	    <p>When ok, calibrate the delays [dcal]</p>
+	    <p>Still in autocorrelation, difference mode, look for spikes and blocks of bad data in z1 and z2. Identify any offending blocks using the <span class="bold"><strong>where</strong></span> command.</p>
+	  </li><li class="listitem">
+	    <p>To reprogramming a block: </p>
+	    <p> <span class="bold"><strong>config&gt; prog <span class="italics">[offending block]</span> calc</strong></span> or </p>
+	    <p> <span class="bold"><strong>config&gt; prog <span class="italics">[offending block]</span> x 7,8</strong></span> or </p>
+	    <p> <span class="bold"><strong>config&gt; prog <span class="italics">[offending block]</span></strong></span> </p>
+	    <p> <span class="italics">Note: <span class="bold"><strong>calc</strong></span> resets the c bus; <span class="bold"><strong>x 7,8</strong></span> resets CABB board memory controllers; and No swith will reprogram the whole block, (delays need to be recalculated)</span></p> 
+	  </li><li class="listitem">
+	     <p> Iterate until all is good </p>
+	   </li><li class="listitem">
+	     <p>Now that the autocorrelations are done, time for the cross correlations. Again, check (in spd) which channels are causing problems, and determine (from where) which blocks need reprogramming - and program again </p>
+	     <p>Iterate again</p>
+	   </li><li class="listitem">
+	     <p>And finally (well almost finally) the cross products</p>
+	     <p>Set this up with:</p>
+	    <p> <span class="bold"><strong>spd&gt; on ab ba</strong></span> </p>
+	    <p> <span class="bold"><strong>spd&gt; sel *</strong></span> </p>
+	    <p>Look for spikes</p>
+	    <p>You can't do much about a single spike - but average for 20-30 cycles and look for a rash of spikes</p>
+	    <p>And again, determine (from where) which blocks need reprogramming - and program again.</p>
+	    <p>Iterate!</p>
+	   </li><li class="listitem">
+	     <p>And finally (finally) check (in vis) that the amplitudes are stable over time. Determine which antenna/frequency/polarisation are unstable, and reprogram the block indicated by the datalink tabs in CACOR </p>
+	     <p>Then, the observer comes along with a different zoom setup from what you have set up with and problems may occur. So, try to get hold of their schedule and check that it still works. </p>
+	   </li><li class="listitem">
+            <p>Setup standard flagging</p>
+	    <p> <span class="bold"><strong>cacor&gt; fflag f1 birdies </strong></span></p>
+	    <p> <span class="bold"><strong>cacor&gt; fflag f2 birdies </strong></span></p>
+            <p><span class="italics"><span class="bold"><strong>NOTE:</strong></span> all flagging is cleared every time you exit from the edit menu</span>  </p>
+	   </li><li class="listitem">
+	     <p>Check (in spd) baseline amplitudes and phases</p>
+	   </li><li class="listitem">
+	     <p>Check that tvch is set to appropriate values</p>
+	   </li><li class="listitem">
+	     <p>Check that delavg is set to an appropriate value</p>
+	   </li><li class="listitem">
+	     <p>Standard setup follows (i.e. dcal, acal, pcal etc.)</p>
+	   </li></ul></div><p>
+    </p>
+ 
+  </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apbs11.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apb.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apbs13.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">B.11. Changing to Pulsar Binned mode </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> B.13. CABB issues</td></tr></table></div></body></html>

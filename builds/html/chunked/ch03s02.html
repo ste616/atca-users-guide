@@ -1,0 +1,670 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>3.2. Setting up</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="ch03.html" title="Chapter 3. Observing"><link rel="prev" href="ch03.html" title="Chapter 3. Observing"><link rel="next" href="ch03s03.html" title="3.3. Observing"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.2. Setting up</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Observing</th><td width="20%" align="right"> <a accesskey="n" href="ch03s03.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="Setting-Up"></a>3.2. Setting up</h2></div></div></div>
+    
+    <p>
+      At the start of observing, a number of procedures need to be executed to set up
+      the array for observng. The following table summarises the tasks, and indicates the
+      frequencies which need the various tasks. <a class="indexterm" name="idm46395605703456"></a>
+    </p>
+    <div class="informaltable">
+      <table class="informaltable" border="0"><colgroup><col class="col1"><col class="col2"><col class="col3"><col class="col4"><col class="col5"></colgroup><tbody><tr><td> </td><td>cm</td><td>15&amp;7mm</td><td>3mm</td><td> </td></tr><tr><td>Set focus</td><td>&#10004;</td><td>&#10004;</td><td>&#10004;</td><td>See <a class="xref" href="ch03s02.html#Focus" title="3.2.1. Focus">Section 3.2.1</a></td></tr><tr><td>Set power levels into <acronym class="acronym">CABB</acronym> samplers</td><td>&#10004;</td><td>&#10004;</td><td>&#10004;</td><td>See <a class="xref" href="ch03s02.html#Setting-Levels" title="3.2.2. Setting Power Levels into CABB Samplers">Section 3.2.2</a></td></tr><tr><td>Set <acronym class="acronym">CABB</acronym> channel ranges</td><td>&#10004;</td><td>&#10004;</td><td>&#10004;</td><td>See <a class="xref" href="ch03s02.html#Selecting-Channels" title="3.2.3. Set CABB Channel Range for Calibration and Monitoring">Section 3.2.3</a></td></tr><tr><td>Flag interference</td><td colspan="3"><span class="emphasis"><em>usually not necessary</em></span></td><td>See <a class="xref" href="ch03s02.html#Flagging-Channels" title="3.2.5. Flagging Channels">Section 3.2.5</a></td></tr><tr><td>Calibrate delays</td><td>&#10004;</td><td>&#10004;</td><td>&#10004;</td><td>See <a class="xref" href="ch03s02.html#Calibrate-the-Array-Delays" title="3.2.6.1. Calibrate the Array Delays">Section 3.2.6.1</a></td></tr><tr><td>Check pointing</td><td>X</td><td>&#10004;</td><td>&#10004;</td><td>See <a class="xref" href="ch03s02.html#mm-Pointing-at-startup" title="3.2.6.2. Checking Pointing for mm obs">Section 3.2.6.2</a></td></tr><tr><td>Calibrate phases</td><td>&#10004;</td><td>&#10004;</td><td>&#10004;</td><td>See <a class="xref" href="ch03s02.html#Phase-Calibration" title="3.2.6.3. Calibrating Phases">Section 3.2.6.3</a></td></tr><tr><td>Calibrate gains</td><td>&#10004;</td><td>&#10004;</td><td>paddle</td><td>See <a class="xref" href="ch03s02.html#Antenna-Gain-Calibration" title="3.2.6.4. Setting Antenna Gains">Section 3.2.6.4</a></td></tr></tbody></table>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Focus"></a>3.2.1. Focus</h3></div></div></div>
+      
+      <p>
+	<a class="indexterm" name="idm46395605664992"></a>
+	The subreflector on each of the <acronym class="acronym">ATCA</acronym> antennas can be raised and lowered to allow the signal
+	to be focussed at the receiver feed. <a class="indexterm" name="idm46395605663648"></a>
+        However, changing the subreflector position will change the path length (obviously) which will change the geometric phases and delays,
+        so, it should only be done when required, usually when the frequency changes. 
+        Extra care is needed with calibration with programs that change focus during the observation.
+	<a class="indexterm" name="idm46395605662096"></a>
+      </p>
+      <p>
+        A good time to do this is at the start of the observing and it can be done while driving to source.
+      </p>
+      <p>
+	Default focus positions have been determined for each band.
+      
+	</p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs<code class="literal">&gt; focus default </code></td><td>drives the subreflector to the default focus height for that band</td></tr><tr><td> </td><td>caobs<code class="literal">&gt; focus ca0# <em class="replaceable"><code>height</code></em></code></td><td>drives the subreflector on antenna # to the given focus height</td></tr></tbody></table>
+	</div><p>
+      </p>
+
+      <div class="table"><a name="table_focus"></a><p class="title"><b>Table 3.1. Subreflector Focus Positions for the Antennas.</b></p><div class="table-contents">
+        
+        <table class="table" summary="Subreflector Focus Positions for the Antennas." border="0"><colgroup><col align="center" class="ant"><col align="center" class="16cm"><col align="center" class="4cm"><col align="center" class="15mm"><col align="center" class="7mm"><col align="center" class="3mm"></colgroup><thead><tr><th align="center">Ant</th><th align="center">16cm</th><th align="center">4cm</th><th align="center">15mm</th><th align="center">7mm</th><th align="center">3mm</th></tr></thead><tbody><tr><td align="center">CA01</td><td align="center">17</td><td align="center">17</td><td align="center">17</td><td align="center">17</td><td align="center">14</td></tr><tr><td align="center">CA02</td><td align="center">9.8</td><td align="center">9.8</td><td align="center">9.8</td><td align="center">9.8</td><td align="center">9.8</td></tr><tr><td align="center">CA03</td><td align="center">9</td><td align="center">-4.7</td><td align="center">9</td><td align="center">9</td><td align="center">9</td></tr><tr><td align="center">CA04</td><td align="center">23</td><td align="center">23</td><td align="center">23</td><td align="center">23</td><td align="center">23</td></tr><tr><td align="center">CA05</td><td align="center">18.4</td><td align="center">8</td><td align="center">18.4</td><td align="center">18.4</td><td align="center">18.4</td></tr><tr><td align="center">CA06</td><td align="center">23</td><td align="center">23</td><td align="center">23</td><td align="center">23</td><td align="center">23</td></tr></tbody></table>
+      </div></div><br class="table-break">
+
+      <p><span class="bold"><strong>Note:</strong></span> As the antenna tips over, it deforms slightly, and the detected focus position changes by up to 1mm. 
+        This is normal and will not significantly effect the data.
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Setting-Levels"></a>3.2.2. Setting Power Levels into <acronym class="acronym">CABB</acronym> Samplers</h3></div></div></div>
+      
+      <p>
+        <a class="indexterm" name="idm46395605615952"></a>
+        The rms digitiser quantisation levels (as displayed in the
+        sampler tab of <span class="command"><strong>cacor</strong></span>) should be close to 20 (Range: Approximately 18-22).
+        To set the levels, attenuation can be added or removed.
+        The values in the atten section of the window show the settings of the <span class="command"><strong>cacor</strong></span>
+        attenuators. They have a range of 0-15 dB. <a class="indexterm" name="idm46395605613600"></a>
+      </p>
+
+      <p>
+	</p><div class="figure"><a name="samplerlevels"></a><div class="figure-contents">
+          
+          <div class="mediaobject"><img src="figures/sampler_levels.jpg" alt="cacor sampler level display"></div>
+        </div><p class="title"><b>Figure 3.2. <span class="command">cacor</span> sampler level display</b></p></div><p><br class="figure-break">
+      </p>
+
+      <p>
+	If the levels are not close to 20, the ATTS button in the <span class="command"><strong>cacor</strong></span> GUI can be activated
+        to enable <span class="command"><strong>cacor</strong></span> to automatically add or remove attenuation. 
+      </p>
+
+      <p>
+        This can also be done in the <span class="command"><strong>cacor</strong></span> interface:
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor<code class="literal">&gt; tatts[ervo] 20</code></td><td>set the target for the attenuator servos to 20 </td></tr><tr><td> </td><td> </td><td><span class="emphasis"><em>(most of the time, this command is not needed as tatts will usually already be set to this level)</em></span></td></tr><tr><td> </td><td>cacor<code class="literal">&gt; atts[ervo] on</code></td><td>correlator servos the attenuators to adjust the levels into the samplers</td></tr></tbody></table>
+        </div><p>
+      </p>
+
+      <p>
+        Wait for the levels to settle to around 20, then turn the adjustment off again with:
+      </p>
+
+      <p>
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor<code class="literal">&gt; atts[ervo] off</code></td><td> </td></tr></tbody></table>
+        </div><p>
+      </p>
+
+      <p>
+        Fairly obviously, the algorithm is unable to &#8220;improve&#8221; the levels if the attenuators are at their limits (0 or 15).
+      </p>
+
+      <p>
+	For 16cm observations, strong RFI in the band will often make the sampler levels vary significantly from cycle to cycle, making it difficult
+	(and often impossible) to set the attenuators appropriately. In this case, you can set the attenuators manually to values that
+	are known to be good, as listed in <a class="xref" href="ch03s02.html#table_16cm_atten" title="Table 3.2. Attenuator settings for the 16cm band">Table 3.2</a>. To set the attenuators manually, you will need to
+	use the <code class="literal">att</code> command. For example, to set the CA03 attenuators as per <a class="xref" href="ch03s02.html#table_16cm_atten" title="Table 3.2. Attenuator settings for the 16cm band">Table 3.2</a>,
+	you would need to give the commands:
+      </p>
+
+      <p>
+	</p><div class="command-table">
+	  <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor<code class="literal">&gt; att1 ca03 6 13</code></td><td>sets the CA03 IF1 A and B pol attenuators</td></tr><tr><td> </td><td>cacor<code class="literal">&gt; att2 ca03 2 2</code></td><td>sets the CA03 IF2 A and B pol attenuators</td></tr></tbody></table>
+	</div><p>
+      </p>
+
+      <p>
+	See <a class="xref" href="apbs06.html#cacor_command_att">
+	  <code class="literal">att<em class="replaceable"><code>f</code></em> ca0<em class="replaceable"><code>#</code></em> <em class="replaceable"><code>n m</code></em></code>
+	</a> for more complete information about how to use this command.
+      </p>
+      
+      <div class="table"><a name="table_16cm_atten"></a><p class="title"><b>Table 3.2. Attenuator settings for the 16cm band</b></p><div class="table-contents">
+	
+	<table class="table" summary="Attenuator settings for the 16cm band" border="0"><colgroup><col align="center" class="product"><col align="center" class="ca01"><col align="center" class="ca02"><col align="center" class="ca03"><col align="center" class="ca04"><col align="center" class="ca05"><col align="center" class="ca06"></colgroup><thead><tr><th align="center">Product</th><th align="center">CA01</th><th align="center">CA02</th><th align="center">CA03</th><th align="center">CA04</th><th align="center">CA05</th><th align="center">CA06</th></tr></thead><tbody><tr><td align="center">1 A</td><td align="center">5</td><td align="center">4</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">6</td></tr><tr><td align="center">1 B</td><td align="center">9</td><td align="center">3</td><td align="center">13</td><td align="center">5</td><td align="center">9</td><td align="center">8</td></tr><tr><td align="center">2 A</td><td align="center">10</td><td align="center">4</td><td align="center">2</td><td align="center">9</td><td align="center">8</td><td align="center">4</td></tr><tr><td align="center">2 B</td><td align="center">7</td><td align="center">4</td><td align="center">2</td><td align="center">5</td><td align="center">9</td><td align="center">4</td></tr></tbody></table>
+      </div></div><br class="table-break">
+      
+      <p>
+        If the sampler levels are very low (approx 0), there is probably a problem which will need to be checked.
+      </p>
+
+      <p>
+        There are another set of attenuators in the receivers (as opposed to the correlator) which can also be used to set the levels.
+      </p>
+
+      <p>
+        These are controlled from <span class="command"><strong>caobs</strong></span>.
+      </p>
+
+      <p>
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs<code class="literal">&gt; show atten[uation]</code></td><td>shows the current receiver attenuation levels in the <span class="command"><strong>caobs</strong></span> status window</td></tr></tbody></table>
+        </div><p>
+      </p>
+
+      <p>
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs<code class="literal">&gt; set atten ca0# att<sub>a</sub> att<sub>b</sub></code></td><td>sets the receiver attenuator levels on antenna # to attenuator levels a and b</td></tr></tbody></table>
+        </div><p>
+      </p>
+    </div>
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Selecting-Channels"></a>3.2.3. Set <acronym class="acronym">CABB</acronym> Channel Range for Calibration and Monitoring</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395605526432"></a>
+        <a class="indexterm" name="idm46395605525424"></a>
+        <a class="indexterm" name="idm46395605524528"></a>
+        <span class="command"><strong>cacor</strong></span> generates an average visibility (averaged across the spectrum) that is used for T<sub>sys</sub>
+        and array calibration. Some care needs to be taken to ensure that the range of <span class="command"><strong>cacor</strong></span> channels used for
+        calculating this average is as wide as possible within the useable passband, but also excludes interference.
+      </p>
+
+      <p>
+        At higher frequencies, it is usually appropriate to use the central fifty percent of channels
+        but at cm frequencies, interference means that it is often better to select
+        non-default channels. See <a class="xref" href="ch03s02.html#tvchanranges" title="Table 3.3. Suggested tvchan ranges for standard ATCA Continuum bands.">Table 3.3</a> for information on recommended channel ranges for 2048 MHz continuum bands.
+        If these channel ranges are not generating the anticipated visibility in <span class="command"><strong>vis</strong></span>, inspect <a class="xref" href="apc.html" title="Appendix C. SPD reference">Appendix C</a> to
+        determine the cause of the problem.
+      </p>
+
+      <p>
+        The <code class="literal">tvchan</code> command sets the range of channels that are used for
+        calibrating the array and for T<sub>sys</sub> calculation. All unflagged
+        channels are written to the data (<acronym class="acronym">RPFITS</acronym>) file regardless of what the <code class="literal">tvchan</code>
+        setting is.
+      </p>
+
+      <p>
+        (<span class="bold"><strong>Note:</strong></span> Channels that are flagged are written to the file as zeroes.
+	See <a class="xref" href="ch03s02.html#Flagging-Channels" title="3.2.5. Flagging Channels">Section 3.2.5</a> for more information).
+      </p>
+
+      <p>
+        Current settings are displayed in the <span class="command"><strong>cacor</strong></span> GUI, as shown in <a class="xref" href="ch03s02.html#tvch" title="Figure 3.3. cacor display showing the currently used tvchannels.">Figure 3.3</a>.
+      </p>
+
+      <p>
+      </p><div class="figure"><a name="tvch"></a><div class="figure-contents">
+        
+        <div class="mediaobject"><img src="figures/tvch.jpg" alt="cacor display showing the currently used tvchannels."></div>
+      </div><p class="title"><b>Figure 3.3. <span class="command">cacor</span> display showing the currently used tvchannels.</b></p></div><p><br class="figure-break">
+      </p>
+
+      <p>
+        It is also possible to check the current setting with the <span class="command"><strong>cacor</strong></span> command
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor<code class="literal">&gt; tvch[an]</code></td><td>The first pair of numbers gives the channel range for the first frequency. The second
+                  pair of numbers gives the channel range for the second frequency.</td></tr></tbody></table>
+        </div><p>
+      </p>
+
+      <p>
+        Setting the range is done with the <span class="command"><strong>cacor</strong></span> command:
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor<code class="literal">&gt; tvch[an] default</code></td><td>sets the channel range to use the central 50% of the channels (i.e. channels 513 - 1537).</td></tr><tr><td> </td><td>cacor<code class="literal">&gt; tvch[an] ch<sub>1</sub> 
+                                                   ch<sub>2</sub> 
+                                                   ch<sub>3</sub>
+                                                   ch<sub>4</sub></code></td><td>sets specific channels where ch<sub>1</sub> and ch<sub>2</sub>
+                                                   are the low and high channels for frequency 1 and 
+                                                    ch<sub>3</sub> and ch<sub>4</sub> 
+                                                   are the low and high channels for frequency 2.</td></tr><tr><td> </td><td>cacor<code class="literal">&gt; tvch[an] f# ch<sub>1</sub> ch<sub>2</sub></code></td><td>sets specific channels for a single frequency, where # is the frequency (1 or 2).</td></tr></tbody></table>
+        </div><p>
+      </p>
+
+      <p>
+        <a class="xref" href="ch03s02.html#tvchanranges" title="Table 3.3. Suggested tvchan ranges for standard ATCA Continuum bands.">Table 3.3</a> lists the suggested tvchan ranges for the standard continuum bands.
+	On any given day (or interference
+        environment) other ranges may be more appropriate. 
+        </p><div class="table"><a name="tvchanranges"></a><p class="title"><b>Table 3.3. Suggested tvchan ranges for standard <acronym class="acronym">ATCA</acronym> Continuum bands.</b></p><div class="table-contents">
+          
+          <table class="table" summary="Suggested tvchan ranges for standard ATCA Continuum bands." border="0"><colgroup><col align="center" class="Band"><col align="center" class="Freq"><col align="center" class="ch1"><col align="center" class="ch2"></colgroup><thead><tr><th align="center">Band</th><th align="center">Centre Freq</th><th align="center">ch<sub>1</sub></th><th align="center">ch<sub>2</sub></th></tr><tr><th align="center"> </th><th align="center">(MHz)</th><th align="center"> </th><th align="center"> </th></tr></thead><tbody><tr><td align="center">16cm</td><td align="center">2100</td><td align="center">200</td><td align="center">949</td></tr><tr><td align="center">6cm</td><td align="center">5500</td><td align="center">513</td><td align="center">1537</td></tr><tr><td align="center">3cm</td><td align="center">9000</td><td align="center">200</td><td align="center">1149</td></tr><tr><td align="center">15mm</td><td align="center">17000</td><td align="center">513</td><td align="center">1537</td></tr><tr><td align="center">7mm</td><td align="center">33000</td><td align="center">513</td><td align="center">1537</td></tr><tr><td align="center">3mm</td><td align="center">93000</td><td align="center">513</td><td align="center">1537</td></tr></tbody></table>
+        </div></div><p><br class="table-break">
+      </p>
+   
+      <p>
+        <span class="bold"><strong>(There is a wide range of valid frequency settings at mm frequencies)</strong></span>.
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Check-Delavg"></a>3.2.4. Checking Delavg</h3></div></div></div>
+      
+
+      <p>
+        <a class="indexterm" name="idm46395605456688"></a>
+        To calculate the delay of an individual <acronym class="acronym">IF</acronym>, <span class="command"><strong>cacor</strong></span> 
+        checks the phase in each channel in the <code class="literal">tvchan</code> range
+        (just defined) and calculates a linear fit of 
+        these phase measurements as a function of frequency; the slope of this line is the delay.
+      </p>
+
+      <p>
+        If the noise on the phase is high (due to a faint source or poor weather, for example)
+        or there is some strong unavoidable RFI in the <code class="literal">tvchan</code>
+        range, then the least-squares line of best fit may not accurately represent the real
+        slope due to the delay. 
+      </p>
+
+      <p>
+        To reduce the noise, or to average out the effect of the RFI, setting delavg in the correlator
+        averages together that number of channels in the
+        <code class="literal">tvchan</code> range before calculating the slope.
+      </p>
+
+      <p>
+        However, care needs to be taken! If the phases are wrapping quickly, averaging over a 
+        large number of channels will give a meaningless value, and delays determined will be incorrect.
+      </p> 
+
+      <p>
+        The current value of delavg is in the status bar of the <span class="command"><strong>cacor</strong></span> interface.
+         </p><div class="figure"><a name="delavg_image"></a><div class="figure-contents">
+         
+           <div class="mediaobject"><img src="figures/delavg.jpg" alt="cacor showing current delavg setting"></div>
+         </div><p class="title"><b>Figure 3.4. <span class="command">cacor</span> showing current delavg setting</b></p></div><p><br class="figure-break">
+       </p>
+
+       <p>
+         Setting delavg is done with the <span class="command"><strong>cacor</strong></span> command:
+         </p><div class="command-table">
+           <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor<code class="literal">&gt; delavg #</code></td><td>Averages # channels.</td></tr></tbody></table>
+         </div><p>
+       </p>
+
+       <p>
+         </p><div class="informaltable">
+           <table class="informaltable" border="0"><colgroup><col><col><col><col></colgroup><tbody><tr><td>
+                   <div class="figure"><a name="spd_slow_wrap.jpg"></a><div class="figure-contents">
+
+                     <div class="mediaobject"><img src="figures/spd_slow_wrap.jpg"></div>
+                   </div><p class="title"><b>Figure 3.5. </b></p></div><br class="figure-break">
+                 </td><td>
+                   <p>
+                     An spd plot with a slow changes in phases
+                   </p>
+                   <p>
+                     The phases are not wrapping at all in the A pol, and wrapping approximately every 250 channels in the B pol.
+                     Averaging over 32 channels would still give enough points across the band to do a linear fit to this data
+                   </p>
+                 </td><td>
+                   <div class="figure"><a name="spd_fast_wrap.jpg"></a><div class="figure-contents">
+                     <div class="mediaobject"><img src="figures/spd_fast_wrap.jpg"></div>
+                   </div><p class="title"><b>Figure 3.6. </b></p></div><br class="figure-break">
+                 </td><td>
+                   <p>
+                     An spd plot showing the phases wrapping very quickly
+                   </p>
+                   <p>
+                     The phases in both pols of this graph are wrapping over a small number of channels. 
+                     It is possible to check just how quickly the phases are wrapping by viewing a smaller number of channels:
+                   </p>
+                   <p>    
+                     spd<code class="literal">&gt; chan f# 400 500</code>
+                   </p>
+                 </td></tr></tbody></table>
+         </div><p>
+       </p>
+     </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Flagging-Channels"></a>3.2.5. Flagging Channels</h3></div></div></div>
+      
+
+      <p>
+        <a class="indexterm" name="idm46395605421744"></a>
+        <a class="indexterm" name="idm46395605420736"></a>
+        Occasionally, there will be channels that, because of interference
+        (or other issues), you may wish to completely excise from the data (i.e. not write those channels to the data file).
+      </p>
+
+      <p>
+        To check the extent of currently flagged channels:
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor<code class="literal">&gt; fflag</code></td><td>display the number of channels that are currently <span class="bold"><strong>unflagged</strong></span>. 
+                  In each frequency, there is a maximum of 2049 channels.</td></tr></tbody></table>
+        </div><p>
+      </p>
+
+      <p>
+        </p><div class="figure"><a name="fflag"></a><div class="figure-contents">
+          
+          <div class="mediaobject"><img src="figures/fflag.jpeg" alt="cacor display showing the current number of channels that are unflagged."></div>
+        </div><p class="title"><b>Figure 3.7. <span class="command">cacor</span> display showing the current number of channels that are unflagged.</b></p></div><p><br class="figure-break">
+      </p>
+
+      <p>
+        There is no easy way to discover which channels have been flagged, and flagging will
+        remain even with a change of project (or frequency etc.) so
+        flagging should be checked at the start of observing. If there are more channels
+        flagged than anticipated, flagging should be cleared then reflagged if necessary.
+      </p>
+
+      <p>
+        This is done by:
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor<code class="literal">&gt; fflag f# default</code></td><td>flags the central channel (and 1/4, 3/4 channels) in frequency <code class="literal">#</code></td></tr></tbody></table>
+        </div><p>
+      </p>
+      
+      <p>
+        <a class="indexterm" name="idm46395605399328"></a>
+        To flag the set of known bad continuum channels
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor<code class="literal">&gt; fflag f# birdies</code></td><td>flags channel known bad channels in frequency <code class="literal">#</code></td></tr></tbody></table>
+        </div><p>
+      </p>
+      
+      <p>
+        This needs to be done at both f1 and f2.
+      </p>
+
+      <p>
+        To flag explicit channels, use the command:
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor<code class="literal">&gt; fflag f# ch<sub>m</sub></code></td><td>flags channel <code class="literal">ch<sub>m</sub></code> in frequency <code class="literal">#</code></td></tr><tr><td> </td><td>cacor<code class="literal">&gt; fflag f# ch<sub>m</sub>-ch<sub>n</sub></code></td><td>flags channels <code class="literal">ch<sub>m</sub></code> to <code class="literal">ch<sub>n</sub></code> 
+                       inclusive in frequency <code class="literal">#</code></td></tr></tbody></table> 
+        </div><p>
+      </p>
+
+      <p>
+        Again, this needs to be done at both frequencies.
+      </p>
+
+      <p>
+        <a class="indexterm" name="idm46395605377008"></a>
+        If you know exactly which channels have been flagged, they can be unflagged with the
+        <code class="literal">funflag</code> command: formats are similar to the <code class="literal">fflag</code> command i.e.
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor<code class="literal">&gt; funflag f# ch<sub>m</sub></code></td><td>unflags channel <code class="literal">ch<sub>m</sub></code> in frequency <code class="literal">#</code></td></tr></tbody></table>
+        </div><p>
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Array-Calibration"></a>3.2.6. Array Calibration</h3></div></div></div>
+      
+
+      <p>
+        Once the array is working, the system can be calibrated. 
+      </p>
+      <p>
+        Calibration will not fix a broken system. 
+      </p>
+      <p>
+        The calibration involves calculating and applying the delay offsets (for mm observations),
+        setting the phases to zero degrees and correcting the visibilities to the appropriate flux levels.
+      </p>    
+
+      <p>
+        </p><div class="figure"><a name="vis_cal"></a><div class="figure-contents">
+          
+          <div class="mediaobject"><img src="figures/vis_cal.jpg" alt="vis display showing output during ATCA calibration"></div>
+        </div><p class="title"><b>Figure 3.8. <span class="command">vis</span> display showing output during <acronym class="acronym">ATCA</acronym> calibration</b></p></div><p><br class="figure-break">
+      </p>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="Calibrate-the-Array-Delays"></a>3.2.6.1. Calibrate the Array Delays</h4></div></div></div>
+        
+
+        <p>
+          <a class="indexterm" name="idm46395605357168"></a>
+          Delay offsets need to be determined and corrected at the start of the observation.
+          Failure to correct for delay offsets will result in decorrelation, and loss of data.
+        </p>
+
+        <p>
+          In the 64MHz zoom configuration, delay calibration is more complex as it generally needs to be done in two stpes. 
+            (First delay calibrate a zoom channel, then in the continuum. See <a class="xref" href="ch03s02.html#64MHz_Delay_Cal" title="3.2.6.1.1.  64MHz Delay Calibration">Section 3.2.6.1.1</a>
+            for more information) 
+        </p>
+
+        <p>
+          To calibrate the delays, track a strong unresolved source (e.g. <code class="literal">PKS1934-638</code> or 
+          <code class="literal">PKS0823-500</code> for cm
+          observations; for mm observations use <code class="literal">PKS1253-055</code>, 
+          <code class="literal">PKS1921-293</code>, <code class="literal">PKS2223-052</code> or
+          <code class="literal">PKS0537-441</code>). <span class="bold"><strong><code class="literal">PKS1934-638</code> and <code class="literal">PKS0823-500</code> are not strong enough to calibrate at mm frequencies.</strong></span>
+        </p>
+
+        <p>
+          <span class="bold"><strong>Correlation should be apparent before you proceed</strong></span>. Phases in <span class="command"><strong>spd</strong></span>
+          should be stable, though they may be wrapping rapidly and delays
+          should be flat in <span class="command"><strong>vis</strong></span>. Check that you have correlation in both frequencies
+          and both polarisations.
+        </p>
+
+        <p>
+          If there is significant interference (see the amplitude plot in <span class="command"><strong>spd</strong></span>), you will need to carefully craft the <code class="literal">tvchan</code> range (or, if bad enough, actually flag interfering channels) to avoid the interference in the calibration data.
+        </p>
+
+        <p>      
+          If working at 3mm or with significant interference, it may be necessary to
+          average over several channels (to improve the signal/noise ratio) with the command:
+          </p><div class="command-table">
+            <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs <code class="literal">&gt; corr delavg #</code></td><td>where 8 is a good initial value for <code class="literal">#</code> - however,
+                         if the delays are large (&gt;50nsec), you should try a smaller value to start with.</td></tr></tbody></table>
+          </div><p>
+        </p>
+
+        <p>
+          If you still don't have correlation, check <a class="xref" href="ch03s04.html#Troubleshooting" title="3.4.6. Troubleshooting">Section 3.4.6</a>
+          at the end of this chapter, and if this doesn't resolve your problems get help.
+        </p>
+
+      <p>
+        Assuming that the phases in <span class="command"><strong>spd</strong></span> are stable, enter the command:
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs <code class="literal">&gt; corr dcal </code></td><td><code class="literal">dcal</code> calculates and applies the required correction&gt;</td></tr></tbody></table>
+        </div><p>
+      </p>
+      
+      <p>      
+        This command should correct the delays so that the phases across the
+        band on the <span class="command"><strong>spd</strong></span> plot are flat (or fairly close to flat) and the delay
+        offsets as seen on <span class="command"><strong>vis</strong></span> are close to 0 nsec. It may be necessary to do this again.
+      </p>
+
+      <p>
+        (Early versions of the <acronym class="acronym">CABB</acronym> software required an &#8220;<code class="literal">a</code>&#8221; switch at the 
+        end of the <code class="literal">dcal</code> command for the correction to actually be applied. 
+        The delays are now applied automatically by the command. Any switch other than an 
+        <code class="literal">a</code> will result in the delays not being applied.)
+      </p>
+
+      <div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="64MHz_Delay_Cal"></a>3.2.6.1.1. 
+          64MHz Delay Calibration
+        </h5></div></div></div>
+        
+        <p>
+          Delay calibration is slightly more complex in 64MHz mode.
+        </p>
+        <p>
+          This issue is that the phases in <span class="command"><strong>spd</strong></span> wrap more than once in a single (64MHz wide) continuum channel. 
+          The solution for this is to solve the delays for a single continuum channel using zooms, which will unwrap
+          the continuum data sufficiently to be able to determine the delays in the continuum bands. 
+        </p>
+        <p>
+          To use the zooms for delay calibration, set <span class="command"><strong> calband</strong></span> to <code class="literal">z z</code>:
+          </p><div class="command-table">
+            <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor <code class="literal">&gt; calband z z</code></td><td>Uses zoom data in both frequencies. For a hybrid correlator config, use <code class="literal">f z</code></td></tr></tbody></table>
+          </div><p>
+        </p>
+        <p>
+          Do the delay calibration as normal.
+          </p><div class="command-table">
+            <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs <code class="literal">&gt; corr dcal</code></td><td>As always, ensure that there is a working system before doing the <span class="command"><strong>dcal</strong></span></td></tr></tbody></table>
+          </div><p>
+        </p>
+        <p>
+          Once the majority of the delay error has been corrected for, the whole continuum band needs to be used for a 
+          second delay calibration:
+          </p><div class="command-table">
+            <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>cacor <code class="literal">&gt; calband f f</code></td><td> </td></tr><tr><td> </td><td>caobs <code class="literal">&gt; corr dcal</code></td><td> </td></tr></tbody></table>
+          </div><p>
+        </p>
+          
+      </div>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mm-Pointing-at-startup"></a>3.2.6.2. Checking Pointing for mm obs</h4></div></div></div>
+      
+
+      <p>
+        If observing at mm wavelengths, the antenna pointing should be checked and corrected before phase and amplitude calibration.
+        A pointing scan has six separate pointings: first on the nominal on-source position,
+        followed by four pointings at the nominal half-power points (+/- Az, +/- El), then a pointing back on the on-source position.
+        A separate task, <span class="command"><strong>catag</strong></span>, calculates the pointing offets and feeds them back to the system to be implemented.
+      </p>
+
+      <p>
+        Check the pointing
+	<a href="#ftn.idm46395605295600" class="footnote" name="idm46395605295600"><sup class="footnote">[1]</sup></a>
+	page in <span class="application">MoniCA</span>
+        to check that the appropriate <span class="command"><strong>catag</strong></span> parameters are set:
+      </p>
+
+      <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+          <p>
+            <code class="literal">User Antenna Mask</code> should include all antennas that need to be used for pointing.
+          </p>
+        </li><li class="listitem">
+          <p>
+            <code class="literal">User IF Mask</code> should be set to include IFs that are required. 
+              1234 uses all 4 IFs. 12 uses the two polarisations in the first frequency.
+              34 uses both polarisations in the second frequency. 
+              The setting 1234 can only be used if the frequencies <code class="literal">f1</code> and <code class="literal">f2</code> satisfy 
+              <script type="math/tex">\mathrm{abs}(\frac{f1}{f2}-1)\leq 0.15</script>.
+          </p>
+        </li><li class="listitem">
+          <p>
+            <code class="literal">Integration Cycles</code> defines the number of cycles spent on each step of the pointing solution. 
+            This will usually be set to 2 or 3.
+          </p>
+        </li></ul></div>
+      <p>
+        Modifying these parameters is done in <span class="command"><strong>caobs</strong></span>
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs <code class="literal">&gt; set point_a a<sub>1</sub>[a<sub>2</sub>
+                                                                              ...a<sub>6</sub>]</code></td><td>defines antennas to be included in pointing calculations</td></tr><tr><td> </td><td>caobs <code class="literal">&gt; set point_a 12345</code></td><td>would use all antennas except CA06</td></tr></tbody></table>
+        </div><p>
+      </p>
+
+      <p>
+        <span class="bold"><strong>Note:</strong></span> Pointing using the selfcal algorithm (default mode) requires 4 
+          or more antennas to calculate amplitudes. If using 3 or fewer antennas, holography mode is needed. 
+          To enable holography, set the <code class="literal">Integration Cycles</code> to the negative (e.g. -2) value.
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs <code class="literal">&gt; set point_if if<sub>1</sub>[if<sub>2</sub>...
+                                                        if<sub>4</sub>]</code></td><td>defines IFs to be included in pointing calculations;</td></tr><tr><td> </td><td>caobs <code class="literal">&gt; set point_if 1234</code> </td><td>would use both frequencies, both polarisations.</td></tr></tbody></table>
+        </div><p>
+      </p>
+
+      <p>
+        (<span class="bold"><strong>Note:</strong></span> If the two frequencies are different by more than 15%, 
+        the system will not let you use the second frequency. This is because the beam size
+        is sufficiently different that problems can arise - think about the situation of a 5 and 10 GHz frequency pair. 
+        The half-power point at 5 GHz is the first null at 10 GHz.)
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs <code class="literal">&gt; set point_p #</code></td><td>where # is the number of cycles spent on each pointing step. # is usually 2 or 3.
+                  If using holography mode, this should be -2 or -3.</td></tr></tbody></table>
+        </div><p>
+      </p>
+
+      <p>
+        After these parameters have been set, ensure that your schedule file has a pointing scan set up. 
+        This scan will need to have &#8220;<code class="literal">Scan Type</code>&#8221; set to &#8220;<code class="literal">Point</code>&#8221; and 
+        the &#8220;<code class="literal">Pointing</code>&#8221; parameter set to &#8220;<code class="literal">Update</code>&#8221;.
+        To start the pointing scan, you must use the &#8220;<code class="literal">start</code>&#8221; command in <span class="command"><strong>caobs</strong></span> 
+        (&#8220;<code class="literal">track</code>&#8221; will simply track the on-source position):
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs <code class="literal">&gt; start #</code></td><td>where <code class="literal">#</code> is the scan number of the pointing scan.</td></tr></tbody></table>
+        </div><p>
+      </p>
+     
+      <p>
+        Watch the amplitudes in <span class="command"><strong>vis</strong></span> to check progress. You should see the amplitudes drop to approximately half
+        the amplitude of the nominal centre position. The difference between the plus and minus pointings
+        give an indication of the error in the pointing.
+      </p>
+
+      <p>
+        After the pointing scan has finished, check the errors that are found in the <span class="application">MoniCA</span> pointing page.
+        If any of the &#8220;Last Az Correction&#8221; or &#8220;Last El Corrections&#8221; is greater than 10&#8243;, 
+	a second pointing should probably be considered.
+      </p>
+
+      <p>
+        For more information on offset pointing, see the
+          <a class="ulink" href="http://www.narrabri.atnf.csiro.au/observing/pointing" target="_top">Reference Pointing Guide</a>.
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="Phase-Calibration"></a>3.2.6.3. Calibrating Phases</h4></div></div></div>
+      
+
+      <p>
+        <a class="indexterm" name="idm46395605239600"></a>
+        Phase Calibration is somewhat &#8220;cosmetic&#8221;, however, it can be useful to set the phases to
+        zero at the start of observations to help judge the phase stability.
+        To set the phases to zero:
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs <code class="literal">&gt; corr pcal</code></td><td><code class="literal">pcal</code> calculates the required correction and 
+                  applies the correction that the <code class="literal">pcal</code> offsets.</td></tr></tbody></table>
+        </div><p>
+      </p>
+
+      <p>
+       (Early versions of the <acronym class="acronym">CABB</acronym> software required an &#8220;<code class="literal">a</code>&#8221; switch at the 
+         end of the <code class="literal">acal</code> command for the gains to actually be applied. 
+         They are now applied automatically by the <code class="literal">pcal</code> command. Any switch other than an 
+         <code class="literal">a</code> will result in the phase corrections not being applied.)
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="Antenna-Gain-Calibration"></a>3.2.6.4. Setting Antenna Gains</h4></div></div></div>
+      
+
+      <p>
+        <a class="indexterm" name="idm46395605225392"></a>
+        Once the delays have been set and pointing checked (for mm observations), the antenna gains need to be set.  To set the gains:
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs <code class="literal">&gt; corr acal [#<sub>1</sub> #<sub>2</sub>] </code></td><td><code class="literal">acal</code> calculates the required correction.
+                <code class="literal">#<sub>1</sub></code> and <code class="literal">#<sub>2</sub></code> are the fluxes of the calibrator
+                at the first and second frequencies respectively.</td></tr></tbody></table>
+        </div><p>
+      </p>
+
+      <p>
+        (Early versions of the <acronym class="acronym">CABB</acronym> software required an &#8220;<code class="literal">a</code>&#8221; switch at the 
+        end of the <code class="literal">acal</code> command for the gains to actually be applied. 
+        They are now applied automatically by the <code class="literal">acal</code> command. Any switch other than an 
+        <code class="literal">a</code> will result in the gain corrections not being applied.)
+      </p>
+
+      <p>
+        If using <code class="literal">PKS1934-638</code> or <code class="literal">PKS0823-500</code>, 
+          the flux densities are known by <span class="command"><strong>caobs</strong></span> and do not have to be entered, i.e.
+        </p><div class="command-table">
+          <table class="command-table" border="0"><colgroup><col><col><col></colgroup><tbody><tr><td> </td><td>caobs <code class="literal">&gt; corr acal</code></td><td> </td></tr></tbody></table>
+        </div><p>
+      </p>
+
+      <p>
+	Gain settings are used for calculating T<sub>sys</sub>. This can be recalculated off-line, but some care needs to be taken.
+      </p>
+
+      <p>
+        The <code class="literal">T<sub>sys</sub></code>s should be checked in the <span class="command"><strong>cacor</strong></span> GUI. 
+        Any outlier readings should be checked.
+      </p>
+    </div>
+    </div>
+    
+    <p>
+      At this point, the array should be set up and ready for observing. 
+      Check that <span class="bold"><strong>all</strong></span> the products in <span class="command"><strong>vis</strong></span>
+      look correct and that the T<sub>sys</sub> values (in <span class="command"><strong>cacor</strong></span>) 
+      are appropriate. If there are any problems, check the
+      Troubleshooting section <a class="xref" href="ch03s04.html#Troubleshooting" title="3.4.6. Troubleshooting">Section 3.4.6</a> or get help.
+    </p>
+
+
+  <div class="footnotes"><br><hr style="width:100; text-align:left;margin-left: 0"><div id="ftn.idm46395605295600" class="footnote"><p><a href="#idm46395605295600" class="para"><sup class="para">[1] </sup></a><span class="application">MoniCA</span> Pointing Information: <span class="application">MoniCA</span> &#8594; Navigator &#8594; misc &#8594; pointing</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3. Observing </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 3.3. Observing</td></tr></table></div></body></html>

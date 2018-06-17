@@ -1,0 +1,102 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>1.5. Centimetre Observations (16&#8211;4 cm bands)</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="ch01.html" title="Chapter 1. The Australia Telescope Compact Array"><link rel="prev" href="ch01s04.html" title="1.4. Choosing Angular and Frequency Resolution"><link rel="next" href="ch01s06.html" title="1.6. Millimetre-wave observations (15mm&#8211;3mm)"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.5. Centimetre Observations (16&#8211;4 cm bands)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s04.html">Prev</a> </td><th width="60%" align="center">Chapter 1. The Australia Telescope Compact Array</th><td width="20%" align="right"> <a accesskey="n" href="ch01s06.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="centimetre-observations"></a>1.5. Centimetre Observations (16&#8211;4 cm bands)</h2></div></div></div>
+    
+    <p>
+      The next two sections describe some necessary considerations for both
+      centimetre and millimetre observations at the <acronym class="acronym">ATCA</acronym>. This section on centimetre
+      observations is also relevant for millimetre observers and should be read by
+      everyone planning to propose for the <acronym class="acronym">ATCA</acronym>. The millimetre section describes
+      some additional requirements specific to millimetre observations.
+    </p>
+    <p>
+      </p><div class="table"><a name="table_brightness_temperature"></a><p class="title"><b>Table 1.4. 
+	  Continuum brightness temperature sensitivity (12 hr integration) for
+	  bandwidth specified in <a class="xref" href="ch01s02.html#table_sensitivity" title="Table 1.1. Observing Parameters for the 6km Compact Array.">Table 1.1</a>, for
+	  various arrays.
+	</b></p><div class="table-contents">
+	
+	
+	<table class="table" summary="
+	  Continuum brightness temperature sensitivity (12 hr integration) for
+	  bandwidth specified in , for
+	  various arrays.
+	" border="1"><colgroup><col align="center" class="band"><col align="center" class="a6km"><col align="center" class="a1.5km"><col align="center" class="a750m"><col align="center" class="ew352"><col align="center" class="h214"><col align="center" class="h75"></colgroup><thead><tr><th rowspan="2" align="center" valign="middle">Band</th><th colspan="6" align="center">
+		Array
+	      </th></tr><tr><th align="center">6km</th><th align="center">1.5km</th><th align="center">750m</th><th align="center">EW352</th><th align="center">H214</th><th align="center">H75</th></tr></thead><tbody><tr><td align="center">16cm</td><td align="center">0.02 K</td><td align="center">2.1 mK</td><td align="center">0.53 mK</td><td align="center">0.1 mK</td><td align="center">0.1 mK</td><td align="center">0.02 mK</td></tr><tr><td align="center">4cm</td><td align="center">0.01 K</td><td align="center">1.6 mK</td><td align="center">0.4 mK</td><td align="center">0.07 mK</td><td align="center">0.11 mK</td><td align="center">0.01 mK</td></tr><tr><td align="center">15mm</td><td align="center">0.02 K</td><td align="center">2.6 mK</td><td align="center">0.65 mK</td><td align="center">0.12 mK</td><td align="center">0.18 mK</td><td align="center">0.02 mK</td></tr><tr><td align="center">7mm</td><td align="center">0.03 K</td><td align="center">4.8 mK</td><td align="center">1.2 mK</td><td align="center">0.22 mK</td><td align="center">0.33 mK</td><td align="center">0.04 mK</td></tr><tr><td align="center">3mm</td><td align="center">&#8212;</td><td align="center">&#8212;</td><td align="center">&#8212;</td><td align="center">1.4 mK</td><td align="center">2.1 mK</td><td align="center">0.24 mK</td></tr></tbody></table>
+      </div></div><p><br class="table-break">
+    </p>
+    
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Calibration"></a>1.5.1. Calibration</h3></div></div></div>
+      
+      
+      <p>
+	It is crucial to obtain good calibration data during your observations, and you must consider
+	how much of an overhead calibration will represent before you propose an experiment. A detailed
+	description of the calibration required is given in <a class="xref" href="ch02s02.html" title="2.2. Calibration">Section 2.2</a>.
+      </p>
+
+      
+
+      
+
+      
+
+      <p>
+	The amount of calibration required will also depend on when the experiment is scheduled.
+	Observations requiring maximum phase stability (e.g., at wavelengths less than 6cm) should
+	be made in winter, or at night.
+      </p>
+      
+	
+
+	
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Sensitivity-Calculations"></a>1.5.2. Sensitivity Calculations</h3></div></div></div>
+      
+      <p>
+	The general expressions for the flux and brightness sensitivities are given
+	<a class="indexterm" name="idm46395607224720"></a>
+	in the document
+	<a class="ulink" href="http://www.narrabri.atnf.csiro.au/observing/AT-01.17-025.pdf" target="_top">AT/01.17/025</a>,
+	and these general expressions have been used in
+	<a class="xref" href="ch01s02.html#table_sensitivity" title="Table 1.1. Observing Parameters for the 6km Compact Array.">Table 1.1</a>.
+	The observer has control of the integration time (
+	<script type="math/tex">t</script>),
+	bandwidth (<span class="emphasis"><em>B</em></span>), observing wavelength (
+	<script type="math/tex">\lambda</script>), number of
+	baselines (<span class="emphasis"><em>N</em></span>) and synthesized beam
+	size (
+	<script type="math/tex">\theta</script>) only, and with these variables and
+	the system sensitivity (
+	<script type="math/tex">\mathrm{S}_{\mathrm{sys}}</script>),
+	the expressions reduce approximately to:
+	</p><div class="informalequation">
+	  <script type="math/tex; mode=display">
+            \mathrm{rms\; Flux\; Sensitivity}  = \Delta\mathrm{S} = 7.55\times10^{-5}  \mathrm{S}_{\mathrm{sys}}(\mathrm{N} t \mathrm{B})^{-1/2} \mathrm{Jy},
+	  </script>
+	</div><p>
+	and
+	</p><div class="informalequation">
+	  <script type="math/tex; mode=display">
+            \mathrm{rms\; Brightness\; Sensitivity}  = \Delta\mathrm{T}  =  1.36\times10^{3} \Delta\mathrm{S}
+	    \lambda^{2}/(\theta_\alpha\theta_\delta) \mathrm{K},
+	  </script>
+	</div><p>
+        where
+	<script type="math/tex">\mathrm{S}_{\mathrm{sys}}</script>
+	is in Jy,
+	<script type="math/tex">t</script>
+	in min, <span class="emphasis"><em>B</em></span> in MHz,
+	<script type="math/tex">\lambda</script>
+	in cm, and
+	<script type="math/tex">\theta</script>
+	is in arcsec. For the full 6 km array, <span class="emphasis"><em>N</em></span>=15.
+	There is a convenient
+	<a class="ulink" href="http://www.narrabri.atnf.csiro.au/myatca/interactive_senscalc.html" target="_top"><acronym class="acronym">ATCA</acronym> sensitivity calculator</a>
+	  which takes into account system temperature, observing frequency,
+	  array, correlator configuration and (u,v)-weighting.  
+	  (A pre-CABB version of the calculator is also available on the ATCA web page
+	  for use when considering the utility of archival ATCA data.)
+      </p>
+    </div>
+  </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch01s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.4. Choosing Angular and Frequency Resolution </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.6. Millimetre-wave observations (15mm&#8211;3mm)</td></tr></table></div></body></html>

@@ -1,0 +1,137 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>B.10. Changing to Hybrid Config (1MHz Continuum and 64MHz Zoom Mode)</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="apb.html" title="Appendix B. cacor reference"><link rel="prev" href="apbs09.html" title="B.9. Changing to 64MHz Zooms"><link rel="next" href="apbs11.html" title="B.11. Changing to Pulsar Binned mode"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">B.10. Changing to Hybrid Config (1MHz Continuum and 64MHz Zoom Mode)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apbs09.html">Prev</a> </td><th width="60%" align="center">Appendix B. <span class="command"><strong>cacor</strong></span> reference</th><td width="20%" align="right"> <a accesskey="n" href="apbs11.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="changing-cor-configs-hybrid-mode"></a>B.10. Changing to Hybrid Config (1MHz Continuum and 64MHz Zoom Mode)</h2></div></div></div>
+    
+    
+    <p>
+      <span class="bold"><strong>Note:</strong></span> do NOT use 0823-500 for setting up 64MHz zooms at 16cm.
+      <a class="indexterm" name="idm46395603643872"></a> 
+    </p>
+
+    <p>
+      To change modes it is necessary to:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+            <p>stop the current scan</p>
+          </li><li class="listitem">
+            <p>check the cccversion</p>
+	    <p><span class="italics">To check the cccversion: <span class="bold"><strong>caccc&gt; cccversion</strong></span>. It should be <span class="bold"><strong>&#8220;newzmsy&#8221;</strong></span> for all modes except <acronym class="acronym">VLBI</acronym> and <span class="bold"><strong>&#8220;VLBItwommlos&#8221;</strong></span> for <acronym class="acronym">VLBI</acronym> observing.</span>  </p>
+          </li><li class="listitem">
+            <p>in cacor, open the edit menu</p>
+	    <p>select the edit button in the cacor gui,</p>
+	    <p>
+	    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+	      <p> select the hybrid config</p>
+	      <p> <span class="bold"><strong>edit&gt; get cfb_1-cbf_64_zm16</strong></span> </p>
+	      </li><li class="listitem">
+              <p>and program the correlator</p>
+	      <p> <span class="bold"><strong>edit&gt; prog</strong></span> </p>
+	      <p> Check that all blocks program correctly. If any blocks report an error, they need to be programmed again, e.g.: </p>
+	      <p> <span class="bold"><strong>edit&gt; prog 8</strong></span> or <span class="bold"><strong>edit&gt; prog 8 27</strong></span>  </p>
+              </li><li class="listitem">
+              <p>&lt;CR&gt; to return out of the edit menu</p>
+              </li></ul></div><p>
+	    </p>
+	  </li><li class="listitem">
+            <p>There is no extra flagging needed in this config </p>
+	  </li><li class="listitem">
+            <p>start observing a strong calibrator, e.g.</p>
+	    <p> <span class="bold"><strong>caobs&gt; track 1 </strong></span></p>
+	    <p><span class="italics">There are several &#8220;standard&#8221; schedule files with a set of zooms for setting - e.g. <span class="bold"><strong>setup_1934_64</strong></span> (and similar). </span> </p>
+          </li><li class="listitem">
+            <p>Check for rear transition module (rtm) problems</p>
+	    <p> F1 and F2 Datalinks (separate tabs in the CACOR gui) should not have red error messages, and the 1ms values are in the range 2000 - 13000 (i.e. not 260 000). Fix with:</p>
+	    <p> <span class="bold"><strong>cacor&gt; rtminit </strong></span></p>
+          </li><li class="listitem">
+            <p>Check (in spd) for &#8220;big humps&#8221;</p>
+	    <p> F1 and F2 datalinks list the antennas, frequencies (1 or 2) and pols (A or B) and the block associated with that ant/freq/pol. Reprogram that block to fix big humps.</p>
+          </li><li class="listitem">
+            <p>Check (in spd) zoom amplitudes and phases - continuum phases and amplitudes will probably be a mess, but zoom products should be clean.</p>
+	    <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+		<p>Check every zoom that will be used in at least two consecutive cycles. </p>
+		<p>If there are a significant number of zooms, it is often quicker to set up differences:</p>
+		<p> <span class="bold"><strong>spd&gt; rsave </strong></span> Saves every cycle into a reference so that you display a running difference of the current cycle against previous cycle.</p>
+		<p> <span class="bold"><strong>spd&gt; d -100 100 </strong></span> To actually see the difference</p>
+		<p><span class="italics"><span class="bold"><strong>Note:</strong></span>You need to wait several cycles after a reprogram until you are actually getting a relevant difference.</span></p> 
+
+		<p>To work out which block needs programming, use the cacor &#8220;where&#8221; command: </p>
+		<p> <span class="bold"><strong>cacor&gt; where zoom z<sub>n</sub> chan</strong></span> </p>
+		<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: square; "><li class="listitem">
+		    <p> z<sub>n</sub> is the offending zoom (e.g. z21) </p>
+		  </li><li class="listitem">
+		    <p> chan is a channel in the range of bad data - for single zooms this can be any channel in the band, but you will need to be more specific for stitched zooms </p>
+		  </li></ul></div>
+	      </li><li class="listitem">
+		<p>To reprogramming a block: </p>
+		<p> <span class="bold"><strong>config&gt; prog <span class="italics">[offending block]</span> calc</strong></span> or </p>
+		<p> <span class="bold"><strong>config&gt; prog <span class="italics">[offending block]</span> x 7,8</strong></span> or </p>
+		<p> <span class="bold"><strong>config&gt; prog <span class="italics">[offending block]</span></strong></span> </p>
+		<p> <span class="italics">Note: <span class="bold"><strong>calc</strong></span> resets the c bus;<span class="bold"><strong>x 7,8</strong></span> resets CABB board memory controllers; and No swith will reprogram the whole block, (delays need to be recalculated)</span></p> 
+	      </li><li class="listitem">
+		<p> Iterate until all is good </p>
+	      </li></ul></div>  
+	  </li><li class="listitem">
+	    <p>The reprogramming is finished......... but array calibration is still to be done - and is more complicated than continuum or 1MHz zoom calibration.</p>
+	  </li></ul></div><p>
+    </p>
+  
+
+   <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="hybrid-cal"></a>B.10.1. 64MHz Zoom/Continuum Hybrid Calibration</h3></div></div></div>
+    
+    
+    <p> The issue is that, unless the delays are small, the phases will wrap by more than a turn within a single continuum channel - resulting in the phases just being noise. </p>
+    
+    <p>To calibrate, first check (in spd) that the delays aren't already more-or-less calibrated..... If the slope across continuum band phase plot in spd is not noisy and the delays in vis are small (&lt;2nsec) for all polarisations, you can just proceed as normal. </p>
+    <p>Assuming that the delays are large, they need to be determined in two steps: 
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	<p> First across a zoom band (i.e. one continuum channel) </p>
+      </li><li class="listitem">
+	<p> Then across the whole continuum band </p>
+      </li></ul></div><p>
+    </p>
+
+    <p> The setup scan needs to be on a strong calibrator with the continuum frequency at the same centre frequency as the observations <span class="bold"><strong>and the first zoom, in each frequency must be 1 zoom wide (you cannot do the zoom calibration with stitched zooms)</strong></span>. </p>
+    <p>
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	<p>Set calbands to &#8220;f z&#8221;</p>
+	<p><span class="bold"><strong>cacor&gt; calband f z</strong></span></p>
+      </li><li class="listitem">
+	<p>Start observing a strong calibrator:</p>
+	<p><span class="bold"><strong>caobs&gt; track 1</strong></span></p>
+      </li><li class="listitem">
+	<p>In spd, check the phases in the first zoom of each frequency (z<sub>1</sub> and z<sub>[n+1]</sub> where n is the number of zooms in the first frequency)</p>
+      </li><li class="listitem">
+	<p>If these are not clean, that problem needs to be sorted before going any further. (Stop/Start is often a good thing to try first.)</p>
+      </li><li class="listitem">
+	<p>In vis check that the delays are flat in all pols</p>
+	<p>(if they are noisy but spd looks good, the first thing to check will be delavg: increasing delavg will give better signal to noise, but it will need to be decreased if the phases are wrapping quickly).</p>
+      </li><li class="listitem">
+	<p>When they are clean, delay calibrate:</p>
+	<p><span class="bold"><strong>caobs&gt; corr dcal</strong></span></p>
+	<p>This applies the delay found in the single zoom (z<sub>1</sub> and z<sub>[n+1]</sub>) to the whole continuum band in each frequency.</p>
+	<p>The delays should now be sufficiently small that the phases should be farily clean and the slope accross the band less than one turn per (64MHz continuum) channel. (Again, if the delays in vis are noisy, there is a problem and it needs to be sorted out before going any further.)</p>
+      </li><li class="listitem">
+	<p>Set calband back to &#8220;f f&#8221; - i.e. using the whole continuum band to calculate delays (and T<sub>sys</sub> etc.)</p>
+	<p><span class="bold"><strong>cacor&gt; calband f f</strong></span></p>
+	<p><span class="italics"><span class="bold"><strong>Check delavg:</strong></span> If it had to be increased for the zoom calibration, it will probably be too large for continuum</span></p>
+      </li><li class="listitem">
+	<p>Check (in spd) baseline amplitudes and phases</p>
+      </li><li class="listitem">
+	<p>Check that tvch is set to appropriate values</p>
+      </li><li class="listitem">
+	<p>Check that delavg is set to an appropriate value</p>
+      </li></ul></div><p>
+    </p>
+    <p>Standard setup follows (i.e. dcal, acal, pcal etc.)</p>
+    <p>If you get to the end of the calibration, and appear to have a working system, but that the Tsyss are high, check that the noise diode phases are flat.</p>
+    <p>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	  <p>In spd, select the autocorrelation ab products (i.e. the noise diode products)</p>
+	  <p><span class="italics"><span class="bold"><strong>Note:</strong></span> The AB products  are only generated when in the continuum calband (i.e. calband f )</span></p>
+	  <p><span class="bold"><strong>spd&gt; acs on</strong></span></p>
+	  <p><span class="bold"><strong>spd&gt; sel ab</strong></span></p>
+	  <p><span class="bold"><strong>spd&gt; p -200 200</strong></span></p>
+	  <p>Check that the phases are not wrapping.</p>
+	  <p><span class="italics"><span class="bold"><strong>(Note:</strong></span>Though the phases generally wrap over many channels in the cross correlation products, they can be wrapping quite quickly in the auto-correlation products and delavg may need to be a small number, which may mean that you need a stronger calibrator to sort this out.)</span></p>
+	</li></ul></div><p>
+    </p>	
+   </div>
+
+  </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apbs09.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apb.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apbs11.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">B.9. Changing to 64MHz Zooms </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> B.11. Changing to Pulsar Binned mode</td></tr></table></div></body></html>

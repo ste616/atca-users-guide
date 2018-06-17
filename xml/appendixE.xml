@@ -1,0 +1,1340 @@
+<appendix id="Web-Scheduler">
+  <info>
+    <title>Web Scheduler</title>
+    <date>$Date: 2014-06-03 06:26:17 +1000 (Tue, 03 Jun 2014) $</date>
+    <revhistory>
+      <revision>
+	<revnumber>1.1</revnumber>
+	<date>2014 May 28</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Update for new scheduler features</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.0</revnumber>
+	<date>2014 Mar 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Initial Docbook revision</revremark>
+      </revision>
+    </revhistory>
+  </info>
+  <para>
+    <indexterm role="cp"><primary>schedule</primary><secondary>web scheduler</secondary></indexterm>
+    This appendix describes in detail all the fields and buttons available in the CABB
+    web scheduler, and how to use them.
+  </para>
+  
+  <section id="Scheduler-Fields">
+    <info>
+      <title>Scheduler Fields</title>
+    </info>
+
+    <para>
+      <figure id="webscheduler_main">
+	<title>The Simple View of the CABB Web Scheduler.</title>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="figures/webscheduler_main.jpg" format="JPG">
+	    </imagedata>
+	  </imageobject>
+	</mediaobject>
+      </figure>
+    </para>
+
+    <section>
+      <info>
+	<title>Fields in the Simple View</title>
+      </info>
+      <para>
+	<variablelist>
+	  <varlistentry>
+	    <term><literal>Source</literal></term>
+	    <listitem>
+	      <para>
+		The name of the source. If the name of a calibrator in the 
+		<acronym>ATCA</acronym> calibrator database is entered
+		into this field, the scheduler will automatically fill the <literal>RA</literal>,
+		<literal>Dec</literal>, <literal>Epoch</literal> and <literal>CalCode</literal> fields. The information
+		in this field will be used by the correlator as the name of the source
+		in the output <acronym>FITS</acronym> files. If observing a mosaic, this field should be
+		set to the name of the mosaic file describing the mosaic pointings,
+		without the <literal>.mos</literal> extension.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>RA &amp; Dec</literal></term>
+	    <listitem>
+	      <para>
+		These fields define where on the sky you want the array to point,
+		ie. the phase centre. You must specify <literal>RA</literal> in hours, minutes and
+		seconds separated by colons (<literal>:</literal>), and you must specify 
+		<literal>Dec</literal> in degrees,
+		minutes and seconds separated by colons (<literal>:</literal>). The 
+		<literal>RA</literal> and <literal>Dec</literal> will be
+		in the system defined by the <literal>Epoch</literal> field, thus they can also
+		be used to represent azimuth and elevation angles, and Galactic latitude and
+		longitude.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>Epoch</literal></term>
+	    <listitem>
+	      <para>
+		This defines the coordinate system used for the <literal>RA</literal> and
+		<literal>Dec</literal> fields. Four epochs are recognised:
+	      </para>
+	      <itemizedlist>
+		<listitem>
+		  <para>
+		    J2000 (default)
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    B1950
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    Az/El (horizon coordinates)
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    Galactic
+		  </para>
+		</listitem>
+	      </itemizedlist>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>CalCode</literal></term>
+	    <listitem>
+	      <para>
+		A flag used to specify if a certain source is meant as a calibrator. It
+		should either be &#x201C;<literal>C</literal>&#x201D; for a calibrator, or blank for a non-calibrator.
+		For baseline solutions, the <literal>CalCode</literal> is set to &#x201C;<literal>B</literal>&#x201D;,
+		a feature that should not be used by normal observers. When a calibrator is selected
+		from the &#x201C;<literal>Search Cal</literal>&#x201D; screens, or matched from input to the
+		<literal>Source</literal> field, this code will automatically be set to &#x201C;<literal>C</literal>&#x201D;.
+		The <literal>CalCode</literal> field is reset to blank after a new scan is added
+		to avoid inadvertantly calling a target source scan a calibrator scan.
+	      </para>
+	      
+	      <para>
+		The <command>assistance</command> program makes use of the <literal>CalCode</literal> field to
+		determine the level of on-line checking that is done.  If a calibrator
+		scan is indicated, the checks (for stable amplitude, small delays,
+		closure phase, etc.) are more stringent.  If a calibrator scan is not
+		labelled with &#x201C;<literal>CalCode=C</literal>&#x201D; then these checks will not be performed.
+		On the other hand, most target sources have structure and
+		insufficient flux, so
+		<command>assistance</command> would sound alarms continuously if a source like that
+		was marked as a calibrator scan.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>ScanLength</literal></term>
+	    <listitem>
+	      <para>
+		This indicates the length of time to spend on the
+		current scan.  It is specified in time format and should be specified
+		as <literal>HH:MM:SS</literal>, where 
+		<literal>HH</literal>,<literal>MM</literal> and <literal>SS</literal> are the number of
+		hours, minutes and seconds
+		to spend on the source respectively.
+		Unless the <literal>ScanType</literal> is set to <literal>Dwell</literal>, the scan time includes the
+		time to drive to the source. The scan must be at least four integration cycles long.
+	      </para>
+	      
+	      <para>
+		For many types of scan, this field is essentially meaningless, although it must
+		<emphasis role="bold">always be set to four integration cycles or longer</emphasis>.
+		For <literal>Point</literal>, <literal>Paddle</literal> and <literal>Closefile</literal>
+		scans, the scan will take as long as it needs to, and the setting of the
+		<literal>ScanLength</literal> field is unimportant.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>ScanType</literal></term>
+	    <listitem>
+	      <para>
+		This field specifies special scan characteristics:
+	      </para>
+	      <itemizedlist>
+		<listitem>
+		  <para>
+		    <literal>Normal</literal>: the scan will go for the length of time specified
+		    by <literal>ScanLength</literal>, inclusive of all slewing/setup time to get on source.
+		    For example, if <literal>ScanLength</literal> is set to 10 minutes, then the scan
+		    will go for 10 minutes, even it takes 2 minutes to slew to source; in this case, only
+		    8 minutes of data will be collected on-source.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <literal>Dwell</literal>: the scan will go for the length of time specified
+		    by <literal>ScanLength</literal>, in addition to any slewing/setup time incurred while
+		    moving to the source. For example, if <literal>ScanLength</literal> is set to 10 minutes,
+		    and the telescope takes 2 minutes to slew to source, then this scan will go for
+		    12 minutes, and 10 minutes of data will be collected on-source.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <literal>Mosaic</literal>: this must be selected to indicate that this scan is a
+		    mosaic scan, and that the <literal>Source</literal> field should be interpreted as
+		    the name of a mosaic file.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <literal>Point</literal>: indicates that this scan should be executed as a
+		    pointing pattern, which can be used to determine offsets for each antenna.
+		    This may be used for global pointing solutions as performed by local staff,
+		    or for reference pointing during observations.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <literal>Paddle</literal>: indicates that the paddle should be inserted during
+		    3mm observations; this scan type will have no effect during observations
+		    at other bands.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <literal>Closefile</literal>: placing a scan with this scan type in a schedule
+		    causes the correlator to close the current file when it reaches this
+		    scan. No other scan parameters are interpreted when this scan type is
+		    specified. This is useful for keeping file sizes small, or for separating
+		    files based on the number of times the schedule has looped. The correlator
+		    will automatically start a new file when the next scan begins.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <literal>OTFMos</literal>: this must be selected to indicate that this scan is
+		    an on-the-fly mosaic scan, and that the <literal>Source</literal> field should be
+		    interpreted as the name of a mosaic file.
+		  </para>
+		</listitem>
+	      </itemizedlist>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>Pointing</literal></term>
+	    <listitem>
+	      <para>
+		This field specifies the pointing mode of the antenna during the scan. Options are:
+	      </para>
+	      <itemizedlist>
+		<listitem>
+		  <para>
+		    <literal>Global</literal>: the default pointing mode. It uses the global, all-sky
+		    pointing model determined at each reconfiguration.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <literal>Offset</literal>: uses the offsets from the latest pointing solution
+		    (which should be determined on a nearby calibrator)
+		    to improve the pointing locally (near the calibrator) and for a limited
+		    time (offsets are time variable). For experiments that track only a single
+		    source and a nearby calibrator, this is the safest pointing mode to use.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <literal>Offpnt</literal>: instructs <command>caobs</command> to find the best pointing solution
+		    for this scan by looking through all pointing solutions from the previous
+		    two hours, and selecting the one closest in az/el position and frequency.
+		    If no suitable pointing solution is found, it reverts to the global pointing
+		    model, which may cause serious problems, especially at 3mm wavelengths.
+		    This mode should be preferred over <literal>Offset</literal> pointing if many
+		    widely-separated sources are being observed together.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <literal>Refpnt</literal>: determine new local pointing offsets by executing
+		    a pointing pattern on a calibrator. Using this <literal>Pointing</literal> mode
+		    causes the telescope to be put into global pointing mode before the new
+		    offsets are determined. This option only makes sense when
+		    combined with a <literal>ScanType</literal> of <literal>Point</literal>, and this should only
+		    be done while observing a calibrator.
+		  </para>
+		  
+		  <para>
+		    Setting <literal>Pointing</literal> to <literal>Refpnt</literal> will make the
+		    scheduler automatically set the <literal>ScanType</literal> to <literal>Point</literal>.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <literal>Update</literal>: determine new local pointing offsets by executing
+		    a pointing pattern on a calibrator. Using this <literal>Pointing</literal> mode
+		    causes the newly determined offsets to be added to the previously
+		    determined pointing solution. This option only makes sense when
+		    combined with a <literal>ScanType</literal> of <literal>Point</literal>, and this should only
+		    be done while observing a calibrator.
+		  </para>
+		  
+		  <para>
+		    Setting <literal>Pointing</literal> to <literal>Update</literal> will make the
+		    scheduler automatically set the <literal>ScanType</literal> to <literal>Point</literal>.
+		  </para>
+		</listitem>
+	      </itemizedlist>
+	      <para>
+		If you choose to have a <literal>ScanType</literal> of <literal>Point</literal> and a
+		<literal>Pointing</literal> that is not <literal>Update</literal>, the scheduler will popup a query
+		box asking if you are sure this is what you want. For normal observations,
+		you should always have <literal>Pointing</literal>=<literal>Update</literal> for
+		<literal>ScanType</literal>=<literal>Point</literal> so that the pointing offsets determined during
+		the pointing scan will be used for all subsequent <literal>Offset</literal> and
+		<literal>Offpnt</literal> scans. There may be other cases where the observer does not
+		want the pointing to be automatically updated (such as during an array
+		reconfiguration), which is why this option is not strictly forbidden.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>Observer</literal></term>
+	    <listitem>
+	      <para>
+		This is an ASCII string up to 12 characters long that is used to
+		identify who made the observations. It is not critical to any
+		on-line system and is merely a label for reference.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>Project</literal></term>
+	    <listitem>
+	      <para>
+		This is the project identification number (<literal>nnn</literal>) allocated to
+		observing projects, and should be specified here as <literal>Cnnn</literal>. The
+		<literal>Project</literal> field value is used by <command>cacor</command> to name the extension
+		of the output <acronym>RPFITS</acronym> files. It is important that it is set correctly
+		as it is used for record keeping and by the <acronym>ATNF</acronym> Online Archive.
+		The default <literal>C999</literal> code is used for system testing and test files;
+		such files will not be considered as valuable when it comes to deleting
+		data.
+	      </para>
+	      
+	      <para>
+		The scheduler will complain if you enter a schedule file that doesn't look like
+		<literal>Cnnn</literal>, <literal>CXnnn</literal> or <literal>Vnnna</literal> (the latter
+		being a <acronym>VLBI</acronym> project code). You can choose to ignore the warning, and
+		the scheduler will save the schedule, but it is strongly advised that you do not use
+		a project code that does not fit the above pattern.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>Time</literal></term>
+	    <listitem>
+	      <para>
+		The value of this field can only be set for source 1 in the schedule,
+		and is used as the start time of the schedule. If <literal>TimeCode</literal> is set
+		to <literal>LST</literal>, then this value is only used for calculation of slew times
+		and elevations by the scheduler's listing tab, and will be ignored by
+		<command>caobs</command>. If <literal>TimeCode</literal> is set to <literal>UTC</literal> however,
+		<command>caobs</command> will treat the schedule as an absolute time schedule, so each scan will
+		only be executed between the time specified here (on the date specified
+		in the <literal>Date</literal> field) and the time plus the value in <literal>ScanLength</literal>.
+		This will usually only be useful when coordinating the activities of the
+		<acronym>ATCA</acronym> with other telescopes (such as for <acronym>VLBI</acronym>).
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>TimeCode</literal></term>
+	    <listitem>
+	      <para>
+		The selection made here sets the type of time desired for the
+		<literal>Time</literal> field above. It can be either local sidereal time (LST) or
+		coordinated universal time (UTC). This field can only set for source
+		1 in the schedule. See the description of the <literal>Time</literal> field for
+		the consequences of setting this field to UTC.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>Date</literal></term>
+	    <listitem>
+	      <para>
+		The observing date can be set here to allow the scheduler to correctly
+		determine the source positions and drive times. Of course, the date does
+		not matter when setting LST, but is of vital importance when the <literal>TimeCode</literal>
+		is set to UTC.
+	      </para>
+	      
+	      <para>
+		This field is also used when the scheduler calculates the apparent frequency of a
+		spectral line, which will be affected by the velocity of the Earth on the date
+		specified here.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	</variablelist>
+      </para>
+    </section>
+    
+    <section>
+      <info>
+	<title>Fields in the Advanced View</title>
+      </info>
+
+      <para>
+	<figure id="webscheduler_advanced_view">
+	  <title>The Advanced View of the CABB Web Scheduler.</title>
+	  <mediaobject>
+	    <imageobject>
+	      <imagedata fileref="figures/webscheduler_advanced_view.jpg" format="JPG">
+	      </imagedata>
+	    </imageobject>
+	  </mediaobject>
+	</figure>
+      </para>
+
+      <para>
+	<variablelist>
+	  <varlistentry>
+	    <term><literal>Config</literal></term>
+	    <listitem>
+	      <para>
+		The value of this field may (eventually) be used to configure the
+		correlator. Currently, there are only a few easily-usable correlator configurations, and
+		this field should be left blank, or given the default value of <literal>null</literal>.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>Averaging</literal></term>
+	    <listitem>
+	      <para>
+		This parameter specifies the number of cycles to average together
+		when writing the data out to an <acronym>RPFITS</acronym> file on disk. Averaging will
+		restart on source and frequency changes. We do not recommend that this field is
+		set to values larger than <literal>1</literal>.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>Environment</literal></term>
+	    <listitem>
+	      <para>
+		Setting this field requests <command>caobs</command> to record the attenuator and
+		sampler settings assocated with each different field value, and recall
+		those settings whenever a scan is encountered with the same value.
+		Each frequency setting (modulo 1 MHz) allows for up to 128 such values.
+		Valid <literal>Environment</literal> values are from 0 to 127.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>PointingOffset1 &amp; PointingOffset2</literal></term>
+	    <listitem>
+	      <para>
+		Use these fields and the <literal>Offpnt</literal> <literal>Pointing</literal> type to
+		make the telescope point away from the specified RA &amp; Dec.
+		<literal>PointingOffset1</literal> is the offset in seconds to move in RA,
+		and <literal>PointingOffset2</literal> is the offset in arcseconds to move in
+		Dec. Remember that the phase centre of the observation will always be at
+		the position given in the <literal>RA</literal> and <literal>Dec</literal> fields. Therefore if
+		you wish to use these offset pointing fields to avoid a potential DC
+		offset issue, you must put an offset position in <literal>RA</literal>, <literal>Dec</literal> and
+		then use <literal>PointingOffset1</literal> and <literal>PointingOffset2</literal> to shift
+		the pointing centre to be on source again.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>TVChan</literal></term>
+	    <listitem>
+	      <para>
+		When switching between different observing frequencies, the usable range
+		of correlator channels will also change, due to RFI or bandpass shape.
+		The correlator uses only a certain subset of channels &#x2013; called the TV
+		channels &#x2013; to determine system temperatures, and if the TV channels are
+		not kept constant for each individual frequency config then you may
+		encounter amplitude problems later in the reduction process. The TV
+		channels setting also affects what is displayed by <command>vis</command>. This parameter
+		allows you to set the TV channels on a per scan basis, which makes
+		frequency switching a far more automated process. This parameter should
+		be either <literal>null</literal> to allow the current TV channel setting to be
+		left as-is, or a set of four numbers, separated by commas, indicating (in
+		order) the first and last TV channel for IF 1, and the first and last TV
+		channel for IF 2.
+	      </para>
+
+	      <para>
+		During normal frequency-switching observations, <command>cacor</command> will itself
+		remember the TV channels on a per-frequency basis, and restore them as the frequencies
+		change. If everything works as expected, this scheduler field is not required. This
+		field is here in case you don't want to rely upon <command>cacor</command>'s memory.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>Cmd</literal></term>
+	    <listitem>
+	      <para>
+		This field can be used to instruct <command>caobs</command> to issue one or more commands each time it
+		starts this scan. Multiple commands may be specified, separated by
+		semi-colons, although this field has an 80 character limit. Each command must
+		be a recognised <command>caobs</command> command. For example,
+		the tied-array configuration could be changed by specifying
+		<literal>corr catie ant 123456 123456; corr catie gain 0.2 0.2</literal>
+	      </para>
+
+	      <para>
+		The first command listed in this field will be executed as soon as the
+		scan is started, and each subsequent command will be executed as soon
+		as the previous has been processed. To allow more flexibility in the timing
+		of the commands listed in this field, there is a special command <literal>WAIT n</literal>.
+		This command (which cannot be used in manual <command>caobs</command> operation), waits for
+		<literal>n</literal> integrations after the start of the scan. After this condition has been
+		met, the commands after the <literal>WAIT</literal> command are executed. For example, to
+		calibrate the phases after 5 cycles (to allow for data collection), specify
+		<literal>wait 5; corr pcal</literal>
+	      </para>
+
+	      <para>
+		There are important caveats on the <literal>WAIT</literal> command. It does not guarantee
+		on-source cycles will be waited: if the command <literal>wait 5</literal> is specified, but
+		it takes 5 or more cycles before the telescope gets on-source, the subsequent
+		command will likely be executed before valid data is collected. To guard against
+		this, consider putting a dummy scan before the scan with the command specification.
+		The dummy scan should have a small (one or two cycles) amount of dwell time so
+		that <command>caobs</command> will wait until the telescope is on-source before proceeding to
+		the next scheduled scan.
+	      </para>
+
+	      <para>
+		The <literal>WAIT</literal> command is not a progression command either. Take for example
+		the following command:
+		<literal>wait 5; corr dcal; wait 4; corr pcal</literal>
+		This command will fail to do what you might naively expect, because after the
+		<literal>dcal</literal> command is issued, it
+		will immediately issue the <literal>pcal</literal> command. This is because the <literal>wait 4</literal>
+		command will immediately exit, as <command>caobs</command> has already waited for the fifth cycle
+		to start, so it will no longer wait for the fourth cycle. Instead, this command
+		should be:
+		<literal>wait 5; corr dcal; wait 9; corr pcal</literal>
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>CatVel</literal></term>
+	    <listitem>
+	      <para>
+		The <literal>CatVel</literal> field can be set
+		manually, or via the scheduler's "Pick Source" function. This allows for rapid
+		and reliable frequency calculation with the scheduler's velocity calculator, as
+		the information in this field is automatically propagated into the calculator.
+		This field should be set as three values, separated by spaces as follows:
+	      </para>
+	      <screen>
+		velocity velframe velconv
+	      </screen>
+	      <para>
+		Here, <literal>velocity</literal> is the velocity of the source in km/s (recession is positive),
+		<literal>velframe</literal> is the frame in which the velocity is measured (one of
+		<literal>LSR</literal> or <literal>Bary</literal>), and <literal>velconv</literal> is the velocity convention (one of
+		<literal>Radio</literal>, <literal>Optical</literal> or <literal>Z</literal>).
+	      </para>
+
+	      <para>
+		This field must be set if you want to use the scheduler's zoom range checker.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>FreqConfig</literal></term>
+	    <listitem>
+	      <para>
+		The <literal>FreqConfig</literal> field is used to create a number of frequency and zoom settings that
+		can be shared between scans. Setting the continuum frequencies and specifying up to 16
+		zooms in each <command>IF</command> can be tedious and error prone if it has to be repeated for many scans. The
+		<literal>FreqConfig</literal> field lets you select one or more scans as <literal>Master</literal> scans and then
+		assign other scans to be <literal>Slave</literal> scans. Each <literal>Slave</literal> scan inherits the
+		exact frequency and zoom settings of the corresponding <literal>Master</literal> scan. Using this
+		you can ensure source and calibrator are observed with the same settings, even after
+		recalculating velocities and frequencies for a different date. The default setting of
+		<literal>null</literal> leaves the settings independent of other scans.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>Comment</literal></term>
+	    <listitem>
+	      <para>
+		This field can be used to leave comments for yourself in the schedule. It is it not used
+		on-line, nor is this entry available outside the scheduler.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><literal>Wrap</literal></term>
+	    <listitem>
+	      <para>
+		The <acronym>ATCA</acronym> can be in one of two &#x201C;wraps&#x201D;, and the azimuth
+		ranges observable in each wrap are different, although they overlap. This field can be used
+		if you want to control which wrap to use for your observations. It can take one of three values:
+		<literal>Closest</literal>, <literal>South</literal> or <literal>North</literal>. See
+		<xref linkend="scheduling-antenna-wraps"></xref> for a description of the wraps.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	</variablelist>
+      </para>
+    </section>
+
+    <section>
+      <info>
+	<title>Fields in the Frequency Setups</title>
+      </info>
+
+      <para>
+	<figure id="webscheduler_frequency">
+	  <title>The frequency and velocity calculator view of the <acronym>CABB</acronym> Web Scheduler.</title>
+	  <mediaobject>
+	    <imageobject>
+	      <imagedata fileref="figures/webscheduler_frequency.jpg" format="JPG">
+	      </imagedata>
+	    </imageobject>
+	  </mediaobject>
+	</figure>
+      </para>
+      
+      <variablelist>
+	<varlistentry>
+	  <term><literal>Continuum (MHz)</literal></term>
+	  <listitem>
+	    <para>
+	      Enter the central frequency (in MHz) of the 2048 MHz continuum <acronym>IF</acronym> here. There is
+	      one of these fields in each of the <literal>Freq1</literal> and <literal>Freq2</literal>
+	      tabs, one for each available <acronym>CABB</acronym> continuum IF. If after entering a frequency
+	      in this box, the box text turns red on a yellow background, it means the
+	      frequency is invalid when considered with the frequency specified in the other
+	      <acronym>IF</acronym>. Putting the mouse over the frequency box will give you some information on
+	      how you might rectify this situation.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Chn. BW (MHz)</literal></term>
+	  <listitem>
+	    <para>
+	      Select how wide (in MHz) each continuum channel will be for each <acronym>IF</acronym>.
+	      The channel width will also set the minimum bandwidth of each zoom band
+	      derived from this <acronym>IF</acronym>. There is one of these fields in each of the
+	      <literal>Freq1</literal> and <literal>Freq2</literal> tabs, one for each available 
+	      <acronym>CABB</acronym> continuum <acronym>IF</acronym>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Line</literal></term>
+	  <listitem>
+	    <para>
+	      Enter a frequency (in MHz) that will appear within the zoom band. The scheduler
+	      will then calculate the continuum (or offset continuum) channel that would have this specified
+	      frequency closest to its centre. This frequency
+	      must be within 1024 MHz of the frequency specified in the
+	      <literal>Continuum (MHz)</literal> field. A maximum of 16 such bands
+	      can be specified in the scheduler for each <acronym>IF</acronym> when using a channel
+	      bandwidth of 1 MHz or 64 MHz.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Channel</literal></term>
+	  <listitem>
+	    <para>
+	      Enter the wideband channel number to use for the zoom band. This will
+	      then restrict the frequencies available in the zoom band.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Width</literal></term>
+	  <listitem>
+	    <para>
+	      This is the number of continuum channels to use for this zoom band.
+	      Note that a maximum of 16 continuum channels can be used in each <acronym>IF</acronym>.
+	      Some of the <literal>Width</literal> boxes will be disabled if more than
+	      1 continuum channel is assigned to any particular zoom band.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Fixed</literal></term>
+	  <listitem>
+	    <para>
+	      Use this to select whether to keep the continuum frequency fixed or keep the frequency of
+	      the first zoom fixed when you change the <literal>Channel</literal>, <literal>Width</literal> or velocity.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Velo</literal></term>
+	  <listitem>
+	    <para>
+	      This button brings up the velocity calculator that lets you specify the source velocity
+	      and rest frequency to calculate the sky frequency of the spectral line. The sky frequency
+	      is rounded to the nearest possible frequency setting of the telescope and entered in
+	      the schedule when you press the <literal>Apply</literal> button.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Fix</literal></term>
+	  <listitem>
+	    <para>
+	      This tick box appears on the velocity calculator. When ticked, the same velocity setting
+	      will be used for all zooms on both frequencies. Use this to avoid having to enter the same
+	      information many times when the source has many spectral lines with more or less the same velocity.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </section>
+  </section>
+    
+  <section id="Scheduler-Actions">
+    <info>
+      <title>Scheduler Actions</title>
+    </info>
+
+    <section>
+      <info>
+	<title>Scheduler buttons</title>
+      </info>
+
+      <para>
+	The following buttons are available on the main scheduler page.
+      </para>
+      <variablelist>
+	<varlistentry>
+	  <term><literal>New Scan</literal></term>
+	  <listitem>
+	    <para>
+	      This button duplicates the currently selected scan and inserts it
+	      as the next scan in the schedule, and moving all subsequent scans
+	      down by one. The duplicated scan will however have its <literal>CalCode</literal>
+	      reset.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Delete</literal></term>
+	  <listitem>
+	    <para>
+	      This button deletes the currently selected scan, and moves all
+	      subsequent scans up by one.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Search Cal</literal></term>
+	  <listitem>
+	    <para>
+	      This button initiates a search through the
+	      <ulink url="http://www.narrabri.atnf.csiro.au/calibrators/">ATCA calibrator database</ulink>
+	      for calibrators within 20 degrees of the position of the currently selected scan,
+	      with a flux density greater than 125 mJy in the frequency band you have specified.
+	      The results of this search are displayed to the right of the scan parameters,
+	      and are sorted by distance to the selected scan's position. Each
+	      calibrator returned by this search can be viewed in detail by clicking
+	      the button next to the calibrator's name, and it can be inserted
+	      at the currently selected position in the schedule by clicking on the
+	      button twice in succession.
+	    </para>
+	    
+	    <para>
+	      Please note that after clicking the source name button, it can take up to a minute
+	      before the detailed flux density history of the source is shown, although it is usually
+	      significantly faster than that.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Pick Source</literal></term>
+	  <listitem>
+	    <para>
+	      Click this button to load in a file from your own computer containing sources
+	      that will be used in the schedule. After clicking on this button, a
+	      new frame will appear next to this button allowing the selection of
+	      a locally-hosted file with the format:
+	    </para>
+	    <screen>
+	      source_name hh:mm:ss.s dd:mm:ss.s epoch [vel velframe velconv]
+	      ...
+	    </screen>
+	    <para>
+	      This file may have any number of sources, with one source listed per
+	      line, along with its RA (in hh:mm:ss.s format), Dec
+	      (in dd:mm:ss.s format), and coordinate Epoch separated by spaces.
+	      The Epoch must be one of those supported by the scheduler; currently
+	      these are <literal>J2000</literal>, <literal>B1950</literal>, <literal>AzEl</literal> and <literal>Galactic</literal>.
+	      The velocity of each source can optionally be specified in km/s,
+	      along with the velocity frame (one of <literal>LSR</literal> or <literal>Bary</literal>),
+	      and the velocity convention (one of <literal>Radio</literal>, <literal>Optical</literal> or
+	      <literal>Z</literal>).
+	    </para>
+	    
+	    <para>
+	      Click the <literal>Submit</literal>
+	      button to load in this file. After the file is loaded, a Source
+	      Selection frame will appear to the right of the Scan Parameters,
+	      and each source will be listed, with buttons for each source in the
+	      file. Clicking on the button labelled with the source name will insert
+	      that source into the schedule at the currently selected scan number,
+	      and move all subsequent scans down by one. Clicking the <literal>AddAll</literal>
+	      button will add all the scans to the schedule, in order, at the
+	      currently selected scan number, and will move all subsequent scans
+	      down by the number of sources in the Source Selection frame. The
+	      sources that are added will have the same scan parameters and frequencies
+	      that the currently selected source has.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Sched</literal></term>
+	  <listitem>
+	    <para>
+	      Selecting this tab will show the schedule editing functions.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Listing</literal></term>
+	  <listitem>
+	    <para>
+	      Selecting this tab will generate a time-ordered summary of scans from
+	      the current schedule. It is most useful for checking the validity and
+	      correctness of the schedule. It will look something like
+	      <xref linkend="webscheduler_listing"></xref>.
+	    </para>
+	    
+	    <figure id="webscheduler_listing">
+	      <title>The Listing View of the CABB Web Scheduler, in Advanced Mode.</title>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="figures/webscheduler_listing.jpg" format="JPG">
+		  </imagedata>
+		</imageobject>
+	      </mediaobject>
+	    </figure>
+	    
+	    <para>
+	      For each scan in the schedule, the listing view gives the following information.
+	      <variablelist>
+		<varlistentry>
+		  <term><literal>#</literal></term>
+		  <listitem>
+		    <para>
+		      The scan number in the schedule.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>Source</literal></term>
+		  <listitem>
+		    <para>
+		      The name of the source.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>Cal</literal></term>
+		  <listitem>
+		    <para>
+		      This column will be blank if the calibrator code is not set,
+		      or <literal>C</literal> or <literal>B</literal> if the appropriate
+		      calibrator code is set.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>RA</literal></term>
+		  <listitem>
+		    <para>
+		      The right ascension of the scan.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>Dec</literal></term>
+		  <listitem>
+		    <para>
+		      The declination of the scan.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>Epoch</literal></term>
+		  <listitem>
+		    <para>
+		      The epoch of the position.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>Time</literal></term>
+		  <listitem>
+		    <para>
+		      The time at the start of the scan. If the <literal>TimeCode</literal> of the
+		      schedule is LST then this is shown as LST; likewise with UTC <literal>TimeCode</literal>s.
+		    </para>
+		    
+		    <para>
+		      The time at the start of the first scan is always the same as is
+		      specified in the <literal>Time</literal> field for that scan. For subsequent
+		      scans the time here includes the time spent on the previous scan and the time
+		      required to slew from the previous position to this position.
+		    </para>
+		    
+		    <para>
+		      Note that it will not necessarily be accurate when the previous scan is a
+		      pointing, paddle or mosaic scan, where the <literal>ScanLength</literal> is not
+		      necessarily representative of the actual time spent on the scan.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>ScanLength</literal></term>
+		  <listitem>
+		    <para>
+		      The length of the scan, in hours, minutes and seconds listed as
+		      <literal>hh:mm:ss</literal>. This is only what is listed in the scheduler, and
+		      does not consider the actual amount of time that will be spent on the scan if
+		      it is a mosaic, pointing or paddle scan.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>Az</literal></term>
+		  <listitem>
+		    <para>
+		      The azimuth of the source at the time listed in the
+		      <literal>Time</literal> column, in degrees, minutes and seconds.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>El</literal></term>
+		  <listitem>
+		    <para>
+		      The elevation of the source at the time listed in the
+		      <literal>Time</literal> column, in degrees, minutes and seconds.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>Drive</literal></term>
+		  <listitem>
+		    <para>
+		      The time required to slew to the source from the previous scan position.
+		      For the first scan, the drive time is the time required to slew from the
+		      stow position.
+		    </para>
+		    
+		    <para>
+		      If the elevation of the source is below 12&#x00B0; then the drive time
+		      is shown as <literal>00:00:00</literal> because of course the telescope cannot
+		      perform the scan.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>Wrap</literal></term>
+		  <listitem>
+		    <para>
+		      This column will only be present if the scheduler is in the
+		      advanced view mode. The wrap that is specified in the scheduler
+		      <literal>Wrap</literal> is displayed here; it does not compute what
+		      the wrap will actually be during the observations.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>ScanType</literal></term>
+		  <listitem>
+		    <para>
+		      The type of scan (eg. dwell, point, paddle etc.).
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>Pointing</literal></term>
+		  <listitem>
+		    <para>
+		      The pointing solution to use for the scan.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>Freq-1</literal></term>
+		  <listitem>
+		    <para>
+		      The centre frequency of the <acronym>CABB</acronym>
+		      continuum <acronym>IF</acronym>1, in MHz.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>Freq-2</literal></term>
+		  <listitem>
+		    <para>
+		      The centre frequency of the <acronym>CABB</acronym>
+		      continuum <acronym>IF</acronym>2, in MHz.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>ChnBW-1</literal></term>
+		  <listitem>
+		    <para>
+		      The width of each continuum channel in <acronym>IF</acronym>1,
+		      in MHz. This column will only be present if the scheduler is in the
+		      advanced view mode.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>ChnBW-2</literal></term>
+		  <listitem>
+		    <para>
+		      The width of each continuum channel in <acronym>IF</acronym>2,
+		      in MHz. This column will only be present if the scheduler is in the
+		      advanced view mode.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>FreqCfg</literal></term>
+		  <listitem>
+		    <para>
+		      This column will show whether the scan has been assigned as a master
+		      frequency scan, or if it is slave to another scan. If the column is
+		      blank, or <literal>null</literal> then it is neither a master or a slave.
+		    </para>
+		    
+		    <para>
+		      This column will only be present if the scheduler is in the advanced
+		      view mode.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>CatVel</literal></term>
+		  <listitem>
+		    <para>
+		      The velocity as specified in the scheduler's <literal>CatVel</literal>
+		      field. This column will only be present if the scheduler is in the
+		      advanced view mode.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		<varlistentry>
+		  <term><literal>Aver</literal></term>
+		  <listitem>
+		    <para>
+		      The number of cycles that will be averaged together for this scan.
+		      This column will only be present if the scheduler is in the advanced
+		      view mode.
+		    </para>
+		  </listitem>
+		</varlistentry>
+		
+	      </variablelist>
+	    </para>
+	    
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <info>
+	<title>Scheduler menus</title>
+      </info>
+
+      <para>
+	The scheduler has three drop-down menus, which are described below.
+      </para>
+      <variablelist>
+	<varlistentry>
+	  <term><literal>File</literal></term>
+	  <listitem>
+	    <para>
+	      The <literal>File</literal> menu has the following items.
+	    </para>
+	    <variablelist>
+	      <varlistentry>
+		<term><literal>Open</literal></term>
+		<listitem>
+		  <para>
+		    Opens a pre-existing schedule from the server.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>Save</literal></term>
+		<listitem>
+		  <para>
+		    Saves the schedule with the name that it already has. If the schedule
+		    does not currently have a name, this action will not work. This action
+		    saves the schedule to the server, ready for loading in <command>caobs</command>.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>SaveAs</literal></term>
+		<listitem>
+		  <para>
+		    Allows the schedule to be saved with a different name than it currently
+		    has. If the schedule does not currently have a name, this action is the
+		    only way to save it to the server.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>OpenLocal</literal></term>
+		<listitem>
+		  <para>
+		    Load a schedule that you have saved on your local computer (instead of
+		    from the common schedule area that <command>caobs</command> can access). When this
+		    action is selected, a file selection area will appear at the bottom of the
+		    scheduler screen asking you to <literal>Select schedule file</literal>. Use the
+		    <literal>Browse</literal> button to find the schedule you want to load and then click
+		    the <literal>Submit</literal> button, or press the <literal>Cancel</literal> button to cancel
+		    this action.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>SaveLocal</literal></term>
+		<listitem>
+		  <para>
+		    Saves the schedule to your local computer (instead of to the common
+		    schedule area that <command>caobs</command> can access). Use this option if you're
+		    not ready to, or not able to (due to <acronym>ATNF</acronym> access restrictions) save
+		    to the remote server. You will be prompted to save a file called
+		    <literal>cabb.sch</literal> on your local disk.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>Close</literal></term>
+		<listitem>
+		  <para>
+		    Closes the current schedule and resets the interface back to an empty
+		    schedule with 1 generic scan and no schedule name.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	    </variablelist>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Edit</literal></term>
+	  <listitem>
+	    <para>
+	      The <literal>Edit</literal> menu has the following items.
+	    </para>
+	    <variablelist>
+	      <varlistentry>
+		<term><literal>Cut</literal></term>
+		<listitem>
+		  <para>
+		    Removes the currently selected scans from their position in the schedule,
+		    but keeps it in memory so that they can be inserted elsewhere.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>Copy</literal></term>
+		<listitem>
+		  <para>
+		    Copies the currently selected scans into memory so that they can be
+		    inserted elsewhere.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>Paste</literal></term>
+		<listitem>
+		  <para>
+		    Copies the scan information held in memory from a prior <literal>Cut</literal>
+		    or <literal>Copy</literal> action back into the schedule, as scans after the
+		    currently selected scan. This moves all subsequent scans down by the number
+		    of scans that are pasted in.
+		    It is not possible to <literal>Paste</literal> a scan into position 1 in the
+		    schedule.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	    </variablelist>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Tools</literal></term>
+	  <listitem>
+	    <para>
+	      The <literal>Tools</literal> menu has the following items.
+	    </para>
+	    <variablelist>
+	      <varlistentry>
+		<term><literal>Advanced View</literal></term>
+		<listitem>
+		  <para>
+		    This menu item will only be present if the scheduler is currently in
+		    &#x201C;Simple View&#x201D;. Selecting it will make the scheduler display more fields
+		    than are strictly required to make a simple schedule.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>Simple View</literal></term>
+		<listitem>
+		  <para>
+		    This menu item will only be present if the scheduler is currently in
+		    &#x201C;Advanced View&#x201D;. Selecting it will make the scheduler display on the
+		    fields that are strictly required to make a simple schedule. However,
+		    all of the advanced fields will retain their settings irrespective of the
+		    scheduler view mode.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>Global change</literal></term>
+		<listitem>
+		  <para>
+		    Allows a change in one scan to be duplicated in all other scans. The
+		    scan/scans to change should be selected first, followed by the
+		    <literal>Global change</literal> menu item. While the global change mode is
+		    activated, it is not possible to change the set of selected scans. Make as
+		    many changes to the scan as is necessary, in any of the
+		    <literal>Scan Parameters</literal>, <literal>Freq1</literal> and <literal>Freq2</literal> tabs, and then
+		    select either the <literal>Global Apply</literal> button to confirm the changes
+		    and duplicate them in all the other scans in the schedule, or the <literal>Global Cancel</literal>
+		    button to keep the changes but do not duplicate them.
+		  </para>
+
+		  <para>
+		    The button <literal>Global Apply Selected</literal> is used to effect the changes
+		    only to the scans that were selected before entering global change mode.
+		  </para>
+		  
+		  <para>
+		    The button <literal>Global Apply Matching</literal> is used to duplicate the changes
+		    only to other scans that initially matched the scan being changed. An
+		    example of this is for a schedule that has multiple frequencies in
+		    a single <acronym>IF</acronym>. Consider a schedule that has scans with 
+		    <acronym>IF</acronym>1 frequencies of 5500, 5700 and 8600 MHz. If a scan with an 
+		    <acronym>IF</acronym>1 frequency of 8600 MHz
+		    is changed to 8700 MHz, and the <literal>Global Apply</literal> button is used, then
+		    all scans in the schedule will be changed to have an 
+		    <acronym>IF</acronym>1 frequency of
+		    8700 MHz. However, if the <literal>Global Apply Matching</literal> button is used,
+		    then only scans that have an <acronym>IF</acronym>1 frequency of 8600 MHz, like the selected
+		    scan, will be changed.
+		  </para>
+
+		  <para>
+		    It is also important to note that if nothing changes, then using the
+		    <literal>Global Apply</literal> button will not do anything. For example, if a scan
+		    is changed individually from <literal>Project=C123</literal> to <literal>Project=C124</literal>,
+		    and this change needs to propagate to all scans, then simply deleting
+		    the entry in this scan and replacing it with the same thing while in
+		    <literal>Global change</literal> mode will not work, as it will still appear as though
+		    the entry has not changed. Instead, move to another scan where the
+		    <literal>Project</literal> code has not changed before entering <literal>Global change</literal>
+		    mode.
+		  </para>
+
+		  <para>
+		    Another important caveat is that even though more than one scan can be
+		    selected before entering global change mode, only the parameters of the
+		    first selected scan will be displayed in the scheduler fields.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>Recalc freq/velo</literal></term>
+		<listitem>
+		  <para>
+		    Goes through the schedule and recomputes all frequency and velocity
+		    information present. This is useful to execute when you change the <literal>Date</literal>
+		    field, to ensure that all the zoom mode information is correct.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>Load local catalog</literal></term>
+		<listitem>
+		  <para>
+		    Use this menu item to load a catalogue of sources from a local machine
+		    into the scheduler, which can then be inserted into the schedule with
+		    the <literal>Pick Source</literal> button.
+		  </para>
+		  
+		  <para>
+		    If the <literal>Pick Source</literal> button is used before a local catalog
+		    is loaded, then a frame allowing a catalog is shown. However, after this
+		    catalog is loaded, subsequent selections of the <literal>Pick Source</literal>
+		    button will display only the <literal>Source Selection</literal> frame. To show the
+		    catalog loading frame again, so that a different catalog can be loaded,
+		    use the <literal>Load local catalog</literal> menu item.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>Load remote catalog</literal></term>
+		<listitem>
+		  <para>
+		    Use this menu item to load a catalogue of sources from the remote database
+		    into the scheduler, which can then be inserted into the schedule with
+		    the <literal>Pick Source</literal> button. These remote catalogues include the 
+		    <acronym>VLA</acronym> and <acronym>AT</acronym> calibrator catalogues, among others.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	    </variablelist>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Use new cal database</literal></term>
+	  <listitem>
+	    <para>
+	      If this menu item is present, then the <literal>Search Cal</literal> button will be querying
+	      the old calibrator database for calibrator positions and fluxes. Selecting this
+	      menu item will make the web scheduler query the new calibrator database whenever
+	      the <literal>Search Cal</literal> button is pressed.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>Use old cal database</literal></term>
+	  <listitem>
+	    <para>
+	      If this menu item is present, then the <literal>Search Cal</literal> button will be querying
+	      the new calibrator database for calibrator positions and fluxes. Selecting this
+	      menu item will make the web scheduler query the old calibrator database whenever
+	      the <literal>Search Cal</literal> button is pressed.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </section>
+  </section>
+</appendix>

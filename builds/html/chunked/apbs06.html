@@ -1,0 +1,988 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>B.6. cacor Commands</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="apb.html" title="Appendix B. cacor reference"><link rel="prev" href="apbs05.html" title="B.5. cacor Command Panel"><link rel="next" href="apbs07.html" title="B.7. Changing Correlator Configs"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">B.6. <span class="command"><strong>cacor</strong></span> Commands</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apbs05.html">Prev</a> </td><th width="60%" align="center">Appendix B. <span class="command"><strong>cacor</strong></span> reference</th><td width="20%" align="right"> <a accesskey="n" href="apbs07.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="cacor-Commands"></a>B.6. <span class="command"><strong>cacor</strong></span> Commands</h2></div></div></div>
+    
+    <p>
+      <a class="indexterm" name="idm46395604184864"></a>
+      Observers can interact with <span class="command"><strong>cacor</strong></span> through the text input box located
+      at the bottom of the GUI, between the &#8220;<span class="bold"><strong>Command:</strong></span>&#8221;
+      label, and the &#8220;QUIT&#8221; button. We call this the &#8220;Command&#8221;
+      entry box. The full list of commands that can be issued through this interface is below.
+    </p>
+    <div class="variablelist"><dl class="variablelist"><dt><span class="term">
+	  <code class="literal">abphase <em class="replaceable"><code>n m</code></em></code>
+	</span></dt><dd>
+	  <p>
+	    Set the desired phase offset (in degrees) to insert between the A and B polarisations of each
+	    antenna, where <em class="replaceable"><code>n</code></em> is the desired offset in <acronym class="acronym">IF</acronym>1, and
+	    <em class="replaceable"><code>m</code></em> is the desired offset in <acronym class="acronym">IF</acronym>2. 
+	    The phase offset will not be inserted however until a &#8220;<code class="literal">pcal</code>&#8221;
+	    command is issued.
+	  </p>
+
+	  <p>
+	    The most useful purpose for this command is to switch between linear
+	    polarisation (for which <em class="replaceable"><code>n</code></em> and <em class="replaceable"><code>m</code></em> are both 0) 
+	    and circular polarisation, which requires a phase shift of ±90° between the
+	    linear feeds, depending on the sideband. This is most commonly used for <acronym class="acronym">VLBI</acronym> experiments,
+	    which record circular polarisation.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Example:</strong></span> The command 
+	    &#8220;<code class="literal">abph -90 -90</code>&#8221; will produce circular polarisation 
+	    output from the tied array units, for <acronym class="acronym">USB</acronym> frequencies.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">pcal, catie pol</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">acal <em class="replaceable"><code>n m</code></em> [a-z]</code></span></dt><dd>
+	  <p>
+	    Tells the correlator that the average flux density of the source currently being observed
+	    is <em class="replaceable"><code>n</code></em> Jy over the <code class="literal">tvchannels</code> set in <acronym class="acronym">IF</acronym>1, and 
+	    <em class="replaceable"><code>m</code></em> Jy over the <code class="literal">tvchannels</code> set in <acronym class="acronym">IF</acronym>2.
+	    The correlator uses this information when calculating the system temperature
+	    that it writes into the <acronym class="acronym">RPFITS</acronym> files.
+	  </p>
+	  
+	  <p>
+	    If the command is given with or without a trailing &#8220;<code class="literal">a</code>&#8221; option, 
+	    then the correlator will apply the calibration. 
+	    If the trailing option is specified as any letter other than &#8220;<code class="literal">a</code>&#8221;, 
+	    the correlator will display the corrections it would make, but will not apply them.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">dcal, pcal, tvchannels, reset acal, calband</code>
+	  </p>
+	</dd><dt><a name="cacor_command_att"></a><span class="term">
+	  <code class="literal">att<em class="replaceable"><code>f</code></em> ca0<em class="replaceable"><code>#</code></em> <em class="replaceable"><code>n m</code></em></code>
+	</span></dt><dd>
+	  <p>
+	    Set the amount of <acronym class="acronym">CABB</acronym> attenuation on <acronym class="acronym">IF</acronym>1 (&#8220;<code class="literal">att1</code>&#8221;) or 
+	    <acronym class="acronym">IF</acronym>2 (&#8220;<code class="literal">att2</code>&#8221;), for antenna
+	    CA0<em class="replaceable"><code>#</code></em>, to be <em class="replaceable"><code>n</code></em> dB for polarisation A 
+	    and <em class="replaceable"><code>m</code></em> dB for polarisation B.
+	  </p>
+	    
+	  <p>
+	    The current <acronym class="acronym">CABB</acronym> attenuator settings are shown in the &#8220;Sampler Levels&#8221; tab in
+	    the data panel.
+	  </p>
+
+	  <p>
+	    There is an attenuator servoing command that will adjust the <acronym class="acronym">CABB</acronym> attenuation
+	    automatically to equalise signal levels across antennas and polarisations.
+	    This command is &#8220;<code class="literal">attservo</code>&#8221;.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">attservo, tattservo</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">attservo [on|off]</code></span></dt><dd>
+	  <p>
+	    Attenuator servoing will make the correlator attempt to bring the sampler/<acronym class="acronym">GTP</acronym>
+	    statistics into line with the target that was set with the
+	    &#8220;<code class="literal">tatts</code>&#8221; command. It does
+	    this by adding or removing <acronym class="acronym">CABB</acronym> attenuation on a per-antenna, per-polarisation,
+	    per-<acronym class="acronym">IF</acronym> basis. It may take a relatively large number of cycles (more than 5)
+	    to accomplish this, and may not be able to precisely meet the target specified.
+	  </p>
+
+	  <p>
+	    Without arguments, this command returns the current state of the attenuator
+	    servoing mechanism (which can also be found in the status panel). To start/stop
+	    the servoing mechanism, issue this command with the 
+	    &#8220;<code class="literal">on</code>/<code class="literal">off</code>&#8221;
+	    argument respectively.
+	    It is important to check the resultant attenuation levels (shown on the
+	    "Sampler Levels" tab in the data panel) for potential problems during
+	    this process.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">tattservo, userms, usegtp</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">calband [<em class="replaceable"><code>n m</code></em>]</code></span></dt><dd>
+	  <p>
+	    This command changes the <acronym class="acronym">IF</acronym>s that the correlator uses to determine the
+	    delays, phases and amplitudes. The setting that you can make here depends
+	    on the <span class="command"><strong>cacor</strong></span> version, and the correlator configuration.
+	  </p>
+
+	  <p>
+	    While observing with a configuration that provides the 2 GHz continuum 
+	    <acronym class="acronym">IF</acronym>s with 1 MHz resolution (eg. &#8220;<code class="literal">ca_2048_2048_2f</code>&#8221;),
+	    these quantities should be calculated from the continuum <acronym class="acronym">IF</acronym>s at all times. To ensure this,
+	    <em class="replaceable"><code>n</code></em> and <em class="replaceable"><code>m</code></em> should both be set to
+	    &#8220;<code class="literal">f</code>&#8221; if the <span class="command"><strong>cacor</strong></span> version is
+	    not one designated for <acronym class="acronym">VLBI</acronym> use,
+	    or &#8220;<code class="literal">0</code>&#8221; otherwise.
+	  </p>
+	  
+	  <p>
+	    If the frequency resolution of the 2 GHz continuum <acronym class="acronym">IF</acronym>s is worse than 1 MHz 
+	    (eg. &#8220;<code class="literal">cfb_64_32_2f_zm16</code>&#8221;), or if the
+	    correlator configuration does not provide the 2 GHz continuum <acronym class="acronym">IF</acronym>s
+	    (eg. &#8220;<code class="literal">cfb64_vlbi</code>&#8221;), then it 
+	    may be necessary to use the zoom bands to compute and/or correct the delays and phases.
+	    In this case, both <em class="replaceable"><code>n</code></em> and <em class="replaceable"><code>m</code></em>
+	    should be set to &#8220;<code class="literal">z</code>&#8221; in non-<acronym class="acronym">VLBI</acronym>
+	    <span class="command"><strong>cacor</strong></span> versions, or <em class="replaceable"><code>n</code></em><code class="literal">=3</code>
+	    (the first zoom <acronym class="acronym">IF</acronym>)
+	    and <em class="replaceable"><code>m</code></em><code class="literal">=4</code> (the second zoom <acronym class="acronym">IF</acronym>) otherwise.
+	  </p>
+	  
+	  <p>
+	    All the commands that affect the computation of delay, phase and amplitude
+	    (eg. <code class="literal">tvchannels, dcal, pcal, acal, delavg</code>) will apply to the
+	    <acronym class="acronym">IF</acronym> that is specified by this command.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Note:</strong></span> When in a non-<acronym class="acronym">VLBI</acronym> <span class="command"><strong>cacor</strong></span>
+	    version, the &#8220;<code class="literal">z</code>&#8221; setting for <em class="replaceable"><code>n</code></em>
+	    or <em class="replaceable"><code>m</code></em> can only be used if the first specified zoom in
+	    that <acronym class="acronym">IF</acronym> has a width of 1 (i.e. the zoom band is not a composite zoom). If this is not
+	    the case, the correlator will return an error message.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">acal, dcal, pcal, tvchannels, abphase, delavg</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">calfreq [<em class="replaceable"><code>f</code></em>]</code></span></dt><dd>
+          <p>
+	    Specify which <acronym class="acronym">IF</acronym> (1 or 2) to use when manually correcting the delay with the
+	    &#8220;<code class="literal">doffset</code>&#8221; command. Without arguments,
+	    this command will return the currently selected <acronym class="acronym">IF</acronym>.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">calpol, doffset</code>
+	  </p>
+        </dd><dt><span class="term"><code class="literal">calpol [<em class="replaceable"><code>p</code></em>]</code></span></dt><dd>
+          <p>
+	    Specify the polarisation (a or b) to use when manually correcting the delay with
+	    the &#8220;<code class="literal">doffset</code>&#8221; command. Without arguments,
+	    this command will return the currently selected polarisation.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">calfreq, doffset</code>
+	  </p>
+        </dd><dt><span class="term"><code class="literal">calrefant [<em class="replaceable"><code>#</code></em>]</code></span></dt><dd>
+          <p>
+	    Set the reference antenna for calibration purposes to be 
+	    CA0<em class="replaceable"><code>#</code></em>.
+	    As with &#8220;<code class="literal">refant</code>&#8221;, this is usually best set 
+	    to antenna 2, if it is included in the array. If this command is issued without 
+	    arguments, it returns the current setting of this variable.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">refant, dcal, pcal</code>
+	  </p>
+        </dd><dt><span class="term"><code class="literal">[ca]tie [<em class="replaceable"><code>command</code></em> [<em class="replaceable"><code>##</code></em>]]</code></span></dt><dd>
+	  <p>
+	    The correlator can be take the signals from each of the <acronym class="acronym">ATCA</acronym>
+	    antennas and combine them in real time to form a single output phased up towards
+	    a nominated phase centre: this is called the &#8220;tied array&#8221;,
+	    and is usually configured for <acronym class="acronym">VLBI</acronym> observations. The
+	    &#8220;<code class="literal">catie</code>&#8221; commands configure this tied array.
+	  </p>
+
+	  <p>
+	    The tied array commands can be prefixed with
+	    &#8220;<code class="literal">catie</code>&#8221;, or, in a slight reversal of the
+	    usual minimum-match pattern recognition, it can be shortened to
+	    &#8220;<code class="literal">tie</code>&#8221;. When issued without an argument,
+	    <span class="command"><strong>cacor</strong></span> will return the current configuration of the tied
+	    array.
+	  </p>
+	  
+	  <p>
+	    The tied array commands and their optional arguments are described below.
+	    Each of the tied array commands take two optional arguments, which control
+	    each of the two <acronym class="acronym">IF</acronym>s. It is not possible however to control one <acronym class="acronym">IF</acronym> with these
+	    commands without simultaneously having to set the state of the other <acronym class="acronym">IF</acronym>.
+	  </p>
+	  
+	  <div class="variablelist"><dl class="variablelist"><dt><span class="term">
+		<code class="literal">[ca]tie array [<em class="replaceable"><code>## ##</code></em>]</code>
+	      </span></dt><dd>
+		<p>
+		  Tie the signals from antenna(s) <code class="literal">##</code> into the tied array 
+		  output, per <acronym class="acronym">IF</acronym>.
+		</p>
+		
+		<p>
+		  <span class="bold"><strong>Example:</strong></span> The command
+		  &#8220;<code class="literal">tie array 123 245</code>&#8221;
+		  ties the signals from CA01, CA02 and CA03 into the <acronym class="acronym">IF</acronym>1 tied array output,
+		  and from CA02, CA04 and CA05 into the <acronym class="acronym">IF</acronym>2 tied array output.
+		</p>
+              </dd><dt><span class="term">
+		<code class="literal">[ca]tie pol [<em class="replaceable"><code>t t</code></em>]</code>
+	      </span></dt><dd>
+		<p>
+		  Configures the tied array to either output directly the two
+		  linear polarisations (<em class="replaceable"><code>t</code></em><code class="literal">=l</code>),
+		  or to combine the two linear polarisations together to output
+		  circular polarisations (<em class="replaceable"><code>t</code></em><code class="literal">=c</code>).
+		</p>
+
+		<p>
+		  <span class="bold"><strong>Example:</strong></span> The command
+		  &#8220;<code class="literal">tie pol l c</code>&#8221;
+		  would leave the linear pols as is for the tied array output of <acronym class="acronym">IF</acronym>1,
+		  and form circular polarisations for the tied array output of <acronym class="acronym">IF</acronym>2.
+		</p>
+
+		<p>
+		  <span class="bold"><strong>Note:</strong></span> The 
+		  &#8220;circular&#8221; polarisation setting here
+		  does not automatically form circular polarisations; it simply
+		  combines the two linear polarisations together with the current
+		  cross-polarisation phases. This command must be used together with
+		  the &#8220;<code class="literal">abphase</code>&#8221; command to properly
+		  form circular polarisations.
+		</p>
+
+		<p>
+		  <span class="bold"><strong>Related commands:</strong></span> <code class="literal">abphase</code>
+		</p>
+              </dd><dt><span class="term">
+		<code class="literal">[ca]tie gain [<em class="replaceable"><code>n n</code></em>|auto]</code>
+	      </span></dt><dd>
+		<p>
+		  Sets the gain for the tied array output for each <acronym class="acronym">IF</acronym> to be
+		  <em class="replaceable"><code>n</code></em>, where
+		  0 &lt; <em class="replaceable"><code>n</code></em> &#8804; 1.
+		  This gain setting, combined with the <acronym class="acronym">GTP</acronym>
+		  sampler statistics, is able to vary the amount of power fed into the
+		  <acronym class="acronym">DAS</acronym> units.
+		</p>
+
+		<p>
+		  If all antennas are tied, and the <acronym class="acronym">GTP</acronym> statistics
+		  are around 30, then a gain of 0.1 is recommended.
+		</p>
+
+		<p>
+		  <span class="bold"><strong>Example:</strong></span> The command
+		  &#8220;<code class="literal">tie gain 0.1 0.09</code>&#8221; will
+		  set the tied array gains to 0.1 and 0.09 on <acronym class="acronym">IF</acronym>1 and <acronym class="acronym">IF</acronym>2
+		  respectively.
+		</p>
+
+		<p>
+		  The gain can be set to change automatically by
+		  supplying the <code class="literal">auto</code> argument instead of the <acronym class="acronym">IF</acronym> gains.
+		  Automatic gain control can only be set to work for both <acronym class="acronym">IF</acronym>s simultaneously;
+		  it cannot work for a single <acronym class="acronym">IF</acronym> only.
+		</p>
+
+		<p>
+		  <span class="bold"><strong>Related commands:</strong></span> <code class="literal">tattservo, attservo</code>
+		</p>
+              </dd><dt><span class="term">
+		<code class="literal">[ca]tie reset</code>
+	      </span></dt><dd>
+		<p>
+		  Resets the output from the tied array output module in the correlator.
+		  The configuration of the tied array outputs will not change.
+		</p>
+              </dd></dl></div>
+	</dd><dt><span class="term">
+	  <code class="literal">cf [<em class="replaceable"><code>n m</code></em>]</code>
+	</span></dt><dd>
+	  <p>
+	    The <acronym class="acronym">CABB</acronym> system's primary frequency band corresponds
+	    exactly to the 4cm band, where 3904 MHz &#8804; &#957; &#8804; 11952 MHz;
+	    all other frequency bands are mixed into this range using front-end
+	    <acronym class="acronym">LO</acronym>s. To select the two 2048 MHz intermediate frequency ranges
+	    (the <acronym class="acronym">CABB IF</acronym>s), we use the <acronym class="acronym">CL1 LO</acronym> modules,
+	    which can be tuned between 4928 MHz &#8804; &#957; &#8804; 10928 MHz.
+	  </p>
+	  
+	  <p>
+	    This command either lists (if no arguments are supplied), or sets the
+	    <acronym class="acronym">CL1</acronym> frequency to <em class="replaceable"><code>n</code></em> MHz for
+	    <acronym class="acronym">IF</acronym>1, and <em class="replaceable"><code>m</code></em> MHz for
+	    <acronym class="acronym">IF</acronym>2.
+	  </p>
+
+	  <p>
+	    You must set the <acronym class="acronym">CL1</acronym> frequency for both IFs when you
+	    issue this command. If one or both of the frequencies are out of the
+	    accepted range, the command will not work. <span class="command"><strong>cacor</strong></span> will
+	    output the new <acronym class="acronym">LO</acronym> frequencies after this command is
+	    given.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Note:</strong></span> The <acronym class="acronym">IF</acronym>
+	    frequencies are set by <span class="command"><strong>caobs</strong></span>, not <span class="command"><strong>cacor</strong></span>,
+	    so changes to the centre frequencies using this command will not be
+	    reflected in the output data file.
+	  </p>
+        </dd><dt><span class="term"><code class="literal">[no]czabs</code></span></dt><dd>
+          <p>
+	    This command enables (with &#8220;<code class="literal">czabs</code>&#8221;) or 
+	    disables (with &#8220;<code class="literal">noczabs</code>&#8221;)
+	    the correlator's auto-correction and online application of the zoom bandpasses.
+	    Since the zoom bands are digitally constructed, their bandpass shapes can be
+	    accurately determined during the observation, and corrected before being
+	    written out to the data file.
+	  </p>
+
+	  <p>
+	    Use this command to disable this behaviour, as it is enabled by default.
+	  </p>
+        </dd><dt><span class="term"><code class="literal">dcal [a-z]</code></span></dt><dd>
+          <p>
+	    Tells the correlator to estimate the delay in each of the <acronym class="acronym">IF</acronym>s
+	    set with the &#8220;<code class="literal">calband</code>&#8221; command,
+	    using the data in the &#8220;<code class="literal">tvchannels</code>&#8221; range, 
+	    boxcar averaged over &#8220;<code class="literal">delavg</code>&#8221; channels,
+	    for the previous &#8220;<code class="literal">nncal</code>&#8221; cycles, with respect
+	    to the reference antenna set by the &#8220;<code class="literal">calrefant</code>&#8221;
+	    command.
+	  </p>
+
+	  <p>
+	    If the command is given with or without a trailing &#8220;<code class="literal">a</code>&#8221; option,
+	    then the correlator will apply a correction to compensate for the calculated delays.
+	    If the trailing option is specified as any letter other than &#8220;<code class="literal">a</code>&#8221;,
+	    the correlator will display the calculated delays, but will not apply them.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">acal, pcal, tvchannels, delavg, calband, nncal, reset delays, calrefant</code>
+	  </p>
+        </dd><dt><span class="term"><code class="literal">delavg [<em class="replaceable"><code>n</code></em>]</code></span></dt><dd>
+          <p>
+	    To calculate the delay in any particular <acronym class="acronym">IF</acronym>,
+	    <span class="command"><strong>cacor</strong></span> looks at the phase in each channel in the
+	    &#8220;<code class="literal">tvchannels</code>&#8221; range and fits a line to
+	    the phase as a function of frequency; the slope of this line is the delay.
+	  </p>
+
+	  <p>
+	    If the noise on the phase is high (due to a faint source or poor weather, for example),
+	    or there is some strong unavoidable RFI in the &#8220;<code class="literal">tvchannels</code>&#8221;
+	    range, then the least-squares line of best fit may not accurately represent the real
+	    slope due to the delay. 
+	  </p>
+
+	  <p>
+	    To reduce the noise, or to average out the effect of the RFI, you
+	    can use this command. This command tells <span class="command"><strong>cacor</strong></span> to first
+	    average together each <em class="replaceable"><code>n</code></em> channels in the
+	    &#8220;<code class="literal">tvchannels</code>&#8221; range before calculating the
+	    slope.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Example:</strong></span> Suppose the
+	    &#8220;<code class="literal">tvchannels</code>&#8221; are set to include channels
+	    513 to 1537 (a total of 1025 channels). With a &#8220;<code class="literal">delavg</code>&#8221;
+	    of 1, the delay fit would use 1025 points. If you set
+	    &#8220;<code class="literal">delavg</code>&#8221; to 4, then the delay fit would use
+	    only 256 points, and each point would have a signal-to-noise ratio 2 times better
+	    than with &#8220;<code class="literal">delavg</code>&#8221;=1.
+	  </p>
+
+          <p>
+	    This command is especially useful at higher frequencies, and is almost
+	    necessary in the 3mm band, due to the lower sensitivity of that receiver.
+	    It is also very useful when doing the delay calibration using a single 64 MHz
+	    zoom, since the bandwidth of each channel is greatly reduced.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">tvchannels, dcal, calband</code>
+	  </p>
+        </dd><dt><span class="term"><code class="literal">[no]delscan f<em class="replaceable"><code>f offset,incr</code></em></code></span></dt><dd>
+          <p>
+	    If it isn't possible for some reason to have <span class="command"><strong>cacor</strong></span>
+	    automatically compute delay corrections, it is possible to use this command
+	    in order to manually determine the delay between each antenna and the
+	    reference.
+	  </p>
+
+	  <p>
+	    This command makes <span class="command"><strong>cacor</strong></span> cycle through a range of
+	    delay offsets for <acronym class="acronym">IF</acronym><em class="replaceable"><code>f</code></em>,
+	    starting at -<em class="replaceable"><code>offset</code></em> ns (compared to the
+	    current setting per antenna), and adding <em class="replaceable"><code>incr</code></em> ns
+	    of delay to each antenna at each subsequent cycle. 
+	  </p>
+
+	  <p>
+	    By looking at the amplitudes at each cycle, it is then
+	    possible to determine which offset is closest to the systemic delay for
+	    each antenna. These offsets can be added into the correlator with the
+	    &#8220;<code class="literal">doffset</code>&#8221; command.
+	  </p>
+
+	  <p>
+	    This command will continue to operate until
+	    the &#8220;<code class="literal">nodelscan</code>&#8221; command is issued.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Example:</strong></span> The command
+            &#8220;<code class="literal">delscan f1 -40 4</code>&#8221;
+	    will make <span class="command"><strong>cacor</strong></span> subtract 40ns of delay from each
+	    antenna (except the reference antenna as set by
+	    &#8220;<code class="literal">calrefant</code>&#8221;), and then add 4ns of delay
+	    every subsequent cycle.
+	  </p>
+
+          <p>
+	    <span class="bold"><strong>Note:</strong></span> This command is not usually necessary during
+	    normal setup procedures. There is almost always a way to use
+	    &#8220;<code class="literal">dcal</code>&#8221; to perform delay corrections.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">doffset, dcal, calrefant</code>
+	  </p>
+        </dd><dt><span class="term"><code class="literal">diginit {all|ca0<em class="replaceable"><code>#</code></em> [<em class="replaceable"><code>fp</code></em>]}</code></span></dt><dd>
+          <p>
+	    Resynchronises the specified digitisers; the more information you supply to this command,
+	    the more specific the specification. To select one specific digitiser you must supply
+	    the antenna number <em class="replaceable"><code>#</code></em>, the <acronym class="acronym">IF</acronym>
+	    <em class="replaceable"><code>f</code></em> (either 1 or 2) and the polarisation
+	    <em class="replaceable"><code>p</code></em> (either <code class="literal">a</code> or <code class="literal">b</code>).
+	    If you don't specify the polarisation, then both digitisers for that antenna and
+	    <acronym class="acronym">IF</acronym> will be resynchronised. If you don't specify the
+	    <acronym class="acronym">IF</acronym>, all four digitisers on the antenna will be resynchronised.
+	  </p>
+
+	  <p>
+	    If you want to select all digitisers on all the antennas, use the argument
+	    &#8220;<code class="literal">all</code>&#8221;.
+	  </p>
+
+	  <p>
+	    The state of the antenna in <span class="command"><strong>caobs</strong></span> (eg.
+	    off-line, disabled) does not affect this command; the digitisers in an
+	    antenna can be resynchronised at any time.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Note:</strong></span> Resynchronising a digitiser will almost always
+	    change the delay to that antenna and polarisation in that <acronym class="acronym">IF</acronym>. It is
+	    not recommended to use this command unless you know what you are doing.
+	    This command is most appropriately used if the input shown in the "Data
+	    Links" tab is coloured red, and an &#8220;<code class="literal">rtminit</code>&#8221;
+	    of that input has failed to restore it. That is, it is generally advisable to 
+	    attempt an &#8220;<code class="literal">rtminit</code>&#8221;
+	    before attempting a &#8220;<code class="literal">diginit</code>&#8221;.
+	  </p>
+	  
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">rtminit</code>
+	  </p>
+        </dd><dt><span class="term"><code class="literal">doffset [ca0<em class="replaceable"><code>#</code></em>=<em class="replaceable"><code>d</code></em>]</code></span></dt><dd>
+          <p>
+	    Allows for manual correction of delay offsets. Without arguments, this
+	    command will print all the current delay offset numbers for the current <acronym class="acronym">IF</acronym>
+	    (selected by &#8220;<code class="literal">calfreq</code>&#8221;) and polarisation 
+	    (selected by &#8220;<code class="literal">calpol</code>&#8221;).
+	    This command allows you to directly set these delay offsets with respect to the
+	    reference antenna; the reference antenna will always
+	    have a delay offset of 0. A positive offset then means that the correlator will receive
+	    a particular wavefront from that antenna before the reference antenna, and a negative offset
+	    means that the correlator will receive the same wavefront from that antenna after
+	    the reference antenna.
+	  </p>
+	  
+	  <p>
+	    <span class="bold"><strong>Example:</strong></span> Giving <span class="command"><strong>cacor</strong></span> the following commands:
+            </p><pre class="screen">
+calfreq 1
+calpol b
+doffset ca01=-432
+</pre><p>
+	    tells the correlator to expect the signal from <acronym class="acronym">CA</acronym>01, 
+	    <acronym class="acronym">IF</acronym>1, B polarisation 432 ns after
+	    that of the reference antenna.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Note:</strong></span> The delay is not merely a function of
+	    geometric delay, but will also include the travel time along the cables from the
+	    antenna to the correlator, etc. It is therefore not easily apriori calculable by non-experts.
+	  </p>
+
+          <p>
+	    <span class="bold"><strong>Note:</strong></span> This command is most useful for rough correction of delay
+	    if the phase is wrapping too quickly for the correlator to determine the appropriate delay
+	    correction automatically with the &#8220;<code class="literal">dcal</code>&#8221; command. It is not usually
+	    necessary for this command to be used. Instead, you may find success by using the
+	    &#8220;<code class="literal">rtminit</code>&#8221; and &#8220;<code class="literal">diginit</code>&#8221;
+	    commands to bring the delays into a range that <span class="command"><strong>cacor</strong></span> can correct automatically.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">calfreq, calpol, dcal, delscan, diginit, rtminit</code>
+	  </p>
+        </dd><dt><span class="term"><code class="literal">f[un]flag [f<em class="replaceable"><code>f</code></em> [{<em class="replaceable"><code>n</code></em>|<em class="replaceable"><code>n</code></em>-<em class="replaceable"><code>m</code></em>|default|birdies}]]</code></span></dt><dd>
+          <p>
+	    Flag (&#8220;<code class="literal">fflag</code>&#8221;) or unflag 
+	    (&#8220;<code class="literal">funflag</code>&#8221;) channel <em class="replaceable"><code>n</code></em>, or
+	    channel range <em class="replaceable"><code>n</code></em>-<em class="replaceable"><code>m</code></em> (inclusive)
+	    from <acronym class="acronym">IF</acronym><em class="replaceable"><code>f</code></em>.
+	  </p>
+	  
+	  <p>
+	    By flagging a channel, it no
+	    longer contributes to the phase, delay or amplitude calculated by the
+	    correlator, even if it lies within the &#8220;<code class="literal">tvchannels</code>&#8221; range. A flagged
+	    channel also is written out to the RPFITS file as having precisely 0 real and imaginary
+	    components, and has its flagged bit set. 
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Example:</strong></span> The command
+	    &#8220;<code class="literal">fflag f1 1187 2001</code>&#8221; would flag out channels 1187 and 2001 
+	    from <acronym class="acronym">IF</acronym>1.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Example:</strong></span> The command
+	    &#8220;<code class="literal">funflag f2 1800-1840</code>
+	    would unflag all channels between 1800 and 1840 inclusive.
+	  </p>
+
+          <p>
+	    There are two arguments &#8211; &#8220;<code class="literal">default</code>&#8221; and 
+	    &#8220;<code class="literal">birdies</code>&#8221; &#8211; that flag
+	    specific channels that are known to often or always be bad. For
+	    &#8220;<code class="literal">default</code>&#8221; these channels are 513, 1025 and 1537. 
+	    For &#8220;<code class="literal">birdies</code>&#8221;
+	    these channels are 129, 157, 257, 641, 769, 1153, 1177, 1281, 1409, 1793
+	    and 1921. The &#8220;<code class="literal">default</code>&#8221; argument is normally not required to be issued,
+	    but can be useful when you want to reset the flagging.
+	    The &#8220;<code class="literal">birdies</code>&#8221; argument
+	    is always recommended in any 2 GHz continuum band with 1 MHz frequency
+	    resolution.
+	  </p>
+
+	  <p>
+	    Without arguments, this command returns the current number of unflagged
+	    channels in both <acronym class="acronym">IF</acronym>s, which should never be more than 2047 (2049 channels
+	    total - 3 always flagged <code class="literal">default</code> channels).
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">tvchannels</code>
+	  </p>
+        </dd><dt><span class="term"><code class="literal">nncal [<em class="replaceable"><code>n</code></em>]</code></span></dt><dd>
+	  <p>
+	    When commanded to calculate the delays, phases or amplitude calibration
+	    offsets with one of the &#8220;<code class="literal">dcal</code>&#8221;,
+	    &#8220;<code class="literal">pcal</code>&#8221; or
+	    &#8220;<code class="literal">acal</code>&#8221; commands, <span class="command"><strong>cacor</strong></span>
+	    uses the average over the most recent <em class="replaceable"><code>n</code></em> cycles for
+	    computation. By default, <em class="replaceable"><code>n</code></em>=3, but you can use
+	    this command to change this number.
+	  </p>
+
+	  <p>
+	    When self-calibration of the phases is required,
+	    it is more accurate to only consider the latest cycle, so
+	    <em class="replaceable"><code>n</code></em> should usually be set to 1 in this case. 
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Note:</strong></span> This command is rarely useful,
+	    and increasing &#8220;<code class="literal">delavg</code>&#8221; is probably a
+	    better option if more signal-to-noise is required for calibration.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">selfcal, delavg</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">pcal [a-z]</code></span></dt><dd>
+	  <p>
+	    Tells the correlator to estimate the phase in each of the <acronym class="acronym">IF</acronym>s
+	    set with the &#8220;<code class="literal">calband</code>&#8221; command,
+	    using the data in the &#8220;<code class="literal">tvchannels</code>&#8221; range, 
+	    for the previous &#8220;<code class="literal">nncal</code>&#8221; cycles, with
+	    respect to the reference antenna set by the &#8220;<code class="literal">calrefant</code>&#8221;
+	    command.
+	  </p>
+
+	  <p>
+	    If the command is given with or without a trailing &#8220;<code class="literal">a</code>&#8221;
+	    option, then the correlator will apply a correction to compensate for the calculated
+	    phases.
+	    If the trailing option is specified as any letter other than 
+	    &#8220;<code class="literal">a</code>&#8221;, the correlator
+	    will display the calculated phases, but will not apply them.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Note:</strong></span> <span class="command"><strong>cacor</strong></span> will always attempt to
+	    make phase corrections such that a single wavefront from a point source will arrive at
+	    0 phase on each antenna. For the phase between the A and B polarisations on a single
+	    antenna however, this command will use the current setting of
+	    &#8220;<code class="literal">abphase</code>&#8221; when choosing the corrections.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">acal, dcal, tvchannels, calband, nncal, abphase, calrefant</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">phoffset [ca0<em class="replaceable"><code>#</code></em>=<em class="replaceable"><code>p</code></em>]</code></span></dt><dd>
+	  <p>
+	    Allows for manual correction of phase offsets. Without arguments, this
+	    command will print all the current phase offset numbers for the current
+	    <acronym class="acronym">IF</acronym> (selected by &#8220;<code class="literal">calfreq</code>&#8221;)
+	    and polarisation (selected by &#8220;<code class="literal">calpol</code>&#8221;).
+	    This command allows you to directly set these phase offsets with respect
+	    to the reference antenna; the reference antenna will always have a phase
+	    offset of 0. 
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Example:</strong></span> Giving <span class="command"><strong>cacor</strong></span> the following
+	    commands:
+	    </p><pre class="screen">
+calfreq 1
+calpol b
+phoffset ca01=18
+</pre><p>
+	    tells the correlator to make the phase offset on antenna 1,
+	    <acronym class="acronym">IF</acronym>1, B polarisation, 18 degrees.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Note:</strong></span> This command is most useful for rough 
+	    correction of phase. It is not usually necessary for this command to be used as
+	    automatic correction with the &#8220;<code class="literal">pcal</code>&#8221; command
+	    should almost always work.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">calfreq, calpol, pcal</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">refant [<em class="replaceable"><code>#</code></em>]</code></span></dt><dd>
+	  <p>
+	    Make antenna <acronym class="acronym">CA</acronym>0<em class="replaceable"><code>#</code></em> the
+	    <a class="indexterm" name="idm46395603934144"></a>
+	    reference antenna. This command also simultaneously sets the calibration
+	    reference antenna in the same way as &#8220;<code class="literal">calrefant</code>&#8221;.
+	  </p>
+
+	  <p>
+	    If the argument is not given, the current
+	    reference antenna is displayed. 
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Note:</strong></span> The reference antenna in this context is
+	    actually only useful when forming the tied array output, as the tied array signal
+	    will appear to be coming from the location of this reference antenna. If you want
+	    to set the antenna to use as the calibration reference antenna, use the
+	    &#8220;<code class="literal">calrefant</code>&#8221; command separately.
+	  </p>
+	  
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">calrefant</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">reset [<em class="replaceable"><code>command</code></em>]</code></span></dt><dd>
+	  <p>
+	    Sometimes the correlator can get into a state that is not easy to
+	    recover from. The &#8220;<code class="literal">reset</code>&#8221; commands
+	    can be used to put the correlator back to a default state, from which you
+	    should be able to redo the calibration successfully.
+	  </p>
+
+	  <p>
+	    Each of the available reset commands are described below. None of the commands
+	    take arguments.
+	  </p>
+
+	  <div class="variablelist"><dl class="variablelist"><dt><span class="term">
+		<code class="literal">reset</code>
+	      </span></dt><dd>
+		<p>
+		  <span class="bold"><strong>DO NOT ISSUE THIS COMMAND WITHOUT ARGUMENTS.
+		  THIS WILL CAUSE THE CORRELATOR GUI TO
+		  FAIL (REQUIRING A RESTART) AND THE UNIVERSE TO MORPH INTO A CATERPILLAR.</strong></span>
+		</p>
+	      </dd><dt><span class="term"><code class="literal">reset abdelay</code></span></dt><dd>
+		<p>
+		  Reset only the cross-polarisation delays.
+		</p>
+
+		<p>
+		  <span class="bold"><strong>Related commands:</strong></span> <code class="literal">reset delays, dcal</code>
+		</p>
+	      </dd><dt><span class="term"><code class="literal">reset acal</code></span></dt><dd>
+		<p>
+		  Reset the gain to amplitude scaling factors (essentially the strength of the
+		  noise diode on each antenna) that are set after doing an
+		  &#8220;<code class="literal">acal</code>&#8221;.
+		</p>
+
+		<p>
+		  <span class="bold"><strong>Related commands:</strong></span> <code class="literal">acal</code>
+		</p>
+	      </dd><dt><span class="term"><code class="literal">reset delays</code></span></dt><dd>
+		<p>
+		  Reset the correlator delay offsets back to their geometric default. This
+		  command can be useful if a &#8220;<code class="literal">dcal</code>&#8221; has apparently 
+		  made the delay worse,
+		  to the point that it has become very difficult or impossible for the
+		  correlator to calculate the remaining delay.
+		</p>
+
+		<p>
+		  <span class="bold"><strong>Related commands:</strong></span> <code class="literal">reset abdelay, dcal</code>
+		</p>
+	      </dd><dt><span class="term">
+		<code class="literal">reset mem</code>
+	      </span></dt><dd>
+		<p>
+		  This command resets the memory chips on the correlator blocks. When observing
+		  with the correlator configured to use the pulsar binning mode, this command
+		  can be used to fix a problem that manifests itself as large numbers of bad
+		  channels in alternate cycles.
+		</p>
+
+		<p>
+		  <span class="bold"><strong>Note:</strong></span> This command can only be used while
+		  the correlator is stopped, and may need to be used several times before the
+		  problem goes away.
+		</p>
+	      </dd></dl></div>
+	</dd><dt><span class="term"><code class="literal">rtminit {all|ca0<em class="replaceable"><code>#</code></em> [<em class="replaceable"><code>fp</code></em>]}</code></span></dt><dd>
+	  <p>
+	    Resynchronises the &#8220;rear transition module&#8221; (<acronym class="acronym">RTM</acronym>);
+	    the more information you supply to this command,
+	    the more specific the specification. To select one specific <acronym class="acronym">RTM</acronym> you must supply
+	    the antenna number <em class="replaceable"><code>#</code></em>, the <acronym class="acronym">IF</acronym>
+	    <em class="replaceable"><code>f</code></em> (either 1 or 2) and the polarisation
+	    <em class="replaceable"><code>p</code></em> (either <code class="literal">a</code> or <code class="literal">b</code>).
+	    If you don't specify the polarisation, then both <acronym class="acronym">RTM</acronym>s for that antenna and
+	    <acronym class="acronym">IF</acronym> will be resynchronised. If you don't specify the
+	    <acronym class="acronym">IF</acronym>, all four <acronym class="acronym">RTM</acronym>s for the antenna will be resynchronised.
+	  </p>
+         
+	  <p>
+	    If you want to select all <acronym class="acronym">RTM</acronym>s on all the antennas, use the argument
+	    &#8220;<code class="literal">all</code>&#8221;.
+	  </p>
+
+	  <p>
+	    The state of the antenna in <span class="command"><strong>caobs</strong></span> (eg.
+	    off-line, disabled) does not affect this command; the <acronym class="acronym">RTM</acronym>s for an
+	    antenna can be resynchronised at any time.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Note:</strong></span> Resynchronising an
+	    <acronym class="acronym">RTM</acronym> will almost always
+	    change the delay to that antenna and polarisation in that <acronym class="acronym">IF</acronym>. It is
+	    not recommended to use this command unless you know what you are doing.
+	    This command is most appropriately used if the input shown in the "Data
+	    Links" tab is coloured red, but if the &#8220;<code class="literal">rtminit</code>&#8221;
+	    for that input fails to restore it you may need to consider doing a
+	    &#8220;<code class="literal">diginit</code>&#8221;
+	    before reattempting an &#8220;<code class="literal">rtminit</code>&#8221; again.
+	  </p>
+
+	  <p>
+	    This command is also useful if the &#8220;<code class="literal">1ms</code>&#8221; values for some
+	    of the input(s) shown in the &#8220;Data Links&#8221; tabs are very much different from the
+	    expected values.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">rtmreset, diginit</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">rtmreset</code></span></dt><dd>
+	  <p>
+	    Reset the sync error counts in the &#8220;Data Links&#8221; tabs in the data panel.
+	    This can be useful if the error counts are high, but it is not clear whether
+	    they are continuing to increase. This command will immediately (ie. on the
+	    next cycle) reset the counts to 0, so if any counts remain non-zero after
+	    this command, errors are still present.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">rtminit, diginit</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">selfcal [{<em class="replaceable"><code>f g</code></em>|{on|off}}]</code></span></dt><dd>
+	  <p>
+	    The correlator is able to continuously adjust the phases on a cycle-by-cycle
+	    basis in order to keep them as close to zero as possible. This is only possible
+	    while observing a bright calibrator or spacecraft, and is only really useful
+	    for <acronym class="acronym">VLBI</acronym> and NASA spacecraft tracking.
+	  </p>
+
+	  <p>
+	    By default, the correlator will determine the average phase over the most
+	    recent &#8220;<code class="literal">nncal</code>&#8221; cycles in each
+	    <acronym class="acronym">IF</acronym>, and then apply an opposite phase offset to that same
+	    <acronym class="acronym">IF</acronym>. It is possible though to use the phase measured in
+	    one <acronym class="acronym">IF</acronym> to correct the phase in another
+	    <acronym class="acronym">IF</acronym>. This command requires two arguments in that case,
+	    one for each <acronym class="acronym">IF</acronym>, and each being the
+	    <acronym class="acronym">IF</acronym> used to correct the phase. That is,
+	    <em class="replaceable"><code>f</code></em> is the <acronym class="acronym">IF</acronym> to use to correct
+	    <acronym class="acronym">IF</acronym>1, and <em class="replaceable"><code>g</code></em> is the
+	    <acronym class="acronym">IF</acronym> to use to correct <acronym class="acronym">IF</acronym>2.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Example:</strong></span> The command
+	    &#8220;<code class="literal">selfcal 1 1</code>&#8221; will use the phase
+	    observed in <acronym class="acronym">IF</acronym>1 to correct both
+	    <acronym class="acronym">IF</acronym>1 and 2.
+	  </p>
+
+	  <p>
+	    Once the command is configured, you can enable or disable self calibration
+	    by supplying either &#8220;<code class="literal">on</code>&#8221; or
+	    &#8220;<code class="literal">off</code>&#8221; as the argument to this command
+	    respectively.
+	  </p>
+
+	  <p>
+	    Issuing the command without arguments will
+	    return the current self-calibration state.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">nncal, tvchannels, calband</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">tatts [<em class="replaceable"><code>t</code></em>]</code></span></dt><dd>
+	  <p>
+	    Sets the target sampler <acronym class="acronym">RMS</acronym>/<acronym class="acronym">GTP</acronym> levels to 
+	    be <em class="replaceable"><code>t</code></em> for <acronym class="acronym">IF</acronym>1 and
+	    <acronym class="acronym">IF</acronym>2. After these targets have been altered, the command 
+	    &#8220;<code class="literal">attservo</code>&#8221; should
+	    be given to have <span class="command"><strong>cacor</strong></span> change the <acronym class="acronym">CABB</acronym>
+	    attenuation in order to reach this target.
+	  </p>
+
+	  <p>
+	    Using &#8220;<code class="literal">tatts</code>&#8221; without arguments will return the current
+	    target. The default sampler level target is 20.0 for each <acronym class="acronym">IF</acronym>.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">attservo, calband, userms, usegtp</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">tvchannels [f<em class="replaceable"><code>f</code></em>] {<em class="replaceable"><code>n m</code></em> [<em class="replaceable"><code>o p</code></em>]|default}</code></span></dt><dd>
+	  <p>
+	    <a class="indexterm" name="idm46395603854800"></a>
+	    The data in the &#8220;<code class="literal">tvchannels</code>&#8221; range
+	    are used by <span class="command"><strong>cacor</strong></span> to calculate the average amplitudes and phases on each
+	    baseline, and to measure the delay. These quantities are displayed on <span class="command"><strong>vis</strong></span>,
+	    are checked by <span class="command"><strong>assistance</strong></span>, and are used by <span class="command"><strong>catag</strong></span> for 
+	    pointing corrections.
+	    The data is also used to calculate the sampler <acronym class="acronym">GTP</acronym> values, and of course
+	    any corrections made by the commands &#8220;<code class="literal">dcal</code>&#8221;,
+	    &#8220;<code class="literal">pcal</code>&#8221; or &#8220;<code class="literal">acal</code>&#8221; are
+	    calculated using this data.
+	  </p>
+
+	  <p>
+	    You can change the &#8220;<code class="literal">tvchannels</code>&#8221; for a single
+	    <acronym class="acronym">IF</acronym> by specifying the <acronym class="acronym">IF</acronym> number
+	    <em class="replaceable"><code>f</code></em> and then the start and end channels (inclusive)
+	    <em class="replaceable"><code>n</code></em> and <em class="replaceable"><code>m</code></em> respectively. Or you can set the
+	    &#8220;<code class="literal">tvchannels</code>&#8221; for both <acronym class="acronym">IF</acronym>s
+	    at the same time by specifying the start and end channels
+	    <em class="replaceable"><code>n</code></em> and <em class="replaceable"><code>m</code></em> respectively for
+	    <acronym class="acronym">IF</acronym>1, and <em class="replaceable"><code>o</code></em> and <em class="replaceable"><code>p</code></em>
+	    respectively for <acronym class="acronym">IF</acronym>2.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Example:</strong></span> The command
+	    &#8220;<code class="literal">tvchannels f1 500 1600</code>&#8221;
+	    will set the <acronym class="acronym">IF</acronym>1 &#8220;<code class="literal">tvchannels</code>&#8221;
+	    to cover the range 500-1600 inclusive. 
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Example:</strong></span> The command
+	    &#8220;<code class="literal">tvchannels 500 1600 900 1400</code>&#8221;
+	    will set the <acronym class="acronym">IF</acronym>1 &#8220;<code class="literal">tvchannels</code>&#8221; to 
+	    cover the range 500-1600 inclusive, and the <acronym class="acronym">IF</acronym>2
+	    &#8220;<code class="literal">tvchannels</code>&#8221; to cover the range 900-1400 inclusive.
+	  </p>
+
+	  <p>
+	    The default &#8220;<code class="literal">tvchannels</code>&#8221; usually
+	    cover the entire central half of the band (ie. channels 513-1537 in the 1 MHz
+	    continuum bands or 64 MHz zoom bands, or 9-25 in the 64 MHz continuum bands). To reset
+	    the &#8220;<code class="literal">tvchannels</code>&#8221; to this, substitute the channel
+	    specification with &#8220;<code class="literal">default</code>&#8221;.
+	    <a class="indexterm" name="idm46395603835120"></a>
+	  </p>
+
+	  <p>
+	    To determine what the &#8220;<code class="literal">tvchannels</code>&#8221;
+	    are currently set to, either look at the status panel, or issue this command
+	    without arguments.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">calband, delavg</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">usegtp</code></span></dt><dd>
+	  <p>
+	    This command makes <span class="command"><strong>cacor</strong></span> display the gated total power (<acronym class="acronym">GTP</acronym>)
+	    in the &#8220;<code class="literal">tvchannels</code>&#8221; range for each input 
+	    (antenna, <acronym class="acronym">IF</acronym>, polarisation) in
+	    the &#8220;Sampler Levels&#8221; tab in the data panel.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">userms, tatts, attservo</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">userms</code></span></dt><dd>
+	  <p>
+	    This command makes <span class="command"><strong>cacor</strong></span>  display the voltage RMS value from the
+	    digitisers on each input (antenna, <acronym class="acronym">IF</acronym>, polarisation) in the
+	    &#8220;Sampler Levels&#8221; tab in the data panel.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Related commands:</strong></span> <code class="literal">usegtp, tatts, attservo</code>
+	  </p>
+	</dd><dt><span class="term"><code class="literal">where {filterbank|channel|zoom} {f|z}<em class="replaceable"><code>f</code></em> <em class="replaceable"><code>c</code></em></code></span></dt><dd>
+	  <p>
+	    When the correlator develops a problem in a zoom or continuum channel, you may
+	    need to identify which correlator block is responsible for computing the bad
+	    channel so it can be reprogrammed and fixed. This command lets you specify the
+	    bad channel location and it will return the block responsible.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Example:</strong></span> To find the block responsible for channel 430 in 
+	    the continuum band <acronym class="acronym">IF</acronym>1, you would use the command:
+	    &#8220;<code class="literal">where channel f1 430</code>&#8221;. It will return something like:
+	    &#8220;<code class="literal">WHERE CHANNEL F1 430 - processed in block 8 (block on-line)</code>&#8221;.
+	    This tells you that CABB block 8 is responsible for the channel, and that the block is still
+	    on-line and active.
+	  </p>
+
+	  <p>
+	    <span class="bold"><strong>Example:</strong></span> To find the block responsible for channel 912 in 
+	    the zoom band z11, you would use the command:
+	    &#8220;<code class="literal">where zoom z11 912</code>&#8221;. It will return something like:
+	    &#8220;<code class="literal">WHERE ZOOM Z11 912 - processed in block 15 (block on-line)</code>&#8221;.
+	    This tells you that CABB block 11 is responsible for the channel, and that the block is still
+	    on-line and active.
+	  </p>
+	</dd></dl></div>
+  </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apbs05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apb.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apbs07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">B.5. <span class="command"><strong>cacor</strong></span> Command Panel </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> B.7. Changing Correlator Configs</td></tr></table></div></body></html>

@@ -1,0 +1,135 @@
+@import url(http://fonts.googleapis.com/css?family=Oxygen|VT323);
+
+h1, h2, h3, h4, h5 { font-family: 'Oxygen', sans-serif; }
+h4 { font-size: 1.2em; color: #6d6f71; margin: 0.6em 0; }
+h5 { font-size: 1.1em; color: #6d6f71; margin: 0.6em 0; }
+.book { font-family: 'Oxygen', sans-serif; }
+#content .book p, #content div.section p, #content div.toc, #content div.chapter p, #content div.appendix p,
+#content div.index, div.table { 
+    font-family: 'Oxygen', sans-serif; line-height: 1.2em; 
+}
+.navheader, .navfooter, div.revhistory { font-family: 'Oxygen', sans-serif; }
+div.toc, .list-of-figures, .list-of-tables, .list-of-equations { 
+    margin: 1em auto; width: 95%; border: 2px solid black; background: #ddd;
+    padding: 2em; 
+}
+.mediaobject { text-align: center; }
+.mediaobject img { max-width: 96%; max-height: 75%; }
+#content .figure p.title,#content .table p.title { 
+    text-align: center; width: 90%; margin: 0.6em auto; }
+.indexdiv dd { margin-left: 0.6em; }
+.toc dd { margin-left: 0.6em; }
+.table table, .informaltable table { width: 96%; margin: 0.6em auto; }
+.table thead th, .informaltable thead th { 
+    background: black; color: white; text-align: center; padding: 0.3em; 
+    font-weight: bold; border: 2px solid black; 
+}
+.table tbody, .informaltable tbody {
+    border: 0;
+}
+.table table[border="1"] tbody, .informaltable table[border="1"] tbody { 
+    border: 2px solid black;
+}
+.table table tbody.footnotes, .informaltable table tbody.footnotes { 
+    border: 0; 
+}
+.table tbody td, .informaltable tbody td { 
+    padding: 0.3em; border: 0;
+}
+.table table[border="1"] tbody td, .informaltable table[border="1"] tbody td {
+    border: 1px dotted #888;
+}
+.table table tbody.footnotes td, .informaltable table tbody.footnotes td { 
+    border: 0; padding: 0.3em;
+}
+span.MathJax { font-size: 0.85em; }
+.informalequation, .equation { font-size: 1.2em; }
+.variablelist dl dd { margin-left: 6em; }
+pre.programlisting {
+    margin: 1em 0; border: 2px solid #bbc; background-color: #eee; padding: 1em;
+    font-family: 'VT323', monospace; font-size: 1.4em;
+}
+acronym.acronym {
+    font-weight: bold;
+}
+span.application {
+    font-style: oblique;
+}
+span.hardware {
+    font-family: monospace;
+    font-weight: bold;
+}
+span.command {
+    font-variant: small-caps; font-size: 1.2em;
+}
+span.term {
+    font-size: 1.2em;
+}
+code.filename {
+    text-decoration: underline;
+}
+
+pre.screen {
+    margin: 1em;
+}
+
+div.command-table table {
+    width: 100%; border: 0; border-collapse: collapse; 
+}
+div.command-table table td {
+    padding: 0.3em;
+}
+div.command-table table tbody tr > td:nth-child(1) {
+    width: 3%;
+}
+div.command-table table tbody tr > td:nth-child(2) {
+    width: 40%;
+}
+div.command-table table tbody tr > td:nth-child(3) {
+    width: 57%;
+}
+
+/* Make the authors appear next to each other across the page. */
+div.author {
+    float: left;
+    margin: 1em;
+}
+div.toc {
+    clear: both;
+}
+hr {
+    clear: both;
+}
+/* END Author block appearance selectors. */
+
+/* These next two selectors make only the first three rows show up in
+   the revision history tables, which will be the latest revision. */
+div.revhistory table tr {
+    display: none;
+}
+div.revhistory table tr:nth-child(-n+3) {
+    display: table-row;
+}
+/* END Revision history selectors. */
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 2em 1em;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content:”&#x201C;”;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+blockquote:after {
+    content:”&#x201D;”;
+}

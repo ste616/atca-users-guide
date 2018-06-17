@@ -1,0 +1,72 @@
+<appendix id="monica">
+  <info>
+    <title><application>MoniCA</application></title>
+    <date>$Date: 2015-10-22 (Thu, 22 Oct 2015) $</date>
+    <revhistory>
+      <revision>
+	<revnumber>1.0</revnumber>
+	<date>2015 Oct 22</date>
+	<authorinitials>klw</authorinitials>
+	<revremark>Initial Docbook revision</revremark>
+      </revision>
+    </revhistory>
+  </info>
+
+<section id="Introduction-to-MoniCA">
+    <info>
+        <title>Introduction to <application>MoniCA</application></title>
+    </info>
+    <para>
+        <indexterm role="cp"><primary>MoniCA</primary></indexterm>
+        <application>MoniCA</application> is a Java-based graphical application used for viewing real-time and archival monitoring data from almost all the systems at the ATCA.
+    </para>
+    
+    <para>
+        During observations, this application can show the state of each system and if there are any values that may indicate a problem.  For example, <application>MoniCA</application> can display information about the weather conditions at the observatory, the state of the power supply and details about antenna focus.  <application>MoniCA</application> can also play a more active role as it can help debug any issues that may occur.
+    </para>
+</section>
+
+<section id="Install-MoniCA">
+    <info>
+        <title>Installing <application>MoniCA</application></title>
+    </info>
+    <para>
+        <application>MoniCA</application> can be installed from the <ulink url="http://www.narrabri.atnf.csiro.au/open-monica/OpenMoniCA.JNLP">Open-MoniCA web page</ulink>.  Your computer browser should recognise the link as a Java Web Start application, download the program files from the web server and then install shortcuts on your computer.
+    </para>
+    
+    <para>
+        If the shortcuts do not install properly, <application>MoniCA</application> can also be started using the following terminal command:
+        <programlisting>$ javaws http://www.narrabri.atnf.csiro.au/open-monica/OpenMoniCA.JNLP</programlisting>
+    </para>
+    
+    <para>
+        Each time you start <application>MoniCA</application>, Web Start will check if there is an updated version available.  If there is, it will be installed on your computer to ensure that you always have the latest available version.
+    </para>
+</section>
+
+<section id="Using-MoniCA">
+    <info>
+        <title>Using <application>MoniCA</application></title>
+    </info>
+    <para>
+        Once <application>MoniCA</application> starts up, you can select the observatory that you wish to monitor.  The <emphasis role="bold">Navigator</emphasis> drop-down menu is where you will find the different display pages that have been defined. The pages are listed in a hierarchical format for easier navigation.  However, it might take a while to become familiar with which pages are available.
+    </para>
+    
+    <para>
+        <figure id="monica_display">
+            <title>The navigation menu in <application>MoniCA</application>.</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="figures/monica.jpg" format="JPG">
+                    </imagedata>
+                </imageobject>
+            </mediaobject>
+        </figure>
+    </para>
+    
+    <para>
+        Each page comprises one or more components called &#x201C;panels&#x201D;. For example, there are panels for &#x201C;time series graphs&#x201D; and &#x201C;tables of values&#x201D;. Tabs enable you to control what each panel displays. You can also add or remove panels using the <emphasis role="bold">Setup</emphasis> drop-down menu, where you can select new display panels to be created.  If you create a page layout that you want to keep, you can save that setup to your local computer through the <emphasis role="bold">Setup</emphasis> menu.
+    </para>
+</section>
+
+</appendix>

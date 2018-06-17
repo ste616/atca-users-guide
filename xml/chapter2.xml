@@ -1,0 +1,4406 @@
+<chapter id="Preparing-for-Observations">
+  <info>
+    <title>Preparing for Observations</title>
+    <date>$Date: 2017-06-01 17:33:47 +1000 (Thu, 01 Jun 2017) $</date>
+    <revhistory>
+      <revision>
+	<revnumber>1.5</revnumber>
+	<date>2017 June 1</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Added information about how to use the rapid response mode</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.4</revnumber>
+	<date>2016 May 9</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Updated information about the new high-frequency 1934-638 flux density model</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.3</revnumber>
+	<date>2015 Oct 21</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Updated information about remote observing procedures</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.2</revnumber>
+	<date>2014 Oct 15</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Fix a couple of typos regarding 1934-638 flux density models</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.1</revnumber>
+	<date>2014 May 28</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Rewrite chapter in FAQ format</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.0</revnumber>
+	<date>2014 Mar 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Initial Docbook revision</revremark>
+      </revision>
+    </revhistory>
+  </info>
+
+  <para>
+    <indexterm role="cp"><primary>observations</primary><secondary>preparing</secondary></indexterm>
+    This chapter deals with how to prepare for observations on the
+    <acronym>ATCA</acronym> after having been granted observing time.
+    It is presented as an FAQ, so that new observers can get all the information
+    they need, and experienced observers can quickly find the information
+    they need.
+  </para>
+
+  <para>
+    <indexterm role="cp"><primary>observations</primary><secondary>considerations</secondary></indexterm>
+    Broadly speaking you will need to address at least the following considerations
+    when planning an observation with the <acronym>ATCA</acronym>:
+    <itemizedlist>
+      <listitem>
+	<para>
+	  How much integration time is required on source to reach
+	  the necessary sensitivity?
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  What calibration is required to ensure the observations succeed, and how
+	  much observing time will it require?
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  How can observational overheads be minimised?
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  How will weather and <acronym>RFI</acronym> affect the observations?
+	</para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
+  <para>
+    After reading this chapter you should be able to optimally plan an observation,
+    and know how to make the schedule that carries it out.
+  </para>
+
+  <section id="observations-sensitivity">
+    <info>
+      <title>Observational Sensitivity</title>
+    </info>
+
+    <section>
+      <info>
+	<title>How long is my source up per day?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>ATCA</primary><secondary>declination coverage</secondary></indexterm>
+	The <acronym>ATCA</acronym> antennas have a hard elevation limit of
+	12&#x00B0;, and for observations in the millimetre bands it is
+	recommended that you stay above an elevation of 30&#x00B0; in order to
+	avoid the thickest parts of the atmosphere.
+      </para>
+
+      <para>
+	A quick estimate of how long a particular source will be observable on
+	a single day with the <acronym>ATCA</acronym> can be made using
+	<xref linkend="DeclinationTimes"></xref>. It shows, for a source at a particular declination,
+	the LST range before/past transit it is above elevations of 12&#x00B0; 
+	and 30&#x00B0;.
+      </para>
+
+      <para>
+	<emphasis role="bold">Example:</emphasis> The source 0823-500
+	(coordinates RA=08:25:26.869, Dec=-50:10:38.4) will rise above the
+	12&#x00B0; elevation limit at an LST of 01:05 (take 07:20 from 08:25),
+	and it will fall below 30&#x00B0; at an LST of 13:42 (add 05:17 to 08:25).
+	It will be above the 12&#x00B0; elevation limit for 
+	approximately 14 h 40 m each day.
+      </para>
+
+      <para>
+	<table frame="all" id="DeclinationTimes" shortentry="1" colsep="1" rowsep="1">
+	  <title>
+	    For sources at particular declinations, this table displays the amount
+	    of time the source would take to get from rise to transit, or from
+	    transit to set at the <acronym>ATCA</acronym>. The LST ranges are shown
+	    for both the hard 12&#x00B0; and the recommended millimetre 30&#x00B0; elevation
+	    limits.
+	  </title>
+	  <titleabbrev>Observational availability with Declination</titleabbrev>
+	  <tgroup cols="3" align="center">
+	    <colspec colname="declination"/>
+	    <colspec colname="lstrange12"/>
+	    <colspec colname="lstrange30"/>
+	    <thead>
+	      <row>
+		<entry morerows="1">Declination</entry>
+		<entry namest="lstrange12" nameend="lstrange30">LST range</entry>
+	      </row>
+	      <row>
+		<entry>12&#x00B0;</entry>
+		<entry>30&#x00B0;</entry>
+	      </row>
+	    </thead>
+	    <tbody>
+	      <row>
+		<entry>-80&#x00B0;</entry>
+		<entry>always above horizon</entry>
+		<entry>06:09</entry>
+	      </row>
+	      <row>
+		<entry>-70&#x00B0;</entry>
+		<entry>10:35</entry>
+		<entry>05:47</entry>
+	      </row>
+	      <row>
+		<entry>-60&#x00B0;</entry>
+		<entry>08:14</entry>
+		<entry>05:32</entry>
+	      </row>
+	      <row>
+		<entry>-50&#x00B0;</entry>
+		<entry>07:20</entry>
+		<entry>05:17</entry>
+	      </row>
+	      <row>
+		<entry>-40&#x00B0;</entry>
+		<entry>06:44</entry>
+		<entry>05:02</entry>
+	      </row>
+	      <row>
+		<entry>-30&#x00B0;</entry>
+		<entry>06:17</entry>
+		<entry>04:46</entry>
+	      </row>
+	      <row>
+		<entry>-20&#x00B0;</entry>
+		<entry>05:53</entry>
+		<entry>04:28</entry>
+	      </row>
+	      <row>
+		<entry>-10&#x00B0;</entry>
+		<entry>05:31</entry>
+		<entry>04:07</entry>
+	      </row>
+	      <row>
+		<entry>+0&#x00B0;</entry>
+		<entry>05:07</entry>
+		<entry>03:42</entry>
+	      </row>
+	      <row>
+		<entry>+10&#x00B0;</entry>
+		<entry>04:42</entry>
+		<entry>03:09</entry>
+	      </row>
+	      <row>
+		<entry>+20&#x00B0;</entry>
+		<entry>04:12</entry>
+		<entry>02:20</entry>
+	      </row>
+	      <row>
+		<entry>+30&#x00B0;</entry>
+		<entry>03:32</entry>
+		<entry>00:21</entry>
+	      </row>
+	      <row>
+		<entry>+40&#x00B0;</entry>
+		<entry>02:31</entry>
+		<entry>never above horizon</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</table>
+      </para>
+      
+      <para>
+	<indexterm role="cp"><primary>coord</primary></indexterm>
+	To calculate precisely how long your source is observable each day with the
+	<acronym>ATCA</acronym> you can use the <command>coord</command> program,
+	available from the
+	<ulink url="http://www.parkes.atnf.csiro.au/cgi-bin/utilities/coord.cgi">Parkes website.</ulink>
+	When using <command>coord</command> from the website you must remember to
+	change both the site to &#x201C;Australia Telescope Compact Array&#x201D;,
+	and the elevation limit to the value you require.
+      </para>
+    </section>
+
+    <section>
+      <info>
+	<title>Is it possible to tune my observing frequencies to obtain optimal
+	sensitivity?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>sensitivity</primary><secondary>optimising</secondary></indexterm>
+	<acronym>CABB</acronym> makes available two 2048 MHz wide bands, and the centre
+	frequency of one <acronym>IF</acronym> must be within 6 GHz of the centre frequency of the other.
+	Generally speaking however, the closer the two centre frequencies are to each other,
+	the more sensitive the observations will be.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>local oscillator</primary><secondary>optimising</secondary></indexterm>
+	This is due to the design of the <acronym>CABB</acronym> system. All frequency bands
+	observable by the <acronym>ATCA</acronym> are first mixed to fit into the primary
+	<acronym>CABB</acronym> frequency window of 4 to 12 GHz (except for the 4cm band, which
+	doesn't require any mixing). By default, closely-spaced <acronym>IF</acronym> pairs
+	are mixed so that they lie at the top of this frequency window because the lower frequency
+	end can suffer from poor image rejection. If two widely-spaced <acronym>IF</acronym>s
+	are selected however, the observational sensitivity for one of the
+	<acronym>IF</acronym>s may suffer because of this.
+      </para>
+
+      <para>
+	It is important to note that the <acronym>ATCA</acronym> sensitivity calculator does
+	<emphasis role="bold">not</emphasis> account for this effect.
+      </para>
+
+      <para>
+	To counter this problem, you may wish instead to use frequency switching techniques;
+	you can read about how to do this in <xref linkend="strategy-frequency-switching"></xref>.
+      </para>
+
+      <para>
+	For normal continuum observations we recommend that you use our recommended frequencies, shown
+	in <xref linkend="recommended-continuum-frequencies"></xref>.
+	<indexterm role="cp"><primary>continuum observing</primary><secondary>recommended frequencies</secondary></indexterm>
+	<indexterm role="cp"><primary>frequency</primary><secondary>recommended</secondary></indexterm>
+      </para>
+
+      <table frame="all" rowsep="1" colsep="1" id="recommended-continuum-frequencies">
+	<title>Recommended <acronym>CABB</acronym> continuum centre frequencies.</title>
+	<tgroup align="center" cols="3">
+	  <colspec colname="bandname"/>
+	  <colspec colname="if1"/>
+	  <colspec colname="if2"/>
+	  <thead>
+	    <row>
+	      <entry>Band</entry>
+	      <entry><acronym>IF</acronym>1 (MHz)</entry>
+	      <entry><acronym>IF</acronym>2 (MHz)</entry>
+	    </row>
+	  </thead>
+	  <tbody>
+	    <row>
+	      <entry>16cm</entry>
+	      <entry>2100</entry>
+	      <entry>2100</entry>
+	    </row>
+	    <row>
+	      <entry>4cm</entry>
+	      <entry>5500</entry>
+	      <entry>9000</entry>
+	    </row>
+	    <row>
+	      <entry>15mm</entry>
+	      <entry>17000</entry>
+	      <entry>19000</entry>
+	    </row>
+	    <row>
+	      <entry>7mm (<acronym>LSB</acronym>)</entry>
+	      <entry>33000</entry>
+	      <entry>35000</entry>
+	    </row>
+	    <row>
+	      <entry>7mm (<acronym>USB</acronym>)</entry>
+	      <entry>43000</entry>
+	      <entry>45000</entry>
+	    </row>
+	    <row>
+	      <entry>3mm</entry>
+	      <entry>93000</entry>
+	      <entry>95000</entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </table>
+
+      <para>
+	If you are using the 3mm system, the choice of simultaneous frequencies can affect
+	the observational sensitivity in another way, due to restrictions on the
+	<acronym>LO</acronym> frequencies:
+	<itemizedlist>
+	  <listitem>
+	    <para>
+	      If the highest central frequency
+	      is &gt; 100.6 GHz and the lowest central frequency is &gt; 97.8 GHz,
+	      then the band will be <acronym>USB</acronym>, and sensitivity will be optimised.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      If the lowest central
+	      frequency is &lt; 97.8 GHz and the highest central frequency is
+	      &gt; 100.6 GHz, then the band will be <acronym>LSB</acronym>, but the 
+	      <acronym>LO</acronym> will
+	      be driven past its rated limit, reducing the sensitivity.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      If the lowest central frequency is &lt; 97.8 GHz, and the highest
+	      central frequency is &lt; 100.6 GHz, then the band will be <acronym>LSB</acronym>, and
+	      sensitivity will be optimised.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      If the highest central frequency is &lt; 100.6 GHz, and the lowest
+	      central frequency is &gt; 97.8 GHz, then the band may either be 
+	      <acronym>LSB</acronym> or <acronym>USB</acronym>,
+	      and will be automatically configured by <command>caobs</command> to optimise sideband
+	      rejection (but this may still result in less than optimal sensitivity).
+	    </para>
+	  </listitem>
+	</itemizedlist>
+      </para>
+    </section>
+    
+    <section>
+      <info>
+	<title>How can I avoid <acronym>RFI</acronym>?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>interference</primary><secondary>avoiding</secondary></indexterm>
+	<acronym>RFI</acronym> at the <acronym>ATCA</acronym> falls into two groups:
+	external, and self-generated. External <acronym>RFI</acronym> is worst at lower frequencies,
+	and can significantly reduce the bandwith usable in the centimetre bands. Self-generated
+	<acronym>RFI</acronym> is less destructive, but also mostly unavoidable, and can be present
+	regardless of which band you're observing in.
+      </para>
+
+      <section>
+	<info>
+	  <title>What external transmitters are located near the observatory?</title>
+	</info>
+
+	<para>
+	  <indexterm role="cp"><primary>interference</primary><secondary>nearby transmitters</secondary></indexterm>
+	  The observatory keeps track (as much as possible) of the licensed transmitters in the
+	  surrounding area. A searchable database of these transmitters is 
+	  <ulink url="https://www.narrabri.atnf.csiro.au/observing/rfi/rfi_gmap.html">made available
+	  </ulink> for
+	  users of the <acronym>ATCA</acronym> (who already have an <acronym>ATNF</acronym>
+	  UNIX account). You can search for transmitters based on their frequencies and distance
+	  from their observatory, and learn about where they are, their transmission power, and
+	  pointing direction.
+	</para>
+      </section>
+
+      <section>
+	<info>
+	  <title>How much continuum sensitivity will I lose due to <acronym>RFI</acronym>?</title>
+	</info>
+
+	<para>
+	  <indexterm role="cp"><primary>interference</primary><secondary>effect of</secondary></indexterm>
+	  The <acronym>ATCA</acronym> sensitivity calculator also has information about frequency
+	  ranges that are commonly flagged due to <acronym>RFI</acronym>, and so can take into
+	  account the bandwidth losses when doing its calculations. This functionality is recommended
+	  for all continuum observers.
+	</para>
+
+	<para>
+	  Continuum observers should expect to lose approximately 270 MHz of bandwidth in the
+	  16cm band (13% of the 2048 MHz total bandwidth) and approximately 200 MHz of bandwidth in the 4cm band
+	  (5% of the 4096 MHz total bandwidth) due to <acronym>RFI</acronym> that is almost always
+	  present. There are other sources of <acronym>RFI</acronym> that will be present for only some
+	  of the time that will cost even more bandwidth, but most of these have fairly short durations
+	  and will not generally significantly affect the continuum sensitivity.
+	</para>
+      </section>
+
+      <section>
+	<info>
+	  <title>What is &#x201C;mid-week&#x201D; <acronym>RFI</acronym>?</title>
+	</info>
+
+	<para>
+	  <indexterm role="cp"><primary>interference</primary><secondary>mid-week</secondary></indexterm>
+	  In the 16cm band there is a transmitter that produces what is commonly referred to as
+	  &#x201C;mid-week&#x201D; <acronym>RFI</acronym>, since it usually appears on weekdays during
+	  business hours (it can however appear at other times). This transmitter is so powerful that it
+	  can send the 16cm receivers into saturation, or at the very least cause intermodulation products
+	  to contaminate the entire 2 GHz band; during either of those scenarios, no sensible
+	  astronomical data is produced by the system. The observatory will sometimes receive advanced
+	  warning about this <acronym>RFI</acronym>, and observers will be notified before they start in
+	  that case, but this is not guaranteed to happen. If warning is given sufficiently in advance,
+	  the operations staff may be able to assist you in organising a swap with a project that can
+	  observe in a band other than 16cm; again, no guarantee is made that this will occur.
+	</para>
+      </section>
+    </section>
+  </section>
+
+  <section id="observations-calibration">
+    <info>
+      <title>Calibration</title>
+    </info>
+
+    <section>
+      <info>
+	<title>What type of calibration do I need to do?</title>
+      </info>
+    
+      <para>
+	<indexterm role="cp"><primary>calibration</primary><secondary>required</secondary></indexterm>
+	During a normal observing run you will have to do calibration before you can
+	start your observations, and then you will need to schedule time on one
+	or more calibration sources.
+      </para>
+
+      <para>
+	At the beginning of your observing run you may find that while observing a strong
+	point source, the phases will not be constant as a function of frequency across the
+	band; this indicates that the array requires delay calibration. To successfully perform
+	delay calibration will require a point source of at least moderate brightness
+	(<inlineequation><textobject role="tex">\mathrm{S} \gtrsim 1\mathrm{\,Jy}</textobject></inlineequation>).
+	This is so the correlator can accurately determine the phase slope with frequency;
+	the accuracy improves with the signal-to-noise ratio.
+      </para>
+
+      <para>
+	The response of each antenna to the incoming radiation must also be determined, and
+	this is comprised of bandpass and flux density calibration. This calibration can be
+	done with only one source if the flux density of that source is known, it is a point
+	source, and it is sufficiently bright. Otherwise a bright point source can be observed
+	as the bandpass calibrator (the source used for the delay calibration can usually be
+	used for this purpose), and a fainter source with a known flux density, or a
+	planet can be used for flux density calibration.
+      </para>
+
+      <para>
+	Over the duration of the experiment, several factors that affect the antenna
+	response will change. These include atmospheric phase, opacity, elevation-dependent
+	dish surface distortions and focus changes, aperture illumination and spillover.
+	To monitor these changes you will need to observe a point source nearby to your
+	science target. This point source will need to be reasonably bright, but averaging
+	over a short period of time can be used if the nearest source isn't very bright.
+      </para>
+
+      <para>
+	If you need to measure the polarisation of your science target, you will want
+	to determine the leakage parameters; the fraction of linearly-polarised photons
+	that are detected by the receptor that should not.
+      </para>
+
+      <para>
+	If you are observing at high frequency, where the primary beam of the antenna
+	is small, it is important that the maximum response of the beam is directed
+	toward the source you're observing. To ensure this is the case, you should do
+	periodic pointing-correction scans on a nearby point source of reasonable
+	brightness.
+      </para>
+
+      <para>
+	Finally, if you're observing in the 3mm band, you will need to use the
+	receiver's absorber paddle to keep track of how the system temperature varies
+	over time. This is done periodically on-line using &#x201C;paddle&#x201D;
+	scans.
+      </para>
+
+      <para>
+	A summary of what type of calibration you will require for each observing band is
+	given in <xref linkend="RequiredCalibration"></xref>.
+      </para>
+
+      <table frame="all" rowsep="1" colsep="1" id="RequiredCalibration">
+	<title>Calibration required by observing band.</title>
+	<tgroup align="center" cols="6">
+	  <colspec colname="type"/>
+	  <colspec colname="cm16"/>
+	  <colspec colname="cm4"/>
+	  <colspec colname="mm15"/>
+	  <colspec colname="mm7"/>
+	  <colspec colname="mm3"/>
+	  <thead>
+	    <row>
+	      <entry>Calibration</entry>
+	      <entry>16cm</entry>
+	      <entry>4cm</entry>
+	      <entry>15mm</entry>
+	      <entry>7mm</entry>
+	      <entry>3mm</entry>
+	    </row>
+	  </thead>
+	  <tbody>
+	    <row>
+	      <entry>Delay calibration</entry>
+	      <entry namest="cm16" nameend="mm3">Required</entry>
+	    </row>
+	    <row>
+	      <entry>Bandpass calibration</entry>
+	      <entry namest="cm16" nameend="mm3">Required</entry>
+	    </row>
+	    <row>
+	      <entry>Flux density calibration</entry>
+	      <entry namest="cm16" nameend="mm7">Required on 1934-638</entry>
+	      <entry>Required, on Uranus</entry>
+	    </row>
+	    <row>
+	      <entry>Gain calibration</entry>
+	      <entry namest="cm16" nameend="mm3">Required</entry>
+	    </row>
+	    <row>
+	      <entry>Polarisation calibration</entry>
+	      <entry namest="cm16" nameend="mm3">Required</entry>
+	    </row>
+	    <row>
+	      <entry>Pointing calibration</entry>
+	      <entry namest="cm16" nameend="cm4">Not required</entry>
+	      <entry namest="mm15" nameend="mm3">Required</entry>
+	    </row>
+	    <row>
+	      <entry>Paddle calibration</entry>
+	      <entry namest="cm16" nameend="mm7">Not possible</entry>
+	      <entry>Required</entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </table>
+
+      <para>
+	For more detail on each of these types of calibration, read the sections
+	below. It is important to note that you must repeat all the calibration for
+	every frequency configuration that you observe, as it is not generally possible to
+	interpolate or extrapolate the calibration parameters determined from one frequency
+	configuration to another.
+      </para>
+
+    </section>
+
+    <section id="calibration-delays">
+      <info>
+	<title>What sources can be used for delay calibration?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>calibrator</primary><secondary>delay</secondary></indexterm>
+	The calibrator you use to calibrate the delays is largely dependent on the
+	band you are observing in, and the <acronym>LST</acronym> when you are setting up.
+      </para>
+
+      <para>
+	For the centimetre bands (16cm and 4cm), delay calibration is best done with one of
+	two sources. When the LST is between 11:00 and 04:18, you should use PKS 1934-638 to calibrate
+	the delays, because it is strong and you'll need to observe it anyway for flux
+	density calibration purposes. At all other times you should use 0823-500.
+      </para>
+
+      <para>
+	For the higher frequency bands, you will need to use one of the many available bright
+	sources in the <acronym>ATCA</acronym> calibrator database, such as:
+	<itemizedlist>
+	  <listitem><para>0003-066</para></listitem>
+	  <listitem><para>0420-014</para></listitem>
+	  <listitem><para>0537-441</para></listitem>
+	  <listitem><para>0727-115</para></listitem>
+	  <listitem><para>1034-293</para></listitem>
+	  <listitem><para>1253-055</para></listitem>
+	  <listitem><para>1424-418</para></listitem>
+	  <listitem><para>1613-586</para></listitem>
+	  <listitem><para>1921-293</para></listitem>
+	  <listitem><para>2155-152</para></listitem>
+	</itemizedlist>
+	You should choose whichever is highest, or nearest to your targets. There are many more
+	sources that are bright in the millimetre bands, and you can search for the brightest
+	calibrators using the <acronym>ATCA</acronym> calibrator database search interface.
+      </para>
+      
+    </section>
+
+    <section id="calibration-bandpass">
+      <info>
+	<title>How do I calibrate the bandpass response of the antennas?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>calibration</primary><secondary>bandpass</secondary></indexterm>
+	<indexterm role="cp"><primary>calibrator</primary><secondary>bandpass</secondary></indexterm>
+	The bandpass calibration is best done with a very bright source, since you're trying to
+	precisely determine how each frequency channel responds to a known amount of flux density.
+      </para>
+
+      <para>
+	To do this ideally, the response should be dominated by the signal rather than the
+	thermal noise in each channel. Since this is also a very useful property for a
+	delay calibrator to have, the same calibrators that can be used for delay calibration
+	(<xref linkend="calibration-delays"></xref>) are ideal for bandpass calibration as
+	well. If the bandpass calibrators is used as the delay calibrator, then the bandpass 
+	calibration observation can be made immediately following
+	the completion of the setup without further slewing overhead.
+	If the observations are at 3mm, a paddle measurement should be
+	made immediately before the bandpass observation.
+      </para>
+      
+      <para>
+	As the receiver response does not change greatly as a function of time, for a
+	continuum observation it is
+	usually sufficient to make an observation of a bandpass calibrator at the very start of
+	the allocated time. The amount of time spent
+	integrating on the bandpass calibrator depends on its flux, but generally 5-10 minutes
+	is sufficient at all frequencies. 
+      </para>
+
+      <para>
+	For spectral line observations though, it has been noted that the <acronym>CABB</acronym> 
+	bandpass is not perfectly stable over the
+	course of a normal 12 hour observation, and for this reason it is advisable
+	to observe a bandpass calibrator more than once per observation. Visiting it
+	three times (once at the start, once at the end, and once sometime near the
+	middle) during a 12 hour observation should be sufficient to obtain a reliable
+	bandpass solution. Alternatively, provided the gain calibrator is reasonably
+	bright, the periodic visits to it may provide accurate enough information to
+	determine how the bandpass solution changes over time.
+      </para>
+
+      <para>
+	The integration time spent on the bandpass calibrator will have an effect on
+	the accuracy of the flux that is measured after reduction. It is necessary to
+	obtain each correlator channel's flux to the same accuracy as required for the
+	flux calibrator, ie. obtain a signal-to-noise ratio of 100 <emphasis>per channel</emphasis>
+	if the required flux accuracy is 1%. Since any point source can be a bandpass calibrator,
+	the sensitivity calculator should be used
+	to find out the RMS noise per channel for your observations, and then a calibrator
+	found from the calibrator database that provides enough flux to meet the signal-to-noise
+	ratio requirements. For example, a typical <acronym>CABB</acronym> observation has 2048 channels,
+	and at 50 GHz, the RMS noise per channel is about 35 mJy for a 5 minute observation.
+	For a signal-to-noise ratio of 100, a calibrator with flux greater than 3.5 Jy is
+	required, and a search through the calibrator database identifies 19 such sources.
+	Of course, if a primary flux calibrator is strong enough to be a bandpass calibrator
+	as well, then observing time can be conserved by not having a separate bandpass
+	calibrator.
+      </para>
+
+    </section>
+    
+    <section id="calibration-flux-density">
+      <info>
+	<title>How do I calibrate the flux density of my observations?</title>
+      </info>
+      
+      <para>
+	<indexterm role="cp"><primary>calibration</primary><secondary>flux density</secondary></indexterm>
+	<indexterm role="cp"><primary>calibrator</primary><secondary>flux density</secondary></indexterm>
+	Flux density calibration is required to translate the arbitrary gain scaling that is produced by
+	an observation to an absolute flux density scale. The most effective way of doing this is by
+	observing a calibrator that has a known flux density (on the absolute flux density scale) and comparing
+	it to the sources that you are observing that have unknown flux densities.
+      </para>
+
+      <para>
+	For the <acronym>ATCA</acronym>, there are currently only four flux density calibrators, and of those only two
+	are regularly used.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>calibration</primary><secondary>flux density scale</secondary></indexterm>
+	For frequencies between 1 GHz and 25 GHz, the preferred flux density calibrator is PKS 1934-638.
+	It has a known, stable flux, and conveniently has no linear or circular polarisation, at least
+	at low frequencies.
+	The flux density model for 1934-638 that is installed in <application>Miriad</application> are 
+	based on the models described in the memo
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    <emphasis role="bold">A Revised Flux Scale for the AT Compact Array</emphasis>
+	    (<ulink url="http://www.atnf.csiro.au/observers/memos/d96783~1.pdf"><emphasis>J Reynolds, 1994</emphasis></ulink>),
+	  </para>
+	</listitem>
+      </itemizedlist>
+      <para>
+	and the paper
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    <emphasis role="bold">Absolute calibration of the radio astronomy flux density scale at
+	    22 to 43 GHz using <emphasis>Planck</emphasis></emphasis>
+	    (<ulink url="https://iopscience.iop.org/article/10.3847/0004-637X/821/1/61/meta"><emphasis>Partridge et. al, 2016</emphasis></ulink>)
+	  </para>
+	</listitem>
+      </itemizedlist>
+      <para>
+	The model is separated into two frequency ranges. Below 11 GHz, the Reynolds model is used, which is:
+	<equation>
+	  <title>Flux density model for 1934-638 from Reynolds 1994</title>
+	  <textobject role="tex">
+	    \log\mathrm{S} = -30.7667 + 26.4908\log\nu - 7.0977(\log\nu)^{2} + 0.605334(\log\nu)^{3},
+	  </textobject>
+	</equation>
+	where <inlineequation><textobject role="tex">\mathrm{S}</textobject></inlineequation> is the flux density
+	in Jy and <inlineequation><textobject role="tex">\nu</textobject></inlineequation> is the frequency in
+	MHz. For frequencies above 11 GHz<application>Miriad</application> uses the model from the Planck study:
+	<equation>
+	  <title>Flux density model for 1934-638 for frequencies above 11 GHz</title>
+	  <textobject role="tex">
+	    \log\mathrm{S} = 5.8870 - 1.3763\log\nu
+	  </textobject>
+	</equation>
+	The high-frequency model has been shown by Partridge et al. (2016) to match quite well with the
+	<acronym>VLA</acronym>, but unfortunately the low-frequency model does not.
+      </para>
+
+      <para>
+	For frequencies higher than 50 GHz you can use 1934-638 as the flux density calibrator, but the planet Uranus
+	is brighter. Its flux density is known to vary with time, but it does so in a way that is understood and can
+	be modelled. The planets Mars and Neptune can also be used, but Uranus is preferred
+	because its angular size is smaller than Mars (making it easier to observe with typical
+	Compact Array baselines), and it is brighter than Neptune (which would require a longer
+	scan to provide the same signal-to-noise level).
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>flux density calibrator</secondary></indexterm>
+	To be as effective as possible, the flux density calibrator should be observed when it is at the
+	same elevation as the target source, and at as high an elevation as possible. Doing this
+	means that any gain-elevation dependence
+	is reduced, and the effect of airmass is also reduced. At low frequencies (below 7 GHz),
+	these requirements are not as important as they are for higher frequencies, where the
+	atmospheric effects become a large factor. Indeed, many (if not most) centimetre observers
+	simply make a scan on 1934-638 at the beginning of their observations, and this is usually
+	good enough to get a flux density uncertainty of only a few percent.
+      </para>
+
+      <para>
+	Because 1934-638 is a point source (at least at the resolution of the Compact Array), it
+	can be observed the same way as any other calibrator. That is, a scan on 1934-638 should
+	be included in the schedule, and should be preceded by a pointing scan when it is observed
+	with the 15mm or 7mm receivers.
+      </para>
+
+      <para>
+	Observing the planets is a little more complicated. Because they are not point sources on
+	even the most compact of <acronym>ATCA</acronym> baselines, they cannot be used as a pointing reference. A
+	nearby source must therefore be used to determine the pointing offsets before observing
+	the planet. Also, because the planets will substantially fill the primary beam of the
+	<acronym>ATCA</acronym> antenna, the apparent system temperature of the antenna will be increased while
+	a planet is being observed. Because of this, if a paddle scan is made while observing a
+	planet, the system temperature will not be correctly determined, and the flux scaling will
+	be in error. When observing with the 3mm system therefore, the paddle scan should be made
+	while observing the same nearby pointing reference calibrator.
+      </para>
+
+      <para>
+	To make a good observation of Uranus, follow the procedure:
+      </para>
+      <itemizedlist mark="bullet">
+	<listitem>
+	  <para>
+	    Determine a suitable nearby calibrator that can be used for pointing/paddle
+	    measurements. First, checking the ephemeris of Uranus with the planet
+	    task in <application>Miriad</application>. After the position of Uranus on the date of the observation has been
+	    determined, use the <ulink url="http://www.narrabri.atnf.csiro.au/calibrators/">calibrator database</ulink>
+	    or the &#x201C;Search Cal&#x201D; button in the Web Scheduler to find the closest suitable
+	    calibrator.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    If observing at 3mm, make a paddle measurement while tracking the calibrator.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Determine the pointing offsets using the calibrator.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Observe the calibrator for 2 minutes.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Observe Uranus for a sufficient amount of time (10-15 minutes is usually more
+	    than enough).
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Observe the calibrator again for 2 minutes.
+	  </para>
+	</listitem>
+      </itemizedlist>
+      <para>
+	The procedure is similar for the other planets. Note that because the phases of the nearby
+	calibrator are not used by the <application>Miriad</application> flux calibration task 
+	<command>mfboot</command>, it is not
+	absolutely necessary to bracket the planet with a calibrator observation. It can however
+	be useful to have that data to diagnose potential problems, should they arise.
+	<indexterm role="cp"><primary>Miriad</primary><secondary>tasks</secondary><tertiary>mfboot</tertiary></indexterm>
+      </para>
+
+      <para>
+	The integration time spent on the flux density calibrator is largely governed by the 
+	precision required for the observations to be successful, and the strength of the primary flux 
+	density calibrator at the observing frequency. If a flux density precision of 1% is required, then the aim
+	should be to make an observation with a signal-to-noise ratio of 100. For a
+	observation with 2 GHz bandwidth, this is relatively easy, as even
+	a 5 minute observation of 1934-638 at 50 GHz gives a signal-to-noise ratio in
+	excess of 1000.
+      </para>
+      
+      <para>
+	The sensitivity calculator should be used to estimate the observing time required to achieve the desired
+	flux density precision. However, it is never a bad idea to pad the required time out a little
+	to ensure that enough good data will remain after flagging.
+      </para>
+
+    </section>
+
+    <section id="calibration-gains">
+      <info>
+	<title>How do I best calibrate the time-varying gains?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>gain</primary><secondary>time variable</secondary></indexterm>
+	The gain parameters that vary significantly over time include:
+	<itemizedlist>
+	  <listitem><para>atmospheric phase</para></listitem>
+	  <listitem><para>atmospheric opacity</para></listitem>	  
+	  <listitem><para>forward gain due to structural deformation</para></listitem>
+	  <listitem><para>aperture illumination</para></listitem>	  
+	</itemizedlist>
+	As these factors vary, the path lengths between the antennas will vary
+	(which varies the phase), and the system temperatures may change, thus
+	changing the sensitivity. To accurately correct for these changes, they must
+	be regularly monitored.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>gain</primary><secondary>calibration</secondary><see>calibration</see></indexterm>
+	<indexterm role="cp"><primary>calibration</primary><secondary>gain</secondary></indexterm>
+	The best way to monitor these changing parameters is to observe a
+	simple source (a point source in an otherwise empty field is the ideal case)
+	every time the observing configuration (elevation, weather, etc.) changes
+	significantly. The definition of &#x201C;significant&#x201D; change
+	depends on the observing frequency and the observing conditions (such as
+	array configuration, atmospheric seeing, temperature, precipitation etc.).
+	More precisely,
+	by observing a source that looks the same irrespective of time or (u,v)
+	coordinates, changes in gain can be determined directly. Therefore, gain calibrators
+	should be unresolved, with a stable flux over the observation timescale.
+      </para>
+
+      <para>
+	The
+	<acronym>ATCA</acronym> provides
+	<ulink url="http://www.narrabri.atnf.csiro.au/calibrators/calcycle.html">a calculator</ulink>
+	to advise observers on how often to visit their phase calibrator.
+	<indexterm role="cp"><primary>calibrator</primary><secondary>gain</secondary></indexterm>
+	<indexterm role="cp"><primary>calibrator</primary><secondary>phase</secondary></indexterm>
+	<indexterm role="cp"><primary>decorrelation</primary></indexterm>
+	For this calculator:
+	<itemizedlist>
+	  <listitem>
+	    <para>
+	      Input the central observing frequency and the maximum baseline
+	      of interest (ie. don't include the 6km antenna if its data will be discarded).
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      For the seeing monitor RMS phase, give a nominal value of 300 microns if the
+	      observations will be performed in winter, and 700 microns if they will be in
+	      daytime during summer; for other times, choose a value between those two extremes.
+	      You can adjust using the actual values on the day if you want, but these
+	      values will generally prevent you from not calibrating frequently enough.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      For the phase screen speed, choose 5 m/s.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      For the Kolmogorov exponent, leave the
+	      default 0.83 unless the 6km antenna will be required, in which case enter 0.33
+	      instead.
+	    </para>
+	  </listitem>
+	</itemizedlist>
+      </para>
+
+      <para>
+	For example, for an observation at 19 GHz, with a seeing RMS of 300 microns, in a
+	750m array, the calculator determines that if the gain calibrator was visited every
+	2 minutes, the observations would have an RMS phase of 15&#x00B0;, be decorrelated
+	by 3%, and have a maximum dynamic range of just 282. However it also determines that
+	this is as bad as it gets, so that a 10 minute visit interval would give the same results.
+	Since 2 minutes is a very frequent visit schedule, it would seem that self-calibration
+	would be preferable for high dynamic range observations.
+      </para>
+      
+      <para>
+	Dropping the seeing RMS to 100 microns (which would be a good winter day)
+	improves matters significantly, allowing a dynamic range of 874 with no decorrelation and a
+	5&#x00B0; RMS phase for any visit interval greater than 2 minutes.
+      </para>
+      
+      <para>
+	It is important however not to extend the interval too far, as then the atmosphere
+	being sampled by the gain calibrator will be different to that the source has sampled
+	during that time. For cm observations, one might need only visit the gain calibrator
+	once or twice per hour in good conditions, while for mm observations, it is unwise
+	to visit the calibrator less frequently than once every 15 minutes.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>calibrator</primary><secondary>database</secondary></indexterm>
+	<indexterm role="cp"><primary>calibrator</primary><secondary>searching for</secondary></indexterm>
+	The <acronym>ATCA</acronym> has a large list of gain calibrators, spread over the viewable sky. This list
+	can be queried using a 
+	<ulink url="http://www.narrabri.atnf.csiro.au/calibrators/">web interface</ulink>.
+	  This interface queries the database in one of three ways:
+      </para>
+      <itemizedlist mark="bullet">
+	<listitem>
+	  <para>
+	    <emphasis role="bold">Quick-find calibrator</emphasis>: finds a calibrator with a specified name.
+	    The quick-find box will show all sources that match the string you enter into it.
+	    For example, there
+	    are five sources in the database which match with &#x201C;0537&#x201D;: 0537-441, 0537-158, 0537-286,
+	    J0537-3357 and 0537+531. When this list of sources is displayed, you can click on the one you want
+	    to get a small list of that calibrator's most recent flux densities and its position.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    <emphasis role="bold">Cone search</emphasis>: finds calibrators within a specified angular distance from
+	    a given sky position. Can optionally be restricted to sources brighter than a given
+	    flux in a specified wavelength band. You can also enter a resolvable name into the position box instead
+	    of an RA and Dec.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    <emphasis role="bold">Patch search</emphasis>: finds all calibrators within a specified RA and Dec range.
+	    Can optionally be restricted to sources brighter than a given flux in a specified wavelength
+	    band.
+	  </para>
+	</listitem>
+      </itemizedlist>
+
+      <para>
+	Selection of an appropriate gain calibrator can also be done while you are preparing
+	the schedule in the <acronym>CABB</acronym> web scheduler (see
+	<xref linkend="Continuum-Schedule-Example"></xref> for an example of how this works).
+	Ideally, choose the nearest possible point source calibrator to your target.
+	Sometimes that calibrator may not be very bright though, and you may wish to
+	choose a brighter calibrator that is further away in order to lessen your
+	overhead: a brighter calibrator can give a good measurement of the gain in a
+	shorter time than a dimmer calibrator. For continuum observations this is largely
+	irrelevant since the large <acronym>CABB</acronym> bandwidths allow for a very
+	accurate measure of gain in just a few cycles. For spectral line observations though,
+	the brighter the source the better.
+      </para>
+    </section>
+
+    <section>
+      <info>
+	<title>What do I need to do for polarisation calibration?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>calibration</primary><secondary>polarisation</secondary></indexterm>
+	The <acronym>ATCA</acronym> uses dual linear orthogonal feeds to measure the incident radiation.
+	Ideally, these two feeds would be independent: in reality
+	this is not the case, and a fraction of the radiation measured by one feed is also
+	receiver by the other; this effect is called &#x201C;leakage&#x201D;. Polarisation calibration is primarily concerned
+	with measuring the leakage fraction and the possibly non-zero signal phase (the so-called
+	XY-phase) between the two feeds.
+      </para>
+
+      <para>
+	A paper by Sault and Cornwell (1999, in &#x201C;Synthesis Imaging in Radio Astronomy II&#x201D;,
+	ASP Conf. 180, p657) showed that for an observation where a calibrator with apriori unknown
+	polarisation properties can be observed with at least three different parallactic angles (what they
+	call the &#x201C;parallactic angle rotation trick&#x201D;), polarisation calibration is required
+	to determine the absolute alignment of linear polarisation angle and the term which causes leakage
+	between Stokes I and V.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>calibration</primary><secondary>noise diode</secondary></indexterm>
+	The absolute alignment of linear polarisations is achieved by injecting a linearly
+	polarised signal at 45&#x00B0; to the linear orthogonal feeds several times per second: this
+	is known as the &#x201C;noise diode&#x201D;. This signal is measured by the correlator on each
+	antenna, and the XY-phase is used later in data reduction to determine the absolute linear polarisation
+	angle. All the receivers except for the 3mm system have a noise diode on each antenna. For 3mm
+	observations, CA02 has got the Mopra spare receiver installed, which has a noise diode, while all
+	other antennas do not. Should Mopra require the spare at any point however, this capability may
+	be removed from the <acronym>ATCA</acronym>; in this case you would need to use a different
+	observational strategy to recover the absolute alignment information.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>calibrator</primary><secondary>polarisation</secondary></indexterm>
+	<indexterm role="cp"><primary>polarisation</primary><secondary>linear</secondary></indexterm>
+	This means that to complete the linear polaristion calibration, any of the point source calibrators in the
+	<acronym>ATCA</acronym> calibrator database can be observed at least a few times over the course of an
+	Earth-rotation synthesis observation. Since this is likely being done for normal gain calibration,
+	most observations will contain enough information to calibrate the linear polarisation.
+      </para>
+
+      <para>
+	If you can't play the parallactic angle rotation trick (if for instance you are observing for only
+	a short time), then you will need to know the polarisation parameters for the calibrators you are
+	observing. At low frequencies (in the 16cm band), it is known that PKS B1934-638 has zero linear
+	polarisation. For short observations then, you can use the flux density calibration observations
+	to calibrate linear polarisation as well.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>polarisation</primary><secondary>circular</secondary></indexterm>
+	Dave Rayner's <ulink url="http://www.atnf.csiro.au/observers/memos/circpolguide.pdf">&#x201C;Circular Polarization User's Guide&#x201D;</ulink>
+	is a useful guide on how to accurately measure circular polarisation with the <acronym>ATCA</acronym>.
+      </para>
+    </section>
+
+    <section>
+      <info>
+	<title>When is pointing calibration required?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>pointing</primary><secondary>accuracy</secondary></indexterm>
+	The global pointing model for the <acronym>ATCA</acronym> antennas is usually good to a few
+	arcseconds under ideal conditions, and the tracking accuracy is better than an arcsecond.
+	But changes in temperature can make the pointing model incorrect by a few 10s of arcseconds,
+	and this would mean that for the millimetre bands the pointing may be incorrect by a
+	significant fraction of the primary beam size (see <xref linkend="table_sensitivity"></xref>).
+	This would adversely affect the sensitivity of the observations of your targets.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>pointing</primary><secondary>correction</secondary></indexterm>
+	<indexterm role="cp"><primary>calibration</primary><secondary>reference pointing</secondary></indexterm>
+	While observing, you can correct the pointing model to ensure that the peak response of the
+	primary beam is pointing directly at your target. A pointing correction scan is made by
+	observing a reasonably bright point source directly and at the half-power point of the
+	primary beam in each of the azimuth and elevation axes, and comparing the amplitude seen at
+	each of these points.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>calibrator</primary><secondary>reference pointing</secondary></indexterm>
+	With 2 GHz of bandwidth, almost any point source in the <acronym>ATCA</acronym> calibrator
+	database can be used to determine the pointing corrections, however the pointing corrections
+	only really improve the global pointing model within 20&#x00B0; of the azimuth/elevation at
+	which the corrections were determined. The natural choice of calibrator for this purpose
+	is therefore the same as for the gain calibration, and in general you should use your
+	gain calibrator for pointing calibration.
+      </para>
+
+      <para>
+	Because the pointing corrections are only valid with 20&#x00B0;, a pointing correction scan
+	will be required approximately every hour while you're observing if you're tracking the same
+	source as it crosses the sky, or more frequently if you're observing multiple sources across
+	the sky.
+      </para>
+    </section>
+
+    <section>
+      <info>
+	<title>When is paddle calibration required?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>calibration</primary><secondary>paddle</secondary></indexterm>	
+	The &#x201C;paddle&#x201D; is a mechanical arm that holds an absorbing material large
+	enough to cover the 3mm feed horn. By observing the paddle, the temperature of which is assumed
+	to be the ambient temperature in the antenna vertex room (which is monitored), and comparing it
+	to the assumed temperature of the mostly empty sky, you get a system temperature that includes
+	the effect of the atmosphere. This is sometimes referred to as the &#x201C;above-the-atmosphere&#x201D;
+	system temperature, because in this case the system includes the atmosphere.
+      </para>
+
+      <para>
+	Because changes to the system temperature affect the response of the system to an otherwise
+	equivalent amount of radiation, it is important to keep track of these changes as your observations
+	progress. With the other receivers, the injected noise signal (the temperature of which is assumed to
+	stay constant) is monitored constantly, and no overhead is incurred for sytem temperature monitoring.
+	For observations with the 3mm receiver however, you will need to observe the paddle reasonably
+	frequently and incur a couple of minutes overhead each time you do.
+      </para>
+
+      <para>
+	How often the paddle is used depends on the conditions. Since in principle you are using the paddle
+	scans to interpolate the actual system temperature at any particular point in time during your observations,
+	you will need to observe the paddle frequently enough to catch any departures from a linear change
+	to the system temperature. If you are observing in good and stable weather, you can go 20 minutes between paddle
+	scans. If the atmosphere is very turbulent though you may have to use the paddle more often.
+      </para>
+
+      <para>
+	It is important to remember that the system temperature calculation depends on the assumption that
+	it will be looking at mostly empty sky after it looks at the paddle. For most point source calibrators
+	this assumption will be valid, but if you are pointing at a planet, the system response will include
+	its temperature, and this will affect the system temperature calculations.
+      </para>
+
+    </section>
+
+  </section>
+
+  <section id="observations-scheduling">
+    <info>
+      <title>Scheduling your observations</title>
+    </info>
+
+    <section>
+      <info>
+	<title>What is meant by &#x201C;schedule&#x201D;?</title>
+      </info>
+
+      <para>
+	Observations on the <acronym>ATCA</acronym> normally consist of a sequence of
+	<indexterm role="cp"><primary>scan</primary><see>schedule</see></indexterm>
+	<indexterm role="cp"><primary>schedule</primary><secondary>scan</secondary></indexterm>
+	<firstterm>scans</firstterm>: a scan is a period of observing where the telescope configuration
+	stays the same. A complete observation is made up of a
+	number of scans.  Observations typically alternate between scans on the
+	scientifically interesting sources and scans on one or more calibrators. 
+	The configuration of the scans and their order are kept in a
+	<wordasword>schedule file</wordasword>.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>caobs</primary></indexterm>
+	The main observing task, <command>caobs</command>, reads the schedule file in order to
+	determine what sources are to be observed, for how long, and in what
+	order. The schedule file also defines the frequencies and
+	correlator setup for each scan and can also be used to make the system automatically
+	execute commands.
+	<indexterm role="cp"><primary>schedule</primary><secondary>file</secondary></indexterm>
+	<indexterm role="cp"><primary>schedule</primary><secondary>web scheduler</secondary></indexterm>
+	The 
+	<ulink url="http://www.narrabri.atnf.csiro.au/observing/sched/cabb/"> <acronym>ATCA</acronym> web scheduler</ulink>
+	is the tool to use to create <acronym>ATCA</acronym> schedule files in the <acronym>CABB</acronym> era.
+	Schedules made with the old <command>sched</command> program are no longer understood by
+	the <acronym>CABB</acronym> version of <command>caobs</command> and thus cannot be used. However, it is
+	possible for the web scheduler to read in old schedules and save them
+	for use with the new system. Please also note that an active <acronym>ATNF</acronym> username
+	and password is required to gain access to the web scheduler page.
+      </para>
+
+      <para>
+	Generally, users will want to prepare <emphasis role="bold">at least</emphasis> two schedule files:
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    A schedule file for setting up (delay calibration etc.) and flux density calibration.
+	    It should include the appropriate flux density calibrator (<xref linkend="calibration-flux-density"></xref>),
+	    and if the flux density calibrator cannot be used as a bandpass calibrator, another stronger calibrator
+	    that can be used for array setup and bandpass calibration.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    A schedule file containing the science program source(s) and gain calibrator(s)
+	    (<xref linkend="calibration-gains"></xref>).
+	  </para>
+	</listitem>
+      </itemizedlist>
+
+      <para>
+	You may also want to prepare contingency schedule files in case your preferred frequency is seriously
+	affected by interference, or the selected calibrator proves to be resolved.
+      </para>
+    </section>
+
+    <section id="scheduling-snapshots">
+      <info>
+	<title>How do I best observe if I want to image compact sources?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>snapshot</secondary></indexterm>
+	If your goal is to make a high-quality image of a source that has an angular extent much smaller than the
+	size of the primary beam of the <acronym>ATCA</acronym> antennas, then you should observe your source
+	in &#x201C;snapshots&#x201D;. The same strategy can be applied if you want to image a small number of
+	sources that are separated in the sky.
+      </para>
+
+      <para>
+	Snapshot observations will allow you to obtain a wide range of uv coverage without having to spend all
+	your observing time on source. This is necessary because you will need to obtain calibration data
+	within your time allocation. Generally, a snapshot consists of one or more calibration scans,
+	followed by some integration time on the science target, followed by a gain calibration scan. These
+	snapshots are repeated until your observations are complete.
+      </para>
+
+      <para>
+	Snapshot observing is best illustrated with examples.
+      </para>
+
+      <section>
+	<info>
+	  <title>Example 1: Imaging a single source in the 16cm band</title>
+	</info>
+
+	<para>
+	  This is essentially the simplest form of snapshot observing. All you need to do is integrate on the
+	  target, and occasionally visit a gain calibrator to ensure that you keep track of any phase changes.
+	  A single snapshot might therefore be:
+	  <orderedlist>
+	    <listitem><para>2 minutes integration on a gain calibrator.</para></listitem>
+	    <listitem><para>40 minutes integration on the target.</para></listitem>
+	    <listitem><para>2 minutes integration on a gain calibrator.</para></listitem>
+	  </orderedlist>
+	  This set of scans can be repeated as many times as possible within the allocated time. 
+	</para>
+
+	<para>
+	  These scans will give you enough data to properly calibrate the gains during your observing, and
+	  the polarisation as well, provided you get more than three snapshots in your allocated time.
+	  However you will need to spend some time observing the flux density calibrator (which also works
+	  as a bandpass calibrator) at some time during your allocated time.
+	</para>
+      </section>
+
+      <section>
+	<info>
+	  <title>Example 2: Imaging several sources in the 4cm band</title>
+	</info>
+	
+	<para>
+	  Imaging several sources is basically the same as imaging a single source, except you have
+	  multiple snapshot sets to get through. For each source that you have, you will have an
+	  associated nearby gain calibrator. Then, you will have multiple sets that look like:
+	  <orderedlist>
+	    <listitem><para>2 minutes integration on gain calibrator for source 1.</para></listitem>
+	    <listitem><para>20 minutes integration on the target source 1.</para></listitem>
+	    <listitem><para>2 minutes integration on gain calibrator for source 1.</para></listitem>
+	  </orderedlist>
+	</para>
+
+	<para>
+	  During the allocated observing time, each set of scans will be observed multiple times, but
+	  it is best to interleave them to ensure you get the widest possible coverage of azimuths and
+	  elevations for each set. And once again, you must remember to get some time on the flux
+	  density calibrator.
+	</para>
+      </section>
+
+      <section>
+	<info>
+	  <title>Example 3: Imaging several sources in the 7mm band</title>
+	</info>
+	  
+	<para>
+	  Changing to the higher frequency 7mm band means that you must start doing online
+	  pointing correction scans. The basic set of scans is still the same, as in example
+	  2, but now you have to occasionally add in a pointing scan. For example, if your
+	  normal scan set takes 20 minutes (e.g. 16 minutes on source, 4 minutes on the
+	  gain calibrator), then you could observe this set three times between pointing
+	  scans, as it is recommended that you don't use a pointing solution for more than
+	  an hour.
+	</para>
+
+	<para>
+	  If your sources are all within 20&#x00B0; of each other, you may be able to
+	  find a single source that can be used as the pointing correction calibrator, and
+	  you will only need to do this once per hour.
+	</para>
+
+	<para>
+	  If your sources are spread around the sky you will need to do a pointing correction
+	  for each source. If you are only visiting your sources once per hour, then the
+	  pointing correction scan can simply be built into your snapshot set. However if you
+	  are looking at each source multiple times per hour, but you want to observe the sources
+	  interleaved with each other, you will need to be careful.
+	</para>
+
+	<para>
+	  Usually, when you do a pointing correction scan, the corrections that are determined
+	  are applied immediately and all subsequent scans (well, those that have 
+	  <literal>Pointing</literal> set to &#x201C;Offset&#x201D;) will use those corrections.
+	  This would be a problem if you are observing a source that is more than 20&#x00B0;
+	  away from the location of the most recent pointing scan, even if it was within 20&#x00B0; of the
+	  location of a pointing scan that was done less than an hour ago; such a scan would
+	  use the wrong pointing corrections!
+	</para>
+
+	<para>
+	  The solution to this is to set <literal>Pointing</literal> to &#x201C;Offpnt&#x201D;
+	  for the scan. In this case, <command>caobs</command> will find the most recent
+	  pointing corrections that are close to the location of the current scan, and use those
+	  corrections for that scan.
+	</para>
+      </section>
+
+      <section>
+	<info>
+	  <title>Example 4: Imaging a single source in the 3mm band</title>
+	</info>
+
+	<para>
+	  In the 3mm band, not only do you need to do pointing corrections every hour, you
+	  need to do frequent observations of the paddle. The frequency of your paddle
+	  observations is determined by the conditions during your allocated time, and is
+	  related somewhat to the required frequency of your gain calibrator observations.
+	  That is, if the atmosphere is turbulent, then you may only be able to spend
+	  a few minutes away from a gain calibrator. And in such a case, the system temperature
+	  may be changing on a similar timescale. It is therefore usually a good idea to
+	  include a paddle scan in every snapshot set. Such a set might look like this:
+	  <orderedlist>
+	    <listitem><para>Measurement of the paddle.</para></listitem>
+	    <listitem><para>2 minutes integration on the gain calibrator.</para></listitem>
+	    <listitem><para>8 minutes integration on the target source.</para></listitem>
+	    <listitem><para>Measurement of the paddle.</para></listitem>
+	    <listitem><para>2 minutes integration on the gain calibrator.</para></listitem>
+	  </orderedlist>
+	</para>
+
+	<para>
+	  Since the apparent brightness of the sources you are observing will depend
+	  on the system temperature measured by the paddle scan, it is very important to
+	  ensure that you do the paddle measurement <emphasis role="bold">before</emphasis>
+	  you observe the sources. It is however not really necessary to ensure the
+	  measured amplitudes are accurate before doing a pointing scan.
+	</para>
+      </section>
+    </section>
+
+    <section>
+      <info>
+	<title>How do I best image a source with a large angular extent, or a wide field
+	region?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>mosaic</primary></indexterm>
+	<indexterm role="cp"><primary>observations</primary><secondary>mosaicing</secondary></indexterm>
+	If the source you will image is bigger than a small fraction of the
+	<acronym>ATCA</acronym> primary beam, or the region you want an image for is
+	considerably larger than the primary beam, you will need to use the
+	<acronym>ATCA</acronym>'s mosaicing functionality.
+      </para>
+
+      <para>
+	In interferometry adjacent pointings are not independent and so
+	we can get fundamentally better images by processing the
+	different pointings together. Necessary information about the
+	pointing grid pattern to use for proper Nyquist sampling and
+	the time to be spent on each position to optimise tangential
+	uv coverage can be found in 
+	<ulink url="http://www.atnf.csiro.au/computing/software/miriad/userguide/node175.html">Chapter 21</ulink>
+	of the <application>Miriad</application> Users Guide.
+      </para>
+
+      <para>
+	For close-packed mosaicing (pointing centres every
+	half-beamwidth), drive times are determined by the
+	acceleration limit of 800&#x00B0;/min&#x00B2;. Half the drive
+	time is spent accelerating and half decelerating. For drive
+	times much further than 108&#x2032; in azimuth or 27&#x2032;
+	in elevation, the drive times are dominated by the slew rate
+	limits of 38&#x00B0;/min in elevation and 19&#x00B0;/min in
+	azimuth. For example, a 16&#x2032; drive for a 16cm mosaic
+	will take, depending on the elevation and azimuth of the
+	source, approximately 2.2 seconds. Data taken during the
+	off-source period is blanked in the correlator using a
+	predicted drive time. As drive times can be a significant
+	overhead, care should be taken to not move the array more than
+	necessary.
+      </para>
+
+      <para>
+	Mosaicing is less useful if frequency switching is desired, as
+	no frequency changes can occur during the mosaic scan. Since
+	slew times are often much greater than the time it takes for
+	the correlator to switch frequencies, the overheads involved
+	in repeating a mosaic scan for each separate frequency might
+	quickly negate the normal benefits of mosaicing.
+      </para>
+
+      <para>
+	Mosaicing mode can also be useful when a large
+	number of nearby sources are to be observed, as observing
+	overheads are reduced. Other applications include holography
+	and source surveys using one dimensional cuts. 
+      </para>
+
+      <para>
+	When scheduling a mosaic observation, the &#x201C;snapshot&#x201D; strategy
+	should be used in order to get calibration data. That is, a point source
+	calibrator should be observed periodically between observations of the
+	mosaic pointings.
+      </para>
+
+      <para>
+	If you are mapping a very large, regularly-shaped region at
+	low frequency, where the slew time between each pointing centre
+	is dominated by the maximum speed of the antenna rather than
+	the acceleration/deceleration rate, then you may get a significant
+	reduction in overhead by using <firstterm>on-the-fly mosaicing</firstterm>.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>mosaic</primary><secondary>on-the-fly</secondary></indexterm>
+	<indexterm role="cp"><primary>observations</primary><secondary>on-the-fly mosaicing</secondary></indexterm>
+	On-the-fly (<acronym>OTF</acronym>) mosaicing has a couple of important differences to
+	traditional mosaicing. Most importantly, although the
+	mosaic pattern should be broadly the same &#x2013; the hexagonal pattern is still
+	the optimal sampling &#x2013; the order of observations should be such that the
+	telescope scans in a straight line for as long a distance as possible.
+      </para>
+
+      <para>
+	During an <acronym>OTF</acronym> mosaic, the phase center follows the mosaic points as specified,
+	and the pointing center moves continuously across the pointings. In effect the
+	primary beam of the antennas becomes elongated (to 1.5 beams) in the scanning
+	direction.
+      </para>
+
+      <para>
+	To satisfy proper sampling of the sky, the antennas should not move by more than
+	half a beam per integration cycle, so the spacing of pointings in the mosaic file
+	should be the same as before. Because <command>caobs</command> assumes
+	you are scanning in rows or columns, the direction of scanning is inferred from
+	the next point. At the last point of a row or column the previous direction is
+	maintained to complete the scan. One extra point, marked with the name 
+	&#x201C;<literal>TURN</literal>&#x201D;, needs
+	to be specified at the start of the next row/column, to allow for the antennas
+	to change direction and scan at the correct speed again.
+      </para>
+
+      <para>
+	The primary advantage of <acronym>OTF</acronym> mosaicing over regular mosaicing is its speed in
+	covering a large area of sky, making it possible to get good uv coverage
+	of a large field in a single observing run. It will not usually provide any better
+	sensitivity than a carefully crafted regular mosaic.
+      </para>
+
+      <para>
+	Although <acronym>OTF</acronym> mosaicing is most useful at low frequencies where the slew time
+	between mosaicing points are a significant fraction of the total integration
+	time, this mode could also be used for mm observations by using bin mode and
+	moving the antennas by e.g., 16 beams in a single integration with 32 time bins.
+	The <application>Miriad</application> program atlod will need some work to properly record the
+	phase center and pointing center in this case (ie. such a mode is not currently supported,
+	but may be if demand for it is high).
+      </para>
+    </section>
+
+    <section id="scheduling-mosaics">
+      <info>
+	<title>How do I schedule a mosaic observation?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>mosaic</primary></indexterm>
+	<indexterm role="cp"><primary>mosaic</primary><secondary>file</secondary></indexterm>
+	<indexterm role="cp"><primary>schedule</primary><secondary>mosaic</secondary></indexterm>
+	Mosaic observations use a standard schedule file and an additional file,
+	called the <firstterm>mosaic file</firstterm>, 
+        which lists the positions of the mosaic field centres. 
+        Up to 2048 fields can be specified in a single file.
+	This mosaic file must consist of one line per pointing centre in the
+	mosaic pattern. Lines beginning with the &#x201C;<literal>#</literal>&#x201D; character
+	are ignored and can be used for comments.
+      </para>
+
+      <para>
+	The general mosaic file format is:
+      </para>
+      <para>
+	<screen>
+	  # Comments  .... ignored by the software
+	  #
+	  d(RA)  d(DEC)  INT  $FIELD_1
+	  d(RA)  d(DEC)  INT  $FIELD_2
+	  d(RA)  d(DEC)  INT  $FIELD_3
+	  d(RA)  d(DEC)  INT  $FIELD_4
+	</screen>
+      </para>
+
+      <para>
+	The items in each line are:
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    &#x201C;<literal>d(RA)</literal>&#x201D;
+	    the offset Right Ascension of the pointing centre,
+	    in &#x201C;degrees of polar rotation&#x201D;, from the reference position.
+	    For example, <literal>d(RA) = +15.00</literal> will move +1 hr in RA at
+	    all declinations.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    &#x201C;<literal>d(DEC)</literal>&#x201D;
+	    the offset declination of the pointing centre,
+	    in degrees, from the  reference position.
+	    e.g. <literal>d(DEC) = +1.000</literal> will move the pointing centre one degree
+	    north.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    &#x201C;<literal>INT</literal>&#x201D;
+	    the integral number of integration cycles to spend on each
+	    pointing centre.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    &#x201C;<literal>$FIELD_n</literal>&#x201D;
+	    the name of the field.
+	    The &#x201C;<literal>$</literal>&#x201D; symbol is a prefix to the field name, and indicates that
+	    scans will follow in the order as they are listed in the mosaic file.
+	    The field name must be different for each pointing centre and must
+	    have 9 or fewer characters (naturally, &#x201C;<literal>$</literal>&#x201D; can not be used as the
+	    first character of the field name).
+	    <emphasis role="bold">Note:</emphasis>
+	    If you wish to use the &#x201C;<literal>mosaic</literal>&#x201D; option in the 
+	    <application>Miriad</application> task
+	    <command>uvsplit</command> (to keep the mosaic pointings together in one uv data
+	    file), the field name strings should differ by only the
+	    &#x201C;<literal>_n</literal>&#x201D; part of the name, where 
+	    &#x201C;<literal>n</literal>&#x201D; is an integer.
+	    The field name given within the mosaic file does not need to match
+	    the source name given in the schedule file.
+	  </para>
+	</listitem>
+      </itemizedlist>
+
+      <para>
+	This file should be named &#x201C;<literal>mosnam.mos</literal>&#x201D;.  The
+	&#x201C;<literal>.mos</literal>&#x201D; suffix is required, or
+	<command>caobs</command> will not find the file.  The
+	&#x201C;<literal>mosnam</literal>&#x201D; part of the name
+	<emphasis>must</emphasis> match the source name given in the
+	schedule file.
+      </para>
+
+      <para>
+	To include a mosaic in a schedule file, insert a scan and set:
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    &#x201C;<literal>Source</literal>&#x201D;
+	    to the name of the mosaic file, excluding the &#x201C;<literal>.mos</literal>&#x201D; extension,
+	    i.e. &#x201C;<literal>mosnam</literal>&#x201D;.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    &#x201C;<literal>ScanType</literal>&#x201D;
+	    to &#x201C;<literal>Mosaic</literal>&#x201D;
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    &#x201C;<literal>RA</literal>&#x201D; and &#x201C;<literal>Dec</literal>&#x201D;
+	    to the reference position for the mosaic, i.e. the position that all
+	    the mosaic field centres are offset from. Check this carefully.
+	    Then check it again. Although the reference position is usually
+	    included as a comment in the mosaic file, <command>caobs</command> reads only
+	    the coordinate offsets from the mosaic file. Therefore, if the reference position
+	    is set incorrectly in the schedule file, <command>caobs</command> will not warn you,
+	    and your observations will fail.
+	  </para>
+	</listitem>
+      </itemizedlist>
+
+      <para>
+	All other scan settings have their usual effect, including the
+	&#x201C;<literal>Pointing</literal>&#x201D; mode, and the observing
+	frequencies.
+	<indexterm role="cp"><primary>mosaic</primary><secondary>filename</secondary></indexterm>
+	The mosaic file must be placed
+	in the <literal>/atca/mosaic</literal> directory on <hardware>xbones</hardware> so
+	that <command>caobs</command> can locate it during the
+	observations.  The mosaic file name must be completely in
+	lowercase letters, even if the corresponding source name in
+	the schedule has uppercase letters;
+	<command>caobs</command> will report that the mosaic file
+	could not be found unless it has an all-lowercase file name.
+	The &#x201C;<literal>.mos</literal>&#x201D; suffix is required, or
+	<command>caobs</command> will not find the file.
+      </para>
+      
+      <para>
+	<indexterm role="cp"><primary>mosaic</primary><secondary>file</secondary><tertiary>uploading</tertiary></indexterm>
+	The file can be copied into position manually, but there is also a
+	<ulink url="https://www.narrabri.atnf.csiro.au/observing/sched/mosaic/">web interface</ulink>
+	that will ensure your mosaic files are put in the correct location.
+      </para>
+
+      <para>
+	The time specified in the &#x201C;<literal>ScanLength</literal>&#x201D; field
+	in the schedule file will determine how many times the mosaic
+	is looped through in a single scan. <command>caobs</command>
+	calculates this by dividing the &#x201C;<literal>ScanLength</literal>&#x201D;
+	time by the total length of the mosaic and rounding this to
+	the nearest integer; this will be the number of times the
+	mosaic is repeated during this scan. The mosaic is always observed at least
+	once, regardless of the &#x201C;<literal>ScanLength</literal>&#x201D;.
+      </para>
+
+      <para>
+	It should be noted, in particular for mosaic files containing sources
+	spread over a range of RAs, that if <command>caobs</command> encounters a source in
+	that has set (or not risen), it will skip to the
+	next scan in the schedule file, not to the next source in the
+	mosaic file.
+      </para>
+
+      <section>
+	<info>
+	  <title>Can I see an example mosaic file?</title>
+	</info>
+
+	<para>
+	  The following example shows a mosaic file specifying a four pointing
+	  centre pattern on a 0.25&#x00B0; grid. Note that the RA offsets
+	  are coordinate increments not sky distances.
+	</para>
+
+	<para>
+	  <indexterm role="cp"><primary>mosaic</primary><secondary>example</secondary></indexterm>
+	</para>
+	<informaltable frame="none" rowsep="0" colsep="0">
+	  <tgroup cols="5">
+	    <colspec colwidth="25*" colname="left"/>
+	    <colspec colwidth="20*" colname="dRA"/>
+	    <colspec colwidth="20*" colname="dDec"/>
+	    <colspec colwidth="10*" colname="int"/>
+	    <colspec colwidth="10*" colname="field"/>
+	    <tbody>
+	      <row>
+		<entry morerows="6">Mosaic file: <literal>mymap.mos</literal></entry>
+		<entry namest="dRA" nameend="field">
+		  <literal># mymap.mos by P. Smith</literal>
+		</entry>
+	      </row>
+	      <row>
+		<entry namest="dRA" nameend="field">
+		  <literal># A four pointing centre mosaic</literal>
+		</entry>
+	      </row>
+	      <row>
+		<entry namest="dRA" nameend="field">
+		  <literal># Ref. Position = 05:21:33, -65:56:41</literal>
+		</entry>
+	      </row>
+	      <row>
+		<entry><literal>0.0000</literal></entry>
+		<entry><literal>0.000</literal></entry>
+		<entry><literal>2</literal></entry>
+		<entry><literal>$mymap_1</literal></entry>
+	      </row>
+	      <row>
+		<entry><literal>0.6133</literal></entry>
+		<entry><literal>0.000</literal></entry>
+		<entry><literal>2</literal></entry>
+		<entry><literal>$mymap_2</literal></entry>
+	      </row>
+	      <row>
+		<entry><literal>0.6133</literal></entry>
+		<entry><literal>-0.250</literal></entry>
+		<entry><literal>2</literal></entry>
+		<entry><literal>$mymap_3</literal></entry>
+	      </row>
+	      <row>
+		<entry><literal>0.0000</literal></entry>
+		<entry><literal>-0.250</literal></entry>
+		<entry><literal>2</literal></entry>
+		<entry><literal>$mymap_4</literal></entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</informaltable>
+
+	<para>
+	  The scan in the corresponding schedule file might have the
+	  parameters:
+	</para>
+	<informaltable frame="none" rowsep="0" colsep="0">
+	  <tgroup cols="7">
+	    <colspec colwidth="15*"></colspec>
+	    <colspec colwidth="15*"></colspec>
+	    <colspec colwidth="15*"></colspec>
+	    <colspec colwidth="15*"></colspec>
+	    <colspec colwidth="15*"></colspec>
+	    <colspec colwidth="15*"></colspec>
+	    <colspec colwidth="10*"></colspec>
+	    <tbody>
+	      <row>
+		<entry morerows="6"><emphasis role="bold">Scheduler fields:</emphasis></entry>
+		<entry><literal>Source:</literal></entry>
+		<entry><literal>mymap</literal></entry>
+		<entry><literal>Observer:</literal></entry>
+		<entry><literal>Smith</literal></entry>
+		<entry><literal>Project:</literal></entry>
+		<entry><literal>C555</literal></entry>
+	      </row>
+	      <row>
+		<entry><literal>RA:</literal></entry>
+		<entry><literal>05:21:33</literal></entry>
+	      </row>
+	      <row>
+		<entry><literal>Dec:</literal></entry>
+		<entry><literal>-65:56:41</literal></entry>
+	      </row>
+	      <row>
+		<entry><literal>Epoch:</literal></entry>
+		<entry><literal>J2000</literal></entry>
+	      </row>
+	      <row>
+		<entry><literal>ScanLength:</literal></entry>
+		<entry><literal>00:30:00</literal></entry>
+	      </row>
+	      <row>
+		<entry><literal>ScanType:</literal></entry>
+		<entry><literal>Mosaic</literal></entry>
+	      </row>
+	      <row>
+		<entry><literal>Pointing:</literal></entry>
+		<entry><literal>Global</literal></entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</informaltable>
+
+	<para>
+	  With these settings, and with the default integration time of 10
+	  seconds, the four pointing centres will be observed every 80 seconds.
+	  Since the &#x201C;<literal>ScanLength</literal>&#x201D; is 30 minutes, the mosaic will be repeated
+	  23 times (22.5 is rounded up), but if the &#x201C;<literal>ScanLength</literal>&#x201D; was 29.5
+	  minutes, the mosaic would only be repeated 22 times (22.125 is rounded
+	  down).
+	</para>
+
+      </section>
+
+      <section>
+	<info>
+	  <title>Can I see an example on-the-fly mosaic file?</title>
+	</info>
+
+	<para>
+	  Here is a 3x3 pointing grid around a source; we use 1934-638, but the same offsets
+	  could be used for any source.
+	</para>
+
+      <para>
+	<indexterm role="cp"><primary>mosaic</primary><secondary>on-the-fly</secondary><tertiary>example</tertiary></indexterm>
+	<screen>
+	  0.0000    0.00    2  $@1934-on C
+	  -0.1812  -0.16    1  $TURN-10
+	  -0.1812  -0.08    1  $1934-11
+	  -0.1812   0.00    1  $1934-12
+	  -0.1812   0.08    1  $1934-13
+	  0.0000    0.16    1  $TURN-24
+	  0.0000    0.08    1  $1934-23
+	  0.0000    0.00    1  $1934-22
+	  0.0000   -0.08    1  $1934-21
+	  0.1812   -0.16    1  $TURN-30
+	  0.1812   -0.08    1  $1934-31
+	  0.1812    0.00    1  $1934-32
+	  0.1812    0.08    1  $1934-33
+	</screen>
+      </para>
+
+      <para>
+	Note that you can specify a non-scanning position in an <acronym>OTF</acronym> mosaic file by starting
+	the field name with a &#x201C;@&#x201D;, like the 2 cycle calibration on 
+	&#x201C;<literal>1934-on</literal>&#x201D; above. Also
+	note the fields marked with &#x201C;<literal>TURN</literal>&#x201D; - these are the extra 
+	points required at the
+	start of each scanning row/column to give the antennas time to get to the correct position
+	and scanning speed. They should be discarded when processing the data.
+      </para>
+
+      <para>
+	Note also that all other pointing centres in the <acronym>OTF</acronym> mosaic file
+	are only observed for 1 cycle. This cannot be changed, since the antenna will be
+	moving while it observes each pointing.
+      </para>
+
+      <para>
+	To use
+	the <acronym>OTF</acronym> mosaic mode, specify a scantype of 
+	&#x201C;<literal>OTFMos</literal>&#x201D; in the web scheduler and
+	put a mosaic file like the one above in &#x201C;<literal>/atca/mosaic</literal>&#x201D; on 
+	<hardware>xbones</hardware>.
+      </para>
+
+      </section>
+
+      <section>
+	<info>
+	  <title>Is there an easy way to make a mosaic file?</title>
+	</info>
+
+	<para>
+	  <indexterm role="cp"><primary>mosaic</primary><secondary>generating</secondary></indexterm>
+	  The <application>Miriad</application> tasks 
+	  <ulink url="http://www.atnf.csiro.au/computing/software/miriad/doc/mosgen.html">
+	    <command>mosgen</command></ulink> and
+	    <ulink url="http://www.atnf.csiro.au/computing/software/miriad/doc/atmos.html">
+	      <command>atmos</command></ulink> may be useful when you are preparing your mosaic file.
+	</para>
+	
+	<para>
+	  <indexterm role="cp"><primary>mosaic</primary><secondary>mosgen</secondary></indexterm>
+	  <indexterm role="cp"><primary>Miriad</primary><secondary>tasks</secondary><tertiary>mosgen</tertiary></indexterm>
+	  If you need to map a region of known size around a known sky location,
+	  you will want to use <command>mosgen</command>. It will overlap each pointing
+	  correctly with hexagonal tiling, and will ensure that the pointings are
+	  observed with minimal overhead.
+	</para>
+
+	<para>
+	  <indexterm role="cp"><primary>mosaic</primary><secondary>atmos</secondary></indexterm>
+	  <indexterm role="cp"><primary>Miriad</primary><secondary>tasks</secondary><tertiary>atmos</tertiary></indexterm>
+	  If you have a number of specific locations you want to observe, you will
+	  want to use <command>atmos</command>, as it will ensure that the offsets are correct
+	  and that the route between the pointings is optimised (the &#x201C;travelling
+	  salesman&#x201D; problem).
+	</para>
+
+	<para>
+	  <emphasis role="bold">We do not recommend that you manually calculate the offset positions
+	  for your mosaic.</emphasis> An error in calculating the offsets will likely ruin your
+	  observations. Such an error is easily avoidable by using the <application>Miriad</application>
+	  tasks.
+	</para>
+
+      </section>
+    </section>
+
+    <section>
+      <info>
+	<title>How do I best map regions of spectral line emission?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>spectral line</secondary></indexterm>
+	How large the mapping region is will determine whether you can image using
+	standard snapshot observations, or if you will need to use mosaicing. In either
+	case, the imaging strategy is no different to that of a continuum observation,
+	but you may need more frequent calibration to ensure you get a sufficient signal
+	to noise ratio for your lines; <acronym>CABB</acronym>'s extra bandwidth doesn't
+	help you observe a single line at known redshift!
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>CABB</primary><secondary>bad channels</secondary></indexterm>
+	If you're looking for your spectral line in one of the <acronym>CABB</acronym> continuum
+	<acronym>IF</acronym>s, one of the most important things to consider is where the line
+	to be observed will fall within the bandpass, ie. which channel(s) it will
+	appear in. There are several channels in the <acronym>CABB</acronym> continuum
+	<acronym>IF</acronym>s that are always flagged, and
+	several more that are often contaminated with self-generated interference, and
+	these should be avoided when observing spectral lines.
+      </para>
+
+      <para>
+	The <acronym>CABB</acronym> correlator always flags the centre continuum channel and each of the
+	quarter-band channels. If you select a <acronym>CABB</acronym> mode that provides 1 MHz continuum
+	channels, the flagged channels will be 513, 1025 and 1537. For <acronym>CABB</acronym> modes that
+	provide 64 MHz continuum channels, the flagged channels will be 17, 33 and 49.
+	You should avoid making the central <acronym>CABB</acronym>
+	continuum frequency the same as the expected frequency of the line.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>CABB</primary><secondary>birdies</secondary></indexterm>
+	Self-generated interference will likely be present in the 1 MHz continuum channels 129, 157, 257,
+	641, 769, 1153, 1177, 1281, 1409, 1793 and 1921. All these channels can be
+	easily flagged with the online correlator software (and they routinely are) and the interference does
+	not leak into the adjacent channels.
+	<indexterm role="cp"><primary>interference</primary><secondary>self-generated</secondary></indexterm>
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>CABB</primary><secondary>zoom bands</secondary></indexterm>
+	<indexterm role="cp"><primary>observations</primary><secondary>zooms</secondary></indexterm>
+	If you are using the <acronym>CABB</acronym> zoom bands to detect your spectral line, you should
+	again avoid using one of the continuum channels listed above, especially the quarter- and half-band
+	channels. The zoom bands derived from those channels will usually have a very large spike at the
+	centre of the zoom, and this spike may leak into adjacent channels since the zoom channels are
+	not perfectly square.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>Doppler tracking</primary></indexterm>
+	It is important to note that <acronym>ATCA</acronym> is not able to Doppler track. You will need
+	to ask for enough frequency coverage to ensure that your line will not drift out of the band due
+	to observatory velocity changes.
+      </para>
+      
+      <para>
+	Calibration of spectral-line observations is done with the same
+	&#x201C;snapshot&#x201D; strategy that was described in
+	<xref linkend="scheduling-snapshots"></xref>. It is important to note however that
+	the calibration itself is slightly different. Because accurate measurements of
+	a spectral line requires good bandpass characterisation, but in general you are dealing
+	with much smaller bandwidths than for continuum observations, you will need to observe
+	much brighter calibrators, observe the calibrators for longer, or observe the calibrators
+	more often in order to get a sufficient signal-to-noise ratio.
+      </para>
+    </section>
+      
+    <section id="strategy-frequency-switching">
+      <info>
+	<title>Are there limits to the frequencies I can observe?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>frequencies</secondary>
+	<tertiary>allowed</tertiary></indexterm>
+	There are many restrictions on the frequencies that can be observed with the
+	<acronym>CABB</acronym> system. The most basic restriction is that only two
+	2048 MHz <acronym>IF</acronym>s can be observed simultaneously. All of the additional
+	zoom bands must lie within these <acronym>IF</acronym>s, so they do not count as
+	&#x201C;extra&#x201D; bandwidth. You can only specify the central continuum
+	frequencies to the nearest MHz.
+      </para>
+
+      <para>
+	If you want to use the entire array at the same frequencies, then there are
+	band-specific restrictions on the frequencies that can be observed.
+	<itemizedlist>
+	  <listitem>
+	    <para>
+	      In the 16cm band, the central frequency of each continuum <acronym>IF</acronym>
+	      must obey
+	      <inlineequation><textobject role="tex">\nu_{\mathrm{C}} \geq 1728</textobject>
+	      </inlineequation>
+	      MHz.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      In the 4cm band, the central frequency of each continuum <acronym>IF</acronym> must obey
+	      <inlineequation><textobject role="tex">4928 \leq \nu_{\mathrm{C}} \leq 10928</textobject>
+	      </inlineequation> MHz.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      In each of the mm bands, the centre frequencies of the two continuum
+	      <acronym>IF</acronym>s cannot be separated by more than 6000 MHz, ie.
+	      <inlineequation><textobject role="tex">|\nu_{\mathrm{C}1} - \nu_{\mathrm{C}2}| \leq 6000
+	      </textobject></inlineequation> MHz.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      In the 15mm band, the central frequency of each continuum <acronym>IF</acronym> must obey
+	      <inlineequation><textobject role="tex">16001 \leq \nu_{\mathrm{C}} \leq 25472
+	      </textobject></inlineequation> MHz.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      In the 7mm band, the central frequency of each continuum <acronym>IF</acronym> must obey
+	      <inlineequation><textobject role="tex">30001 \leq \nu_{\mathrm{C}} \leq 49999
+	      </textobject></inlineequation> MHz.
+	    </para>
+	    
+	    <para>
+	      In addition, the <acronym>IF</acronym> centre frequencies must both be below 40673 MHz, 
+	      or both be above 41227 MHz.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      In the 3mm band, the central frequency of each continuum <acronym>IF</acronym>
+	      must obey
+	      <inlineequation><textobject role="tex">82501 \leq \nu_{\mathrm{C}} \leq 117699
+	      </textobject></inlineequation> MHz.
+	    </para>
+	  </listitem>
+	</itemizedlist>
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>split band</secondary></indexterm>
+	If you don't need all the baselines at each frequency, it is possible to split the array up
+	so you can observe in two bands simultaneously. For each of the two <acronym>CABB</acronym>
+	continuum <acronym>IF</acronym>s you can select a set of antennas to use with the
+	<command>caobs</command> command &#x201C;<literal>set band1_antennas</literal>&#x201D;.
+	In this way you can specify a frequency in <acronym>IF</acronym>1 that is in a different band
+	to the frequency specified in <acronym>IF</acronym>2. The antennas specified in the
+	&#x201C;<literal>band1_antennas</literal>&#x201D; would use the <acronym>IF</acronym>1
+	band, while the rest of the array would use the <acronym>IF</acronym>2 band.
+      </para>
+
+      <para>
+	The primary restriction in this mode is the central site oscillator. Since there is only one
+	central site oscillator that feeds the entire array's L86 modules, if you want to observe in more
+	than one mm band simultaneously, both the frequencies must be observable with the same
+	central site frequency.
+	<itemizedlist>
+	  <listitem>
+	    <para>
+	      You cannot observe in both the 15mm and 3mm bands simultaneously.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Observing in the 15mm and 7mm bands simultaneously is possible if the 15mm central
+	      continuum frequency obeys
+	      <inlineequation><textobject role="tex">16092 \leq \nu_{\mathrm{C}15\mathrm{mm}} \leq 25472</textobject>
+	      </inlineequation> MHz, and the 7mm central frequency obeys either
+	      <inlineequation><textobject role="tex">30001 \leq \nu_{\mathrm{C}7\mathrm{mm}} \leq 40673</textobject>
+	      </inlineequation> MHz, or
+	      <inlineequation><textobject role="tex">45458 \leq \nu_{\mathrm{C}7\mathrm{mm}} \leq 49999</textobject>
+	      </inlineequation> MHz.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Observing in the 7mm and 3mm bands simultaneously is possible if the 7mm central
+	      continuum frequency obeys either
+	      <inlineequation><textobject role="tex">30001 \leq \nu_{\mathrm{C}7\mathrm{mm}} \leq 35152</textobject>
+	      </inlineequation> MHz, or
+	      <inlineequation><textobject role="tex">41708 \leq \nu_{\mathrm{C}7\mathrm{mm}} \leq 49999</textobject>
+	      </inlineequation> MHz, and the 3mm central frequency obeys either
+	      <inlineequation><textobject role="tex">87152 \leq \nu_{\mathrm{C}3\mathrm{mm}} \leq 101952</textobject>
+	      </inlineequation> MHz, or
+	      <inlineequation><textobject role="tex">103008 \leq \nu_{\mathrm{C}3\mathrm{mm}} \leq 117699</textobject>
+	      </inlineequation> MHz.
+	    </para>
+	  </listitem>
+	</itemizedlist>
+      </para>
+
+      <para>
+	Since neither the 16cm or 4cm bands need the central site synthesiser, there are no special
+	frequency restrictions when one of the simultaneous bands is 16cm or 4cm.
+      </para>
+
+    </section>
+
+    <section>
+      <info>
+	<title>Can I change between frequencies during my observations?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>frequency</primary><secondary>switching</secondary></indexterm>
+	<indexterm role="cp"><primary>observations</primary><secondary>frequency switching</secondary></indexterm>
+	It isn't possible with <acronym>CABB</acronym> to observe more than 4096 MHz of bandwidth
+	simultaneously, but it is possible to quickly switch between frequencies within
+	a single band, and also to swap between different bands with only a moderate
+	loss of simultaneity.
+      </para>
+      
+      <para>
+	<indexterm role="cp"><primary>overheads</primary><secondary>frequency switching</secondary></indexterm>
+	If you want to change frequencies, you will need to start a new scan in the schedule. This
+	restriction makes it impossible to change frequencies within a mosaic. Whenever you change
+	scans you will experience two integration cycles of overhead, and if you are changing frequencies within
+	a band, this is the only applicable overhead. For example, if you changed your central
+	continuum frequencies from 5500 &amp; 7500 MHz to 6500 &amp; 8500 MHz, you will only need
+	to incur two cycles of overhead as the scan is changed.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>overheads</primary><secondary>zoom switching</secondary></indexterm>
+	There is also no extra overhead when changing the zoom band configuration, which is simply
+	viewed as a change of frequency within the same band.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>turret</primary><secondary>rotation</secondary></indexterm>
+	<indexterm role="cp"><primary>receiver</primary><secondary>translator</secondary></indexterm>
+	<indexterm role="cp"><primary>overheads</primary><secondary>turret rotation</secondary></indexterm>
+	<indexterm role="cp"><primary>overheads</primary><secondary>receiver translation</secondary></indexterm>
+	If you are changing bands, you will likely incur more overhead. In this case, the turret
+	on the antennas will need to rotate to put the new receiver at the right position, and if
+	you are changing to or from the 7mm band the mm receiver package will need to be
+	moved using the translator as well. Turret rotations will usually add only a few cycles of
+	overhead at most, since the turret can be rotating during the normal two cycle overhead
+	that occurs at every change of cycle. Translating the receiver to go to or from the 7mm
+	band takes much longer: between 2 and 3 minutes.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>subreflector</primary><secondary>focus</secondary></indexterm>
+	<indexterm role="cp"><primary>overheads</primary><secondary>focusing</secondary></indexterm>
+	When you change bands you may also have to refocus the antenna by moving the subreflector.
+	When going to or from the 4cm band, antennas CA03 and CA05 need to be refocused, and this
+	takes approximately 90 seconds. When going to or from the 3mm band, antenna CA01 needs to
+	be refocused, and will take approximately 40 seconds.
+      </para>
+
+      <para>
+	<emphasis role="bold">WARNING:</emphasis> Movement of the turret does produce wear on the
+	bearing, and it would be extremely difficult to replace it should it fail. We therefore ask
+	that observers not change bands more than once every 15 minutes.
+      </para>
+      
+    </section>
+
+    <section>
+      <info>
+	<title>How do I observe a planet in our Solar System?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>planets</secondary></indexterm>
+	To schedule an observation of a major planetary object, simply put
+	its name in the &#x201C;<literal>Source</literal>&#x201D; field of a scan. During the observations,
+	<command>caobs</command> will interpret this name and calculate where the planet, Sun
+	or Moon is and point the array towards it.
+      </para>
+
+      <para>
+	The scheduler will not automatically calculate where the planet will be during
+	the scheduling process, unless you enter the appropriate date and LST or UTC and then
+	click on the &#x201C;<literal>Listing</literal>&#x201D; tab. At this point, the
+	scheduler will determine the planet's position and fill the &#x201C;RA&#x201D; and
+	&#x201C;<literal>Dec</literal>&#x201D; fields. Alternatively, you could use 
+	the <application>Miriad</application> task <command>planets</command>.
+	<indexterm role="cp"><primary>Miriad</primary><secondary>tasks</secondary><tertiary>planets</tertiary></indexterm>
+      </para>
+
+      <para>
+	It is useful to note again that the &#x201C;<literal>RA</literal>&#x201D; and
+	&#x201C;<literal>Dec</literal>&#x201D; fields are ignored by <command>caobs</command>
+	when the source name is recognised as a planet, the Sun or the Moon, as
+	<command>caobs</command> will compute the appropriate position for the body in
+	real time. There is no reason therefore to prefer absolute time scheduling when
+	observing planets.
+      </para>
+
+    </section>
+
+    <section>
+      <info>
+	<title>How do I observe a minor object in our Solar System?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>Solar System</secondary></indexterm>
+	Solar system objects differ from most astronomical sources in that the
+	proper motions are large enough that the object position changes in the
+	course of an observation. When observing such objects, the schedule file
+	should be created in absolute time mode to ensure that <command>caobs</command>
+	correctly tracks the object. <command>caobs</command> has the ability to phase track
+	an object with a non-sidereal rate. Note, however, the pointing centre
+	used during a scan does not track the source (the pointing centre used
+	is the mid-position of the object during the scan). Thus the scans must
+	be short enough that there is not significant motion of the source within
+	the primary beam during a scan (the scheduler does not check this).
+      </para>
+
+      <para>
+	For minor bodies, <command>caobs</command> cannot compute a position, so the correct
+	position must be provided by the user. In absolute time mode, the scheduler
+	treats source names beginning with the @ symbol (eg. a source name of
+	<literal>@hbopp</literal>) as pointing to an external ephemeris file (eg. a file
+	<literal>$ATCA_EPHEM:hbopp.eph</literal>).
+      </para>
+
+      <para>
+	Ephemerides for minor solar system bodies can be computed before scheduling
+	using
+	<ulink url="http://ssd.jpl.nasa.gov/?horizons">JPL's Horizons on-line system</ulink>.
+	<indexterm role="cp"><primary>ephemerides</primary><secondary>Solar system</secondary></indexterm>
+	Only the <command>telnet</command> (terminal-based) access method is described here, but there
+	is also a web-interface method available from the
+	<ulink url="http://ssd.jpl.nasa.gov/?horizons">web page</ulink>
+	that is self-explanatory.
+      </para>
+
+      <para>
+	Horizons asks the user a series of questions. To generate an ephemeris file
+	for <acronym>ATCA</acronym> observations:
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    <programlisting>telnet horizons.jpl.nasa.gov 6775</programlisting>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    First select an object by giving the source name (followed by a
+	    semi-colon for minor bodies) or by source number.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    In response to prompts, select &#x201C;<literal>Ephemeris</literal>&#x201D;, then
+	    &#x201C;<literal>Observe</literal>&#x201D;, then 
+	    &#x201C;<literal>Geo</literal>&#x201D; to select geocentric RA/Dec ephemerides.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Give the start time of interest, in UTC, in the format
+	    suggested by the prompt. At the next prompt give the end time, and then the
+	    time increment; typically 1 hour is more than adequate, and the scheduler
+	    uses simple linear interpolation of the ephemeris values. The ephemeris
+	    supplied to the scheduler must start at least two time increments before
+	    the scheduled start time, and must extend beyond its end time.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Accept &#x201C;<literal>default output</literal>&#x201D;, and at the
+	    &#x201C;<literal>Select table quantities</literal>&#x201D; prompt, enter 
+	    &#x201C;<literal>1,20</literal>&#x201D; to get RA, Dec,
+	    distance and velocity of the object.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Horizons will then display the ephemeris in the terminal. To get it
+	    to email the ephemeris, press &#x201C;<literal>q</literal>&#x201D; and the main menu will be displayed
+	    again. Then select &#x201C;<literal>[M]ail</literal>&#x201D; and enter the email address to send the
+	    ephemeris to.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    To log out of Horizons, press &#x201C;<literal>Ctrl-D</literal>&#x201D; (the terminal hangup signal).
+	  </para>
+	</listitem>
+      </itemizedlist>
+      <para>
+	The ephemeris file produced by Horizons needs to be massaged into the format
+	that the scheduler requires. This is best achieved with the <command>ephformat</command>
+	command available on <hardware>xbones</hardware>.
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    First, copy the ephemeris from the email sent by Horizons into a plain
+	    text file on <hardware>xbones</hardware>.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Run the command <command>ephformat</command> with no arguments.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    At the first prompt, give the name of the text file with the Horizons
+	    ephemeris (including file extension). At the second prompt, give a short
+	    descriptive name for the output ephemeris file (excluding any file extension).
+	    <command>ephformat</command> will then write out the appropriate ephemeris file to
+	    &#x201C;<literal>$ATCA_EPHEM:file.eph</literal>&#x201D; where 
+	    &#x201C;<literal>file</literal>&#x201D; is the name entered at the
+	    second prompt.
+	  </para>
+	</listitem>
+      </itemizedlist>
+
+      <para>
+	To use the ephemeris you just created in the schedule, enter the name of the
+	ephemeris (the &#x201C;<literal>file</literal>&#x201D; name described in the last
+	dot point above), preceded by the &#x201C;<literal>@</literal>&#x201D; symbol, into
+	the &#x201C;<literal>Source</literal>&#x201D; field of the web scheduler.
+      </para>
+
+    </section>
+
+    <section id="scheduling-antenna-wraps">
+      <info>
+	<title>What are the antenna &#x201C;wraps&#x201D;?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>antenna</primary><secondary>wrap limits</secondary></indexterm>
+	<indexterm role="cp"><primary>wrap</primary><secondary>limits</secondary></indexterm>
+	There is a limit to how far the antennas can slew in azimuth.
+	The limit arises because of all the cabling inside the antenna which
+	passes up the centre of the structure to the receiving and cryogenic
+	equipment in the vertex room.
+	<indexterm role="cp"><primary>vertex room</primary></indexterm>
+	There is a limit to how far these cables can wrap around in either direction,
+	(similar to the head of an owl).
+      </para>
+      
+      <para>
+	The wrap limits for the <acronym>ATCA</acronym> antennas are CCW=152.5&#x00B0; and
+	CW=327.5&#x00B0; as shown in <xref linkend="wraplimits"></xref>.
+      </para>
+      
+      <para>
+	<figure id="wraplimits">
+	  <title>Wrap limits for the Compact Array and Mopra antennas.</title>
+	  <mediaobject>
+	    <imageobject>
+	      <imagedata fileref="figures/wrap.jpg" format="JPG">
+	      </imagedata>
+	    </imageobject>
+	  </mediaobject>
+	</figure>
+      </para>
+      
+      <para>
+	It is a good idea to check what wrap the telescope is in at the
+	start of your observations, as &#x201C;unwrapping&#x201D; can take up to 10 minutes.
+	To determine the wrap you are in, consult <application>MoniCA</application> or <command>atdrivemon</command>.
+	<application>MoniCA</application> shows the wrap explicitly, on the 
+	&#x201C;<acronym>ATCA</acronym> Summary&#x201D; page.
+	<command>atdrivemon</command> shows the azimuth using the <acronym>ATCA</acronym> convention &#x2014;
+	while in the South wrap azimuths are expressed as positive angles,
+	and negative angles in the North wrap.
+      </para>
+
+    </section>
+
+    <section>
+      <info>
+	<title>How do I prepare a schedule file?</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>schedule</primary><secondary>file</secondary></indexterm>
+	<indexterm role="cp"><primary>schedule</primary><secondary>file</secondary><tertiary>preparation</tertiary></indexterm>
+	<indexterm role="cp"><primary>schedule</primary><secondary>web scheduler</secondary></indexterm>
+	The <ulink url="http://www.narrabri.atnf.csiro.au/observing/sched/cabb/">
+	<acronym>CABB</acronym> web scheduler</ulink>
+	is used to prepare schedule files. The web scheduler
+	checks the schedule for completeness and, where
+	possible, checks choices such as observing frequency for hardware
+	compatibility. Drive times, and source azimuths and elevations can also
+	be computed to enable you to estimate overheads and observability.
+      </para>
+
+      <para>
+	Three steps are involved in using the web scheduler:
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    A new scan is added to the schedule.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    The details of the scan are changed as desired.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    When all the scans have been defined, the entire schedule is written to file.
+	  </para>
+	</listitem>
+      </itemizedlist>
+      <para>
+	When constructing a schedule, consider:
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    Is the sequence of sources sensible, and how much time is
+	    expended on slewing?
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Does the schedule contain all the sources, and at the
+	    appropriate frequencies and bandwidths?
+	  </para>
+	</listitem>
+      </itemizedlist>
+      <para>
+	The web scheduler can produce a listing to help answer these questions.
+	It is a good idea to study these listings very
+	carefully before observing commences. The scheduler considers drive times:
+	all coordinate entries are automatically followed by a calculation of the
+	azimuth and elevation of the source, as well as the drive time from
+	the previous source, using the entered value for LST. When making
+	a schedule file, the integration times are specified
+	for each source (and calibrator source). Note that,
+	except in the case of mosaic schedules and <literal>Dwell</literal> scan types,
+	these integration times
+	include drive times, so the specified time must be somewhat longer
+	than the amount of integration on source required. This is
+	particularly important for secondary calibrators, when the drive time
+	(up to a minute or so) may be comparable to the integration time
+	(one to three minutes). Alternatively, the <literal>ScanType</literal> field can
+	be set to <literal>Dwell</literal> to ensure a source or calibrator
+	is tracked for the specified scan duration.
+      </para>
+
+      <para>
+	The schedule file submitted to <command>caobs</command> (the online Compact Array control
+	task) need have no specific start time. Rather, the schedule file asks
+	<command>caobs</command> to start the first scan as soon as possible. The sequence of
+	scans will be exactly as specified in the schedule file. However, when
+	using the web scheduler, the calculation of azimuths, elevations and drive times
+	is possible only if the starting sidereal time is known (at least
+	approximately). The sidereal time for the first scan in the schedule
+	can be set in the web scheduler by giving the time in the <literal>Time</literal> field,
+	and setting <literal>TimeCode</literal> to <literal>LST</literal>. Alternatively, the starting UT
+	may be specified by setting <literal>TimeCode</literal> to <literal>UT</literal>, and by setting
+	the <literal>Date</literal> to the appropriate start date by clicking on it and using
+	the calendar that appears. Note that when viewing any scan other than the
+	first in the schedule, the fields <literal>Time</literal>, <literal>TimeCode</literal> and
+	<literal>Date</literal> all become read-only.
+      </para>
+
+      <para>
+	The environment flag can be used to instruct the online software to
+	remember certain settings, such as attenuators, and to recall them whenever
+	a scan with the same environment flag is encountered. However, this is
+	generally not required, as the online software will remember user settings,
+	and recall them when the same conditions are encountered again. There are
+	at least 128 slots for user settings, so for a normal schedule, the
+	environment flag will probably not need to be used.
+      </para>
+
+      <para>
+	See <xref linkend="Web-Scheduler"></xref> for a complete guide to all the functionality
+	available in the web scheduler.
+      </para>
+    </section>
+
+    <section id="Continuum-Schedule-Example">
+      <info>
+	<title>Could I see an example continuum schedule file?</title>
+      </info>
+      <para>
+	Yes! In this section a simple continuum schedule file is constructed. It will contain
+	three sources: a program source and two calibration sources. The
+	following observing sequence will be specified:
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    Setup calibrator (0537-441, a catalogued source) for 5 minutes,
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Program source (R.A. 05:21:35.5, Dec. -21:24:27.1 (J2000)) for 30 mins,
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    A gain calibrator for 5 minutes.
+	  </para>
+	</listitem>
+      </itemizedlist>
+      <para>
+	These sources will be observed at the standard 4cm band frequencies of
+	5500/9000 MHz.
+	To create this schedule file, perform the following steps (instructions are given in
+	bold, and the results of the instruction, or important caveats, and described below it):
+      </para>
+      <variablelist>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Navigate to the <ulink url="http://www.narrabri.atnf.csiro.au/observing/sched/cabb/">
+	    <acronym>CABB</acronym> web scheduler</ulink> in a web browser.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The first screen is displayed.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Change the <literal>Source</literal> field to <literal>test</literal>,
+	    the <literal>RA</literal> field to <literal>05:21:35.5</literal> 
+	    and the <literal>Dec</literal> field to <literal>-21:24:27.1</literal>.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The delimiter for coordinates must
+	      be a colon, and the default <literal>Epoch</literal> of <literal>J2000</literal> should only be
+	      changed if necessary.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Change <literal>ScanLength</literal> to 00:30:00
+	    and change the <literal>ScanType</literal> to <literal>Dwell</literal>.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This ensures that	30 minutes are spent on source, regardless of slewing times.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Ensure <literal>Pointing</literal> is set to <literal>Global</literal>.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      Offset pointing is not required for low-frequency observations.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Change the <literal>Observer</literal> field to <literal>Wild</literal>,
+	    the <literal>Project</literal> code to <literal>C123</literal>.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      These fields should be set in the first source - they will propagate to
+	      the other sources as they are added.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Change the <literal>Time</literal> field to <literal>02:00:00</literal>,
+	    and the <literal>TimeCode</literal> field to <literal>LST</literal>.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This indicates that the schedule will be started at an approximate LST of 2h.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click the <literal>Freq1 Setup</literal> bar.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This brings up the frequency selection fields.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Enter <literal>5500</literal> in the <literal>Continuum</literal> frequency box, 
+	    and keep the <literal>Chn. BW</literal> selection box to <literal>1</literal> MHz.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The velocity resolution should be calculated to be 55 km/s, and the
+	      velocity range will be 111632 km/s.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click the <literal>Freq2 Setup</literal> bar.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This brings up the frequency selection fields.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Enter <literal>9000</literal> in the <literal>Continuum</literal> frequency 
+	    box, and keep the <literal>Chn. BW</literal> selection box to <literal>1</literal> MHz.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The velocity resolution should be calculated to be 33 km/s, and the
+	      velocity range will be 68219 km/s.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click the <literal>Scan Parameters</literal> bar.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This brings up the scan details.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click the <literal>Search Cal</literal> button.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This presents a list of
+	      nearby calibrators to the right of the scan details, sorted by distance
+	      to the source. The closest strong (&gt; 1 Jy) source to the program source is
+	      shown to be 0454-234, at a distance of 6.02&#x00B0;.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click on the <literal>0454-234</literal> button.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The details for this source are displayed from the calibrator database
+	      below the source list. This source is a suitable gain calibrator
+	      as it is strong, has a defect less than 0.1% and a closure phase less than
+	      0.3%.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click on the <literal>0454-234</literal> button again.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      Clicking on the button twice (without clicking another source button
+	      between clicks) inserts this source into the schedule above the currently
+	      selected source.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select source 1, and change the <literal>ScanLength</literal>
+	    field to 00:05:00.</emphasis>
+	  </term>
+	  <term>
+	    <emphasis role="bold">To copy this source to the end of the schedule, click on the 
+	    <literal>Edit</literal> menu and select <literal>Copy</literal>, then select the 
+	    <literal>test</literal> source, click on <literal>Edit</literal> and select 
+	    <literal>Paste</literal>.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The schedule should now have three sources (in order): 0454-234, test,
+	      0454-234. The first source needs to be changed to 0537-441.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select source 1</emphasis>
+	  </term>
+	  <term>
+	    <emphasis role="bold">Change the <literal>Source</literal> field to 0537-441 and press 
+	    <literal>TAB</literal>.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The scheduler will automatically put the source coordinates for
+	      this known calibrator in the <literal>RA</literal> and <literal>Dec</literal> fields.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click on the <literal>File</literal> menu and select <literal>Save As</literal>.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The <literal>Schedule file selector</literal> window will appear.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">The schedule will be called c123_test.sch, so enter this into the 
+	    <literal>Filter</literal> box to ensure that there is not already a schedule with this name.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      If there is another schedule with the
+	      desired name, consider changing it.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Enter <literal>c123_test.sch</literal> into the <literal>Schedule</literal> 
+	    box and press the <literal>Save</literal> button.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The file selection window will
+	      disappear, and the name of the schedule should now appear at the top
+	      of the window.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+      <para>
+	To produce a listing of the schedule, in order to check that the
+	schedule proceeds as expected, click on the <literal>Listing</literal> tab.
+      </para>
+    </section>
+
+    <section id="Zoom-Mode-Schedule-Example">
+      <info>
+	<title>Could I see an example spectral-line schedule file?</title>
+      </info>
+      <para>
+	Yes! This example adds to the example from the previous section; ensure that the
+	schedule created in the previous section is in the scheduler before continuing.
+      </para>
+      
+      <para>
+	Now the aim is to observe 1 zoom band in each <acronym>IF</acronym>, each covering at least
+	70 km/s. The galaxy
+	&#x201C;test&#x201D; is actually at an LSR recessional velocity of 25000 km/s,
+	and these observations will look for CH<subscript>3</subscript>OH methanol and 
+	HC<subscript>3</subscript>N cyanoacetylene lines.
+      </para>
+
+      <para>
+	To create a schedule that can perform suitable observations for this situation,
+	follow the steps:
+      </para>
+      <variablelist>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select the first scan in the schedule.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This should be 0537-441.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select the <literal>Global change</literal> menu item from 
+	    the <literal>Tools</literal> menu before
+	    changing the <literal>Date</literal> of this scan to 30/11/2014.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The date that the observation will be performed is required to ensure that
+	      the observatory velocity is computed correctly.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Hit the <literal>Global Apply</literal> button.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The date will now change for all the sources in the schedule.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select the <literal>Advanced view</literal> menu item from
+	    the <literal>Tools</literal> menu.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      You should now see many more input fields.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select the &#x201C;<literal>test</literal>&#x201D; source in the schedule,
+	    then enter &#x201C;<literal>25000</literal>&#x201D; into the <literal>CatVel</literal> field, and
+	    press TAB.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The entry in the <literal>CatVel</literal> field should now read
+	      &#x201C;<literal>25000 lsr radio</literal>&#x201D; as the default frame is LSR, in the
+	      radio convention.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click the <literal>Freq1 5500MHz</literal> bar.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This brings up the IF1 frequency selection fields.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click the topmost <literal>Velo</literal> button.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This brings up the velocity calculator.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select the <literal>CH3OH</literal> line from the <literal>Spectral Line</literal> 
+	    dropdown box.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The rest frequency of this line (6668.518) appears in the <literal>Rest Frequency</literal>
+	      box below.
+	      The <literal>Sky Frequency</literal> will be updated to 6112.092 MHz, and the zoom band
+	      frequency will be calculated as the nearest half-MHz, in this case as <literal>6112</literal> MHz.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click the <literal>Apply</literal> button in the velocity calculator.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The velocity calculator will disappear and information will be inserted into the
+	      first zoom band. In this case, the <literal>6112</literal> MHz frequency translates into
+	      the channel <literal>3273</literal>. The velocity resolution is given as 0.024 km/s, and the
+	      velocity range is listed as 49 km/s.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select the zoom band width to be <literal>2</literal> from the width drop box.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The velocity range now increases to 73.6 km/s.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click the <literal>Freq2 9000MHz</literal> bar.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This brings up the IF2 frequency selection fields.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click the topmost <literal>Velo</literal> button.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This brings up the velocity calculator as before.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select the <literal>HC3N</literal> line from the <literal>Spectral Line</literal> 
+	    dropdown box.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The rest frequency of this line (9098.332) appears in the <literal>Rest Frequency</literal>
+	      box below, and the <literal>Sky Frequency</literal> will be updated to 8339.161 MHz. The
+	      zoom band frequency will be calculated to be <literal>8339</literal> MHz.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click the <literal>Apply</literal> button in the velocity calculator.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The velocity calculator will disappear and information will be inserted into the
+	      first zoom band. In this case, the <literal>8339</literal> MHz frequency translates into
+	      the channel <literal>727</literal>. The velocity resolution is given as 0.018 km/s, and the
+	      velocity range is listed as 36 km/s.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select the zoom band width to be <literal>3</literal> from the width drop box.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      The velocity range now increases to 71.9 km/s, comparable to the width provided
+	      for the IF1 zoom band.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Click the <literal>Scan Parameters</literal> bar.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This brings up the scan details.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select the <literal>Master1</literal> option from the <literal>FreqConfig</literal>
+	    dropdown box.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      This signifies that the frequency configuration, including the zoom modes, from
+	      this scan, should be defined as the master configuration.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select the <literal>0537-441</literal> source from the schedule,
+	    then elect the <literal>Slave-1</literal> option from the 
+	    <literal>FreqConfig</literal> dropdown box.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      Now this scan will exactly mirror the frequency and zoom mode configuration from
+	      the <literal>test</literal> scan, even if the configuration of the <literal>test</literal> scan is
+	      changed. When a scan is set as a slave scan, the <literal>Freq</literal> panels will display
+	      a message describing which frequency and scan it is slaved to.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <emphasis role="bold">Select the <literal>0454-234</literal> source from the schedule,
+	    then select the <literal>Slave-1</literal> option from the <literal>FreqConfig</literal> dropdown box.</emphasis>
+	  </term>
+	  <listitem>
+	    <para>
+	      Now this scan will exactly mirror the frequency and zoom mode configuration from
+	      the <literal>test</literal> scan.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+      <para>
+	At this point, the schedule would correctly describe a zoom mode observation.
+      </para>
+    </section>
+
+  </section>
+
+  <section id="observations-execution">
+    <info>
+      <title>Running a schedule</title>
+    </info>
+
+    <section>
+      <info>
+	<title>How can I calculate how much data will be produced?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>data</primary><secondary>rate</secondary><tertiary>calculating</tertiary></indexterm>
+	The data rate during <acronym>CABB</acronym> observations can be calculated with the
+	formula:
+	<equation id="equation_dataratecycle">
+	  <title><acronym>CABB</acronym> data rate per cycle</title>
+	  <textobject role="tex">
+	    \mathrm{b}_{\mathrm{cycle}} = \mathrm{b}_{\mathrm{corr}} \times \left(\sum_{i=1}^{N_{\mathrm{IFs}}} N_{\mathrm{channels}}(i) \times \sum_{j=1}^{N_{\mathrm{Stokes}}(i)}\sum_{k=1}^{N_{\mathrm{products}}(i)} N_{\mathrm{bins}}(i,j,k)\right),
+	  </textobject>
+	</equation>
+	where 
+	<itemizedlist>
+	  <listitem>
+	    <para>
+	      <inlineequation><textobject role="tex">\mathrm{b}_{\mathrm{cycle}}</textobject></inlineequation>
+	      is the number of bytes produced per integration cycle,
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <inlineequation><textobject role="tex">\mathrm{b}_{\mathrm{corr}}</textobject></inlineequation>
+	      is the number of bytes per correlation product, and 
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <inlineequation><textobject role="tex">N_{\mathrm{IFs}}</textobject></inlineequation>
+	      is the number of IFs,
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <inlineequation><textobject role="tex">N_{\mathrm{channels}}(i)</textobject></inlineequation>
+	      is the number of channels in IF
+	      <inlineequation><textobject role="tex">i</textobject></inlineequation>,
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <inlineequation><textobject role="tex">N_{\mathrm{Stokes}}(i)</textobject></inlineequation>
+	      is the number of Stokes quantities in IF
+	      <inlineequation><textobject role="tex">i</textobject></inlineequation>,
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <inlineequation><textobject role="tex">N_{\mathrm{products}}(i)</textobject></inlineequation>
+	      is the number of correlation products in IF
+	      <inlineequation><textobject role="tex">i</textobject></inlineequation>,
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <inlineequation><textobject role="tex">N_{\mathrm{bins}}(i,j,k)</textobject></inlineequation>
+	      is the number of bins in IF
+	      <inlineequation><textobject role="tex">i</textobject></inlineequation>,
+	      Stokes parameter
+	      <inlineequation><textobject role="tex">j</textobject></inlineequation> and
+	      correlation product
+	      <inlineequation><textobject role="tex">k</textobject></inlineequation>.
+	    </para>
+	  </listitem>
+	</itemizedlist>
+      </para>
+
+      <para>
+	The data-rate per second is thus:
+	<informalequation>
+	  <textobject role="tex">
+	    \frac{\mathrm{b}}{1 \mathrm{\,second}} = \mathrm{b}_{\mathrm{cycle}}\frac{t_{\mathrm{cycle}}}{1 \mathrm{\,second}},
+	  </textobject>
+	</informalequation>
+	where <inlineequation><textobject role="tex">t_{\mathrm{cycle}}</textobject></inlineequation>
+	the cycle time of the correlator.
+      </para>
+
+      <para>
+	A few example calculations are given below. In all cases it is assumed that
+	<inlineequation><textobject role="tex">\mathrm{b}_{\mathrm{corr}}=8</textobject></inlineequation>
+	bytes (in all modes, 4 bytes are recorded for each of the complex visibilities, and 4
+	bytes are recorded for the weight component), and
+	<inlineequation><textobject role="tex">t_{\mathrm{cycle}}=10</textobject></inlineequation>
+	seconds.
+      </para>
+
+      <section>
+	<info>
+	  <title>How much data is produced for a typical continuum observation?</title>
+	</info>
+	
+	<para>
+	  <indexterm role="cp"><primary>data</primary><secondary>rate</secondary>
+	  <tertiary>continuum observing</tertiary></indexterm>
+	  For a typical continuum observation, we have:
+	  <itemizedlist>
+	    <listitem>
+	      <para>
+		2 IFs
+		(<inlineequation><textobject role="tex">N_{\mathrm{IFs}}=2</textobject></inlineequation>),
+		each with
+		<itemizedlist>
+		  <listitem>
+		    <para>
+		      2049 channels
+		      (<inlineequation><textobject role="tex">N_{\mathrm{channels}}(1-2)=2049</textobject></inlineequation>),
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>
+		      4 Stokes parameters (XX, YY, XY, YX;
+		      <inlineequation><textobject role="tex">N_{\mathrm{Stokes}}(1-2)=4</textobject></inlineequation>),
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>
+		      21 correlator products
+		      (6 auto-correlation and 15 cross-correlation spectra;
+		      <inlineequation><textobject role="tex">N_{\mathrm{products}}(1-2)=21</textobject></inlineequation>).
+		      <itemizedlist>
+			<listitem>
+			  <para>
+			    Each auto-correlation same-polarisation (XX, YY) spectrum has 2 bins (noise diode on and
+			    noise diode off;
+			    <inlineequation><textobject role="tex">N_{\mathrm{bins}}(1-2,1-2,1-6)=2</textobject></inlineequation>).
+			  </para>
+			</listitem>
+			<listitem>
+			  <para>
+			    Each auto-correlation cross-polarisation (XY, YX) spectrum has 1 bin 
+			    <inlineequation><textobject role="tex">N_{\mathrm{bins}}(1-2,3-4,1-6)=1</textobject></inlineequation>).
+			  </para>
+			</listitem>
+			<listitem>
+			  <para>
+			    Each cross-correlation spectrum has 1 bin
+			    (<inlineequation><textobject role="tex">N_{\mathrm{bins}}(1-2,1-4,7-21)=1</textobject></inlineequation>).
+			  </para>
+			</listitem>
+		      </itemizedlist>
+		    </para>
+		  </listitem>
+		</itemizedlist>
+	      </para>
+	    </listitem>
+	  </itemizedlist>
+	</para>
+	
+	<para>
+	  Putting this in <xref linkend="equation_dataratecycle"></xref> we get
+	  <informalequation>
+	    <textobject role="tex">
+	      \mathrm{b}_{\mathrm{cycle}} = 8 \times \left(2\times 2049 \times \left(2 \times 6 \times 2 + 2 \times 6 \times 1 + 4 \times 15 \times 1\right)\right) = 3,147,264.
+	    </textobject>
+	  </informalequation>
+	</para>
+
+	<para>
+	  This works out to be a data rate of 0.300 MiB per second, or roughly 1.055 GiB per hour.
+	  <emphasis role="bold">Note:</emphasis> we use the binary prefixes MiB and GiB (the mebibyte and
+	  gibibyte) for data sizes. See <ulink url="https://en.wikipedia.org/wiki/Gibibyte">Wikipedia</ulink>
+	  for a better explanation.
+	</para>
+
+	<para>
+	  Since <acronym>CABB</acronym> data files will automatically close when they reach
+	  4.0 GiB in size, it would take approximately 3 h 47 m to fill one file (not accounting
+	  for the overhead consumed by the header information).
+	</para>
+      </section>
+
+      <section>
+	<info>
+	  <title>How much data is produced for an observation with all zooms individually recorded?</title>
+	</info>
+	
+	<para>
+	  <indexterm role="cp"><primary>data</primary><secondary>rate</secondary>
+	  <tertiary>spectral line observing</tertiary></indexterm>
+	  <indexterm role="cp"><primary>data</primary><secondary>rate</secondary>
+	  <tertiary>maximum</tertiary></indexterm>
+	  For an observation where each of the 16 zooms in each IF is recorded, and no zooms
+	  are consolidated, we have:
+	  <itemizedlist>
+	    <listitem>
+	      <para>
+		34 IFs
+		(<inlineequation><textobject role="tex">N_{\mathrm{IFs}}=34</textobject></inlineequation>).
+		Two of these are the continuum IFs, each having
+		<itemizedlist>
+		  <listitem>
+		    <para>
+		      2049 channels
+		      (<inlineequation><textobject role="tex">N_{\mathrm{channels}}(1-2)=2049</textobject></inlineequation>),
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>
+		      4 Stokes parameters (XX, YY, XY, YX;
+		      <inlineequation><textobject role="tex">N_{\mathrm{Stokes}}(1-2)=4</textobject></inlineequation>),
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>
+		      21 correlator products
+		      (6 auto-correlation and 15 cross-correlation spectra;
+		      <inlineequation><textobject role="tex">N_{\mathrm{products}}(1-2)=21</textobject></inlineequation>).
+		      <itemizedlist>
+			<listitem>
+			  <para>
+			    Each auto-correlation same-polarisation (XX, YY) spectrum has 2 bins (noise diode on and
+			    noise diode off;
+			    <inlineequation><textobject role="tex">N_{\mathrm{bins}}(1-2,1-2,1-6)=2</textobject></inlineequation>).
+			  </para>
+			</listitem>
+			<listitem>
+			  <para>
+			    Each auto-correlation cross-polarisation (XY, YX) spectrum has 1 bin 
+			    <inlineequation><textobject role="tex">N_{\mathrm{bins}}(1-2,3-4,1-6)=1</textobject></inlineequation>).
+			  </para>
+			</listitem>
+			<listitem>
+			  <para>
+			    Each cross-correlation spectrum has 1 bin
+			    (<inlineequation><textobject role="tex">N_{\mathrm{bins}}(1-2,1-4,7-21)=1</textobject></inlineequation>).
+			  </para>
+			</listitem>
+		      </itemizedlist>
+		    </para>
+		  </listitem>
+		</itemizedlist>
+	      </para>
+	    </listitem>
+	    <listitem>
+	      <para>
+		The other 32 IFs are the zoom bands, each having
+		<itemizedlist>
+		  <listitem>
+		    <para>
+		      2049 channels
+		      (<inlineequation><textobject role="tex">N_{\mathrm{channels}}(3-34)=2049</textobject></inlineequation>),
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>
+		      4 Stokes parameters (XX, YY, XY, YX;
+		      <inlineequation><textobject role="tex">N_{\mathrm{Stokes}}(3-34)=4</textobject></inlineequation>),
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>
+		      21 correlator products
+		      (6 auto-correlation and 15 cross-correlation spectra;
+		      <inlineequation><textobject role="tex">N_{\mathrm{products}}(3-34)=21</textobject></inlineequation>).
+		      <itemizedlist>
+			<listitem>
+			  <para>
+			    Each spectrum has 1 bin
+			    (<inlineequation><textobject role="tex">N_{\mathrm{bins}}(3-34,1-4,1-21)=1</textobject></inlineequation>).
+			  </para>
+			</listitem>
+		      </itemizedlist>
+		    </para>
+		  </listitem>
+		</itemizedlist>
+	      </para>
+	    </listitem>
+	  </itemizedlist>
+	</para>
+	
+	<para>
+	  Putting this in <xref linkend="equation_dataratecycle"></xref> we get
+	  <informalequation>
+	    <textobject role="tex">
+	      \mathrm{b}_{\mathrm{cycle}} = 8 \times \left(2\times 2049 \times \left(2 \times 6 \times 2 + 2 \times 6 \times 1 + 4 \times 15 \times 1\right) + 32 \times 2049 \times 4 \times 21 \times 1\right) = 4.5635344 \times 10^{7}.
+	    </textobject>
+	  </informalequation>
+	</para>
+
+	<para>
+	  This works out to be a data rate of 4.352 MiB per second, or roughly 15.3 GiB per hour.
+	  Since <acronym>CABB</acronym> data files will automatically close when they reach
+	  4.0 GiB in size, it would take approximately 15 m to fill one file (not accounting
+	  for the overhead consumed by the header information).
+	</para>
+      </section>
+
+      <section>
+	<info>
+	  <title>How much data is produced for a pulsar-binning observation?</title>
+	</info>
+	
+	<para>
+	  <indexterm role="cp"><primary>data</primary><secondary>rate</secondary>
+	  <tertiary>pulsar binning</tertiary></indexterm>
+	  For an observation using <acronym>CABB</acronym>s pulsar-binning mode, we have:
+	  <itemizedlist>
+	    <listitem>
+	      <para>
+		4 IFs
+		(<inlineequation><textobject role="tex">N_{\mathrm{IFs}}=4</textobject></inlineequation>).
+		Two of these are the normal continuum IFs, each having
+		<itemizedlist>
+		  <listitem>
+		    <para>
+		      2049 channels
+		      (<inlineequation><textobject role="tex">N_{\mathrm{channels}}(1-2)=2049</textobject></inlineequation>),
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>
+		      4 Stokes parameters (XX, YY, XY, YX;
+		      <inlineequation><textobject role="tex">N_{\mathrm{Stokes}}(1-2)=4</textobject></inlineequation>),
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>
+		      21 correlator products
+		      (6 auto-correlation and 15 cross-correlation spectra;
+		      <inlineequation><textobject role="tex">N_{\mathrm{products}}(1-2)=21</textobject></inlineequation>).
+		      <itemizedlist>
+			<listitem>
+			  <para>
+			    Each auto-correlation same-polarisation (XX, YY) spectrum has 2 bins (noise diode on and
+			    noise diode off;
+			    <inlineequation><textobject role="tex">N_{\mathrm{bins}}(1-2,1-2,1-6)=2</textobject></inlineequation>).
+			  </para>
+			</listitem>
+			<listitem>
+			  <para>
+			    Each auto-correlation cross-polarisation (XY, YX) spectrum has 1 bin 
+			    <inlineequation><textobject role="tex">N_{\mathrm{bins}}(1-2,3-4,1-6)=1</textobject></inlineequation>).
+			  </para>
+			</listitem>
+			<listitem>
+			  <para>
+			    Each cross-correlation spectrum has 1 bin
+			    (<inlineequation><textobject role="tex">N_{\mathrm{bins}}(1-2,1-4,7-21)=1</textobject></inlineequation>).
+			  </para>
+			</listitem>
+		      </itemizedlist>
+		    </para>
+		  </listitem>
+		</itemizedlist>
+	      </para>
+	    </listitem>
+	    <listitem>
+	      <para>
+		The other two IFs are the pulsar-binned continuum bands, each having
+		<itemizedlist>
+		  <listitem>
+		    <para>
+		      513 channels (each of them being the average of 4 of the normal continuum channels)
+		      (<inlineequation><textobject role="tex">N_{\mathrm{channels}}(3-4)=513</textobject></inlineequation>),
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>
+		      4 Stokes parameters (XX, YY, XY, YX;
+		      <inlineequation><textobject role="tex">N_{\mathrm{Stokes}}(3-4)=4</textobject></inlineequation>),
+		    </para>
+		  </listitem>
+		  <listitem>
+		    <para>
+		      15 correlator products
+		      (15 cross-correlation spectra;
+		      <inlineequation><textobject role="tex">N_{\mathrm{products}}(3-4)=15</textobject></inlineequation>).
+		      <itemizedlist>
+			<listitem>
+			  <para>
+			    Each cross-correlation spectrum has 32 bins across the pulse period
+			    (<inlineequation><textobject role="tex">N_{\mathrm{bins}}(3-4,1-4,1-15)=32</textobject></inlineequation>).
+			  </para>
+			</listitem>
+		      </itemizedlist>
+		    </para>
+		  </listitem>
+		</itemizedlist>
+	      </para>
+	    </listitem>
+	  </itemizedlist>
+	</para>
+	
+	<para>
+	  Putting this in <xref linkend="equation_dataratecycle"></xref> we get
+	  <informalequation>
+	    <textobject role="tex">
+	      \mathrm{b}_{\mathrm{cycle}} = 8 \times \left(2\times 2049 \times \left(2 \times 6 \times 2 + 2 \times 6 \times 1 + 4 \times 15 \times 1\right) + 2 \times 513 \times 4 \times 15 \times 32\right) = 1.8906624 \times 10^{7}.
+	    </textobject>
+	  </informalequation>
+	</para>
+
+	<para>
+	  This works out to be a data rate of 1.803 MiB per second, or roughly 6.339 GiB per hour.
+	  Since <acronym>CABB</acronym> data files will automatically close when they reach
+	  4.0 GiB in size, it would take approximately 37 m to fill one file (not accounting
+	  for the overhead consumed by the header information).
+	</para>
+      </section>
+    </section>
+
+    <section>
+      <info>
+	<title>How can I quickly determine how much data will be produced?</title>
+      </info>
+	
+      <para>
+	<indexterm role="cp"><primary>data</primary><secondary>rate</secondary>
+	<tertiary>calculating quickly</tertiary></indexterm>
+	Since all modes give you the continuum IFs, you start off with one of two base
+	data rates, per cycle. For the 1 MHz modes, the base data rate is:
+	<informalequation>
+	  <textobject role="tex">
+	    \mathrm{b}_{\mathrm{cycle}}(1\mathrm{\,MHz}) = 1.573632 \times 10^{6}
+	  </textobject>
+	</informalequation>
+	bytes per IF. For the 64 MHz modes, the base data rate is:
+	<informalequation>
+	  <textobject role="tex">
+	    \mathrm{b}_{\mathrm{cycle}}(64\mathrm{\,MHz}) = 2.5344 \times 10^{4}
+	  </textobject>
+	</informalequation>
+	bytes per IF.
+      </para>
+      
+      <para>
+	For each pulsar-binned IF you have (only available in 1 MHz mode) you add:
+	<informalequation>
+	  <textobject role="tex">
+	    \mathrm{b}_{\mathrm{cycle}}(\mathrm{pulsar\, binning}) = 7.87968 \times 10^{6}.
+	  </textobject>
+	</informalequation>
+      </para>
+      
+      <para>
+	For each single zoom you have (i.e. zooms with a width of 1) you add:
+	<informalequation>
+	  <textobject role="tex">
+	    \mathrm{b}_{\mathrm{cycle}}(\mathrm{zoom}) = 1.376928 \times 10^{6}.
+	  </textobject>
+	</informalequation>
+      </para>
+      
+      <para>
+	For each consolidated zoom you have (i.e. zooms with a width of 2 or more) you 
+	begin by adding:
+	<informalequation>
+	  <textobject role="tex">
+	    \mathrm{b}_{\mathrm{cycle}}(\mathrm{base\,czoom}) = 6.888 \times 10^{5}.
+	  </textobject>
+	</informalequation>
+	Then, for each zoom band in the consolidated zoom, you add:
+	<informalequation>
+	  <textobject role="tex">
+	    \mathrm{b}_{\mathrm{cycle}}(\mathrm{extra\,czoom}) = 6.88128 \times 10^{5}.
+	  </textobject>
+	</informalequation>
+	For example, if you had a consolidated zoom with a width of 5, it would produce
+	<informalequation>
+	  <textobject role="tex">
+	    \mathrm{b}_{\mathrm{cycle}}(\mathrm{czoom\,of\,width\,5}) = 6.888 \times 10^{5} + 5 \times 6.88128 \times 10^{5} = 4.12944 \times 10^{6}
+	  </textobject>
+	</informalequation>
+	bytes per cycle.
+      </para>
+      
+      <para>
+	<emphasis role="bold">Example:</emphasis> If you were using the 1 MHz/64 MHz
+	hybrid <acronym>CABB</acronym> configuration, and had one zoom of width 1 and
+	one consolidated zoom of width 12 in the 64 MHz IF your total data usage would
+	be:
+	<informalequation>
+	  <textobject role="tex">
+	    \mathrm{b}_{\mathrm{cycle}} = \mathrm{b}_{\mathrm{cycle}}(1\mathrm{\,MHz}) + \mathrm{b}_{\mathrm{cycle}}(64\mathrm{\,MHz}) + \mathrm{b}_{\mathrm{cycle}}(\mathrm{zoom}) + \mathrm{b}_{\mathrm{cycle}}(\mathrm{base\,czoom}) + 12 \times \mathrm{b}_{\mathrm{cycle}}(\mathrm{extra\,czoom}).
+	  </textobject>
+	</informalequation>
+	Doing the sum gives
+	<inlineequation>
+	  <textobject role="tex">\mathrm{b}_{\mathrm{cycle}} = 1.192224\times10^{7}</textobject>
+	</inlineequation>
+	bytes per cycle. Assuming a 10 second cycle time, this would generate 3.997 GiB per hour,
+	which would give you roughly one new <acronym>CABB</acronym> data file every hour.
+      </para>
+    </section>
+
+    <section>
+      <info>
+	<title>Do I have to do the observations myself?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>performing</secondary></indexterm>
+	Users of the <acronym>ATCA</acronym> are expected to organise the execution of the observations.
+	Any member of the team that proposed the experiment is eligible to observe from the Marsfield
+	<acronym>SOC</acronym>, or any other researcher that the primary investigator might like to nominate.
+	If the researcher has
+	not previously observed with the <acronym>ATCA</acronym> and <acronym>CABB</acronym>, or has not
+	observed within the past 12 months, they will have to travel to the <acronym>SOC</acronym> to be trained.
+	<indexterm role="cp"><primary>SOC</primary><secondary>visiting</secondary></indexterm>
+      </para>
+
+      <section>
+	<info>
+	  <title>Do I need to be trained to use the <acronym>ATCA</acronym>?</title>
+	</info>
+	<para>
+	  <indexterm role="cp"><primary>observations</primary><secondary>training</secondary></indexterm>
+	  Yes. It is recommended that observers unfamiliar with the <acronym>ATCA</acronym> arrive at
+	  the <acronym>SOC</acronym> at least two full weekdays before their observations, in order for them to
+	  become familiar with how to use the array and who to talk to if things go wrong.
+	</para>
+      </section>
+
+      <section>
+	<info>
+	  <title>What if we can't make it to the <acronym>SOC</acronym>?</title>
+	</info>
+	<para>
+	  <indexterm role="cp"><primary>observations</primary><secondary>remote</secondary></indexterm>
+	  If it is not possible for any of your team members to come to the <acronym>SOC</acronym> for your allocated
+	  observing time, but you have visited <acronym>SOC</acronym> sometime in the 12 months prior to your
+	  observations, you may be granted permission to
+	  do your observations remotely (<xref linkend="running-remotely"></xref>).
+	</para>
+
+      </section>
+
+      <section>
+	<info>
+	  <title>Can't someone do the observations for me?</title>
+	</info>
+
+	<para>
+	  <indexterm role="cp"><primary>observations</primary><secondary>collaboration</secondary></indexterm>
+	  We expect that observers are members of the team that proposed the experiment. Said another way,
+	  if you require someone to do your observations, we fully expect that that person would become
+	  a collaborator, and would be included on any publications derived from those observations. If this
+	  is what you require, you will need to alert <acronym>ATNF</acronym> staff well ahead of your
+	  scheduled time (4 weeks at least).
+	</para>
+      </section>
+	
+      <section>
+	<info>
+	  <title>I was planning to come, but I've just had an emergency. What can I do?</title>
+	</info>
+	<para>
+	  We understand that plans can change on short timescales and without warning. We recommend
+	  first trying to recruit another member of your team to do the observations, but should that not
+	  be possible, please alert <acronym>ATNF</acronym> staff.
+	</para>
+
+	<para>
+	  It may be possible to do a short-notice scheduling swap with another project, leaving you to
+	  do your observations at a later date. If this is not possible, we may be able to find a
+	  replacement observer, with the understanding that whomever does the observing will become
+	  a collaborator on the experiment, and will receive due credit on any publications derived from
+	  the observations.
+	</para>
+      </section>
+
+    </section>
+
+    <section id="running-remotely">
+      <info>
+	<title>Can I do my observations from my home institution?</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>remote</secondary></indexterm>
+	Remote observing is available for experienced <acronym>ATCA</acronym> observers. We will consider
+	granting a request for remote observations if the observer:
+	<itemizedlist>
+	  <listitem>
+	    <para>
+	      Has observed from the <acronym>SOC</acronym> at least once in the 12 months prior
+	      to the date of the proposed remote observations, or
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Usually observes more than 3 times per semester, or on at least 10 days per semester,
+	      and has observed from the <acronym>SOC</acronym> at least once in the 18 months prior
+	      to the date of the proposed remote observations.
+	    </para>
+	  </listitem>
+	</itemizedlist>
+      </para>
+
+      <para>
+	Applications to do a remote observation must be made <emphasis role="bold">at least 2 weeks before the
+	observations</emphasis>. This is so observatory staff can check for possible network
+	disruptions during your observations, and advise you if remote observing will not be possible.
+	The later you leave your remote observing application, the less time you will have
+	to change your plans should your request for remote observations be refused.
+      </para>
+
+      <para>
+	Permission to do your observations remotely is given at the discretion of science operations staff,
+	and you should not presume that permission will be forthcoming. Should permission be refused and
+	you are not able to come to the observatory, you may need to find a local collaborator to do the
+	observations for you. Your observing &#x201C;friend&#x201D;
+	<indexterm role="cp"><primary>friend</primary></indexterm>
+	<indexterm role="cp"><primary>observations</primary><secondary>friend</secondary></indexterm>
+	will not generally be available to do your observations. The duty astronomer is also
+	under no obligation to observe for your project if you are unable to.
+      </para>
+
+      <para>
+	To apply to make an observation remotely, use the &#x201C;Booking&#x201D; tab on the
+	<ulink url="https://ca-ops.atnf.csiro.au/PORTAL/"><acronym>ATCA</acronym> observing PORTAL</ulink>,
+	which will look something like <xref linkend="portal-booking-tab"></xref>.
+	First, fill out the &#x201C;Booking details&#x201D; form (which is revealed by clicking on that
+	button), and hit the &#x201C;Book&#x201D; button in the &#x201C;Status&#x201D; column.
+      </para>
+
+      <para>
+	<figure id="portal-booking-tab">
+	  <title>The &#x201C;Booking&#x201D; tab on the <acronym>ATCA</acronym> observing PORTAL.</title>
+	  <mediaobject>
+	    <imageobject>
+	      <imagedata fileref="figures/portal-booking-tab.jpg" format="JPG">
+	      </imagedata>
+	    </imageobject>
+	  </mediaobject>
+	</figure>
+      </para>
+
+      <para>
+	  Remote observers must
+	  have their own <acronym>ATNF</acronym> UNIX account and remember their password for this account.
+	  The <acronym>ATCA</acronym> website has pages describing
+	  <ulink url="http://www.narrabri.atnf.csiro.au/observing/remote_conditions.html">current remote observing conditions</ulink>
+	  and
+	  <ulink url="http://www.narrabri.atnf.csiro.au/observing/rem_obs.html">instructions for observing remotely</ulink>.
+      </para>
+      
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>remote</secondary>
+	<tertiary>requirements</tertiary></indexterm>
+	To be sure of a successful remote observing session, all observers are required to test their
+	remote observing setup at least a week before their observations.
+      </para>
+
+      <para>
+	At a minimum, you will require the following for remote observing:
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    A computer with SSH software, capable of running a VNC viewer, on a high bandwidth connection,
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    A telephone near to the computer, that can make calls to, and accept calls from the observatory.
+	  </para>
+	</listitem>
+      </itemizedlist>
+
+      <para>
+	Remote observations will be easier if you also have:
+      </para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    Two or more monitors attached to their computer,
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    A computer with X-Windows software,
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    A hands-free speakerphone or headset.
+	  </para>
+	</listitem>
+      </itemizedlist>
+
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>remote</secondary>
+	<tertiary>testing</tertiary></indexterm>
+	To test your setup, you should contact the duty astronomer and ask to be allowed
+	to login and perform the test. If the test will not disturb current observations, you  should follow
+	the instructions on remote observing found in Chapter 3
+	to ensure that you can monitor and control all the required VNC sessions. If problems
+	are encountered here, and the duty astronomer can't help you resolve them,
+	contact the observatory staff with a description of the problems and ask for advice.
+      </para>
+    </section>
+  </section>
+
+  <section id="rapid-response-mode">
+    <info>
+      <title>Rapid Response Mode</title>
+    </info>
+    <para>
+      <indexterm role="cp"><primary>rapid response</primary></indexterm>
+      <indexterm role="cp"><primary>NAPA</primary><secondary>rapid response</secondary><see>rapid response</see></indexterm>
+      For the 2017APR semester, a rapid response mode was introduced. This is designed to allow the
+      <acronym>ATCA</acronym> to respond almost instantly to a request for a <acronym>NAPA</acronym> over-ride.
+      This section describes how to use this mode.
+    </para>
+    <section>
+      <info>
+	<title>Who can use the rapid response mode?</title>
+      </info>
+      <para>
+	The <acronym>ATCA</acronym> rapid response mode is only available to proposers who have submitted a
+	<acronym>NAPA</acronym> proposal for the current semester. If you are interested in being granted
+	permission to use the rapid response mode for your <acronym>NAPA</acronym> proposal, please talk
+	to Jamie Stevens (<email>Jamie.Stevens@csiro.au</email>).
+      </para>
+    </section>
+    <section>
+      <info>
+	<title>How does the rapid response mode work?</title>
+      </info>
+      <para>
+	The rapid response mode is designed to take a user-made schedule, and get it onto the telescope
+	as soon as possible after the request has been made. Getting the telescope to stop one schedule
+	and start another is very easy; determining when "as soon as possible" actually starts is the
+	tricky part. The rest of this section describes the process which takes place to perform an
+	over-ride observation.
+      </para>
+      <para>
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      You submit a <acronym>NAPA</acronym> science case to the <acronym>ATNF</acronym>
+	      <acronym>TAC</acronym>, which gives you a ranking grade for the semester.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      You ask for, and are supplied with an authorisation token which will allow you to
+	      request an over-ride through the rapid response service.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      At some point during the semester, you decide to trigger your <acronym>NAPA</acronym> proposal.
+	      You (or more likely your software) creates a <acronym>CABB</acronym> schedule that
+	      observes both the target of interest and a nearby phase calibrator.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      You submit this schedule to the ATCA rapid response web service.
+	    </para>
+	    <para>
+	      <orderedlist>
+		<listitem>
+		  <para>
+		    The service checks that you are an authorised user, and rejects the request if not.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    The minimum amount of time that you have requested is still available to be
+		    scheduled for your project, considering the amount of time you requested from
+		    the TAC, and the amount of time you have used before this request. If you do
+		    not have sufficient time, the request is rejected.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    A start time is determined where
+		    <itemizedlist>
+		      <listitem>
+			<para>
+			  the source is above the <acronym>ATCA</acronym> lower elevation limit,
+			</para>
+		      </listitem>
+		      <listitem>
+			<para>
+			  the project that must be over-ridden has a lower grade than the
+			  <acronym>NAPA</acronym>,
+			</para>
+		      </listitem>
+		      <listitem>
+			<para>
+			  and that the schedule can be executed for at least the minimum required
+			  amount of time while still meeting the above conditions.
+			</para>
+		      </listitem>
+		    </itemizedlist>
+		    The search for this suitable start time is limited to either 100 hours after the
+		    request submission, or to a user-specified duration, if it is less than 100 hours.
+		    The 100 hour limit is designed to allow for an automated response even for long
+		    weekends where the proposers may not be available for a manual over-ride, while
+		    the user-specified duration can indicate that an observation that can't be made
+		    within some time frame would no longer be scientifically interesting.
+		  </para>
+		  <para>
+		    If a suitable start time cannot be found, the request is rejected.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    An estimate is made of when the flux-density and bandpass calibrators should
+		    be observed, given the start time. The schedule is altered to insert those scans.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    If the request has not been rejected by this point, the request is approved.
+		  </para>
+		</listitem>
+	      </orderedlist>
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      At the start time determined in the previous step, several additional checks
+	      are made.
+	    </para>
+	    <para>
+	      <orderedlist>
+		<listitem>
+		  <para>
+		    All scheduled scans will be above the <acronym>ATCA</acronym> lower elevation
+		    limit at their expected start time, for at least the minimum required time.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    The project currently being observed has a grade that is lower than the grade
+		    of the <acronym>NAPA</acronym>.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    The array is not stowed due to weather conditions.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <acronym>CABB</acronym> is configured in either 1 MHz continuum mode, or
+		    1 MHz zooms mode.
+		  </para>
+		</listitem>
+	      </orderedlist>
+	    </para>
+	    <para>
+	      If any of these conditions is not met, then the start time of the project is delayed
+	      from between 5 seconds and 10 minutes, at which point each of the checks are made again.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      When all checks from the previous step are satisfied, a final set of schedule alterations
+	      are made.
+	    </para>
+	    <para>
+	      <itemizedlist>
+		<listitem>
+		  <para>
+		    The schedule is shortened if necessary, to fit in the time available at this start
+		    time. The amount of time scheduled will always at least the minimum required.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    If the user has requested to use the same frequency configuration as the project
+		    being over-ridden, and
+		    <orderedlist>
+		      <listitem>
+			<para>
+			  the band currently being observed (or that was last observed) is not 7mm
+			  or 3mm,
+			</para>
+		      </listitem>
+		      <listitem>
+			<para>
+			  the array is not currently split between two bands,
+			</para>
+		      </listitem>
+		      <listitem>
+			<para>
+			  and the project that is currently being observed (or that was last observed)
+			  is not C999,
+			</para>
+		      </listitem>
+		    </orderedlist>
+		    then the over-ride schedule is altered to use the same frequency configuration
+		    as is currently listed. Otherwise, the frequency configuration is left as specified
+		    in the request.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    If the slew from the current position to the first scan of the schedule is less
+		    than 20 seconds, and the delays need to be reset because the user-specified
+		    frequencies are being used instead of the currently configured frequencies,
+		    an additional &#x201C;Normal&#x201D; scan of 40 seconds is inserted at the
+		    beginning of the schedule. This scan is named &#x201C;setup&#x201D; so it can
+		    easily be identified and discarded during later data reduction.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    The first scan in the schedule is altered, in the following ways.
+		    <itemizedlist>
+		      <listitem>
+			<para>
+			  The command <literal>focus default</literal> is added, to ensure the focus
+			  is set correctly.
+			</para>
+		      </listitem>
+		      <listitem>
+			<para>
+			  If the scheduled frequencies are not the same as those that were observed
+			  before the over-ride, the command <literal>corr reset delays</literal> is
+			  added, and the tv-channels are set to be 1020 to 1022 in each
+			  <acronym>IF</acronym>.
+			</para>
+		      </listitem>
+		    </itemizedlist>
+		  </para>
+		</listitem>
+	      </itemizedlist>
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      The altered schedule is copied into the right place, <command>caobs</command> detects
+	      this new schedule file and immediately begins executing it. Over-ride schedules are
+	      started at scan 1, and continue through until the last scan, and will not loop.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      While the schedule is being executed, an automatic monitoring system will watch that
+	      the schedule is progressing, and will attempt to automatically restart the schedule
+	      in the event that it gets stopped.
+	    </para>
+	  </listitem>
+	</orderedlist>
+      </para>
+    </section>
+    <section>
+      <info>
+	<title>Can I over-ride any scheduled block?</title>
+      </info>
+      <para>
+	All scheduled slots that have a project code starting with &#x201C;C&#x201D; can be over-ridden
+	by the rapid response mode, provided that your <acronym>TAC</acronym> score is sufficiently
+	high and <acronym>CABB</acronym> is in the correct mode.
+      </para>
+      <para>
+	Blocks of time scheduled for reconfigures, maintenance and VLBI cannot be over-ridden.
+      </para>
+      <para>
+	In the 2017APR semester, it is not possible to over-ride time scheduled for legacy projects,
+	but this will change in the 2017OCT semester, so that any over-ride project that has a score
+	higher than or equal to the lowest score given to a scheduled project may over-ride successfully.
+      </para>
+    </section>
+    <section>
+      <info>
+	<title>How can I make a schedule file automatically?</title>
+      </info>
+      <para>
+	As part of the project to develop this rapid response mode, a library for creating and
+	manipulating <acronym>CABB</acronym> schedules was developed. It can be found
+	<ulink url="https://github.com/ste616/cabb-schedule-api">on GitHub</ulink>, and is
+	free for use.
+      </para>
+      <para>
+	Because many of the existing libraries that astronomers use to deal with transient
+	event streams are written in Python, the choice was made to focus first on providing
+	a Python library for schedule manipulation. This library is targetted toward Python
+	2.7.
+      </para>
+      <para>
+	Documentation on how to use the library in your own code is part of the GitHub repository.
+      </para>
+    </section>
+    <section>
+      <info>
+	<title>What is this authorisation token that I need?</title>
+      </info>
+      <para>
+	To ensure that only those projects that have been pre-approved can perform over-rides on
+	the <acronym>ATCA</acronym>, any request for over-ride time needs to be accompanied by
+	a valid authorisation token. This can only be obtained by emailing
+	<email>Jamie.Stevens@csiro.au</email>.
+      </para>
+      <para>
+	There are two types of authorisation token available. The first is a test token, which
+	allows you to submit a request, and go through the entire process of the over-ride, but
+	not actually get time on the telescope. This is designed to be used while you are trying
+	to develop and perfect your automated trigger routines. You may issue as many requests
+	as you like with a test token.
+      </para>
+      <para>
+	The second token will allow your request to allocate time on the telescope. This type of
+	token will not be issued until you have demonstrated that your code can properly submit
+	a test request. You will need to work with Jamie Stevens during this process.
+      </para>
+      <para>
+	Authorisation tokens are valid only for a specific project and semester, and will be
+	rejected if used outside those bounds.
+      </para>
+      <para>
+	The authorisation token itself is a
+	<ulink url="https://jwt.io/introduction"><acronym>JSON</acronym> Web Token</ulink>.
+	You will be supplied with a normal <acronym>ASCII</acronym> file that will need to be
+	passed back to the service whenever you make a request.
+      </para>
+    </section>
+    <section>
+      <info>
+	<title>But how do I make a request?</title>
+      </info>
+      <para>
+	All requests to trigger an over-ride observation are submitted through a web service.
+	The exact format of the request won't be documented here, and we suggest that you use
+	the Python code we provide when you are building your trigger response software.
+      </para>
+      <para>
+	The library which makes it easy to submit over-ride requests can be found
+	<ulink url="https://github.com/ste616/atca-rapid-response-api">on GitHub</ulink>, along
+	with documentation and examples.
+      </para>
+    </section>
+    <section>
+      <info>
+	<title>How can I find out what the service is doing?</title>
+      </info>
+      <para>
+	If your request is unable to be scheduled given the bounds you provided, you will receive
+	your rejection in the response from the web service.
+      </para>
+      <para>
+	If the web service doesn't reject your request, your schedule will enter the queue to be
+	executed. At this point, two emails will be sent to this effect. As with all emails sent by
+	the rapid response service, they will be from Jamie.Stevens@csiro.au and will go to all
+	the members of the NAPA team (as specified on its OPAL coversheet), along with all the
+	members of each project that will need to be displaced.
+      </para>
+      <para>
+	The first email will have the subject &#x201C;ATCA rapid response mode triggered for Cxxxx
+	&#x201D;, where of course the real NAPA project code will be specified instead of &#x201C;
+	Cxxxx&#x201D;. The second email will have the subject &#x201C;Your ATCA rapid response
+	over-ride request has been queued for execution.&#x201D;.
+      </para>
+      <para>
+	The first email will look something like this.
+	<blockquote>
+	  <para>
+	    The ATCA rapid response mode was requested by the NAPA project C008 at UTC 2017-03-31 04:14:14.
+	  </para>
+	  <para>
+	    This over-ride has been scheduled to begin at UTC 2017-03-31 04:14:14 and end at approximately UTC 2017-03-31 04:27:06.
+	  </para>
+	  <para>
+	    This over-ride has been assigned the ID xaap6yuacy10ltg9lc3g.
+	  </para>
+	  <para>
+	    This will displace time from the project C007.
+	  </para>
+	  <para>
+	    The observations will be automatically started without any user intervention. While the observations are running, please do not intervene unless advised to by observatory staff.
+	  </para>
+	  <para>
+	    You will receive another email when the observations have started, and another when the over-ride observations have ended. Messages to the same effect will also appear in the ATCA Portal chat.
+	  </para>
+	  <para>
+	    Please send any feedback about this system by replying to this email.
+	  </para>
+	</blockquote>
+      </para>
+      <para>
+	As you can see, the time of the request, and the expected start and end times are all listed, along
+	with the unique ID assigned to the over-ride, and a list of all the projects that will be displaced.
+      </para>
+      <para>
+	The next email will look similar to the following.
+	<blockquote>
+	  <para>
+	    This email is from the ATCA rapid response system.
+	  </para>
+	  <para>
+	    What follows is a log of the progress of your requested over-ride experiment.
+	  </para>
+	  <para>
+	    Project code: C008
+	  </para>
+	  <para>
+	    Over-ride ID: xaap6yuacy10ltg9lc3g
+	  </para>
+	  <para>
+	    2017-03-31_04:14:14: Your experiment has been placed in the queue, and should start at 2017/3/31 04:14:14. You will receive another email at that time.
+	  </para>
+	  <para>
+	    If you have any concerns about this experiment, please reply to this email.
+	  </para>
+	</blockquote>
+      </para>
+      <para>
+	This second email introduces the time-stamped log of the progress of the over-ride. All subsequent
+	email communication will contain this log, as it was when the email was sent. The log will have
+	entries for all the important actions made by the rapid response service, and entries that will be
+	useful for later data reduction.
+      </para>
+      <para>
+	At the start time, the service will either start or delay the schedule, and in either case an email
+	will be sent. If the schedule is started, the email will have the subject &#x201C;An ATCA rapid
+	response over-ride is now being observed&#x201D;, while if the schedule is delayed the subject will
+	be &#x201C;Your ATCA rapid response over-ride request has been delayed&#x201D;; the reasons for the
+	delay will be included in the log. If the schedule is started, the name of the schedule will be given
+	in the email, and you may load it in the CABB web scheduler to see how the service has altered it.
+      </para>
+      <para>
+	No emails will be sent while the schedule is running, except if the service encounters a problem.
+	In that case, you will get an email with the subject &#x201C;There has been a problem while
+	executing your ATCA rapid response over-ride&#x201D;.
+      </para>
+      <para>
+	When the schedule finishes, the service will send out one final email, with the subject
+	&#x201C;ATCA rapid response over-ride is now complete&#x201D;. This email contains the full
+	log, which will include the name of the RPFITS files that contain the data.
+      </para>
+      <para>
+	If for some reason the service is unable to perform the scheduled over-ride (for example, if the
+	antennas are weather stowed for an extended period of time), then the schedule might expire and
+	be removed from the queue. If this happens you will get an email with the subject
+	&#x201C;Your ATCA rapid response over-ride request has expired&#x201D;.
+      </para>
+    </section>
+    <section id="OverrideScheduleStrategy">
+      <info>
+	<title>What is the recommended strategy for a rapid response schedule?</title>
+      </info>
+      <para>
+	The schedule you make depends on what type of observation you are trying to perform. What follows
+	are some general recommendations for rapid response schedules.
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      <emphasis role="bold">Select the frequencies that will give you the best science, rather
+	      than ask for the frequency configuration that is being used when the telescope is over-ridden.
+	      </emphasis>
+	      There is no actual need to have a perfectly calibrated array when doing an observation with
+	      the <acronym>ATCA</acronym>. As long as the delays can be measured while observing a strong
+	      calibrator, you will be able to correct for those delays in <application>Miriad</application>.
+	      If you specify the frequencies you want, the service will ensure that the delays are set back
+	      to their defaults at the start of your observation, which will always produce a dataset that
+	      can be successfully calibrated.
+	    </para>
+	    <para>
+	      To ensure that the observations can be monitored effectively with default delays, the
+	      tvchannel range is limited to 1020 - 1022 in each <acronym>IF</acronym>. This 3 MHz of
+	      bandwidth near the band centre is sufficient to measure the system temperature and to show
+	      the calibrator's flux density in <application>vis</application>. You will not need to
+	      specify this when creating the schedule, as the service will automatically do this for you.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <emphasis role="bold">If measuring very early prompt emission is important to your
+	      science, ensure that you visit the target source first, before your first scan on the
+	      gain calibrator.</emphasis>
+	      Observing your target for a few minutes before going to the gain calibrator should not
+	      be a problem, as the gains can be reliably extrapolated at cm wavelengths. Also, if you are
+	      observing in the 16cm band, there is a very good chance you will have a source in your field
+	      that is bright enough to allow for self-calibration.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <emphasis role="bold">Keep your scans short so the service can easily cut it to fit the
+	      earliest available slot.</emphasis>
+	      If authorised to do so, the service can automatically shorten the schedule you provide in
+	      order to fit it into the earliest possible available slot; how it does this is described in
+	      <xref linkend="ScheduleShortening"></xref>. If you keep your scans short (ie. don't have
+	      hour long scans between visits to your calibrator) then the shortener will act much more
+	      reliably.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      <emphasis role="bold">Do not include a flux density calibrator in your schedule.</emphasis>
+	      The service will automatically add the appropriate flux density calibrator to your schedule,
+	      depending on frequency and sidereal time.
+	    </para>
+	  </listitem>
+	</orderedlist>
+      </para>
+    </section>
+    <section id="ScheduleShortening">
+      <info>
+	<title>How does the service shorten my schedule?</title>
+      </info>
+      <para>
+	The service shortens a schedule in four stages.
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      The hard end time of the available slot is determined. This may be because the source has
+	      set, or a project has started with a score higher than that of your project. All scans that
+	      end after that hard end time are immediately deleted from the schedule, except if it is the
+	      flux density calibrator scan that the service added.
+	    </para>
+	    <para>
+	      As mentioned in <xref linkend="OverrideScheduleStrategy"></xref>, this step can cause problems
+	      if your scans are too long. Consider a scenario where the scan that ends after the hard end time
+	      is scheduled to run for 1 hour. Even if the hard end time is only 10 minutes from the scheduled
+	      end of this scan, the entire scan is cut, and you have lost a potential 50 minutes of observing
+	      time.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      If the schedule is still too long at this point, all scans on the nominated calibration source
+	      may be shortened to have a dwell length of 1 minute. This is done from the first scan and
+	      continues until all the calibrator scans have been shortened, or the schedule now finishes before
+	      the hard end time.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      If the schedule is still too long at this point, then the scan on the flux density calibrator
+	      is shortened by 1 minute.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      If the schedule is still too long at this point, then the source scans are shortened.
+	      The service calculates the amount of time that needs to be cut for the schedule to fit in
+	      the slot, and then subtracts as much time as possible from the last remaining source scan.
+	      If the last remaining source scan is longer than the cut time, then the scan survives,
+	      otherwise it, and the following calibrator scan, are removed entirely. This process repeats
+	      until the schedule finishes before the hard end time.
+	    </para>
+	  </listitem>
+	</orderedlist>
+      </para>
+      <para>
+	If at the end of this process, the schedule length falls below the specified minimum useful
+	time required, the start time will be delayed and the schedule restored to its original
+	specification.
+      </para>
+    </section>
+  </section>
+  
+  <section>
+    <info>
+      <title>Pre-observation Checklist</title>
+    </info>
+    <para>
+      <indexterm role="cp"><primary>checklist</primary><secondary>pre-observation</secondary></indexterm>
+      Ready to observe? Check that all the following tasks have been done:
+    </para>
+    <itemizedlist>
+      <listitem>
+	<para>
+	  Determined sources to use for:
+	</para>
+	<itemizedlist>
+	  <listitem>
+	    <para>
+	      Delay calibrator
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Flux density calibrator
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Bandpass calibrator
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Gain calibrator(s)
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Pointing calibrator(s) (only if doing reference pointing)
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Polarisation calibrator(s) (only if doing polarisation studies)
+	    </para>
+	  </listitem>
+	</itemizedlist>
+      </listitem>
+      <listitem>
+	<para>
+	  Checked that all sources are visible during allocated time.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Contacted your observing friend if assistance is required to prepare your schedules.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Prepared a schedule file using the <acronym>CABB</acronym> web scheduler for:
+	</para>
+	<itemizedlist>
+	  <listitem>
+	    <para>
+	      Array setup
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Calibration
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Science observations
+	    </para>
+	  </listitem>
+	</itemizedlist>
+      </listitem>
+      <listitem>
+	<para>
+	  Used the sensitivity calculator to make sure that integration time on
+	  calibrators is sufficient.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Ensured that turret movements are limited to once every 15 minutes or
+	  longer.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Generated a mosaic pointing file (only if doing mosaic observations),
+	  and copied it to the appropriate place on <hardware>xbones</hardware>.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Generated an ephemeris for the solar system object (only if doing
+	  solar system observations), and copied it to the appropriate place on
+	  <hardware>xbones</hardware>.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Calculated how much data the observations will generate, and obtained
+	  enough disk space to accommodate this.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Checked for possible problems, and made contingency plans for:
+	</para>
+	<itemizedlist>
+	  <listitem>
+	    <para>
+	      Antenna shadowing
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Wrong time range for flux density calibrator observations
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Bad weather forecast during observations
+	    </para>
+	  </listitem>
+	</itemizedlist>
+      </listitem>
+      <listitem>
+	<para>
+	  Checked
+	  <ulink url="http://www.narrabri.atnf.csiro.au/observing/CurrentIssues.html">current issues page</ulink>
+	  for issues that may cause problems with the observations.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Checked that remote observations are permitted (only if remotely observing).
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Contacted observatory staff and duty astronomer if assistance will be
+	  required during observations.
+	</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+</chapter>

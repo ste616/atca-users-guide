@@ -1,0 +1,316 @@
+<preface id="preface">
+  <info>
+    <title>Preface</title>
+    <date>$Date$</date>
+    <revhistory>
+      <revision>
+	<revnumber>1.7</revnumber>
+	<date>2018 Mar 15</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Changes recommended by ATUC, including clarification of NAPA/ToO policies, and of
+	what is expected during unattended observing.</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.6</revnumber>
+	<date>2017 Jun 01</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Changes relating to the rapid response mode</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.5</revnumber>
+	<date>2016 Sep 14</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Changes relating to the RFI surveys at 4cm and 15mm</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.4</revnumber>
+	<date>2016 May 31</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Changes relating to the ATCA alarm Twitter feed</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.3</revnumber>
+	<date>2016 May 9</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Changes relating to the new 1934-638 high-frequency flux density scale</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.2</revnumber>
+	<date>2016 Apr 26</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Revert a change after a fix to vis</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.1</revnumber>
+	<date>2016 Apr 21</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Add a section that can be updated with the latest changes</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.0</revnumber>
+	<date>2014 May 31</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Initial Docbook revision</revremark>
+      </revision>
+    </revhistory>
+  </info>
+
+  <section id="read-this-first">
+    <info>
+      <title>Read this First</title>
+    </info>
+
+    <para>
+      This manual describes how to apply for observing time, make a schedule
+      file, and carry out an observation with the Australia Telescope
+      Compact Array (<acronym>ATCA</acronym>).
+    </para>
+
+    <para>
+      This manual is a reference guide: you do not need to read all of it to
+      use the <acronym>ATCA</acronym>. 
+      <xref linkend="The-Australia-Telescope-Compact-Array"></xref>
+      describes the telescope and what you need to know before proposing to use it.
+      <xref linkend="Preparing-for-Observations"></xref> can be read after getting
+      observing time on the <acronym>ATCA</acronym>. It describes how to prepare for your
+      observations.
+      <xref linkend="Observing"></xref> deals with the online software and all the
+      details of how to actually do your observations.
+      <xref linkend="After-your-Observations"></xref>
+      goes into detail about what to do with your data after it has been
+      collected. The appendices provide additional details above and beyond what
+      will usually be required for routine observing.
+    </para>
+
+    <para>
+      In 2014 April there was a major overhaul of this manual:
+      the presentation of the document on the web
+      and in print was improved, and the content was significantly updated.
+      Copies of this manual and other <acronym>ATNF</acronym> documentation can be obtained
+      from the 
+      <ulink url="http://www.atnf.csiro.au/observers/manuals.html">
+	<acronym>ATNF</acronym> webpages</ulink>.
+    </para>
+
+    <para>
+      <emphasis role="bold">
+	If you find that any part of the Compact Array doesn't work as described
+	in any of our documentation, please email the ATCA Users Guide (<acronym>ATUG</acronym>)
+	editorial team at <email>atca_userguide@atnf.csiro.au</email>, or start a conversation at the
+	<ulink url="http://atcaforum.atnf.csiro.au">
+	  <acronym>ATCA Forum</acronym></ulink>.
+	  <indexterm role="cp"><primary>documentation</primary><secondary>updating</secondary></indexterm>
+	  <indexterm role="cp"><primary>ATCA</primary><secondary>forum</secondary></indexterm>
+      </emphasis>
+    </para>
+
+    <para>
+      <emphasis role="bold">      
+	Comments on documentation are <emphasis>especially</emphasis> welcomed.
+      </emphasis>
+    </para>
+
+    <para>
+      If you can't find the information you require in this Users Guide and would like to
+      ask our expert users how to do something, please visit the 
+      <ulink url="http://atcaforum.atnf.csiro.au"><acronym>ATCA</acronym> Forum website</ulink>.You 
+      can also start or participate in conversations about your experiences with the <acronym>ATCA</acronym>,
+      as well as find out about any issues that can affect your data and how to deal with them.
+    </para>
+
+    <para>
+      <indexterm role="cp"><primary>introductory books</primary></indexterm>
+      If you are completely new to radio interferometry, the
+      following reading is recommended:
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    Remind yourself about Fourier theory &#x2014; an appropriate summary can
+	    be found in Chapter 1 of Bracewell (1978, 1986, 1999).
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Review the principles and techniques of radio-astronomy, e.g.,
+	    Kraus (1986); Christiansen &amp; Hogbom (1985); Thompson, Moran &amp;
+	    Swenson (1986, 2001). The latter is probably the best single book on the subject of
+	    <indexterm role="cp"><primary>interferometry</primary><secondary>radio</secondary></indexterm>
+	    radio interferometry.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Read the introductory chapters of one of the <acronym>NRAO</acronym> Synthesis
+	    Imaging Summer School lectures in
+	    Perley, Schwab &amp; Bridle (1989)
+	    or Taylor, Carilli &amp; Perley (1999). 
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Perhaps also look at Galactic and Extragalactic Radioastronomy
+	    by Verschuur &amp; Kellermann (1988) if you are not already familiar with
+	    the field.
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </para>
+  </section>
+
+  <section>
+    <info>
+      <title>Latest Changes</title>
+    </info>
+
+    <para>
+      The latest changes to this manual were made on March 15 2018.
+      <itemizedlist>
+	<listitem>
+	  Policies around how <acronym>NAPA</acronym> and <acronym>ToO</acronym> requests are
+	  considered, including for the rapid response mode, are now described in
+	  <xref linkend="NAPA-overrides"></xref>.
+	</listitem>
+	<listitem>
+	  A description of what is expected of observers when they choose to operate in
+	  &#x201C;unattended observing&#x201D; mode, and the tools available to help them
+	  do so, is now available in
+	  <xref linkend="unattended-observing"></xref>.
+	</listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      Changes to this manual were made on June 1 2017.
+      <itemizedlist>
+	<listitem>
+	  <xref linkend="rapid-response-mode"></xref> was created to document the new rapid
+	  response mode.
+	</listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      Changes to this manual were made on September 14 2016.
+      <itemizedlist>
+	<listitem>
+	  <xref linkend="Interference"></xref> was updated to show the results of recent 4cm and
+	  15mm RFI surveys.
+	</listitem>
+	<listitem>
+	  The recommended <acronym>CABB</acronym> continuum central frequencies in the 15mm band were
+	  changed in <xref linkend="Choosing-an-Observing-Frequency"></xref> to avoid RFI from the
+	  &#x201C;Sky Muster&#x201D; satellite.
+	</listitem>
+	<listitem>
+	  <xref linkend="upcoming_configurations"></xref> was updated for upcoming semesters.
+	</listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      Changes to this manual were made on May 31 2016.
+      <itemizedlist>
+	<listitem>
+	  <xref linkend="unattended-alarms" /> was created to describe how to use the
+	  <acronym>ATCA</acronym> alarm Twitter feed to get notifications of problems while not
+	  at your computer.
+	</listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      Changes to this manual were made on May 9 2016.
+      <itemizedlist>
+	<listitem>
+	  <xref linkend="calibration-flux-density" /> was updated to show the new high-frequency flux density scale
+	  based on 1934-638, derived from quasi-simultaneous observations of calibration sources with
+	  <acronym>ATCA</acronym>, <acronym>VLA</acronym> and <emphasis>Planck</emphasis>.
+	</listitem>
+	<listitem>
+	  <xref linkend="RequiredCalibration" /> was updated to indicate that 1934-638 is now the preferred flux
+	  density calibrator for 7mm observations.
+	</listitem>
+	<listitem>
+	  Describe how the <application>Miriad</application> flux density scale changed in May 2016 to use the new
+	  1934-638 high-frequency model, and how to switch back to the old model if required, in
+	  <xref linkend="calibration-in-the-mm-bands" />.
+	</listitem>
+      </itemizedlist>
+    </para>
+  </section>
+  
+  <section>
+    <info>
+      <title>Conventions</title>
+    </info>
+
+    <para>
+      In this manual we use some typographical conventions to help clarify the
+      documentation.
+      <indexterm role="cp"><primary>documentation</primary><secondary>conventions</secondary></indexterm>
+    </para>
+
+    <para>
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    Computer system names, e.g. <hardware>xbones</hardware>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Software packages, e.g. <application>Miriad</application>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Software program, e.g. <command>caobs</command>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Command example, e.g. <programlisting>$ df -h</programlisting>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Filename, e.g. <literal>output.txt</literal>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Program option, e.g. <option>rfiflag</option>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Parameter name, e.g. <parameter>edge</parameter>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Astronomy-related acronym, e.g. <acronym>USB</acronym> (upper sideband)
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Non-astronomy-related acronym, e.g. USB (universal serial bus)
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Placeholder for changeable parameter, e.g. <literal>ca0<replaceable>#</replaceable></literal>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    Optional parameter, e.g. <literal>[ca0<replaceable>#</replaceable>]</literal>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    List of potential commands or parameters, e.g. <literal>disable|enable</literal>. These might also
+	    be wrapped in curly brackets, e.g. <literal>{ca0<replaceable>#</replaceable>|default}</literal>
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </para>
+  </section>
+  
+</preface>

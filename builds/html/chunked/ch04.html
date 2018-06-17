@@ -1,0 +1,106 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Chapter 4. After your Observations</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="index.html" title="ATCA Users Guide"><link rel="prev" href="ch03s06.html" title="3.6. Key Contact Numbers"><link rel="next" href="ch04s02.html" title="4.2. Report Your Experiences"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 4. After your Observations</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s06.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch04s02.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="After-your-Observations"></a>Chapter 4. After your Observations</h1></div><div><div class="revhistory"><table style="border-style:solid; width:100%;" summary="Revision History"><tr><th align="left" valign="top" colspan="3"><b>Revision History</b></th></tr>
+      <tr><td align="left">Revision 1.3</td><td align="left">2015 Nov 19</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">
+	  Describe pgflag and how to use it as an automatic flagger, with examples.
+	</td></tr>
+      <tr><td align="left">Revision 1.2</td><td align="left">2015 Oct 21</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">
+	  Removed section on portable hard drives, and recognised that CABB
+	  has been around for a long time now.
+	</td></tr>
+      <tr><td align="left">Revision 1.1</td><td align="left">2014 Mar 24</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">
+	  Revised to bring it up to date, and more detail
+	  in the data reduction section.
+	</td></tr>
+      <tr><td align="left">Revision 1.0</td><td align="left">2014 Mar 20</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">Initial Docbook revision</td></tr>
+    </table></div></div></div></div>
+  
+  <div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="Archiving-Your-Data"></a>4.1. Archiving Your Data</h2></div></div></div>
+    
+    <p>
+      There are several means for you to obtain a copy of your data once you
+      have finished your observations. The following subsections will describe
+      these methods in detail.
+    </p>
+
+    <p>
+      You are requested to make a copy of your data as soon as possible after
+      the observations.
+    </p>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Laptop"></a>4.1.1. Laptop</h3></div></div></div>
+      
+      <p>
+	You can copy your data to your laptop from the Marsfield <acronym class="acronym">SOC</acronym>.
+	When your laptop is plugged
+	in to a pink cable, you will have to use an SSH tunnel through <span class="hardware">venice</span>
+	to access the area on <span class="hardware">kaputar</span> where your data resides.
+      </p>
+
+      <p>
+	To set up the SSH tunnel, type the following in a terminal on your
+	computer:
+	</p><pre class="programlisting">$ ssh -L 2222:kaputar:22 usr123@venice.atnf.csiro.au</pre><p>
+      </p>
+
+      <p>
+	This makes all traffic directed at port 2222 on your computer get transported
+	through <span class="hardware">venice</span> to <span class="hardware">kaputar</span> via the usual SSH/SCP port of 22. This
+	tunnel will exist as long as you remain logged into <span class="hardware">venice</span> in this
+	terminal. Thus to copy your data across, type the following in another terminal:
+	</p><pre class="programlisting">$ scp -P 2222 &#8220;usr123@localhost:/data/ARCHIVE_1/ATCA/archive/*.CX167&#8221; .</pre><p>
+      </p>
+
+      <p>
+	which would copy all project CX167 data, and where <code class="literal">usr123</code> is
+	your <acronym class="acronym">ATNF</acronym> username.
+      </p>
+
+      <p>
+	If you are a <acronym class="acronym">CSIRO</acronym> staff member and can connect your laptop directly to
+	the <acronym class="acronym">ATNF</acronym> network via a blue cable, you may copy the data directly from
+	<span class="hardware">kaputar</span>:
+	</p><pre class="programlisting">$ scp &#8220;usr123@kaputar:/data/ARCHIVE_1/ATCA/archive/*.CX167&#8221; .</pre><p>
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Online-Archive"></a>4.1.2. Online Archive</h3></div></div></div>
+      
+      <p>
+	Your <acronym class="acronym">CABB</acronym> data will appear on the
+	<a class="ulink" href="http://atoa.atnf.csiro.au" target="_top">Australia Telescope Online Archive</a>
+	(<acronym class="acronym">ATOA</acronym>) within a few days of your observations.
+	Using the <acronym class="acronym">OPAL</acronym> account you
+	used to submit your successful proposal, you will have access to your
+	data. Full instructions for how to use the archive interface are
+	available on the website.
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="Remote-Copy"></a>4.1.3. Remote Copy</h3></div></div></div>
+      
+
+      <p>
+	If you are unable to get your data from the <acronym class="acronym">ATOA</acronym> as soon as you would
+	like, then you may get it directly from the disk on <span class="hardware">kaputar</span> that
+	buffers the data.
+      </p>
+
+      <p>
+	To do this, you must set up an SSH tunnel from your local machine to
+	<span class="hardware">kaputar</span> via the <acronym class="acronym">ATNF</acronym> gateway machine <span class="hardware">venice</span>. This can be set
+	up with the command:
+	</p><pre class="programlisting">$ ssh -L 2222:kaputar:22 usr123@venice.atnf.csiro.au</pre><p>
+	where <code class="literal">usr123</code> is your <acronym class="acronym">ATNF</acronym> username. This will log you into
+	<span class="hardware">venice</span> and set up the SSH tunnel, which will remain until you
+	log out. To copy data from <span class="hardware">kaputar</span>
+	you should go to another terminal and do something like:
+	</p><pre class="programlisting">$ scp -P 2222 &#8220;usr123@localhost:/data/ARCHIVE_1/ATCA/archive/*.CX167&#8221; .</pre><p>
+      </p>
+    </div>
+  </div>
+
+  
+
+  
+
+  
+</div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s06.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch04s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.6. Key Contact Numbers </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 4.2. Report Your Experiences</td></tr></table></div></body></html>

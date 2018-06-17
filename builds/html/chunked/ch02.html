@@ -1,0 +1,274 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Chapter 2. Preparing for Observations</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="index.html" title="ATCA Users Guide"><link rel="prev" href="ch01s11.html" title="1.11. Successful Proposals and Observing"><link rel="next" href="ch02s02.html" title="2.2. Calibration"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 2. Preparing for Observations</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s11.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch02s02.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="Preparing-for-Observations"></a>Chapter 2. Preparing for Observations</h1></div><div><div class="revhistory"><table style="border-style:solid; width:100%;" summary="Revision History"><tr><th align="left" valign="top" colspan="3"><b>Revision History</b></th></tr>
+      <tr><td align="left">Revision 1.5</td><td align="left">2017 June 1</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">Added information about how to use the rapid response mode</td></tr>
+      <tr><td align="left">Revision 1.4</td><td align="left">2016 May 9</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">Updated information about the new high-frequency 1934-638 flux density model</td></tr>
+      <tr><td align="left">Revision 1.3</td><td align="left">2015 Oct 21</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">Updated information about remote observing procedures</td></tr>
+      <tr><td align="left">Revision 1.2</td><td align="left">2014 Oct 15</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">Fix a couple of typos regarding 1934-638 flux density models</td></tr>
+      <tr><td align="left">Revision 1.1</td><td align="left">2014 May 28</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">Rewrite chapter in FAQ format</td></tr>
+      <tr><td align="left">Revision 1.0</td><td align="left">2014 Mar 20</td><td align="left">jbs</td></tr><tr><td align="left" colspan="3">Initial Docbook revision</td></tr>
+    </table></div></div></div></div>
+  
+
+  <p>
+    <a class="indexterm" name="idm46395606936544"></a>
+    This chapter deals with how to prepare for observations on the
+    <acronym class="acronym">ATCA</acronym> after having been granted observing time.
+    It is presented as an FAQ, so that new observers can get all the information
+    they need, and experienced observers can quickly find the information
+    they need.
+  </p>
+
+  <p>
+    <a class="indexterm" name="idm46395606934480"></a>
+    Broadly speaking you will need to address at least the following considerations
+    when planning an observation with the <acronym class="acronym">ATCA</acronym>:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	<p>
+	  How much integration time is required on source to reach
+	  the necessary sensitivity?
+	</p>
+      </li><li class="listitem">
+	<p>
+	  What calibration is required to ensure the observations succeed, and how
+	  much observing time will it require?
+	</p>
+      </li><li class="listitem">
+	<p>
+	  How can observational overheads be minimised?
+	</p>
+      </li><li class="listitem">
+	<p>
+	  How will weather and <acronym class="acronym">RFI</acronym> affect the observations?
+	</p>
+      </li></ul></div><p>
+  </p>
+
+  <p>
+    After reading this chapter you should be able to optimally plan an observation,
+    and know how to make the schedule that carries it out.
+  </p>
+
+  <div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="observations-sensitivity"></a>2.1. Observational Sensitivity</h2></div></div></div>
+    
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395606926352"></a>2.1.1. How long is my source up per day?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606923232"></a>
+	The <acronym class="acronym">ATCA</acronym> antennas have a hard elevation limit of
+	12°, and for observations in the millimetre bands it is
+	recommended that you stay above an elevation of 30° in order to
+	avoid the thickest parts of the atmosphere.
+      </p>
+
+      <p>
+	A quick estimate of how long a particular source will be observable on
+	a single day with the <acronym class="acronym">ATCA</acronym> can be made using
+	<a class="xref" href="ch02.html#DeclinationTimes" title="Table 2.1.  For sources at particular declinations, this table displays the amount of time the source would take to get from rise to transit, or from transit to set at the ATCA. The LST ranges are shown for both the hard 12° and the recommended millimetre 30° elevation limits.">Table 2.1</a>. It shows, for a source at a particular declination,
+	the LST range before/past transit it is above elevations of 12° 
+	and 30°.
+      </p>
+
+      <p>
+	<span class="bold"><strong>Example:</strong></span> The source 0823-500
+	(coordinates RA=08:25:26.869, Dec=-50:10:38.4) will rise above the
+	12° elevation limit at an LST of 01:05 (take 07:20 from 08:25),
+	and it will fall below 30° at an LST of 13:42 (add 05:17 to 08:25).
+	It will be above the 12° elevation limit for 
+	approximately 14 h 40 m each day.
+      </p>
+
+      <p>
+	</p><div class="table"><a name="DeclinationTimes"></a><p class="title"><b>Table 2.1. 
+	    For sources at particular declinations, this table displays the amount
+	    of time the source would take to get from rise to transit, or from
+	    transit to set at the <acronym class="acronym">ATCA</acronym>. The LST ranges are shown
+	    for both the hard 12° and the recommended millimetre 30° elevation
+	    limits.
+	  </b></p><div class="table-contents">
+	  
+	  
+	  <table class="table" summary="
+	    For sources at particular declinations, this table displays the amount
+	    of time the source would take to get from rise to transit, or from
+	    transit to set at the ATCA. The LST ranges are shown
+	    for both the hard 12° and the recommended millimetre 30° elevation
+	    limits.
+	  " border="1"><colgroup><col align="center" class="declination"><col align="center" class="lstrange12"><col align="center" class="lstrange30"></colgroup><thead><tr><th rowspan="2" align="center">Declination</th><th colspan="2" align="center">LST range</th></tr><tr><th align="center">12°</th><th align="center">30°</th></tr></thead><tbody><tr><td align="center">-80°</td><td align="center">always above horizon</td><td align="center">06:09</td></tr><tr><td align="center">-70°</td><td align="center">10:35</td><td align="center">05:47</td></tr><tr><td align="center">-60°</td><td align="center">08:14</td><td align="center">05:32</td></tr><tr><td align="center">-50°</td><td align="center">07:20</td><td align="center">05:17</td></tr><tr><td align="center">-40°</td><td align="center">06:44</td><td align="center">05:02</td></tr><tr><td align="center">-30°</td><td align="center">06:17</td><td align="center">04:46</td></tr><tr><td align="center">-20°</td><td align="center">05:53</td><td align="center">04:28</td></tr><tr><td align="center">-10°</td><td align="center">05:31</td><td align="center">04:07</td></tr><tr><td align="center">+0°</td><td align="center">05:07</td><td align="center">03:42</td></tr><tr><td align="center">+10°</td><td align="center">04:42</td><td align="center">03:09</td></tr><tr><td align="center">+20°</td><td align="center">04:12</td><td align="center">02:20</td></tr><tr><td align="center">+30°</td><td align="center">03:32</td><td align="center">00:21</td></tr><tr><td align="center">+40°</td><td align="center">02:31</td><td align="center">never above horizon</td></tr></tbody></table>
+	</div></div><p><br class="table-break">
+      </p>
+      
+      <p>
+	<a class="indexterm" name="idm46395606883264"></a>
+	To calculate precisely how long your source is observable each day with the
+	<acronym class="acronym">ATCA</acronym> you can use the <span class="command"><strong>coord</strong></span> program,
+	available from the
+	<a class="ulink" href="http://www.parkes.atnf.csiro.au/cgi-bin/utilities/coord.cgi" target="_top">Parkes website.</a>
+	When using <span class="command"><strong>coord</strong></span> from the website you must remember to
+	change both the site to &#8220;Australia Telescope Compact Array&#8221;,
+	and the elevation limit to the value you require.
+      </p>
+    </div>
+
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395606880096"></a>2.1.2. Is it possible to tune my observing frequencies to obtain optimal
+	sensitivity?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606878224"></a>
+	<acronym class="acronym">CABB</acronym> makes available two 2048 MHz wide bands, and the centre
+	frequency of one <acronym class="acronym">IF</acronym> must be within 6 GHz of the centre frequency of the other.
+	Generally speaking however, the closer the two centre frequencies are to each other,
+	the more sensitive the observations will be.
+      </p>
+
+      <p>
+	<a class="indexterm" name="idm46395606875184"></a>
+	This is due to the design of the <acronym class="acronym">CABB</acronym> system. All frequency bands
+	observable by the <acronym class="acronym">ATCA</acronym> are first mixed to fit into the primary
+	<acronym class="acronym">CABB</acronym> frequency window of 4 to 12 GHz (except for the 4cm band, which
+	doesn't require any mixing). By default, closely-spaced <acronym class="acronym">IF</acronym> pairs
+	are mixed so that they lie at the top of this frequency window because the lower frequency
+	end can suffer from poor image rejection. If two widely-spaced <acronym class="acronym">IF</acronym>s
+	are selected however, the observational sensitivity for one of the
+	<acronym class="acronym">IF</acronym>s may suffer because of this.
+      </p>
+
+      <p>
+	It is important to note that the <acronym class="acronym">ATCA</acronym> sensitivity calculator does
+	<span class="bold"><strong>not</strong></span> account for this effect.
+      </p>
+
+      <p>
+	To counter this problem, you may wish instead to use frequency switching techniques;
+	you can read about how to do this in <a class="xref" href="ch02s03.html#strategy-frequency-switching" title="2.3.6. Are there limits to the frequencies I can observe?">Section 2.3.6</a>.
+      </p>
+
+      <p>
+	For normal continuum observations we recommend that you use our recommended frequencies, shown
+	in <a class="xref" href="ch02.html#recommended-continuum-frequencies" title="Table 2.2. Recommended CABB continuum centre frequencies.">Table 2.2</a>.
+	<a class="indexterm" name="idm46395606867312"></a>
+	<a class="indexterm" name="idm46395606866032"></a>
+      </p>
+
+      <div class="table"><a name="recommended-continuum-frequencies"></a><p class="title"><b>Table 2.2. Recommended <acronym class="acronym">CABB</acronym> continuum centre frequencies.</b></p><div class="table-contents">
+	
+	<table class="table" summary="Recommended CABB continuum centre frequencies." border="1"><colgroup><col align="center" class="bandname"><col align="center" class="if1"><col align="center" class="if2"></colgroup><thead><tr><th align="center">Band</th><th align="center"><acronym class="acronym">IF</acronym>1 (MHz)</th><th align="center"><acronym class="acronym">IF</acronym>2 (MHz)</th></tr></thead><tbody><tr><td align="center">16cm</td><td align="center">2100</td><td align="center">2100</td></tr><tr><td align="center">4cm</td><td align="center">5500</td><td align="center">9000</td></tr><tr><td align="center">15mm</td><td align="center">17000</td><td align="center">19000</td></tr><tr><td align="center">7mm (<acronym class="acronym">LSB</acronym>)</td><td align="center">33000</td><td align="center">35000</td></tr><tr><td align="center">7mm (<acronym class="acronym">USB</acronym>)</td><td align="center">43000</td><td align="center">45000</td></tr><tr><td align="center">3mm</td><td align="center">93000</td><td align="center">95000</td></tr></tbody></table>
+      </div></div><br class="table-break">
+
+      <p>
+	If you are using the 3mm system, the choice of simultaneous frequencies can affect
+	the observational sensitivity in another way, due to restrictions on the
+	<acronym class="acronym">LO</acronym> frequencies:
+	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	    <p>
+	      If the highest central frequency
+	      is &gt; 100.6 GHz and the lowest central frequency is &gt; 97.8 GHz,
+	      then the band will be <acronym class="acronym">USB</acronym>, and sensitivity will be optimised.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      If the lowest central
+	      frequency is &lt; 97.8 GHz and the highest central frequency is
+	      &gt; 100.6 GHz, then the band will be <acronym class="acronym">LSB</acronym>, but the 
+	      <acronym class="acronym">LO</acronym> will
+	      be driven past its rated limit, reducing the sensitivity.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      If the lowest central frequency is &lt; 97.8 GHz, and the highest
+	      central frequency is &lt; 100.6 GHz, then the band will be <acronym class="acronym">LSB</acronym>, and
+	      sensitivity will be optimised.
+	    </p>
+	  </li><li class="listitem">
+	    <p>
+	      If the highest central frequency is &lt; 100.6 GHz, and the lowest
+	      central frequency is &gt; 97.8 GHz, then the band may either be 
+	      <acronym class="acronym">LSB</acronym> or <acronym class="acronym">USB</acronym>,
+	      and will be automatically configured by <span class="command"><strong>caobs</strong></span> to optimise sideband
+	      rejection (but this may still result in less than optimal sensitivity).
+	    </p>
+	  </li></ul></div><p>
+      </p>
+    </div>
+    
+    <div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm46395606835360"></a>2.1.3. How can I avoid <acronym class="acronym">RFI</acronym>?</h3></div></div></div>
+      
+
+      <p>
+	<a class="indexterm" name="idm46395606832336"></a>
+	<acronym class="acronym">RFI</acronym> at the <acronym class="acronym">ATCA</acronym> falls into two groups:
+	external, and self-generated. External <acronym class="acronym">RFI</acronym> is worst at lower frequencies,
+	and can significantly reduce the bandwith usable in the centimetre bands. Self-generated
+	<acronym class="acronym">RFI</acronym> is less destructive, but also mostly unavoidable, and can be present
+	regardless of which band you're observing in.
+      </p>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606829168"></a>2.1.3.1. What external transmitters are located near the observatory?</h4></div></div></div>
+	
+
+	<p>
+	  <a class="indexterm" name="idm46395606827264"></a>
+	  The observatory keeps track (as much as possible) of the licensed transmitters in the
+	  surrounding area. A searchable database of these transmitters is 
+	  <a class="ulink" href="https://www.narrabri.atnf.csiro.au/observing/rfi/rfi_gmap.html" target="_top">made available
+	  </a> for
+	  users of the <acronym class="acronym">ATCA</acronym> (who already have an <acronym class="acronym">ATNF</acronym>
+	  UNIX account). You can search for transmitters based on their frequencies and distance
+	  from their observatory, and learn about where they are, their transmission power, and
+	  pointing direction.
+	</p>
+      </div>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606823888"></a>2.1.3.2. How much continuum sensitivity will I lose due to <acronym class="acronym">RFI</acronym>?</h4></div></div></div>
+	
+
+	<p>
+	  <a class="indexterm" name="idm46395606820816"></a>
+	  The <acronym class="acronym">ATCA</acronym> sensitivity calculator also has information about frequency
+	  ranges that are commonly flagged due to <acronym class="acronym">RFI</acronym>, and so can take into
+	  account the bandwidth losses when doing its calculations. This functionality is recommended
+	  for all continuum observers.
+	</p>
+
+	<p>
+	  Continuum observers should expect to lose approximately 270 MHz of bandwidth in the
+	  16cm band (13% of the 2048 MHz total bandwidth) and approximately 200 MHz of bandwidth in the 4cm band
+	  (5% of the 4096 MHz total bandwidth) due to <acronym class="acronym">RFI</acronym> that is almost always
+	  present. There are other sources of <acronym class="acronym">RFI</acronym> that will be present for only some
+	  of the time that will cost even more bandwidth, but most of these have fairly short durations
+	  and will not generally significantly affect the continuum sensitivity.
+	</p>
+      </div>
+
+      <div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="idm46395606816576"></a>2.1.3.3. What is &#8220;mid-week&#8221; <acronym class="acronym">RFI</acronym>?</h4></div></div></div>
+	
+
+	<p>
+	  <a class="indexterm" name="idm46395606813776"></a>
+	  In the 16cm band there is a transmitter that produces what is commonly referred to as
+	  &#8220;mid-week&#8221; <acronym class="acronym">RFI</acronym>, since it usually appears on weekdays during
+	  business hours (it can however appear at other times). This transmitter is so powerful that it
+	  can send the 16cm receivers into saturation, or at the very least cause intermodulation products
+	  to contaminate the entire 2 GHz band; during either of those scenarios, no sensible
+	  astronomical data is produced by the system. The observatory will sometimes receive advanced
+	  warning about this <acronym class="acronym">RFI</acronym>, and observers will be notified before they start in
+	  that case, but this is not guaranteed to happen. If warning is given sufficiently in advance,
+	  the operations staff may be able to assist you in organising a swap with a project that can
+	  observe in a band other than 16cm; again, no guarantee is made that this will occur.
+	</p>
+      </div>
+    </div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+  
+  
+
+</div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s11.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch02s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.11. Successful Proposals and Observing </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.2. Calibration</td></tr></table></div></body></html>

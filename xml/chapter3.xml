@@ -1,0 +1,1997 @@
+<chapter id="Observing">
+  <info>
+    <title>Observing</title>
+    <date>$Date: 2018-03-15 14:22:18 +1100 (Thu, 15 Mar 2018) $</date>
+    <revhistory>
+      <revision>
+        <revnumber>1.5</revnumber>
+        <date>2018 March 15</date>
+        <authorinitials>jbs</authorinitials>
+        <revremark>Add a section describing unattended observing, and update information on PMon wind stows</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.4</revnumber>
+        <date>2016 May 31</date>
+        <authorinitials>jbs</authorinitials>
+        <revremark>Document how to use the ATCA alarm Twitter feed</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.3</revnumber>
+        <date>2015 Nov 24</date>
+        <authorinitials>jbs</authorinitials>
+        <revremark>Add description of how to set CABB attenuators for 16cm</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.2</revnumber>
+        <date>2015 Oct 23</date>
+        <authorinitials>rmw, sb, klw</authorinitials>
+        <revremark>Substantial revision of content and layout</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.1</revnumber>
+        <date>2014 Jul 09</date>
+        <authorinitials>rmw</authorinitials>
+        <revremark>Substantial revision of content and layout</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.0</revnumber>
+        <date>2014 Mar 20</date>
+        <authorinitials>jbs</authorinitials>
+        <revremark>Initial Docbook revision</revremark>
+      </revision>
+    </revhistory>
+  </info>
+
+  <para>
+    <indexterm role="cp"><primary>observations</primary><secondary>performing</secondary></indexterm>
+    This chapter describes the steps necessary to observe with the
+    <acronym>ATCA</acronym>. It assumes that observing strategy has been determined and
+    schedule files created. See <xref linkend="Preparing-for-Observations"></xref> for information on determining
+    observing strategy and <xref linkend="observations-scheduling"></xref> for information on creating schedule files.
+  </para>
+
+  <para>
+    In general, observing takes place in the <acronym>SOC</acronym> in Marsfield.
+    It is possible to remote observe from anywhere with adequate network and
+    phone connectivity: see the
+    <ulink url="http://www.narrabri.atnf.csiro.au/observing/remote.html">
+      remote observing web page</ulink> for details on remote observing.
+    <indexterm role="cp"><primary>observations</primary><secondary>remote</secondary></indexterm>
+  </para>
+
+  <para>
+    We are currently in the process of creating ATCA Tutorial videos that are available on our
+    <ulink url="https://www.youtube.com/channel/UCGQGZz-opJQM4jU7rNsuacA">YouTube channel</ulink>.  These videos
+    are intended to help new observers familiarise themselves with the various applications and operational
+    processes related to the ATCA and are provided as &#x201C;refresher courses&#x201D; for more experienced observers.
+  </para>
+  
+  <para>
+    Observers are responsible for the collection of their own data and appropriate
+    checks to ensure the quality of the data. They are also expected to ensure
+    the safety of the array (to the best of their ability).
+    <emphasis role="bold">This is always secondary to any personal safety concerns.</emphasis>
+  </para>
+
+  <para>
+    An <acronym>ATNF</acronym> staff astronomer or student is rostered to support
+    observers with setting up and training new observers to use the array
+    (the Duty Astronomer or <acronym>DA</acronym>).
+    The <acronym>DA</acronym> should be the first point of call if there are problems or
+    queries with observations.
+  </para>
+
+  <para>
+    <indexterm role="cp"><primary>observations</primary><secondary>steps</secondary></indexterm>
+    The steps to observe with the compact array are:
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>
+        taking control from the previous observer
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        set up and calibrate the array
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        observe target source(s)
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        monitor observations for problems
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        end observations
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  <section id="Changeover">
+    <info>
+      <title>Changeover</title>
+    </info>
+
+    <para>
+      Before the start of observations, observers need to log into the 
+      <ulink url="https://ca-ops.atnf.csiro.au/PORTAL/login.php?return=/PORTAL/index.php"> ATCA Portal</ulink>.
+    </para>
+    <para>
+      <indexterm role="cp"><primary>observations</primary><secondary>changeover</secondary></indexterm>
+      Two VNC sessions are set up for control of the array:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          The xbones session runs <command>caobs</command>, <command>vis</command>, <command>assistance</command> 
+	  and <command>winds</command>.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          The <hardware>caccc1</hardware> session runs tasks associated with the correlator.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      If observations are remote, these should be connected to before the start of observations. 
+      See <ulink url="http://www.narrabri.atnf.csiro.au/observing/rem_obs.html">
+	http://www.narrabri.atnf.csiro.au/observing/rem_obs.html
+      </ulink> for information on setting up remote observations
+      (In Marsfield the necessary windows are already set up on <hardware>Ara</hardware> in the SOC, 
+      along with a number of additional windows with additional information and observing tasks.)
+    </para>
+
+    <para>
+      <figure id="pericles">
+	<title>Typical display from the <hardware>pericles</hardware> desktop at Narrabri.</title>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="figures/pericles.jpg" format="JPG">
+	    </imagedata>
+	  </imageobject>
+	</mediaobject>
+      </figure>
+    </para>
+
+    <para>
+      When it is time to take over, check on the portal and chat with the previous observer or observatory
+      staff if it is ok to get going. The Duty Astronomer should be on hand to help inexperienced observers set
+      up their observations. <indexterm role="cp"><primary>observations</primary><secondary>duty astronomer</secondary></indexterm>
+    </para>
+
+    <para>
+      The main observing program that the observer interacts with is <command>caobs</command>.
+      <command>caobs</command> usually runs in a black screen with yellow writing in the xbones
+      VNC session. The program <command>cacor</command> is the interface to the correlator.  <command>cacor</command>
+      commands can be executed for <command>caobs</command> by prefixing the command with <literal>corr [command]</literal>.
+      Other programs that observers need to use include <command>spd</command>, <command>vis</command> and <application>MoniCA</application>.
+    </para>
+
+    <para>
+      For details on using these programs see <xref linkend="caobs"></xref>, <xref linkend="cacor"></xref>,
+      <xref linkend="spd"></xref>, <xref linkend="vis"></xref> and <xref linkend="monica"></xref>.
+    </para>
+
+    <para>
+      To start observing, load a schedule with a strong calibrator into <command>caobs</command> and drive to the source:
+    </para>
+    <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+      <tgroup cols="3">
+	<colspec colwidth="3*"></colspec>
+	<colspec colwidth="40*"></colspec>
+	<colspec colwidth="57*"></colspec>
+	<tbody>
+	  <row>
+	    <entry></entry>
+	    <entry>caobs<literal>&gt; set file 
+	    <replaceable>sched_filename</replaceable></literal></entry>
+	    <entry>loads the schedule file</entry>
+	  </row>
+	  <row>
+	    <entry></entry>
+	    <entry>caobs<literal>&gt; track #</literal></entry>
+	    <entry>drives the telescope to scan # in the schedule file</entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section id="Setting-Up">
+    <info>
+      <title>Setting up</title>
+    </info>
+    <para>
+      At the start of observing, a number of procedures need to be executed to set up
+      the array for observng. The following table summarises the tasks, and indicates the
+      frequencies which need the various tasks. <indexterm role="cp"><primary>observations</primary><secondary>setting up</secondary></indexterm>
+    </para>
+    <informaltable frame="none" rowsep="0" colsep="0">
+      <tgroup cols="5">
+      <colspec colwidth="38*" colname="col1"></colspec>
+      <colspec colwidth="10*" colname="col2"></colspec>
+      <colspec colwidth="10*" colname="col3"></colspec>
+      <colspec colwidth="10*" colname="col4"></colspec>
+      <colspec colwidth="32*" colname="col5"></colspec>
+      <tbody>
+        <row>
+          <entry></entry>
+          <entry>cm</entry>
+          <entry>15&amp;7mm</entry>
+          <entry>3mm</entry>
+          <entry></entry>
+        </row>
+        <row>
+          <entry>Set focus</entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>See <xref linkend="Focus"></xref></entry>
+        </row>
+        <row>
+          <entry>Set power levels into <acronym>CABB</acronym> samplers</entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>See <xref linkend="Setting-Levels"></xref></entry>
+        </row>
+        <row>
+          <entry>Set <acronym>CABB</acronym> channel ranges</entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>See <xref linkend="Selecting-Channels"></xref></entry>
+        </row>
+        <row>
+          <entry>Flag interference</entry>
+          <entry namest="col2" nameend="col4"><emphasis>usually not necessary</emphasis></entry>
+          <entry>See <xref linkend="Flagging-Channels"></xref></entry>
+        </row>
+        <row>
+          <entry>Calibrate delays</entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>See <xref linkend="Calibrate-the-Array-Delays"></xref></entry>
+        </row>
+        <row>
+          <entry>Check pointing</entry>
+          <entry>X</entry> 
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>See <xref linkend="mm-Pointing-at-startup"></xref></entry>
+        </row>
+        <row>
+          <entry>Calibrate phases</entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>See <xref linkend="Phase-Calibration"></xref></entry>
+        </row>
+        <row>
+          <entry>Calibrate gains</entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>paddle</entry><!-- @item Paddle @tab @tab @tab@bullet{}@tab See section -->
+          <entry>See <xref linkend="Antenna-Gain-Calibration"></xref></entry>
+        </row>
+      </tbody>
+      </tgroup>
+    </informaltable>
+
+    <section id="Focus">
+      <info>
+	<title>Focus</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>focus</primary></indexterm>
+	The subreflector on each of the <acronym>ATCA</acronym> antennas can be raised and lowered to allow the signal
+	to be focussed at the receiver feed. <indexterm role="cp"><primary>ATCA</primary><secondary>subreflector</secondary></indexterm>
+        However, changing the subreflector position will change the path length (obviously) which will change the geometric phases and delays,
+        so, it should only be done when required, usually when the frequency changes. 
+        Extra care is needed with calibration with programs that change focus during the observation.
+	<indexterm role="cp"><primary>observations</primary><secondary>focus</secondary></indexterm>
+      </para>
+      <para>
+        A good time to do this is at the start of the observing and it can be done while driving to source.
+      </para>
+      <para>
+	Default focus positions have been determined for each band.
+      
+	<informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+		<entry></entry>
+		<entry>caobs<literal>&gt; focus default </literal></entry>
+		<entry>drives the subreflector to the default focus height for that band</entry>
+              </row>
+              <row>
+		<entry></entry>
+		<entry>caobs<literal>&gt; focus ca0# <replaceable>height</replaceable></literal></entry>
+		<entry>drives the subreflector on antenna # to the given focus height</entry>
+              </row>
+            </tbody>
+          </tgroup>
+	</informaltable>
+      </para>
+
+      <table id="table_focus" frame="none" >
+        <title>Subreflector Focus Positions for the Antennas.</title>
+        <tgroup cols="6" align="center" colsep="0" rowsep="0">
+        <colspec colname="ant"/>
+        <colspec colname="16cm"/>
+        <colspec colname="4cm"/>
+        <colspec colname="15mm"/>
+        <colspec colname="7mm"/>
+        <colspec colname="3mm"/>
+
+        <thead>
+          <row>
+            <entry>Ant</entry>
+            <entry>16cm</entry>
+            <entry>4cm</entry>
+            <entry>15mm</entry>
+            <entry>7mm</entry>
+            <entry>3mm</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry>CA01</entry>
+            <entry>17</entry>
+            <entry>17</entry>
+            <entry>17</entry>
+            <entry>17</entry>
+            <entry>14</entry>
+          </row>
+          <row>
+            <entry>CA02</entry>
+            <entry>9.8</entry>
+            <entry>9.8</entry>
+            <entry>9.8</entry>
+            <entry>9.8</entry>
+            <entry>9.8</entry>
+          </row>
+          <row>
+            <entry>CA03</entry>
+            <entry>9</entry>
+            <entry>-4.7</entry>
+            <entry>9</entry>
+            <entry>9</entry>
+            <entry>9</entry>
+          </row>
+          <row>
+            <entry>CA04</entry>
+            <entry>23</entry>
+            <entry>23</entry>
+            <entry>23</entry>
+            <entry>23</entry>
+            <entry>23</entry>
+          </row>
+          <row>
+            <entry>CA05</entry>
+            <entry>18.4</entry>
+            <entry>8</entry>
+            <entry>18.4</entry>
+            <entry>18.4</entry>
+            <entry>18.4</entry>
+          </row>
+          <row>
+            <entry>CA06</entry>
+            <entry>23</entry>
+            <entry>23</entry>
+            <entry>23</entry>
+            <entry>23</entry>
+            <entry>23</entry>
+          </row>
+        </tbody>
+        </tgroup>
+      </table>
+
+      <para><emphasis role="bold">Note:</emphasis> As the antenna tips over, it deforms slightly, and the detected focus position changes by up to 1mm. 
+        This is normal and will not significantly effect the data.
+      </para>
+    </section>
+
+    <section id="Setting-Levels">
+      <info>
+	<title>Setting Power Levels into <acronym>CABB</acronym> Samplers</title>
+      </info>
+      <para>
+        <indexterm role="cp"><primary>attenuators</primary><secondary>levels</secondary><tertiary>setting</tertiary></indexterm>
+        The rms digitiser quantisation levels (as displayed in the
+        sampler tab of <command>cacor</command>) should be close to 20 (Range: Approximately 18-22).
+        To set the levels, attenuation can be added or removed.
+        The values in the atten section of the window show the settings of the <command>cacor</command>
+        attenuators. They have a range of 0-15 dB. <indexterm role="cp"><primary>observations</primary><secondary>samplers</secondary></indexterm>
+      </para>
+
+      <para>
+	<figure id="samplerlevels">
+          <title><command>cacor</command> sampler level display</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/sampler_levels.jpg" format="JPG">
+              </imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </para>
+
+      <para>
+	If the levels are not close to 20, the ATTS button in the <command>cacor</command> GUI can be activated
+        to enable <command>cacor</command> to automatically add or remove attenuation. 
+      </para>
+
+      <para>
+        This can also be done in the <command>cacor</command> interface:
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; tatts[ervo] 20</literal></entry>
+                <entry>set the target for the attenuator servos to 20 </entry>
+              </row>
+              <row>
+                <entry></entry>
+                <entry></entry>
+                <entry><emphasis>(most of the time, this command is not needed as tatts will usually already be set to this level)</emphasis></entry>
+              </row>
+
+                  
+
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; atts[ervo] on</literal></entry>
+                <entry>correlator servos the attenuators to adjust the levels into the samplers</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+        Wait for the levels to settle to around 20, then turn the adjustment off again with:
+      </para>
+
+      <para>
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; atts[ervo] off</literal></entry>
+                <entry></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+        Fairly obviously, the algorithm is unable to &#x201C;improve&#x201D; the levels if the attenuators are at their limits (0 or 15).
+      </para>
+
+      <para>
+	For 16cm observations, strong RFI in the band will often make the sampler levels vary significantly from cycle to cycle, making it difficult
+	(and often impossible) to set the attenuators appropriately. In this case, you can set the attenuators manually to values that
+	are known to be good, as listed in <xref linkend="table_16cm_atten"></xref>. To set the attenuators manually, you will need to
+	use the <literal>att</literal> command. For example, to set the CA03 attenuators as per <xref linkend="table_16cm_atten"></xref>,
+	you would need to give the commands:
+      </para>
+
+      <para>
+	<informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+	  <tgroup cols="3">
+	    <colspec colwidth="3*"></colspec>
+	    <colspec colwidth="40*"></colspec>
+	    <colspec colwidth="57*"></colspec>
+	    <tbody>
+	      <row>
+		<entry></entry>
+		<entry>cacor<literal>&gt; att1 ca03 6 13</literal></entry>
+		<entry>sets the CA03 IF1 A and B pol attenuators</entry>
+	      </row>
+	      <row>
+		<entry></entry>
+		<entry>cacor<literal>&gt; att2 ca03 2 2</literal></entry>
+		<entry>sets the CA03 IF2 A and B pol attenuators</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</informaltable>
+      </para>
+
+      <para>
+	See <xref linkend="cacor_command_att"></xref> for more complete information about how to use this command.
+      </para>
+      
+      <table id="table_16cm_atten" frame="none">
+	<title>Attenuator settings for the 16cm band</title>
+	<tgroup cols="7" align="center" colsep="0" rowsep="0">
+	  <colspec colname="product"/>
+	  <colspec colname="ca01"/>
+	  <colspec colname="ca02"/>
+	  <colspec colname="ca03"/>
+	  <colspec colname="ca04"/>
+	  <colspec colname="ca05"/>
+	  <colspec colname="ca06"/>
+
+	  <thead>
+	    <row>
+	      <entry>Product</entry>
+	      <entry>CA01</entry>
+	      <entry>CA02</entry>
+	      <entry>CA03</entry>
+	      <entry>CA04</entry>
+	      <entry>CA05</entry>
+	      <entry>CA06</entry>
+	    </row>
+	  </thead>
+
+	  <tbody>
+	    <row>
+	      <entry>1 A</entry>
+	      <entry>5</entry>
+	      <entry>4</entry>
+	      <entry>6</entry>
+	      <entry>7</entry>
+	      <entry>8</entry>
+	      <entry>6</entry>
+	    </row>
+	    <row>
+	      <entry>1 B</entry>
+	      <entry>9</entry>
+	      <entry>3</entry>
+	      <entry>13</entry>
+	      <entry>5</entry>
+	      <entry>9</entry>
+	      <entry>8</entry>
+	    </row>
+	    <row>
+	      <entry>2 A</entry>
+	      <entry>10</entry>
+	      <entry>4</entry>
+	      <entry>2</entry>
+	      <entry>9</entry>
+	      <entry>8</entry>
+	      <entry>4</entry>
+	    </row>
+	    <row>
+	      <entry>2 B</entry>
+	      <entry>7</entry>
+	      <entry>4</entry>
+	      <entry>2</entry>
+	      <entry>5</entry>
+	      <entry>9</entry>
+	      <entry>4</entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </table>
+      
+      <para>
+        If the sampler levels are very low (approx 0), there is probably a problem which will need to be checked.
+      </para>
+
+      <para>
+        There are another set of attenuators in the receivers (as opposed to the correlator) which can also be used to set the levels.
+      </para>
+
+      <para>
+        These are controlled from <command>caobs</command>.
+      </para>
+
+      <para>
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>caobs<literal>&gt; show atten[uation]</literal></entry>
+                <entry>shows the current receiver attenuation levels in the <command>caobs</command> status window</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>caobs<literal>&gt; set atten ca0# att<subscript>a</subscript> att<subscript>b</subscript></literal></entry>
+                <entry>sets the receiver attenuator levels on antenna # to attenuator levels a and b</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+    </section>
+
+      <!-- ================================= -->
+      <!-- Setting up gtp mode (for vlbi etc.) -->
+      <!-- ================================= -->
+      <!-- .  Start observing. -->
+      <!-- . Get the attenulator levels right with atts on / off -->
+      <!-- . Change to gtp mode with cacor> usegtp -->
+      <!-- which results the gtp for rms numbers in the sampler window on cacor. gtp is normalised to cycle time -->
+      <!-- . Choose a number, X which is close to the displayed GTPs -->
+      <!-- . Set the target level in cacor with cacor> tatts X -->
+      <!-- . Turn the attenuators on again with cacor> atts on (to servo to close to X) -->
+      <!-- . Turn the attenuators off again} -->
+      <!-- . To go back to 'normal mode, cacor> userms -->
+      <!-- ================================= -->
+
+    <section id="Selecting-Channels">
+      <info>
+        <title>Set <acronym>CABB</acronym> Channel Range for Calibration and Monitoring</title>
+      </info>
+
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>tvchannels</secondary></indexterm>
+        <indexterm role="cp"><primary>tvchannels</primary></indexterm>
+        <indexterm role="cp"><primary>channels</primary></indexterm>
+        <command>cacor</command> generates an average visibility (averaged across the spectrum) that is used for T<subscript>sys</subscript>
+        and array calibration. Some care needs to be taken to ensure that the range of <command>cacor</command> channels used for
+        calculating this average is as wide as possible within the useable passband, but also excludes interference.
+      </para>
+
+      <para>
+        At higher frequencies, it is usually appropriate to use the central fifty percent of channels
+        but at cm frequencies, interference means that it is often better to select
+        non-default channels. See <xref linkend="tvchanranges"></xref> for information on recommended channel ranges for 2048 MHz continuum bands.
+        If these channel ranges are not generating the anticipated visibility in <command>vis</command>, inspect <xref linkend="spd"></xref> to
+        determine the cause of the problem.
+      </para>
+
+      <para>
+        The <literal>tvchan</literal> command sets the range of channels that are used for
+        calibrating the array and for T<subscript>sys</subscript> calculation. All unflagged
+        channels are written to the data (<acronym>RPFITS</acronym>) file regardless of what the <literal>tvchan</literal>
+        setting is.
+      </para>
+
+      <para>
+        (<emphasis role="bold">Note:</emphasis> Channels that are flagged are written to the file as zeroes.
+	See <xref linkend="Flagging-Channels"></xref> for more information).
+      </para>
+
+      <para>
+        Current settings are displayed in the <command>cacor</command> GUI, as shown in <xref linkend="tvch"></xref>.
+      </para>
+
+      <para>
+      <figure id="tvch">
+        <title><command>cacor</command> display showing the currently used tvchannels.</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/tvch.jpg" format="JPG">
+            </imagedata>
+          </imageobject>
+        </mediaobject>
+      </figure>
+      </para>
+
+      <para>
+        It is also possible to check the current setting with the <command>cacor</command> command
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; tvch[an]</literal></entry>
+                <entry>The first pair of numbers gives the channel range for the first frequency. The second
+                  pair of numbers gives the channel range for the second frequency.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+        Setting the range is done with the <command>cacor</command> command:
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; tvch[an] default</literal></entry>
+                <entry>sets the channel range to use the central 50% of the channels (i.e. channels 513 - 1537).</entry>
+              </row>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; tvch[an] ch<subscript>1</subscript> 
+                                                   ch<subscript>2</subscript> 
+                                                   ch<subscript>3</subscript>
+                                                   ch<subscript>4</subscript></literal></entry>
+                <entry>sets specific channels where ch<subscript>1</subscript> and ch<subscript>2</subscript>
+                                                   are the low and high channels for frequency 1 and 
+                                                    ch<subscript>3</subscript> and ch<subscript>4</subscript> 
+                                                   are the low and high channels for frequency 2.</entry>
+              </row>
+              <row>
+                <entry></entry>
+            	<entry>cacor<literal>&gt; tvch[an] f# ch<subscript>1</subscript> ch<subscript>2</subscript></literal></entry>
+                <entry>sets specific channels for a single frequency, where # is the frequency (1 or 2).</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+        <xref linkend="tvchanranges"></xref> lists the suggested tvchan ranges for the standard continuum bands.
+	On any given day (or interference
+        environment) other ranges may be more appropriate. 
+        <table id="tvchanranges" frame="none" >
+          <title>Suggested tvchan ranges for standard <acronym>ATCA</acronym> Continuum bands.</title>
+          <tgroup cols="4" align="center" colsep="0" rowsep="0">
+            <colspec colname="Band"/>
+            <colspec colname="Freq"/>
+            <colspec colname="ch1"/>
+            <colspec colname="ch2"/>
+
+            <thead>
+              <row>
+                <entry>Band</entry>
+                <entry>Centre Freq</entry>
+                <entry>ch<subscript>1</subscript></entry>
+                <entry>ch<subscript>2</subscript></entry>
+              </row>
+              <row>
+                <entry></entry>
+                <entry>(MHz)</entry>
+                <entry></entry>
+                <entry></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry>16cm</entry>
+                <entry>2100</entry>
+                <entry>200</entry>
+                <entry>949</entry>
+              </row>
+              <row>
+                <entry>6cm</entry>
+                <entry>5500</entry>
+                <entry>513</entry>
+                <entry>1537</entry>
+              </row>
+              <row>
+                <entry>3cm</entry>
+                <entry>9000</entry>
+                <entry>200</entry>
+                <entry>1149</entry>
+              </row>
+              <row>
+                <entry>15mm</entry>
+                <entry>17000</entry>
+                <entry>513</entry>
+                <entry>1537</entry>
+              </row>
+              <row>
+                <entry>7mm</entry>
+                <entry>33000</entry>
+                <entry>513</entry>
+                <entry>1537</entry>
+              </row>
+              <row>
+                <entry>3mm</entry>
+                <entry>93000</entry>
+                <entry>513</entry>
+                <entry>1537</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </para>
+   
+      <para>
+        <emphasis role="bold">(There is a wide range of valid frequency settings at mm frequencies)</emphasis>.
+      </para>
+    </section>
+
+    <section id="Check-Delavg">
+      <info>
+	<title>Checking Delavg</title>
+      </info>
+
+      <para>
+        <indexterm role="cp"><primary>delavg</primary></indexterm>
+        To calculate the delay of an individual <acronym>IF</acronym>, <command>cacor</command> 
+        checks the phase in each channel in the <literal>tvchan</literal> range
+        (just defined) and calculates a linear fit of 
+        these phase measurements as a function of frequency; the slope of this line is the delay.
+      </para>
+
+      <para>
+        If the noise on the phase is high (due to a faint source or poor weather, for example)
+        or there is some strong unavoidable RFI in the <literal>tvchan</literal>
+        range, then the least-squares line of best fit may not accurately represent the real
+        slope due to the delay. 
+      </para>
+
+      <para>
+        To reduce the noise, or to average out the effect of the RFI, setting delavg in the correlator
+        averages together that number of channels in the
+        <literal>tvchan</literal> range before calculating the slope.
+      </para>
+
+      <para>
+        However, care needs to be taken! If the phases are wrapping quickly, averaging over a 
+        large number of channels will give a meaningless value, and delays determined will be incorrect.
+      </para> 
+
+      <para>
+        The current value of delavg is in the status bar of the <command>cacor</command> interface.
+         <figure id="delavg_image">
+         <title><command>cacor</command> showing current delavg setting</title>
+           <mediaobject>
+             <imageobject>
+               <imagedata fileref="figures/delavg.jpg" format="JPG">
+               </imagedata>
+             </imageobject>
+           </mediaobject>
+         </figure>
+       </para>
+
+       <para>
+         Setting delavg is done with the <command>cacor</command> command:
+         <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+           <tgroup cols="3">
+             <colspec colwidth="3*"></colspec>
+             <colspec colwidth="40*"></colspec>
+             <colspec colwidth="57*"></colspec>
+             <tbody>
+               <row>
+                 <entry></entry>
+                 <entry>cacor<literal>&gt; delavg #</literal></entry>
+                 <entry>Averages # channels.</entry>
+               </row>
+             </tbody>
+           </tgroup>
+         </informaltable>
+       </para>
+
+       <para>
+         <informaltable frame="none" rowsep="0" colsep="0">
+           <tgroup cols="4">
+             <colspec colwidth="23*"></colspec>
+             <colspec colwidth="24*"></colspec>
+             <colspec colwidth="23*"></colspec>
+             <colspec colwidth="24*"></colspec>
+             <tbody>
+               <row>
+
+                 <entry>
+                   <figure id="spd_slow_wrap.jpg">
+<!--
+                   <title></title>
+-->
+                     <mediaobject>
+                       <imageobject>
+                         <imagedata fileref="figures/spd_slow_wrap.jpg" format="JPG">
+                         </imagedata>
+                       </imageobject>
+                     </mediaobject>
+                   </figure>
+                 </entry>
+
+                 <entry>
+                   <para>
+                     An spd plot with a slow changes in phases
+                   </para>
+                   <para>
+                     The phases are not wrapping at all in the A pol, and wrapping approximately every 250 channels in the B pol.
+                     Averaging over 32 channels would still give enough points across the band to do a linear fit to this data
+                   </para>
+                 </entry>
+
+                 <entry>
+                   <figure id="spd_fast_wrap.jpg">
+                     <mediaobject>
+                       <imageobject>
+                         <imagedata fileref="figures/spd_fast_wrap.jpg" format="JPG">
+                         </imagedata>
+                       </imageobject>
+                     </mediaobject>
+                   </figure>
+                 </entry>
+
+                 <entry>
+                   <para>
+                     An spd plot showing the phases wrapping very quickly
+                   </para>
+                   <para>
+                     The phases in both pols of this graph are wrapping over a small number of channels. 
+                     It is possible to check just how quickly the phases are wrapping by viewing a smaller number of channels:
+                   </para>
+                   <para>    
+                     spd<literal>&gt; chan f# 400 500</literal>
+                   </para>
+                 </entry>
+               </row>
+             </tbody>
+           </tgroup>
+         </informaltable>
+       </para>
+     </section>
+
+    <section id="Flagging-Channels">
+      <info>
+        <title>Flagging Channels</title>
+      </info>
+
+      <para>
+        <indexterm role="cp"><primary>fflag</primary><see>flagging</see></indexterm>
+        <indexterm role="cp"><primary>flagging</primary><secondary>fflag</secondary></indexterm>
+        Occasionally, there will be channels that, because of interference
+        (or other issues), you may wish to completely excise from the data (i.e. not write those channels to the data file).
+      </para>
+
+      <para>
+        To check the extent of currently flagged channels:
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; fflag</literal></entry>
+                <entry>display the number of channels that are currently <emphasis role="bold">unflagged</emphasis>. 
+                  In each frequency, there is a maximum of 2049 channels.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+        <figure id="fflag">
+          <title><command>cacor</command> display showing the current number of channels that are unflagged.</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/fflag.jpeg" format="JPG">
+              </imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </para>
+
+      <para>
+        There is no easy way to discover which channels have been flagged, and flagging will
+        remain even with a change of project (or frequency etc.) so
+        flagging should be checked at the start of observing. If there are more channels
+        flagged than anticipated, flagging should be cleared then reflagged if necessary.
+      </para>
+
+      <para>
+        This is done by:
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; fflag f# default</literal></entry>
+                <entry>flags the central channel (and 1/4, 3/4 channels) in frequency <literal>#</literal></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      
+      <para>
+        <indexterm role="cp"><primary>flagging</primary><secondary>fflag</secondary></indexterm>
+        To flag the set of known bad continuum channels
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; fflag f# birdies</literal></entry>
+                <entry>flags channel known bad channels in frequency <literal>#</literal></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      
+      <para>
+        This needs to be done at both f1 and f2.
+      </para>
+
+      <para>
+        To flag explicit channels, use the command:
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; fflag f# ch<subscript>m</subscript></literal></entry>
+                <entry>flags channel <literal>ch<subscript>m</subscript></literal> in frequency <literal>#</literal></entry>
+              </row>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; fflag f# ch<subscript>m</subscript>-ch<subscript>n</subscript></literal></entry>
+                <entry>flags channels <literal>ch<subscript>m</subscript></literal> to <literal>ch<subscript>n</subscript></literal> 
+                       inclusive in frequency <literal>#</literal></entry>
+              </row>
+            </tbody>
+          </tgroup> 
+        </informaltable>
+      </para>
+
+      <para>
+        Again, this needs to be done at both frequencies.
+      </para>
+
+      <para>
+        <indexterm role="cp"><primary>flagging</primary><secondary>funflag</secondary></indexterm>
+        If you know exactly which channels have been flagged, they can be unflagged with the
+        <literal>funflag</literal> command: formats are similar to the <literal>fflag</literal> command i.e.
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; funflag f# ch<subscript>m</subscript></literal></entry>
+                <entry>unflags channel <literal>ch<subscript>m</subscript></literal> in frequency <literal>#</literal></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+    </section>
+
+    <section id="Array-Calibration">
+      <info>
+        <title>Array Calibration</title>
+      </info>
+
+      <para>
+        Once the array is working, the system can be calibrated. 
+      </para>
+      <para>
+        Calibration will not fix a broken system. 
+      </para>
+      <para>
+        The calibration involves calculating and applying the delay offsets (for mm observations),
+        setting the phases to zero degrees and correcting the visibilities to the appropriate flux levels.
+      </para>    
+
+      <para>
+        <figure id="vis_cal">
+          <title><command>vis</command> display showing output during <acronym>ATCA</acronym> calibration</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/vis_cal.jpg" format="JPG"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </para>
+
+      <section id="Calibrate-the-Array-Delays">
+        <info>
+          <title>Calibrate the Array Delays</title>
+        </info>
+
+        <para>
+          <indexterm role="cp"><primary>calibration</primary><secondary>delays</secondary></indexterm>
+          Delay offsets need to be determined and corrected at the start of the observation.
+          Failure to correct for delay offsets will result in decorrelation, and loss of data.
+        </para>
+
+        <para>
+          In the 64MHz zoom configuration, delay calibration is more complex as it generally needs to be done in two stpes. 
+            (First delay calibrate a zoom channel, then in the continuum. See <xref linkend="64MHz_Delay_Cal"></xref>
+            for more information) 
+        </para>
+
+        <para>
+          To calibrate the delays, track a strong unresolved source (e.g. <literal>PKS1934-638</literal> or 
+          <literal>PKS0823-500</literal> for cm
+          observations; for mm observations use <literal>PKS1253-055</literal>, 
+          <literal>PKS1921-293</literal>, <literal>PKS2223-052</literal> or
+          <literal>PKS0537-441</literal>). <emphasis role="bold"><literal>PKS1934-638</literal> and <literal>PKS0823-500</literal> are not strong enough to calibrate at mm frequencies.</emphasis>
+        </para>
+
+        <para>
+          <emphasis role="bold">Correlation should be apparent before you proceed</emphasis>. Phases in <command>spd</command>
+          should be stable, though they may be wrapping rapidly and delays
+          should be flat in <command>vis</command>. Check that you have correlation in both frequencies
+          and both polarisations.
+        </para>
+
+        <para>
+          If there is significant interference (see the amplitude plot in <command>spd</command>), you will need to carefully craft the <literal>tvchan</literal> range (or, if bad enough, actually flag interfering channels) to avoid the interference in the calibration data.
+        </para>
+
+        <para>      
+          If working at 3mm or with significant interference, it may be necessary to
+          average over several channels (to improve the signal/noise ratio) with the command:
+          <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+            <tgroup cols="3">
+              <colspec colwidth="3*"></colspec>
+              <colspec colwidth="40*"></colspec>
+              <colspec colwidth="57*"></colspec>
+              <tbody>
+                <row>
+                  <entry></entry>
+                  <entry>caobs <literal>&gt; corr delavg #</literal></entry>
+                  <entry>where 8 is a good initial value for <literal>#</literal> - however,
+                         if the delays are large (&gt;50nsec), you should try a smaller value to start with.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </para>
+
+        <para>
+          If you still don't have correlation, check <xref linkend="Troubleshooting"></xref>
+          at the end of this chapter, and if this doesn't resolve your problems get help.
+        </para>
+
+      <para>
+        Assuming that the phases in <command>spd</command> are stable, enter the command:
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>caobs <literal>&gt; corr dcal </literal></entry>
+                <entry><literal>dcal</literal> calculates and applies the required correction></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+      
+      <para>      
+        This command should correct the delays so that the phases across the
+        band on the <command>spd</command> plot are flat (or fairly close to flat) and the delay
+        offsets as seen on <command>vis</command> are close to 0 nsec. It may be necessary to do this again.
+      </para>
+
+      <para>
+        (Early versions of the <acronym>CABB</acronym> software required an &#x201C;<literal>a</literal>&#x201D; switch at the 
+        end of the <literal>dcal</literal> command for the correction to actually be applied. 
+        The delays are now applied automatically by the command. Any switch other than an 
+        <literal>a</literal> will result in the delays not being applied.)
+      </para>
+
+      <section id="64MHz_Delay_Cal">
+        <title>
+          64MHz Delay Calibration
+        </title>
+        <para>
+          Delay calibration is slightly more complex in 64MHz mode.
+        </para>
+        <para>
+          This issue is that the phases in <command>spd</command> wrap more than once in a single (64MHz wide) continuum channel. 
+          The solution for this is to solve the delays for a single continuum channel using zooms, which will unwrap
+          the continuum data sufficiently to be able to determine the delays in the continuum bands. 
+        </para>
+        <para>
+          To use the zooms for delay calibration, set <command> calband</command> to <literal>z z</literal>:
+          <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+            <tgroup cols="3">
+              <colspec colwidth="3*"></colspec>
+              <colspec colwidth="40*"></colspec>
+              <colspec colwidth="57*"></colspec>
+              <tbody>
+                <row>
+                  <entry></entry>
+                  <entry>cacor <literal>&gt; calband z z</literal></entry>
+                  <entry>Uses zoom data in both frequencies. For a hybrid correlator config, use <literal>f z</literal></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </para>
+        <para>
+          Do the delay calibration as normal.
+          <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+            <tgroup cols="3">
+              <colspec colwidth="3*"></colspec>
+              <colspec colwidth="40*"></colspec>
+              <colspec colwidth="57*"></colspec>
+              <tbody>
+                <row>
+                  <entry></entry>
+                  <entry>caobs <literal>&gt; corr dcal</literal></entry>
+                  <entry>As always, ensure that there is a working system before doing the <command>dcal</command></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </para>
+        <para>
+          Once the majority of the delay error has been corrected for, the whole continuum band needs to be used for a 
+          second delay calibration:
+          <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+            <tgroup cols="3">
+              <colspec colwidth="3*"></colspec>
+              <colspec colwidth="40*"></colspec>
+              <colspec colwidth="57*"></colspec>
+              <tbody>
+                <row>
+                  <entry></entry>
+                  <entry>cacor <literal>&gt; calband f f</literal></entry>
+                  <entry></entry>
+                </row>
+                <row>
+                  <entry></entry>
+                  <entry>caobs <literal>&gt; corr dcal</literal></entry>
+                  <entry></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </para>
+          
+      </section>
+    </section>
+
+    <section id="mm-Pointing-at-startup">
+      <info>
+        <title>Checking Pointing for mm obs</title>
+      </info>
+
+      <para>
+        If observing at mm wavelengths, the antenna pointing should be checked and corrected before phase and amplitude calibration.
+        A pointing scan has six separate pointings: first on the nominal on-source position,
+        followed by four pointings at the nominal half-power points (+/- Az, +/- El), then a pointing back on the on-source position.
+        A separate task, <command>catag</command>, calculates the pointing offets and feeds them back to the system to be implemented.
+      </para>
+
+      <para>
+        Check the pointing
+	<footnote><para><application>MoniCA</application> Pointing Information: <application>MoniCA</application> &#x2192; Navigator &#x2192; misc &#x2192; pointing</para></footnote>
+	page in <application>MoniCA</application>
+        to check that the appropriate <command>catag</command> parameters are set:
+      </para>
+
+      <itemizedlist>
+        <listitem>
+          <para>
+            <literal>User Antenna Mask</literal> should include all antennas that need to be used for pointing.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            <literal>User IF Mask</literal> should be set to include IFs that are required. 
+              1234 uses all 4 IFs. 12 uses the two polarisations in the first frequency.
+              34 uses both polarisations in the second frequency. 
+              The setting 1234 can only be used if the frequencies <literal>f1</literal> and <literal>f2</literal> satisfy 
+              <inlineequation><textobject role="tex">\mathrm{abs}(\frac{f1}{f2}-1)\leq 0.15</textobject></inlineequation>.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            <literal>Integration Cycles</literal> defines the number of cycles spent on each step of the pointing solution. 
+            This will usually be set to 2 or 3.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        Modifying these parameters is done in <command>caobs</command>
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>caobs <literal>&gt; set point_a a<subscript>1</subscript>[a<subscript>2</subscript>
+                                                                              ...a<subscript>6</subscript>]</literal></entry>
+                <entry>defines antennas to be included in pointing calculations</entry>
+              </row>
+              <row>
+                <entry></entry>
+                <entry>caobs <literal>&gt; set point_a 12345</literal></entry>
+                <entry>would use all antennas except CA06</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+        <emphasis role="bold">Note:</emphasis> Pointing using the selfcal algorithm (default mode) requires 4 
+          or more antennas to calculate amplitudes. If using 3 or fewer antennas, holography mode is needed. 
+          To enable holography, set the <literal>Integration Cycles</literal> to the negative (e.g. -2) value.
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>caobs <literal>&gt; set point_if if<subscript>1</subscript>[if<subscript>2</subscript>...
+                                                        if<subscript>4</subscript>]</literal></entry>
+                <entry>defines IFs to be included in pointing calculations;</entry>
+              </row>
+              <row>
+                <entry></entry>      
+                <entry>caobs <literal>&gt; set point_if 1234</literal> </entry>
+                <entry>would use both frequencies, both polarisations.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+        (<emphasis role="bold">Note:</emphasis> If the two frequencies are different by more than 15%, 
+        the system will not let you use the second frequency. This is because the beam size
+        is sufficiently different that problems can arise - think about the situation of a 5 and 10 GHz frequency pair. 
+        The half-power point at 5 GHz is the first null at 10 GHz.)
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>caobs <literal>&gt; set point_p #</literal></entry>
+                <entry>where # is the number of cycles spent on each pointing step. # is usually 2 or 3.
+                  If using holography mode, this should be -2 or -3.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+        After these parameters have been set, ensure that your schedule file has a pointing scan set up. 
+        This scan will need to have &#x201C;<literal>Scan Type</literal>&#x201D; set to &#x201C;<literal>Point</literal>&#x201D; and 
+        the &#x201C;<literal>Pointing</literal>&#x201D; parameter set to &#x201C;<literal>Update</literal>&#x201D;.
+        To start the pointing scan, you must use the &#x201C;<literal>start</literal>&#x201D; command in <command>caobs</command> 
+        (&#x201C;<literal>track</literal>&#x201D; will simply track the on-source position):
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>caobs <literal>&gt; start #</literal></entry>
+                <entry>where <literal>#</literal> is the scan number of the pointing scan.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+     
+      <para>
+        Watch the amplitudes in <command>vis</command> to check progress. You should see the amplitudes drop to approximately half
+        the amplitude of the nominal centre position. The difference between the plus and minus pointings
+        give an indication of the error in the pointing.
+      </para>
+
+      <para>
+        After the pointing scan has finished, check the errors that are found in the <application>MoniCA</application> pointing page.
+        If any of the &#x201C;Last Az Correction&#x201D; or &#x201C;Last El Corrections&#x201D; is greater than 10&#x2033;, 
+	a second pointing should probably be considered.
+      </para>
+
+      <para>
+        For more information on offset pointing, see the
+          <ulink url="http://www.narrabri.atnf.csiro.au/observing/pointing">Reference Pointing Guide</ulink>.
+      </para>
+    </section>
+
+    <section id="Phase-Calibration">
+      <info>
+        <title>Calibrating Phases</title>
+      </info>
+
+      <para>
+        <indexterm role="cp"><primary>calibration</primary><secondary>phase</secondary></indexterm>
+        Phase Calibration is somewhat &#x201C;cosmetic&#x201D;, however, it can be useful to set the phases to
+        zero at the start of observations to help judge the phase stability.
+        To set the phases to zero:
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>caobs <literal>&gt; corr pcal</literal></entry>
+                <entry><literal>pcal</literal> calculates the required correction and 
+                  applies the correction that the <literal>pcal</literal> offsets.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+       (Early versions of the <acronym>CABB</acronym> software required an &#x201C;<literal>a</literal>&#x201D; switch at the 
+         end of the <literal>acal</literal> command for the gains to actually be applied. 
+         They are now applied automatically by the <literal>pcal</literal> command. Any switch other than an 
+         <literal>a</literal> will result in the phase corrections not being applied.)
+      </para>
+    </section>
+
+    <section id="Antenna-Gain-Calibration">
+      <info>
+        <title>Setting Antenna Gains</title>
+      </info>
+
+      <para>
+        <indexterm role="cp"><primary>calibration</primary><secondary>gain</secondary></indexterm>
+        Once the delays have been set and pointing checked (for mm observations), the antenna gains need to be set.  To set the gains:
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>caobs <literal>&gt; corr acal [#<subscript>1</subscript> #<subscript>2</subscript>] </literal></entry>
+                <entry><literal>acal</literal> calculates the required correction.
+                <literal>#<subscript>1</subscript></literal> and <literal>#<subscript>2</subscript></literal> are the fluxes of the calibrator
+                at the first and second frequencies respectively.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+        (Early versions of the <acronym>CABB</acronym> software required an &#x201C;<literal>a</literal>&#x201D; switch at the 
+        end of the <literal>acal</literal> command for the gains to actually be applied. 
+        They are now applied automatically by the <literal>acal</literal> command. Any switch other than an 
+        <literal>a</literal> will result in the gain corrections not being applied.)
+      </para>
+
+      <para>
+        If using <literal>PKS1934-638</literal> or <literal>PKS0823-500</literal>, 
+          the flux densities are known by <command>caobs</command> and do not have to be entered, i.e.
+        <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>caobs <literal>&gt; corr acal</literal></entry>
+                <entry></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+	Gain settings are used for calculating T<subscript>sys</subscript>. This can be recalculated off-line, but some care needs to be taken.
+      </para>
+
+      <para>
+        The <literal>T<subscript>sys</subscript></literal>s should be checked in the <command>cacor</command> GUI. 
+        Any outlier readings should be checked.
+      </para>
+    </section>
+    </section>
+    
+    <para>
+      At this point, the array should be set up and ready for observing. 
+      Check that <emphasis role="bold">all</emphasis> the products in <command>vis</command>
+      look correct and that the T<subscript>sys</subscript> values (in <command>cacor</command>) 
+      are appropriate. If there are any problems, check the
+      Troubleshooting section <xref linkend="Troubleshooting"></xref> or get help.
+    </para>
+
+
+  </section>
+
+  <section id="StartObserving">
+    <info>
+      <title>Observing</title>
+    </info>
+    <para>
+      Once setting up is complete, observations proper can start. Observations need to include
+      calibration data, including data for flux, bandpass, polarisation and gain calibration.
+    </para>
+
+    <section id="ArrayCalibration">
+      <info>
+	<title>Calibration</title>
+      </info>
+      <para>
+	It is important that sufficient calibration data is taken to characterise
+	the array. This means taking flux and bandpass calibration data for all
+	observations, and leakage calibration data for polarisation observations.
+	<indexterm role="cp"><primary>observations</primary><secondary>calibration</secondary></indexterm>
+      </para>
+
+      <para>
+	This does not have to be done at the start of the observation, but should be
+	done at some point during the observing session. If appropriate calibration
+	sources are not above the horizon during the observing session, contact the scheduler (Phil Edwards) to
+	discuss options.
+      </para>
+
+      <para>
+	For cm and 15mm observations, <literal>PKS1934-638</literal> is the
+	appropriate flux calibrator and can usually be used as a bandpass calibrator too (although spectral line observations at 
+	15mm will ordinarily require a stronger source).
+	For mm observations, a planet is needed for flux calibration (<literal>PKS1934-638</literal> can also be used
+	in the 7mm band), and a strong
+	source (e.g. <literal>PKS1921-293</literal> or <literal>PKS1253-055</literal>) is required to calibrate the bandpass.
+      </para>
+    </section>
+</section>
+
+  <section id="Array-Monitoring">
+    <info>
+      <title>Array Monitoring</title>
+    </info>
+    <para>
+      Once observing, the telescope will (mostly) look after itself.
+    </para>
+
+    <para>
+      The Fire and Primary Monitoring (PMon) systems monitor a number of critical telescope
+      systems (e.g. power, cryogenics). Critical problems will trigger alarms which are
+      distributed to site staff.
+    </para>
+
+    <para>
+      Observers need to monitor their own observations to ensure data quality.
+      During observing, <command>vis</command> and <command>spd</command> should be checked semi-regularly to ensure
+      that the data &#x201C;looks ok&#x201D;. In particular checking that, while on the calibrator,
+      delays are close to zero, phases are flat(ish) and amplitudes remain constant.
+      (There are a number of modes where some of these checks may be inappropriate, however,
+      get help if it isn't obvious why these are not the case.)
+    </para>
+
+    <para>
+      The program assistance will often indicate that there is a
+      problem with the system. Many of the error messages can be ignored if they are not
+      relevant to the observations, however any unexpected errors should be followed up.
+    </para>
+
+    <para>
+      The <application>MoniCA</application> task displays monitor point information from antennas and other places.
+    </para>
+
+    <section id="Wind">
+      <info>
+	<title>Wind Stows</title>
+      </info>
+      <para>
+          <indexterm role="cp"><primary>wind stows</primary></indexterm>
+	The anemometer at the observatory measures local wind speeds every 2.5 sec.  There are two (independent) systems that stow the array in the face of high winds:
+	<itemizedlist>
+          <listitem>
+            <para>xbones stows the array if the average wind speed for a 10 sec period is above 40km/hr</para>
+          </listitem>
+          <listitem>
+            <para>the PMon rack takes control of the array and stows if it detects a wind speed above 50 km/hr</para>
+          </listitem>
+        </itemizedlist>
+      </para>	
+
+      <para>
+	Observers should respect this and not restart observing until the wind speeds have died down. In fact, if PMon has issued the stow you will have
+	to wait 15 minutes until after the stow condition is no longer present before the antenna will be allowed to drive again.
+      </para>
+    </section>
+
+    <section id="Storms">
+      <info>
+	<title>Storm Stows</title>
+      </info>
+      <para>
+          <indexterm role="cp"><primary>storm stows</primary></indexterm>
+          In addition to high winds, electrical storms present a real danger to the ATCA.  Storms and lightning strikes within a 56 km radius of the array are closely monitored.  Threat levels (from 0 - no threat, to 4 - high threat) are assigned based on the number of approaching lightning strikes and those within 9 km of the array.  When the threat level reaches 3, the back up generators are turned on.  At a threat level of 4, xbones stows the array.
+      </para>
+      
+    </section>
+
+    <section id="Heat">
+      <info>
+	<title>Heat Stows</title>
+      </info>
+        <para>
+            <indexterm role="cp"><primary>heat stows</primary></indexterm>
+            On very hot days (above 40&#x00B0;C) especially with a strong wind, the cryogenic compressors can become overwhelmed.  In order to protect the receivers, if the ambient temperature in the internal system of the antennas reaches 50&#x00B0;C, xbones stows the array and turns the antennas to shadow the compressors from the wind.
+        </para>
+    </section>
+        
+    <section id="Weather-Monitoring">
+        <info>
+            <title>Weather Monitoring</title>
+        </info>
+
+        <para>
+        Weather monitors (for wind, storms and heat) can be access in <application>MoniCA</application>.  Alternately, the ATCA <ulink url="http://www.narrabri.atnf.csiro.au/astronomy/weather"> Weather Station
+      	</ulink> also provides information about the weather.
+        </para>
+    </section>
+
+
+    <section id="Alarms">
+      <info>
+	<title>Audible Alarms</title>
+      </info>
+
+      <para>
+	<informalfigure id="AlarmFlowChart">
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/AlarmsFlowChart.jpg" format="JPG"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </informalfigure>
+      </para>
+    </section>
+    
+
+    <section id="Troubleshooting">
+      <info>
+	<title>Troubleshooting</title>
+      </info>
+      <para>
+        The first action in the face of an observing problem should always be to wait for at least a minute.
+        (There are obvious exceptions to this rule, e.g. fires and similar catastrophic events that require quick action.)
+        If waiting doesn't fix the problem, stop, restart and wait for at least another minute.
+      </para>
+
+      <para>
+	The following flowcharts provide details on how to recover from some of the most common observing problems. 
+	They explain what to do in the case of <emphasis role="bold">No Correlation (or funny correlation)</emphasis>,
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation</secondary></indexterm> 
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no fringes</secondary></indexterm> 
+	<emphasis role="bold">Antenna(s) not 'on source'</emphasis> 
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>antennas not 'on source'</secondary></indexterm> 
+	and <emphasis role="bold">VNC Problems</emphasis>
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>VNC problems</secondary></indexterm>, respectively.
+      </para>
+
+  
+      <para>
+	If you are unable to fix or diagnose your problem after following the flowchart you should call your Duty Astronomer. 
+	Sometimes you may be able to diagnose your problem but not be qualified to execute the required fix and in this case 
+	you should also call your Duty Astronomer. This will be the case if you need to reboot a CABB block
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation (or funny correlation)</secondary><tertiary>rebooting a CABB block</tertiary></indexterm>, for example.
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation (or funny correlation)</secondary><tertiary>high tsys</tertiary></indexterm>
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation (or funny correlation)</secondary><tertiary>rtminit</tertiary></indexterm>
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation (or funny correlation)</secondary><tertiary>diginit</tertiary></indexterm>
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation (or funny correlation)</secondary><tertiary>delavg</tertiary></indexterm>
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation (or funny correlation)</secondary><tertiary>tsys zero</tertiary></indexterm>
+	<indexterm role="cp"><primary>problems</primary><see>troubleshooting</see></indexterm>
+	<indexterm role="cp"><primary>issues</primary><see>troubleshooting</see></indexterm>
+	<indexterm role="cp"><primary>help</primary><see>troubleshooting</see></indexterm>
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>antennas not 'on source'</secondary><tertiary>drive error</tertiary></indexterm> 
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>antennas not 'on source'</secondary><tertiary>translator</tertiary></indexterm>
+      </para>
+
+	
+      <para>
+        <informalfigure id="NoFringesFlowChart1">
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/NoFringesFlowChartI.jpg" format="JPG"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </informalfigure>
+      </para>
+      <para>
+        <informalfigure id="NoFringesFlowChart2">
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/NoFringesFlowChartII.jpg" format="JPG"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </informalfigure>
+      </para>
+      <para>
+        <informalfigure id="NoFringesFlowChart3">
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/NoFringesFlowChartIII.jpg" format="JPG"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </informalfigure>
+      </para>
+
+      <para>
+        <informalfigure id="NotOnSource">
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/OnSourceFlowChart.jpg" format="JPG"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </informalfigure>
+      </para>
+
+      <para>
+        <informalfigure id="VNCProblems">
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/VNCProblemsFlowChart.jpg" format="JPG"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </informalfigure>
+      </para>
+    </section>
+  </section>
+
+  <section id="unattended-observing">
+    <info>
+      <title>Unattended Observing</title>
+    </info>
+    <para>
+      We realise that observers are busy people who cannot always be in front of their observing computer for
+      the entire duration of their experiment. The observatory can be operated in &#x201C;unattended&#x201D;
+      mode when it is convenient to do so. This section describes how best to observe in this way, and what
+      is expected from you during your experiment.
+    </para>
+    <section>
+      <info>
+	<title>Unattended Observing - Definition</title>
+      </info>
+      <para>
+	When we talk about &#x201C;unattended observing&#x201D;, we mean any period during your experiment
+	where you are not immediately aware of the state of the telescope. You may be any distance away from
+	your observing computer, or asleep, or otherwise engaged in another activity, but you are listed as
+	the &#x201C;observer in charge&#x201D; on the <acronym>ATCA</acronym> Portal.
+      </para>
+    </section>
+    <section>
+      <info>
+	<title>Observatory Expectations</title>
+      </info>
+      <para>
+	The observatory does not require you to be responsible for the safety of the telescope equipment or
+	of personnel. We have sophisticated systems and procedures which should handle any unsafe situation
+	that might arise during a normal observation. For example, the automated systems will turn on the
+	generators when a storm is approaching, and turn them off when it passes. It will also automatically
+	handle stowing in periods of high wind, or when there is a high chance of lightning strike.
+      </para>
+      <para>
+	We do however expect that you are solely responsible for monitoring the quality of your data, and we
+	do expect to be able to contact you via the phone number you supplied when you registered as the
+	observer in charge. You should consider how often you need to check your data quality, given how much
+	time you could lose if something goes wrong.
+      </para>
+      <para>
+	For example, if an antenna stops tracking due to a drive fault, you may call the duty astronomer and
+	have them call the on-call person to remedy the situation; it might take only 10 minutes to rectify the
+	problem if you were immediately aware of the fault. If you were asleep at the time of the fault however,
+	you may lose a lot more than 10 minutes, and you would be ineligible to be compensated for that time.
+	We recommend that even while sleeping through an observation, a periodic check is made every couple of
+	hours.
+      </para>
+    </section>
+    <section id="unattended-alarms">
+      <info>
+	<title>Alarm notification during unattended observing</title>
+      </info>
+      <para>
+	We have developed several systems to proactively reach out to observers when something goes wrong that
+	might need urgent action. This section describes the unattended observing alarm notification system available for the
+	<acronym>ATCA</acronym>.
+      </para>
+      <section>
+	<info>
+	  <title>Assistance</title>
+	</info>
+	<para>
+	  Whenever <command>assistance</command> detects a problem with the telescope hardware, or with the
+	  visibilities, it will make an audible alert - a bell sound - every 10 seconds while the fault is
+	  still present and not ignored. If you are sleeping, we recommend ensuring that you have the volume
+	  up loud enough for this bell so that it will wake you if necessary.
+	</para>
+      </section>
+      <section>
+	<info>
+	  <title>MoniCA</title>
+	</info>
+	<para>
+	  The MoniCA client has something called the &#x201C;alarm manager&#x201D;, which monitors many of
+	  the critical telescope systems. If a problem is found, it will start making sounds which
+	  approximate a robot saying &#x201C;ATTENTION&#x201D;. Again, we recommend that this be set up
+	  whenever you are within earshot of the computer, but are not paying attention to it.
+	</para>
+      </section>
+      <section id="twitter-alarms">
+	<info>
+	  <title>Twitter feed</title>
+	</info>
+	<para>
+	  The same alarms that will be displayed in the MoniCA alarm manager will also be turned into tweets on the
+	  <acronym>ATCA</acronym> <ulink url="https://twitter.com/jamie_atca_sss">Twitter feed</ulink>. This should
+	  allow you to be a long way from your observing computer and still be alerted to problems with the telescope.
+	  Whenever an alarm is generated
+	  by <application>MoniCA</application>, or an alarm status goes away, a message is posted to the Twitter
+	  feed describing the problem.
+	</para>
+	<figure id="twitter-tweets">
+	  <title>Some example tweets from the <ulink url="https://twitter.com/jamie_atca_sss">ATCA alarm Twitter
+	  feed</ulink>.</title>
+	  <mediaobject>
+	    <imageobject>
+	      <imagedata fileref="figures/tweets_example.jpg" format="JPG" scalefit="1">
+	      </imagedata>
+	    </imageobject>
+	  </mediaobject>
+	</figure>
+	<para>
+	  A couple of example tweets are shown in <xref linkend="twitter-tweets"></xref>. Each tweet starts
+	  with the UTC date and time that the alarm state changed. The date is listed as year-month-day, but
+	  where the century part is omitted, to save characters. All alarms are given the hashtag
+	  <literal>#ALARM</literal>; this may currently seem redundant, but this Twitter feed will likely be
+	  expanded to include problems that do not generate <application>MoniCA</application> alarm states.
+	</para>
+	<para>
+	  If an alarm has been triggered, then the next part of the tweet will be a hashtag describing how
+	  important the alarm is. An <literal>#INFORMATION</literal> alarm simply presents a condition report,
+	  but likely does not require any action. <literal>#MINOR</literal> alarms can be ignored until
+	  it is convenient, where you should probably investigate <literal>#MAJOR</literal> and
+	  <literal>#SEVERE</literal> alarms as quickly as possible.
+	</para>
+	<para>
+	  If an alarm state has gone away, there will be no severity hashtag.
+	</para>
+	<para>
+	  The rest of the tweet is then some guidance text about which system has caused the alarm. The
+	  guidance text is not designed to help you respond to or correct the problem; training on how
+	  to deal with problems that arise with the <acronym>ATCA</acronym> is still required. Rather,
+	  the tweet is there to quickly alert you to the problem.
+	</para>
+	<para>
+	  The Twitter feed is still under active development, to make it as useful for observers as possible.
+	  All feedback about your experiences with the Twitter feed is welcome, as are suggestions on ways
+	  in which it can be made more useful.
+	</para>
+      </section>
+      <section id="getting-notifications">
+	<info>
+	  <title>Getting notifications from Twitter</title>
+	</info>
+	<para>
+	  The alarm notification system is based around Twitter because of the variety of methods
+	  available to receive tweets on mobile devices. The simplest way of course is to install the
+	  official Twitter client on your mobile device, and subscribe to the
+	  <literal>@jamie_atca_sss</literal> Twitter feed from your account. In that way, you can make
+	  your mobile device respond in one of several ways to any alarm tweets.
+	</para>
+	<para>
+	  If you'd rather not set up a Twitter account, you can quite easily get tweets via the Twitter
+	  <acronym>SMS</acronym> system. This way, you can still be notified of alarms when you have your
+	  phone with you. The official Twitter <acronym>SMS</acronym> service can be used as described
+	  <ulink url="https://support.twitter.com/articles/20170004">on the SMS follow web page</ulink>.
+	  For example, for Australians, you may get the alarm tweets via <acronym>SMS</acronym> by sending
+	  an <acronym>SMS</acronym> &#x201C;<literal>follow jamie_atca_sss</literal>&#x201D;
+	  (without the quotes) to the number
+	  <literal>0198089488</literal>. You will then get a return message if this has been successful, that
+	  will also tell you how to stop following. In addition, you'll get the most recent tweet from the
+	  alarm feed.
+	</para>
+	<para>
+	  You can also use the free online web service
+	  <ulink url="https://ifttt.com"><acronym>IFTTT</acronym> (if-this-then-that)</ulink>
+	  to respond in a customisable way to tweets from the ATCA alarm system. You will need to sign
+	  up to <acronym>IFTTT</acronym>, and connect your Twitter account to their
+	  <ulink url="https://ifttt.com/twitter">Twitter channel</ulink>, but after that you may specify any
+	  number of ways to get notification of tweets from the alarm system. For example, there is
+	  <ulink url="https://ifttt.com/recipes/424650-atca-alarms-to-sms">a published recipe</ulink> that
+	  takes an alarm tweet and sends you an <acronym>SMS</acronym>. But you could also make your smart
+	  lights at home turn red, or get a phone call (in certain regions only).
+	</para>
+	<para>
+	  Using <acronym>IFTTT</acronym> may also be a more convenient way to get <acronym>SMS</acronym> from
+	  the alarm feed, because you can easily turn it on or off via the web interface or their
+	  mobile app, rather than having to send an <acronym>SMS</acronym> each time you want to start
+	  or stop getting alarm notifications.
+	</para>
+      </section>
+    </section>
+  </section>
+
+  <section id="Contact-Numbers">
+      <info>
+          <title>Key Contact Numbers</title>
+      </info>
+      <para>
+          <indexterm role="cp"><primary>contact numbers</primary></indexterm>
+          Here is a list of key contact numbers (if dailing from an internal line, add an additional 0 before the number):
+          <itemizedlist>
+              <listitem>
+                  <para><emphasis role="bold">Emergency Services (fire, police, ambulance): 000</emphasis></para>
+              </listitem>
+              <indexterm role="cp"><primary>duty astronomer</primary><secondary>contact number</secondary></indexterm>
+              <listitem>
+                  <para>Duty Astronomer: 02 6790 4077</para>
+              </listitem>
+              <listitem>
+                  <para>Observer: 02 6790 4078</para>
+              </listitem>
+              <listitem>
+                  <para>On-call Pager (Narrabri): 02 6790 4076 (ring, wait a few sec, then dial 2)</para>
+              </listitem>
+               <indexterm role="cp"><primary>SOC</primary><secondary>contact numbers</secondary></indexterm>
+              <listitem>
+                  <para>SOC Astronomer Desk: 02 9382 4482</para>
+              </listitem>
+              <listitem>
+                  <para>SOC ATCA Observing Room: 02 9382 4548</para>
+              </listitem>
+              <listitem>
+                  <para>Marsfield Reception: 02 9372 4222</para>
+              </listitem>
+              <listitem>
+                  <para>Narrabri Reception: 02 6790 4000</para>
+              </listitem>
+          </itemizedlist>
+      </para>
+  </section>
+</chapter>

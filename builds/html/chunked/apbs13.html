@@ -1,0 +1,61 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>B.13. CABB issues</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="apb.html" title="Appendix B. cacor reference"><link rel="prev" href="apbs12.html" title="B.12. Changing to 1MHz Zooms"><link rel="next" href="apc.html" title="Appendix C. SPD reference"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">B.13. CABB issues</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apbs12.html">Prev</a> </td><th width="60%" align="center">Appendix B. <span class="command"><strong>cacor</strong></span> reference</th><td width="20%" align="right"> <a accesskey="n" href="apc.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="changing-cor-configs-issues"></a>B.13. CABB issues</h2></div></div></div>
+    
+    
+    <p>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	  <p><span class="bold"><strong>Central birdie:</strong></span>There will often be a large birdie in the central channel immediately after changing config. Stop/Start often helps with this.</p> 
+	    <a class="indexterm" name="idm46395603434320"></a> 
+	</li><li class="listitem">
+	  <p><span class="bold"><strong>Flagging:</strong></span> Whenever you select EDIT in the correlator, the flagging is reset so, you will need to redo the flagging.  </p>
+	</li><li class="listitem">
+	  <p><span class="bold"><strong>Rear Transfer Module (rtm) Problems:</strong></span> If you have some baselines with spikes, but no power (in the amplitude plot in spd), you may need to initialize a Rear Transfer Modules. Check the &#8220;Data Links&#8221; tab in the cacor gui. Modules that need to be initialised will generally have red text and large numbers (&gt;100000) in the 1ms column. To reinitialize:</p>
+	  <p><span class="bold"><strong>cacor&gt; rtminit ca0# freq pol</strong></span> (e.g. <span class="bold"><strong>cacor&gt; rtminit ca03 2b</strong></span>).</p>
+	  <p>If this fails, it is sometimes necessary to reset the digitiser itself:</p>
+	  <p> <span class="bold"><strong>cacor&gt; diginit ca0# freq pol</strong></span> (e.g. <span class="bold"><strong>cacor&gt; diginit ca03 2b</strong></span>).
+  </p>
+	</li><li class="listitem">
+	  <p><span class="bold"><strong>Lost Delay Calibration:</strong></span> It seems to be possible to drive the delay calibration so far away from the correct value that you start calibrating on something(?) else. The first symptom is often noisy data (or high T<sub>sys</sub>). Solution is to reset delays (<span class="bold"><strong>cacor&gt; reset delays</strong></span>) and restart calibration. </p>
+	</li><li class="listitem">
+	  <p><span class="bold"><strong>Amplitude Glitches:</strong></span> Check for amplitude &#8220;glitches&#8221; in vis. Reprogram suspicious IFs.   </p>
+	</li><li class="listitem">
+	  <p><span class="bold"><strong>Memory Problems (mostly in pulsar configs): </strong></span>If every second cycle is different (e.g. the spd amplitude plot looks good one cycle, then RS the next (then good the next.....), you may have a memory problem. To solve this: 
+	  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+	      <p>stop caobs </p>
+	      <p><span class="bold"><strong>caobs&gt; stop</strong></span></p>
+	      <p>then rest the correlator memory</p>
+	      <p><span class="bold"><strong>caobs&gt; rest mem</strong></span></p>
+	      <p>This is only recommended for pulsar modes (though in times of desperation it may be worth a try in other modes, but Warwick isn't confident that it will help!)</p>
+	    </li></ul></div><p>  
+	  </p>
+	</li><li class="listitem">
+	  <p><span class="bold"><strong>Commands in High Time Resolution Configs:</strong></span> 
+	  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+	      <p><span class="bold"><strong>Cisleep:</strong></span> In high time resolution modes with many channels(&gt;100), it may take up to 2 seconds at the start of the cycle to transfer the data. This data transfer interferes with setting the fringe rotation, and therefore the fringe rotation needs to be deferred. 4 seconds should be sufficient.</p>
+	      <p> <span class="bold"><strong>cacor&gt; cisl<span class="italics">[eep]</span> 4</strong></span> sets the delay to 4 seconds</p>
+	      <p> <span class="bold"><strong>cacor&gt; cisl<span class="italics">[eep]</span> </strong></span> returns the current value</p>
+	    </li><li class="listitem">
+	      <p><span class="bold"><strong>Archiving High Time Resolution Data:</strong></span> The high time resolution data will only be saved to disk if <span class="bold"><strong>carhtr</strong></span> is turned on. It is turned on by default, but in observations with very fast sample rates, it should be turned off when the high data rate is not required</p>
+	      <p> <span class="bold"><strong>cacor&gt; carhtr on | off</strong></span> turns the archiving on or off</p>
+	      <p> <span class="bold"><strong>cacor&gt; carhtr </strong></span> returns current setting</p>
+	    </li></ul></div><p>  
+	  </p>
+	</li><li class="listitem">
+	  <p><span class="bold"><strong>&#8220;Big Humps&#8221;:</strong></span> If an autocorrelation spectrum has a hump (~10<sup>5</sup>) in the amplitude around channel 1800, the datalink block for that input needs to be reprogrammed
+	  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+	      <p>Determine which block needs reprogramming from the CABB datalinks tab - </p>
+	    </li><li class="listitem">
+	      <p>select the EDIT button</p>
+	    </li><li class="listitem">
+	      <p>reprogram the bus calibration for the block - </p>
+	      <p><span class="bold"><strong>&gt; prog # cal</strong></span></p>
+	    </li><li class="listitem">
+	      <p>restart the scan and inspect the data (again) in spd. It takes a few cycles before the spd display updates.</p>
+	    </li></ul></div><p>    
+	  </p>
+	</li><li class="listitem">
+	  <p><span class="bold"><strong>In everything, always remember to check both frequencies.</strong></span>  </p>
+	</li></ul></div><p> 
+    </p>
+
+
+  </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apbs12.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apb.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apc.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">B.12. Changing to 1MHz Zooms </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix C. SPD reference</td></tr></table></div></body></html>

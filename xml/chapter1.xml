@@ -1,0 +1,3456 @@
+<chapter id="The-Australia-Telescope-Compact-Array">
+  <info>
+    <title>The Australia Telescope Compact Array</title>
+    <date>$Date: 2018-03-15 14:22:18 +1100 (Thu, 15 Mar 2018) $</date>
+    <revhistory>
+      <revision>
+	<revnumber>1.5</revnumber>
+	<date>2018 Mar 15</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Clarified the rules and procedures around NAPA and ToO requests, and how time
+	is allocated to them.</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.4</revnumber>
+	<date>2016 Sep 14</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Added discussion of the 4cm and 15mm RFI we now know about, and change the 15mm
+	recommended continuum frequencies. Update the upcoming configurations table.</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.3</revnumber>
+	<date>2015 Nov 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Added discussion of the 16cm RFI environment, RFI monitor and mid-week RFI</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.2</revnumber>
+	<date>2015 Oct 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Updated information about observing at the SOC</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.1</revnumber>
+	<date>2014 May 30</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Revised out-of-date tables and figures</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.0</revnumber>
+	<date>2014 Mar 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Initial Docbook revision</revremark>
+      </revision>
+    </revhistory>
+  </info>
+  <para>
+    This chapter gives an overview of the <firstterm>Australia Telescope Compact Array</firstterm>
+    (<acronym>ATCA</acronym>)
+    <indexterm role="cp"><primary>ATCA</primary></indexterm>
+    <indexterm role="cp"><primary>Compact Array</primary><secondary>Australia Telescope</secondary>
+    <see>ATCA</see></indexterm>
+    and provides the information needed to prepare an observing proposal.
+    As such, this chapter supercedes the <firstterm>Guide to Observations</firstterm> that was
+    provided in the past (and which contained a lot of overlap with the previous
+    <firstterm>Users Guide</firstterm>). The old <firstterm>Users Guide</firstterm> is still available and is
+    recommended for those reducing
+    pre-<acronym>CABB</acronym> data (i.e., observations before April 2009).
+    <indexterm role="cp"><primary>observations</primary><secondary>guide to</secondary></indexterm>
+    </para>
+    <para>
+    The <acronym>ATCA</acronym> consists of six 22-m radio antennas which can be configured
+    with antenna spacings of up to 6km, located
+    at the Paul Wild Observatory near Narrabri,
+    <indexterm role="cp"><primary>Narrabri</primary></indexterm>
+    <indexterm role="cp"><primary>Wild, Paul</primary></indexterm>
+    some 550 km northwest of Sydney.  It is one of the telescopes operated
+    by the Australia Telescope National Facility (<acronym>ATNF</acronym>).
+  </para>
+  
+  <section id="The-Australia-Telescope-National-Facility">
+    <info>
+      <title>The Australia Telescope National Facility</title>
+    </info>
+    <para>
+      <indexterm role="cp"><primary>National Facility</primary><secondary>Australia Telescope</secondary><see>ATNF</see></indexterm>
+      <indexterm role="cp"><primary>ATNF</primary></indexterm>
+      The <acronym>ATNF</acronym> is managed as a National Facility by the Commonwealth
+      Scientific and Industrial Research Organisation (<acronym>CSIRO</acronym>). Formerly part
+      of the <acronym>CSIRO</acronym> Division of Radiophysics, it became a separate division in
+      <indexterm role="cp"><primary>Radiophysics</primary><secondary>Division of</secondary><see>ATNF</see></indexterm>
+      January 1989.  The <acronym>ATNF</acronym> became a National Facility in April 1990.
+      In December 2009,
+      <acronym>ATNF</acronym> became part of a new Division, <acronym>CSIRO</acronym> Astronomy and Space Science (CASS),
+      together with NASA Operations
+      (including the Canberra Deep Space Communication Complex),
+      and <acronym>CSIRO</acronym> Space Sciences and Technology.
+      The Australia Telescope continues as a National Facility, providing world-class
+      observing facilities for astronomers at Australian and overseas
+      institutions.
+    </para>
+    <para>
+      The <acronym>ATNF</acronym> employs about 185 staff, including about 40 astronomers, with
+      the majority of staff located at its headquarters in Marsfield, a suburb
+      <indexterm role="cp"><primary>Marsfield</primary></indexterm>
+      <indexterm role="cp"><primary>Epping</primary><see>Marsfield</see></indexterm>
+      <indexterm role="cp"><primary>ATNF</primary><secondary>headquarters</secondary></indexterm>
+      of Sydney (although Marsfield is sometimes referred to as Epping, a
+      larger neighbouring suburb).  The site was shared with the AAO 
+      (the Australian Astronomical Observatory, or before 2010, 
+      the Anglo-Australian Observatory) until 2012, when the AAO relocated
+      to the nearby suburb of North Ryde.
+    </para>
+    <para>Besides the <acronym>ATCA</acronym>, the <acronym>ATNF</acronym> operates the 64-m radio telescope at
+      the Parkes Observatory
+      <indexterm role="cp"><primary>Parkes</primary></indexterm>
+      (300 km west of Sydney) and a 22-m antenna at Mopra,
+      <indexterm role="cp"><primary>Mopra</primary></indexterm>
+      120 km south of the <acronym>ATCA</acronym>.  In addition, the <acronym>ATNF</acronym> negotiates time with the
+      <acronym>CSIRO</acronym>-administered 70-m and 34-m antennas at the Tidbinbilla Deep Space
+      Tracking station outside Canberra.  The <acronym>ATNF</acronym> telescopes are used
+      together, in conjunction with the University of Tasmania telescopes at
+      Hobart and Ceduna, as part of the Long Baseline Array for Very Long
+      Baseline Interferometry (<acronym>VLBI</acronym>) observations.
+      <indexterm role="cp"><primary>Tidbinbilla</primary></indexterm>
+      <indexterm role="cp"><primary>Long Baseline Array</primary></indexterm>
+      <indexterm role="cp"><primary>VLBI</primary></indexterm>
+      The <acronym>ATNF</acronym> is
+      currently structured into four themes: Operations, Astrophysics,
+      Technologies, and <acronym>ASKAP</acronym>.
+      <indexterm role="cp"><primary>ASKAP</primary></indexterm>
+      <acronym>ASKAP</acronym> (the Australian SKA Pathfinder), is a telescope being
+      constructed by <acronym>ATNF</acronym> in
+      Western Australia, and will be an array of thirty-six wide-field 12m antennas
+      operating in the 0.7&#x2013;1.8 GHz range. Commissioning of the first antennas is currently underway.  More details are available at
+      <ulink url="http://www.atnf.csiro.au/projects/askap/">the <acronym>ASKAP</acronym> project website.</ulink>.
+    </para>
+    <para>
+      A biannual newsletter is produced by the
+      <acronym>ATNF</acronym> which includes recent news items, scientific articles and time
+      assignment information. All the newsletters are 
+      <ulink url="http://www.atnf.csiro.au/news/newsletter/">archived on the web</ulink>, as are the
+      <ulink url="http://www.atnf.csiro.au/the_atnf/annual_reports/"><firstterm>ATNF Annual Reports</firstterm></ulink>.
+      <indexterm role="cp"><primary>ATNF</primary><secondary>annual report</secondary></indexterm>
+    </para>
+  </section>
+
+  <section id="Overview-of-the-ATCA">
+    <info>
+      <title>Overview of the <acronym>ATCA</acronym></title>
+    </info>
+    <para>
+      <indexterm role="cp"><primary>ATCA</primary><secondary>overview</secondary></indexterm>
+      The <acronym>ATCA</acronym> is an array of six 22m diameter antennas located
+      237m above sea level at latitude
+      -30&#x00B0; 18&#x2032; 46.385&#x2033; south, longitude
+      149&#x00B0; 33&#x2032; 00.500&#x2033; east.
+      <indexterm role="cp"><primary>ATCA</primary><secondary>longitude &amp; latitude</secondary></indexterm>
+      The array has a 3km east-west track with a 214m northern
+      spur.  Five antennas can be moved along these tracks, with the sixth
+      antenna at a fixed position 3km to the west of the east-west track.  The
+      longest possible baseline is, therefore, 6km.
+      The array can be used for observations in five wavelength bands
+      between 27cm and (with five antennas only) 3mm,
+      between frequencies of approximately 1.1GHz and 105GHz.
+    </para>
+    
+    <section id="Array-configurations">
+      <info>
+	<title>Array configurations</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>array</primary><secondary>configurations</secondary></indexterm>
+	The location of six
+	antennas at six stations is called an
+	<firstterm>array configuration</firstterm>, or often, simply a <firstterm>configuration</firstterm>.
+	<indexterm role="cp"><primary>ATCA</primary><secondary>configurations</secondary></indexterm>
+	<indexterm role="cp"><primary>configurations</primary></indexterm>
+	The westernmost antenna, CA06, is fixed in position.
+	The other five antennas can be positioned at any of 44 fixed stations.
+	<indexterm role="cp"><primary>station</primary><secondary>posts</secondary></indexterm>
+	The station posts provide mains power to the antennas and network connections
+	that allow commands from the control building to be sent to the antenna, and monitor data
+	to be received from the antenna. The posts also have high-speed
+	optical links that allow data from the antenna
+	to be transferred to the control building. The smallest baseline
+	increment available is 15.306m, and the shortest physical baseline is
+	30.612m.
+	<indexterm role="cp"><primary>baselines</primary><see>ATCA</see></indexterm>
+	<indexterm role="cp"><primary>ATCA</primary><secondary>baselines</secondary></indexterm>
+	Five of the six <acronym>ATCA</acronym> antennas are shown in <xref linkend="atcatrack"></xref>.
+      </para>
+
+      <para>
+	A standard set of 17 configurations has been defined, and a subset of these
+	is offered for each semester. These configurations have been designed to give
+	optimum, minimum-redundancy coverage after a 12 hour observing period.
+	Four configuration sets for the principal arrays (750m, 1.5km and
+	6km) are offered over several semesters (see <xref linkend="ATCA-Array-Configurations"></xref>
+	for details of these sets).
+	Your choice of configuration depends on the
+	extent, brightness and complexity of your source (see below).
+      </para>
+
+      <para>
+	The Australia Telescope Compact Array is an earth-rotation aperture synthesis
+	radio interferometer. Earth-rotation aperture synthesis
+	was first used in the 1950s for radio observations of the sun.
+	The technique is comprehensively explained, with a historical perspective, in
+	<wordasword>Interferometry and Synthesis in Radio Astronomy</wordasword> by
+	Thompson, Moran &amp; Swenson (Wiley, 1st edition 1986, 2nd edition 2001).
+	Essentially, the array of antennas is comprised of a number of two-element
+	interferometers.
+	The visibility (i.e., the fraction of the signal common to both
+	antennas of a pair) is derived by multiplying the (suitably delayed)
+	signals together. By combining the correlated signals obtained over a long
+	period of time and with a large range of spacings between antennas, the
+	Compact Array measures the spatial coherence function:
+      </para>
+
+      <para>
+	<informalequation>
+	  <textobject role="tex">
+	    \mathrm{V} = \int \mathrm{I}_{\nu}(\mathbf{s}) e^{2\pi i \mathbf{s}\cdot(\mathbf{r_{1}} - \mathbf{r_{2})}} d\Omega
+	  </textobject>
+	</informalequation>
+	where <inlineequation><textobject role="tex">\mathrm{I}_{\nu}(\mathbf{s})</textobject></inlineequation>
+	is the two dimensional intensity
+	<indexterm role="cp"><primary>coherence function</primary><secondary>spatial</secondary></indexterm>
+	distribution on the sky,
+	<inlineequation><textobject role="tex">\mathbf{s}</textobject></inlineequation>
+	is the unit vector in the direction
+	of the celestial source,
+	<inlineequation><textobject role="tex">(\mathbf{r_{1}} - \mathbf{r_{2}})</textobject></inlineequation>
+	is the separation vector between antennas 1 and 2 and
+	<inlineequation><textobject role="tex">d\Omega</textobject></inlineequation>
+	indicates integration over the sphere (or, in practice, solid angle of the antenna beam).
+      </para>
+
+      <para>
+	The van Cittert&#x2013;Zernike theorem states that the Fourier
+	transformation of the spatial coherence function yields the source
+	brightness distribution, i.e., the Fourier Transform of the
+	visibilities produces an image of a radio source. The image is formed
+	with the same angular resolution 
+	as for observations with a single antenna with a diameter equal to the
+	largest spacing, however it will be less sensitive due to the interferometer's
+	smaller collecting area.
+      </para>
+
+      <para>
+	By plotting the tracks that the baseline vectors trace out (from the source's perspective)
+	as the Earth rotates, astronomers can gauge how good the telescope will be at
+	imaging the source and resolving components in the field of view.
+	This plot is referred to as the
+	(u,v)-coverage as, by convention, the two orthogonal axes of the
+	plot are u and v.
+	<indexterm role="cp"><primary>uv-coverage</primary></indexterm>
+	These variables have units of the observing wavelength.
+	The (u,v)-coverage shows where on the Fourier plane the image has been
+	sampled.
+      </para>
+
+      <para>
+	To obtain the fullest (u,v) coverage with the <acronym>ATCA</acronym> would require
+	observations with multiple different configurations, and for twelve hours with
+	each configuration. However, almost any program can be successfully carried out
+	with less than complete (u,v) coverage, and the individual configurations
+	are chosen so as to optimise single configuration imaging
+	characteristics. Sophisticated off-line image processing techniques
+	minimise the effect of missing (u,v) coverage and allow reasonable
+	images to be made with one configuration. For most programs, one to
+	four configurations provide the best compromise between dynamic range,
+	(u,v) coverage and time.
+      </para>
+
+      <para>
+	The smallest synthesized beamwidths in Right Ascension for each observing
+	wavelength are shown in <xref linkend="table_sensitivity"></xref>, but bear
+	in mind that, for east-west arrays, the beamwidth in Declination is greater by
+	a factor cosec(Dec). At high angular resolution, the telescope is only
+	useful for observing southern objects.  North of Declination
+	-24&#x00B0;, full (u,v)-coverage is unobtainable;
+	near Declination zero the beam is highly elongated north-south; and
+	north of Declination +48&#x00B0; sources are below the
+	telescope's +12&#x00B0; elevation limit and are inaccessible.
+	For lower angular resolution,
+	the north-south and hybrid arrays improve the (u,v)-coverage
+	for equatorial sources, but only up to a maximum north-south baseline
+	of 214m.
+      </para>
+      <figure id="atcatrack">
+        <title>Five of the six <acronym>ATCA</acronym> antennas in the H75 array.</title>
+        <mediaobject>
+	  <imageobject>
+	    <imagedata fileref="figures/hybridarray.jpg" format="JPG" scalefit="1">
+	    </imagedata>
+	  </imageobject>
+	</mediaobject>
+      </figure>
+      <para>
+	The rest of this chapter outlines the structure and operation of the
+	<acronym>ATCA</acronym>. The path of the radio signal is traced through the system from
+	the dish to the final data recording. This section is designed to
+	help you understand how the Compact Array operates and provide all the
+	information required to design an appropriate experiment. Detailed
+	technical information about the <acronym>ATCA</acronym> can be found in the <wordasword>Journal of
+	  Electrical and Electronics Engineering, Australia</wordasword>, Special Issue, Vol.
+	12, No. 2, June 1992, a copy of which is available in the control room
+	at the Narrabri Observatory.
+      </para>
+    </section>
+
+    <section id="Design-and-Operation-of-the-ATCA">
+      <info>
+	<title>Design and Operation of the <acronym>ATCA</acronym></title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>signal</primary><secondary>path</secondary></indexterm>
+	<indexterm role="cp"><primary>antenna</primary><secondary>optics</secondary></indexterm>
+	The antennas have a Cassegrain design, i.e., the receivers are located
+	in a turret that protrudes through the main reflector
+	surface &#x2014; see <xref linkend="atcatrack"></xref>.  The antennas have an altitude-azimuth
+	mount with wrap limits as shown in the figure.  The shaped (i.e.,
+	non-parabolic) dish and subreflector surfaces are designed to maximise
+	<indexterm role="cp"><primary>antenna</primary><secondary>surface</secondary></indexterm>
+	the gain to antenna noise ratio.  The reflecting surface of antennas
+	1&#x2013;5 are solid panels that allow observations up to 116 GHz. This is
+	also true of the inner 15.3m of antenna 6. The outer reflecting
+	surface of antenna 6 is made of perforated panels which 
+permit observations at frequencies up to 50 GHz.
+      </para>
+      <para>
+	<indexterm role="cp"><primary>subreflector</primary></indexterm>
+	The subreflector mounted near the prime focus has a specially designed
+	shape, differing slightly from the hyperbolic secondary of standard
+	Cassegrain optics.  The feedhorns are mounted on
+	the optic axis &#x2014; this allows polarisation measurements to
+	be made, with very low (
+	<inlineequation><textobject role="tex">\sim 1\%</textobject></inlineequation>)
+	instrumental polarisation. Subreflector focus is presently chosen to best suit 3mm
+	observations and is adjusted for some antennas for the 7mm and 4cm bands.
+	This means that the subreflectors positions may be slightly less than
+	ideal for longer wavelengths. If you need better focus settings,
+	discuss your requirements with local staff.
+	<indexterm role="cp"><primary>antenna</primary><secondary>focus</secondary></indexterm>
+	A major feature of the <acronym>ATCA</acronym> is its wide bandwidth operation. The
+	feedhorns and front-end electronics operate over a very large range of
+	frequencies, thus allowing (u,v) coverage to be increased by
+	multi-frequency synthesis and dual frequency observations. The
+	feedhorns are compact, with a corrugated interior
+	<indexterm role="cp"><primary>feedhorns</primary></indexterm>
+	surface and are designed for maximum frequency coverage, low noise,
+	low spillover, low reflection and low cross-polarisation sidelobe
+	levels. The feedhorns allow two simultaneous orthogonal linear
+	<indexterm role="cp"><primary>polarisation</primary><secondary>orthogonal</secondary></indexterm>
+	polarisations to be measured (at frequencies almost an octave apart),
+	and have a main lobe with near-constant, symmetrical beamwidth
+	(James, G.L., 1984, <wordasword>IEEE Trans. Antennas Propagat.</wordasword>
+	<emphasis role="bold">AP&#x2013;22</emphasis>,
+	pp 1134&#x2013;1138;
+	Thomas, B.M., James, G.L., Greene, K.J., 1986, <wordasword>IEEE Trans.
+	  Antennas Propagat.</wordasword> <emphasis role="bold">AP-34</emphasis>, pp 750&#x2013;757).
+      </para>
+      <para>
+	The frequencies at which the Australia Telescope operates are listed in
+	<xref linkend="table_sensitivity"></xref> see also section
+	<xref linkend="Available-Frequency-Range"></xref>.
+      </para>
+      <para>
+	Each range of frequencies is referred to as a
+	<indexterm role="cp"><primary>band</primary></indexterm>
+	<indexterm role="cp"><primary>band</primary><secondary>letter codes</secondary></indexterm>
+	<indexterm role="cp"><primary>observations</primary><secondary>millimetre</secondary></indexterm>
+	<indexterm role="cp"><primary>observations</primary><secondary>centimetre</secondary></indexterm>
+	<firstterm>band</firstterm>.  Bands are referred to by the wavelength of the approximate centre
+	of the band or (especially at higher frequencies) by the frequency (and
+	sometimes by the letter-codes shown over the columns of <xref linkend="table_sensitivity"></xref>.
+	There are presently five feedhorns mounted on each antenna (four on
+	antenna 6): a large (2m high) feed-horn that operates in the
+	16cm band, and a somewhat smaller (50cm high) 4cm band
+	feedhorn and three (several cm high) feedhorns mounted on the same dewar
+	for the 15mm, 7mm and 3mm wavelengths.
+	<indexterm role="cp"><primary>feedhorns</primary></indexterm>
+	The feedhorns and the receivers are mounted on a rotating turret. The
+	rotating turret design ensures that all feedhorns, when brought on-axis,
+	<indexterm role="cp"><primary>turret</primary></indexterm>
+	are aligned with the
+	optic axis of the antenna, allowing a wide field of view and
+	dual-polarisation observations. The turrets are rotated automatically
+	in accordance with the frequencies selected by the observing file.
+	Rotating the turret orients the desired feed-horn and also ensures
+	that the subsequent electronics suit the frequency at which you are
+	observing.
+	Changing the observing band to or
+	from 7mm requires first rotating the turret to the 15mm position, and
+	then translating the whole mm dewar to bring the 7mm feed on axis. The
+	latter stage takes 2~3 minutes, and so changes to or from 7mm are
+	much slower than any other band change.
+      </para>
+      <para>
+	<indexterm role="cp"><primary>receiver</primary></indexterm>
+	Both the 16cm and 4cm band feedhorns are fitted with wide-bandwidth
+	receivers that covers the horn's entire usable frequency range. All receivers run
+	continuously and use cooled HEMT (high electron mobility transistor) and FET (field effect transistor)
+	amplifiers that provide wide bandwidths and total system temperatures
+	between 20K to 65K, depending on frequency.
+      </para>
+      <para>
+	The signals collected by the feedhorns are fed to the receiver systems
+	for amplification and conversion to standard intermediate
+	frequencies. During observations each antenna provides four
+	independent intermediate frequency (IF) outputs (two frequency bands,
+	two polarisations). These channels allow simultaneous observations of
+	<indexterm role="cp"><primary>frequency</primary><secondary>intermediate</secondary></indexterm>
+	<indexterm role="cp"><primary>polarisation</primary></indexterm>
+	both polarisations at the two available frequencies in either
+	dual-receiver system. The frequencies can be anywhere in the range
+	covered by the selected feed-horn except at 15, 7 and 3mm where the two
+	frequencies must be less than 6 GHz apart, and not straddle the
+	7mm sideband inversion (see <xref linkend="strategy-frequency-switching"></xref>).
+      </para>
+      <para>
+	<indexterm role="cp"><primary>local oscillator</primary></indexterm>
+	In order to convert the received radio signals to lower frequencies,
+	the radio signals are mixed with a &#x201C;local oscillator&quot; signal. Four local oscillator signals provide
+	four IF outputs to enable the dual-frequency, dual-polarisation
+	operation. You can also switch frequencies at the end of each
+	<indexterm role="cp"><primary>frequency</primary><secondary>switching</secondary></indexterm>
+	integration cycle (typically ten seconds). To change to a pair of
+	frequencies covered by a different feed-horn requires a rotation of
+	the turret and takes about twenty seconds. However, to avoid excessive
+	wear of the turrets, a limit of four rotations per hour is imposed. Thus
+	time sharing between a number of frequencies is limited only by signal
+	to noise ratio, wear and tear on the equipment, your imagination, and
+	the off-line software.
+      </para>
+    </section>
+
+    <section id="Signal-Path">
+      <info>
+	<title>Signal Path</title>
+      </info>
+      <para>
+	The following sections describe the path of the signal from the initial
+	reflection off the antenna surface, through to the data recorded onto
+	export media, in more detail than the introduction above.
+	Some radio-astronomy jargon is also explained, as is some important
+	mathematics. The details of this section are not required by observers, but are
+	included for completeness. A knowledge of the system
+	is however essential if you want to design an experiment that uses the
+	array in a new or unconventional way. Familiarity with the names and
+	functions of some critical components can also be helpful if you need
+	to diagnose faults. Many system components are housed in modules, and
+	repairs can be made quickly by local staff replacing a module once a correct
+	diagnosis has been made.
+	<figure id="cabbpaths">
+	  <title>Overview of signal paths into <acronym>CABB</acronym> (courtesy Brett Hiscock).</title>
+          <mediaobject>
+	    <imageobject>
+	      <imagedata fileref="figures/CABB2.jpg" format="JPG"></imagedata>
+	    </imageobject>
+	  </mediaobject>
+	</figure>
+      </para>
+    </section>
+
+    <section id="Sensitivity-and-System-Temperature">
+      <info>
+	<title>Sensitivity and System Temperature</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>system temperature</primary></indexterm>
+	Radio waves (approximately within a range of 300 MHz to 120 GHz) are
+	accurately reflected from the primary surface of the main parabolic
+	dish and are re-reflected off a secondary reflector into a feed-horn.
+	At the base of the feed-horn is a directional, coupling waveguide. In
+	this coupler (the <firstterm>noise coupler</firstterm>) is a
+	<indexterm role="cp"><primary>noise</primary><secondary>coupler</secondary></indexterm>
+	diode that injects a noise signal of known amplitude. This noise
+	signal is used to calibrate the system temperature (<xref linkend="system_temperature"></xref>)
+	and gain of the receiving system.
+      </para>
+
+      <para>
+	For radiation emitted by a randomly polarised source, the
+	power received by a radio telescope is given by:
+	<informalequation>
+	  <textobject role="tex">
+	    \mathrm{P}_{\mathrm{received}} = \frac{1}{2}\mathrm{A}\mathrm{S} \Delta\nu,
+	  </textobject>
+	</informalequation>
+	where A is the effective area of the antenna, S is the spectral power flux
+	density and
+	<inlineequation><textobject role="tex">\Delta\nu</textobject></inlineequation>
+	is the range of frequencies observed
+	(the effective bandwidth). The factor of
+	<indexterm role="cp"><primary>bandwidth</primary></indexterm>
+	<inlineequation><textobject role="tex">\frac{1}{2}</textobject></inlineequation>
+	occurs because a detector can only respond to one
+	polarisation component of the randomly polarised wave. The
+	<indexterm role="cp"><primary>polarisation</primary></indexterm>
+	<acronym>ATCA</acronym> overcomes this limitation by providing separate detectors and electronics for two
+	orthogonal polarisations, thus allowing all the power in the wave to
+	be detected.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>band</primary></indexterm>
+	<indexterm role="cp"><primary>ATCA</primary><secondary>baselines</secondary></indexterm>
+	<indexterm role="cp"><primary>ATCA</primary><secondary>configurations</secondary></indexterm>
+	<indexterm role="cp"><primary>ATCA</primary><secondary>field of view</secondary></indexterm>
+	<indexterm role="cp"><primary>ATCA</primary><secondary>frequencies</secondary></indexterm>
+	<table frame="all" id="table_sensitivity" shortentry="1">
+	  <title>Observing Parameters for the 6km Compact Array.</title>
+	  <titleabbrev><acronym>ATCA</acronym> Observing Parameters</titleabbrev>
+	  <!-- <?dbfo keep-together="always" ?> -->
+	  <tgroup cols="6" align="center" colsep="1" rowsep="1">
+	    <colspec colname="band"/>
+	    <colspec colname="ls" colwidth="0.6*"/>
+	    <colspec colname="cx" colwidth="0.6*"/>
+	    <colspec colname="k" colwidth="0.6*"/>
+	    <colspec colname="q" colwidth="0.6*"/>
+	    <colspec colname="w" colwidth="0.6*"/>
+	    <thead>
+	      <row>
+		<entry>Band Name</entry>
+		<entry>16cm</entry>
+		<entry>4cm</entry>
+		<entry>15mm</entry>
+		<entry>7mm</entry>
+		<entry>3mm</entry>
+	      </row>
+	      <row>
+		<entry>Band Code</entry>
+		<entry>L / S</entry>
+		<entry>C / X</entry>
+		<entry>K</entry>
+		<entry>Q</entry>
+		<entry>W</entry>
+	      </row>
+	    </thead>
+	    <tbody>
+	      <row>
+		<entry>Frequency Range (GHz)</entry>
+		<entry>1.1 - 3.1</entry>
+		<entry>3.9 - 11.0</entry>
+		<entry>16 - 25</entry>
+		<entry>30 - 50</entry>
+		<entry>83 - 105</entry>
+	      </row>
+	      <row>
+		<entry>Fractional frequency range</entry>
+		<entry>95%</entry>
+		<entry>95%</entry>
+		<entry>44%</entry>
+		<entry>50%</entry>
+		<entry>24%</entry>
+	      </row>
+	      <row>
+		<entry>Number of antennas</entry>
+		<entry>6</entry>
+		<entry>6</entry>
+		<entry>6</entry>
+		<entry>6</entry>
+		<entry>5</entry>
+	      </row>
+	      <row>
+		<entry>Number of baselines</entry>
+		<entry>15</entry>
+		<entry>15</entry>
+		<entry>15</entry>
+		<entry>15</entry>
+		<entry>10</entry>
+	      </row>
+	      <row>
+		<entry>
+		  Primary beam
+		  <footnote>
+		    <para>
+		      Field of view (full width at half power).
+		    </para>
+		  </footnote>
+		</entry>
+		<entry>42&#x2032; - 15&#x2032;</entry>
+		<entry>12&#x2032; - 4&#x2032;</entry>
+		<entry>2&#x2032;</entry>
+		<entry>70&#x2033;</entry>
+		<entry>30&#x2033;</entry>
+	      </row>
+	      <row>
+		<entry>
+		  System temperature (K)
+		  <footnote>
+		    <para>
+		      The system temperature at high elevation under
+		      reasonable weather conditions. These values,
+		      particularly at high frequency, are weather-dependent.
+		    </para>
+		  </footnote>
+		</entry>
+		<entry>45</entry>
+		<entry>36</entry>
+		<entry>60</entry>
+		<entry>112</entry>
+		<entry>724</entry>
+	      </row>
+	      <row>
+		<entry>
+		  System sensitivity (Jy)
+		  <footnote>
+		    <para>
+		      The signal which doubles the system temperature.
+		    </para>
+		  </footnote>
+		</entry>
+		<entry>55</entry>
+		<entry>43</entry>
+		<entry>72</entry>
+		<entry>136</entry>
+		<entry>1051</entry>
+	      </row>
+	      <row>
+		<entry>
+		  Strongest confusing source (mJy)
+		  <footnote>
+		    <para>
+		      Within FWHM primary beam &#x2014; see A.H. Bridle, in
+		      Perley R.A., Schwab F.A. &amp; Bridle A.H. (1989)
+		      &#x201C;Synthesis Imaging in Radio Astronomy&#x201D; Astron. Soc.
+		      Pacific Conf. Set., 6, p.471.
+		    </para>
+		  </footnote>
+		</entry>
+		<entry>140 - 24</entry>
+		<entry>2.3 - 0.4</entry>
+		<entry>&#x2014;</entry>
+		<entry>&#x2014;</entry>
+		<entry>&#x2014;</entry>
+	      </row>
+	      <row>
+		<entry>Array assumed below</entry>
+		<entry>6 km</entry>
+		<entry>6 km</entry>
+		<entry>6 km</entry>
+		<entry>6 km</entry>
+		<entry>H214</entry>
+	      </row>
+	      <row>
+		<entry>
+		  Synthesized beam
+		  <footnote>
+		    <para>
+		      HPBW in R.A. for the 6 km array for all bands except 3mm,
+		      for which the H214 array is assumed. No taper applied. In
+		      Declination, for the 6 km array (and other pure east-west
+		      arrays), the HPBW is larger by cosec(Dec). Longer arrays
+		      (up to 3 km) are possible at 3mm but only with self-calibration
+		      and under favourable weather conditions.
+		    </para>
+		  </footnote>
+		</entry>
+		<entry>9&#x2033; - 3&#x2033;</entry>
+		<entry>3&#x2033; - 1&#x2033;</entry>
+		<entry>0.5&#x2033;</entry>
+		<entry>0.2&#x2033;</entry>
+		<entry>2&#x2033;</entry>
+	      </row>
+	      <row>
+		<entry>Bandwidth assumed below (GHz)</entry>
+		<entry>2</entry>
+		<entry>2</entry>
+		<entry>2</entry>
+		<entry>2</entry>
+		<entry>2</entry>
+	      </row>
+	      <row>
+		<entry>Centre frequency assumed below (GHz)</entry>
+		<entry>2.1</entry>
+		<entry>7.0</entry>
+		<entry>17.0</entry>
+		<entry>40.0</entry>
+		<entry>95.0</entry>
+	      </row>
+	      <row>
+		<entry>
+		  Flux sensitivity (mJy/beam) (10 min)
+		  <footnote>
+		    <para>
+		      Theoretical rms noise; one frequency; dual orthogonal polarisation;
+		      natural weighting. The effect of confusing sources can substantially
+		      degrade this number. This is the 1&#x03C3; Gaussian-noise level.
+		    </para>
+		  </footnote>
+		</entry>
+		<entry>0.04</entry>
+		<entry>0.03</entry>
+		<entry>0.05</entry>
+		<entry>0.09</entry>
+		<entry>0.70</entry>
+	      </row>
+	      <row>
+		<entry>
+		  Brightness sensitivity (K) (10 min)
+		  <footnote>
+		    <para>
+		      For the array listed in the same column: see following table for
+		      shorter arrays. This is the 1&#x03C3; Gaussian-noise level.
+		    </para>
+		  </footnote>
+		</entry>
+		<entry>0.1</entry>
+		<entry>0.1</entry>
+		<entry>0.16</entry>
+		<entry>0.29</entry>
+		<entry>0.02</entry>
+	      </row>
+	      <row>
+		<entry>Flux sensitivity (&#x03BC;Jy/beam) (12 hr)</entry>
+		<entry>4</entry>
+		<entry>3</entry>
+		<entry>5</entry>
+		<entry>33</entry>
+		<entry>83</entry>
+	      </row>
+	      <row>
+		<entry>Brightness sensitivity (K) (12 hr)</entry>
+		<entry>0.02</entry>
+		<entry>0.01</entry>
+		<entry>0.02</entry>
+		<entry>0.01</entry>
+		<entry>0.002</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</table>
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>sensitivity</primary></indexterm>
+	The <firstterm>sensitivity</firstterm> of a radio telescope is the minimum signal power that
+	can be distinguished from the random fluctuations at the output of the
+	receiving system which are caused by noise inherent in the system. The
+	sensitivity is usually defined as the spectral power flux density
+	of a source that would produce the same
+	signal power as the noise power. It is
+	measured in <firstterm>Jansky</firstterm> (<abbrev>Jy</abbrev>), with 
+	<inlineequation><textobject role="tex">1 \mathrm{Jy} = 10^{-26} \mathrm{\,W\,m}^{-2} \mathrm{\,Hz}^{-1}.
+	</textobject></inlineequation>
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>noise</primary></indexterm>
+	<indexterm role="cp"><primary>power</primary><secondary>definition</secondary></indexterm>
+	The <firstterm>noise power</firstterm> consists of two main components: the noise power due
+	to the receiving amplifier and other electrical system components, and
+	the noise due to ground radiation, thermal emission from the
+	atmosphere (which varies with elevation, cloud cover, etc.), background
+	radio emission from our Galaxy and other sources detected by the
+	antenna. These noise powers are usually referred to as <firstterm>equivalent
+	temperatures</firstterm>, although at no
+	<indexterm role="cp"><primary>temperature</primary><secondary>equivalent</secondary></indexterm>
+	<indexterm role="cp"><primary>temperature</primary><secondary>system</secondary></indexterm>
+	<indexterm role="cp"><primary>system temperature</primary></indexterm>
+	point is a physical temperature measured. The &#x201C;temperature&#x201D; due to
+	the noise power is called the <firstterm>system temperature</firstterm>,
+	<inlineequation><textobject role="tex">\mathrm{T}_{\mathrm{sys}}</textobject></inlineequation>,
+	and is related to the noise power by:
+	<equation id="system_temperature">
+	  <title>System Temperature</title>
+	  <textobject role="tex">
+	    \mathrm{T}_{\mathrm{sys}} = \frac{\mathrm{P}_{\mathrm{noise}}}{k\Delta\nu},
+	  </textobject>
+	</equation>
+	where 
+	<inlineequation><textobject role="tex">\mathrm{P}_{\mathrm{noise}}</textobject></inlineequation>
+	is the noise power and
+	<inlineequation><textobject role="tex">k</textobject></inlineequation>
+	is Boltzmann's constant.  As both the source and noise signals are random
+	in nature, measurements of the power levels made at time intervals
+	separated by 
+	<inlineequation><textobject role="tex">(2 \Delta\nu)^{-1}</textobject></inlineequation>
+	can be considered independent
+	(e.g., Thompson, Moran &amp; Swenson 1986, 2001).  If the signal level is
+	averaged for
+	<inlineequation><textobject role="tex">t</textobject></inlineequation>
+	seconds then 
+	<inlineequation><textobject role="tex">2 \Delta\nu t</textobject></inlineequation>
+	samples have been measured.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>signal</primary><secondary>to noise ratio</secondary></indexterm>
+	The signal to noise ratio is the ratio of the power in the output that
+	is due to the radio source being observed to that caused by the noise,
+	and is given by:
+        <informalequation>
+	  <textobject role="tex">
+	    \frac{\mathrm{S}}{\mathrm{N}} = \frac{\mathrm{T}_{\mathrm{ant}}}{\mathrm{T}_{\mathrm{sys}}} \times \sqrt{\mathrm{number\; of\; independent\; samples}}.
+	  </textobject>
+	</informalequation>
+        In this expression,
+	<inlineequation><textobject role="tex">\mathrm{T}_{\mathrm{ant}}</textobject></inlineequation>
+	is the <firstterm>antenna temperature</firstterm>, the
+	<indexterm role="cp"><primary>antenna</primary><secondary>temperature</secondary></indexterm>
+	<indexterm role="cp"><primary>temperature</primary><secondary>antenna</secondary></indexterm>
+	equivalent temperature of the radio source being observed. Note that
+	&#x201C;antenna temperature&quot; is sometimes also taken to mean the
+	contribution to the noise power from radio noise detected by the
+	antenna, as described above. For typical values for bandwidth (2 GHz)
+	and integration time (12 hours), it is possible to detect a
+	signal for which the power level is less than
+	<inlineequation><textobject role="tex">10^{-6}</textobject></inlineequation>
+	times the noise level.
+      </para>
+      <!-- %CHANGE THIS -->
+      <!-- %\latex{Table \ref{ch3_t_btsens}}\html{A table} (on page 24) lists \htmlref{sensitivity -->
+      <!-- %values}{ch3_t_btsens} -->
+      <!-- %for the ATCA at various wavelengths. -->
+      <!-- %Christiansen and H@"ogbom (1985) has a chapter on sensitivity. -->
+    </section>
+      
+    <section id="Online-Calibration">
+      <info>
+	<title>Online Calibration</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>ATCA</primary><secondary>calibration</secondary></indexterm>
+	<indexterm role="cp"><primary>calibration</primary></indexterm>
+	<indexterm role="cp"><primary>software</primary><secondary>online</secondary></indexterm>
+	The noise source in the noise coupler injects a signal that is about 5%
+	of the level of the system temperature at a rate of 30 Hz. This noise
+	signal is synchronously demodulated and the following relationship
+	<indexterm role="cp"><primary>noise</primary><secondary>diode</secondary></indexterm>
+	<indexterm role="cp"><primary>synchronous demodulator</primary></indexterm>
+	holds:
+	<informalequation>
+	  <textobject role="tex">
+	    \mathrm{T}_{\mathrm{sys}} = \mathrm{T}_{\mathrm{cal}} \times \frac{\mathrm{P}_{\mathrm{on}}}{\mathrm{P}_{\mathrm{on}} - \mathrm{P}_{\mathrm{off}}}.
+	  </textobject>
+	</informalequation>
+	Here,
+	<inlineequation><textobject role="tex">\mathrm{T}_{\mathrm{cal}}</textobject></inlineequation>
+	is the equivalent temperature of the noise
+	source,
+	<inlineequation><textobject role="tex">\mathrm{P}_{\mathrm{on}}</textobject></inlineequation>
+	is the power received while the noise diode is
+	on, and
+	<inlineequation><textobject role="tex">\mathrm{P}_{\mathrm{off}}</textobject></inlineequation>
+	is the power received while the noise diode is
+	off.  
+	<inlineequation><textobject role="tex">\mathrm{T}_{\mathrm{sys}}</textobject></inlineequation>
+	is measured accurately once by placing a thermal
+	radiator of known temperature (a microwave absorber at 300K, giving
+	300K
+	<inlineequation><textobject role="tex">+ \mathrm{T}_{\mathrm{sys}}</textobject></inlineequation>)
+	directly above the feeds. The power received
+	with this load in place is then compared with the power output with
+	the antenna just looking at the sky (
+	<inlineequation><textobject role="tex">\sim \mathrm{T}_{\mathrm{sys}} + 3\mathrm{\,K}</textobject></inlineequation>).
+	This measurement is used to establish the level of
+	<inlineequation><textobject role="tex">\mathrm{T}_{\mathrm{cal}}</textobject></inlineequation>,
+	which is assumed not to vary with time. The measurement of system and antenna
+	temperature is described in a 
+	<ulink url="http://www.atnf.csiro.au/observers/memos/d95b94%7E1.pdf">technical memo by 
+	Sinclair and Gough (1991)</ulink>.
+
+      </para>
+      <para>
+	The noise coupler is mounted on another coupler
+	<indexterm role="cp"><primary>feedhorns</primary></indexterm>
+	<indexterm role="cp"><primary>noise</primary><secondary>coupler</secondary></indexterm>
+	that provides a vacuum seal between the noise coupler and the subsequent
+	receiver system, which is housed in an evacuated, cryogenic
+	cylinder. An air gap
+	<indexterm role="cp"><primary>receiver</primary></indexterm>
+	<indexterm role="cp"><primary>cryogenics</primary><secondary>cylinder</secondary></indexterm>
+	thermally isolates the cylinder, the contents of which are cooled by a
+	helium pump to 20K. The second coupler is mounted on the polariser.
+	<indexterm role="cp"><primary>polarisation</primary><secondary>polariser</secondary></indexterm>
+	<indexterm role="cp"><primary>polarisation</primary></indexterm>
+	The dual function of the polariser is to select the two linear
+	polarisations and the desired band, so it is also known as a
+	<firstterm>band splitter</firstterm>. The
+	<indexterm role="cp"><primary>band</primary><secondary>splitter</secondary></indexterm>
+	polariser consists of four strips of metal inside a conical waveguide
+	<indexterm role="cp"><primary>waveguide</primary><secondary>conical</secondary></indexterm>
+	that &#x201C;guide&#x201D; two orthogonal linear polarisations into probes at the
+	narrow end of the polariser. The way in which the metal strips select
+	the linear polarisations can be thought of as analogous to the effect
+	of a ridged waveguide, which constrains a particular mode to propagate
+	along the region between the ridge and the roof of the waveguide. The
+	probes are simply short (with respect to the wavelength) lengths of
+	the cores of the coaxial cables that take the signal into the first
+	amplifiers. Thus the polariser converts a wave into a voltage: the
+	impedance of the circuit is effectively the same as a waveguide
+	impedance, so it works like a well-matched load. The polariser's
+	official title is quad-ridged
+	<firstterm>orthomode transducer</firstterm>, or <acronym>OMT</acronym>.
+	<indexterm role="cp"><primary>orthomode transducer</primary><secondary>quad-ridged</secondary></indexterm>
+	<indexterm role="cp"><primary>orthomode transducer</primary></indexterm>
+	Separate electronics exist for both orthogonal linear polarisations,
+	which are measured simultaneously. The position angle of the polariser
+	is fixed with respect to the antenna. As the antennas have
+	altitude-azimuth mounts, the position angle of the linear probes
+	rotate on the sky during the course of an observation (imagine a
+	circumpolar line on the sky orbiting around a stationary antenna).
+	Measurement of both polarisations is therefore required for polarised
+	sources. The two linear polarisations can be combined to give an
+	accurate total
+	<indexterm role="cp"><primary>polarisation</primary></indexterm>
+	<indexterm role="cp"><primary>Stokes parameters</primary><secondary>observed</secondary></indexterm>
+	intensity: the Stokes I parameter. Without
+	<indexterm role="cp"><primary>Stokes parameters</primary></indexterm>
+	additional calibration, the other Stokes parameters
+	(the linear polarisation measures Q, and U, and the
+	circularly polarised component V) can
+	be in error by about 2% of the value of I. Measurements of the
+	phase difference of the two linear polarisations (referred to as the X and
+	<indexterm role="cp"><primary>polarisation</primary><secondary>X and Y</secondary></indexterm>
+	<indexterm role="cp"><primary>polarisation</primary><secondary>A and B</secondary></indexterm>
+	Y (or A and B) polarisations) at the receiver by on-line hardware may
+	need further off-line calibration.
+      </para>
+      
+      <para>
+	For an unpolarised source, observing both orthogonal polarisations
+	offers a
+	<inlineequation><textobject role="tex">\sqrt{2}</textobject></inlineequation>
+	improvement in signal to noise ratio for an I
+	image over an image generated from only one polarisation.
+      </para>
+
+      <!-- For the 6/3cm band, the two polarised outputs from the polariser go -->
+      <!-- into @dfn{diplexers} which filter off the 6cm band and 3cm band -->
+      <!-- signals. This stage is not necessary for any of the other bands. -->
+      <!-- Separate IF chains exist for each of the subsequent four -->
+      <!-- signals. -->
+      <!-- Coaxial cable takes t -->
+      <!-- The signal is taken from the feedhorn/diplexer into -->
+      <para>
+	The signal is taken from the feedhorn into
+	<!-- @cindex diplexer -->
+	<indexterm role="cp"><primary>amplifier</primary><secondary>low noise</secondary></indexterm>
+	a low noise, broadband amplifier.
+      </para>
+      
+      <para>
+	The receivers each use two low-noise
+	<indexterm role="cp"><primary>LNA</primary><see>amplifier</see></indexterm>
+	amplifiers (<acronym>LNA</acronym>s) to amplify the signal by 30&#x2013;40 dB.
+	All six antennas are fitted with wideband, continuously running,
+	receivers.  Cooled
+	indium-phosphide 
+	high electron mobility transistors
+	(<acronym>InP HEMT</acronym>s) 
+	<indexterm role="cp"><primary>transistor</primary><secondary>high electron mobility</secondary></indexterm>
+	<indexterm role="cp"><primary>amplifier</primary><secondary>HEMT</secondary></indexterm>
+	<indexterm role="cp"><primary>transistor</primary><secondary>indium phosphide</secondary></indexterm>
+	are used at 16cm and 4cm, 
+	and indium-phosphide monolithic microwave integrated circuit (<acronym>InP MMIC</acronym>) devices
+	<indexterm role="cp"><primary>amplifier</primary><secondary>MMIC</secondary></indexterm>
+	are used at 15mm, 7mm and 3mm.  Only the &#x201C;inner&quot;
+	five antennas (i.e., excluding CA06) have 3mm receivers.
+	The accessible
+	frequency range is given in <xref linkend="table_sensitivity"></xref>, and
+	the average system temperatures are given in <xref linkend="table_brightness_temperature"></xref>
+	and in <xref linkend="Available-Frequency-Range"></xref>.  Note that
+	frequencies outside these nominal limits may be accessible.
+      </para>
+
+      <para>
+	The next step is the conversion to the frequency range that is used by
+	<!-- the CABB digitisers. The 3cm -->the <acronym>CABB</acronym> digitisers. The 4cm
+	<indexterm role="cp"><primary>CABB</primary><secondary>digitisers</secondary></indexterm>
+	<indexterm role="cp"><primary>frequency</primary><secondary>conversion</secondary></indexterm>
+	<!-- and 6cm -->signals require no conversion, whereas the mm signals require
+	a down-conversion stage, and the 16cm signals require
+	up-conversion to the 4 to 12 GHz band.
+      </para>
+      
+      <para>
+	<indexterm role="cp"><primary>local oscillator</primary></indexterm>
+	The local oscillator signals have a relatively narrow tuning range,
+	lying in the regions between the radio frequency bands (this reduces
+	the likelihood of self-generated interference).  The conversion system
+	is flexible, allowing the input signals to be within the same band
+	(e.g., both in the 4cm centred band), or one from each of the two
+	bands simultaneously received by the wide-band feed-horn.
+      </para>
+    </section>
+
+    <section id="CABB-Correlator">
+      <info>
+	<title><acronym>CABB</acronym> Correlator</title>
+      </info>
+      <para>
+	The final output from the conversion system is sent to the <firstterm>samplers</firstterm>
+	for digitisation. The <acronym>CABB</acronym> (Compact Array Broadband Backend) samplers were developed in-house and are capable
+	of 4 gigasamples per second (GS/s), with 10 bit sampling (more information is
+	available in the
+	<ulink url="http://www.atnf.csiro.au/news/newsletter/feb07/CABB_upgrade.htm">
+	  February 2007 <acronym>ATNF</acronym> newsletter</ulink>
+	  and in 
+	<ulink url="http://adsabs.harvard.edu/abs/2011MNRAS.416..832W">Wilson et al. (2011, MNRAS, 416, 832)</ulink>).
+      </para>
+      
+      <para>
+	The samplers, which are also referred to as the
+	<acronym>CABB</acronym> digitisers, do two things. First
+	<indexterm role="cp"><primary>CABB</primary><secondary>digitisers</secondary></indexterm>
+	the analog (continuously variable in time and amplitude) signal is
+	sampled into a discrete-time sequence of values. This process does not
+	degrade the signal as it is sampled at the <firstterm>Nyquist rate</firstterm>
+	<indexterm role="cp"><primary>Nyquist rate</primary></indexterm>
+	(twice the inverse frequency of the bandwidth of the analog signal).
+	Subsequently, each of the discrete-time, continuously variable values
+	are converted to one of a finite set of values: this is called
+	<firstterm>quantising</firstterm>.
+	<!-- Traditionally, in order to keep the data rate at a manageable level, -->
+	<!-- the quantisation is fairly coarse: in the case of one-bit sampling -->
+	<!-- only the sign of the signal is retained. Two-bit sampling detects -->
+	<!-- which of four states the signal is in when sampled, and so on. -->
+	<!-- Quantisation naturally results in degradation of signal to noise ratio -->
+	<!-- (or, put another way, quantisation noise is added to the signal). -->
+	<!-- However the -->
+	<!-- sensitivity lost when quantised signals are correlated is -->
+	<!-- remarkably little: one-bit sampling recovers 64% of the information -->
+	<!-- @cindex samplers, 1-bit -->
+	<!-- @cindex samplers, 2-bit -->
+	<!-- contained in the signal (Van Vleck and Middleton 1966, but see, e.g., -->
+	<!-- Thompson, Moran & Swenson 1986, pp. 210-230). -->
+	<!-- Two-bit sampling recovers 88%. --><acronym>CABB</acronym> uses 9-bit sampling (internally, as stated above, 10-bit sampling is used, with 9 bits transferred to the correlator), with approximately 6-bits
+	used in sampling the regular data range, and the additional bits providing
+	extra robustness in the case of interference
+	<acronym>RFI</acronym> (radio-frequency interference).
+	The digitised signals from the sampler are sent from each antenna to
+	the correlator along optic fibres at a rate of 160 gigabits per
+	second for each antenna. Optical fibres run from the samplers in each
+	<indexterm role="cp"><primary>optical fibre</primary></indexterm>
+	antenna to the correlator, which is housed in the
+	screened room (to prevent RFI generated by the correlator electronics from
+	affecting the observations) of the central control
+	building. Synchronising code is added to the data stream at the start
+	of each integration cycle to allow each bit to be correctly identified
+	at the correlator irrespective of temporal changes in the length of
+	the fibre.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>correlator</primary><see>CABB</see></indexterm>
+	<indexterm role="cp"><primary>correlator</primary></indexterm>
+	The <firstterm>correlator</firstterm> effectively multiplies simultaneous signals from
+	two samplers: the more similar the signal from both antennas,
+	the large the degree of correlation.  A plane wavefront approaching the
+	<acronym>ATCA</acronym> will, in general, arrive at different antennas at different
+	times. The signals from the antennas therefore need to be <firstterm>delayed</firstterm>
+	before being presented to the correlator so as to simulate a wavefront
+	arriving at each antenna simultaneously.  This was previously
+	achieved by separate
+	<firstterm>delay units</firstterm>, but is now included in the <acronym>CABB</acronym> boards.
+	<indexterm role="cp"><primary>CABB</primary><secondary>delay units</secondary></indexterm>
+	<indexterm role="cp"><primary>delay</primary><secondary>calibration</secondary><see>calibration</see></indexterm>
+	<indexterm role="cp"><primary>calibrator</primary><secondary>delay</secondary></indexterm>
+	The <firstterm>delay calibration</firstterm> undertaken at the start of an observation
+	removes other delays caused by return path length
+	differences, instrumental delay variations and the like, so that
+	wavefront samples are presented to the correlator synchronously.
+      </para>
+      
+      <para>
+	The <acronym>CABB</acronym> filterbank/correlator is divided across a number of Digital Signal Processing (DSP)
+	boards. The DSP boards use Virtex-4
+	Xilinx Field Programmable Gated Arrays (FPGAs) to provide a flexible, programmable
+	hardware correlator.
+	<indexterm role="cp"><primary>CABB</primary><secondary>blocks</secondary></indexterm>
+	<indexterm role="cp"><primary>CABB</primary><secondary>boards</secondary></indexterm>
+	The output from the correlator is averaged for the period of one
+	<firstterm>integration cycle</firstterm>, and sent to the correlator control computer caccc
+	<indexterm role="cp"><primary>integration</primary></indexterm>
+	<indexterm role="cp"><primary>integration</primary><secondary>cycle</secondary></indexterm>
+	<indexterm role="cp"><primary>integration</primary><secondary>averaging</secondary></indexterm>
+	<indexterm role="cp"><primary>caccc</primary></indexterm>
+	where it is written to hard disk.
+	Integration cycles can be set by the observer, between 2 and 30 seconds,
+	although the default cycle time of 10 seconds is generally recommended for
+	all observers. (For mosaic-mode observations, 6-seconds is the practical
+minimum cycle time.)
+      </para>
+      
+      <para>
+	More information on the correlator can be found at the
+	<ulink url="http://www.narrabri.atnf.csiro.au/observing/CABB.html"><acronym>CABB</acronym> webpage</ulink>.
+	This page is updated frequently, and the current state of correlator development can always
+	be found there.
+      </para>
+      
+      <para>
+	The <acronym>CABB</acronym> correlator provides a number of observing
+	modes:
+	<itemizedlist>
+          <listitem>
+            <para>Two always-available 2048 MHz continuum IF bands (although an analogue bandpass filter
+	    may reduce the usable bandwidth by 32 MHz). These can currently be divided into 2048 x 1MHz channels or 32 x 64MHz channels, 
+	    with up to 16 &#x201C;zoom&#x201D; bands able to be placed for higher spectral resolution.</para>
+          </listitem>
+          <listitem>
+            <para>Up to 6 GHz separation of simultaneous IF centre frequencies (depending on receiver restrictions)</para>
+          </listitem>
+          <listitem>
+            <para>9 bit sampling accuracy</para>
+          </listitem>
+          <listitem>
+            <para>Square, independent channels (ie. no leakage between channels)</para>
+          </listitem>
+          <listitem>
+            <para>All polarisation parameters for all products (including auto-correlations)</para>
+          </listitem>
+          <listitem>
+            <para>Up to 16 zoom bands per IF to provide finer spectral resolution</para>
+          </listitem>
+          <listitem>
+            <para>A pulsar binning mode</para>
+          </listitem>
+<!--          <listitem>
+            <para>Integration times as fast as 1 second</para>
+          </listitem>
+-->
+        </itemizedlist>
+        This design ensures that the user will always get high continuum sensitivity from the
+	wide-bandwidth IFs, while providing very high spectral resolution for line studies at
+	the same time.
+      </para>
+    </section>
+  </section>
+
+  <section id="Choosing-an-Observing-Frequency">
+    <info>
+      <title>Choosing an Observing Frequency</title>
+    </info>
+    <section id="Available-Frequency-Range">
+      <info>
+        <title>Available Frequency Range</title>
+      </info>
+      <figure id="cmsystemps21">
+        <title>
+	  Average Compact Array system temperatures for 
+	  each observing band at high elevation under reasonable observing conditions. These are based 
+	  on hot-cold load measurements, and include the atmosphere at the time of observation, thus 
+	  representing the total system temperature. These measurements were made by J. Stevens 
+	  with the <acronym>CABB</acronym> system, except for the 3mm measurements which were 
+	  made by T. Wong in September 2004.
+	</title>
+	<titleabbrev>Average <acronym>ATCA</acronym> system temperatures in each observing band.</titleabbrev>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="figures/usersguide_sefds_tsys_combined_l.jpg" format="JPG">
+	    </imagedata>
+	  </imageobject>
+	</mediaobject>
+      </figure>
+      <para>
+	You can also switch automatically to other wavelengths within
+	tens of seconds (with the exception of the 7mm band as described
+	previously). Similarly the 16cm receiver has a single
+	feedhorn and observations with this package will cover the entire
+	1.1 - 3.1 GHz range simultaneously.
+	Observations at two simultaneous frequencies are possible in the 15mm
+	band or the 7mm, or the 3mm bands.  With <acronym>CABB</acronym>, the centre frequencies
+	of the two <acronym>IF</acronym>s need to lie within 6 GHz of each other, and 
+	even this might be too much separation depending on the exact frequencies chosen.
+	For <acronym>CABB</acronym>, the nominal standard frequencies for continuum observations
+	are 
+	<itemizedlist>
+	  <listitem>
+	    <para>2100 MHz in the 16cm band,</para>
+	  </listitem>
+	  <listitem>
+	    <para>5500 MHz and 9000 MHz in the 4cm band,</para>
+	  </listitem>
+	  <listitem>
+	    <para>16700 MHz and 21200 MHz in the 15mm band,</para>
+	  </listitem>
+	  <listitem>
+	    <para>33000 MHz and 35000 MHz in the 7mm LSB band,</para>
+	  </listitem>
+	  <listitem>
+	    <para>43000 MHz and 45000 MHz in the 7mm USB band,</para>
+	  </listitem>
+	  <listitem>
+	    <para>93000 MHz and 95000 MHz in the 3mm band.</para>
+	  </listitem>
+	</itemizedlist>
+	These frequency designations follow the <acronym>ATCA</acronym> custom
+	of stating the central frequency of the chosen observing frequency
+	range. (For archival data from the pre-CABB era
+	the standard frequencies were
+	<itemizedlist>
+	  <listitem>
+	    <para>1384 MHz and 2368 MHz in the 20/13cm band,</para>
+	  </listitem>
+	  <listitem>
+	    <para>4800 MHz and 8640 MHz in the 6/3cm band,</para>
+	  </listitem>
+	  <listitem>
+	    <para>18496 MHz and 19520 MHz in the 12mm band,</para>
+	  </listitem>
+	  <listitem>
+	    <para>34496 MHz and 34524 MHz in the 7mm LSB band,</para>
+	  </listitem>
+	  <listitem>
+	    <para>44096 MHz and 44224 MHz in the 7mm USB band,</para>
+	  </listitem>
+	  <listitem>
+	    <para>93504 MHz and 95552 MHz in the 3mm band.</para>
+	  </listitem>
+	</itemizedlist>
+	The 15mm recommended <acronym>CABB</acronym> central frequencies have recently been changed
+	from 17000 and 19000 GHz, due to the presence of RFI from a geostationary satellite
+	(see <xref linkend="interference_mm"></xref> for details).
+      </para>
+      <!-- See also -->
+      <!-- @url{http://www.narrabri.atnf.csiro.au/observing/recfreq.html}. -->
+
+      <para>
+	Switching between the 15/3mm bands, the 4cm band, and the 16cm
+	<indexterm role="cp"><primary>frequency</primary><secondary>switching</secondary></indexterm>
+	band involves a change in feed horns by means of a turret
+	rotation. This is done automatically under computer control and takes
+	about 20 seconds. Turret rotation should be limited to once every 15
+	minutes unless a compelling scientific case is made for more frequent
+	rotations. The additional overhead in changing to or from 7mm has been
+	described earlier in this document.
+      </para>
+
+      <para>
+	Observing-band centre frequencies may be set to the nearest MHz only and no
+	on-line Doppler tracking is done.
+      </para>
+
+      <para>
+	Observations of weak H 90&#x03B1; recombination lines <emphasis>may be</emphasis>
+	<indexterm role="cp"><primary>feedhorns</primary><secondary>trapped mode</secondary></indexterm>
+	affected by a trapped mode in the 6/3cm horn at 8857 &#x00B1; 18 MHz. This trapped mode
+	may enhance the power received this recombination line at their rest-frequency.
+	There are also notches reported in the passband due to trapped modes in the receiver
+	waveguides at 4550 &#x00B1; 10 MHz, 5328 &#x00B1; 10 MHz and
+	8780 &#x00B1; 10 MHz which may need to be flagged during data reduction.
+      </para>
+    </section>
+
+    <section id="Interference">
+      <info>
+        <title>Interference</title>
+      </info>
+      <para>
+	Both terrestrial and satellite emitters cause radio frequency interference (RFI)
+	to <acronym>ATCA</acronym> observations, with the lower frequency bands being more
+	adversely affected than the higher frequency bands. This section describes the RFI
+	that is known in each of the <acronym>ATCA</acronym> bands, and also covers interference
+	caused by the Sun.
+	<indexterm role="cp"><primary>interference</primary></indexterm>
+	<indexterm role="cp"><primary>RFI</primary><see>interference</see></indexterm>
+      </para>
+
+      <section id="interference_16cm">
+	<info>
+	  <title>16cm band RFI</title>
+	</info>
+	<para>
+	  The interference is
+	  worse at lower frequencies with the main offenders being microwave
+	  links, microwave TV, microwave ovens, navigation satellites and
+	  self-generated interference.  There can also be significant
+	  interference at 1381 MHz from the GPS L3 beacon on occasions.  These
+	  <indexterm role="cp"><primary>satellite</primary><secondary>GPS</secondary></indexterm>
+	  channels may have to be removed from the data.
+	  <indexterm role="cp"><primary>interference</primary><secondary>survey</secondary>
+	  <tertiary>16cm</tertiary></indexterm>
+	  <xref linkend="rfi_survey_annotated"></xref> shows what the <acronym>ATCA</acronym> sees
+	  in its 16cm band (centred at the recommended continuum central frequency of 2100 MHz)
+	  when fringe-rotation is disabled (achieved by setting the phase centre to be the South
+	  celestial pole). The black and red lines show the log of the amplitude as observed by
+	  a survey in 2011 and 2015 respectively, and from this we can see that the RFI environment
+	  does change slightly over time. No self-generated interference is visible in this plot.
+	  The Australian Communications and Media Authority (<acronym>ACMA</acronym>) band licenses
+	  are shown on the plot as coloured frequency regions. The strongest sources of RFI are
+	  mobile phone towers, satellites and TV transmitters, all of which are relatively stable
+	  in time.
+	</para>
+
+	<para>
+	  <figure id="rfi_survey_annotated">
+	    <title>The <acronym>ATCA</acronym> 16cm RFI environment. Two surveys are shown, one from 2011 and the other
+	    from 2015. The licenses applicable to each frequency range are shown as coloured
+	    regions, labelled with a similar colour at the top of the plot.</title>
+	    <titleabbrev><acronym>ATCA</acronym> 16cm RFI environment.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/rfisurvey_comparison_broadranges.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+	
+	<para>
+	  <indexterm role="cp"><primary>interference</primary><secondary>RFI monitor</secondary></indexterm>
+	  An RFI monitoring antenna sits atop the central control building at the observatory. It monitors
+	  the frequency range 700 - 3000 MHz once every 20 seconds, with 2 MHz frequency resolution,
+	  and presents its data in near-real time
+	  <ulink url="https://www.narrabri.atnf.csiro.au/observing/rfi/monitor/rfi_monitor.html#atca">on a web page</ulink>.
+	  Three different plots are presented on the page: a &#x201C;latest spectra&#x201D; plot
+	  (<xref linkend="rfi_monitor_spectra"></xref>), a waterfall plot showing the last hour of
+	  data (<xref linkend="rfi_monitor_waterfall"></xref>), and a plot that may help in determining
+	  the direction from which RFI is being observed (<xref linkend="rfi_monitor_polar"></xref>). The
+	  latest spectra plot always shows the earliest spectrum obtained by the monitor in the displayed time range, along with
+	  a &#x201C;maximum hold&#x201D; value for each channel over the last hour and the time-averaged power
+	  for each channel. The waterfall plot
+	  is useful for seeing emission switch on or off over the last hour. All data from the RFI monitor
+	  is archived, and if you want to get the output of the monitor for a particular time range since
+	  its installation in November 2014, please visit the
+	  <ulink url="https://www.narrabri.atnf.csiro.au/observing/rfi/monitor/rfi_monitor_archive_query.html">
+	    archive query page</ulink>.
+	</para>
+	
+	<para>
+	  <figure id="rfi_monitor_spectra">
+	    <title>An example of the &#x201C;latest spectra&#x201D; plot available from the
+	    <acronym>ATCA</acronym> RFI weathermap page.</title>
+	    <titleabbrev>&#x201C;Latest spectra&#x201D; plot example from the RFI weathermap page.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/rfimonitor_spectrum_latest.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+	
+	<para>
+	  <figure id="rfi_monitor_waterfall">
+	    <title>An example of the &#x201C;latest waterfall&#x201D; plot available from the
+	    <acronym>ATCA</acronym> RFI weathermap page.</title>
+	    <titleabbrev>&#x201C;Latest waterfall&#x201D; plot example from the RFI weathermap page.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/rfimonitor_rfiwaterfall_latest.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+	
+	<para>
+	  <figure id="rfi_monitor_polar">
+	    <title>An example of the &#x201C;latest skyplot&#x201D; plot available from the
+	    <acronym>ATCA</acronym> RFI weathermap page.</title>
+	    <titleabbrev>&#x201C;Latest skyplot&#x201D; plot example from the RFI weathermap page.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/rfimonitor_skyplot_latest.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+	
+	<para>
+	  <indexterm role="cp"><primary>interference</primary><secondary>mid-week RFI</secondary></indexterm>
+	  In addition to the &#x201C;normal&#x201D; RFI in the 16cm band, as shown in
+	  <xref linkend="rfi_survey_annotated"></xref>, you may also see something dubbed
+	  &#x201C;mid-week RFI&#x201D;. This RFI has frequency peaks around 1265 and 1300-1310 MHz,
+	  and can have extremely high amplitudes. The RFI monitor can be used to see when mid-week RFI
+	  is present, as shown in <xref linkend="rfi_monitor_midweek"></xref>. Because of the strength
+	  of this RFI, it can often drive the front-end system of the 16cm receivers, or the CABB digitisers,
+	  into saturation; if this occurs, the data becomes unusable. We do now sometimes receive advanced
+	  warning on when this RFI may be present, and if this will affect observations, the investigators
+	  will be notified so they can plan how to deal with it.
+	</para>
+	
+	<para>
+	  <figure id="rfi_monitor_midweek">
+	    <title>A waterfall plot from the RFI monitor, showing what &#x201C;mid-week RFI&#x201D;
+	    can look like (in the brighter region).</title>
+	    <titleabbrev>RFI weathermap waterfall plot showing &#x201C;mid-week RFI&#x201D;.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/rfimonitor_midweek.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+
+	<para>
+	  Only the 16cm band is affected by mid-week RFI, so if mid-week RFI is forecast during your
+	  observations, you may wish to avoid using the 16cm band during those times, wherever possible.
+	  If this is not possible, you may ask for a schedule swap, but this may not always be a
+	  possibility. Our observations have also shown that mid-week RFI is present only for a small
+	  fraction of the default CABB 10 second cycle time, but is so strong that it ruins the entire
+	  integration. You may therefore be able to cope with mid-week RFI by running with a shorter cycle
+	  time (say 1 or 2 seconds) and flagging those cycles in which the RFI is present; this will result
+	  in a much higher data rate of course, and is only really suitable for continuum experiments that
+	  do not need mosaicking.
+	</para>
+      </section>
+
+      <section id="interference_4cm">
+	<info>
+	  <title>4cm band RFI</title>
+	</info>
+	<para>
+	  The RFI present in the 4cm band is direction dependent, and can be quite variable over time.
+	  Using a similar survey technique to the 16cm band, where the fringe-rotation is disabled, we can
+	  determine the static levels of RFI. We also use the antennas to determine how directional the
+	  RFI signals are, by doing the survey twice; once while the antennas are pointing at the
+	  South Celestial Pole (<acronym>SCP</acronym>, <xref linkend="rfi_survey_4cm_scp"></xref>),
+	  and again while pointing at the celestial equator (<xref linkend="rfi_survey_4cm_equ"></xref>).
+	  We expect that signals coming from satellites will be stronger towards the celestial equator.
+	  <indexterm role="cp"><primary>interference</primary><secondary>4cm band</secondary></indexterm>
+	</para>
+
+	<para>
+	  <figure id="rfi_survey_4cm_scp">
+	    <title>The 4cm band, as observed during an RFI survey from 2016-09-07, while the antennas
+	    were pointing at the South Celestial Pole (<acronym>SCP</acronym>). The colour bands show
+	    frequency ranges that represent either the <acronym>CABB</acronym> recommended continuum
+	    bands, or the ACMA licence applicable.</title>
+	    <titleabbrev>RFI in the 4cm band, towards the SCP.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/rfisurvey_4cm_scp.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+
+      	<para>
+	  <figure id="rfi_survey_4cm_equ">
+	    <title>The 4cm band, as observed during an RFI survey from 2016-09-07, while the antennas
+	    were pointing at the celestial equator at transit. The colour bands show
+	    frequency ranges that represent either the <acronym>CABB</acronym> recommended continuum
+	    bands, or the ACMA licence applicable.</title>
+	    <titleabbrev>RFI in the 4cm band, towards the celestial equator.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/rfisurvey_4cm_equ.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+
+      <para>
+	Indeed, we see that in the pink- and orange-highlighted regions of those two figures, the signal intensity
+	is higher while pointing at the equator. That is, in the frequency bands licenced for
+	satellite communications to Earth, the <acronym>ATCA</acronym> will see a lot more interfering
+	signal while observing near to the equator. The frequencies of these highlighted regions are given
+	in <xref linkend="table_rfi_4cm_satellites"></xref>.
+      </para>
+
+      <para>
+	<table frame="all" id="table_rfi_4cm_satellites" shortentry="1">
+	  <title>Frequency ranges of satellite emission bands observed with a 4cm RFI survey. The ranges given
+	  are delimited by ACMA allocations, so several entries may be given even if they represent one contiguous
+	  frequency range.</title>
+	  <titleabbrev>Frequency ranges of satellite emission bands observed with a 4cm RFI survey.</titleabbrev>
+	  <tgroup cols="3" align="center" colsep="1" rowsep="1">
+	    <colspec colname="purpose"/>
+	    <colspec colname="lowfreq"/>
+	    <colspec colname="highfreq"/>
+	    <thead>
+	      <row>
+		<entry morerows="1" valign="middle">Purpose</entry>
+		<entry namest="lowfreq" nameend="highfreq">Frequencies</entry>
+	      </row>
+	      <row>
+		<entry>Low [GHz]</entry>
+		<entry>High [GHz]</entry>
+	      </row>
+	    </thead>
+	    <tbody>
+	      <row>
+		<entry morerows="6" valign="middle">Communications to Earth</entry>
+		<entry>3.6</entry>
+		<entry>4.2</entry>
+	      </row>
+	      <row>
+		<entry>5.925</entry>
+		<entry>6.7</entry>
+	      </row>
+	      <row>
+		<entry>7.2525</entry>
+		<entry>7.3775</entry>
+	      </row>
+	      <row>
+		<entry>7.375</entry>
+		<entry>7.45</entry>
+	      </row>
+	      <row>
+		<entry>7.45</entry>
+		<entry>7.55</entry>
+	      </row>
+	      <row>
+		<entry>7.55</entry>
+		<entry>7.75</entry>
+	      </row>
+	      <row>
+		<entry>10.7</entry>
+		<entry>11.7</entry>
+	      </row>
+	      <row>
+		<entry>Broadcast to Earth</entry>
+		<entry>11.7</entry>
+		<entry>12.2</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</table>
+      </para>
+
+      <para>
+	The other frequency ranges shown on <xref linkend="rfi_survey_4cm_scp"></xref> and
+	<xref linkend="rfi_survey_4cm_equ"></xref> encompass RFI that is not likely to be from
+	satellites, but as can be seen, the intensity of this RFI is not high and should be easily
+	excisable during data reduction.
+      </para>
+      
+      </section>
+
+      <section id="interference_mm">
+	<info>
+	  <title>mm band RFI</title>
+	</info>
+	<para>
+	  There appears to be no significant interference within the 7mm and 3mm bands.
+	  A recent RFI survey in the 15mm band showed that interference from the Australian
+	  National Broadband Network (NBN) satellite &#x201C;Sky Muster&#x201D; is now clearly
+	  visible when pointing toward the equator. Similar to the 4cm RFI survey technique,
+	  <xref linkend="rfi_survey_15mm_equ"></xref>, <xref linkend="rfi_survey_15mm_scp"></xref> and
+	  <xref linkend="rfi_survey_15mm_zen"></xref> show that the signal received by the antennas
+	  from this satellite (soon to be two satellites) is very dependent on the pointing
+	  direction.
+	  <indexterm role="cp"><primary>interference</primary><secondary>15mm band</secondary></indexterm>
+	  <indexterm role="cp"><primary>interference</primary><secondary>Sky Muster satellite</secondary></indexterm>
+	  <indexterm role="cp"><primary>Sky Muster</primary><see>interference</see></indexterm>
+	</para>
+
+      	<para>
+	  <figure id="rfi_survey_15mm_equ">
+	    <title>The 15mm band, as observed during an RFI survey from 2016-08-01, while the antennas
+	    were pointing at the celestial equator at transit.</title>
+	    <titleabbrev>RFI in the 15mm band, towards the celestial equator.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/rfisurvey_15mm_equ.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+
+	<para>
+	  <figure id="rfi_survey_15mm_scp">
+	    <title>The 15mm band, as observed during an RFI survey from 2016-08-01, while the antennas
+	    were pointing at the South Celestial Pole (<acronym>SCP</acronym>) at transit.</title>
+	    <titleabbrev>RFI in the 15mm band, towards the SCP.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/rfisurvey_15mm_scp.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+
+      	<para>
+	  <figure id="rfi_survey_15mm_zen">
+	    <title>The 15mm band, as observed during an RFI survey from 2016-08-01, while the antennas
+	    were pointing east at an elevation of 85&#176;.</title>
+	    <titleabbrev>RFI in the 15mm band, towards azimuth 90&#176; and elevation 85&#176;.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/rfisurvey_15mm_zen.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+
+	<para>
+	  The &#x201C;Sky Muster&#x201D; satellite emits in
+	  <ulink url="http://www.nbnco.com.au/content/dam/nbnco2/documents/network-design-rules.pdf">
+	    three broad downlink frequency ranges</ulink>.
+	  These ranges are 17.7 - 18.2 GHz (<xref linkend="rfi_survey_15mm_skymuster_range1"></xref>),
+	  18.8 - 19.3 GHz (<xref linkend="rfi_survey_15mm_skymuster_range2"></xref>)
+	  and 19.7 - 20.2 GHz (<xref linkend="rfi_survey_15mm_skymuster_range3"></xref>).
+	</para>
+
+      	<para>
+	  <figure id="rfi_survey_15mm_skymuster_range1">
+	    <title>A subset of the 15mm band, as observed during an RFI survey from 2016-08-01, while the antennas
+	    were pointing at the celestial equator. This frequency subset covers the &#x201C;Sky Muster&#x201D;
+	    downlink range 17.7 - 18.2 GHz.</title>
+	    <titleabbrev>RFI in the 15mm band from the low Sky Muster downlink range.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/skymuster_range1.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+
+      	<para>
+	  <figure id="rfi_survey_15mm_skymuster_range2">
+	    <title>A subset of the 15mm band, as observed during an RFI survey from 2016-08-01, while the antennas
+	    were pointing at the celestial equator. This frequency subset covers the &#x201C;Sky Muster&#x201D;
+	    downlink range 18.8 - 19.3 GHz.</title>
+	    <titleabbrev>RFI in the 15mm band from the middle Sky Muster downlink range.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/skymuster_range2.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+	
+      	<para>
+	  <figure id="rfi_survey_15mm_skymuster_range3">
+	    <title>A subset of the 15mm band, as observed during an RFI survey from 2016-08-01, while the antennas
+	    were pointing at the celestial equator. This frequency subset covers the &#x201C;Sky Muster&#x201D;
+	    downlink range 19.7 - 20.2 GHz.</title>
+	    <titleabbrev>RFI in the 15mm band from the high Sky Muster downlink range.</titleabbrev>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="figures/skymuster_range3.png" format="PNG"></imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </figure>
+	</para>
+
+	<para>
+	  This geostationary satellite is at an azimuth of 341.5&#176; and elevation of 53.1&#176;, as
+	  seen from the <acronym>ATCA</acronym>. This corresponds to a declination of +6&#176; 35&#x2032;
+	  and hour angle of +1h 14m (west of transit). This position is approximately 18.9&#176; away from
+	  pointing position of the antennas during the RFI survey, so the intensity of the interference can
+	  be expected to be much higher than shown in <xref linkend="rfi_survey_15mm_equ"></xref> for pointings
+	  closer to the satellite.
+	</para>
+
+	<para>
+	  The recommended <acronym>CABB</acronym> continuum central frequencies for the 15mm band were 17 and 19 GHz,
+	  but these may now contain a significant amount of RFI from &#x201C;Sky Muster&#x201D;, depending on
+	  where your source is. If you are worried about this interference and wish to avoid it, we recommend
+	  a new set of continuum central frequencies of 16.7 and 21.2 GHz. These recommended frequency bands
+	  are not contiguous, but do avoid all the &#x201C;Sky Muster&#x201D; downlink emissions and in fact are
+	  slightly more (between 3 and 10%) sensitive than the 17/19 GHz bands. If you need to use the 17/19 GHz
+	  bands now in order to facilitate comparisons to data obtained in the past, you will likely need to
+	  do extensive flagging during data reduction; the reduced bandwidth lost to flagging will also mean that
+	  your continuum sensitivity suffers.
+	</para>
+	
+      </section>
+
+      <section id="interference_solar">
+	<info>
+	  <title>Solar Interference</title>
+	</info>
+	<para>
+	  <indexterm role="cp"><primary>interference</primary><secondary>Solar</secondary></indexterm>
+	  To avoid Solar interference, a rule-of-thumb is to observe at a time
+	  of year when your source is further than about 40&#x00B0; from
+	  the Sun, where possible. It is recommended to specify in your proposal
+	  dates that are not suitable for observations if the Sun angle is too
+	  small.  Low-frequency observations, particularly in spectral-line
+	  mode, should be made at greater Solar separations. You are advised to observe
+	  at night in cases where good quality 21cm HI data is essential
+	  on the shortest (30m) baseline.  For spectral-line observations,
+	  software exists in <application>Miriad</application> to model and subtract out solar
+	  interference. Some information about solar activity can be obtained
+	  from the <ulink url="http://www.ips.gov.au/">Ionospheric Prediction Service</ulink>.
+	</para>
+      </section>
+
+    </section>
+  </section>
+
+  <section id="Choosing-Angular-and-Frequency-Resolution">
+    <info>
+      <title>Choosing Angular and Frequency Resolution</title>
+    </info>
+    <section id="Image-Complexity">
+      <info>
+        <title>Image Complexity, Angular Resolution and Observing Time</title>
+      </info>
+      <para>
+	A synthesis imaging telescope such as the Compact Array provides a
+	great deal of flexibility when deciding how to image an object. In
+	addition to the well-known trade-off between observing time and
+	sensitivity, we have trade-offs with maximum resolution and with the
+	sampling interval in the visibility plane.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>resolution</primary><secondary>angular</secondary></indexterm>
+	The choice of angular resolution is fairly straightforward. Increased
+	angular resolution (resulting from longer baselines) leaves the
+	point-source sensitivity constant, but decreases brightness
+	sensitivity in proportion to the beam area (see <xref linkend="table_brightness_temperature"></xref>).
+      </para>
+
+      <para>
+	The choice of (u,v)-plane coverage is more difficult. The
+	amount of independent information needed to specify the image should
+	not exceed the number of independent (u,v)-plane samples. But
+	unfortunately neither of these &#x201C;independents&#x201D; is easily defined. At
+	one extreme, consider making a high resolution image of a complex
+	source filling the entire primary beam.  In this case full
+	(u,v)-coverage is obtained by using all baselines between 30m
+	and 6000m in increments of 15m. Although this was theoretically
+	possible (it takes 25 separate array configurations), it was never
+	attempted and, since the decommissioning of the second 6km station,
+	is no longer actually possible!
+      </para>
+
+      <para>
+	If on the other hand the image is smaller than the primary beam then
+	<indexterm role="cp"><primary>sampling</primary><secondary>Nyquist</secondary></indexterm>
+	<indexterm role="cp"><primary>sampling</primary><secondary>uv</secondary></indexterm>
+	the Nyquist sampling interval is larger and the number of
+	(u,v)-samples required is reduced. The observing time can then
+	be reduced either by decreasing the number of configurations or the
+	amount of hour angle coverage, depending on the array configuration.
+	For east-west arrays, reducing the total number of configurations is
+	the more practical option. If the source is large but partly empty it
+	can be considered to have a size corresponding to its area.
+      </para>
+      
+      <para>
+	For ordinary observations Table 1.4 gives the maximum sizes of structures that
+	can be reliably imaged for typical sets of observing configurations.
+	This is only a rough guide since the actual coverage needed depends on
+	details of the 2-dimensional brightness distribution, on the actual
+	distribution of baselines, and on the type of deconvolution.
+	Additionally, other techniques such as <link linkend="Mosaicing">mosaicing</link>
+	and <link linkend="Multi-frequency-Synthesis">multi-frequency synthesis</link>,
+	can be extremely effective at improving (u,v)-coverage.
+      </para>
+
+      <para>
+	A further consideration is the minimum spacing available. This is
+	never less than 30 m and for a given configuration can be much larger.
+	This acts as a high-pass filter removing all Fourier components less
+	than the minimum spacing.  If this is a serious problem, short
+	baseline information (e.g., from a single dish) can be added
+	separately during processing.
+      </para>
+    </section>
+
+    <section id="Array-Configurations-and-Baselines">
+      <info>
+        <title>Array Configurations and Baselines</title>
+      </info>
+      <para>
+	Antenna 6 sits permanently on station W392. Maximum baselines to this
+	antenna (the last 5 columns) are shown for all configurations in
+	<xref linkend="ATCA-Array-Configurations"></xref>, but
+	form part of a designed array only for configurations 6.0A to 6.0D.
+	<indexterm role="cp"><primary>ATCA</primary><secondary>configurations</secondary></indexterm>
+	The antennas can be moved to, and set up on, a limited number of fixed
+	stations. Because of this and other physical restraints, the shortest
+	spacing available is 30 m, the longest is 6 km, and the minimum
+	grating increment is 15 m.  
+<!-- Predetermined east-west configurations are
+	offered, each with approximately uniform spacings, and thus with good
+	single-day (u,v)-coverage. -->
+From 2006 October, the standard set
+	of configurations has been:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>1  hybrid configuration with a nominal maximum baseline of  75 m (H75)</para>
+        </listitem>
+        <listitem>
+          <para>1  hybrid configuration with a nominal maximum baseline of 168 m (H168)</para>
+        </listitem>
+        <listitem>
+          <para>1  hybrid configuration with a nominal maximum baseline of 214 m (H214)</para>
+        </listitem>
+        <listitem>
+          <para>2  east-west configurations with a maximum baseline of about  375 m</para>
+        </listitem>
+        <listitem>
+          <para>4  east-west configurations with a maximum baseline of about  750 m</para>
+        </listitem>
+        <listitem>
+          <para>4  east-west configurations with a maximum baseline of about 1500 m</para>
+        </listitem>
+        <listitem>
+          <para>4  east-west configurations with a maximum baseline of about 6000 m.</para>
+        </listitem>
+      </itemizedlist>
+      <para>
+	Snapshot observations using the Northern spur in hybrid configurations
+	<indexterm role="cp"><primary>spur</primary><secondary>Northern</secondary></indexterm>
+	<indexterm role="cp"><primary>observations</primary><secondary>snapshot</secondary></indexterm>
+	will generate a two-dimensional sampling of the (u,v)-plane. The
+	Northern spur was installed so that good coverage of the
+	(u,v)-plane was achievable for observations which are limited to
+	hour-angles near transit. Observations at mm wavelengths should be
+	limited to higher elevations to avoid large atmospheric
+	opacities. Hybrid arrays are also useful for observations of northern
+	sources which are similarly restricted in hour-angle range.
+      </para>
+
+      <para>
+	The 6 km antenna may also be added to any of the shorter
+	configurations, but in these cases the distribution of array spacings
+	is bi-modal.
+      </para>
+
+      <para>
+	The predetermined set of configurations offered for forthcoming
+	observing terms will assist in planning multi-configuration proposals.
+	Details of previous configurations and those being offered in coming
+	semesters can be found
+	<ulink url="http://www.narrabri.atnf.csiro.au/observing/configs.html">on our website</ulink>,
+	or see <xref linkend="upcoming_configurations"></xref>.
+      </para>
+
+      <para>
+	Note that proposals requiring two or more configurations will usually
+	be allotted two or more widely separated times; therefore, expect to
+	make two or more observing visits, or conduct the second observation
+	using remote observing. If you are not allotted all the configurations
+	requested, you should re-apply in the next term, as the proposal will
+	not be automatically reconsidered.
+      </para>
+
+      <para>
+	The overall philosophy is that, in each semester, there will be a 6km,
+	1.5km, and 750m configuration, and for these baselines, the full set
+	of 4 configurations will generally be covered in three semesters.
+	Each semester will also contain at least one 375m configuration.
+	Analysis of user preferences for the past few years show some
+	configurations to be more generally useful (e.g., providing better
+	single-configuration (u,v)-coverage), and it is desirable to
+	offer these more frequently.  Millimetre observing conditions are
+	optimal in the (southern hemisphere) winter, so arrays of 214m or
+	smaller will be offered mainly in the April semester.
+      </para>
+
+      <para>
+	<table frame="all" id="upcoming_configurations">
+	  <title>Array configurations that will be offered in future semesters.</title>
+	  <tgroup cols="6" align="center" colsep="1" rowsep="1">
+	    <colspec colname="array"/>
+	    <colspec colname="sem1"/>
+	    <colspec colname="sem2"/>
+	    <colspec colname="sem3"/>
+	    <colspec colname="sem4"/>
+	    <colspec colname="sem5"/>
+	    <thead>
+	      <row>
+		<entry morerows="1" valign="middle">Array</entry>
+		<entry namest="sem1" nameend="sem5" align="center">Semester</entry>
+	      </row>
+	      <row>
+		<entry>2016OCTS</entry>
+		<entry>2017APRS</entry>
+		<entry>2017OCTS</entry>
+		<entry>2018APRS</entry>
+		<entry>2018OCTS</entry>
+	      </row>
+	    </thead>
+	    <tbody>
+	      <row>
+		<entry>6A</entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
+	      </row>
+	      <row>
+		<entry>6B</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+	      </row>
+	      <row>
+		<entry>6C</entry>
+		<entry></entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry></entry>
+	      </row>
+	      <row>
+		<entry>6D</entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+	      </row>
+	      <row>
+		<entry>1.5A</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+	      </row>
+	      <row>
+		<entry>1.5B</entry>
+		<entry></entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry></entry>
+	      </row>
+	      <row>
+		<entry>1.5C</entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry></entry>
+	      </row>
+	      <row>
+		<entry>1.5D</entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+	      </row>
+	      <row>
+		<entry>750A</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+	      </row>
+	      <row>
+		<entry>750B</entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry></entry>
+	      </row>
+	      <row>
+		<entry>750C</entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+	      </row>
+	      <row>
+		<entry>750D</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+	      </row>
+	      <row>
+		<entry>EW367</entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+	      </row>
+	      <row>
+		<entry>EW352</entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
+	      </row>
+	      <row>
+		<entry>H214</entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
+	      </row>
+	      <row>
+		<entry>H168</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+	      </row>
+	      <row>
+		<entry>H75</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</table>
+      </para>
+      <para>
+	<indexterm role="cp"><primary>configurations</primary><secondary>non-standard</secondary></indexterm>
+	Besides the predetermined configurations, you can request any standard
+	or non-standard configuration in any term.  When writing your
+	application, your scientific justification should include a very
+	convincing argument of why you need to use a special array
+	configuration, rather than one of those offered for the term.  If you
+	realise the need for such a &#x201C;wildcard&#x201D; request for a significant
+	amount of observing time (e.g., more than 5 x 12h), you can enhance
+	the probability of it being scheduled if you contact <acronym>ATNF</acronym> well in
+	advance of the deadline (preferably even before the call for proposals
+	announcement).  The wildcard can then be advertised as a potential
+	additional configuration for the term, which may then lead to other
+	proposers requesting it, and making its scheduling viable.
+      </para>
+
+      <para>
+	For those who wish to improve their (u,v)-coverage by
+	re-observing on different days with different antenna configurations,
+	specific sets of configurations combines well, e.g., 6A, 6C, 1.5B and
+	1.5D &#x2014; for more details see <xref linkend="ATCA-Array-Configurations"></xref>.
+      </para>
+      <para>
+	<indexterm role="cp"><primary>VRI</primary></indexterm>
+	An interactive tool, the 
+	<ulink url="http://www.narrabri.atnf.csiro.au/astronomy/vri.html"><firstterm>Virtual Radio Interferometer</firstterm></ulink> (<acronym>VRI</acronym>),
+	  is available to assist users in exploring the
+	  (u,v)-coverage of standard
+	  (and non-standard) configurations.
+      </para>
+
+      <para>
+	It is strongly recommended that the proposer gives a clear indication of
+	the maximum extent of their sources. You should also specify the
+	maximum and minimum baselines, and the number of configurations (days)
+	needed.
+      </para>
+    </section>
+
+    <section id="Bandwidths-and-correlator">
+      <info>
+        <title>Bandwidths and correlator</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>CABB</primary><secondary>installation</secondary></indexterm>
+	The <acronym>CABB</acronym> now provides a variety of
+	frequency resolutions. The available
+	resolution options are more commonly denoted by the <acronym>CABB</acronym> configuration that
+	is used to provide them. When development of <acronym>CABB</acronym> is complete,
+	four correlator configurations will be offered:
+      </para>
+      <variablelist>
+        <varlistentry>
+          <term><emphasis role="bold">Currently available modes</emphasis></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+		  <emphasis role="bold">CFB 1M-0.5k</emphasis>: 2048 channels per 2048 MHz continuum IF (1 MHz coarse resolution),
+		  and 2048 channels per 1 MHz zoom band (0.5 kHz fine resolution).
+		</para>
+              </listitem>
+              <listitem>
+                <para>
+		  <emphasis role="bold">CFB 64M-32k</emphasis>: 32 channels per 2048 MHz continuum IF (64 MHz coarse resolution),
+and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
+		</para>
+                <para>
+		  There is also a &#x201C;hybrid&quot; mode available which provides one continuum 2048 &#x00D7; 1 MHz
+		  IF (with no zoom bands), and a second continuum 32 &#x00D7; 64 MHz IF (with up to sixteen 64 MHz zoom bands).
+		</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">Modes available in the future</emphasis></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+		  <emphasis role="bold">CFB 16M-8k</emphasis>: 128 channels per 2048 MHz continuum IF (16 MHz coarse resolution),
+		  and 2048 channels per 16 MHz zoom band (8 kHz fine resolution).
+		</para>
+              </listitem>
+              <listitem>
+                <para>
+		  <emphasis role="bold">CFB 4M-2k</emphasis>: 512 channels per 2048 MHz continuum IF (4 MHz coarse resolution),
+		  and 2048 channels per 4 MHz zoom band (2 kHz fine resolution).
+		</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      <para>
+	It should be noted that the correlator routinely computes double the number of channels
+	as is recorded. This second set of channels is offset from the available set by half the
+	channel width, and are there to provide flexibility in choosing the zoom band frequency,
+	as well as to ensure that it will always be possible to avoid observing a spectral line at the
+	edge of a channel. It is also possible to combine a number of overlapping zoom bands that are separated
+	by half a continuum channel into a seamless single zoom band.
+      </para>
+    </section>
+  </section>
+
+  <section id="centimetre-observations">
+    <info>
+      <title>Centimetre Observations (16&#x2013;4 cm bands)</title>
+    </info>
+    <para>
+      The next two sections describe some necessary considerations for both
+      centimetre and millimetre observations at the <acronym>ATCA</acronym>. This section on centimetre
+      observations is also relevant for millimetre observers and should be read by
+      everyone planning to propose for the <acronym>ATCA</acronym>. The millimetre section describes
+      some additional requirements specific to millimetre observations.
+    </para>
+    <para>
+      <table frame="all" id="table_brightness_temperature" shortentry="1">
+	<titleabbrev>Brightness Temperature Sensitivity Table</titleabbrev>
+	<title>
+	  Continuum brightness temperature sensitivity (12 hr integration) for
+	  bandwidth specified in <xref linkend="table_sensitivity"></xref>, for
+	  various arrays.
+	</title>
+	<tgroup cols="7" align="center" colsep="1" rowsep="1">
+	  <colspec colname="band"/>
+	  <colspec colname="a6km"/>
+	  <colspec colname="a1.5km"/>
+	  <colspec colname="a750m"/>
+	  <colspec colname="ew352"/>
+	  <colspec colname="h214"/>
+	  <colspec colname="h75"/>
+	  <thead>
+	    <row>
+	      <entry morerows="1" valign="middle">Band</entry>
+	      <entry namest="a6km" nameend="h75" align="center">
+		Array
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>6km</entry>
+	      <entry>1.5km</entry>
+	      <entry>750m</entry>
+	      <entry>EW352</entry>
+	      <entry>H214</entry>
+	      <entry>H75</entry>
+	    </row>
+	  </thead>
+	  <tbody>
+	    <row>
+	      <entry>16cm</entry>
+	      <entry>0.02 K</entry>
+	      <entry>2.1 mK</entry>
+	      <entry>0.53 mK</entry>
+	      <entry>0.1 mK</entry>
+	      <entry>0.1 mK</entry>
+	      <entry>0.02 mK</entry>
+	    </row>
+	    <row>
+	      <entry>4cm</entry>
+	      <entry>0.01 K</entry>
+	      <entry>1.6 mK</entry>
+	      <entry>0.4 mK</entry>
+	      <entry>0.07 mK</entry>
+	      <entry>0.11 mK</entry>
+	      <entry>0.01 mK</entry>
+	    </row>
+	    <row>
+	      <entry>15mm</entry>
+	      <entry>0.02 K</entry>
+	      <entry>2.6 mK</entry>
+	      <entry>0.65 mK</entry>
+	      <entry>0.12 mK</entry>
+	      <entry>0.18 mK</entry>
+	      <entry>0.02 mK</entry>
+	    </row>
+	    <row>
+	      <entry>7mm</entry>
+	      <entry>0.03 K</entry>
+	      <entry>4.8 mK</entry>
+	      <entry>1.2 mK</entry>
+	      <entry>0.22 mK</entry>
+	      <entry>0.33 mK</entry>
+	      <entry>0.04 mK</entry>
+	    </row>
+	    <row>
+	      <entry>3mm</entry>
+	      <entry>&#x2014;</entry>
+	      <entry>&#x2014;</entry>
+	      <entry>&#x2014;</entry>
+	      <entry>1.4 mK</entry>
+	      <entry>2.1 mK</entry>
+	      <entry>0.24 mK</entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </table>
+    </para>
+    
+    <section id="Calibration">
+      <info>
+	<title>Calibration</title>
+      </info>
+      
+      <para>
+	It is crucial to obtain good calibration data during your observations, and you must consider
+	how much of an overhead calibration will represent before you propose an experiment. A detailed
+	description of the calibration required is given in <xref linkend="observations-calibration"></xref>.
+      </para>
+
+      <!-- 
+      <para>
+	There are four classes of data calibration: flux, bandpass, polarization and
+	gain.  The <acronym>ATCA</acronym> instrumental bandpass, polarization response and gain
+	amplitude are all relatively stable and flux, bandpass and polarization
+	calibration can be done just once during an observation. At centimetre
+	wavelengths these three calibrations can be performed with an observation of
+	B1934-638. This is often called the <firstterm>primary</firstterm> flux calibrator.
+	Atmosphere-induced phase and amplitude gains are more variable and brief
+	observations of suitable calibrator sources (<firstterm>gain</firstterm> calibrators) are
+	usually interleaved with observations of the target source.
+	<indexterm role="cp"><primary>calibrator</primary><secondary>primary flux</secondary></indexterm>
+	<indexterm role="cp"><primary>calibrator</primary><secondary>bandpass</secondary></indexterm>
+	<indexterm role="cp"><primary>calibrator</primary><secondary>gain</secondary></indexterm>
+	In addition, observations are made to calibrate aspects of the instrument's
+	performance: antenna pointing and instrumental delay. Pointing calibration is
+	normally only necessary at short wavelengths 7mm and 3mm, and involves periodic
+	observations of a nearby point source.  Differences in signal arrival times at
+	the correlator arise from the geometric delay, which can be calculated, and
+	instrumental delays, which must be measured. Instrumental delays vary slowly
+	and are measured with a single observation of a strong point source at the
+	beginning of an observing session.
+      </para>
+      -->
+
+      <!--
+      <section id="Flux-Calibration">
+	<info>
+          <title>Flux Calibration</title>
+	</info>
+        <para>
+	  All observations must be ultimately related to a compact source in the
+	  southern sky with a known, constant flux density. For
+	  frequencies below 30 GHz, PKS B1934-638 is used; this source
+	  <indexterm role="cp"><primary>calibrator</primary><secondary>primary flux</secondary></indexterm>
+	  <indexterm role="cp"><primary>calibrator</primary><secondary>1934-648</secondary></indexterm>
+	  should be observed at least once a day. Its flux density (following a
+	  revision of the flux density scale in August 1994) is 12.6, 5.0
+	  and 2.7 Jy at 2100, 5500 and 9000 MHz, respectively
+	  (<ulink url="http://www.atnf.csiro.au/observers/memos/d96783~.pdf">Reynolds 1994</ulink>) and 1.2 and 1.0 Jy
+	  at 17000 and 19000 MHz respectively
+	  (<ulink url="http://www.narrabri.atnf.csiro.au/calibrators/data/1934-638/1934_12mm.pdf">Sault 2003</ulink>).
+	  The flux densities are incorporated in the on-line calibration
+	  routine in <command>caobs</command>, and in the miriad calibration software.  For frequencies
+	  <indexterm role="cp"><primary>Miriad</primary></indexterm>
+	  above 30 GHz, observations of a planet (Uranus is recommended, Mars
+	  may be an alternative in the most compact arrays) will be required
+	  for primary amplitude calibration (in suitably compact
+	  configurations). In the 7mm band, PKS B1934-638 can also be used.
+	  Suitable software exists in Miriad for using
+	  planetary calibration data.
+	</para>
+      </section>
+      -->
+
+      <!--
+      <section id="Gain-Calibration">
+	<info>
+          <title>Gain Calibration</title>
+	</info>
+        <para>
+	  <indexterm role="cp"><primary>calibrator</primary><secondary>gain</secondary></indexterm>
+	  The calibrators database gives information on potential sources that may be
+	  used to measure the interferometer amplitude/phase calibration. 
+	  The on-line system
+	  temperature calibration takes out the temporal changes in the electronics gain
+	  but does not correct for elevation dependence of either antenna (optical) gain
+	  or atmospheric opacity.
+	</para>
+
+        <para>
+	  A series of brief gain calibrator observations
+	  are important to correct for these effects. The gain calibrator should
+	  be close to the target source.  Observers concerned
+	  with accurate positions will also need to choose a gain
+	  calibrator whose J2000 position is accurately known.  It is preferable
+	  to make
+	  <inlineequation><textobject role="tex">\sim2</textobject></inlineequation>
+	  min calibrator observations once every
+	  <inlineequation><textobject role="tex">\sim30</textobject></inlineequation>
+	  min. Less-frequent calibration is possible at 16cm and
+	  more frequent calibration may be required at 4cm. At 15mm and shorter
+	  wavelengths, it is preferable to calibrate as frequently as possible
+	  (consistent with not spending too much time off source), unless the
+	  array is very compact.
+	</para>
+	
+        <para>
+	  In summer, or during the day, phase stability can be poor. Phase
+	  stability can be monitored for bright compact sources with <command>vis</command>, or
+	  with the <acronym>ATCA</acronym> seeing monitor.
+	  <ulink url="http://www.atnf.csiro.au/observers/docs/7mm/seeing.pdf">The <acronym>ATCA</acronym> Seeing Monitor page</ulink>
+	  describes the system as initially installed. In 2008 a new satellite beacon was adopted, resulting in a
+	  change in the frequency from 30GHz to 21GHz.
+	  <indexterm role="cp"><primary>seeing monitor</primary></indexterm>
+	  <indexterm role="cp"><primary>satellite</primary><secondary>beacon</secondary></indexterm>
+	</para>
+	-->
+
+      <para>
+	The amount of calibration required will also depend on when the experiment is scheduled.
+	Observations requiring maximum phase stability (e.g., at wavelengths less than 6cm) should
+	be made in winter, or at night.
+      </para>
+      
+	<!--
+        <para>
+	  The most up-to-date calibrator list is available by position or
+	  flux-limited online search from
+	  <ulink url="http://www.narrabri.atnf.csiro.au/calibrators/">the <acronym>ATCA</acronym> calibrator database page</ulink>.
+	</para>
+
+      </section> -->
+
+	<!--
+	<section id="Bandpass-Calibration">
+	<info>
+          <title>Bandpass Calibration</title>
+	</info>
+        <para>
+	  A spectral-line observation will normally require a bandpass
+	  <indexterm role="cp"><primary>calibrator</primary><secondary>bandpass</secondary></indexterm>
+	  calibrator. At low frequencies, the primary calibrator PKS
+	  B1934-638 is usually enough, but at wavelengths of 3cm and
+	  shorter a source such as 0537-441, 1253-055, or
+	  1921-293 (usually &gt;5Jy) may be needed.  The Compact Array
+	  bandpasses are stable, and so a single bandpass calibration is
+	  normally sufficient, unless you need high dynamic range.
+	</para>
+      </section> -->
+    </section>
+
+    <section id="Sensitivity-Calculations">
+      <info>
+        <title>Sensitivity Calculations</title>
+      </info>
+      <para>
+	The general expressions for the flux and brightness sensitivities are given
+	<indexterm role="cp"><primary>sensitivity</primary><secondary>formulae</secondary></indexterm>
+	in the document
+	<ulink url="http://www.narrabri.atnf.csiro.au/observing/AT-01.17-025.pdf">AT/01.17/025</ulink>,
+	and these general expressions have been used in
+	<xref linkend="table_sensitivity"></xref>.
+	The observer has control of the integration time (
+	<inlineequation><textobject role="tex">t</textobject></inlineequation>),
+	bandwidth (<emphasis>B</emphasis>), observing wavelength (
+	<inlineequation><textobject role="tex">\lambda</textobject></inlineequation>), number of
+	baselines (<emphasis>N</emphasis>) and synthesized beam
+	size (
+	<inlineequation><textobject role="tex">\theta</textobject></inlineequation>) only, and with these variables and
+	the system sensitivity (
+	<inlineequation><textobject role="tex">\mathrm{S}_{\mathrm{sys}}</textobject></inlineequation>),
+	the expressions reduce approximately to:
+	<informalequation>
+	  <textobject role="tex">
+            \mathrm{rms\; Flux\; Sensitivity}  = \Delta\mathrm{S} = 7.55\times10^{-5}  \mathrm{S}_{\mathrm{sys}}(\mathrm{N} t \mathrm{B})^{-1/2} \mathrm{Jy},
+	  </textobject>
+	</informalequation>
+	and
+	<informalequation>
+	  <textobject role="tex">
+            \mathrm{rms\; Brightness\; Sensitivity}  = \Delta\mathrm{T}  =  1.36\times10^{3} \Delta\mathrm{S}
+	    \lambda^{2}/(\theta_\alpha\theta_\delta) \mathrm{K},
+	  </textobject>
+	</informalequation>
+        where
+	<inlineequation><textobject role="tex">\mathrm{S}_{\mathrm{sys}}</textobject></inlineequation>
+	is in Jy,
+	<inlineequation><textobject role="tex">t</textobject></inlineequation>
+	in min, <emphasis>B</emphasis> in MHz,
+	<inlineequation><textobject role="tex">\lambda</textobject></inlineequation>
+	in cm, and
+	<inlineequation><textobject role="tex">\theta</textobject></inlineequation>
+	is in arcsec. For the full 6 km array, <emphasis>N</emphasis>=15.
+	There is a convenient
+	<ulink url="http://www.narrabri.atnf.csiro.au/myatca/interactive_senscalc.html"><acronym>ATCA</acronym> sensitivity calculator</ulink>
+	  which takes into account system temperature, observing frequency,
+	  array, correlator configuration and (u,v)-weighting.  
+	  (A pre-CABB version of the calculator is also available on the ATCA web page
+	  for use when considering the utility of archival ATCA data.)
+      </para>
+    </section>
+  </section>
+  
+  <section id="millimetre-observations">
+    <info>
+      <title>Millimetre-wave observations (15mm&#x2013;3mm)</title>
+    </info>
+    <para>
+      Technical details of the <acronym>ATCA</acronym> mm systems are presented in
+      <ulink url="http://www.narrabri.atnf.csiro.au/observing/EuMW2004Gough.pdf">MMICS for the AT mm-wave receiver system</ulink>
+      by Gough et al. (Proc. 12th European Gallium Arsenide and other Compound Semiconductors 
+      Application Symposium, 2004, pp.359-362) and
+      <ulink url="http://www.narrabri.atnf.csiro.au/observing/EuMC2008Moorey.pdf">Cryogenically Cooled mm-wave Front 
+      Ends for the Australia Telescope</ulink>
+      by Moorey et al. (Proc. European Microwave Conference, 2008, pp.155-158). This section builds on many of the
+      concepts described in the previous section on centimetre wavelength observations,
+      which should be read before reading this section.
+    </para>
+
+    <section id="15mm-Observations">
+      <info>
+	<title>15mm Observations</title>
+      </info>
+      <para>
+	All six antennas of the Compact Array are equipped with 15mm receivers
+	covering the frequency range 16&#x2013;25 GHz.  The 15mm system shares a
+	common dewar with the 7mm and 3mm receivers, and the separate feed horns
+	at the top of the dewar are moved to the Cassegrain focus of the
+	Compact Array antennas using the rotator positioning system. Because
+	the 15, 7 and 3 mm receivers have separate feed horns, observations
+	cannot be simultaneous between the 15, 7 and 3 mm bands.
+      </para>
+    </section>
+
+    <section id="7mm-Observations">
+      <info>
+	<title>7mm Observations</title>
+      </info>
+      <para>
+	The <acronym>ATCA</acronym> can observe within the frequency range 30&#x2013;50GHz.  Feeds and
+	receivers were installed into the existing mm-wave receiver packages on
+	all 6 antennas in 2007, with the 7mm upgrade jointly funded by the
+	<acronym>ATNF</acronym> and NASA's Deep Space Network to enable the <acronym>ATCA</acronym> to participate
+	in occasional spacecraft tracking.
+      </para>
+
+      <para>
+	The wide 7mm band presents difficulties in signal down-conversion,
+	<indexterm role="cp"><primary>down-conversion</primary><secondary>7mm</secondary></indexterm>
+	as the aliased signal from the first down conversion stage can also
+	be within the 7mm band. Although image rejection filters are used,
+	variations in receiver gain across the band, combined with the
+	frequency-dependent performance of the filters themselves, can result
+	in appreciable signal levels being added to the observing band.
+	Generally, this aliased signal does not cross-correlate and is present
+	as a contribution to the noise level. However, in some circumstances,
+	notably as the delay rate drops to zero (e.g., around source transit on
+	north-south baselines), the aliased component can cross-correlate and
+	be visible as &#x201C;beating&quot; on some baselines. This data must be flagged
+	during the data processing.
+      </para>
+
+<!--      <para>
+	A swap-program may, if possible, be scheduled for 7mm projects &#x2014;
+	see the following section for details.
+      </para>
+-->
+    </section>
+
+    <section id="observations-3mm">
+      <info>
+        <title>3mm Observations</title>
+      </info>
+      <para>
+	The inner five <acronym>ATCA</acronym> telescopes (i.e., excluding CA06) are outfitted
+	with a 3mm receiver and can observe in the range 83 to 105 GHz.
+	A noise diode has been added to the 3mm system on CA02 (only) to aid
+	with 3mm polarisation calibration.  Aliasing effects similar to those
+	described at 7mm can also arise in the 3mm band.
+      </para>
+
+      <para>
+	A limited form of flexible scheduling is operational for observations
+	<indexterm role="cp"><primary>schedule</primary><secondary>flexible</secondary></indexterm>
+	at millimetre wavelengths. Consult the document 
+	<ulink url="http://www.narrabri.atnf.csiro.au/observing/flexsched.html"><wordasword>Flexible Scheduling
+	at ATCA</wordasword></ulink> for details.
+      </para>
+
+      <para>
+	A
+	<ulink url="http://www.atnf.csiro.au/observers/docs/3mm/quickstart.html">quickstart guide for 3mm observing</ulink>
+	is also available.
+      </para>
+    </section>
+
+    <section id="Procedure-for-mm-observations">
+      <info>
+        <title>Procedure for mm observations</title>
+      </info>
+      <!-- \label{s:mm_obsproc} -->
+      <para>
+	Observations in the mm band are run from a schedule file in the same way as
+	cm-band observations. However, due to the effects of atmosphere stability, mm
+	observations require bandpass and phase-calibration checks at a much more
+	frequent rate.
+      </para>
+
+      <para>
+	Note that as <acronym>ATCA</acronym> does not Doppler track, it is important to have a
+	<indexterm role="cp"><primary>Doppler tracking</primary></indexterm>
+	good estimation of the magnitude of the Doppler shift for the line of
+	interest. This is particularly so for the higher frequencies available to the
+	3mm system. The sky frequency can be calculated using an
+	<ulink url="http://www.narrabri.atnf.csiro.au/observing/obstools/velo.html">online calculator</ulink>.
+      </para>
+
+      <para>
+	A simple phase reference observation takes about an hour to run,
+	including calibration. The following procedure is typical:
+      </para>
+
+      <para>
+	Pointing calibration
+	&#x2192; Paddle calibration
+	&#x2192; Bandpass/Phase calibrator
+	&#x2192; Target source
+	&#x2192; Paddle calibration
+	&#x2192; Bandpass/Phase calibration
+	&#x2192; Target observation.
+      </para>
+
+      <para>
+	The
+	<ulink url="http://www.narrabri.atnf.csiro.au/observing/sched/cabb/"><acronym>CABB</acronym> web scheduler</ulink>
+	can be used to construct the observing schedule.
+      </para>
+
+      <section id="Warnings-for-mm-observations">
+	<info>
+          <title>Warnings for mm observations</title>
+	</info>
+        <para>
+	  Elevation angles close to
+	  the array horizon should be avoided because of the increased opacity
+	  and poorer atmospheric stability. Therefore, observations of objects
+	  with a declination further north of -50&#x00B0; are best
+	  made using hybrid configurations (i.e., one using the N-S spur) in order
+	  to achieve sufficient (u,v)-coverage.
+	</para>
+
+        <para>
+	  Observations using very compact telescope configurations should be
+	  made with caution, as telescope shadowing can be a significant
+	  <indexterm role="cp"><primary>shadowing</primary></indexterm>
+	  problem, especially for sources at declinations which do not achieve
+	  elevations high above the horizon. See
+	  <xref linkend="Shadowing-Diagrams"></xref>
+	  for details.
+	</para>
+      </section>
+    </section>
+
+    <!-- <section id="Calibration3">
+      <info>
+        <title>Calibration</title>
+      </info>
+      <para>
+	The first stage of calibration in any observation is delay calibration, which is
+described in detail in chapter 3. 
+      </para>
+
+      <section id="Flux-calibration">
+	<info>
+          <title>Flux calibration</title>
+	</info>
+        <para>
+	  <indexterm role="cp"><primary>calibrator</primary><secondary>primary flux</secondary></indexterm>
+	  <indexterm role="cp"><primary>planets</primary></indexterm>
+	  <indexterm role="cp"><primary>planets</primary><secondary>Uranus</secondary></indexterm>
+	  At wavelengths shorter than a few centimetres, extra-galactic sources are generally
+	  too variable to be useful as flux density calibrators. So at these
+	  wavelengths, the blackbody emission from the planets are often used as flux
+	  standards. The two most commonly used planets for the <acronym>ATCA</acronym> at 3mm are Uranus and Mars. Jupiter is too large for use as an <acronym>ATCA</acronym> flux density calibrator.
+	  Neptune could be used as a flux density calibrator, however, it is currently
+	  quite close to Uranus and only half as bright, and so does not offer anything
+	  over Uranus.
+	</para>
+
+        <para>
+	  Uranus is the preferred flux density calibrator for the <acronym>ATCA</acronym>. Mars is less
+	  suitable for a number of reasons: some models of Mars' average brightness
+	  temperature suggest variations in the temperature of up to 10% as a result of
+	  Mars' diurnal rotation, its distance from the Sun and the viewing geometry of
+	  Earth-based observers. Definitive measurements and confirmation of these
+	  models are poorly studied in the literature. Depending on its distance and the
+	  array configuration, structure on Mars is also readily detected with the
+	  <acronym>ATCA</acronym>: Mars has hot equatorial and cold polar regions.
+	</para>
+
+        <para>
+	  Details of planet rise and set times can be determined using
+	  <ulink url="http://www.parkes.atnf.csiro.au/cgi-bin/utilities/planets.cgi">an online calculator tool</ulink>.
+	</para>
+      </section>
+
+      <section id="Bandpass-calibration">
+	<info>
+          <title>Bandpass calibration</title>
+	</info>
+        <para>
+	  <indexterm role="cp"><primary>calibrator</primary><secondary>bandpass</secondary></indexterm>
+	  <indexterm role="cp"><primary>calibrator</primary><secondary>delay</secondary></indexterm>
+	  <indexterm role="cp"><primary>calibrator</primary><secondary>pointing</secondary></indexterm>
+	  Bright extragalactic continuum sources
+	  (such as 0537-441, 1253-055, or 1921-293)
+	  are useful for bandpass and delay
+	  calibration as well as pointing.  A 15 minute integration will usually
+	  provide an adequate bandpass, except at the narrowest bandwidths where extra
+	  time should be allowed.  Refer to the
+	  <ulink url="http://www.narrabri.atnf.csiro.au/calibrators"><acronym>ATNF</acronym> calibrator catalogue</ulink>
+	  and use the form to select bright sources (by specifying a lower limit
+	  to the flux density) near your target source &#x2013; but be sure to avoid
+	  Cen A (1322-427) at cm wavelengths and other sources with
+	  <indexterm role="cp"><primary>calibrator</primary><secondary>defect</secondary></indexterm>
+	  large &#x201C;defects&quot; (see
+	  catalogue webpages for details) at your frequency in your array, and
+	  resolved planets.
+	</para>
+      </section>
+
+      <section id="Gain-calibration">
+	<info>
+          <title>Gain calibration</title>
+	</info>
+        <para>
+	  <indexterm role="cp"><primary>calibrator</primary><secondary>gain</secondary></indexterm>
+	  <indexterm role="cp"><primary>calibrator</primary><secondary>phase</secondary></indexterm>
+	  To find the nearest gain calibrator to your source, use the position and
+	  flux-limited calibrator online search engine from the
+	  <ulink url="http://www.narrabri.atnf.csiro.au/calibrators"><acronym>ATNF</acronym> calibrator catalogue</ulink>.
+	  The list of calibrators interrogated by this engine includes OVRO and BIMA
+	  sources, which will be useful for observations of sources north of
+	  -30&#x00B0;. The CABB scheduler provides a direct interface to the calibrator database.
+	</para>
+
+        <para>
+	  The spatial and time separation of source and phase calibrator
+	  measurements has a strong dependence on telescope configuration and
+	  the atmospheric conditions. The
+	  <ulink url="http://www.narrabri.atnf.csiro.au/calibrators/calcycle.html"><acronym>ATNF</acronym> online calibrator cycle calculator</ulink>
+	  can be used to estimate of the rate of gain calibrator measurements for a
+	  number of different phase decorrelation percentages.
+	</para>
+
+        <para>
+	  Daytime observations, or observations with long baselines should require
+	  much more frequent gain calibration measurements than those made during
+	  nighttime observations and with compact configurations.
+	</para>
+
+      </section>
+
+      <section id="Pointing-calibration">
+	<info>
+          <title>Pointing calibration</title>
+	</info>
+        <para>
+	  Regular pointing checks (every hour or so) are essential because of the
+	  small size of the <acronym>ATCA</acronym> primary beam at mm wavelengths. Pointing corrections are
+	  valid within an area with a diameter of around 15-20 degrees, centred
+	  on the azimuth/elevation of the pointing scan.
+	</para>
+
+        <para>
+	  <indexterm role="cp"><primary>calibrator</primary><secondary>pointing</secondary></indexterm>
+	  To refine your pointing during your observation, it is best to choose
+	  a pointing calibrator near your target source (within 10&#x00B0;
+	  if possible), not only because the pointing changes with position, but
+	  also because you will want to observe it throughout your run.
+	  Generally, any quasar with a flux density of 100 mJy or more will suffice.
+	</para>
+      </section>
+
+      <section id="Paddle-calibration">
+	<info>
+          <title>Paddle (vane) calibration</title>
+	</info>
+        <para>
+	  At millimetre wavelengths, the atmosphere can no longer be approximated as
+	  perfectly transparent. It degrades overall sensitivity in two ways: the
+	  atmosphere emits radiation, and so raises the system temperature, and the
+	  atmosphere attenuates the astronomical signal. For <acronym>ATCA</acronym> at 3mm wavelength,
+	  the effect of the atmospheric opacity is corrected for via a measurement of
+	  the effective system temperature - the the so-called &#x201C;above atmosphere&#x201D; system
+	  temperature. More details are available in the MIRIAD User Guide.
+	</para>
+
+        <para>
+	  The <acronym>ATCA</acronym> uses the paddle, or vane, calibration method
+	  in its 3mm system to determine an above-atmosphere system temperature. This
+	  involves placing an ambient load (paddle) in front of the receiver horn.
+	  This is a standard procedure at 3mm wavelengths for placing the
+	  amplitudes on a brightness temperature scale.  You will need to include
+	  periodic paddle measurements in your schedule file &#x2014; about every
+	  10&#x2013;20 minutes.  The entire paddle scan takes about 2 minutes.
+	  <indexterm role="cp"><primary>paddle</primary></indexterm>
+	</para>
+      </section> 
+    </section> -->
+  </section>
+
+
+  <section id="Additional-Observing-Notes-and-Techniques">
+    <info>
+      <title>Additional Observing Notes and Techniques</title>
+    </info>
+    <section id="Short-Observations">
+      <info>
+        <title>Short Observations</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>short</secondary></indexterm>
+	You may not wish to make detailed high resolution images but instead,
+	for example, survey a large number of compact or simple sources. Under
+	these circumstances, if the sources are strong enough, short
+	observations will suffice (<xref linkend="table_image_structure"></xref>).  In scheduling
+	these, slew time becomes an important consideration; these may be
+	calculated see <xref linkend="Mosaicing"></xref>, or
+	with the use of the CABB scheduler. A single short observation in an
+	E-W array will give a 1-dimensional (u,v)-coverage; two or more
+	short observations will give some 2-dimensional information.  In such
+	short observations consequent higher sidelobe levels will exacerbate
+	problems caused by confusing sources in the primary beam. Because the
+	Compact Array has poor (u,v)-coverage, in contrast to its good
+	sensitivity, this confusion makes it difficult to reach the receiver
+	noise limit when observing weak sources or searching for detections,
+	particularly at lower frequencies. Current experience suggests that at
+	6cm at least 8 short observations well distributed in hour angle are
+	needed to reduce confusion to the noise level.  At 16cm, short
+	observations are unlikely to ever reach the noise limit.
+      </para>
+      
+      <para>
+	<table frame="all" id="table_image_structure">
+	  <title>Largest well-imaged structure at 6cm wavelength.</title>
+	  <tgroup cols="4" align="center" colsep="1" rowsep="1">
+	    <colspec colname="time"/>
+	    <colspec colname="a6km"/>
+	    <colspec colname="a1.5km"/>
+	    <colspec colname="a750m"/>
+	    <thead>
+	      <row>
+		<entry>Observing Time</entry>
+		<entry>6 or 3 km</entry>
+		<entry>1.5 km</entry>
+		<entry>750 m</entry>
+	      </row>
+	    </thead>
+	    <tbody>
+	      <row>
+		<entry>25 days</entry>
+		<entry>
+		  6&#x2032;
+		  <footnote>
+		    <para>
+		      For other wavelengths, scale sizes by
+		      <inlineequation><textobject role="tex">\lambda</textobject></inlineequation> / 6 cm.
+		    </para>
+		  </footnote>
+		</entry>
+		<entry>&#x2014;</entry>
+		<entry>&#x2014;</entry>
+	      </row>
+	      <row>
+		<entry>12 days</entry>
+		<entry>4.5&#x2032;</entry>
+		<entry>6&#x2032;</entry>
+		<entry>&#x2014;</entry>
+	      </row>
+	      <row>
+		<entry>4 days</entry>
+		<entry>160&#x2033;</entry>
+		<entry>4&#x2032;</entry>
+		<entry>8&#x2032;</entry>
+	      </row>
+	      <row>
+		<entry>2 days</entry>
+		<entry>115&#x2033;</entry>
+		<entry>160&#x2033;</entry>
+		<entry>5&#x2032;</entry>
+	      </row>
+	      <row>
+		<entry>1 day</entry>
+		<entry>80&#x2033;</entry>
+		<entry>115&#x2033;</entry>
+		<entry>230&#x2033;</entry>
+	      </row>
+	      <row>
+		<entry>
+		  6 x 1-10 min
+		  <footnote>
+		    <para>
+		      Well distributed in hour angle.
+		    </para>
+		  </footnote>
+		</entry>
+		<entry>30&#x2033;</entry>
+		<entry>50&#x2033;</entry>
+		<entry>100&#x2033;</entry>
+	      </row>
+	      <row>
+		<entry>
+		  1-10 min
+		  <footnote>
+		    <para>
+		      One-dimensional information only.
+		    </para>
+		  </footnote>
+		</entry>
+		<entry>20&#x2033;</entry>
+		<entry>40&#x2033;</entry>
+		<entry>80&#x2033;</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</table>
+      </para>
+
+    </section>
+
+    <section id="Polarimetry">
+      <info>
+        <title>Polarimetry</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>polarisation</primary></indexterm>
+	Two orthogonal linear polarisations are measured simultaneously. The
+	position angle of the polarisation splitter is stationary with respect
+	to the alt-az&#x2013;mounted antennas and so rotates on the sky. A suite of
+	tasks in <application>Miriad</application> is available for polarimetric calibration of Compact
+	Array data.  No specific calibrators, other than the usual flux and
+	gain calibrators, are needed for polarisation calibration. An
+	observation of B1934-638 is essential when only making short
+	observations.  Small drifts with time can be corrected for using the
+	on-line measurements of the <emphasis>XY</emphasis> phase differences to an accuracy
+	of 0.5 degrees at all bands.  Best polarimetric calibration results
+	<indexterm role="cp"><primary>calibrator</primary><secondary>polarisation</secondary></indexterm>
+	when the gain calibrator is observed at a good sampling of
+	different parallactic angles.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>Miriad</primary></indexterm>
+	<application>Miriad</application> is routinely used to calibrate data in all bands, with
+	consistent results being achieved over several months in the cm bands.
+	The on-axis instrumental polarisation is typically below 2-3%.  After
+	calibrating for instrumental polarisation, we are currently able to
+	reduce on-axis instrumental effects to 0.1%, and better with some
+	care. Procedures for 3mm polarisation observations are still being
+	established.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>polarisation</primary><secondary>off-axis</secondary></indexterm>
+	The off-axis polarisation increases roughly as the square of the
+	distance from the pointing centre at least up to the half-power point.
+	At 16, 6 and 3cm, the instrumental polarisation is about 3%,
+	1.6% and 3% of the <emphasis>apparent</emphasis> total intensity at the half
+	power point, respectively. At 16 and 6cm this error is almost purely
+	linearly polarised (there is no circularly polarised component),
+	whereas at 3cm the circularly polarised component is somewhat
+	less than 1% at the half-power point.
+	<!-- Fig @ref{f:pol} shows the -->
+	<!-- off-axis linearly polarised response at 20 and 13 cm. -->
+	Because the <acronym>ATCA</acronym> antennas have an alt-az mount, the off-axis response
+	varies with parallactic angle, and will be smeared out by a factor of
+	<indexterm role="cp"><primary>parallactic angle</primary></indexterm>
+	a few by a long synthesis. This smearing is a function of
+	declination. The <application>Miriad</application> task <command>offpol</command> can be used to simulate off-axis
+	polarimetric response of a long synthesis observation.  Mosaicing
+	smears out the off-axis response still further, by as much as an order
+	of magnitude.
+      </para>
+      <para>
+	<indexterm role="cp"><primary>polarisation</primary><secondary>instrumental</secondary></indexterm>
+	At 16cm, instrumental polarisation is largely independent of frequency,
+	due to a recent upgrade of the receivers and OMTs. The leakages are now
+	flat to better than 2% across the entire usable band. More detail on the
+	polarisation properties of the <acronym>ATCA</acronym> 16cm receivers can be found in the
+	receiver commissioning report. 
+	<!-- make link to that report here -->
+	Leakages of more than 10% occur at 4550 &#x00B1; 10,
+	5328 &#x00B1; 10 MHz and 8780 &#x00B1; 10 MHz. Data near these
+	frequencies may need to be flagged.
+      </para>
+    </section>
+
+    <section id="Mosaicing">
+      <info>
+	<title>Mosaicing</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>mosaic</primary></indexterm>
+	Objects which are of similar size or larger than the primary beam will need
+	to be <firstterm>mosaiced</firstterm>. In such cases, the recommended spacing of pointing
+	centres is half of the primary beamwidth. The Compact Array antennas
+	and control system allow for rapid switching between pointing centres
+	&#x2014; as frequently as once per integration cycle. This enables a source
+	to be rapidly mosaiced without necessarily losing
+	(u,v)-coverage.  In mosaicing mode, data is not recorded when
+	antennas are driving between fields. The antenna acceleration limit is
+	800 deg/min/min, and the slew limit is 38 deg/min in azimuth and 19
+	deg/min in elevation. Mosaicing mode may also be useful for observing
+	<indexterm role="cp"><primary>limits</primary><secondary>slewing</secondary></indexterm>
+	large numbers of nearby sources, as the observing overheads are
+	reduced.
+      </para>
+
+      <para>
+	There is also a facility for &#x201C;on-the-fly&quot; mosaicing, whereby the
+	antennas are continuously driven. This type of mosaicing may be
+	especially useful for large-area mosaics at low frequencies, where
+	the drive times between mosaic pointings are significant.
+      </para>
+      
+      <para>
+	<xref linkend="scheduling-mosaics"></xref> explains how to set up mosaic files.
+	The
+	<ulink url="http://www.atnf.csiro.au/computing/software/miriad/userguide/userhtml.html"><application>Miriad</application> User Guide</ulink>
+	describes how to reduce a mosaic data set.
+      </para>
+    </section>
+
+    <section id="Multi-frequency-Synthesis">
+      <info>
+        <title>Multi-frequency Synthesis</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>synthesis</primary><secondary>multi-frequency</secondary></indexterm>
+	As (u,v)-distance is proportional to frequency as well as
+	baseline length, different (u,v)-spacings can be obtained not
+	only by varying the antenna configuration, but also by varying the
+	frequency.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>sampling</primary><secondary>uv</secondary></indexterm>
+	Additional (u,v)-coverage can be obtained in the mm bands by
+	observing at multiple frequencies.  Observing at two frequencies has
+	the added advantage of increasing sensitivity, as they can be observed
+	simultaneously.  Observing more than two frequencies requires time
+	sharing. While this will not improve the sensitivity further, it can
+	significantly improve the (u,v)-coverage. However, there is a
+	trade off between gaps in the tangential and radial directions in the
+	(u,v)-plane.  Typically two or three pairs of frequencies,
+	observing each setting for 10 minutes, is a good compromise.
+      </para>
+      
+      <para>
+	<indexterm role="cp"><primary>synthesis</primary><secondary>bandwidth</secondary></indexterm>
+	When you use both bandwidth synthesis and two or three configurations,
+	and require (u,v)-coverage to 6km, the best choice of
+	configurations is not two or three 6km arrays, but a combination of
+	6km with 1.5km and 750m arrays (all arrays using the 6km antenna).
+	<!-- A -->
+	<!-- program (@sc{mfplan}) is available in @sc{miriad} to help select configurations -->
+	<!-- and determine optimum observing frequencies. -->
+	The flux density of most sources will often vary significantly between different
+	frequencies and, furthermore, this variation itself (i.e., the
+	spectral index) will vary across the source. This complicates the task
+	<indexterm role="cp"><primary>spectral index</primary></indexterm>
+	of combining data from the different frequencies when you want
+	high-dynamic-range images. However software is available in <application>Miriad</application> to
+	account for the spectral variations in the imaging, deconvolution and
+	self-calibration steps. These algorithms solve for, or use, both a
+	basic flux-density image and a spectral-index image. For typical
+	spectral indices, they are appropriate for frequency ratios less than
+	about 1.25.
+      </para>
+    </section>
+
+    <section id="Reference-Pointing">
+      <info>
+        <title>Reference Pointing</title>
+      </info>
+      <!-- \label{s:pointing} -->
+      <para>
+	<indexterm role="cp"><primary>pointing</primary><secondary>reference</secondary></indexterm>
+	<indexterm role="cp"><primary>pointing</primary><secondary>solution</secondary></indexterm>
+	<indexterm role="cp"><primary>reconfiguration</primary></indexterm>
+	After each antenna reconfiguration a pointing solution is determined.
+	Generally, rms errors of around 5 arcsec are achieved at this time.
+	These solutions degrade with thermal (and other) effects. By the time
+	observations are undertaken, rms errors of about 10 arcsec (or more) are likely.
+	There is a significant offset (of up to 30 arcsecs) between the mm and the cm receivers.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>calibrator</primary><secondary>pointing</secondary></indexterm>
+	A reference pointing mode is available which is recommended for mm observations.
+	In this mode, a 1 Jy
+	calibrator, about 5&#x00B0; to 10&#x00B0; away from the
+	target will hold the pointing to 10 arcsec rms.  A bright (say 5 Jy)
+	calibrator at 2&#x00B0; to 3&#x00B0; from the target will
+	reduce the errors to about 5 arcsec rms. A reference pointing scan
+	generally takes 3-4 minutes to complete. See the
+	<ulink url="http://www.narrabri.atnf.csiro.au/observing/pointing">Reference Pointing Guide</ulink>
+	for details.
+      </para>
+    </section>
+  </section>
+
+  <section id="High_Time_Resolution_Pulsars_Planets_and_VLBI">
+    <info>
+      <title>High Time Resolution, Pulsars, Planets and VLBI</title>
+    </info>
+    <section id="High-Time-Resolution-and-Pulsar-Observing">
+      <info>
+        <title>High Time Resolution and Pulsar Observing</title>
+      </info>
+      <para>
+	In pulsar binning mode, the correlator cycle time (normally 10 seconds) is divided
+	into an integer number of pulsar periods. Each pulsar period is further divided into
+	N equal time intervals called bins. The integration in the correlator is done
+	separately for each bin, such that at the end of the cycle, N quantities are
+	produced, each of which represents the integrated value at a particular pulsar phase.
+The minimum time bin is around 110 micro-seconds, allowing, for example, 32 phase bins for a 3.5 milli-second pulsar.	
+	The correlator will also record both the full 2 GHz continuum bands in addition
+	to the pulsar binning data, analagous to how the zoom modes are recorded.
+      </para>
+
+      <para>
+For high time resolution observations, a time resolution of order 10 milliseconds is possible, though with a reduced number of channels across each 2 GHz band (achieved by averaging over 1 MHz channels). 
+      </para>
+    </section>
+
+    <section id="Solar-System-Objects">
+      <info>
+        <title>Solar System Objects</title>
+      </info>
+      <!-- \label{s:solar} -->
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>Solar System</secondary></indexterm>
+	The Compact Array can track sources with non-sidereal rates, such as
+	planets or comets. In this case delay tracking is adjusted
+	continuously to account for source proper motion. However the pointing
+	tracks a fixed celestial position during a scan. Thus scans must be
+	short enough that there is not significant proper motion across the
+	primary beam in the course of a scan. This is rarely a problem.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>ephemerides</primary></indexterm>
+	JPL ephemerides of the planets are built into the observing program,
+	and a simple mechanism exists to import current JPL ephemerides of
+	other solar system objects (e.g. new comets).
+      </para>
+    </section>
+
+    <section id="Tied-Array-Mode">
+      <info>
+        <title>Tied Array Mode</title>
+      </info>
+      <!-- \label{s:cat} -->
+      <para>
+	<indexterm role="cp"><primary>array</primary><secondary>tied</secondary></indexterm>
+	A tied array capability is available.  It provides tying of the array
+	at one or two frequencies and, for <acronym>CABB</acronym>, initially at a bandwidth of 64 MHz.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>catie</primary></indexterm>
+	The tied array adder is controlled via a process called <literal>catie</literal> which
+	runs within cacor. This allows the choice of which antennas are
+	included and whether the adder produces linear or circular
+	polarisation outputs. The array is phased up in the usual way, and an
+	option to allow the insertion of a 90&#x00B0; phase offset
+	between the A and B linear polarisations at each antenna &#x2013; thereby
+	forming circular polarisation at the tied-array output &#x2013; is available.
+      </para>
+
+      <para>
+	<indexterm role="cp"><primary>DAS</primary></indexterm>
+	<indexterm role="cp"><primary>VLBI</primary></indexterm>
+	The tied-array adder can be fed into the LBA (<firstterm>Long Baseline Array</firstterm>)
+	DAS which provides outputs for the
+	VLBI disk-based recorders at bandwidths between 62.5 kHz and 64 MHz.
+	Simultaneous Compact Array and tied array operation is possible, although
+	currently this is limited to 64 MHz in both IFs, or 64 MHz in one IF and
+	the full 2 GHz (which is not formed into a tied array) in the other.
+      </para>
+    </section>
+  </section>
+
+  <section id="Other-Things-to-Consider">
+    <info>
+      <title>Other Things to Consider</title>
+    </info>
+    <section id="Confusion">
+      <info>
+        <title>Confusion</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>confusion</primary></indexterm>
+	The presence of field sources in the primary antenna beam can limit
+	continuum image quality. These sources produce unwanted sidelobes in
+	the images and can lead to dynamic range and aliasing problems. The
+	brightest source expected on average in the half-power primary antenna
+	beam (away from the Galactic plane) is listed in <xref linkend="table_sensitivity"></xref>.
+	Note that confusion becomes much worse as you go
+	to lower frequencies, and that this can be particularly serious for
+	snapshot observations (See <xref linkend="Short-Observations"></xref>).  The
+	<ulink url="http://www.astrop.physics.usyd.edu.au/sumsscat">SUMSS catalogue and database</ulink>,
+	<indexterm role="cp"><primary>catalogue</primary><secondary>SUMSS</secondary></indexterm>
+	<indexterm role="cp"><primary>catalogue</primary><secondary>MGPS</secondary></indexterm>
+	and the
+	<ulink url="http://www.physics.usyd.edu.au/sifa/Main/MGPS2">Molonglo Galactic Plane Survey (MGPS-2) catalogue and database</ulink>
+	are useful references to search for potential confusing sources in the
+	16cm band, where the effects of confusion are greatest.
+      </para>
+    </section>
+
+    <section id="Weather">
+      <info>
+        <title>Weather</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>observations</primary><secondary>weather effects</secondary></indexterm>
+	At short wavelengths and/or long baselines, atmospheric refraction can cause
+	serious phase errors. The problem becomes progressively less serious at
+	longer wavelengths and shorter baselines. Atmospheric conditions are most
+	favourable during winter and at night. A seeing monitor at Narrabri
+	continuously monitors the phase stability at a frequency of 21 GHz and
+	over a baseline of 200 m.  See
+	<ulink url="http://www.atnf.csiro.au/observers/docs/7mm/seeing.pdf">The <acronym>ATCA</acronym> Seeing Monitor</ulink>
+	for details (though note this paper describes the initial system;
+	    in 2008 a new satellite beacon was adopted, resulting in a
+	    change in the frequency from 30GHz to 21GHz).
+      </para>
+      
+      <para>
+          High winds, storms and extreme heat can damage the antennas.  See <xref linkend="Wind"></xref> to <xref linkend="Heat"></xref> for further details on automated stowing procedures.
+      </para>
+    </section>
+
+    <section id="Artefacts">
+      <info>
+        <title>Artefacts</title>
+      </info>
+      <para>
+	As with other synthesis instruments, system errors such as DC offsets and
+	sampler harmonics can lead to artefacts at the centre of the field.
+	These artefacts have not yet been observed to affect the data from the
+	<acronym>CABB</acronym> correlator, but if such an error would severely degrade your science
+	goals (e.g. in a detection experiment), it is preferable to displace the
+	source positions a few (synthesized) beamwidths from the field centre.
+	<indexterm role="cp"><primary>DC offset</primary></indexterm>
+	<indexterm role="cp"><primary>samplers</primary><see>CABB digitisers</see></indexterm>
+	<indexterm role="cp"><primary>CABB</primary><secondary>digitisers</secondary></indexterm>
+      </para>
+    </section>
+  </section>
+
+  <section  id="Submitting-a-proposal">
+    <info>
+      <title>Submitting a proposal</title>
+    </info>
+    <para>
+      <indexterm role="cp"><primary>proposal</primary><secondary>submitting</secondary></indexterm>
+    </para>
+
+    <para>
+      <indexterm role="cp"><primary>proposal</primary><secondary>deadline</secondary></indexterm>
+      The Compact Array usually operates under a semester system with two
+      application deadlines each year: around June 15 for observations from October
+      1 to March 31; and around December 15 for observations from April 1 to
+      September 30.
+      During each semester array maintenance, upgrades and array
+      reconfigurations (moving the antennas to different stations)
+      are scheduled in addition to astronomical observations.
+      <indexterm role="cp"><primary>maintenance</primary></indexterm>
+      <indexterm role="cp"><primary>reconfiguration</primary></indexterm>
+      Target of Opportunity (<acronym>ToO</acronym>)
+      <indexterm role="cp"><primary>target of opportunity</primary></indexterm>
+      requests for observations of extremely important transient or
+      non-predicted events can be made at any time. To learn how to apply for
+      <acronym>ToO</acronym> observing time, visit
+      <ulink url="http://www.atnf.csiro.au/observers/apply/too_apply.html">our webpage</ulink>.
+    </para>
+
+    <para>
+      Based on previous experience, observing at 3mm usually ends by October
+      15, restarting in late April. Detection experiments at 7mm and 15mm
+      usually end by October 31, restarting in early March.  Observations of
+      bright compact sources, for which self-calibration is possible, may be
+      made throughout the year.  Observations at times other than those
+      indicated above require an explicit justification in the proposal.
+    </para>
+
+    <para>
+      Check <ulink url="http://www.atnf.csiro.au/observers/apply/avail.html">our web page</ulink>
+      for information about the current status of the <acronym>ATNF</acronym> facilities.
+      <indexterm role="cp"><primary>observations</primary><secondary>millimetre</secondary></indexterm>
+      Before submitting proposals to observe particular objects, you should
+      check that the observation you are proposing has not already been made.
+      Previous Compact Array proposals and observations
+      <indexterm role="cp"><primary>proposal</primary><secondary>archive</secondary></indexterm>
+      can be found in the <ulink url="http://atoa.atnf.csiro.au/"><acronym>ATOA</acronym></ulink>
+      (Australia Telescope Online Archive).
+      After the proprietary period has expired, the data files from previous
+      observations may be downloaded from <acronym>ATOA</acronym>.
+<!--
+      An archive of older proposals (submitted between 1990 Quarter2 and the
+      2005 OCTS observing semester) is held in the
+      <ulink url="http://www.atnf.csiro.au/observers/search_proj.html">Projects Database</ulink>.
+-->
+    </para>
+
+    <para>
+      <indexterm role="cp"><primary>OPAL</primary></indexterm>
+      All <acronym>ATNF</acronym> Telescope Applications must be submitted using
+      <ulink url="http://opal.atnf.csiro.au/"><acronym>OPAL</acronym></ulink>.
+    </para>
+
+    <section id="A-Friend">
+      <info>
+        <title>A &#x201C;Friend&#x201D;</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>friend</primary></indexterm>
+	All observing projects are now allocated a &#x201C;friend&#x201D; who can help
+	when preparing for observations, and with later data analysis. Friends will only help
+	observers who visit the Marsfield <firstterm>Science Operations Centre</firstterm> (<acronym>SOC</acronym>)
+	<indexterm role="cp"><primary>Science Operations Centre</primary></indexterm> to do their
+	observations. Friends are allocated based on their expertise. For those projects with
+	<acronym>ATNF</acronym> co-investigators, one of the co-investigators will be assigned as
+	the friend.
+      </para>
+
+      <para>
+	A <ulink url="http://www.narrabri.atnf.csiro.au/observing/support/da_support.html">duty astronomer</ulink>
+	(<acronym>DA</acronym>)
+	<indexterm role="cp"><primary>duty astronomer</primary></indexterm>
+	is provided at the <acronym>SOC</acronym> who will help in the initial set up of the telescope
+	and with any problems which arise in the course of the
+	observations. In addition, they may also be able to help with schedule preparation and
+	initial data analysis, although requesting the help of your &#x201C;friend&#x201D; is a better option for
+	observers that require this help, as they will be involved much earlier than
+	the <acronym>DA</acronym>.
+	The duty astronomer has no obligation to participate in the observing, however, and should
+	not be asked to do so.
+      </para>
+    </section>
+  </section>
+
+  <section id="Successful-Proposals">
+    <info>
+      <title>Successful Proposals and Observing</title>
+    </info>
+    <para>
+      <indexterm role="cp"><primary>Time Allocation Committee</primary></indexterm>
+      After the Time Assignment Committee (<acronym>TAC</acronym>) has met, you will be notified when
+      the <acronym>TAC</acronym> grades and feedback on your proposal are available. These are available
+      to all members of the proposal team through <acronym>OPAL</acronym>.
+      All proposers are notified when the schedule for the next semester is released, and these schedules
+      will appear 
+      <ulink url="http://www.narrabri.atnf.csiro.au/observing/schedules/">on the web</ulink>.
+    </para>
+
+    <para>
+      Generally, at least one member of the observing team must be present
+      at the <acronym>SOC</acronym> to do the observations. The visiting observer should be
+      well-versed with the needs of their observing program before arriving,
+      particularly if they did not write the observing proposal or schedule
+      files. If they need assistance from the friend or <acronym>DA</acronym> to prepare
+      their schedules, they should arrive well before the start of their observations; at
+      least two weekdays.
+    </para>
+
+    <para>
+      Occupational Health and Safety regulations require that
+      observers are not to observe for more than 16 hours, so
+      <emphasis role="bold">for long observations you will need more than one observer</emphasis>.
+    </para>
+
+    <para>
+      Plan your trip to the <acronym>SOC</acronym> with the help of the <acronym>ATNF</acronym>
+      <ulink url="http://www.atnf.csiro.au/observers/visit">Visitor's Information</ulink>.
+      You will need to book transport,
+      accommodation and computer resources in Marsfield before arrival.
+    </para>
+
+    <para>
+      Note that multi-configuration observations are likely to occur weeks
+      or even months apart, so you may need to plan either one long visit
+      or several short trips.
+      Overseas observers will require a valid visa and
+      passport for entry into Australia.
+      <indexterm role="cp"><primary>visa</primary></indexterm>
+    </para>
+
+    <para>
+      <indexterm role="cp"><primary>schedule</primary><secondary>file</secondary></indexterm>
+      The Compact Array is controlled from user generated schedule files.
+      Schedule files are prepared with
+      the <ulink url="http://www.narrabri.atnf.csiro.au/observing/sched"><acronym>CABB</acronym> web scheduler</ulink>.
+    </para>
+
+    <para>
+      Schedules contain source names, positions, frequencies,
+      bandwidths, and any other information that
+      <command>caobs</command> needs for observations.
+    </para>
+    <!-- You can prepare your initial schedule as a simple text file, which @sc{atcasched} -->
+    <!-- can convert into the form required by the Compact Array's observing -->
+    <!-- program. This method (described in @ref{How to Prepare a Schedule File}) -->
+    <!-- %CHANGE THIS -->
+    <!-- %\hyperref{the Before Observing -->
+    <!-- %section}{Chapter }{}{ch3}) -->
+    <!-- is recommended for long or complicated schedules. -->
+    <para>
+      <indexterm role="cp"><primary>coord</primary></indexterm>
+      A useful tool to determine the altitude, azimuth,
+      and rising and setting times of astronomical objects, which may help
+      with preparation of your schedule files, is coord.
+      Currently, this is most easily accessed via the
+      <ulink url="http://www.parkes.atnf.csiro.au/cgi-bin/utilities/coord.cgi">Parkes website</ulink>.
+      When using this tool be sure to change the site to
+      Australia Telescope Compact Array, and change the elevation limit to
+      12 degrees for cm observing at the <acronym>ATCA</acronym>.
+    </para>
+    
+    <section id="The-Duty-Astronomer">
+      <info>
+        <title>The Duty Astronomer</title>
+      </info>
+      <para>
+	<indexterm role="cp"><primary>duty astronomer</primary></indexterm>
+	A Duty Astronomer will be present at the <acronym>SOC</acronym> to help local observers get
+	their observations started, and to help with any problems that arise during the
+	observations. Our web site has the 
+	<ulink url="http://www.narrabri.atnf.csiro.au/observing/support">list of duty astronomers</ulink>
+	for the upcoming semester, as well as for previous semesters.
+	The Duty Astronomer has <emphasis role="bold">no obligation</emphasis> to participate in the
+	observing.
+      </para>
+
+      <para>
+	For help before and after your observations, see <xref linkend="A-Friend"></xref>.
+      </para>
+    </section>
+
+    <section id="NAPA-overrides">
+      <info>
+	<title>NAPAs, ToOs and over-riding observations</title>
+      </info>
+      <para>
+	The <acronym>ATCA</acronym> is responsive to requests for observations of targets of
+	opportunity. There are two paths to such observations: through a <acronym>NAPA</acronym>
+	(non-apriori assignable) project, or through a <acronym>ToO</acronym>
+	(target of opportunity) request.
+      </para>
+      <para>
+	A <acronym>NAPA</acronym> project is one whose science goals have been set down in a
+	proposal that the <acronym>TAC</acronym> has evaluated in the normal way. Such projects
+	can be triggered any time during the semester, whenever the investigator wants to
+	proceed. The project will have requested a specific amount of time for the semester,
+	but this is not binding.
+      </para>
+      <para>
+	A <acronym>ToO</acronym> request can also be made at any time during the semester.
+	Unlike <acronym>NAPA</acronym> projects though, a <acronym>ToO</acronym> will not generally
+	be allowed to over-ride a scheduled observation.
+      </para>
+      <section>
+	<info>
+	  <title>Requesting an observation</title>
+	</info>
+	<para>
+	  The first step to either trigger a <acronym>NAPA</acronym> project, or request a
+	  <acronym>ToO</acronym> observation, is to email either the alerts exploder
+	  (<email>alert@atnf.csiro.au</email>) or the scheduler directly
+	  (<email>Jamie.Stevens@csiro.au</email>); the former is preferable since there is a greater
+	  chance of someone seeing the request quickly.
+	</para>
+	<para>
+	  For a <acronym>NAPA</acronym> trigger, you should include in your email the
+	  <acronym>NAPA</acronym>'s project code, and some details about the source(s) you
+	  are triggering on, including at least right ascensions and declinations. For a
+	  <acronym>ToO</acronym> request, you should also include a short scientific justification
+	  for why you want to observe.
+	</para>
+	<para>
+	  If you are requesting a slot of Director's time (also known as green time), then you should
+	  also put in a request via the Portal's booking system. If you require an over-ride of
+	  scheduled time (only available for <acronym>NAPA</acronym> projects), then please state your
+	  preferred observation time in your email.
+	</para>
+	<para>
+	  Since the beginning of the 2017OCT semester, it has been possible for almost any <acronym>NAPA</acronym>
+	  project to over-ride almost any scheduled project. Any exceptions to this will be made clear
+	  in the release notes for the semester, and will be communicated privately to the investigators of
+	  <acronym>NAPA</acronym> projects who cannot avail themselves of over-rides.
+	</para>
+	<para>
+	  The observatory will try to make contact with <acronym>NAPA</acronym> requesters as quickly
+	  as possible after a trigger has been issued, but sometimes it might not be possible to
+	  reach observatory staff (eg. overnight, at weekends, etc.). If the investigators think it necessary,
+	  <acronym>NAPA</acronym> projects may over-ride scheduled observations without further consultation with
+	  observatory staff. We recommend that in such a case, the investigator wishing to over-ride
+	  communicate with the current observer in charge to effect the change to the <acronym>NAPA</acronym>.
+	  It should be noted though that if the <acronym>NAPA</acronym> project has already used up the
+	  time that it requested for the semester, it is no longer entitled to over-ride scheduled time and
+	  must use Director's time instead.
+	</para>
+	<para>
+	  In the case that a <acronym>NAPA</acronym> investigator wants to start observing, and the telescope
+	  is idle, the current time is unallocated, and there is no observer in charge, they may proceed without
+	  any further consultation. This is true for any <acronym>NAPA</acronym> project, even those which may
+	  not have achieved the grade required to over-ride scheduled time. The investigator must though notify
+	  any observers who may want to start their scheduled observations. Even if the time is unallocated,
+	  the telescope is idle, and there is no observer in charge, a <acronym>ToO</acronym> observation should
+	  not assume control of the telescope without permission from observatory staff, since it may be that
+	  their science request conflicts with another scheduled project.
+	</para>
+	<para>
+	  For <acronym>NAPA</acronym> projects which require very prompt response to a trigger, we recommend
+	  the use of the rapid response mode (<xref linkend="rapid-response-mode"></xref>). Use of this mode is limited in the same
+	  way as for a normal <acronym>NAPA</acronym>, but an email request does not need to be sent prior to the
+	  trigger, and the observing system will manage the transition to the <acronym>NAPA</acronym> observations
+	  automatically. The investigators of each project that is over-ridden by a rapid response trigger will
+	  be notified by email of the displacement, at the time of the trigger.
+	</para>
+	<para>
+	  Otherwise, observatory staff will try to find a time that maximises the science output of the <acronym>NAPA</acronym>
+	  or <acronym>ToO</acronym> request, and minimises the disruption
+	  to scheduled time. In any event, all affected investigators will be notified by email as soon as possible
+	  after the decision is made.
+	</para>
+	<para>
+	  If multiple requests are received to look at the same target, then staff will need to decide how
+	  to allocate the time. In general, <acronym>NAPA</acronym> projects will be prioritised over
+	  <acronym>ToO</acronym> requests, because the <acronym>TAC</acronym> has already evaluated the
+	  science cases for the <acronym>NAPA</acronym>s. This will hold even if the <acronym>NAPA</acronym>
+	  project has exhausted its time allocation for the semester. If multiple <acronym>NAPA</acronym>
+	  requests are made for the same target, then both the <acronym>TAC</acronym> ranking score and the
+	  order in which the requests were received will be considered.
+	</para>
+	<para>
+	  It is possible for one <acronym>NAPA</acronym> to be over-ridden by another <acronym>NAPA</acronym>,
+	  if the observatory staff think it appropriate to do so. In such a case, it would be inappropriate for
+	  a <acronym>NAPA</acronym> investigator to take control of the telescope without first consulting with
+	  observatory staff.
+	</para>
+	<para>
+	  Rapid response observations are a special case: the automatic system does not need staff
+	  interaction to work, and so if a rapid response request arrives while another <acronym>NAPA</acronym>
+	  project is being observed, the rapid response over-ride will take priority. Once a rapid response
+	  over-ride is being observed, it must be allowed to run for its allocated duration, and the automatic
+	  system will reissue the over-ride should the observation be interrupted. Observatory staff do though have
+	  the power to stop a rapid response over-ride observation if necessary.
+	</para>
+      </section>
+    </section>
+  </section>
+</chapter>

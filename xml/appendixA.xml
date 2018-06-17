@@ -1,0 +1,1506 @@
+<appendix id="caobs">
+  <info>
+    <title><command>caobs</command> reference</title>
+    <date>$Date: 2015-10-22 15:02:00 +1100 (Thu, 22 Oct 2015) $</date>
+    <revhistory>
+      <revision>
+	<revnumber>1.1</revnumber>
+	<date>2014 Apr 1</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Cleanup the text, remove some commands and add some new ones.</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.0</revnumber>
+	<date>2014 Mar 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Initial Docbook revision</revremark>
+      </revision>
+    </revhistory>
+  </info>
+  <para>
+    <command>caobs</command> is the primary interface between the observer and the telescope.
+    It coordinates the functions of the antennas and the correlator.
+    It runs on <hardware>xbones</hardware> in a <command>screen</command> session,
+    and is normally available from the main observing computer <hardware>pericles</hardware> and
+    a VNC display from <hardware>xbones</hardware>.
+  </para>
+  <para>
+    <figure id="caobs_display">
+      <title>A typical <command>caobs</command> display.</title>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="figures/caobs.jpg" format="JPG">
+	  </imagedata>
+	</imageobject>
+      </mediaobject>
+    </figure>
+  </para>
+
+  <para>
+    <indexterm role="cp"><primary>caobs</primary><secondary>starting</secondary></indexterm>
+    <command>caobs</command> will normally already be running before you start observing.
+    If you cannot find <command>caobs</command>, try the following.
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>
+	Check that <command>cacor</command> is running. (The <command>cacor</command> GUI is usually
+	displayed in a separate VNC display from <hardware>caccc1</hardware>.) If it is not, start
+	<command>cacor</command> as described in <xref linkend="cacor"></xref>.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+	Login to <hardware>xbones</hardware> and check for the normal <command>screen</command>
+	session that is used to run <command>caobs</command>.
+	<programlisting>atcaobs@xbones:~$ screen -ls</programlisting>
+	The output from this command might look something like the following:
+	<programlisting>
+There are screens on:
+        16310.catag	(06/03/14 15:26:40)	(Attached)
+        5202.chat	(05/03/14 15:11:17)	(Attached)
+        5001.caobs	(05/03/14 15:07:17)	(Attached)
+3 Sockets in /var/run/screen/S-atcaobs.
+	</programlisting>
+	If you can see a <command>screen</command> session that is labelled with
+	<command>caobs</command>, then you can reconnect to it:
+	<programlisting>atcaobs@xbones:~$ screen -x caobs</programlisting>
+	If you don't see a <command>caobs</command> <command>screen</command> session,
+	then you can start one:
+	<programlisting>atcaobs@xbones:~$ screen -S caobs</programlisting>
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+	Once connected to the <command>caobs</command> <command>screen</command>
+	session, it should look something like <xref linkend="caobs_display"></xref>.
+	If it doesn't, then you can start <command>caobs</command>:
+	<programlisting>atcaobs@xbones:~$ caobs</programlisting>
+	Wait about one minute while <command>caobs</command> refers to its database and
+	initialises.
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  <section id="Using-caobs">
+    <info>
+      <title>Using <command>caobs</command></title>
+    </info>
+    <para>
+      Observers interact with <command>caobs</command> through a command line interface. Though there
+      are many commands (see the <xref linkend="caobs-Commands"></xref> section), there are only a handful
+      that are used often.
+      <variablelist>
+	<varlistentry>
+	  <term>
+	    <literal>caobs&gt; set file <replaceable>filename</replaceable></literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Loads the schedule file specified as the <replaceable>filename</replaceable>.
+	      All <acronym>ATCA</acronym> schedule files have the extension <literal>.sch</literal>,
+	      but you don't need to supply this extension as part of <replaceable>filename</replaceable>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>caobs&gt; track <replaceable>#</replaceable></literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Tracks the source specified by scan <replaceable>#</replaceable> of the schedule file 
+	      forever (or until the source sets).
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>caobs&gt; stop</literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Stops observing. This involves stopping the movement of the antennas, and stopping
+	      the correlator.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>caobs&gt; start <replaceable>#</replaceable>/<replaceable>n</replaceable></literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Starts observing scan <replaceable>#</replaceable> of the schedule and proceeds to subsequent 
+	      scans after each scan finishes. It will cycle through the entire schedule <replaceable>n</replaceable> times
+	      before stopping, or until the <literal>stop</literal> command is given.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>caobs&gt; corr <replaceable>command</replaceable></literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Sends the command <replaceable>command</replaceable> to the correlator GUI
+	      <command>cacor</command>, as if the command was entered into the GUI directly.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>caobs&gt; stow</literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Stows all the antennas that are attached and enabled in <command>caobs</command>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </para>
+
+    <section id="caobs-Commands">
+      <info>
+	<title><command>caobs</command> Commands</title>
+      </info>
+      <para>
+	Many of the commands that were part of the <command>caobs</command> command set
+	pre-<acronym>CABB</acronym> are now executed in the <command>cacor</command> processes.
+	Other commands are no longer appropriate. <command>cacor</command> commands
+	can be executed from within <command>caobs</command> by prefixing <literal>corr</literal>
+	in the <command>caobs</command> command. The following list
+	of <command>caobs</command> commands includes the <command>cacor</command> commands that
+	are often executed from within <command>caobs</command>.
+	<indexterm role="cp"><primary>caobs</primary><secondary>command list</secondary></indexterm>
+      </para>
+      <variablelist>
+	<varlistentry>
+	  <term>
+	    <literal>attach ca0<replaceable>#</replaceable>|all</literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Connect <command>caobs</command> either to antenna <replaceable>#</replaceable> only, or all
+	      antennas. This command will fail for an antenna if the <acronym>ACC</acronym> in that antenna is dead or otherwise
+	      unavailable. Use this command to reconnect antennas that <command>caobs</command>
+	      reports as &#x201C;<literal>OFF-LINE</literal>&#x201D;.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>detach, disable, enable</literal>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>cain cal <replaceable>prescale</replaceable> <replaceable>code</replaceable> <replaceable>continuous</replaceable></literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      This command allows you to control of the noise diode on each of the attached antennas via
+	      the <acronym>ACC</acronym>. All of the three parameters are non-optional:
+	      <itemizedlist>
+		<listitem>
+		  <para>
+		    <replaceable>prescale</replaceable>: A prescale divider on the 1 MHz timeframe which controls the
+		    duration of the cal waveform pulses. This <replaceable>prescale</replaceable> number must be between
+		    0 and 65535, but the actual prescale implemented by the hardware is this number
+		    plus 1.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <replaceable>code</replaceable>: This is a further prescale by a factor of 2 to the power of
+		    <replaceable>code</replaceable>, where <replaceable>code</replaceable> is between 1 and 8.
+		    This can be used to define pulses
+		    longer than what could be achieved within the 16-bit limits of the prescale divider
+		    by itself. It can also take some special values.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    <replaceable>continuous</replaceable>: Whether the waveform should be restarted at the start of
+		    each integration cycle (set to <literal>0</literal>), or only start it at the start at the first cycle
+		    and then continue to run freely at the specified frequency (set to <literal>1</literal>).
+		  </para>
+		</listitem>
+	      </itemizedlist>
+	    </para>
+	    <para>
+	      These numbers combine to give:
+	      <itemizedlist>
+		<listitem>
+		  <para>
+		    waveform pulse duration = 
+		    <inlineequation><textobject role="tex">(2^{code})\times</textobject></inlineequation>
+		    (<replaceable>prescale</replaceable> + 1) microseconds
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    waveform cycle period = 2 &#x00D7; pulse duration
+		  </para>
+		</listitem>
+	      </itemizedlist>
+	    </para>
+	    <para>
+	      As an example, the default <acronym>ATCA</acronym> waveform parameters are <replaceable>prescale</replaceable>=31999,
+	      <replaceable>code</replaceable>=2, which gives a 128,000 &#x03BC;s pulse duration. The <acronym>ATCA</acronym> cal
+	      waveform restarts at the beginning of each integration cycle, so the default is set by:
+	    </para>
+
+	    <para>
+	      <literal>cain cal 31999 2 0</literal>
+	    </para>
+
+	    <para>
+	      <command>caobs</command> will reset this parameter to the default values automatically
+	      at every change of observing project ID or at <command>caobs</command> restart.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>cain cycle <replaceable>p</replaceable>|default</literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Set cycle period to <replaceable>p</replaceable> seconds, or to the default 10 seconds.
+	      For non-mosaicing observations, the cycle
+	      time can be set as low as 1.024 seconds, but when mosaicing the cycle time must
+	      be larger than or equal to 6 seconds, otherwise on-source flagging will not work.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Note:</emphasis> The cycle time is generated in the <acronym>ACC</acronym>
+	      on each antenna, and this command will only be sent to the antennas that are attached at the
+	      time. If this command is given while some antennas are not attached, those antennas will have
+	      a different cycle time if they are later attached. Reissue this command to fix the inconsistency.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>attach, detach</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>cancel</literal></term>
+	  <listitem>
+	    <para>
+	      Stops the current pattern (POINTing or mosaic).
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>point</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>corr[elator] <replaceable>command</replaceable></literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Any <command>cacor</command> command can be executed from within
+	      <command>caobs</command> by prefixing the command with <literal>corr[elator]</literal>. Commands that are
+	      often executed in <command>caobs</command> are documented here.  See
+	      <xref linkend="cacor"></xref> for more complete information on <command>cacor</command> commands.
+	    </para>
+	    <variablelist>
+	      <varlistentry>
+		<term>
+		  <literal>corr[elator] acal [<replaceable>s1 s2</replaceable>] [a]</literal>
+		</term>
+		<listitem>
+		  <para>
+		    Request that <command>cacor</command> perform an amplitude calibration.
+		  </para>
+		  <para>
+		    <replaceable>s1</replaceable> and <replaceable>s2</replaceable>
+		    are flux density values for frequency 1 and frequency 2 respectively. If the source is PKS1934-638
+		    or PKS0823-500, the flux density values are not required. For any other source, you can instruct
+		    <command>cacor</command> to calculate the likely flux density of the source (based on the expected
+		    system temperature) by using <replaceable>s1</replaceable>=0 and <replaceable>s2</replaceable>=0.
+		  </para>
+		  <para>
+		    The &#x201C;<literal>a</literal>&#x201D; 
+		    switch is now optional - the correlator will apply calibration by default. 
+		    (To prevent the correlator from applying the
+		    corrections, replace &#x201C;<literal>a</literal>&#x201D; with any other letter).
+		  </para>
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>set reference</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>corr[elator] close[file]]</literal></term>
+		<listitem>
+		  <para>
+		    Request that <command>cacor</command> close the current file. <command>caobs</command> must be
+		    stopped before executing this command.
+		  </para>
+		  <para>
+		    <command>cacor</command>'s display will show display &#x201C;<literal>FITS FILE: CLOSED</literal>&#x201D;
+		    if this command succeeds.
+		    A new data file will be opened automatically when a scan is started,
+		    if a file is not already open.
+		  </para>
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>stop</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>corr[elator] dcal [a]</literal></term>
+		<listitem>
+		  <para>
+		    Request that <command>cacor</command> perform the corrections required to make the phase flat
+		    across the band (i.e. caclulates geometric delay offsets).
+		  </para>
+		  <para>
+		    The &#x201C;<literal>a</literal>&#x201D; switch is now optional - the
+		    correlator will apply calibration by default. (To prevent the correlator from applying the
+		    corrections, replace &#x201C;<literal>a</literal>&#x201D; with any other letter).
+		  </para>
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>set reference</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>corr[elator] pcal [a]</literal></term>
+		<listitem>
+		  <para>
+		    Request that <command>cacor</command> set the astronomical phases to zero.
+		  </para>
+		  <para>
+		    The &#x201C;<literal>a</literal>&#x201D; switch is now optional - the
+		    correlator will apply calibration by default. (To prevent the correlator from applying the
+		    corrections, replace &#x201C;<literal>a</literal>&#x201D; with any other letter).
+		  </para>
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>set reference</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	    </variablelist>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>detach ca0<replaceable>#</replaceable>|all</literal></term>
+	  <listitem>
+	    <para>
+	      Disconnect <command>caobs</command> from either antenna <replaceable>#</replaceable> or all antennas.
+	      No further commands will be sent to the disconnected antennas, until they are reattached.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>attach</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>disable|enable <replaceable>parameter</replaceable></literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Disable or enable <command>caobs</command> or antenna-based functionality, depending on
+	      the <replaceable>parameter</replaceable> specified. These <replaceable>parameter</replaceable>s
+	      are:
+	    </para>
+	    <variablelist>
+	      <varlistentry>
+		<term>
+		  <literal>disable|enable bell</literal>
+		</term>
+		<listitem>
+		  <para>
+		    Turn off the <command>caobs</command> terminal alarm. The terminal alarm is
+		    sounded when <command>caobs</command> detects an error condition that you should know about.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>disable|enable ca0<replaceable>#</replaceable>|all</literal></term>
+		<listitem>
+		  <para>
+		    Disable or enable the drive machinery and turret rotator
+		    for either antenna CA0<replaceable>#</replaceable> or all antennas. This will leave
+		    everything else as though it was observing.
+		  </para>
+		  <para>
+		    If an antenna is disabled via this command, <command>caobs</command> will show its
+		    status as &#x201C;<literal>DISABLED</literal>&#x201D;.
+		  </para>
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>attach, detach</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>disable|enable correlator</literal></term>
+		<listitem>
+		  <para>
+		    Disable or enable correlation in <command>cacor</command>. If disabled, 
+		    <command>caobs</command> will drive the antennas as normal, but the correlator will
+		    not output any data.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term>
+		  <literal>disable|enable lo</literal>
+		</term>
+		<listitem>
+		  <para>
+		    Disable or enable the setting of the local oscillators and frequency conversion
+		    switches throughout the array. If disabled, the oscillators and switches stay
+		    in the state they were when this command was given, and do not change automatically
+		    with frequency changes in the schedule.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>disable|enable turret [ca0<replaceable>#</replaceable>]</literal></term>
+		<listitem>
+		  <para>
+		    Disable or enable rotation of the turret for antenna CA0<replaceable>#</replaceable>
+		    if named, or the entire array if the argument is omitted.
+		    If disabled, the turret will not rotate automatically with frequency changes in
+		    the schedule.
+		  </para>
+		  <para>
+		    <emphasis role="bold">Note:</emphasis> Data will be flagged if the turret is in 
+		    the wrong position, regardless of whether it is intentional.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term>
+		  <literal>disable|enable wvr [ca0<replaceable>#</replaceable>]</literal>
+		</term>
+		<listitem>
+		  <para>
+		    Disable or enable the calibration of the water vapour radiometers on the named antenna,
+		    or on the entire array if the antenna is not specified. Calibration of the
+		    <acronym>WVR</acronym>s is done via a paddle on the mm receiver.
+		  </para>
+		  <para>
+		    <emphasis role="bold">Note:</emphasis> Calibration of the <acronym>WVR</acronym> affects 
+		    7mm observations since the <acronym>WVR</acronym> paddle passes in front of the 7mm
+		    feed horn when it gets put in, or taken out.
+		  </para>
+		  <para>
+		    <emphasis role="bold">Note:</emphasis> Calibration of the <acronym>WVR</acronym> is
+		    not actually required for effective use of the <acronym>WVR</acronym> data, and enabling
+		    the calibration is not recommended.
+		  </para>
+		</listitem>
+	      </varlistentry>
+
+	    </variablelist>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>exit</literal></term>
+	  <listitem>
+	    <para>
+	      Exit from <command>caobs</command> and return to the command line. You will need to stop the
+	      observations before issuing this command.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Note:</emphasis> You will need to exit <command>caobs</command> if you need
+	      to change <command>cacor</command> versions, or restart the <command>atdaemon</command>. If you are
+	      simply trying to exit the <command>screen</command> session that <command>caobs</command> is running
+	      in without affecting the operation of <command>caobs</command>, then you should use the key
+	      combination <keycombo><keycap>Ctrl</keycap><keycap>a</keycap></keycombo> <keycap>d</keycap> to
+	      detach from the session.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>stop</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>extend</literal></term>
+	  <listitem>
+	    <para>
+	      Stop cycling through scans in a schedule file and continue the current scan indefinitely.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>next, track, start</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>focus {ca0<replaceable>#</replaceable> <replaceable>pos</replaceable>|default}</literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Move the antenna subreflectors in order to focus the receivers. You can use this command in two
+	      different ways.
+	      <itemizedlist>
+		<listitem>
+		  <para>
+		    If you want to move the subreflector on a single antenna <replaceable>#</replaceable>
+		    to the position <replaceable>pos</replaceable> (in mm, from -24.0 to 24.0) then specify both the
+		    antenna and position.
+		  </para>
+		  <para>
+		    <emphasis role="bold">Example:</emphasis> <literal>focus ca01 10</literal>
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    If instead you wish to move the subreflectors on all the antennas to the
+		    positions recommended to focus each of them for the current observing frequency, simply
+		    give the argument <literal>default</literal>.
+		  </para>
+		  <para>
+		    <emphasis role="bold">Example:</emphasis> <literal>focus default</literal>
+		  </para>
+		</listitem>
+	      </itemizedlist>
+	    </para>
+	    <para>
+	      <emphasis role="bold">Note:</emphasis> Only attached and enabled antennas can be focussed.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Note:</emphasis> The subreflector on CA06 cannot be moved.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>init</literal></term>
+	  <listitem>
+	    <para>
+	      Initialise <emphasis role="bold">all</emphasis> <command>caobs</command> parameters to default values,
+	      and send initialisation commands to the antennas. This
+	      is equivalent to exiting <command>caobs</command> and restarting, only faster.
+	    </para>
+	    <para>
+	      <emphasis role="bold">
+	      Treat this command with caution</emphasis>. 
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>reset</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>next</literal></term>
+	  <listitem>
+	    <para>
+	      Move to the next entry in the schedule, i.e., move to the
+	      next scan.  This command will cancel an <literal>extend</literal> command and
+	      has no effect in mosaic mode. 
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>extend, start, track</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>park [ca0<replaceable>#</replaceable>]</literal></term>
+	  <listitem>
+	    <para>
+	      Drives either the antenna CA0<replaceable>#</replaceable>, or all antennas (if no argument
+	      is given to this command) to an azimuth of 90&#x00B0; and an
+	      elevation of 90&#x00B0;. Brakes are applied to the drives once this position has
+	      been reached. Observations must be stopped before this command will work. Only attached and
+	      enabled antennas will be parked.
+	      <indexterm role="cp"><primary>park</primary><secondary>command</secondary></indexterm>
+	      <indexterm role="cp"><primary>park</primary><secondary>position</secondary></indexterm>
+	    </para>
+	    <para>
+	      <emphasis role="bold">Note:</emphasis> This is the required position for antennas that are to
+	      be moved during a reconfigure. The antennas cannot be moved to this position if any of the mm
+	      receivers are on axis.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>stop, stow</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>point <replaceable>n</replaceable></literal></term>
+	  <listitem>
+	    <para>
+	      Runs a pointing scan on source <replaceable>n</replaceable> in schedule. The actual
+	      definition of the scan in the schedule is irrelevant; only the source position and
+	      frequencies are used.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Note:</emphasis> The program <command>catag</command> must be
+	      running for the pointing corrections to be calculated.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>cancel, set point_pattern,
+	      set point_ifflag, set point_antennas</literal>
+	      <indexterm role="cp"><primary>observations</primary><secondary>millimetre</secondary></indexterm>
+	      <indexterm role="cp"><primary>pointing</primary></indexterm>
+	      <indexterm role="cp"><primary>observations</primary><secondary>reference pointing</secondary></indexterm>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>ppfix <replaceable>n</replaceable></literal></term>
+	  <listitem>
+	    <para>
+	      Loads the pointing parameters determined by the pointing
+	      scan with the <command>catag</command> number <replaceable>n</replaceable>.
+	      Any scans with pointing type &#x201C;Offset&#x201D; will now use this
+	      pointing solution, until a new pointing solution is made.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>ppglobal, point</literal>
+	      <indexterm role="cp"><primary>pointing</primary><secondary>commands</secondary></indexterm>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>ppglobal</literal></term>
+	  <listitem>
+	    <para>
+	      Loads the global pointing solution, as specified in the file <filename>pparams.dat</filename>,
+	      into the <acronym>ACCs</acronym>. Any scans with pointing type &#x201C;Offset&#x201D; will now use the global
+	      pointing solution, until a new pointing solution is made.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>ppfix, point</literal>
+	      <indexterm role="cp"><primary>pointing</primary><secondary>commands</secondary></indexterm>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>offset ca0<replaceable>#</replaceable>|all <replaceable>daz</replaceable> <replaceable>del</replaceable></literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Force either antenna CA0<replaceable>#</replaceable> or all
+	      antennas to track a position offset from that specified by the schedule
+	      file; <replaceable>daz</replaceable> and <replaceable>del</replaceable> are the azimuth and elevation offsets in
+	      arcminutes. The offsets cease to apply at the next drive request (i.e., at the
+	      next <literal>start</literal> or <literal>track</literal> command or when the next scan
+	      starts).
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>reconfig <replaceable>parameter</replaceable></literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      The <literal>reconfig</literal> commands are used when initialising and calibrating the array after
+	      a reconfiguration of the antennas. <emphasis role="bold">This is the only time when these commands
+	      should be used, and only by staff who have been trained in their use.</emphasis> Using these commands
+	      inappropriately could destroy your observations, and it might take several hours to recover.
+	    </para>
+	    <para>
+	      Each <replaceable>parameter</replaceable> is described below.
+	    </para>
+	    <variablelist>
+	      <varlistentry>
+		<term><literal>reconfig array <replaceable>name</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    Selects new antenna array. The <replaceable>name</replaceable> must be identifiable with
+		    an entry in the <filename>configs.dat</filename> file. The positions of the antennas are changed
+		    to the appropriate station coordinates.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>reconfig bszero</literal></term>
+		<listitem>
+		  <para>
+		    Sets the antenna offsets from the station coordinates to zero, by zeroing the file 
+		    <filename>station_errors.file</filename>. Before this command is executed, you should
+		    set the reference antenna to an antenna that hasn't moved; for most reconfigurations
+		    it should be set to CA06.
+		  </para>
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>set reference</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>reconfig clear</literal></term>
+		<listitem>
+		  <para>
+		    Clears global delays, and delay and phase offsets.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>reconfig ppinit</literal></term>
+		<listitem>
+		  <para>
+		    Resets global azimuth and elevation pointing offsets to defaults for the
+		    station posts used in this configuration.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	    </variablelist>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>redraw</literal></term>
+	  <listitem>
+	    <para>
+	      Refresh the screen. This command is useful for fixing the <command>caobs</command> display
+	      if it has become corrupted. If the display seems unresponsive, it might be because someone
+	      has issued a terminal stop command; in this situation <literal>redraw</literal> will not work,
+	      and you should try pressing <keycombo><keycap>Ctrl</keycap><keycap>q</keycap></keycombo> instead.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>reload</literal></term>
+	  <listitem>
+	    <para>
+	      Reload the schedule file.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>reset ca0<replaceable>#</replaceable>|all</literal></term>
+	  <listitem>
+	    <para>
+	      Resets the <acronym>ACC</acronym> for antenna <replaceable>#</replaceable>, or all 
+	      <acronym>ACC</acronym>s. Do not restart your observations until after the antenna image in the
+	      <command>atdrivemon</command> display has returned to normal.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <literal>set|show <replaceable>parameter</replaceable></literal>
+	  </term>
+	  <listitem>
+	    <para>
+	      Set or show persistent <command>caobs</command> configuration parameters, or control
+	      antenna-based hardware. Not all <replaceable>parameter</replaceable>s can be used with
+	      both <literal>set</literal> and <literal>show</literal>. 
+	      The <replaceable>parameter</replaceable>s are:
+	    </para>
+	    <variablelist>
+	      <varlistentry>
+		<term>
+		  <literal>set|show atten ca0<replaceable>#</replaceable> <replaceable>a b</replaceable></literal>
+		</term>
+		<listitem>
+		  <para>
+		    Set the receiver module's attenuation levels for whichever receiver is currently
+		    being used (i.e. for the central frequency of the current scan). This includes
+		    the mm receivers, so this command can be used instead of the <literal>set mm</literal>
+		    command. Unlike the CABB attenuators, the first attenuator setting 
+		    (<replaceable>a</replaceable>) is
+		    applied to both &#x201C;A&#x201D; polarisations (A1 and A2) and the the second setting
+		    (<replaceable>b</replaceable>) is applied to both &#x201C;B&#x201D; polarisations (B1 and B2). Each 
+		    attenuator step introduces (or removes) 1dB of attenuation to the signal path. There are
+		    16 receiver attenuator steps (0-15).
+		  </para>
+
+		  <para>
+		    In general, this command should be executed while <command>caobs</command> is observing
+		    (i.e. the correlator is in the &#x201C;GO&#x201D; state).
+		  </para>
+
+		  <para>
+		    With the installation of the 16cm and 4cm receivers on the array, all
+		    receivers now have controllable receiver attenuators.
+		  </para>
+		  
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>set mm</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set|show aver <replaceable>n</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    Average your data over <replaceable>n</replaceable> integration cycles in time.
+		    You must stop the scan before using this
+		    command. When observing large fields you should be careful not to average
+		    so much that you significantly distort your image (azimuthal smearing
+		    caused by time averaging increases linearly with distance from the phase
+		    centre). Refer to Appendix D of Killeen (1993) for details. The current
+		    averaging time is displayed on the <command>caobs</command> screen. 
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Note:</emphasis> Time averaging can also be set in the
+		    schedule file.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">It is not recommended that this parameter be used, since
+		    the data saved by <command>cacor</command> will be averaged by this amount
+		    and the unaveraged data cannot be recovered.</emphasis> It is better that you
+		    average the data later in data reduction if required.
+		  </para>
+		  
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>cain cycle</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term>
+		  <literal>set|show band1_antennas <replaceable>##</replaceable></literal>
+		</term>
+		<listitem>
+		  <para>
+		    If you are attempting to use the <acronym>ATCA</acronym>'s split-band observing
+		    capability, then you can use this command to specify which antennas should be
+		    allocated to each band. The set of antennas listed in <replaceable>##</replaceable>
+		    will be allocated to the band specified by the <acronym>IF</acronym>1 central frequency, and all other
+		    antennas will be allocated to the <acronym>IF</acronym>2 band.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Example:</emphasis> The command
+		    &#x201C;<literal>set band1_antennas 245</literal>&#x201D; will allocate antennas
+		    CA02, CA04 and CA05 to <acronym>IF</acronym>1, while CA01, CA03 and CA06 will be allocated to <acronym>IF</acronym>2.
+		  </para>
+
+		  <para>
+		    This setting only has effect if the <acronym>IF</acronym>1 and <acronym>IF</acronym>2 central frequencies would put
+		    them in different bands.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set diode on|off|switching</literal></term>
+		<listitem>
+		  <para>
+		    Control the noise diodes on the antennas. For normal observations, this
+		    should be set to &#x201C;<literal>switching</literal>&#x201D;.
+		    The &#x201C;<literal>on</literal>&#x201D; and &#x201C;<literal>off</literal>&#x201D;
+		    settings are only useful for maintenace.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Note:</emphasis> The current state of the diodes cannot be
+		    shown in <command>caobs</command>, but is easily ascertainable by examining
+		    <command>spd</command>.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set|show el_limit <replaceable>n</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    Define the elevation limit to be <replaceable>n</replaceable> degrees.  The hardware 
+		    limit is 12&#x00B0;.  You can use this command to skip sources in your schedule
+		    file below the specified elevation. 
+		  </para>
+
+		  <para>
+		    Please reverse this setting at the end of your run so you don't surprise the next observer.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>set rise_time</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set|show file <replaceable>filename</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    Load the schedule file <replaceable>filename</replaceable>, which
+		    must be in the directory <filename class="directory">/atca/sched</filename> on <hardware>xbones</hardware>. 
+		    The <replaceable>filename</replaceable> does not need to include the <filename>.sch</filename>
+		    extension.
+		  </para>
+
+		  <para>
+		    <indexterm role="cp"><primary>schedule</primary><secondary>load</secondary></indexterm>
+		    The schedule filename will appear on the topmost section of the <command>caobs</command> screen.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set|show frequency <replaceable>n c</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    Set the central frequency of <acronym>IF</acronym><replaceable>n</replaceable> (1 or 2) to be
+		    <replaceable>c</replaceable> MHz. All the normal frequency restrictions apply.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set genset_on all|cb|ca0<replaceable>#</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    Turn on all generators, or the generator for the control building only, or the generator for
+		    antenna CA0<replaceable>#</replaceable>, respectively.
+		  </para>
+	    
+		  <para>
+		    This can be done without stopping observing, however it is
+		    important to monitor that the generator you commanded actually starts.
+		  </para>
+   
+		  <para>
+		    Only generators on attached antennas can be turned on.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>attach, detach, set genset_off, show status</literal>
+		    <indexterm role="cp"><primary>generators</primary><secondary>turning on</secondary></indexterm>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set genset_off all|cb|caO<replaceable>#</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    Turn off all generators, or the generator for the control building only, or the generator for
+		    antenna CA0<replaceable>#</replaceable>, respectively.
+		  </para>
+	    
+		  <para>
+		    This can be done without stopping observing, however it is
+		    important to monitor progress to make sure that the antenna or building you commanded
+		    returns to mains power successfully.
+		  </para>
+	    
+		  <para>
+		    The power source will not automatically switch back to mains if
+		    a generator fails to start after it is commanded to start by the
+		    <literal>genset_on</literal> command. If the generator fails to start, you will actually have to request
+		    that the generator be turned off with the <literal>set genset_off</literal> command. 
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>set genset_on, attach, detach, show status</literal>
+		    <indexterm role="cp"><primary>generators</primary><secondary>turning off</secondary></indexterm>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set|show hold <replaceable>n</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    The <literal>hold</literal> parameter is used to inhibit correlation only
+		    during those cycles affected by antenna movement. This command sets the
+		    hold period to <replaceable>n</replaceable> times the automatically-determined hold increment 
+		    for every cycle (normally 512ms), irrespective of antenna drives.
+		  </para>
+
+		  <para>
+		    To return to automatic hold calculation, given the command
+		    <literal>set hold 0</literal>.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>show length</literal></term>
+		<listitem>
+		  <para>
+		    Display the length of the current scan.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term>
+		  <literal>set|show mm ca0<replaceable>#</replaceable> <replaceable>a b</replaceable></literal>
+		</term>
+		<listitem>
+		  <para>
+		    Set the attenuation levels in the mm receiver. This
+		    command only works for the 15mm, 7mm and 3mm receivers. Unlike the CABB
+		    attenuators, the first attenuator
+		    setting (<replaceable>a</replaceable>) is applied to both &#x201C;A&#x201D; polarisations 
+		    (A1 and A2) and the second
+		    setting (<replaceable>b</replaceable>) is applied to both &#x201C;B&#x201D; polarisations 
+		    (B1 and B2). Each attenuator
+		    step introduces (or removes) 1dB of attenuation to the signal path. There
+		    are 16 receiver attenuator steps (0-15).
+		  </para>
+	    
+		  <para>
+		    In general this command should be executed while <command>caobs</command> is observing
+		    (i.e. the correlator is in the &#x201C;GO&#x201D; state).
+		  </para>
+	    
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>set atten</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>show mode</literal></term>
+		<listitem>
+		  <para>
+		    Display the epoch currently being used by <command>caobs</command>.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>show name</literal></term>
+		<listitem>
+		  <para>
+		    Display the name of the current source.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set|show paddle in|out</literal></term>
+		<listitem>
+		  <para>
+		    Operates the room temperature paddle attached to the 3mm receiver. Normally, operation of
+		    the paddle is automatically done via the schedule file. This command should only be used
+		    for maintenance purposes.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set|show point_antennas <replaceable>##</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    Defines which antennas <command>catag</command> will use to calculate pointing corrections.
+		  </para>
+		  
+		  <para>
+		    <emphasis role="bold">Example:</emphasis> <literal>set point_ant 234</literal> would 
+		    allow pointing corrections to be calculated for antennas CA02, CA03 and CA04.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Note:</emphasis> There appears to be a bug in <command>catag</command>
+		    such that if an antenna is added to the <literal>point_antennas</literal> set, the
+		    first pointing scan done after this command is given will not compute corrections for the
+		    added antenna. You can simply redo the pointing scan to compute the corrections.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>point, set
+		    point_pattern, set point_ifflag</literal>
+		    <indexterm role="cp"><primary>observations</primary><secondary>millimetre</secondary></indexterm>
+		    <indexterm role="cp"><primary>pointing</primary></indexterm>
+		    <indexterm role="cp"><primary>observations</primary><secondary>reference pointing</secondary></indexterm>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set|show point_ifflag <replaceable>##</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    Defines which <acronym>IF</acronym> channels <command>catag</command> will use to calculate pointing
+		    corrections. Pointing corrections are not made as a function of polarisation or frequency, 
+		    so this parameter just allows you to average more data to get a higher signal-to-noise
+		    ratio and therefore a more accurate solution.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Example:</emphasis> <literal>set point_if 12</literal> would make
+		    <command>catag</command> use polarisations A and B in <acronym>IF</acronym>1.
+		  </para>
+
+		  <para>
+		    At mm frequencies, this parameter should normally be set to <literal>1234</literal>. If
+		    the <acronym>IF</acronym>1 frequency differs from the <acronym>IF</acronym>2 frequency by more than 30%, then the primary beam
+		    in one <acronym>IF</acronym> will be too different to the other <acronym>IF</acronym> to use them both simultaneously to
+		    calculate pointing corrections. In this case, <command>catag</command> will automatically
+		    change this setting to <literal>12</literal>.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>point, set
+		    point_pattern, set point_antennas</literal>
+		    <indexterm role="cp"><primary>observations</primary><secondary>millimetre</secondary></indexterm>
+		    <indexterm role="cp"><primary>pointing</primary></indexterm>
+		    <indexterm role="cp"><primary>observations</primary><secondary>reference pointing</secondary></indexterm>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set|show point_pattern <replaceable>n</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    Specify the number of cycles (<replaceable>n</replaceable>) <command>caobs</command> will
+		    direct the antennas to spend on each offset position during a pointing scan.
+		  </para>
+
+		  <para>
+		    If <replaceable>n</replaceable> is a positive number, the &#x201C;selfcal&#x201D; pointing
+		    procedure is used, whereby all the antennas move to each offset point at the same time. There must 
+		    be at least four antennas
+		    enabled for this mode of pointing to work.
+		  </para>
+
+		  <para>
+		    If <replaceable>n</replaceable> is a negative number, holography mode pointing is performed.
+		    In this case, all the antennas but one (a reference antenna) move to the offset positions.
+		    After the first round of pointing is done, a new reference antenna is chosen, and the process
+		    is repeated; in this way the pointing corrections are calculated for all the antennas, but it
+		    takes twice as long as selfcal mode. Use this pointing procedure only if you have fewer
+		    than three antennas available.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Note:</emphasis> The actual value of <replaceable>n</replaceable> is
+		    usually set to <literal>2</literal>. <command>catag</command> only requires one integration
+		    at each offset point to do the pointing correction calculations, but two will increase the
+		    signal-to-noise-ratio. With <acronym>CABB</acronym>'s bandwidth, <replaceable>n</replaceable>
+		    rarely needs to be set higher than <literal>2</literal>. In the past, a pointing correction
+		    used to fail if one antenna did not make it on source in time for at least one cycle at
+		    any particular offset position; <command>caobs</command> now ensures that this can no
+		    longer occur, by adding extra cycles when required to allow the antenna to get on source.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>point, set
+		    point_ifflag, set point_antennas</literal>
+		    <indexterm role="cp"><primary>observations</primary><secondary>millimetre</secondary></indexterm>
+		    <indexterm role="cp"><primary>pointing</primary></indexterm>
+		    <indexterm role="cp"><primary>observations</primary><secondary>reference pointing</secondary></indexterm>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set|show reference <replaceable>#</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    Set the reference antenna to be CA0<replaceable>#</replaceable>. This will communicate the
+		    change automatically to the correlator. Using this command in <command>caobs</command>
+		    is required for holography-type experiments, where one antenna does not
+		    participate in an offset pointing program, and during the reconfiguration process.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set|show rise_time <replaceable>n</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    If a source is below the horizon when it is scheduled to be observed,
+		    <command>caobs</command> will
+		    wait for up to <replaceable>n</replaceable> minutes for the source to rise. If the
+		    source will not be up in that time, the array skips this source and moves to the next 
+		    source in the schedule file.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>set el_limit</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set scanlength <replaceable>h:m:s</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    If you set the position to be observed using
+		    the <literal>track 0</literal> command, you can set the length of the scan with
+		    this command.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>track</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>set source <replaceable>sourcename</replaceable></literal></term>
+		<listitem>
+		  <para>
+		    If you set the position to be observed using
+		    the <literal>track 0</literal> command, you can modify the source name with
+		    this command.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Related commands:</emphasis> <literal>track</literal>
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>show start</literal></term>
+		<listitem>
+		  <para>
+		    Display when the current scan started, as UTC.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><literal>show status</literal></term>
+		<listitem>
+		  <para>
+		    Display general array information. Normally, the top panel of
+		    <command>caobs</command> will look as it does in
+		    <xref linkend="caobs_display"></xref>. If you turn the generators
+		    on or off though, the top panel will be replaced with a warning about
+		    generator operation. To make <command>caobs</command> display the normal
+		    top panel again, use this command.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	    </variablelist>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>start [<replaceable>n</replaceable>[,<replaceable>k</replaceable>][-<replaceable>m</replaceable>][/<replaceable>l</replaceable>]]</literal></term>
+	  <listitem>
+	    <para>
+	      Commence automatic scheduled observations once you have used the
+	      &#x201C;<literal>set file</literal>&#x201D; command to load your schedule file. The schedule 
+	      file will then control the activity of the telescope.
+	    </para>
+
+	    <para>
+	      This command can be used in a number of different ways:
+	      <itemizedlist>
+		<listitem>
+		  <para>
+		    If you are running a schedule
+		    that has scan starting times defined as UTC datetimes, then simply issuing the
+		    &#x201C;<literal>start</literal>&#x201D; command will start with the scan
+		    that should be currently running, and change scan as required.
+		  </para>
+		  
+		  <para>
+		    <emphasis role="bold">Note:</emphasis> With a UTC schedule, any arguments to
+		    the &#x201C;<literal>start</literal>&#x201D; command will be ignored, and 
+		    <command>caobs</command> will follow the schedule exactly as defined.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    If you are running a schedule that does not have absolute UTC scan start times,
+		    issuing the &#x201C;<literal>start</literal>&#x201C; command with no arguments
+		    will make <command>caobs</command> start with scan 1 and continue running the
+		    schedule file until there are no further scans.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Note:</emphasis> This is equivalent to giving the command
+		    &#x201C;<literal>start 1/1</literal>&#x201D;.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    If you wish to start the observation with a scan defined in the schedule file
+		    as scan number <replaceable>n</replaceable>, then you can supply this scan
+		    number <replaceable>n</replaceable> as the first argument.
+		  </para>
+		  
+		  <para>
+		    <emphasis role="bold">Example:</emphasis> &#x201C;<literal>start 2</literal>&#x201D;
+		    will start observing on the second scan defined in the current schedule file,
+		    and continue observing until the end of the schedule file is reached.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    If you wish to start the observation with a scan defined in the schedule file as
+		    scan number <replaceable>n</replaceable>, and continue until the scan defined as scan
+		    number <replaceable>m</replaceable> is finished, then you can supply both the
+		    <replaceable>n</replaceable> and <literal>-<replaceable>m</replaceable></literal> arguments.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Example:</emphasis> &#x201C;<literal>start 2-8</literal>&#x201D;
+		    will start observing on the second scan defined in the current schedule file, and
+		    continue observing until the end of the eighth scan is reached.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    If you want to begin observing with a scan on a position defined in a mosaic
+		    file, that is not the first source defined in the mosaic file, then you can
+		    include the optional <literal>,<replaceable>k</replaceable></literal> argument,
+		    where <replaceable>k</replaceable> is the line in the schedule file (not including
+		    comment lines) that the source is defined on.
+		  </para>
+		  
+		  <para>
+		    <emphasis role="bold">Example:</emphasis> &#x201C;<literal>start 2,3</literal>&#x201D;
+		    will start observing with the third position defined in the mosaic file that is
+		    referenced in the second scan of the schedule file. <command>caobs</command> will
+		    then continue observing until the end of the schedule file is reached.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    If you want to make <command>caobs</command> loop repeatedly over a set of scans,
+		    starting with the first defined scan and ending with the last defined scan before
+		    repeating the process, then you can use the optional
+		    <literal>/<replaceable>l</replaceable></literal> argument, where
+		    <replaceable>l</replaceable> is the number of times to loop over the scan range.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Example:</emphasis> &#x201C;<literal>start 2/10</literal>&#x201D;
+		    will start observing on the second scan defined in the current schedule file. When
+		    the last scan in the schedule is finished, <command>caobs</command> will continue
+		    observing starting with the first scan defined in the schedule file. After the last
+		    scan defined in the schedule is observed for the tenth time, <command>caobs</command>
+		    will stop observing.
+		  </para>
+
+		  <para>
+		    <emphasis role="bold">Example:</emphasis> &#x201C;<literal>start 2-8/10</literal>&#x201D;
+		    will start observing on the second scan defined in the current schedule file. When
+		    the eighth scan in the schedule is finished, <command>caobs</command> will continue
+		    observing starting with the second scan defined in the schedule file. After the eighth
+		    scan defined in the schedule is observed for the tenth time, <command>caobs</command>
+		    will stop observing.
+		  </para>
+		  
+		  <para>
+		    <indexterm role="cp"><primary>mosaic</primary><secondary>starting</secondary></indexterm>
+		    <emphasis role="bold">Example:</emphasis> &#x201C;<literal>start 2,3/10</literal>&#x201D;
+		    will start observing with the third position defined in the mosaic file that is
+		    referenced in the second scan of the schedule file. When the last scan in the schedule is
+		    finished, <command>caobs</command> will continue observing starting with the first scan
+		    defined in the schedule file. Subsequently, whenever the mosaic referenced in the
+		    second scan is observed, it will start at the first defined position. After the last
+		    scan defined in the schedule is observed for the tenth time, <command>caobs</command>
+		    will stop observing.
+		  </para>
+		</listitem>
+	      </itemizedlist>
+	    </para>
+
+	    <para>
+	      There are several caveats to using the &#x201C;<literal>start</literal>&#x201D; command.
+	      <itemizedlist>
+		<listitem>
+		  <para>
+		    If the source that is next in the schedule is below the elevation limit set
+		    by the &#x201C;<literal>set el_limit</literal>&#x201D; <command>caobs</command>
+		    command, and the source will rise within the time defined by the
+		    &#x201C;<literal>set rise_time</literal>&#x201D; command, then <command>caobs</command>
+		    will move the antennas to intercept the source as it rises above the elevation limit.
+		    During this time, the correlator will be ready to run, but will not be producing
+		    data; you may see an error message in <command>assistance</command> stating that there is
+		    no recent data from the correlator.
+		  </para>
+
+		  <para>
+		    If the source won't rise within the rise time limit, then <command>caobs</command>
+		    will simply skip the source and continue to the next one in the schedule. If there
+		    are no sources in the schedule that are above the elevation limit, and won't rise
+		    within the rise time limit, then the behaviour of <command>caobs</command> may be
+		    strange; expect plenty of beeps.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    If the source that <command>caobs</command> is tracking sets during the scan,
+		    <command>caobs</command> will move to the next source in the schedule, if possible.
+		  </para>
+		</listitem>
+		<listitem>
+		  <para>
+		    If you command <command>caobs</command> to start a UTC schedule before the
+		    start time of the earliest scan, then it will prepare the correlator, but will not
+		    direct it to produce data, and the antennas will not move. Until the UTC of the
+		    first scan, you may see an error message in <command>assistance</command> stating
+		    that there is no recent data from the correlator.
+		  </para>
+		</listitem>
+	      </itemizedlist>
+	    </para>
+
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>stop, track, point, set rise_time, 
+	      set el_limit, attach, detach, enable, disable</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>stop</literal></term>
+	  <listitem>
+	    <para>
+	      Stops the current scan. The antennas will stop moving and the correlator will stop
+	      producing data. Use the
+	      &#x201C;<literal>correlator closefile</literal>&#x201D; command to close the data file. A stop
+	      command is always sent to all attached and enabled antennas, even if no scan is underway. 
+	    </para>
+
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>start, track, corr closefile</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>stow [ca0<replaceable>#</replaceable>]</literal></term>
+	  <listitem>
+	    <para>
+	      Drives either the antenna CA0<replaceable>#</replaceable>, or all antennas (if no argument
+	      is given to this command) to an azimuth of 90&#x00B0; and an
+	      elevation of 85&#x00B0;. Brakes are applied to the drives once this position has
+	      been reached. Observations must be stopped before this command will work. Only attached and
+	      enabled antennas will be stowed.
+	      <indexterm role="cp"><primary>stow</primary><secondary>command</secondary></indexterm>
+	      <indexterm role="cp"><primary>stow</primary><secondary>position</secondary></indexterm>
+	    </para>
+	    <para>
+	      <emphasis role="bold">Note:</emphasis> This is the preferred position for idle antennas. This
+	      command should be given at the end of your observation if the next observer is not ready to
+	      begin, or if there is no observing scheduled to begin within 30 minutes of your observations
+	      ending. This is also the recommended position for antennas during periods of high wind or 
+	      during storms.
+	    </para>
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>stop, park</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>track [<replaceable>n</replaceable>]</literal></term>
+	  <listitem>
+	    <para>
+	      Track the source described in scan <replaceable>n</replaceable> of the current
+	      schedule file, until either a <literal>stop</literal> command is issued or the
+	      source sets. If
+	      <replaceable>n</replaceable> is omitted, the first source in the schedule file
+	      will tracked.
+	    </para>
+
+	    <para>
+	      If <replaceable>n</replaceable> is &#x201C;<literal>0</literal>&#x201D;,
+	      <command>caobs</command> will track a position using the current settings (usually
+	      from the previously-tracked source). The current <command>caobs</command> settings
+	      can be modified by a number of <literal>set</literal> commands.
+	    </para>
+
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>start, stop, set source, set frequency</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><literal>wrap north|south</literal></term>
+	  <listitem>
+	    <para>
+	      Specify the antenna azimuth wrap that should be used to track the next specified
+	      source. This command will only have an effect if <command>caobs</command> is
+	      stopped at the time, and if the next command given is
+	      <indexterm role="cp"><primary>wrap</primary><secondary>specifying</secondary></indexterm>
+	      &#x201C;<literal>start</literal>&#x201D; or 
+	      &#x201C;<literal>track</literal>&#x201D;. Anything else will cancel the request.
+	    </para>
+
+	    <para>
+	      You can demand the antenna wrap on a per-source basis in the schedule, using the
+	      &#x201C;<literal>Wrap</literal>&#x201D; parameter (an advanced parameter) in the
+	      <acronym>CABB</acronym> web scheduler.
+	    </para>
+
+	    <para>
+	      <emphasis role="bold">Related commands:</emphasis> <literal>start, track</literal>
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </section>
+  </section>
+</appendix>

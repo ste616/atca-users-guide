@@ -1,0 +1,83 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>B.11. Changing to Pulsar Binned mode</title><link rel="stylesheet" type="text/css" href="atug.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="ATCA Users Guide"><link rel="up" href="apb.html" title="Appendix B. cacor reference"><link rel="prev" href="apbs10.html" title="B.10. Changing to Hybrid Config (1MHz Continuum and 64MHz Zoom Mode)"><link rel="next" href="apbs12.html" title="B.12. Changing to 1MHz Zooms"><script src="/jslib/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/standard_head.inc" ) ?></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><?php include( $_SERVER['DOCUMENT_ROOT'] . "/includes/title_bar_atnf.inc" ) ?><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">B.11. Changing to Pulsar Binned mode</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apbs10.html">Prev</a> </td><th width="60%" align="center">Appendix B. <span class="command"><strong>cacor</strong></span> reference</th><td width="20%" align="right"> <a accesskey="n" href="apbs12.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="changing-cor-configs-pulsar"></a>B.11. Changing to Pulsar Binned mode</h2></div></div></div>
+    
+    
+    <p><span class="bold"><strong>IMPORTANT:</strong></span> In order for CABB to fold pulsar data correctly, a predictor file is needed:  
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+	<p>On caccc1, type: </p>
+	<p> <span class="bold"><strong>caccc1&gt; psrpred</strong></span> </p>
+      </li><li class="listitem">
+	<p> Choose the pulsar name, e.g.: </p>
+	<p> <span class="bold"><strong>psrpred&gt; J1302-6350</strong></span> or  </p>
+	<p> <span class="bold"><strong>psrpred&gt; J0835-4510</strong></span> for Vela  </p>
+      </li><li class="listitem">
+	<p> follow the defaults thereafter</p>
+      </li></ul></div><p>	
+	    
+    </p>
+    <p>
+    </p>  
+    <p>
+    </p>  
+    <p>
+    </p>  
+
+    <p>
+      To change modes it is necessary to:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+            <p>stop the current scan</p>
+          </li><li class="listitem">
+            <p>cccversion: pulsar mode works in any version.</p>
+          </li><li class="listitem">
+            <p>in cacor, open the edit menu</p>
+	    <p>select the edit button in the cacor gui,</p>
+	    <p>
+	    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+	      <p> select the appropriate config</p>
+	      <p> <span class="bold"><strong>edit&gt; get psr32_2f_favg4</strong></span> </p>
+	      <p> <span class="italics">The psr32_2f_favg4 config has 4 &#8220;frequencies&#8221;. F1 and F3 are continuum bands with 2048 1MHz wide channels. F2 and F4 are the pulsar data - the continuum data is averaged into 4MHz wide channels, then each channel binned into time bins as defined by the predictor file. </span></p>
+	      </li><li class="listitem">
+              <p>and program the correlator</p>
+	      <p> <span class="bold"><strong>edit&gt; prog</strong></span> </p>
+	      <p> Check that all blocks program correctly. If any blocks report an error, they need to be programmed again, e.g.: </p>
+	      <p> <span class="bold"><strong>edit&gt; prog 8</strong></span> or <span class="bold"><strong>edit&gt; prog 8 27</strong></span>  </p>
+              </li><li class="listitem">
+              <p>if you are having problems with a block you can try</p>
+              <p>  <span class="bold"><strong>edit&gt; prog N cal</strong></span> which just reprograms the calibration (sometimes works) </p>
+              </li><li class="listitem">
+              <p>&lt;CR&gt; to return out of the edit menu</p>
+              </li></ul></div><p>
+	    </p>
+	  </li><li class="listitem">
+            <p>Calband will be set to the default values - which is what is required</p>
+	  </li><li class="listitem">
+            <p>start observing a strong calibrator, e.g.</p>
+	    <p> <span class="bold"><strong>caobs&gt; track 1 </strong></span></p>
+          </li><li class="listitem">
+            <p>Check for rear transition module (rtm) problems</p>
+	    <p> F1 and F2 Datalinks (separate tabs in the CACOR gui) should not have red error messages, and the 1ms values are in the range 2000 - 13000 (i.e. not 260 000). Fix with:</p>
+	    <p> <span class="bold"><strong>cacor&gt; rtminit </strong></span></p>
+          </li><li class="listitem">
+            <p>Check (from non-binned autocorrelations (F1, F3) in spd) for &#8220;big humps&#8221;. To fix, reprogram the relevant block.</p>
+	    <p>To determine the block, note antenna, frequency (1 or 2), and polarization (A or B) - then read off the block from the relevant Datalink tab on the CABB GUI. </p>
+          </li><li class="listitem">
+            <p>Check (in spd) individual baseline amplitudes and phases for discontinuities and fix by reprogramming relevant blocks</p>
+          </li><li class="listitem">
+	    <p>Check for memory problems - every second cycle is obviously bad. Fix with: </p>
+	    <p> <span class="bold"><strong>cacor&gt; reset mem </strong></span></p>
+	  </li><li class="listitem">
+            <p>Setup standard flagging</p>
+	    <p> <span class="bold"><strong>cacor&gt; fflag f1 birdies </strong></span></p>
+	    <p> <span class="bold"><strong>cacor&gt; fflag f2 birdies </strong></span></p>
+            <p><span class="italics"><span class="bold"><strong>NOTE:</strong></span> all flagging is cleared every time you exit from the edit menu</span>  </p>
+          </li><li class="listitem">
+            <p>Check that tvch is set to appropriate values</p>
+          </li><li class="listitem">
+            <p>Check that delavg is set to an appropriate value</p>
+          </li><li class="listitem">
+            <p>Standard setup follows (i.e. check sampler levels, and for fringes, then dcal, acal, pcal etc.)</p>
+         </li><li class="listitem">
+	   <p> <span class="italics"> <span class="bold"><strong>Note:</strong></span> As of end October, 2013, there is a bug in the cacor software that means that the T<sub>sys</sub> is not being calculated correctly for the second (F3) frequency.</span></p>
+	 </li></ul></div><p>
+    </p>
+    
+  </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apbs10.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apb.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apbs12.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">B.10. Changing to Hybrid Config (1MHz Continuum and 64MHz Zoom Mode) </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> B.12. Changing to 1MHz Zooms</td></tr></table></div></body></html>

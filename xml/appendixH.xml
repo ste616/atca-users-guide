@@ -1,0 +1,96 @@
+<appendix id="People-to-contact">
+  <info>
+    <title>People to contact</title>
+    <date>$Date: 2014-03-20 12:35:48 +1100 (Thu, 20 Mar 2014) $</date>
+    <revhistory>
+      <revision>
+	<revnumber>1.0</revnumber>
+	<date>2014 Mar 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Initial Docbook revision</revremark>
+      </revision>
+    </revhistory>
+  </info>
+  <para>
+    <indexterm role="cp"><primary>roles</primary><secondary>ATNF staff</secondary></indexterm>
+    <indexterm role="cp"><primary>contacts</primary><secondary>ATNF staff</secondary></indexterm>
+    <indexterm role="cp"><primary>ATNF</primary><secondary>staff roles</secondary></indexterm>
+    The following people are currently filling the roles described in this manual.
+  </para>
+
+  <para>
+    <!-- NB: make sure to have spaces between the column prototypes -->
+    <variablelist>
+      <varlistentry>
+	<term>
+	  <emphasis role="bold">Phil Edwards</emphasis>
+	</term>
+	<listitem>
+	  <para>
+	    Head of Science Operations
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>
+	  <emphasis role="bold">Brett Hiscock</emphasis>
+	</term>
+	<listitem>
+	  <para>
+	    Narrabri Observatory Manager
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>
+	  <emphasis role="bold">Robin Wark</emphasis>
+	</term>
+	<listitem>
+	  <para>
+	    Duty Astronomer Coordinator
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>
+	  <emphasis role="bold">Duty Astronomer</emphasis>
+	</term>
+	<listitem>
+	  <para>
+	    <ulink url="http://www.narrabri.atnf.csiro.au/observing/support/">See Duty Astronomer roster</ulink>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>
+	  <emphasis role="bold">Jamie Stevens</emphasis>
+	</term>
+	<listitem>
+	  <para>
+	    ATCA Senior Systems Scientist
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>
+	  <emphasis role="bold">Balt Indermuhle</emphasis>
+	</term>
+	<listitem>
+	  <para>
+	    Mopra Scientist
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>
+	  <emphasis role="bold">ATCA Users Guide Editors</emphasis>
+	</term>
+	<listitem>
+	  <para>
+	    atca_userguide@atnf.csiro.au
+	  </para>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+  </para>
+</appendix>
