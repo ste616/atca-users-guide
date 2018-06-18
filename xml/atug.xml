@@ -98,6 +98,21 @@
             </address>
           </affiliation>
       </author>
+      <author>
+        <personname>
+            <firstname>Jane</firstname>
+            <surname>Kaczmarek</surname>
+          </personname>
+          <email>jane.kaczmarek@csiro.au</email>
+          <affiliation>
+            <shortaffil>CASS</shortaffil>
+            <jobtitle>Postdoctoral Fellow</jobtitle>
+            <org>CSIRO Astronomy and Space Science</org>
+            <address>
+            <phone>+61 2 1762</phone>
+            </address>
+          </affiliation>
+      </author>
     </authorgroup>
   </info>
   &preface;
