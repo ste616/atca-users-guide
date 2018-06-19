@@ -1,7 +1,8 @@
 <?xml version='1.0'?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <!-- This is the single-page HTML style file. -->
-  <xsl:import href="/usr/share/xml/docbook/stylesheet/docbook-xsl/html/docbook.xsl"/>
+  <!--<xsl:import href="/usr/share/xml/docbook/stylesheet/docbook-xsl/html/docbook.xsl"/> -->
+  <xsl:import href="/usr/local/share/xml/xsl/docbook-xsl/html/docbook.xsl"/>
   <xsl:import href="atug-common.xsl"/>
   <xsl:import href="atug-html-common.xsl"/>
 

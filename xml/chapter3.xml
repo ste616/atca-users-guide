@@ -5,6 +5,12 @@
     <revhistory>
       <revision>
         <revnumber>1.5</revnumber>
+        <date>2018 June 18</date>
+        <authorinitials>jfk</authorinitials>
+        <revremark>General ATUG updates</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.5</revnumber>
         <date>2018 March 15</date>
         <authorinitials>jbs</authorinitials>
         <revremark>Add a section describing unattended observing, and update information on PMon wind stows</revremark>
@@ -141,9 +147,8 @@
       </listitem>
     </itemizedlist>
     <para>
-      If observations are remote, these should be connected to before the start of observations. 
+      If observations are remote, these VNCs should be connected to before the start of observations. 
       See <ulink url="http://www.narrabri.atnf.csiro.au/observing/rem_obs.html">
-	http://www.narrabri.atnf.csiro.au/observing/rem_obs.html
       </ulink> for information on setting up remote observations
       (In Marsfield the necessary windows are already set up on <hardware>Ara</hardware> in the SOC, 
       along with a number of additional windows with additional information and observing tasks.)
@@ -163,7 +168,7 @@
 
     <para>
       When it is time to take over, check on the portal and chat with the previous observer or observatory
-      staff if it is ok to get going. The Duty Astronomer should be on hand to help inexperienced observers set
+      staff and ask if it is ok to get going. The Duty Astronomer should be on hand to help inexperienced observers set
       up their observations. <indexterm role="cp"><primary>observations</primary><secondary>duty astronomer</secondary></indexterm>
     </para>
 
@@ -212,7 +217,7 @@
     <para>
       At the start of observing, a number of procedures need to be executed to set up
       the array for observng. The following table summarises the tasks, and indicates the
-      frequencies which need the various tasks. <indexterm role="cp"><primary>observations</primary><secondary>setting up</secondary></indexterm>
+      wavelengths which need the various tasks. <indexterm role="cp"><primary>observations</primary><secondary>setting up</secondary></indexterm>
     </para>
     <informaltable frame="none" rowsep="0" colsep="0">
       <tgroup cols="5">
@@ -320,7 +325,7 @@
               <row>
 		<entry></entry>
 		<entry>caobs<literal>&gt; focus ca0# <replaceable>height</replaceable></literal></entry>
-		<entry>drives the subreflector on antenna # to the given focus height</entry>
+		<entry>drives the subreflector on antenna # to the given focus height in mm</entry>
               </row>
             </tbody>
           </tgroup>
@@ -629,7 +634,7 @@
               <row>
                 <entry></entry>
                 <entry>caobs<literal>&gt; set atten ca0# att<subscript>a</subscript> att<subscript>b</subscript></literal></entry>
-                <entry>sets the receiver attenuator levels on antenna # to attenuator levels a and b</entry>
+                <entry>sets the receiver attenuator levels on antenna # to attenuator levels a and b. This value will be the same for both IFs. </entry>
               </row>
             </tbody>
           </tgroup>
@@ -1555,7 +1560,7 @@
       <title>Observing</title>
     </info>
     <para>
-      Once setting up is complete, observations proper can start. Observations need to include
+      Once setting up is complete, proper observations can start. Observations need to include
       calibration data, including data for flux, bandpass, polarisation and gain calibration.
     </para>
 
@@ -1573,13 +1578,13 @@
       <para>
 	This does not have to be done at the start of the observation, but should be
 	done at some point during the observing session. If appropriate calibration
-	sources are not above the horizon during the observing session, contact the scheduler (Phil Edwards) to
+	sources are not above the horizon during the observing session, contact the scheduler (Jamie Stevens) to
 	discuss options.
       </para>
 
       <para>
 	For cm and 15mm observations, <literal>PKS1934-638</literal> is the
-	appropriate flux calibrator and can usually be used as a bandpass calibrator too (although spectral line observations at 
+	appropriate flux calibrator and can also usually be used as a bandpass calibrator (although spectral line observations at 
 	15mm will ordinarily require a stronger source).
 	For mm observations, a planet is needed for flux calibration (<literal>PKS1934-638</literal> can also be used
 	in the 7mm band), and a strong
@@ -1651,6 +1656,8 @@
       <para>
           <indexterm role="cp"><primary>storm stows</primary></indexterm>
           In addition to high winds, electrical storms present a real danger to the ATCA.  Storms and lightning strikes within a 56 km radius of the array are closely monitored.  Threat levels (from 0 - no threat, to 4 - high threat) are assigned based on the number of approaching lightning strikes and those within 9 km of the array.  When the threat level reaches 3, the back up generators are turned on.  At a threat level of 4, xbones stows the array.
+          In fact, if PMon has issued the stow you will have
+  to wait 15 minutes until after the stow condition is no longer present before the antenna will be allowed to drive again.
       </para>
       
     </section>
@@ -1661,7 +1668,7 @@
       </info>
         <para>
             <indexterm role="cp"><primary>heat stows</primary></indexterm>
-            On very hot days (above 40&#x00B0;C) especially with a strong wind, the cryogenic compressors can become overwhelmed.  In order to protect the receivers, if the ambient temperature in the internal system of the antennas reaches 50&#x00B0;C, xbones stows the array and turns the antennas to shadow the compressors from the wind.
+            On very hot days (above 40&#x00B0;C), especially with a strong wind, the cryogenic compressors can become overwhelmed.  In order to protect the receivers, if the ambient temperature in the internal system of the antennas reaches 50&#x00B0;C, xbones stows the array and turns the antennas to shadow the compressors from the wind.
         </para>
     </section>
         
@@ -1671,7 +1678,7 @@
         </info>
 
         <para>
-        Weather monitors (for wind, storms and heat) can be access in <application>MoniCA</application>.  Alternately, the ATCA <ulink url="http://www.narrabri.atnf.csiro.au/astronomy/weather"> Weather Station
+        Weather monitors (for wind, storms and heat) can be access in <application>MoniCA</application>.  Alternately, the ATCA <ulink url="http://www.narrabri.atnf.csiro.au/astronomy/weather">Weather Station
       	</ulink> also provides information about the weather.
         </para>
     </section>
