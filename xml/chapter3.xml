@@ -88,22 +88,27 @@
   <itemizedlist>
     <listitem>
       <para>
-        taking control from the previous observer
+        connect to VNC sessions and prepare for observing (<xref linkend="GetConnected"/>)
       </para>
     </listitem>
     <listitem>
       <para>
-        set up and calibrate the array
+        taking control from the previous observer (<xref linkend="Changeover"/>)
       </para>
     </listitem>
     <listitem>
       <para>
-        observe target source(s)
+        set up and calibrate the array (<xref linkend="Setting-Up"/>)
       </para>
     </listitem>
     <listitem>
       <para>
-        monitor observations for problems
+        observe target source(s) (<xref linkend="StartObserving"/>)
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        monitor observations for problems (<xref linkend="Array-Monitoring"/>)
       </para>
     </listitem>
     <listitem>
@@ -113,11 +118,15 @@
     </listitem>
   </itemizedlist>
 
-  <section id="Changeover">
+  <section id="GetConnected">
     <info>
-      <title>Changeover</title>
+      <title>Connect to the array control systems</title>
     </info>
 
+    <para>
+      When observing remotely, getting connected can take a while so observers should make sure that
+      they leave plenty of time before their observing block begins.
+    </para>
     <para>
       Before the start of observations, observers need to log into the 
       <ulink url="https://ca-ops.atnf.csiro.au/PORTAL/login.php?return=/PORTAL/index.php"> ATCA Portal</ulink>.
@@ -141,12 +150,12 @@
       </listitem>
     </itemizedlist>
     <para>
-      If observations are remote, these should be connected to before the start of observations. 
+      Remote observers should connect to both of these VNC sessions before the start of observations. 
       See <ulink url="http://www.narrabri.atnf.csiro.au/observing/rem_obs.html">
 	http://www.narrabri.atnf.csiro.au/observing/rem_obs.html
       </ulink> for information on setting up remote observations
       (In Marsfield the necessary windows are already set up on <hardware>Ara</hardware> in the SOC, 
-      along with a number of additional windows with additional information and observing tasks.)
+      along with a number of additional windows with supplementary information and observing tasks.)
     </para>
 
     <para>
@@ -160,6 +169,11 @@
 	</mediaobject>
       </figure>
     </para>
+
+  <section id="Changeover">
+    <info>
+      <title>Changeover</title>
+    </info>
 
     <para>
       When it is time to take over, check on the portal and chat with the previous observer or observatory
@@ -402,7 +416,7 @@
       </table>
 
       <para><emphasis role="bold">Note:</emphasis> As the antenna tips over, it deforms slightly, and the detected focus position changes by up to 1mm. 
-        This is normal and will not significantly effect the data.
+        This is normal and will not significantly affect the data.
       </para>
     </section>
 
@@ -660,22 +674,46 @@
 	<indexterm role="cp"><primary>observations</primary><secondary>tvchannels</secondary></indexterm>
         <indexterm role="cp"><primary>tvchannels</primary></indexterm>
         <indexterm role="cp"><primary>channels</primary></indexterm>
-        <command>cacor</command> generates an average visibility (averaged across the spectrum) that is used for T<subscript>sys</subscript>
-        and array calibration. Some care needs to be taken to ensure that the range of <command>cacor</command> channels used for
-        calculating this average is as wide as possible within the useable passband, but also excludes interference.
+        <command>cacor</command> generates an average visibility (either the average or the median across
+        the spectrum) that is used for T<subscript>sys</subscript>
+        and array calibration. In general, the median is much more stable and allows for a more reliable calibration.
+        Otherwise, care needs to be taken to ensure that the range of <command>cacor</command> channels used for
+        calculating the average is as wide as possible within the useable passband, but also excludes interference.
       </para>
 
       <para>
-        At higher frequencies, it is usually appropriate to use the central fifty percent of channels
-        but at cm frequencies, interference means that it is often better to select
-        non-default channels. See <xref linkend="tvchanranges"></xref> for information on recommended channel ranges for 2048 MHz continuum bands.
+	The default behaviour is to compute the average across the spectrum. To ensure that the more stable and reliable
+	median is being used, it is recommended to enable the <literal>tvmedian</literal> option:
+	<informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; tvmedian on on</literal></entry>
+                <entry>Two arguments are required to enable the median option for both frequencies.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+        At higher frequencies and when the <literal>tvmedian</literal> option is enabled,
+        it is usually appropriate to use the central fifty percent of channels.
+        At cm frequencies, interference means that it is often better to select
+        non-default channels, especially if <literal>tvmedian</literal> is disabled.
+	See <xref linkend="tvchanranges"></xref> for information on recommended channel ranges for 2048 MHz continuum bands.
         If these channel ranges are not generating the anticipated visibility in <command>vis</command>, inspect <xref linkend="spd"></xref> to
         determine the cause of the problem.
       </para>
 
       <para>
         The <literal>tvchan</literal> command sets the range of channels that are used for
-        calibrating the array and for T<subscript>sys</subscript> calculation. All unflagged
+        calibrating the array and for T<subscript>sys</subscript> calculation. The same range is used to
+	compute the average (or median) visibility for display in <command>vis</command>. All unflagged
         channels are written to the data (<acronym>RPFITS</acronym>) file regardless of what the <literal>tvchan</literal>
         setting is.
       </para>
@@ -850,13 +888,35 @@
 
       <para>
         To reduce the noise, or to average out the effect of the RFI, setting delavg in the correlator
-        averages together that number of channels in the
-        <literal>tvchan</literal> range before calculating the slope.
+        averages together (or takes the median of) the corresponding number of channels in the
+        <literal>tvchan</literal> range before calculating the slope to determine the delay.
       </para>
 
       <para>
-        However, care needs to be taken! If the phases are wrapping quickly, averaging over a 
-        large number of channels will give a meaningless value, and delays determined will be incorrect.
+	Here too it is useful to use the median option rather than the default mean (computed within each
+	group of <literal>delavg</literal> channels):
+	<informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; tvmedian on on</literal></entry>
+                <entry>Two arguments are needed to enable the median option for both frequencies.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </para>
+
+      <para>
+        Higher values of <literal>delavg</literal> can be useful for determining the delays.
+	However, care needs to be taken when selecting this value!
+	If the phases are wrapping quickly, averaging over a 
+        large number of channels will give a meaningless average phase, and therefore incorrect
+	delays will be determined.
       </para> 
 
       <para>
@@ -1106,8 +1166,8 @@
         Calibration will not fix a broken system. 
       </para>
       <para>
-        The calibration involves calculating and applying the delay offsets (for mm observations),
-        setting the phases to zero degrees and correcting the visibilities to the appropriate flux levels.
+        The calibration involves calculating and applying the delay offsets, checking the pointing (for mm observations),
+        setting the phases to zero degrees and correcting the visibility amplitudes to the appropriate flux levels.
       </para>    
 
       <para>
@@ -1133,7 +1193,7 @@
         </para>
 
         <para>
-          In the 64MHz zoom configuration, delay calibration is more complex as it generally needs to be done in two stpes. 
+          In the 64MHz zoom configuration, delay calibration is more complex as it generally needs to be done in two steps. 
             (First delay calibrate a zoom channel, then in the continuum. See <xref linkend="64MHz_Delay_Cal"></xref>
             for more information) 
         </para>
@@ -1533,12 +1593,16 @@
       </para>
 
       <para>
-        The <literal>T<subscript>sys</subscript></literal>s should be checked in the <command>cacor</command> GUI. 
+        The <literal>T<subscript>sys</subscript></literal>s values should be checked in the <command>cacor</command> GUI. 
         Any outlier readings should be checked.
       </para>
     </section>
-    </section>
     
+    <section id="ConcludeSetup">
+	<info>
+	  <title>Concluding Setup</title>
+	</info>
+
     <para>
       At this point, the array should be set up and ready for observing. 
       Check that <emphasis role="bold">all</emphasis> the products in <command>vis</command>
@@ -1547,7 +1611,34 @@
       Troubleshooting section <xref linkend="Troubleshooting"></xref> or get help.
     </para>
 
+    <para>
+	When you have concluded setting up for observations and are prepared to begin observing,
+	it is good practice to close the data file produced by the correlator so that the data
+	produced during the setup process is not confused with useful calibrator and target data.
+	<informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>caobs<literal>&gt; stop</literal></entry>
+                <entry></entry>
+              </row>
+	      <row>
+		<entry></entry>
+		<entry>caobs<literal>&gt; corr closefile</literal></entry>
+		<entry>Closes the data file being written by the correlator in preparation for science observations.</entry>
+	      </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+    </para>
 
+    </section>
+
+    </section>
   </section>
 
   <section id="StartObserving">
@@ -1555,7 +1646,7 @@
       <title>Observing</title>
     </info>
     <para>
-      Once setting up is complete, observations proper can start. Observations need to include
+      Once setup is complete, science observations can begin. Observations need to include
       calibration data, including data for flux, bandpass, polarisation and gain calibration.
     </para>
 
@@ -1585,6 +1676,11 @@
 	in the 7mm band), and a strong
 	source (e.g. <literal>PKS1921-293</literal> or <literal>PKS1253-055</literal>) is required to calibrate the bandpass.
       </para>
+
+      <para>
+	Bandpass calibrators should ideally be observed at high elevation (above 40 degrees) if possible. This is
+	especially important for excellent polarization calibration.
+      </para>
     </section>
 </section>
 
@@ -1605,14 +1701,14 @@
     <para>
       Observers need to monitor their own observations to ensure data quality.
       During observing, <command>vis</command> and <command>spd</command> should be checked semi-regularly to ensure
-      that the data &#x201C;looks ok&#x201D;. In particular checking that, while on the calibrator,
+      that the data &#x201C;looks ok&#x201D;. In particular the observer should check that while on the calibrator:
       delays are close to zero, phases are flat(ish) and amplitudes remain constant.
       (There are a number of modes where some of these checks may be inappropriate, however,
       get help if it isn't obvious why these are not the case.)
     </para>
 
     <para>
-      The program assistance will often indicate that there is a
+      The program <command>assistance</command> will often indicate that there is a
       problem with the system. Many of the error messages can be ignored if they are not
       relevant to the observations, however any unexpected errors should be followed up.
     </para>
@@ -1671,7 +1767,7 @@
         </info>
 
         <para>
-        Weather monitors (for wind, storms and heat) can be access in <application>MoniCA</application>.  Alternately, the ATCA <ulink url="http://www.narrabri.atnf.csiro.au/astronomy/weather"> Weather Station
+        Weather monitors (for wind, storms and heat) can be accessed in <application>MoniCA</application>.  Alternately, the ATCA <ulink url="http://www.narrabri.atnf.csiro.au/astronomy/weather"> Weather Station
       	</ulink> also provides information about the weather.
         </para>
     </section>
