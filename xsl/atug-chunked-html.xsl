@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <!-- This is the multi-page HTML style file. -->
-  <xsl:import href="/usr/share/xml/docbook/stylesheet/docbook-xsl/html/chunk.xsl"/>
+  <xsl:import href="docbook/html/chunk.xsl"/>
   <xsl:import href="atug-common.xsl"/>
   <xsl:import href="atug-html-common.xsl"/>
 
