@@ -3,7 +3,7 @@
                 xmlns:fo="http://www.w3.org/1999/XSL/Format"
 		xmlns:date="http://exslt.org/dates-and-times"
 		exclude-result-prefixes="date">
-  <xsl:import href="/usr/share/xml/docbook/stylesheet/docbook-xsl/fo/docbook.xsl"/>
+  <xsl:import href="docbook/fo/docbook.xsl"/>
 
   <!-- Import styles common to all outputs of the ATUG. -->
   <xsl:import href="atug-common.xsl"/>
