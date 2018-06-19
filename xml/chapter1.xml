@@ -113,20 +113,12 @@
     </para>
     <para>
       <acronym>ATNF</acronym> scientists and engineers are currently commissioning 
-      <indexterm role="cp"><primary>ASKAP</primary></indexterm>,
+      <indexterm role="cp"><primary>ASKAP</primary></indexterm>
       <acronym>ASKAP</acronym> (the Australian SKA Pathfinder telescope) located 300km inland from
       Geralton in Western Australia, <acronym> ASKAP</acronym>
       is an array of thirty-six wide-field 12m antennas. 
       operating in the 0.7&#x2013;1.8 GHz range. More details are available at
-      <ulink url="http://www.atnf.csiro.au/projects/askap/">the <acronym>ASKAP</acronym> project website.</ulink>.
-    </para>
-    <para>
-      A biannual newsletter is produced by the
-      <acronym>ATNF</acronym> which includes recent news items, scientific articles and time
-      assignment information. All the newsletters are 
-      <ulink url="http://www.atnf.csiro.au/news/newsletter/">archived on the web</ulink>, as are the
-      <ulink url="http://www.atnf.csiro.au/the_atnf/annual_reports/"><firstterm>ATNF Annual Reports</firstterm></ulink>.
-      <indexterm role="cp"><primary>ATNF</primary><secondary>annual report</secondary></indexterm>
+      <ulink url="http://www.atnf.csiro.au/projects/askap/">the <acronym>ASKAP</acronym> project website</ulink>.
     </para>
   </section>
 
