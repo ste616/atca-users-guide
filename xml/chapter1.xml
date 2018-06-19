@@ -50,9 +50,7 @@
     <indexterm role="cp"><primary>Compact Array</primary><secondary>Australia Telescope</secondary>
     <see>ATCA</see></indexterm>
     and provides the information needed to prepare an observing proposal.
-    As such, this chapter supercedes the <firstterm>Guide to Observations</firstterm> that was
-    provided in the past (and which contained a lot of overlap with the previous
-    <firstterm>Users Guide</firstterm>). The old <firstterm>Users Guide</firstterm> is still available and is
+    The old <firstterm>Users Guide</firstterm> is still available and is
     recommended for those reducing
     pre-<acronym>CABB</acronym> data (i.e., observations before April 2009).
     <indexterm role="cp"><primary>observations</primary><secondary>guide to</secondary></indexterm>

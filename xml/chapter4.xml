@@ -96,7 +96,7 @@
       </info>
       <para>
 	Your <acronym>CABB</acronym> data will appear on the
-	<ulink url="http://atoa.atnf.csiro.au">Australia Telescope Online Archive</ulink>
+	<ulink url="https://atoa.atnf.csiro.au">Australia Telescope Online Archive</ulink>
 	(<acronym>ATOA</acronym>) within a few days of your observations.
 	Using the <acronym>OPAL</acronym> account you
 	used to submit your successful proposal, you will have access to your
@@ -137,7 +137,7 @@
     <para>
       After your observations, please provide us with feedback by completing
       the online
-      <ulink url="http://www.narrabri.atnf.csiro.au/feedback">Observer's Questionnaire</ulink>.
+      <ulink url="https://www.narrabri.atnf.csiro.au/feedback">Observer's Questionnaire</ulink>.
       The feedback you give provides us with a way of measuring the success or failure of
       Compact Array operations, and allows us to identify areas that need
       attention.
@@ -146,7 +146,7 @@
     <para>
       If you can't find the information you require in this Users Guide and would like to
       ask our expert users how to do something, please visit the 
-      <ulink url="http://atcaforum.atnf.csiro.au"><acronym>ATCA</acronym> Forum website</ulink>.You 
+      <ulink url="https://atcaforum.atnf.csiro.au"><acronym>ATCA</acronym> Forum website</ulink>.You 
       can also start or participate in conversations about your experiences with the <acronym>ATCA</acronym>.
     </para>
   </section>
@@ -155,11 +155,92 @@
     <info>
       <title>Data Analysis</title>
     </info>
+
+    <section id="Data-Analysis-Choices">
+      <info>
+	<title>Software Choices</title>
+      </info>
+
+      <para>
+	There are now several software packages that are capable of reducing <acronym>CABB</acronym>
+	data. For the purposes of calibration, the <application>Miriad</application> software package
+	is still probably the best choice. It is possible though to do a full reduction without ever
+	using <application>Miriad</application>, if you prefer to use the <application>CASA</application>
+	package. Below is a high-level comparison of what each package is capable of doing, and this
+	may help you decide on how to proceed.
+      </para>
+
+      <section>
+	<info>
+	  <title>Loading</title>
+	</info>
+
+	<para>
+	  Both <application>Miriad</application> and <application>CASA</application> can read in raw
+	  <acronym>CABB</acronym> <acronym>RPFITS</acronym> files. In <application>Miriad</application>,
+	  the task <command>atlod</command> is used to convert the raw files into a
+	  <application>Miriad</application>-specific data format, while in
+	  <application>CASA</application>, the task <command>importmiriad</command> is used to convert
+	  them into the more commonly-used MeasurementSet (<acronym>MS</acronym>) format.
+	</para>
+      </section>
+
+      <section>
+	<info>
+	  <title>Flagging</title>
+	</info>
+
+	<para>
+	  Both packages are capable of flagging <acronym>CABB</acronym> data, but generally speaking,
+	  the <application>Miriad</application> routines (such as <command>uvflag</command>,
+	  <command>blflag</command> and <command>pgflag</command>) are easier to drive, and give
+	  excellent results.
+	</para>
+      </section>
+
+      <section>
+	<info>
+	  <title>Calibration</title>
+	</info>
+
+	<para>
+	  Both packages can do a full calibration of the data, including flux density calibration
+	  (the latest models for 1934-638 are in <application>CASA</application>), and polarisation
+	  calibration. The only significant difference is that <application>CASA</application> gives
+	  you much more control about where different effects are considered in the calibration
+	  tables; both will give excellent calibration however.
+	</para>
+      </section>
+
+      <section>
+	<info>
+	  <title>Imaging</title>
+	</info>
+
+	<para>
+	  Imaging is where the <application>Miriad</application> and <application>CASA</application>
+	  packages differ greatly. <application>Miriad</application> allows you to make images over
+	  wide bandwidths, and does a good job of making spectral cubes as well. It also handles making
+	  mosaicked images, but lacks the ability to do mosaicking over a wide bandwidth.
+	</para>
+
+	<para>
+	  To do that properly, you will need to turn to <application>CASA</application>, which is also
+	  able to handle doing multiscale cleaning, and does uv-based cleaning instead of
+	  <application>Miriad</application>'s image-based cleaning. 
+	</para>
+      </section>
+    </section>
+
+    <section>
+      <info>
+	<title>Miriad</title>
+      </info>
     <para>
       This section will describe how to get started on reducing <acronym>CABB</acronym> data
       using the <application>Miriad</application> software suite. More information can be found
       in the 
-      <ulink url="http://www.atnf.csiro.au/computing/software/miriad"><application>Miriad</application> manual</ulink>.
+      <ulink url="https://www.atnf.csiro.au/computing/software/miriad"><application>Miriad</application> manual</ulink>.
       The manual's cookbook should be read by all users before starting
       their first data reduction. This section will summarise how reduction
       differs for <acronym>CABB</acronym> data, and give a reasonable guide on how to do a
@@ -185,7 +266,7 @@
 
       <para>
 	To get the latest <application>Miriad</application> distribution, please follow the instructions
-	<ulink url="http://www.atnf.csiro.au/computing/software/miriad/INSTALL.html">in the install guide</ulink>.
+	<ulink url="https://www.atnf.csiro.au/computing/software/miriad/INSTALL.html">in the install guide</ulink>.
       </para>
 
       <para>
@@ -195,7 +276,7 @@
 	email describing your problem to <email>miriad@atnf.csiro.au</email>. If you don't
 	think your problem is related to a bug, but you need advice on how best to
 	proceed with your reduction, please ask for help using the 
-	<ulink url="http://atcaforum.atnf.csiro.au"><acronym>ATCA</acronym> Forum</ulink>.
+	<ulink url="https://atcaforum.atnf.csiro.au"><acronym>ATCA</acronym> Forum</ulink>.
 	<acronym>ATCA</acronym> and <acronym>ATNF</acronym> staff routinely check
 	the forum and answer questions from the community, making the forum a good
 	place to start to look for answers as well.
@@ -391,7 +472,7 @@
       <para>
 	The <command>atfix</command> routine can &#x201C;fix&#x201D; the positions of the <acronym>ATCA</acronym> antennas based
 	on the solution file that is made available by the <acronym>ATCA</acronym> staff on the
-	<ulink url="http://www.narrabri.atnf.csiro.au/observing/antpos/">
+	<ulink url="https://www.narrabri.atnf.csiro.au/observing/antpos/">
 	  baseline solutions page</ulink>. 
 	  The high-frequency baseline solutions are not routinely computed for each reconfiguration, so
 	  if you'd like to have one, please contact <acronym>ATCA</acronym> staff with your request.
@@ -445,7 +526,7 @@
 	The <parameter>select</parameter> keyword can also be used to split out only certain sources,
 	or to effectively flag out certain antenna. Read about the <parameter>select</parameter>
 	keyword 
-	<ulink url="http://www.atnf.csiro.au/computing/software/miriad/doc/select.html">
+	<ulink url="https://www.atnf.csiro.au/computing/software/miriad/doc/select.html">
 	  in the <application>Miriad</application> manual</ulink>.
       </para>
 
@@ -530,7 +611,7 @@
 	      a channel-time waterfall plot and allows direct selection of ranges of bad
 	      data and flexible flagging options. It also includes an automatic flagging routine
 	      that uses the <firstterm>SumThreshold</firstterm> method that is available in the
-	      <ulink url="http://sourceforge.net/p/aoflagger/wiki/Home/"><application>AOFlagger</application></ulink>, and is
+	      <ulink url="https://sourceforge.net/p/aoflagger/wiki/Home/"><application>AOFlagger</application></ulink>, and is
 	      highly recommended for use during continuum reductions.
 	    </para>
 	  </listitem>
@@ -757,7 +838,7 @@
 	to ensure accurate calibration of wide bandwidths. This strategy also has
 	the benefit of being applicable to the vast majority of <acronym>ATCA</acronym> data with little
 	alteration. It is described best in the
-	<ulink url="http://www.atnf.csiro.au/computing/software/miriad/userguide/node95.html">
+	<ulink url="https://www.atnf.csiro.au/computing/software/miriad/userguide/node95.html">
 	  <application>Miriad</application> cookbook</ulink>, but it will also be summarised here (although
 	  not explained in the same depth).
       </para>
@@ -1308,7 +1389,7 @@
 	multi-frequency strategies are more likely to produce good results. In particular,
 	the use of the <command>mfclean</command> task should be considered. Read the excellent
 	description of why <command>mfclean</command> is necessary
-	<ulink url="http://www.atnf.csiro.au/computing/software/miriad/userguide/node110.html">
+	<ulink url="https://www.atnf.csiro.au/computing/software/miriad/userguide/node110.html">
 	  in the <application>Miriad</application> cookbook</ulink>
 	to see if you will need to proceed with this strategy.
       </para>
@@ -1396,6 +1477,7 @@
       </para>
     </section>
   </section>
+</section>
 
   <section id="Publishing-Results">
     <info>

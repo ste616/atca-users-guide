@@ -1,12 +1,14 @@
-<fop version="0.95">
-    <renderers>
-            <renderer mime="application/pdf">
-	                <filterList>
-			                <value>flate</value>
-					            </filterList>
-						                <fonts>
-								                <auto-detect/>
-										            </fonts>
-											            </renderer>
-												        </renderers>
-													</fop>
+<fop version="2.1">
+  <renderers>
+    <renderer mime="application/pdf">
+      <base>.</base>
+      <filterList>
+	<value>flate</value>
+      </filterList>
+      <fonts>
+	<directory>./static/fonts</directory>
+
+      </fonts>
+    </renderer>
+  </renderers>
+</fop>
