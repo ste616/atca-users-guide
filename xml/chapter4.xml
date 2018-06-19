@@ -204,7 +204,30 @@
 	</info>
 
 	<para>
+	  Both packages can do a full calibration of the data, including flux density calibration
+	  (the latest models for 1934-638 are in <application>CASA</application>), and polarisation
+	  calibration. The only significant difference is that <application>CASA</application> gives
+	  you much more control about where different effects are considered in the calibration
+	  tables; both will give excellent calibration however.
+	</para>
+      </section>
 
+      <section>
+	<info>
+	  <title>Imaging</title>
+	</info>
+
+	<para>
+	  Imaging is where the <application>Miriad</application> and <application>CASA</application>
+	  packages differ greatly. <application>Miriad</application> allows you to make images over
+	  wide bandwidths, and does a good job of making spectral cubes as well. It also handles making
+	  mosaicked images, but lacks the ability to do mosaicking over a wide bandwidth.
+	</para>
+
+	<para>
+	  To do that properly, you will need to turn to <application>CASA</application>, which is also
+	  able to handle doing multiscale cleaning, and does uv-based cleaning instead of
+	  <application>Miriad</application>'s image-based cleaning. 
 	</para>
       </section>
     </section>

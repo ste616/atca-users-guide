@@ -101,9 +101,7 @@
     <para>Besides the <acronym>ATCA</acronym>, the <acronym>ATNF</acronym> operates the 64-m radio telescope at
       the Parkes Observatory
       <indexterm role="cp"><primary>Parkes</primary></indexterm>
-      (300 km west of Sydney) and a 22-m antenna at Mopra,
-      <indexterm role="cp"><primary>Mopra</primary></indexterm>
-      120 km south of the <acronym>ATCA</acronym>.  In addition, the <acronym>ATNF</acronym> negotiates time with the
+      (300 km west of Sydney). The <acronym>ATNF</acronym> negotiates time with the
       <acronym>CSIRO</acronym>-administered 70-m and 34-m antennas at the Tidbinbilla Deep Space
       Tracking station outside Canberra.  The <acronym>ATNF</acronym> telescopes are used
       together, in conjunction with the University of Tasmania telescopes at
@@ -111,15 +109,15 @@
       Baseline Interferometry (<acronym>VLBI</acronym>) observations.
       <indexterm role="cp"><primary>Tidbinbilla</primary></indexterm>
       <indexterm role="cp"><primary>Long Baseline Array</primary></indexterm>
-      <indexterm role="cp"><primary>VLBI</primary></indexterm>
-      The <acronym>ATNF</acronym> is
-      currently structured into four themes: Operations, Astrophysics,
-      Technologies, and <acronym>ASKAP</acronym>.
-      <indexterm role="cp"><primary>ASKAP</primary></indexterm>
-      <acronym>ASKAP</acronym> (the Australian SKA Pathfinder), is a telescope being
-      constructed by <acronym>ATNF</acronym> in
-      Western Australia, and will be an array of thirty-six wide-field 12m antennas
-      operating in the 0.7&#x2013;1.8 GHz range. Commissioning of the first antennas is currently underway.  More details are available at
+      <indexterm role="cp"><primary>VLBI</primary></indexterm>.
+    </para>
+    <para>
+      <acronym>ATNF</acronym> scientists and engineers are currently commissioning 
+      <indexterm role="cp"><primary>ASKAP</primary></indexterm>,
+      <acronym>ASKAP</acronym> (the Australian SKA Pathfinder telescope) located 300km inland from
+      Geralton in Western Australia, <acronym> ASKAP</acronym>
+      is an array of thirty-six wide-field 12m antennas. 
+      operating in the 0.7&#x2013;1.8 GHz range. More details are available at
       <ulink url="http://www.atnf.csiro.au/projects/askap/">the <acronym>ASKAP</acronym> project website.</ulink>.
     </para>
     <para>
