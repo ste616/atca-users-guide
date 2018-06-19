@@ -267,6 +267,13 @@
           <entry>See <xref linkend="Selecting-Channels"></xref></entry>
         </row>
         <row>
+          <entry>Check <literal>delavg</literal></entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
+          <entry>See <xref linkend="Check-Delavg"></xref></entry>
+        </row>
+        <row>
           <entry>Flag interference</entry>
           <entry namest="col2" nameend="col4"><emphasis>usually not necessary</emphasis></entry>
           <entry>See <xref linkend="Flagging-Channels"></xref></entry>
@@ -367,51 +374,51 @@
         <tbody>
           <row>
             <entry>CA01</entry>
-            <entry>17</entry>
-            <entry>17</entry>
-            <entry>17</entry>
-            <entry>17</entry>
-            <entry>14</entry>
+            <entry>17.0</entry>
+            <entry>4.1</entry>
+            <entry>17.8</entry>
+            <entry>17.0</entry>
+            <entry>14.0</entry>
           </row>
           <row>
             <entry>CA02</entry>
+            <entry>10.0</entry>
+            <entry>-1.9</entry>
+            <entry>10.7</entry>
             <entry>9.8</entry>
-            <entry>9.8</entry>
-            <entry>9.8</entry>
-            <entry>9.8</entry>
-            <entry>9.8</entry>
+            <entry>10.0</entry>
           </row>
           <row>
             <entry>CA03</entry>
-            <entry>9</entry>
-            <entry>-4.7</entry>
-            <entry>9</entry>
-            <entry>9</entry>
-            <entry>9</entry>
+            <entry>10.0</entry>
+            <entry>-2.2</entry>
+            <entry>10.4</entry>
+            <entry>9.0</entry>
+            <entry>9.0</entry>
           </row>
           <row>
             <entry>CA04</entry>
-            <entry>23</entry>
-            <entry>23</entry>
-            <entry>23</entry>
-            <entry>23</entry>
-            <entry>23</entry>
+            <entry>23.0</entry>
+            <entry>10.6</entry>
+            <entry>23.0</entry>
+            <entry>23.0</entry>
+            <entry>23.0</entry>
           </row>
           <row>
             <entry>CA05</entry>
-            <entry>18.4</entry>
-            <entry>8</entry>
-            <entry>18.4</entry>
-            <entry>18.4</entry>
+            <entry>18.0</entry>
+            <entry>7.1</entry>
+            <entry>20.2</entry>
+            <entry>18.5</entry>
             <entry>18.4</entry>
           </row>
           <row>
             <entry>CA06</entry>
-            <entry>23</entry>
-            <entry>23</entry>
-            <entry>23</entry>
-            <entry>23</entry>
-            <entry>23</entry>
+            <entry>22.5</entry>
+            <entry>7.0</entry>
+            <entry>20.5</entry>
+            <entry>22.5</entry>
+            <entry>22.5</entry>
           </row>
         </tbody>
         </tgroup>
@@ -705,8 +712,28 @@
       <para>
         At higher frequencies and when the <literal>tvmedian</literal> option is enabled,
         it is usually appropriate to use the central fifty percent of channels.
+	The easiest way to do this is to type
+	<informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
+          <tgroup cols="3">
+            <colspec colwidth="3*"></colspec>
+            <colspec colwidth="40*"></colspec>
+            <colspec colwidth="57*"></colspec>
+            <tbody>
+              <row>
+                <entry></entry>
+                <entry>cacor<literal>&gt; tvch[an] default</literal></entry>
+                <entry>sets the channel range to use the central 50% of the channels (i.e. channels 513 - 1537).</entry>
+              </row>
+	     </tbody>
+	   </tgroup>
+	</informaltable>
+	Alternatively if <literal>tvmedian</literal> is disabled (not recommended), the information below can be
+	referred to.
+	</para>
+	
+	<para>
         At cm frequencies, interference means that it is often better to select
-        non-default channels, especially if <literal>tvmedian</literal> is disabled.
+        non-default channels, when <literal>tvmedian</literal> is disabled (not recommended).
 	See <xref linkend="tvchanranges"></xref> for information on recommended channel ranges for 2048 MHz continuum bands.
         If these channel ranges are not generating the anticipated visibility in <command>vis</command>, inspect <xref linkend="spd"></xref> to
         determine the cause of the problem.
@@ -800,24 +827,28 @@
         environment) other ranges may be more appropriate. 
         <table id="tvchanranges" frame="none" >
           <title>Suggested tvchan ranges for standard <acronym>ATCA</acronym> Continuum bands.</title>
-          <tgroup cols="4" align="center" colsep="0" rowsep="0">
+          <tgroup cols="6" align="center" colsep="0" rowsep="0">
             <colspec colname="Band"/>
             <colspec colname="Freq"/>
-            <colspec colname="ch1"/>
-            <colspec colname="ch2"/>
+            <colspec colname="1MHzch1"/>
+            <colspec colname="1MHzch2"/>
+            <colspec colname="64MHzch1"/>
+            <colspec colname="64MHzch2"/>
 
             <thead>
               <row>
                 <entry>Band</entry>
                 <entry>Centre Freq</entry>
-                <entry>ch<subscript>1</subscript></entry>
-                <entry>ch<subscript>2</subscript></entry>
+                <entry namest="1MHzch1" nameend="1MHzch2" align="center">1 MHz channels</entry>
+                <entry namest="64MHzch1" nameend="64MHzch2" align="center">64 MHz channels</entry>
               </row>
               <row>
                 <entry></entry>
                 <entry>(MHz)</entry>
-                <entry></entry>
-                <entry></entry>
+                <entry>ch<subscript>1</subscript></entry>
+                <entry>ch<subscript>2</subscript></entry>
+                <entry>ch<subscript>1</subscript></entry>
+                <entry>ch<subscript>2</subscript></entry>
               </row>
             </thead>
 
@@ -827,36 +858,48 @@
                 <entry>2100</entry>
                 <entry>200</entry>
                 <entry>949</entry>
+		<entry>2</entry>
+		<entry>14</entry>
               </row>
               <row>
                 <entry>6cm</entry>
                 <entry>5500</entry>
                 <entry>513</entry>
                 <entry>1537</entry>
+		<entry>9</entry>
+		<entry>25</entry>
               </row>
               <row>
                 <entry>3cm</entry>
                 <entry>9000</entry>
                 <entry>200</entry>
                 <entry>1149</entry>
+		<entry>9</entry>
+		<entry>25</entry>
               </row>
               <row>
                 <entry>15mm</entry>
                 <entry>17000</entry>
                 <entry>513</entry>
                 <entry>1537</entry>
+		<entry>9</entry>
+		<entry>25</entry>
               </row>
               <row>
                 <entry>7mm</entry>
                 <entry>33000</entry>
                 <entry>513</entry>
                 <entry>1537</entry>
+		<entry>9</entry>
+		<entry>25</entry>
               </row>
               <row>
                 <entry>3mm</entry>
                 <entry>93000</entry>
                 <entry>513</entry>
                 <entry>1537</entry>
+		<entry>9</entry>
+		<entry>25</entry>
               </row>
             </tbody>
           </tgroup>
