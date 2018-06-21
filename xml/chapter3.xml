@@ -4,10 +4,10 @@
     <date>$Date: 2018-03-15 14:22:18 +1100 (Thu, 15 Mar 2018) $</date>
     <revhistory>
       <revision>
-        <revnumber>1.5</revnumber>
-        <date>2018 June 18</date>
-        <authorinitials>jfk</authorinitials>
-        <revremark>General ATUG updates</revremark>
+        <revnumber>1.6</revnumber>
+        <date>2018 June 21</date>
+        <authorinitials>jfk, ghh</authorinitials>
+        <revremark>Substantial updates to content</revremark>
       </revision>
       <revision>
         <revnumber>1.5</revnumber>
@@ -236,16 +236,18 @@
       wavelengths which need the various tasks. <indexterm role="cp"><primary>observations</primary><secondary>setting up</secondary></indexterm>
     </para>
     <informaltable frame="none" rowsep="0" colsep="0">
-      <tgroup cols="5">
-      <colspec colwidth="38*" colname="col1"></colspec>
+      <tgroup cols="6">
+      <colspec colwidth="33*" colname="col1"></colspec>
       <colspec colwidth="10*" colname="col2"></colspec>
+      <colspec colwidth="10*" colname="col2a"></colspec>
       <colspec colwidth="10*" colname="col3"></colspec>
       <colspec colwidth="10*" colname="col4"></colspec>
-      <colspec colwidth="32*" colname="col5"></colspec>
+      <colspec colwidth="27*" colname="col5"></colspec>
       <tbody>
         <row>
           <entry></entry>
-          <entry>cm</entry>
+          <entry>16cm</entry>
+          <entry>6&amp;3cm</entry>
           <entry>15&amp;7mm</entry>
           <entry>3mm</entry>
           <entry></entry>
@@ -255,10 +257,12 @@
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
           <entry>See <xref linkend="Focus"></xref></entry>
         </row>
         <row>
-          <entry>Set power levels into <acronym>CABB</acronym> samplers</entry>
+          <entry>Set <acronym>CABB</acronym> attenuator levels</entry>
+          <entry>&#x2717;</entry>
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
@@ -269,10 +273,12 @@
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
           <entry>See <xref linkend="Selecting-Channels"></xref></entry>
         </row>
         <row>
           <entry>Check <literal>delavg</literal></entry>
+          <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
@@ -288,11 +294,13 @@
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
           <entry>See <xref linkend="Calibrate-the-Array-Delays"></xref></entry>
         </row>
         <row>
           <entry>Check pointing</entry>
-          <entry>X</entry> 
+          <entry>&#x2717;</entry> 
+          <entry>&#x2717;</entry> 
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
           <entry>See <xref linkend="mm-Pointing-at-startup"></xref></entry>
@@ -302,10 +310,12 @@
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
+          <entry>&#x2714;</entry>
           <entry>See <xref linkend="Phase-Calibration"></xref></entry>
         </row>
         <row>
           <entry>Calibrate gains</entry>
+          <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
           <entry>&#x2714;</entry>
           <entry>paddle</entry><!-- @item Paddle @tab @tab @tab@bullet{}@tab See section -->
@@ -441,9 +451,10 @@
       <para>
         <indexterm role="cp"><primary>attenuators</primary><secondary>levels</secondary><tertiary>setting</tertiary></indexterm>
         The rms digitiser quantisation levels (as displayed in the
-        sampler tab of <command>cacor</command>) should be close to 20 (Range: Approximately 18-22).
+        sampler tab of <command>cacor</command>; see <xref linkend="samplerlevels"></xref>) should be close to 20
+	(Range: Approximately 18-22).
         To set the levels, attenuation can be added or removed.
-        The values in the atten section of the window show the settings of the <command>cacor</command>
+        The values in the <literal>Atten</literal> section of the window show the settings of the <command>cacor</command>
         attenuators. They have a range of 0-15 dB. <indexterm role="cp"><primary>observations</primary><secondary>samplers</secondary></indexterm>
       </para>
 
@@ -460,7 +471,18 @@
       </para>
 
       <para>
-	If the levels are not close to 20, the ATTS button in the <command>cacor</command> GUI can be activated
+	For 16cm observations, strong RFI in the band will often make the sampler levels vary
+	significantly from cycle to cycle, making it difficult
+	(and often impossible) to set the attenuators appropriately.
+	It is therefore recommended to skip this step when observing at 16cm.
+	However, in rare cases the attenuator settings shown in the <literal>Atten</literal> section
+	could be quite low (all values far below 7), and at those times it could be useful to reset them either
+	automatically or manually as described below.
+      </para>
+
+      <para>
+	For all other bands, if the levels are not close to 20, the ATTS button in the
+	<command>cacor</command> GUI can be activated
         to enable <command>cacor</command> to automatically add or remove attenuation. 
       </para>
 
@@ -521,8 +543,9 @@
       </para>
 
       <para>
-	For 16cm observations, strong RFI in the band will often make the sampler levels vary significantly from cycle to cycle, making it difficult
-	(and often impossible) to set the attenuators appropriately. In this case, you can set the attenuators manually to values that
+	As noted above, strong RFI in the 16cm band makes it difficult to set the attenuators appropriately.
+	High values of attenuator settings, even up to the maximum value of 15, are not harmful.
+	However, you can also set the attenuators manually to values that
 	are known to be good, as listed in <xref linkend="table_16cm_atten"></xref>. To set the attenuators manually, you will need to
 	use the <literal>att</literal> command. For example, to set the CA03 attenuators as per <xref linkend="table_16cm_atten"></xref>,
 	you would need to give the commands:
@@ -1002,11 +1025,10 @@
 
        <para>
          <informaltable frame="none" rowsep="0" colsep="0">
-           <tgroup cols="4">
-             <colspec colwidth="23*"></colspec>
-             <colspec colwidth="24*"></colspec>
-             <colspec colwidth="23*"></colspec>
-             <colspec colwidth="24*"></colspec>
+           <tgroup cols="3">
+             <colspec colwidth="45*"></colspec>
+             <colspec colwidth="10*"></colspec>
+             <colspec colwidth="45*"></colspec>
              <tbody>
                <row>
 
@@ -1024,15 +1046,7 @@
                    </figure>
                  </entry>
 
-                 <entry>
-                   <para>
-                     An spd plot with a slow changes in phases
-                   </para>
-                   <para>
-                     The phases are not wrapping at all in the A pol, and wrapping approximately every 250 channels in the B pol.
-                     Averaging over 32 channels would still give enough points across the band to do a linear fit to this data
-                   </para>
-                 </entry>
+		<entry></entry>
 
                  <entry>
                    <figure id="spd_fast_wrap.jpg">
@@ -1045,17 +1059,35 @@
                    </figure>
                  </entry>
 
+		</row>
+		<row>
+
                  <entry>
                    <para>
-                     An spd plot showing the phases wrapping very quickly
+                     An spd plot demonstrating slow changes in phase.
                    </para>
                    <para>
-                     The phases in both pols of this graph are wrapping over a small number of channels. 
+                     The phases are not wrapping at all in the A pol, and wrapping approximately every 250 channels in the B pol.
+                     Averaging over 32 channels would still provide enough points across the band to achieve a useful linear fit to the data, so <literal>delavg</literal> can be set to such a large value.
+                   </para>
+                 </entry>
+
+		<entry></entry>
+
+                 <entry>
+                   <para>
+                     An spd plot demonstrating rapidly wrapping phases.
+                   </para>
+                   <para>
+                     The phases in both pols of this graph are wrapping across a small number of channels. 
                      It is possible to check just how quickly the phases are wrapping by viewing a smaller number of channels:
                    </para>
                    <para>    
                      spd<literal>&gt; chan f# 400 500</literal>
                    </para>
+		   <para>
+		     The value of <literal>delavg</literal> will need to be set to a small number in this case.
+		   </para>
                  </entry>
                </row>
              </tbody>
@@ -1331,9 +1363,12 @@
           Delay calibration is slightly more complex in 64MHz mode.
         </para>
         <para>
-          This issue is that the phases in <command>spd</command> wrap more than once in a single (64MHz wide) continuum channel. 
-          The solution for this is to solve the delays for a single continuum channel using zooms, which will unwrap
-          the continuum data sufficiently to be able to determine the delays in the continuum bands. 
+          The issue is that typical delays can cause the phases to wrap more than once within a single
+	  (64MHz wide) continuum channel. As is the case when <literal>delavg</literal> is set too high in 1MHz mode,
+	  a valid delay solution cannot be determined in this circumstance.
+          The solution for this is to obtain an initial solution for the delays using zooms, which will unwrap
+          the phases sufficiently to be able to determine the delays using the continuum channels. 
+	  The process is illustrated in <xref linkend="figure-calzz"/> to <xref linkend="figure-calff"/>.
         </para>
         <para>
           To use the zooms for delay calibration, set <command> calband</command> to <literal>z z</literal>:
@@ -1354,6 +1389,7 @@
         </para>
         <para>
           Do the delay calibration as normal.
+	  At this stage a large value of <literal>delavg</literal> is often acceptable.
           <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
             <tgroup cols="3">
               <colspec colwidth="3*"></colspec>
@@ -1369,6 +1405,71 @@
             </tgroup>
           </informaltable>
         </para>
+
+	<para>
+         <informaltable frame="none" rowsep="0" colsep="0">
+           <tgroup cols="3">
+             <colspec colwidth="45*"></colspec>
+             <colspec colwidth="10*"></colspec>
+             <colspec colwidth="45*"></colspec>
+             <tbody>
+               <row>
+
+                 <entry>
+                   <figure id="figure-calzz">
+                     <mediaobject>
+                       <imageobject>
+                         <imagedata fileref="figures/calbandzz-before.jpg" format="JPG">
+                         </imagedata>
+                       </imageobject>
+                     </mediaobject>
+                   </figure>
+                 </entry>
+
+                <entry></entry>
+
+                 <entry>
+                   <figure id="figure-calzz-after">
+                     <mediaobject>
+                       <imageobject>
+                         <imagedata fileref="figures/calbandzz-after.jpg" format="JPG">
+                         </imagedata>
+                       </imageobject>
+                     </mediaobject>
+                   </figure>
+                 </entry>
+
+                </row>
+                <row>
+
+                 <entry>
+                   <para>
+                     An spd plot demonstrating typical phase variations across a zoom band.
+                   </para>
+                   <para>
+		     In this case the delays are large enough that the phases wrap multiple times across the
+		     zoom band, and thus are also wrapping multiple times within the corresponding
+		     64MHz-wide continuum channel.
+                   </para>
+                 </entry>
+
+                <entry></entry>
+
+                 <entry>
+                   <para>
+                     An spd plot showing the zoom band phases after delay calibration.
+                   </para>
+                   <para>
+		     After performing delay calibration on this zoom band, the phases have been flattened
+		     across the 64MHz range.
+                   </para>
+                 </entry>
+               </row>
+             </tbody>
+           </tgroup>
+         </informaltable>
+       </para>
+
         <para>
           Once the majority of the delay error has been corrected for, the whole continuum band needs to be used for a 
           second delay calibration:
@@ -1392,6 +1493,102 @@
             </tgroup>
           </informaltable>
         </para>
+	<para>
+	  Pay attention to the value of <literal>delavg</literal> at this step to ensure that it is sufficiently low.
+	  There are only a handful of channels to work with in the continuum bands in this mode!
+	</para>
+
+	<para>
+         <informaltable frame="none" rowsep="0" colsep="0">
+           <tgroup cols="5">
+             <colspec colwidth="30*"></colspec>
+             <colspec colwidth="5*"></colspec>
+             <colspec colwidth="30*"></colspec>
+             <colspec colwidth="5*"></colspec>
+             <colspec colwidth="30*"></colspec>
+             <tbody>
+               <row>
+
+                 <entry>
+                   <figure id="figure-calff-before">
+                     <mediaobject>
+                       <imageobject>
+                         <imagedata fileref="figures/calbandff-before.jpg" format="JPG">
+                         </imagedata>
+                       </imageobject>
+                     </mediaobject>
+                   </figure>
+                 </entry>
+
+                <entry></entry>
+
+                 <entry>
+                   <figure id="figure-calff-partial">
+                     <mediaobject>
+                       <imageobject>
+                         <imagedata fileref="figures/calbandff-partial.jpg" format="JPG">
+                         </imagedata>
+                       </imageobject>
+                     </mediaobject>
+                   </figure>
+                 </entry>
+
+		<entry></entry>
+
+		<entry>
+                   <figure id="figure-calff">
+                     <mediaobject>
+                       <imageobject>
+                         <imagedata fileref="figures/calbandff-after.jpg" format="JPG">
+                         </imagedata>
+                       </imageobject>
+                     </mediaobject>
+                   </figure>
+                 </entry>
+          
+                </row>
+                <row>
+
+                 <entry>
+                   <para>
+                     Continuum band phase variations before delay calibration.
+                   </para>
+                   <para>
+		     This is the continuum band corresponding to the zoom band shown in <xref linkend="figure-calzz"/>.
+		     It is clear (especially for the A polarization) that before any delay calibration, the average
+		     phases within each 64MHz continuum channel are not useful to determine a delay solution.
+                   </para>
+                 </entry>
+
+                <entry></entry>
+
+                 <entry>
+                   <para>
+                     Continuum band phase variations after zoom-band delay calibration.
+                   </para>
+                   <para>
+                     After performing delay calibration on the zoom bands, the phases have been largely flattened.
+                     The delays determined across a 64MHz frequency range are not sufficient
+		     to fully calibrate the continuum band, but they are sufficient to allow a refined delay calibration
+		     over the full continuum frequency range.
+                   </para>
+                 </entry>
+		 <entry></entry>
+		 <entry>
+                   <para>
+                     Continuum band phase variations after final delay calibration.
+                   </para>
+                   <para>
+                     After performing a further delay calibration on the continuum bands, an excellent solution
+		     has now been obtained. This is apparent from the flatness of the phases across the full
+		     frequency range.
+                   </para>
+                 </entry>
+               </row>
+             </tbody>
+           </tgroup>
+         </informaltable>
+       </para>
           
       </section>
     </section>
