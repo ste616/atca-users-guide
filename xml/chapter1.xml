@@ -140,8 +140,8 @@
       <indexterm role="cp"><primary>ATCA</primary><secondary>overview</secondary></indexterm>
       The <acronym>ATCA</acronym> is an array of six 22m diameter antennas located
       237m above sea level at latitude
-      -30&#x00B0; 18&#x2032; 46.385&#x2033; south, longitude
-      149&#x00B0; 33&#x2032; 00.500&#x2033; east.
+      -30 &#x00B0; 18 &#x2032; 46.385 &#x2033; south, longitude
+      149 &#x00B0; 33 &#x2032; 00.500 &#x2033; east.
       <indexterm role="cp"><primary>ATCA</primary><secondary>longitude &amp; latitude</secondary></indexterm>
       The array has a 3km east-west track with a 214m northern
       spur.  Five antennas can be moved along these tracks, with the sixth
@@ -355,12 +355,12 @@ permit observations at frequencies up to 50 GHz.
 	<xref linkend="Available-Frequency-Range"></xref>.
       </para>
       <para>
-	Each range of frequencies is referred to as a
 	<indexterm role="cp"><primary>band</primary></indexterm>
 	<indexterm role="cp"><primary>band</primary><secondary>letter codes</secondary></indexterm>
 	<indexterm role="cp"><primary>observations</primary><secondary>millimetre</secondary></indexterm>
 	<indexterm role="cp"><primary>observations</primary><secondary>centimetre</secondary></indexterm>
-	<firstterm>band</firstterm>.  Bands are referred to by the wavelength of the approximate centre
+	Each range of frequencies is referred to as a <firstterm>band</firstterm>.
+	Bands are referred to by the wavelength of the approximate centre
 	of the band or (especially at higher frequencies) by the frequency (and
 	sometimes by the letter-codes shown over the columns of <xref linkend="table_sensitivity"></xref>.
 	There are presently five feedhorns mounted on each antenna (four on
