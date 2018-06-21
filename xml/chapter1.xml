@@ -101,9 +101,7 @@
     <para>Besides the <acronym>ATCA</acronym>, the <acronym>ATNF</acronym> operates the 64-m radio telescope at
       the Parkes Observatory
       <indexterm role="cp"><primary>Parkes</primary></indexterm>
-      (300 km west of Sydney) and a 22-m antenna at Mopra,
-      <indexterm role="cp"><primary>Mopra</primary></indexterm>
-      120 km south of the <acronym>ATCA</acronym>.  In addition, the <acronym>ATNF</acronym> negotiates time with the
+      (300 km west of Sydney). The <acronym>ATNF</acronym> negotiates time with the
       <acronym>CSIRO</acronym>-administered 70-m and 34-m antennas at the Tidbinbilla Deep Space
       Tracking station outside Canberra.  The <acronym>ATNF</acronym> telescopes are used
       together, in conjunction with the University of Tasmania telescopes at
@@ -111,24 +109,16 @@
       Baseline Interferometry (<acronym>VLBI</acronym>) observations.
       <indexterm role="cp"><primary>Tidbinbilla</primary></indexterm>
       <indexterm role="cp"><primary>Long Baseline Array</primary></indexterm>
-      <indexterm role="cp"><primary>VLBI</primary></indexterm>
-      The <acronym>ATNF</acronym> is
-      currently structured into four themes: Operations, Astrophysics,
-      Technologies, and <acronym>ASKAP</acronym>.
-      <indexterm role="cp"><primary>ASKAP</primary></indexterm>
-      <acronym>ASKAP</acronym> (the Australian SKA Pathfinder), is a telescope being
-      constructed by <acronym>ATNF</acronym> in
-      Western Australia, and will be an array of thirty-six wide-field 12m antennas
-      operating in the 0.7&#x2013;1.8 GHz range. Commissioning of the first antennas is currently underway.  More details are available at
-      <ulink url="http://www.atnf.csiro.au/projects/askap/">the <acronym>ASKAP</acronym> project website.</ulink>.
+      <indexterm role="cp"><primary>VLBI</primary></indexterm>.
     </para>
     <para>
-      A biannual newsletter is produced by the
-      <acronym>ATNF</acronym> which includes recent news items, scientific articles and time
-      assignment information. All the newsletters are 
-      <ulink url="http://www.atnf.csiro.au/news/newsletter/">archived on the web</ulink>, as are the
-      <ulink url="http://www.atnf.csiro.au/the_atnf/annual_reports/"><firstterm>ATNF Annual Reports</firstterm></ulink>.
-      <indexterm role="cp"><primary>ATNF</primary><secondary>annual report</secondary></indexterm>
+      <acronym>ATNF</acronym> scientists and engineers are currently commissioning 
+      <indexterm role="cp"><primary>ASKAP</primary></indexterm>
+      <acronym>ASKAP</acronym> (the Australian SKA Pathfinder telescope) located 300km inland from
+      Geralton in Western Australia, <acronym> ASKAP</acronym>
+      is an array of thirty-six wide-field 12m antennas. 
+      operating in the 0.7&#x2013;1.8 GHz range. More details are available at
+      <ulink url="http://www.atnf.csiro.au/projects/askap/">the <acronym>ASKAP</acronym> project website</ulink>.
     </para>
   </section>
 
@@ -195,7 +185,7 @@
 	was first used in the 1950s for radio observations of the sun.
 	The technique is comprehensively explained, with a historical perspective, in
 	<wordasword>Interferometry and Synthesis in Radio Astronomy</wordasword> by
-	Thompson, Moran &amp; Swenson (Wiley, 1st edition 1986, 2nd edition 2001).
+	Thompson, Moran &amp; Swenson (Wiley, 3rd edition, 2017).
 	Essentially, the array of antennas is comprised of a number of two-element
 	interferometers.
 	The visibility (i.e., the fraction of the signal common to both
@@ -308,14 +298,14 @@
 	The antennas have a Cassegrain design, i.e., the receivers are located
 	in a turret that protrudes through the main reflector
 	surface &#x2014; see <xref linkend="atcatrack"></xref>.  The antennas have an altitude-azimuth
-	mount with wrap limits as shown in the figure.  The shaped (i.e.,
+	mount with wrap limits as shown in <xref linkend="wraplimits"></xref>.
+        The shaped (i.e.,
 	non-parabolic) dish and subreflector surfaces are designed to maximise
 	<indexterm role="cp"><primary>antenna</primary><secondary>surface</secondary></indexterm>
 	the gain to antenna noise ratio.  The reflecting surface of antennas
 	1&#x2013;5 are solid panels that allow observations up to 116 GHz. This is
 	also true of the inner 15.3m of antenna 6. The outer reflecting
-	surface of antenna 6 is made of perforated panels which 
-permit observations at frequencies up to 50 GHz.
+	surface of antenna 6 is made of perforated panels which permit observations at frequencies up to 50 GHz.
       </para>
       <para>
 	<indexterm role="cp"><primary>subreflector</primary></indexterm>
@@ -325,11 +315,8 @@ permit observations at frequencies up to 50 GHz.
 	the optic axis &#x2014; this allows polarisation measurements to
 	be made, with very low (
 	<inlineequation><textobject role="tex">\sim 1\%</textobject></inlineequation>)
-	instrumental polarisation. Subreflector focus is presently chosen to best suit 3mm
-	observations and is adjusted for some antennas for the 7mm and 4cm bands.
-	This means that the subreflectors positions may be slightly less than
-	ideal for longer wavelengths. If you need better focus settings,
-	discuss your requirements with local staff.
+	instrumental polarisation. Subreflector height can be adjusted to achieve optimal focus for 
+        the different frequency bands.
 	<indexterm role="cp"><primary>antenna</primary><secondary>focus</secondary></indexterm>
 	A major feature of the <acronym>ATCA</acronym> is its wide bandwidth operation. The
 	feedhorns and front-end electronics operate over a very large range of
@@ -1129,6 +1116,11 @@ minimum cycle time.)
       <info>
         <title>Available Frequency Range</title>
       </info>
+<!--
+      <para>
+        As has been stated before, 
+      </para>
+-->
       <figure id="cmsystemps21">
         <title>
 	  Average Compact Array system temperatures for 
@@ -1210,10 +1202,10 @@ minimum cycle time.)
       <!-- @url{http://www.narrabri.atnf.csiro.au/observing/recfreq.html}. -->
 
       <para>
-	Switching between the 15/3mm bands, the 4cm band, and the 16cm
-	<indexterm role="cp"><primary>frequency</primary><secondary>switching</secondary></indexterm>
-	band involves a change in feed horns by means of a turret
-	rotation. This is done automatically under computer control and takes
+	Switching between  the different frequency bands involves a changing
+        the feed horns. The different feed horns are mounted on a 'turret" which 
+        rotates the appropriate feed horn to the focus position. 
+       This is done automatically under computer control and takes
 	about 20 seconds. Turret rotation should be limited to once every 15
 	minutes unless a compelling scientific case is made for more frequent
 	rotations. The additional overhead in changing to or from 7mm has been
