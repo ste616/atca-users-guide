@@ -2078,8 +2078,16 @@
 	<indexterm role="cp"><primary>troubleshooting</primary><secondary>antennas not 'on source'</secondary><tertiary>translator</tertiary></indexterm>
       </para>
 
-	
-      <para>
+	   <para>
+      <informalfigure id="NoFringesFlowChart">
+        <mediaobject>
+          <imageobject>
+          <imagedata fileref="figures/ATUG_noCorrelation_flowChart.png" format="PNG"></imagedata>
+        </imageobject>
+      </mediaobject>
+    </informalfigure>
+     </para>
+   <!--    <para>
         <informalfigure id="NoFringesFlowChart1">
           <mediaobject>
             <imageobject>
@@ -2105,7 +2113,7 @@
             </imageobject>
           </mediaobject>
         </informalfigure>
-      </para>
+      </para> -->
 
       <para>
         <informalfigure id="NotOnSource">
