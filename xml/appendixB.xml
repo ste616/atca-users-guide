@@ -4,6 +4,15 @@
     <date>$Date: 2015-11-24 09:27:53 +1100 (Tue, 24 Nov 2015) $</date>
     <revhistory>
       <revision>
+	<revnumber>1.3</revnumber>
+	<date>2018 Jun 19</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>
+	  Fix some typos, and change some recommendations about how to use certain
+	  commands.
+	</revremark>
+      </revision>
+      <revision>
 	<revnumber>1.2</revnumber>
 	<date>2015 Oct 20</date>
 	<authorinitials>jbs</authorinitials>
@@ -1502,7 +1511,7 @@
 		<para> <emphasis role="bold">config&gt; prog <emphasis role="italics">[offending block]</emphasis> calc</emphasis> or </para>
 		<para> <emphasis role="bold">config&gt; prog <emphasis role="italics">[offending block]</emphasis> x 7,8</emphasis> or </para>
 		<para> <emphasis role="bold">config&gt; prog <emphasis role="italics">[offending block]</emphasis></emphasis> </para>
-		<para> <emphasis role="italics">Note: <emphasis role="bold">calc</emphasis> resets the c bus;<emphasis role="bold">x 7,8</emphasis> resets CABB board memory controllers; and No swith will reprogram the whole block, (delays need to be recalculated)</emphasis></para> 
+		<para> <emphasis role="italics">Note: <emphasis role="bold">calc</emphasis> resets the c bus;<emphasis role="bold">x 7,8</emphasis> resets CABB board memory controllers; and no suffix will reprogram the whole block (delays may need to be recalculated after this).</emphasis></para> 
 	      </listitem>
 	      <listitem>
 		<para> Iterate until all is good </para>
@@ -2052,8 +2061,8 @@
 	      <para>stop caobs </para>
 	      <para><emphasis role="bold">caobs&gt; stop</emphasis></para>
 	      <para>then rest the correlator memory</para>
-	      <para><emphasis role="bold">caobs&gt; rest mem</emphasis></para>
-	      <para>This is only recommended for pulsar modes (though in times of desperation it may be worth a try in other modes, but Warwick isn't confident that it will help!)</para>
+	      <para><emphasis role="bold">caobs&gt; reset mem</emphasis></para>
+	      <para>This is only recommended for pulsar modes.</para>
 	    </listitem>
 	  </itemizedlist>  
 	  </para>
