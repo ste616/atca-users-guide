@@ -6,6 +6,7 @@ XSL_DIR = xsl
 all: html pdf
 
 html:
+	mkdir -p builds/html
 	$(XSLT) -o $(BUILD_DIR)/html/atug.html $(XSL_DIR)/atug-html.xsl xml/atug.xml
 	$(XSLT) -o $(BUILD_DIR)/html/chunked/ $(XSL_DIR)/atug-chunked-html.xsl xml/atug.xml
 
@@ -13,6 +14,7 @@ fo:
 	$(XSLT) -o $(BUILD_DIR)/temp/atug.fo $(XSL_DIR)/atug-pdf.xsl xml/atug.xml
 
 pdf: fo
+	mkdir -p builds/pdf
 	fop -pdf $(BUILD_DIR)/pdf/atug.pdf -fo $(BUILD_DIR)/temp/atug.fo -c static/pdf/fop.cfg.xml
 
 installnamoi:
