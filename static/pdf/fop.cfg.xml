@@ -1,7 +1,7 @@
 <fop version="2.1">
   <renderers>
     <renderer mime="application/pdf">
-      <base>.</base>
+	    <base>../..</base>
       <filterList>
 	<value>flate</value>
       </filterList>
