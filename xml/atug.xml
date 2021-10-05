@@ -28,11 +28,11 @@
 	</personname>
 	<email>Jamie.Stevens@csiro.au</email>
 	<affiliation>
-	  <shortaffil>CASS</shortaffil>
+	  <shortaffil>CSIRO S&amp;A</shortaffil>
 	  <jobtitle>ATCA Senior Systems Scientist</jobtitle>
 	  <jobtitle>ATCA Lead Scientist</jobtitle>
 	  <jobtitle>ATCA Users Guide Editor</jobtitle>
-	  <org>CSIRO Astronomy and Space Science</org>
+	  <org>CSIRO Space &amp; Astronomy</org>
 	  <address>
 	    <phone>+61 2 6790 4064</phone>
 	  </address>
@@ -43,13 +43,13 @@
 	  <firstname>Robin</firstname>
 	  <surname>Wark</surname>
 	</personname>
-	<email>Robin.Wark@csiro.au</email>
+	<!-- <email>Robin.Wark@csiro.au</email> -->
 	<affiliation>
-	  <shortaffil>CASS</shortaffil>
+	  <shortaffil>CSIRO S&amp;A</shortaffil>
 	  <jobtitle>Operations Manager</jobtitle>
-	  <org>CSIRO Astronomy and Space Science</org>
+	  <org>CSIRO Space &amp; Astronomy</org>
 	  <address>
-	    <phone>+61 2 9372 4609</phone>
+	    <!-- <phone>+61 2 9372 4609</phone> -->
 	  </address>
 	</affiliation>
       </author>
@@ -60,9 +60,9 @@
 	</personname>
 	<email>Phil.Edwards@csiro.au</email>
 	<affiliation>
-	  <shortaffil>CASS</shortaffil>
-	  <jobtitle>Head of Science Operations</jobtitle>
-	  <org>CSIRO Astronomy and Space Science</org>
+	  <shortaffil>CSIRO S&amp;A</shortaffil>
+	  <jobtitle>ATNF Science Program Director</jobtitle>
+	  <org>CSIRO Space &amp; Astronomy</org>
 	  <address>
 	    <phone>+61 2 9372 4717</phone>
 	  </address>
@@ -73,13 +73,13 @@
 	  <firstname>Shari</firstname>
 	  <surname>Breen</surname>
 	</personname>
-	<email>Shari.Breen@csiro.au</email>
+	<email>Shari.Breen@skao.int</email>
 	<affiliation>
-	  <shortaffil>CASS</shortaffil>
-	  <jobtitle>Postdoctoral Fellow</jobtitle>
-	  <org>CSIRO Astronomy and Space Science</org>
+	  <shortaffil>SKAO</shortaffil>
+	  <jobtitle>Interim Head of Science Operations</jobtitle>
+	  <org>SKA Observatory</org>
 	  <address>
-	    <phone>+61 2 9372 4325</phone>
+	    <!-- <phone>+61 2 9372 4325</phone> -->
 	  </address>
 	</affiliation>
       </author>
@@ -88,13 +88,13 @@
             <firstname>Karen</firstname>
             <surname>Lee-Waddell</surname>
           </personname>
-          <email>Karen.Lee-Waddell@csiro.au</email>
+          <email>Karen.Lee-Waddell@icrar.org</email>
           <affiliation>
-            <shortaffil>CASS</shortaffil>
-            <jobtitle>Postdoctoral Fellow</jobtitle>
-            <org>CSIRO Astronomy and Space Science</org>
+            <shortaffil>ICRAR</shortaffil>
+            <jobtitle>Australian SKA Regional Centre Director</jobtitle>
+            <org>ICRAR</org>
             <address>
-            <phone>+61 2 9372 4129</phone>
+              <!-- <phone>+61 2 9372 4129</phone> -->
             </address>
           </affiliation>
       </author>
@@ -103,15 +103,30 @@
             <firstname>Jane</firstname>
             <surname>Kaczmarek</surname>
           </personname>
-          <email>jane.kaczmarek@csiro.au</email>
+          <email>jane.kaczmarek@nrc-cnrc.gc.ca</email>
           <affiliation>
-            <shortaffil>CASS</shortaffil>
+            <shortaffil>DRAO</shortaffil>
             <jobtitle>Postdoctoral Fellow</jobtitle>
-            <org>CSIRO Astronomy and Space Science</org>
+            <org>DRAO</org>
             <address>
-            <phone>+61 2 6861 1763</phone>
+              <!-- <phone>+61 2 6861 1763</phone> -->
             </address>
           </affiliation>
+      </author>
+      <author>
+	<personname>
+	  <firstname>George</firstname>
+	  <surname>Heald</surname>
+	</personname>
+	<email>george.heald@csiro.au</email>
+	<affiliation>
+	  <shortaffil>CSIRO S&amp;A</shortaffil>
+	  <jobtitle>Senior Principal Research Scientist</jobtitle>
+	  <org>CSIRO Space and Astronomy</org>
+	  <address>
+	    <phone>+61 8 6436 8758</phone>
+	  </address>
+	</affiliation>
       </author>
     </authorgroup>
   </info>
