@@ -72,16 +72,20 @@
     <para>
       <indexterm role="cp"><primary>National Facility</primary><secondary>Australia Telescope</secondary><see>ATNF</see></indexterm>
       <indexterm role="cp"><primary>ATNF</primary></indexterm>
+      <indexterm role="cp"><primary>Space and Astronomy</primary></indexterm>
+      <indexterm role="cp"><primary>S\&amp;A</primary><see>Space and Astronomy</see></indexterm>
       The <acronym>ATNF</acronym> is managed as a National Facility by the Commonwealth
       Scientific and Industrial Research Organisation (<acronym>CSIRO</acronym>). Formerly part
       of the <acronym>CSIRO</acronym> Division of Radiophysics, it became a separate division in
       <indexterm role="cp"><primary>Radiophysics</primary><secondary>Division of</secondary><see>ATNF</see></indexterm>
       January 1989.  The <acronym>ATNF</acronym> became a National Facility in April 1990.
       In December 2009,
-      <acronym>ATNF</acronym> became part of a new Division, <acronym>CSIRO</acronym> Astronomy and Space Science (CASS),
-      together with NASA Operations
+      <acronym>ATNF</acronym> became part of a new Division, <acronym>CSIRO</acronym> Astronomy and Space Science
+      (<acronym>CASS</acronym>), together with NASA Operations
       (including the Canberra Deep Space Communication Complex),
       and <acronym>CSIRO</acronym> Space Sciences and Technology.
+      In May 2021, the division name changed to <acronym>CSIRO</acronym> Space and Astronomy
+      (<acronym>S\&amp;A</acronym>).
       The Australia Telescope continues as a National Facility, providing world-class
       observing facilities for astronomers at Australian and overseas
       institutions.
@@ -105,20 +109,22 @@
       <acronym>CSIRO</acronym>-administered 70-m and 34-m antennas at the Tidbinbilla Deep Space
       Tracking station outside Canberra.  The <acronym>ATNF</acronym> telescopes are used
       together, in conjunction with the University of Tasmania telescopes at
-      Hobart and Ceduna, as part of the Long Baseline Array for Very Long
+      Hobart and Ceduna, and the Auckland University of Technology antennas at Warkworth,
+      as part of the Long Baseline Array for Very Long
       Baseline Interferometry (<acronym>VLBI</acronym>) observations.
       <indexterm role="cp"><primary>Tidbinbilla</primary></indexterm>
       <indexterm role="cp"><primary>Long Baseline Array</primary></indexterm>
       <indexterm role="cp"><primary>VLBI</primary></indexterm>.
     </para>
     <para>
-      <acronym>ATNF</acronym> scientists and engineers are currently commissioning 
+      <indexterm role="cp"><primary>ASKAP</primary></indexterm>
+      <acronym>ATNF</acronym> scientists and engineers also operate
       <indexterm role="cp"><primary>ASKAP</primary></indexterm>
       <acronym>ASKAP</acronym> (the Australian SKA Pathfinder telescope) located 300km inland from
       Geralton in Western Australia, <acronym> ASKAP</acronym>
       is an array of thirty-six wide-field 12m antennas. 
       operating in the 0.7&#x2013;1.8 GHz range. More details are available at
-      <ulink url="http://www.atnf.csiro.au/projects/askap/">the <acronym>ASKAP</acronym> project website</ulink>.
+      <ulink url="https://www.atnf.csiro.au/projects/askap/">the <acronym>ASKAP</acronym> project website</ulink>.
     </para>
   </section>
 
@@ -836,7 +842,7 @@
 	<inlineequation><textobject role="tex">\mathrm{T}_{\mathrm{cal}}</textobject></inlineequation>,
 	which is assumed not to vary with time. The measurement of system and antenna
 	temperature is described in a 
-	<ulink url="http://www.atnf.csiro.au/observers/memos/d95b94%7E1.pdf">technical memo by 
+	<ulink url="https://www.atnf.csiro.au/observers/memos/d95b94%7E1.pdf">technical memo by 
 	Sinclair and Gough (1991)</ulink>.
 
       </para>
@@ -973,10 +979,10 @@
 	for digitisation. The <acronym>CABB</acronym> (Compact Array Broadband Backend) samplers were developed in-house and are capable
 	of 4 gigasamples per second (GS/s), with 10 bit sampling (more information is
 	available in the
-	<ulink url="http://www.atnf.csiro.au/news/newsletter/feb07/CABB_upgrade.htm">
+	<ulink url="https://www.atnf.csiro.au/news/newsletter/feb07/CABB_upgrade.htm">
 	  February 2007 <acronym>ATNF</acronym> newsletter</ulink>
 	  and in 
-	<ulink url="http://adsabs.harvard.edu/abs/2011MNRAS.416..832W">Wilson et al. (2011, MNRAS, 416, 832)</ulink>).
+	<ulink url="https://adsabs.harvard.edu/abs/2011MNRAS.416..832W">Wilson et al. (2011, MNRAS, 416, 832)</ulink>).
       </para>
       
       <para>
@@ -1064,7 +1070,7 @@ minimum cycle time.)
       
       <para>
 	More information on the correlator can be found at the
-	<ulink url="http://www.narrabri.atnf.csiro.au/observing/CABB.html"><acronym>CABB</acronym> webpage</ulink>.
+	<ulink url="https://www.narrabri.atnf.csiro.au/observing/CABB.html"><acronym>CABB</acronym> webpage</ulink>.
 	This page is updated frequently, and the current state of correlator development can always
 	be found there.
       </para>
@@ -1561,7 +1567,7 @@ minimum cycle time.)
 
 	<para>
 	  The &#x201C;Sky Muster&#x201D; satellite emits in
-	  <ulink url="http://www.nbnco.com.au/content/dam/nbnco2/documents/network-design-rules.pdf">
+	  <ulink url="https://www.nbnco.com.au/content/dam/nbnco2/documents/network-design-rules.pdf">
 	    three broad downlink frequency ranges</ulink>.
 	  These ranges are 17.7 - 18.2 GHz (<xref linkend="rfi_survey_15mm_skymuster_range1"></xref>),
 	  18.8 - 19.3 GHz (<xref linkend="rfi_survey_15mm_skymuster_range2"></xref>)
@@ -1649,7 +1655,7 @@ minimum cycle time.)
 	  on the shortest (30m) baseline.  For spectral-line observations,
 	  software exists in <application>Miriad</application> to model and subtract out solar
 	  interference. Some information about solar activity can be obtained
-	  from the <ulink url="http://www.ips.gov.au/">Ionospheric Prediction Service</ulink>.
+	  from the <ulink url="https://www.ips.gov.au/">Ionospheric Prediction Service</ulink>.
 	</para>
       </section>
 
@@ -1795,7 +1801,7 @@ From 2006 October, the standard set
 	observing terms will assist in planning multi-configuration proposals.
 	Details of previous configurations and those being offered in coming
 	semesters can be found
-	<ulink url="http://www.narrabri.atnf.csiro.au/observing/configs.html">on our website</ulink>,
+	<ulink url="https://www.narrabri.atnf.csiro.au/observing/configs.html">on our website</ulink>,
 	or see <xref linkend="upcoming_configurations"></xref>.
       </para>
 
@@ -2010,7 +2016,7 @@ From 2006 October, the standard set
       <para>
 	<indexterm role="cp"><primary>VRI</primary></indexterm>
 	An interactive tool, the 
-	<ulink url="http://www.narrabri.atnf.csiro.au/astronomy/vri.html"><firstterm>Virtual Radio Interferometer</firstterm></ulink> (<acronym>VRI</acronym>),
+	<ulink url="https://www.narrabri.atnf.csiro.au/astronomy/vri.html"><firstterm>Virtual Radio Interferometer</firstterm></ulink> (<acronym>VRI</acronym>),
 	  is available to assist users in exploring the
 	  (u,v)-coverage of standard
 	  (and non-standard) configurations.
@@ -2336,7 +2342,7 @@ and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
 	The general expressions for the flux and brightness sensitivities are given
 	<indexterm role="cp"><primary>sensitivity</primary><secondary>formulae</secondary></indexterm>
 	in the document
-	<ulink url="http://www.narrabri.atnf.csiro.au/observing/AT-01.17-025.pdf">AT/01.17/025</ulink>,
+	<ulink url="https://www.narrabri.atnf.csiro.au/observing/AT-01.17-025.pdf">AT/01.17/025</ulink>,
 	and these general expressions have been used in
 	<xref linkend="table_sensitivity"></xref>.
 	The observer has control of the integration time (
@@ -2371,7 +2377,7 @@ and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
 	<inlineequation><textobject role="tex">\theta</textobject></inlineequation>
 	is in arcsec. For the full 6 km array, <emphasis>N</emphasis>=15.
 	There is a convenient
-	<ulink url="http://www.narrabri.atnf.csiro.au/myatca/interactive_senscalc.html"><acronym>ATCA</acronym> sensitivity calculator</ulink>
+	<ulink url="https://www.narrabri.atnf.csiro.au/myatca/interactive_senscalc.html"><acronym>ATCA</acronym> sensitivity calculator</ulink>
 	  which takes into account system temperature, observing frequency,
 	  array, correlator configuration and (u,v)-weighting.  
 	  (A pre-CABB version of the calculator is also available on the ATCA web page
@@ -2386,10 +2392,10 @@ and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
     </info>
     <para>
       Technical details of the <acronym>ATCA</acronym> mm systems are presented in
-      <ulink url="http://www.narrabri.atnf.csiro.au/observing/EuMW2004Gough.pdf">MMICS for the AT mm-wave receiver system</ulink>
+      <ulink url="https://www.narrabri.atnf.csiro.au/observing/EuMW2004Gough.pdf">MMICS for the AT mm-wave receiver system</ulink>
       by Gough et al. (Proc. 12th European Gallium Arsenide and other Compound Semiconductors 
       Application Symposium, 2004, pp.359-362) and
-      <ulink url="http://www.narrabri.atnf.csiro.au/observing/EuMC2008Moorey.pdf">Cryogenically Cooled mm-wave Front 
+      <ulink url="https://www.narrabri.atnf.csiro.au/observing/EuMC2008Moorey.pdf">Cryogenically Cooled mm-wave Front 
       Ends for the Australia Telescope</ulink>
       by Moorey et al. (Proc. European Microwave Conference, 2008, pp.155-158). This section builds on many of the
       concepts described in the previous section on centimetre wavelength observations,
@@ -2462,13 +2468,13 @@ and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
 	A limited form of flexible scheduling is operational for observations
 	<indexterm role="cp"><primary>schedule</primary><secondary>flexible</secondary></indexterm>
 	at millimetre wavelengths. Consult the document 
-	<ulink url="http://www.narrabri.atnf.csiro.au/observing/flexsched.html"><wordasword>Flexible Scheduling
+	<ulink url="https://www.narrabri.atnf.csiro.au/observing/flexsched.html"><wordasword>Flexible Scheduling
 	at ATCA</wordasword></ulink> for details.
       </para>
 
       <para>
 	A
-	<ulink url="http://www.atnf.csiro.au/observers/docs/3mm/quickstart.html">quickstart guide for 3mm observing</ulink>
+	<ulink url="https://www.atnf.csiro.au/observers/docs/3mm/quickstart.html">quickstart guide for 3mm observing</ulink>
 	is also available.
       </para>
     </section>
@@ -2491,7 +2497,7 @@ and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
 	good estimation of the magnitude of the Doppler shift for the line of
 	interest. This is particularly so for the higher frequencies available to the
 	3mm system. The sky frequency can be calculated using an
-	<ulink url="http://www.narrabri.atnf.csiro.au/observing/obstools/velo.html">online calculator</ulink>.
+	<ulink url="https://www.narrabri.atnf.csiro.au/observing/obstools/velo.html">online calculator</ulink>.
       </para>
 
       <para>
@@ -2511,7 +2517,7 @@ and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
 
       <para>
 	The
-	<ulink url="http://www.narrabri.atnf.csiro.au/observing/sched/cabb/"><acronym>CABB</acronym> web scheduler</ulink>
+	<ulink url="https://www.narrabri.atnf.csiro.au/observing/sched/cabb/"><acronym>CABB</acronym> web scheduler</ulink>
 	can be used to construct the observing schedule.
       </para>
 
@@ -2906,7 +2912,7 @@ described in detail in chapter 3.
       <para>
 	<xref linkend="scheduling-mosaics"></xref> explains how to set up mosaic files.
 	The
-	<ulink url="http://www.atnf.csiro.au/computing/software/miriad/userguide/userhtml.html"><application>Miriad</application> User Guide</ulink>
+	<ulink url="https://www.atnf.csiro.au/computing/software/miriad/userguide/userhtml.html"><application>Miriad</application> User Guide</ulink>
 	describes how to reduce a mosaic data set.
       </para>
     </section>
@@ -2984,7 +2990,7 @@ described in detail in chapter 3.
 	calibrator at 2&#x00B0; to 3&#x00B0; from the target will
 	reduce the errors to about 5 arcsec rms. A reference pointing scan
 	generally takes 3-4 minutes to complete. See the
-	<ulink url="http://www.narrabri.atnf.csiro.au/observing/pointing">Reference Pointing Guide</ulink>
+	<ulink url="https://www.narrabri.atnf.csiro.au/observing/pointing">Reference Pointing Guide</ulink>
 	for details.
       </para>
     </section>
@@ -3090,11 +3096,11 @@ For high time resolution observations, a time resolution of order 10 millisecond
 	Note that confusion becomes much worse as you go
 	to lower frequencies, and that this can be particularly serious for
 	snapshot observations (See <xref linkend="Short-Observations"></xref>).  The
-	<ulink url="http://www.astrop.physics.usyd.edu.au/sumsscat">SUMSS catalogue and database</ulink>,
+	<ulink url="https://www.astrop.physics.usyd.edu.au/sumsscat">SUMSS catalogue and database</ulink>,
 	<indexterm role="cp"><primary>catalogue</primary><secondary>SUMSS</secondary></indexterm>
 	<indexterm role="cp"><primary>catalogue</primary><secondary>MGPS</secondary></indexterm>
 	and the
-	<ulink url="http://www.physics.usyd.edu.au/sifa/Main/MGPS2">Molonglo Galactic Plane Survey (MGPS-2) catalogue and database</ulink>
+	<ulink url="https://www.physics.usyd.edu.au/sifa/Main/MGPS2">Molonglo Galactic Plane Survey (MGPS-2) catalogue and database</ulink>
 	are useful references to search for potential confusing sources in the
 	16cm band, where the effects of confusion are greatest.
       </para>
@@ -3112,7 +3118,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
 	favourable during winter and at night. A seeing monitor at Narrabri
 	continuously monitors the phase stability at a frequency of 21 GHz and
 	over a baseline of 200 m.  See
-	<ulink url="http://www.atnf.csiro.au/observers/docs/7mm/seeing.pdf">The <acronym>ATCA</acronym> Seeing Monitor</ulink>
+	<ulink url="https://www.atnf.csiro.au/observers/docs/7mm/seeing.pdf">The <acronym>ATCA</acronym> Seeing Monitor</ulink>
 	for details (though note this paper describes the initial system;
 	    in 2008 a new satellite beacon was adopted, resulting in a
 	    change in the frequency from 30GHz to 21GHz).
@@ -3165,7 +3171,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
       requests for observations of extremely important transient or
       non-predicted events can be made at any time. To learn how to apply for
       <acronym>ToO</acronym> observing time, visit
-      <ulink url="http://www.atnf.csiro.au/observers/apply/too_apply.html">our webpage</ulink>.
+      <ulink url="https://www.atnf.csiro.au/observers/apply/too_apply.html">our webpage</ulink>.
     </para>
 
     <para>
@@ -3178,14 +3184,14 @@ For high time resolution observations, a time resolution of order 10 millisecond
     </para>
 
     <para>
-      Check <ulink url="http://www.atnf.csiro.au/observers/apply/avail.html">our web page</ulink>
+      Check <ulink url="https://www.atnf.csiro.au/observers/apply/avail.html">our web page</ulink>
       for information about the current status of the <acronym>ATNF</acronym> facilities.
       <indexterm role="cp"><primary>observations</primary><secondary>millimetre</secondary></indexterm>
       Before submitting proposals to observe particular objects, you should
       check that the observation you are proposing has not already been made.
       Previous Compact Array proposals and observations
       <indexterm role="cp"><primary>proposal</primary><secondary>archive</secondary></indexterm>
-      can be found in the <ulink url="http://atoa.atnf.csiro.au/"><acronym>ATOA</acronym></ulink>
+      can be found in the <ulink url="https://atoa.atnf.csiro.au/"><acronym>ATOA</acronym></ulink>
       (Australia Telescope Online Archive).
       After the proprietary period has expired, the data files from previous
       observations may be downloaded from <acronym>ATOA</acronym>.
@@ -3199,7 +3205,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
     <para>
       <indexterm role="cp"><primary>OPAL</primary></indexterm>
       All <acronym>ATNF</acronym> Telescope Applications must be submitted using
-      <ulink url="http://opal.atnf.csiro.au/"><acronym>OPAL</acronym></ulink>.
+      <ulink url="https://opal.atnf.csiro.au/"><acronym>OPAL</acronym></ulink>.
     </para>
 
     <section id="A-Friend">
@@ -3218,7 +3224,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
       </para>
 
       <para>
-	A <ulink url="http://www.narrabri.atnf.csiro.au/observing/support/da_support.html">duty astronomer</ulink>
+	A <ulink url="https://www.narrabri.atnf.csiro.au/observing/support/da_support.html">duty astronomer</ulink>
 	(<acronym>DA</acronym>)
 	<indexterm role="cp"><primary>duty astronomer</primary></indexterm>
 	is provided at the <acronym>SOC</acronym> who will help in the initial set up of the telescope
@@ -3244,7 +3250,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
       to all members of the proposal team through <acronym>OPAL</acronym>.
       All proposers are notified when the schedule for the next semester is released, and these schedules
       will appear 
-      <ulink url="http://www.narrabri.atnf.csiro.au/observing/schedules/">on the web</ulink>.
+      <ulink url="https://www.narrabri.atnf.csiro.au/observing/schedules/">on the web</ulink>.
     </para>
 
     <para>
@@ -3265,7 +3271,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
 
     <para>
       Plan your trip to the <acronym>SOC</acronym> with the help of the <acronym>ATNF</acronym>
-      <ulink url="http://www.atnf.csiro.au/observers/visit">Visitor's Information</ulink>.
+      <ulink url="https://www.atnf.csiro.au/observers/visit">Visitor's Information</ulink>.
       You will need to book transport,
       accommodation and computer resources in Marsfield before arrival.
     </para>
@@ -3283,7 +3289,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
       <indexterm role="cp"><primary>schedule</primary><secondary>file</secondary></indexterm>
       The Compact Array is controlled from user generated schedule files.
       Schedule files are prepared with
-      the <ulink url="http://www.narrabri.atnf.csiro.au/observing/sched"><acronym>CABB</acronym> web scheduler</ulink>.
+      the <ulink url="https://www.narrabri.atnf.csiro.au/observing/sched"><acronym>CABB</acronym> web scheduler</ulink>.
     </para>
 
     <para>
@@ -3304,7 +3310,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
       and rising and setting times of astronomical objects, which may help
       with preparation of your schedule files, is coord.
       Currently, this is most easily accessed via the
-      <ulink url="http://www.parkes.atnf.csiro.au/cgi-bin/utilities/coord.cgi">Parkes website</ulink>.
+      <ulink url="https://www.parkes.atnf.csiro.au/cgi-bin/utilities/coord.cgi">Parkes website</ulink>.
       When using this tool be sure to change the site to
       Australia Telescope Compact Array, and change the elevation limit to
       12 degrees for cm observing at the <acronym>ATCA</acronym>.
@@ -3319,7 +3325,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
 	A Duty Astronomer will be present at the <acronym>SOC</acronym> to help local observers get
 	their observations started, and to help with any problems that arise during the
 	observations. Our web site has the 
-	<ulink url="http://www.narrabri.atnf.csiro.au/observing/support">list of duty astronomers</ulink>
+	<ulink url="https://www.narrabri.atnf.csiro.au/observing/support">list of duty astronomers</ulink>
 	for the upcoming semester, as well as for previous semesters.
 	The Duty Astronomer has <emphasis role="bold">no obligation</emphasis> to participate in the
 	observing.
