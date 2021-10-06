@@ -117,11 +117,10 @@
       <indexterm role="cp"><primary>VLBI</primary></indexterm>.
     </para>
     <para>
-      <indexterm role="cp"><primary>ASKAP</primary></indexterm>
       <acronym>ATNF</acronym> scientists and engineers also operate
       <indexterm role="cp"><primary>ASKAP</primary></indexterm>
       <acronym>ASKAP</acronym> (the Australian SKA Pathfinder telescope) located 300km inland from
-      Geralton in Western Australia, <acronym> ASKAP</acronym>
+      Geralton in Western Australia. <acronym>ASKAP</acronym>
       is an array of thirty-six wide-field 12m antennas. 
       operating in the 0.7&#x2013;1.8 GHz range. More details are available at
       <ulink url="https://www.atnf.csiro.au/projects/askap/">the <acronym>ASKAP</acronym> project website</ulink>.
@@ -136,8 +135,8 @@
       <indexterm role="cp"><primary>ATCA</primary><secondary>overview</secondary></indexterm>
       The <acronym>ATCA</acronym> is an array of six 22m diameter antennas located
       237m above sea level at latitude
-      -30 &#x00B0; 18 &#x2032; 46.385 &#x2033; south, longitude
-      149 &#x00B0; 33 &#x2032; 00.500 &#x2033; east.
+      -30&#x00B0; 18&#x2032; 46.385&#x2033; south, longitude
+      149&#x00B0; 33&#x2032; 00.500&#x2033; east.
       <indexterm role="cp"><primary>ATCA</primary><secondary>longitude &amp; latitude</secondary></indexterm>
       The array has a 3km east-west track with a 214m northern
       spur.  Five antennas can be moved along these tracks, with the sixth
@@ -809,14 +808,14 @@
 	<indexterm role="cp"><primary>calibration</primary></indexterm>
 	<indexterm role="cp"><primary>software</primary><secondary>online</secondary></indexterm>
 	The noise source in the noise coupler injects a signal that is about 5%
-	of the level of the system temperature at a rate of 30 Hz. This noise
+	of the level of the system temperature at a rate of 8 Hz. This noise
 	signal is synchronously demodulated and the following relationship
 	<indexterm role="cp"><primary>noise</primary><secondary>diode</secondary></indexterm>
 	<indexterm role="cp"><primary>synchronous demodulator</primary></indexterm>
 	holds:
 	<informalequation>
 	  <textobject role="tex">
-	    \mathrm{T}_{\mathrm{sys}} = \mathrm{T}_{\mathrm{cal}} \times \frac{\mathrm{P}_{\mathrm{on}}}{\mathrm{P}_{\mathrm{on}} - \mathrm{P}_{\mathrm{off}}}.
+	    \mathrm{T}_{\mathrm{sys}} = \mathrm{T}_{\mathrm{cal}} \times \frac{(\mathrm{P}_{\mathrm{on}} + \mathrm{P}_{\mathrm{off}}) / 2}{\mathrm{P}_{\mathrm{on}} - \mathrm{P}_{\mathrm{off}}}.
 	  </textobject>
 	</informalequation>
 	Here,
@@ -843,7 +842,10 @@
 	which is assumed not to vary with time. The measurement of system and antenna
 	temperature is described in a 
 	<ulink url="https://www.atnf.csiro.au/observers/memos/d95b94%7E1.pdf">technical memo by 
-	Sinclair and Gough (1991)</ulink>.
+	Sinclair and Gough (1991)</ulink>. And despite our assumption that this level should not
+	vary with time, it can be calibrated by the correlator at any time using a point source
+	with a known flux density, with the <literal>acal</literal> command
+	(<xref linkend="Antenna-Gain-Calibration"></xref>).
 
       </para>
       <para>
@@ -963,10 +965,11 @@
 	<indexterm role="cp"><primary>local oscillator</primary></indexterm>
 	The local oscillator signals have a relatively narrow tuning range,
 	lying in the regions between the radio frequency bands (this reduces
-	the likelihood of self-generated interference).  The conversion system
+	the likelihood of self-generated interference).
+	<!-- The conversion system
 	is flexible, allowing the input signals to be within the same band
 	(e.g., both in the 4cm centred band), or one from each of the two
-	bands simultaneously received by the wide-band feed-horn.
+	bands simultaneously received by the wide-band feed-horn. -->
       </para>
     </section>
 
@@ -1032,7 +1035,7 @@
 	<indexterm role="cp"><primary>correlator</primary></indexterm>
 	The <firstterm>correlator</firstterm> effectively multiplies simultaneous signals from
 	two samplers: the more similar the signal from both antennas,
-	the large the degree of correlation.  A plane wavefront approaching the
+	the larger the degree of correlation.  A plane wavefront approaching the
 	<acronym>ATCA</acronym> will, in general, arrive at different antennas at different
 	times. The signals from the antennas therefore need to be <firstterm>delayed</firstterm>
 	before being presented to the correlator so as to simulate a wavefront
@@ -1071,8 +1074,8 @@ minimum cycle time.)
       <para>
 	More information on the correlator can be found at the
 	<ulink url="https://www.narrabri.atnf.csiro.au/observing/CABB.html"><acronym>CABB</acronym> webpage</ulink>.
-	This page is updated frequently, and the current state of correlator development can always
-	be found there.
+	<!-- This page is updated frequently, and the current state of correlator development can always
+	be found there. -->
       </para>
       
       <para>
@@ -1139,7 +1142,7 @@ minimum cycle time.)
 	<titleabbrev>Average <acronym>ATCA</acronym> system temperatures in each observing band.</titleabbrev>
 	<mediaobject>
 	  <imageobject>
-	    <imagedata fileref="figures/usersguide_sefds_tsys_combined_l.jpg" format="JPG">
+	    <imagedata fileref="figures/usersguide_sefds_tsys_combined_l.png" format="PNG">
 	    </imagedata>
 	  </imageobject>
 	</mediaobject>
@@ -1150,8 +1153,8 @@ minimum cycle time.)
 	previously). Similarly the 16cm receiver has a single
 	feedhorn and observations with this package will cover the entire
 	1.1 - 3.1 GHz range simultaneously.
-	Observations at two simultaneous frequencies are possible in the 15mm
-	band or the 7mm, or the 3mm bands.  With <acronym>CABB</acronym>, the centre frequencies
+	Observations at two simultaneous frequencies are possible in the 4cm, 15mm,
+	7mm, or the 3mm bands.  With <acronym>CABB</acronym>, the centre frequencies
 	of the two <acronym>IF</acronym>s need to lie within 6 GHz of each other, and 
 	even this might be too much separation depending on the exact frequencies chosen.
 	For <acronym>CABB</acronym>, the nominal standard frequencies for continuum observations
@@ -1208,9 +1211,9 @@ minimum cycle time.)
       <!-- @url{http://www.narrabri.atnf.csiro.au/observing/recfreq.html}. -->
 
       <para>
-	Switching between  the different frequency bands involves a changing
-        the feed horns. The different feed horns are mounted on a 'turret" which 
-        rotates the appropriate feed horn to the focus position. 
+	Switching between the different frequency bands involves a changing
+        the feed horns. The different feed horns are mounted on a "turret" which 
+        rotates the appropriate feed horn to the on-axis position. 
        This is done automatically under computer control and takes
 	about 20 seconds. Turret rotation should be limited to once every 15
 	minutes unless a compelling scientific case is made for more frequent
@@ -1265,8 +1268,8 @@ minimum cycle time.)
 	  <xref linkend="rfi_survey_annotated"></xref> shows what the <acronym>ATCA</acronym> sees
 	  in its 16cm band (centred at the recommended continuum central frequency of 2100 MHz)
 	  when fringe-rotation is disabled (achieved by setting the phase centre to be the South
-	  celestial pole). The black and red lines show the log of the amplitude as observed by
-	  a survey in 2011 and 2015 respectively, and from this we can see that the RFI environment
+	  celestial pole). The black, red and blue lines show the log of the amplitude as observed by
+	  surveys in 2011, 2015 and 2018 respectively, and from this we can see that the RFI environment
 	  does change slightly over time. No self-generated interference is visible in this plot.
 	  The Australian Communications and Media Authority (<acronym>ACMA</acronym>) band licenses
 	  are shown on the plot as coloured frequency regions. The strongest sources of RFI are
@@ -1276,8 +1279,9 @@ minimum cycle time.)
 
 	<para>
 	  <figure id="rfi_survey_annotated">
-	    <title>The <acronym>ATCA</acronym> 16cm RFI environment. Two surveys are shown, one from 2011 and the other
-	    from 2015. The licenses applicable to each frequency range are shown as coloured
+	    <title>The <acronym>ATCA</acronym> 16cm RFI environment. Three surveys are shown,
+	    one from 2011, one from 2015 and another from 2018. The licenses applicable to each frequency
+	    range are shown as coloured
 	    regions, labelled with a similar colour at the top of the plot.</title>
 	    <titleabbrev><acronym>ATCA</acronym> 16cm RFI environment.</titleabbrev>
 	    <mediaobject>
@@ -1301,11 +1305,17 @@ minimum cycle time.)
 	  latest spectra plot always shows the earliest spectrum obtained by the monitor in the displayed time range, along with
 	  a &#x201C;maximum hold&#x201D; value for each channel over the last hour and the time-averaged power
 	  for each channel. The waterfall plot
-	  is useful for seeing emission switch on or off over the last hour. All data from the RFI monitor
-	  is archived, and if you want to get the output of the monitor for a particular time range since
-	  its installation in November 2014, please visit the
-	  <ulink url="https://www.narrabri.atnf.csiro.au/observing/rfi/monitor/rfi_monitor_archive_query.html">
-	    archive query page</ulink>.
+	  is useful for seeing emission switch on or off over the last hour. You can also scroll back in time
+	  for the past day in half-hour increments for each of the plots.
+	</para>
+
+	<para>
+	  All data from the RFI monitor is archived. A page showing the RFI waterfalls from <acronym>ATCA</acronym>
+	  and Parkes each day from 6am to 8pm (local time) is available at
+	  <ulink url="https://www.narrabri.atnf.csiro.au/observing/rfi/monitor/rfi_monitor_daily.html">
+	    this link</ulink>.
+	  If you want to get the output of the monitor for any particular time range since
+	  its installation in November 2014, please contact <email>Jamie.Stevens@csiro.au</email>.
 	</para>
 	
 	<para>
@@ -1355,7 +1365,9 @@ minimum cycle time.)
 	  and can have extremely high amplitudes. The RFI monitor can be used to see when mid-week RFI
 	  is present, as shown in <xref linkend="rfi_monitor_midweek"></xref>. Because of the strength
 	  of this RFI, it can often drive the front-end system of the 16cm receivers, or the CABB digitisers,
-	  into saturation; if this occurs, the data becomes unusable. We do now sometimes receive advanced
+	  into saturation, or at least produce very large intermodulation products since each tone will act
+	  as another <acronym>LO</acronym>; if this occurs, the data becomes unusable.
+	  We do now sometimes receive advanced
 	  warning on when this RFI may be present, and if this will affect observations, the investigators
 	  will be notified so they can plan how to deal with it.
 	</para>
@@ -1514,8 +1526,8 @@ minimum cycle time.)
 	</info>
 	<para>
 	  There appears to be no significant interference within the 7mm and 3mm bands.
-	  A recent RFI survey in the 15mm band showed that interference from the Australian
-	  National Broadband Network (NBN) satellite &#x201C;Sky Muster&#x201D; is now clearly
+	  An RFI survey in the 15mm band showed that interference from the Australian
+	  National Broadband Network (NBN) satellite &#x201C;Sky Muster&#x201D; is clearly
 	  visible when pointing toward the equator. Similar to the 4cm RFI survey technique,
 	  <xref linkend="rfi_survey_15mm_equ"></xref>, <xref linkend="rfi_survey_15mm_scp"></xref> and
 	  <xref linkend="rfi_survey_15mm_zen"></xref> show that the signal received by the antennas
@@ -1631,7 +1643,8 @@ minimum cycle time.)
 	  where your source is. If you are worried about this interference and wish to avoid it, we recommend
 	  a new set of continuum central frequencies of 16.7 and 21.2 GHz. These recommended frequency bands
 	  are not contiguous, but do avoid all the &#x201C;Sky Muster&#x201D; downlink emissions and in fact are
-	  slightly more (between 3 and 10%) sensitive than the 17/19 GHz bands. If you need to use the 17/19 GHz
+	  slightly more (between 3 and 10%) sensitive than the 17/19 GHz bands in good dry weather where the atmospheric
+	  water content is low. If you need to use the 17/19 GHz
 	  bands now in order to facilitate comparisons to data obtained in the past, you will likely need to
 	  do extensive flagging during data reduction; the reduced bandwidth lost to flagging will also mean that
 	  your continuum sensitivity suffers.
@@ -1655,7 +1668,7 @@ minimum cycle time.)
 	  on the shortest (30m) baseline.  For spectral-line observations,
 	  software exists in <application>Miriad</application> to model and subtract out solar
 	  interference. Some information about solar activity can be obtained
-	  from the <ulink url="https://www.ips.gov.au/">Ionospheric Prediction Service</ulink>.
+	  from the <ulink url="https://www.sws.bom.gov.au/">Bureau of Meteorology Space Weather Services</ulink>.
 	</para>
       </section>
 
@@ -1756,13 +1769,13 @@ From 2006 October, the standard set
       </para>
       <itemizedlist>
         <listitem>
-          <para>1  hybrid configuration with a nominal maximum baseline of  75 m (H75)</para>
+          <para>1  hybrid configuration with a maximum baseline length in the North-South direction of 75 m (H75)</para>
         </listitem>
         <listitem>
-          <para>1  hybrid configuration with a nominal maximum baseline of 168 m (H168)</para>
+          <para>1  hybrid configuration with a maximum baseline length in the North-South direction of 168 m (H168)</para>
         </listitem>
         <listitem>
-          <para>1  hybrid configuration with a nominal maximum baseline of 214 m (H214)</para>
+          <para>1  hybrid configuration with a maximum baseline length in the North-South direction of 214 m (H214)</para>
         </listitem>
         <listitem>
           <para>2  east-west configurations with a maximum baseline of about  375 m</para>
