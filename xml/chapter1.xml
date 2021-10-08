@@ -4,6 +4,18 @@
     <date>$Date: 2018-03-15 14:22:18 +1100 (Thu, 15 Mar 2018) $</date>
     <revhistory>
       <revision>
+	<revnumber>1.6</revnumber>
+	<date>2021 Oct 8</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Change links to HTTPS where possible, and fix broken links. Update information
+	regarding recent change of name to Space &amp; Astronomy. Fix the incorrect noise-diode
+	injection rate and the Tsys equation. Remove confusing wording regarding conversion band
+	simultaneity. Update the Tsys and 16cm RFI survey plots. Update the config table for future
+	semesters. Remove CABB modes that are never coming. Clarify tracking of non-sidereal objects.
+	Remove information about friends. Other minor clarifications throughout.
+	</revremark>
+      </revision>
+      <revision>
 	<revnumber>1.5</revnumber>
 	<date>2018 Mar 15</date>
 	<authorinitials>jbs</authorinitials>
@@ -985,7 +997,7 @@
 	<ulink url="https://www.atnf.csiro.au/news/newsletter/feb07/CABB_upgrade.htm">
 	  February 2007 <acronym>ATNF</acronym> newsletter</ulink>
 	  and in 
-	<ulink url="https://adsabs.harvard.edu/abs/2011MNRAS.416..832W">Wilson et al. (2011, MNRAS, 416, 832)</ulink>).
+	<ulink url="https://ui.adsabs.harvard.edu/abs/2011MNRAS.416..832W/abstract">Wilson et al. (2011, MNRAS, 416, 832)</ulink>).
       </para>
       
       <para>
@@ -1843,24 +1855,26 @@ From 2006 October, the standard set
       <para>
 	<table frame="all" id="upcoming_configurations">
 	  <title>Array configurations that will be offered in future semesters.</title>
-	  <tgroup cols="6" align="center" colsep="1" rowsep="1">
+	  <tgroup cols="7" align="center" colsep="1" rowsep="1">
 	    <colspec colname="array"/>
 	    <colspec colname="sem1"/>
 	    <colspec colname="sem2"/>
 	    <colspec colname="sem3"/>
 	    <colspec colname="sem4"/>
 	    <colspec colname="sem5"/>
+	    <colspec colname="sem6"/>
 	    <thead>
 	      <row>
 		<entry morerows="1" valign="middle">Array</entry>
-		<entry namest="sem1" nameend="sem5" align="center">Semester</entry>
+		<entry namest="sem1" nameend="sem6" align="center">Semester</entry>
 	      </row>
 	      <row>
-		<entry>2016OCTS</entry>
-		<entry>2017APRS</entry>
-		<entry>2017OCTS</entry>
-		<entry>2018APRS</entry>
-		<entry>2018OCTS</entry>
+		<entry>2021OCTS</entry>
+		<entry>2022APRS</entry>
+		<entry>2022OCTS</entry>
+		<entry>2023APRS</entry>
+		<entry>2023OCTS</entry>
+		<entry>2024APRS</entry>
 	      </row>
 	    </thead>
 	    <tbody>
@@ -1871,9 +1885,11 @@ From 2006 October, the standard set
 		<entry>&#x2022;</entry>
 		<entry>&#x2022;</entry>
 		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
 	      </row>
 	      <row>
 		<entry>6B</entry>
+		<entry></entry>
 		<entry></entry>
 		<entry>&#x2022;</entry>
 		<entry></entry>
@@ -1882,6 +1898,7 @@ From 2006 October, the standard set
 	      </row>
 	      <row>
 		<entry>6C</entry>
+		<entry>&#x2022;</entry>
 		<entry></entry>
 		<entry></entry>
 		<entry>&#x2022;</entry>
@@ -1890,6 +1907,7 @@ From 2006 October, the standard set
 	      </row>
 	      <row>
 		<entry>6D</entry>
+		<entry></entry>
 		<entry>&#x2022;</entry>
 		<entry></entry>
 		<entry></entry>
@@ -1899,22 +1917,25 @@ From 2006 October, the standard set
 	      <row>
 		<entry>1.5A</entry>
 		<entry></entry>
-		<entry>&#x2022;</entry>
 		<entry></entry>
 		<entry>&#x2022;</entry>
 		<entry></entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
 	      </row>
 	      <row>
 		<entry>1.5B</entry>
 		<entry></entry>
-		<entry></entry>
 		<entry>&#x2022;</entry>
 		<entry></entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
 		<entry></entry>
 	      </row>
 	      <row>
 		<entry>1.5C</entry>
 		<entry>&#x2022;</entry>
+		<entry></entry>
 		<entry></entry>
 		<entry>&#x2022;</entry>
 		<entry></entry>
@@ -1922,14 +1943,16 @@ From 2006 October, the standard set
 	      </row>
 	      <row>
 		<entry>1.5D</entry>
-		<entry>&#x2022;</entry>
-		<entry></entry>
 		<entry></entry>
 		<entry>&#x2022;</entry>
 		<entry></entry>
+		<entry></entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
 	      </row>
 	      <row>
 		<entry>750A</entry>
+		<entry></entry>
 		<entry></entry>
 		<entry>&#x2022;</entry>
 		<entry></entry>
@@ -1940,22 +1963,25 @@ From 2006 October, the standard set
 		<entry>750B</entry>
 		<entry>&#x2022;</entry>
 		<entry></entry>
+		<entry></entry>
 		<entry>&#x2022;</entry>
 		<entry></entry>
 		<entry></entry>
 	      </row>
 	      <row>
 		<entry>750C</entry>
-		<entry>&#x2022;</entry>
-		<entry></entry>
 		<entry></entry>
 		<entry>&#x2022;</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
+		<entry></entry>
 		<entry></entry>
 	      </row>
 	      <row>
 		<entry>750D</entry>
 		<entry></entry>
 		<entry>&#x2022;</entry>
+		<entry></entry>
 		<entry></entry>
 		<entry>&#x2022;</entry>
 		<entry></entry>
@@ -1967,6 +1993,7 @@ From 2006 October, the standard set
 		<entry>&#x2022;</entry>
 		<entry></entry>
 		<entry>&#x2022;</entry>
+		<entry></entry>
 	      </row>
 	      <row>
 		<entry>EW352</entry>
@@ -1975,22 +2002,25 @@ From 2006 October, the standard set
 		<entry>&#x2022;</entry>
 		<entry>&#x2022;</entry>
 		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
 	      </row>
 	      <row>
 		<entry>H214</entry>
+		<entry></entry>
+		<entry>&#x2022;</entry>
 		<entry>&#x2022;</entry>
 		<entry>&#x2022;</entry>
 		<entry></entry>
-		<entry>&#x2022;</entry>
 		<entry>&#x2022;</entry>
 	      </row>
 	      <row>
 		<entry>H168</entry>
+		<entry>&#x2022;</entry>
+		<entry>&#x2022;</entry>
 		<entry></entry>
 		<entry>&#x2022;</entry>
 		<entry>&#x2022;</entry>
 		<entry>&#x2022;</entry>
-		<entry></entry>
 	      </row>
 	      <row>
 		<entry>H75</entry>
@@ -1999,6 +2029,7 @@ From 2006 October, the standard set
 		<entry></entry>
 		<entry>&#x2022;</entry>
 		<entry></entry>
+		<entry>&#x2022;</entry>
 	      </row>
 	    </tbody>
 	  </tgroup>
@@ -2008,10 +2039,10 @@ From 2006 October, the standard set
 	<indexterm role="cp"><primary>configurations</primary><secondary>non-standard</secondary></indexterm>
 	Besides the predetermined configurations, you can request any standard
 	or non-standard configuration in any term.  When writing your
-	application, your scientific justification should include a very
+	application, your scientific justification should include a
 	convincing argument of why you need to use a special array
 	configuration, rather than one of those offered for the term.  If you
-	realise the need for such a &#x201C;wildcard&#x201D; request for a significant
+	need such a &#x201C;wildcard&#x201D; request for a significant
 	amount of observing time (e.g., more than 5 x 12h), you can enhance
 	the probability of it being scheduled if you contact <acronym>ATNF</acronym> well in
 	advance of the deadline (preferably even before the call for proposals
@@ -2029,9 +2060,9 @@ From 2006 October, the standard set
       <para>
 	<indexterm role="cp"><primary>VRI</primary></indexterm>
 	An interactive tool, the 
-	<ulink url="https://www.narrabri.atnf.csiro.au/astronomy/vri.html"><firstterm>Virtual Radio Interferometer</firstterm></ulink> (<acronym>VRI</acronym>),
-	  is available to assist users in exploring the
-	  (u,v)-coverage of standard
+	<ulink url="https://github.com/crpurcell/friendlyVRI">
+	  <firstterm>Friendly Virtual Radio Interferometer</firstterm></ulink> (<acronym>VRI</acronym>),
+	  is available to assist users in exploring the (u,v)-coverage of standard
 	  (and non-standard) configurations.
       </para>
 
@@ -2052,8 +2083,7 @@ From 2006 October, the standard set
 	The <acronym>CABB</acronym> now provides a variety of
 	frequency resolutions. The available
 	resolution options are more commonly denoted by the <acronym>CABB</acronym> configuration that
-	is used to provide them. When development of <acronym>CABB</acronym> is complete,
-	four correlator configurations will be offered:
+	is used to provide them. Two correlator configurations are available:
       </para>
       <variablelist>
         <varlistentry>
@@ -2079,7 +2109,7 @@ and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
             </itemizedlist>
           </listitem>
         </varlistentry>
-        <varlistentry>
+        <!-- <varlistentry>
           <term><emphasis role="bold">Modes available in the future</emphasis></term>
           <listitem>
             <itemizedlist>
@@ -2097,7 +2127,7 @@ and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
               </listitem>
             </itemizedlist>
           </listitem>
-        </varlistentry>
+        </varlistentry> -->
       </variablelist>
       <para>
 	It should be noted that the correlator routinely computes double the number of channels
@@ -2358,19 +2388,19 @@ and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
 	<ulink url="https://www.narrabri.atnf.csiro.au/observing/AT-01.17-025.pdf">AT/01.17/025</ulink>,
 	and these general expressions have been used in
 	<xref linkend="table_sensitivity"></xref>.
-	The observer has control of the integration time (
-	<inlineequation><textobject role="tex">t</textobject></inlineequation>),
-	bandwidth (<emphasis>B</emphasis>), observing wavelength (
-	<inlineequation><textobject role="tex">\lambda</textobject></inlineequation>), number of
+	The observer has control of the integration time
+	(<inlineequation><textobject role="tex">t</textobject></inlineequation>),
+	bandwidth (<emphasis>B</emphasis>), observing wavelength
+	(<inlineequation><textobject role="tex">\lambda</textobject></inlineequation>), number of
 	baselines (<emphasis>N</emphasis>) and synthesized beam
-	size (
-	<inlineequation><textobject role="tex">\theta</textobject></inlineequation>) only, and with these variables and
-	the system sensitivity (
-	<inlineequation><textobject role="tex">\mathrm{S}_{\mathrm{sys}}</textobject></inlineequation>),
+	size
+	(<inlineequation><textobject role="tex">\theta</textobject></inlineequation>) only, and with these variables and
+	the system sensitivity
+	(<inlineequation><textobject role="tex">\mathrm{S}_{\mathrm{sys}}</textobject></inlineequation>),
 	the expressions reduce approximately to:
 	<informalequation>
 	  <textobject role="tex">
-            \mathrm{rms\; Flux\; Sensitivity}  = \Delta\mathrm{S} = 7.55\times10^{-5}  \mathrm{S}_{\mathrm{sys}}(\mathrm{N} t \mathrm{B})^{-1/2} \mathrm{Jy},
+            \mathrm{rms\; Flux\; Sensitivity}  = \Delta\mathrm{S} = 7.55\times10^{-5}  \mathrm{S}_{\mathrm{sys}}(N t B)^{-1/2} \mathrm{Jy},
 	  </textobject>
 	</informalequation>
 	and
@@ -2438,7 +2468,8 @@ and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
 	The <acronym>ATCA</acronym> can observe within the frequency range 30&#x2013;50GHz.  Feeds and
 	receivers were installed into the existing mm-wave receiver packages on
 	all 6 antennas in 2007, with the 7mm upgrade jointly funded by the
-	<acronym>ATNF</acronym> and NASA's Deep Space Network to enable the <acronym>ATCA</acronym> to participate
+	<acronym>ATNF</acronym> and <acronym>NASA</acronym>'s Deep Space Network to enable the
+	<acronym>ATCA</acronym> to participate
 	in occasional spacecraft tracking.
       </para>
 
@@ -2520,10 +2551,10 @@ and 2048 channels per 64 MHz zoom band (32 kHz fine resolution).
 
       <para>
 	Pointing calibration
-	&#x2192; Paddle calibration
+	&#x2192; Paddle calibration (3mm only)
 	&#x2192; Bandpass/Phase calibrator
 	&#x2192; Target source
-	&#x2192; Paddle calibration
+	&#x2192; Paddle calibration (3mm only)
 	&#x2192; Bandpass/Phase calibration
 	&#x2192; Target observation.
       </para>
@@ -2724,7 +2755,7 @@ described in detail in chapter 3.
 	these circumstances, if the sources are strong enough, short
 	observations will suffice (<xref linkend="table_image_structure"></xref>).  In scheduling
 	these, slew time becomes an important consideration; these may be
-	calculated see <xref linkend="Mosaicing"></xref>, or
+	calculated (see <xref linkend="Mosaicing"></xref>), or
 	with the use of the CABB scheduler. A single short observation in an
 	E-W array will give a 1-dimensional (u,v)-coverage; two or more
 	short observations will give some 2-dimensional information.  In such
@@ -2855,20 +2886,18 @@ described in detail in chapter 3.
 	The on-axis instrumental polarisation is typically below 2-3%.  After
 	calibrating for instrumental polarisation, we are currently able to
 	reduce on-axis instrumental effects to 0.1%, and better with some
-	care. Procedures for 3mm polarisation observations are still being
-	established.
+	care. <!-- Procedures for 3mm polarisation observations are still being
+	established. -->
       </para>
 
       <para>
 	<indexterm role="cp"><primary>polarisation</primary><secondary>off-axis</secondary></indexterm>
 	The off-axis polarisation increases roughly as the square of the
 	distance from the pointing centre at least up to the half-power point.
-	At 16, 6 and 3cm, the instrumental polarisation is about 3%,
-	1.6% and 3% of the <emphasis>apparent</emphasis> total intensity at the half
-	power point, respectively. At 16 and 6cm this error is almost purely
-	linearly polarised (there is no circularly polarised component),
-	whereas at 3cm the circularly polarised component is somewhat
-	less than 1% at the half-power point.
+	At 16 and 4cm, the instrumental polarisation is about 3%
+	of the <emphasis>apparent</emphasis> total intensity at the half
+	power point, respectively. This error is almost purely
+	linearly polarised (there is no circularly polarised component).
 	<!-- Fig @ref{f:pol} shows the -->
 	<!-- off-axis linearly polarised response at 20 and 13 cm. -->
 	Because the <acronym>ATCA</acronym> antennas have an alt-az mount, the off-axis response
@@ -2876,48 +2905,47 @@ described in detail in chapter 3.
 	<indexterm role="cp"><primary>parallactic angle</primary></indexterm>
 	a few by a long synthesis. This smearing is a function of
 	declination. The <application>Miriad</application> task <command>offpol</command> can be used to simulate off-axis
-	polarimetric response of a long synthesis observation.  Mosaicing
+	polarimetric response of a long synthesis observation.  Mosaicking
 	smears out the off-axis response still further, by as much as an order
 	of magnitude.
       </para>
       <para>
 	<indexterm role="cp"><primary>polarisation</primary><secondary>instrumental</secondary></indexterm>
-	At 16cm, instrumental polarisation is largely independent of frequency,
-	due to a recent upgrade of the receivers and OMTs. The leakages are now
+	At 16cm, instrumental polarisation is largely independent of frequency.
+	The leakages are now
 	flat to better than 2% across the entire usable band. More detail on the
 	polarisation properties of the <acronym>ATCA</acronym> 16cm receivers can be found in the
 	receiver commissioning report. 
 	<!-- make link to that report here -->
-	Leakages of more than 10% occur at 4550 &#x00B1; 10,
+	<!-- Leakages of more than 10% occur at 4550 &#x00B1; 10,
 	5328 &#x00B1; 10 MHz and 8780 &#x00B1; 10 MHz. Data near these
-	frequencies may need to be flagged.
+	frequencies may need to be flagged. -->
       </para>
     </section>
 
     <section id="Mosaicing">
       <info>
-	<title>Mosaicing</title>
+	<title>Mosaicking</title>
       </info>
       <para>
 	<indexterm role="cp"><primary>mosaic</primary></indexterm>
 	Objects which are of similar size or larger than the primary beam will need
-	to be <firstterm>mosaiced</firstterm>. In such cases, the recommended spacing of pointing
+	to be <firstterm>mosaicked</firstterm>. In such cases, the recommended spacing of pointing
 	centres is half of the primary beamwidth. The Compact Array antennas
 	and control system allow for rapid switching between pointing centres
 	&#x2014; as frequently as once per integration cycle. This enables a source
-	to be rapidly mosaiced without necessarily losing
-	(u,v)-coverage.  In mosaicing mode, data is not recorded when
-	antennas are driving between fields. The antenna acceleration limit is
+	to be rapidly mosaicked without necessarily losing
+	(u,v)-coverage. The antenna acceleration limit is
 	800 deg/min/min, and the slew limit is 38 deg/min in azimuth and 19
-	deg/min in elevation. Mosaicing mode may also be useful for observing
+	deg/min in elevation. Mosaicking mode may also be useful for observing
 	<indexterm role="cp"><primary>limits</primary><secondary>slewing</secondary></indexterm>
 	large numbers of nearby sources, as the observing overheads are
 	reduced.
       </para>
 
       <para>
-	There is also a facility for &#x201C;on-the-fly&quot; mosaicing, whereby the
-	antennas are continuously driven. This type of mosaicing may be
+	There is also a facility for &#x201C;on-the-fly&quot; mosaicking, whereby the
+	antennas are continuously driven. This type of mosaicking may be
 	especially useful for large-area mosaics at low frequencies, where
 	the drive times between mosaic pointings are significant.
       </para>
@@ -3002,7 +3030,7 @@ described in detail in chapter 3.
 	target will hold the pointing to 10 arcsec rms.  A bright (say 5 Jy)
 	calibrator at 2&#x00B0; to 3&#x00B0; from the target will
 	reduce the errors to about 5 arcsec rms. A reference pointing scan
-	generally takes 3-4 minutes to complete. See the
+	generally takes 2-3 minutes to complete. See the
 	<ulink url="https://www.narrabri.atnf.csiro.au/observing/pointing">Reference Pointing Guide</ulink>
 	for details.
       </para>
@@ -3023,9 +3051,12 @@ described in detail in chapter 3.
 	N equal time intervals called bins. The integration in the correlator is done
 	separately for each bin, such that at the end of the cycle, N quantities are
 	produced, each of which represents the integrated value at a particular pulsar phase.
-The minimum time bin is around 110 micro-seconds, allowing, for example, 32 phase bins for a 3.5 milli-second pulsar.	
+	The minimum time bin is around 110 micro-seconds, allowing, for example, 32 phase bins for a
+	3.5 milli-second pulsar.	
 	The correlator will also record both the full 2 GHz continuum bands in addition
-	to the pulsar binning data, analagous to how the zoom modes are recorded.
+	to the pulsar binning data, analagous to how the zoom modes are recorded. However,
+	the binned data has lower frequency resolution (by a factor of 4) than the unbinned
+	continuum data.
       </para>
 
       <para>
@@ -3042,10 +3073,8 @@ For high time resolution observations, a time resolution of order 10 millisecond
 	<indexterm role="cp"><primary>observations</primary><secondary>Solar System</secondary></indexterm>
 	The Compact Array can track sources with non-sidereal rates, such as
 	planets or comets. In this case delay tracking is adjusted
-	continuously to account for source proper motion. However the pointing
-	tracks a fixed celestial position during a scan. Thus scans must be
-	short enough that there is not significant proper motion across the
-	primary beam in the course of a scan. This is rarely a problem.
+	continuously to account for source proper motion. The antenna pointing also correctly
+	tracks non-sidereally.
       </para>
 
       <para>
@@ -3064,7 +3093,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
       <para>
 	<indexterm role="cp"><primary>array</primary><secondary>tied</secondary></indexterm>
 	A tied array capability is available.  It provides tying of the array
-	at one or two frequencies and, for <acronym>CABB</acronym>, initially at a bandwidth of 64 MHz.
+	at one or two frequencies and, for <acronym>CABB</acronym>, at a bandwidth of 64 MHz.
       </para>
 
       <para>
@@ -3081,7 +3110,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
       <para>
 	<indexterm role="cp"><primary>DAS</primary></indexterm>
 	<indexterm role="cp"><primary>VLBI</primary></indexterm>
-	The tied-array adder can be fed into the LBA (<firstterm>Long Baseline Array</firstterm>)
+	The tied-array adder is fed into the LBA (<firstterm>Long Baseline Array</firstterm>)
 	DAS which provides outputs for the
 	VLBI disk-based recorders at bandwidths between 62.5 kHz and 64 MHz.
 	Simultaneous Compact Array and tied array operation is possible, although
@@ -3109,11 +3138,12 @@ For high time resolution observations, a time resolution of order 10 millisecond
 	Note that confusion becomes much worse as you go
 	to lower frequencies, and that this can be particularly serious for
 	snapshot observations (See <xref linkend="Short-Observations"></xref>).  The
-	<ulink url="https://www.astrop.physics.usyd.edu.au/sumsscat">SUMSS catalogue and database</ulink>,
+	<ulink url="http://www.astrop.physics.usyd.edu.au/sumsscat">SUMSS catalogue and database</ulink>,
 	<indexterm role="cp"><primary>catalogue</primary><secondary>SUMSS</secondary></indexterm>
 	<indexterm role="cp"><primary>catalogue</primary><secondary>MGPS</secondary></indexterm>
 	and the
-	<ulink url="https://www.physics.usyd.edu.au/sifa/Main/MGPS2">Molonglo Galactic Plane Survey (MGPS-2) catalogue and database</ulink>
+	<ulink url="https://heasarc.gsfc.nasa.gov/W3Browse/all/mgps2.html">Molonglo Galactic Plane
+	Survey (MGPS-2) catalogue and database</ulink>
 	are useful references to search for potential confusing sources in the
 	16cm band, where the effects of confusion are greatest.
       </para>
@@ -3134,7 +3164,8 @@ For high time resolution observations, a time resolution of order 10 millisecond
 	<ulink url="https://www.atnf.csiro.au/observers/docs/7mm/seeing.pdf">The <acronym>ATCA</acronym> Seeing Monitor</ulink>
 	for details (though note this paper describes the initial system;
 	    in 2008 a new satellite beacon was adopted, resulting in a
-	    change in the frequency from 30GHz to 21GHz).
+	    change in the frequency from 30GHz to 21GHz, and the design was changed
+	    again in 2019 when the satellite we were using became non-geosynchronous).
       </para>
       
       <para>
@@ -3170,7 +3201,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
 
     <para>
       <indexterm role="cp"><primary>proposal</primary><secondary>deadline</secondary></indexterm>
-      The Compact Array usually operates under a semester system with two
+      The Compact Array operates under a semester system with two
       application deadlines each year: around June 15 for observations from October
       1 to March 31; and around December 15 for observations from April 1 to
       September 30.
@@ -3221,11 +3252,12 @@ For high time resolution observations, a time resolution of order 10 millisecond
       <ulink url="https://opal.atnf.csiro.au/"><acronym>OPAL</acronym></ulink>.
     </para>
 
-    <section id="A-Friend">
+    <!--<section id="Observing-Support">
       <info>
-        <title>A &#x201C;Friend&#x201D;</title>
+        <!- <title>A &#x201C;Friend&#x201D;</title> ->
+	<title>Observing Support</title>
       </info>
-      <para>
+      <!-<para>
 	<indexterm role="cp"><primary>friend</primary></indexterm>
 	All observing projects are now allocated a &#x201C;friend&#x201D; who can help
 	when preparing for observations, and with later data analysis. Friends will only help
@@ -3234,7 +3266,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
 	observations. Friends are allocated based on their expertise. For those projects with
 	<acronym>ATNF</acronym> co-investigators, one of the co-investigators will be assigned as
 	the friend.
-      </para>
+      </para> ->
 
       <para>
 	A <ulink url="https://www.narrabri.atnf.csiro.au/observing/support/da_support.html">duty astronomer</ulink>
@@ -3243,13 +3275,13 @@ For high time resolution observations, a time resolution of order 10 millisecond
 	is provided at the <acronym>SOC</acronym> who will help in the initial set up of the telescope
 	and with any problems which arise in the course of the
 	observations. In addition, they may also be able to help with schedule preparation and
-	initial data analysis, although requesting the help of your &#x201C;friend&#x201D; is a better option for
+	initial data analysis.<!-, although requesting the help of your &#x201C;friend&#x201D; is a better option for
 	observers that require this help, as they will be involved much earlier than
-	the <acronym>DA</acronym>.
+	the <acronym>DA</acronym>. ->
 	The duty astronomer has no obligation to participate in the observing, however, and should
 	not be asked to do so.
       </para>
-    </section>
+    </section> -->
   </section>
 
   <section id="Successful-Proposals">
@@ -3271,7 +3303,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
       at the <acronym>SOC</acronym> to do the observations. The visiting observer should be
       well-versed with the needs of their observing program before arriving,
       particularly if they did not write the observing proposal or schedule
-      files. If they need assistance from the friend or <acronym>DA</acronym> to prepare
+      files. If they need assistance from the <acronym>DA</acronym> to prepare
       their schedules, they should arrive well before the start of their observations; at
       least two weekdays.
     </para>
@@ -3321,12 +3353,15 @@ For high time resolution observations, a time resolution of order 10 millisecond
       <indexterm role="cp"><primary>coord</primary></indexterm>
       A useful tool to determine the altitude, azimuth,
       and rising and setting times of astronomical objects, which may help
-      with preparation of your schedule files, is coord.
+      with preparation of your schedule files, is the
+      <ulink url="https://www.narrabri.atnf.csiro.au/observing/web_observability_plotter/">
+	Interactive Observability Chart Plotter</ulink>.
+      <!--coord.
       Currently, this is most easily accessed via the
       <ulink url="https://www.parkes.atnf.csiro.au/cgi-bin/utilities/coord.cgi">Parkes website</ulink>.
       When using this tool be sure to change the site to
       Australia Telescope Compact Array, and change the elevation limit to
-      12 degrees for cm observing at the <acronym>ATCA</acronym>.
+      12 degrees for cm observing at the <acronym>ATCA</acronym>.-->
     </para>
     
     <section id="The-Duty-Astronomer">
@@ -3341,12 +3376,14 @@ For high time resolution observations, a time resolution of order 10 millisecond
 	<ulink url="https://www.narrabri.atnf.csiro.au/observing/support">list of duty astronomers</ulink>
 	for the upcoming semester, as well as for previous semesters.
 	The Duty Astronomer has <emphasis role="bold">no obligation</emphasis> to participate in the
-	observing.
+	observing. For remote observers, the <acronym>DA</acronym> is primarily there to help as
+	problems arise, as qualified remote observers should not need assistance to start their
+	observations.
       </para>
 
-      <para>
+      <!--<para>
 	For help before and after your observations, see <xref linkend="A-Friend"></xref>.
-      </para>
+      </para> -->
     </section>
 
     <section id="NAPA-overrides">
@@ -3360,13 +3397,17 @@ For high time resolution observations, a time resolution of order 10 millisecond
 	(target of opportunity) request.
       </para>
       <para>
+	<indexterm role="cp"><primary><acronym>NAPA</acronym></primary></indexterm>
 	A <acronym>NAPA</acronym> project is one whose science goals have been set down in a
 	proposal that the <acronym>TAC</acronym> has evaluated in the normal way. Such projects
 	can be triggered any time during the semester, whenever the investigator wants to
 	proceed. The project will have requested a specific amount of time for the semester,
-	but this is not binding.
+	and this is the amount of time that can be displaced from scheduled observations to
+	accommodate the NAPA project. However, if the NAPA requires further time, it can be
+	granted using unallocated time.
       </para>
       <para>
+	<indexterm role="cp"><primary>Target-of-opportunity</primary></indexterm>
 	A <acronym>ToO</acronym> request can also be made at any time during the semester.
 	Unlike <acronym>NAPA</acronym> projects though, a <acronym>ToO</acronym> will not generally
 	be allowed to over-ride a scheduled observation.
@@ -3390,7 +3431,9 @@ For high time resolution observations, a time resolution of order 10 millisecond
 	  for why you want to observe.
 	</para>
 	<para>
-	  If you are requesting a slot of Director's time (also known as green time), then you should
+	  <indexterm role="cp"><primary>Director's discretionary time</primary></indexterm>
+	  <indexterm role="cp"><primary>Green Time</primary><see>Director's discretionary time</see></indexterm>
+	  If you are requesting a slot of Director's discretionary time (also known as green time), then you should
 	  also put in a request via the Portal's booking system. If you require an over-ride of
 	  scheduled time (only available for <acronym>NAPA</acronym> projects), then please state your
 	  preferred observation time in your email.
