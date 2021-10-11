@@ -217,14 +217,17 @@
       </para>
       
       <para>
-	<indexterm role="cp"><primary>coord</primary></indexterm>
+	<indexterm role="cp"><primary>observability plotter</primary></indexterm>
 	To calculate precisely how long your source is observable each day with the
-	<acronym>ATCA</acronym> you can use the <command>coord</command> program,
+	<acronym>ATCA</acronym> you can use the
+	<ulink url="https://www.narrabri.atnf.csiro.au/observing/web_observability_plotter/">
+	Interactive Observability Chart Plotter</ulink>.
+	<!-- <command>coord</command> program,
 	available from the
 	<ulink url="http://www.parkes.atnf.csiro.au/cgi-bin/utilities/coord.cgi">Parkes website.</ulink>
 	When using <command>coord</command> from the website you must remember to
 	change both the site to &#x201C;Australia Telescope Compact Array&#x201D;,
-	and the elevation limit to the value you require.
+	and the elevation limit to the value you require. -->
       </para>
     </section>
 
@@ -299,6 +302,11 @@
 	      <entry>15mm</entry>
 	      <entry>17000</entry>
 	      <entry>19000</entry>
+	    </row>
+	    <row>
+	      <entry>15mm (to avoid satellite <acronym>RFI</acronym>, in dry weather)</entry>
+	      <entry>16700</entry>
+	      <entry>21200</entry>
 	    </row>
 	    <row>
 	      <entry>7mm (<acronym>LSB</acronym>)</entry>
@@ -458,7 +466,7 @@
 	At the beginning of your observing run you may find that while observing a strong
 	point source, the phases will not be constant as a function of frequency across the
 	band; this indicates that the array requires delay calibration. To successfully perform
-	delay calibration will require a point source of at least moderate brightness
+	delay calibration will require a point source of at least moderate flux density
 	(<inlineequation><textobject role="tex">\mathrm{S} \gtrsim 1\mathrm{\,Jy}</textobject></inlineequation>).
 	This is so the correlator can accurately determine the phase slope with frequency;
 	the accuracy improves with the signal-to-noise ratio.
@@ -468,9 +476,9 @@
 	The response of each antenna to the incoming radiation must also be determined, and
 	this is comprised of bandpass and flux density calibration. This calibration can be
 	done with only one source if the flux density of that source is known, it is a point
-	source, and it is sufficiently bright. Otherwise a bright point source can be observed
+	source, and has sufficient flux density. Otherwise a point source with a high flux density can be observed
 	as the bandpass calibrator (the source used for the delay calibration can usually be
-	used for this purpose), and a fainter source with a known flux density, or a
+	used for this purpose), and a source with a known flux density, or a
 	planet can be used for flux density calibration.
       </para>
 
@@ -479,22 +487,22 @@
 	response will change. These include atmospheric phase, opacity, elevation-dependent
 	dish surface distortions and focus changes, aperture illumination and spillover.
 	To monitor these changes you will need to observe a point source nearby to your
-	science target. This point source will need to be reasonably bright, but averaging
-	over a short period of time can be used if the nearest source isn't very bright.
+	science target. This point source will need to have a relatively high flux density,
+	although averaging over a short period of time (~1 minute) if this is not possible.
       </para>
 
       <para>
 	If you need to measure the polarisation of your science target, you will want
-	to determine the leakage parameters; the fraction of linearly-polarised photons
-	that are detected by the receptor that should not.
+	to determine the leakage parameters: the fraction of linearly-polarised photons
+	that are detected by the receptor that should not have been.
       </para>
 
       <para>
 	If you are observing at high frequency, where the primary beam of the antenna
 	is small, it is important that the maximum response of the beam is directed
 	toward the source you're observing. To ensure this is the case, you should do
-	periodic pointing-correction scans on a nearby point source of reasonable
-	brightness.
+	periodic pointing-correction scans on a nearby point source with reasonable
+	flux density (&gt;300 mJy).
       </para>
 
       <para>
@@ -539,7 +547,7 @@
 	    </row>
 	    <row>
 	      <entry>Flux density calibration</entry>
-	      <entry namest="cm16" nameend="mm7">Required on 1934-638</entry>
+	      <entry namest="cm16" nameend="mm7">Required, on 1934-638</entry>
 	      <entry>Required, on Uranus</entry>
 	    </row>
 	    <row>
@@ -588,13 +596,13 @@
       <para>
 	For the centimetre bands (16cm and 4cm), delay calibration is best done with one of
 	two sources. When the LST is between 11:00 and 04:18, you should use PKS 1934-638 to calibrate
-	the delays, because it is strong and you'll need to observe it anyway for flux
+	the delays, because it is has a large flux density and you'll need to observe it anyway for flux
 	density calibration purposes. At all other times you should use 0823-500.
       </para>
 
       <para>
-	For the higher frequency bands, you will need to use one of the many available bright
-	sources in the <acronym>ATCA</acronym> calibrator database, such as:
+	For the higher frequency bands, you will need to use one of the many available
+	sources with a large flux density in the <acronym>ATCA</acronym> calibrator database, such as:
 	<itemizedlist>
 	  <listitem><para>0003-066</para></listitem>
 	  <listitem><para>0420-014</para></listitem>
@@ -607,9 +615,12 @@
 	  <listitem><para>1921-293</para></listitem>
 	  <listitem><para>2155-152</para></listitem>
 	</itemizedlist>
-	You should choose whichever is highest, or nearest to your targets. There are many more
-	sources that are bright in the millimetre bands, and you can search for the brightest
-	calibrators using the <acronym>ATCA</acronym> calibrator database search interface.
+	You should choose whichever is at the highest elevation at the time, or nearest to your targets.
+	There are many more
+	sources that have large flux densities in the millimetre bands, and you can search for those
+	calibrators using the
+	<ulink url="https://www.narrabri.atnf.csiro.au/calibrators/">
+	  <acronym>ATCA</acronym> calibrator database search interface.</ulink>
       </para>
       
     </section>
@@ -622,7 +633,7 @@
       <para>
 	<indexterm role="cp"><primary>calibration</primary><secondary>bandpass</secondary></indexterm>
 	<indexterm role="cp"><primary>calibrator</primary><secondary>bandpass</secondary></indexterm>
-	The bandpass calibration is best done with a very bright source, since you're trying to
+	The bandpass calibration is best done with a source with a large flux density, since you're trying to
 	precisely determine how each frequency channel responds to a known amount of flux density.
       </para>
 
@@ -643,7 +654,7 @@
 	continuum observation it is
 	usually sufficient to make an observation of a bandpass calibrator at the very start of
 	the allocated time. The amount of time spent
-	integrating on the bandpass calibrator depends on its flux, but generally 5-10 minutes
+	integrating on the bandpass calibrator depends on its flux density, but generally 5-10 minutes
 	is sufficient at all frequencies. 
       </para>
 
@@ -654,25 +665,25 @@
 	to observe a bandpass calibrator more than once per observation. Visiting it
 	three times (once at the start, once at the end, and once sometime near the
 	middle) during a 12 hour observation should be sufficient to obtain a reliable
-	bandpass solution. Alternatively, provided the gain calibrator is reasonably
-	bright, the periodic visits to it may provide accurate enough information to
+	bandpass solution. Alternatively, provided the gain calibrator has a large flux density,
+	the periodic visits to it may provide accurate enough information to
 	determine how the bandpass solution changes over time.
       </para>
 
       <para>
 	The integration time spent on the bandpass calibrator will have an effect on
-	the accuracy of the flux that is measured after reduction. It is necessary to
-	obtain each correlator channel's flux to the same accuracy as required for the
-	flux calibrator, ie. obtain a signal-to-noise ratio of 100 <emphasis>per channel</emphasis>
-	if the required flux accuracy is 1%. Since any point source can be a bandpass calibrator,
+	the accuracy of the flux density that is measured after reduction. It is necessary to
+	obtain each correlator channel's response to the same precision as required for the
+	flux density calibrator, ie. obtain a signal-to-noise ratio of 100 <emphasis>per channel</emphasis>
+	if the required flux density precision is 1%. Since any point source can be a bandpass calibrator,
 	the sensitivity calculator should be used
 	to find out the RMS noise per channel for your observations, and then a calibrator
-	found from the calibrator database that provides enough flux to meet the signal-to-noise
+	found from the calibrator database that provides enough flux density to meet the signal-to-noise
 	ratio requirements. For example, a typical <acronym>CABB</acronym> observation has 2048 channels,
 	and at 50 GHz, the RMS noise per channel is about 35 mJy for a 5 minute observation.
-	For a signal-to-noise ratio of 100, a calibrator with flux greater than 3.5 Jy is
+	For a signal-to-noise ratio of 100, a calibrator with flux density greater than 3.5 Jy is
 	required, and a search through the calibrator database identifies 19 such sources.
-	Of course, if a primary flux calibrator is strong enough to be a bandpass calibrator
+	Of course, if a flux density calibrator is strong enough to be a bandpass calibrator
 	as well, then observing time can be conserved by not having a separate bandpass
 	calibrator.
       </para>
@@ -700,8 +711,8 @@
 
       <para>
 	<indexterm role="cp"><primary>calibration</primary><secondary>flux density scale</secondary></indexterm>
-	For frequencies between 1 GHz and 25 GHz, the preferred flux density calibrator is PKS 1934-638.
-	It has a known, stable flux, and conveniently has no linear or circular polarisation, at least
+	For frequencies between 1 GHz and 50 GHz, the preferred flux density calibrator is PKS 1934-638.
+	It has a known, stable flux density, and conveniently has no linear or circular polarisation, at least
 	at low frequencies.
 	The flux density model for 1934-638 that is installed in <application>Miriad</application> are 
 	based on the models described in the memo
@@ -710,7 +721,7 @@
 	<listitem>
 	  <para>
 	    <emphasis role="bold">A Revised Flux Scale for the AT Compact Array</emphasis>
-	    (<ulink url="http://www.atnf.csiro.au/observers/memos/d96783~1.pdf"><emphasis>J Reynolds, 1994</emphasis></ulink>),
+	    (<ulink url="https://www.atnf.csiro.au/observers/memos/d96783~1.pdf"><emphasis>J Reynolds, 1994</emphasis></ulink>),
 	  </para>
 	</listitem>
       </itemizedlist>
@@ -763,7 +774,7 @@
 	means that any gain-elevation dependence
 	is reduced, and the effect of airmass is also reduced. At low frequencies (below 7 GHz),
 	these requirements are not as important as they are for higher frequencies, where the
-	atmospheric effects become a large factor. Indeed, many (if not most) centimetre observers
+	atmospheric effects become a significant factor. Indeed, many (if not most) centimetre observers
 	simply make a scan on 1934-638 at the beginning of their observations, and this is usually
 	good enough to get a flux density uncertainty of only a few percent.
       </para>
@@ -794,9 +805,9 @@
 	<listitem>
 	  <para>
 	    Determine a suitable nearby calibrator that can be used for pointing/paddle
-	    measurements. First, checking the ephemeris of Uranus with the planet
+	    measurements. First, check the ephemeris of Uranus with the <command>planet</command>
 	    task in <application>Miriad</application>. After the position of Uranus on the date of the observation has been
-	    determined, use the <ulink url="http://www.narrabri.atnf.csiro.au/calibrators/">calibrator database</ulink>
+	    determined, use the <ulink url="https://www.narrabri.atnf.csiro.au/calibrators/">calibrator database</ulink>
 	    or the &#x201C;Search Cal&#x201D; button in the Web Scheduler to find the closest suitable
 	    calibrator.
 	  </para>
@@ -887,13 +898,13 @@
 	More precisely,
 	by observing a source that looks the same irrespective of time or (u,v)
 	coordinates, changes in gain can be determined directly. Therefore, gain calibrators
-	should be unresolved, with a stable flux over the observation timescale.
+	should be unresolved, with a stable flux density over the observation timescale.
       </para>
 
       <para>
 	The
 	<acronym>ATCA</acronym> provides
-	<ulink url="http://www.narrabri.atnf.csiro.au/calibrators/calcycle.html">a calculator</ulink>
+	<ulink url="https://www.narrabri.atnf.csiro.au/calibrators/calcycle.html">a calculator</ulink>
 	to advise observers on how often to visit their phase calibrator.
 	<indexterm role="cp"><primary>calibrator</primary><secondary>gain</secondary></indexterm>
 	<indexterm role="cp"><primary>calibrator</primary><secondary>phase</secondary></indexterm>
@@ -959,7 +970,7 @@
 	<indexterm role="cp"><primary>calibrator</primary><secondary>searching for</secondary></indexterm>
 	The <acronym>ATCA</acronym> has a large list of gain calibrators, spread over the viewable sky. This list
 	can be queried using a 
-	<ulink url="http://www.narrabri.atnf.csiro.au/calibrators/">web interface</ulink>.
+	<ulink url="https://www.narrabri.atnf.csiro.au/calibrators/">web interface</ulink>.
 	  This interface queries the database in one of three ways:
       </para>
       <itemizedlist mark="bullet">
@@ -995,13 +1006,13 @@
 	the schedule in the <acronym>CABB</acronym> web scheduler (see
 	<xref linkend="Continuum-Schedule-Example"></xref> for an example of how this works).
 	Ideally, choose the nearest possible point source calibrator to your target.
-	Sometimes that calibrator may not be very bright though, and you may wish to
-	choose a brighter calibrator that is further away in order to lessen your
-	overhead: a brighter calibrator can give a good measurement of the gain in a
-	shorter time than a dimmer calibrator. For continuum observations this is largely
+	Sometimes that calibrator may not have a high flux density though, and you may wish to
+	choose a calibrator that is further away in order to lessen your
+	overhead: a calibrator with a higher flux density can give a good measurement of the gain in a
+	shorter time. For continuum observations this is largely
 	irrelevant since the large <acronym>CABB</acronym> bandwidths allow for a very
 	accurate measure of gain in just a few cycles. For spectral line observations though,
-	the brighter the source the better.
+	the more flux density the source has the better.
       </para>
     </section>
 
@@ -1015,7 +1026,7 @@
 	The <acronym>ATCA</acronym> uses dual linear orthogonal feeds to measure the incident radiation.
 	Ideally, these two feeds would be independent: in reality
 	this is not the case, and a fraction of the radiation measured by one feed is also
-	receiver by the other; this effect is called &#x201C;leakage&#x201D;. Polarisation calibration is primarily concerned
+	received by the other; this effect is called &#x201C;leakage&#x201D;. Polarisation calibration is primarily concerned
 	with measuring the leakage fraction and the possibly non-zero signal phase (the so-called
 	XY-phase) between the two feeds.
       </para>
@@ -1086,7 +1097,7 @@
 	<indexterm role="cp"><primary>calibration</primary><secondary>reference pointing</secondary></indexterm>
 	While observing, you can correct the pointing model to ensure that the peak response of the
 	primary beam is pointing directly at your target. A pointing correction scan is made by
-	observing a reasonably bright point source directly and at the half-power point of the
+	observing a point source directly and at the half-power point of the
 	primary beam in each of the azimuth and elevation axes, and comparing the amplitude seen at
 	each of these points.
       </para>
@@ -1094,8 +1105,9 @@
       <para>
 	<indexterm role="cp"><primary>calibrator</primary><secondary>reference pointing</secondary></indexterm>
 	With 2 GHz of bandwidth, almost any point source in the <acronym>ATCA</acronym> calibrator
-	database can be used to determine the pointing corrections, however the pointing corrections
-	only really improve the global pointing model within 20&#x00B0; of the azimuth/elevation at
+	database has enough flux density to allow determination of the pointing corrections, however
+	the pointing corrections only really improve the global pointing model within 20&#x00B0; of
+	the azimuth/elevation at
 	which the corrections were determined. The natural choice of calibrator for this purpose
 	is therefore the same as for the gain calibration, and in general you should use your
 	gain calibrator for pointing calibration.
@@ -1176,7 +1188,7 @@
 
       <para>
 	<indexterm role="cp"><primary>caobs</primary></indexterm>
-	The main observing task, <command>caobs</command>, reads the schedule file in order to
+	The main observing task, <command>caobs</command>, reads the schedule file to
 	determine what sources are to be observed, for how long, and in what
 	order. The schedule file also defines the frequencies and
 	correlator setup for each scan and can also be used to make the system automatically
@@ -1184,7 +1196,7 @@
 	<indexterm role="cp"><primary>schedule</primary><secondary>file</secondary></indexterm>
 	<indexterm role="cp"><primary>schedule</primary><secondary>web scheduler</secondary></indexterm>
 	The 
-	<ulink url="http://www.narrabri.atnf.csiro.au/observing/sched/cabb/"> <acronym>ATCA</acronym> web scheduler</ulink>
+	<ulink url="https://www.narrabri.atnf.csiro.au/observing/sched/cabb/"> <acronym>ATCA</acronym> web scheduler</ulink>
 	is the tool to use to create <acronym>ATCA</acronym> schedule files in the <acronym>CABB</acronym> era.
 	Schedules made with the old <command>sched</command> program are no longer understood by
 	the <acronym>CABB</acronym> version of <command>caobs</command> and thus cannot be used. However, it is
@@ -1201,8 +1213,8 @@
 	  <para>
 	    A schedule file for setting up (delay calibration etc.) and flux density calibration.
 	    It should include the appropriate flux density calibrator (<xref linkend="calibration-flux-density"></xref>),
-	    and if the flux density calibrator cannot be used as a bandpass calibrator, another stronger calibrator
-	    that can be used for array setup and bandpass calibration.
+	    and if the flux density calibrator cannot be used as a bandpass calibrator, another calibrator
+	    with higher flux density that can be used for array setup and bandpass calibration.
 	  </para>
 	</listitem>
 	<listitem>
@@ -1364,7 +1376,7 @@
 	</para>
 
 	<para>
-	  Since the apparent brightness of the sources you are observing will depend
+	  Since the apparent flxu density of the sources you are observing will depend
 	  on the system temperature measured by the paddle scan, it is very important to
 	  ensure that you do the paddle measurement <emphasis role="bold">before</emphasis>
 	  you observe the sources. It is however not really necessary to ensure the
@@ -1381,11 +1393,11 @@
 
       <para>
 	<indexterm role="cp"><primary>mosaic</primary></indexterm>
-	<indexterm role="cp"><primary>observations</primary><secondary>mosaicing</secondary></indexterm>
+	<indexterm role="cp"><primary>observations</primary><secondary>mosaicking</secondary></indexterm>
 	If the source you will image is bigger than a small fraction of the
 	<acronym>ATCA</acronym> primary beam, or the region you want an image for is
 	considerably larger than the primary beam, you will need to use the
-	<acronym>ATCA</acronym>'s mosaicing functionality.
+	<acronym>ATCA</acronym>'s mosaicking functionality.
       </para>
 
       <para>

@@ -3350,7 +3350,7 @@ For high time resolution observations, a time resolution of order 10 millisecond
     <!-- %section}{Chapter }{}{ch3}) -->
     <!-- is recommended for long or complicated schedules. -->
     <para>
-      <indexterm role="cp"><primary>coord</primary></indexterm>
+      <indexterm role="cp"><primary>observability plotter</primary></indexterm>
       A useful tool to determine the altitude, azimuth,
       and rising and setting times of astronomical objects, which may help
       with preparation of your schedule files, is the
