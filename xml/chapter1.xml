@@ -1744,7 +1744,7 @@ minimum cycle time.)
 	This is only a rough guide since the actual coverage needed depends on
 	details of the 2-dimensional brightness distribution, on the actual
 	distribution of baselines, and on the type of deconvolution.
-	Additionally, other techniques such as <link linkend="Mosaicing">mosaicing</link>
+	Additionally, other techniques such as <link linkend="Mosaicking">mosaicking</link>
 	and <link linkend="Multi-frequency-Synthesis">multi-frequency synthesis</link>,
 	can be extremely effective at improving (u,v)-coverage.
       </para>
@@ -2755,7 +2755,7 @@ described in detail in chapter 3.
 	these circumstances, if the sources are strong enough, short
 	observations will suffice (<xref linkend="table_image_structure"></xref>).  In scheduling
 	these, slew time becomes an important consideration; these may be
-	calculated (see <xref linkend="Mosaicing"></xref>), or
+	calculated (see <xref linkend="Mosaicking"></xref>), or
 	with the use of the CABB scheduler. A single short observation in an
 	E-W array will give a 1-dimensional (u,v)-coverage; two or more
 	short observations will give some 2-dimensional information.  In such
@@ -2923,7 +2923,7 @@ described in detail in chapter 3.
       </para>
     </section>
 
-    <section id="Mosaicing">
+    <section id="Mosaicking">
       <info>
 	<title>Mosaicking</title>
       </info>

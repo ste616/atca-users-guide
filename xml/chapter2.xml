@@ -1376,7 +1376,7 @@
 	</para>
 
 	<para>
-	  Since the apparent flxu density of the sources you are observing will depend
+	  Since the apparent flux density of the sources you are observing will depend
 	  on the system temperature measured by the paddle scan, it is very important to
 	  ensure that you do the paddle measurement <emphasis role="bold">before</emphasis>
 	  you observe the sources. It is however not really necessary to ensure the
@@ -1407,12 +1407,12 @@
 	pointing grid pattern to use for proper Nyquist sampling and
 	the time to be spent on each position to optimise tangential
 	uv coverage can be found in 
-	<ulink url="http://www.atnf.csiro.au/computing/software/miriad/userguide/node175.html">Chapter 21</ulink>
+	<ulink url="https://www.atnf.csiro.au/computing/software/miriad/userguide/node175.html">Chapter 21</ulink>
 	of the <application>Miriad</application> Users Guide.
       </para>
 
       <para>
-	For close-packed mosaicing (pointing centres every
+	For close-packed mosaicking (pointing centres every
 	half-beamwidth), drive times are determined by the
 	acceleration limit of 800&#x00B0;/min&#x00B2;. Half the drive
 	time is spent accelerating and half decelerating. For drive
@@ -1424,21 +1424,21 @@
 	source, approximately 2.2 seconds. Data taken during the
 	off-source period is blanked in the correlator using a
 	predicted drive time. As drive times can be a significant
-	overhead, care should be taken to not move the array more than
+	overhead, care should be taken to not slew the antennas more than
 	necessary.
       </para>
 
       <para>
-	Mosaicing is less useful if frequency switching is desired, as
+	Mosaicking is less useful if frequency switching is desired, as
 	no frequency changes can occur during the mosaic scan. Since
 	slew times are often much greater than the time it takes for
 	the correlator to switch frequencies, the overheads involved
 	in repeating a mosaic scan for each separate frequency might
-	quickly negate the normal benefits of mosaicing.
+	quickly negate the normal benefits of mosaicking.
       </para>
 
       <para>
-	Mosaicing mode can also be useful when a large
+	Mosaicking mode can also be useful when a large
 	number of nearby sources are to be observed, as observing
 	overheads are reduced. Other applications include holography
 	and source surveys using one dimensional cuts. 
@@ -1456,14 +1456,14 @@
 	low frequency, where the slew time between each pointing centre
 	is dominated by the maximum speed of the antenna rather than
 	the acceleration/deceleration rate, then you may get a significant
-	reduction in overhead by using <firstterm>on-the-fly mosaicing</firstterm>.
+	reduction in overhead by using <firstterm>on-the-fly mosaicking</firstterm>.
       </para>
 
       <para>
 	<indexterm role="cp"><primary>mosaic</primary><secondary>on-the-fly</secondary></indexterm>
-	<indexterm role="cp"><primary>observations</primary><secondary>on-the-fly mosaicing</secondary></indexterm>
-	On-the-fly (<acronym>OTF</acronym>) mosaicing has a couple of important differences to
-	traditional mosaicing. Most importantly, although the
+	<indexterm role="cp"><primary>observations</primary><secondary>on-the-fly mosaicking</secondary></indexterm>
+	On-the-fly (<acronym>OTF</acronym>) mosaicking has a couple of important differences to
+	traditional mosaicking. Most importantly, although the
 	mosaic pattern should be broadly the same &#x2013; the hexagonal pattern is still
 	the optimal sampling &#x2013; the order of observations should be such that the
 	telescope scans in a straight line for as long a distance as possible.
@@ -1484,20 +1484,20 @@
 	the next point. At the last point of a row or column the previous direction is
 	maintained to complete the scan. One extra point, marked with the name 
 	&#x201C;<literal>TURN</literal>&#x201D;, needs
-	to be specified at the start of the next row/column, to allow for the antennas
+	to be specified at the start of the next row/column, to allow the antennas
 	to change direction and scan at the correct speed again.
       </para>
 
       <para>
-	The primary advantage of <acronym>OTF</acronym> mosaicing over regular mosaicing is its speed in
+	The primary advantage of <acronym>OTF</acronym> mosaicking over regular mosaicking is its speed in
 	covering a large area of sky, making it possible to get good uv coverage
 	of a large field in a single observing run. It will not usually provide any better
-	sensitivity than a carefully crafted regular mosaic.
+	sensitivity than a carefully-crafted regular mosaic.
       </para>
 
       <para>
-	Although <acronym>OTF</acronym> mosaicing is most useful at low frequencies where the slew time
-	between mosaicing points are a significant fraction of the total integration
+	Although <acronym>OTF</acronym> mosaicking is most useful at low frequencies where the slew time
+	between mosaicking points is a significant fraction of the total integration
 	time, this mode could also be used for mm observations by using bin mode and
 	moving the antennas by e.g., 16 beams in a single integration with 32 time bins.
 	The <application>Miriad</application> program atlod will need some work to properly record the
@@ -1863,9 +1863,9 @@
 	<para>
 	  <indexterm role="cp"><primary>mosaic</primary><secondary>generating</secondary></indexterm>
 	  The <application>Miriad</application> tasks 
-	  <ulink url="http://www.atnf.csiro.au/computing/software/miriad/doc/mosgen.html">
+	  <ulink url="https://www.atnf.csiro.au/computing/software/miriad/doc/mosgen.html">
 	    <command>mosgen</command></ulink> and
-	    <ulink url="http://www.atnf.csiro.au/computing/software/miriad/doc/atmos.html">
+	    <ulink url="https://www.atnf.csiro.au/computing/software/miriad/doc/atmos.html">
 	      <command>atmos</command></ulink> may be useful when you are preparing your mosaic file.
 	</para>
 	
@@ -1905,7 +1905,7 @@
       <para>
 	<indexterm role="cp"><primary>observations</primary><secondary>spectral line</secondary></indexterm>
 	How large the mapping region is will determine whether you can image using
-	standard snapshot observations, or if you will need to use mosaicing. In either
+	standard snapshot observations, or if you will need to use mosaicking. In either
 	case, the imaging strategy is no different to that of a continuum observation,
 	but you may need more frequent calibration to ensure you get a sufficient signal
 	to noise ratio for your lines; <acronym>CABB</acronym>'s extra bandwidth doesn't
@@ -1927,7 +1927,7 @@
 	The <acronym>CABB</acronym> correlator always flags the centre continuum channel and each of the
 	quarter-band channels. If you select a <acronym>CABB</acronym> mode that provides 1 MHz continuum
 	channels, the flagged channels will be 513, 1025 and 1537. For <acronym>CABB</acronym> modes that
-	provide 64 MHz continuum channels, the flagged channels will be 17, 33 and 49.
+	provide 64 MHz continuum channels, the flagged channels will be 9, 17 and 25.
 	You should avoid making the central <acronym>CABB</acronym>
 	continuum frequency the same as the expected frequency of the line.
       </para>
@@ -1948,7 +1948,10 @@
 	again avoid using one of the continuum channels listed above, especially the quarter- and half-band
 	channels. The zoom bands derived from those channels will usually have a very large spike at the
 	centre of the zoom, and this spike may leak into adjacent channels since the zoom channels are
-	not perfectly square.
+	not perfectly square. However, since the zooms come from the interleaved channels, the zoom channel
+	number is derived from the continuum channel number by multiplying by 2 and subtracting 1. For example,
+	channel 17 in the 64 MHz continuum band is actually zoom channel
+	<inlineequation><textobject role="tex">17\times 2 - 1 = 33</textobject></inlineequation>.
       </para>
 
       <para>
@@ -1965,7 +1968,7 @@
 	the calibration itself is slightly different. Because accurate measurements of
 	a spectral line requires good bandpass characterisation, but in general you are dealing
 	with much smaller bandwidths than for continuum observations, you will need to observe
-	much brighter calibrators, observe the calibrators for longer, or observe the calibrators
+	calibrators with higher flux densities, observe the calibrators for longer, or observe the calibrators
 	more often in order to get a sufficient signal-to-noise ratio.
       </para>
     </section>
@@ -1983,11 +1986,11 @@
 	2048 MHz <acronym>IF</acronym>s can be observed simultaneously. All of the additional
 	zoom bands must lie within these <acronym>IF</acronym>s, so they do not count as
 	&#x201C;extra&#x201D; bandwidth. You can only specify the central continuum
-	frequencies to the nearest MHz.
+	frequencies to MHz precision.
       </para>
 
       <para>
-	If you want to use the entire array at the same frequencies, then there are
+	If you want to use the entire array for a single band, then there are
 	band-specific restrictions on the frequencies that can be observed.
 	<itemizedlist>
 	  <listitem>
@@ -2046,7 +2049,7 @@
 
       <para>
 	<indexterm role="cp"><primary>observations</primary><secondary>split band</secondary></indexterm>
-	If you don't need all the baselines at each frequency, it is possible to split the array up
+	If you don't need all the baselines in the same band, it is possible to split the array up
 	so you can observe in two bands simultaneously. For each of the two <acronym>CABB</acronym>
 	continuum <acronym>IF</acronym>s you can select a set of antennas to use with the
 	<command>caobs</command> command &#x201C;<literal>set band1_antennas</literal>&#x201D;.
@@ -2151,7 +2154,7 @@
 	<indexterm role="cp"><primary>subreflector</primary><secondary>focus</secondary></indexterm>
 	<indexterm role="cp"><primary>overheads</primary><secondary>focusing</secondary></indexterm>
 	When you change bands you may also have to refocus the antenna by moving the subreflector.
-	When going to or from the 4cm band, antennas CA03 and CA05 need to be refocused, and this
+	When going to or from the 4cm band, all antennas need to be refocused, and this
 	takes approximately 90 seconds. When going to or from the 3mm band, antenna CA01 needs to
 	be refocused, and will take approximately 40 seconds.
       </para>
@@ -2181,7 +2184,7 @@
 	The scheduler will not automatically calculate where the planet will be during
 	the scheduling process, unless you enter the appropriate date and LST or UTC and then
 	click on the &#x201C;<literal>Listing</literal>&#x201D; tab. At this point, the
-	scheduler will determine the planet's position and fill the &#x201C;RA&#x201D; and
+	scheduler will determine the planet's position and fill the &#x201C;<literal>RA</literal>&#x201D; and
 	&#x201C;<literal>Dec</literal>&#x201D; fields. Alternatively, you could use 
 	the <application>Miriad</application> task <command>planets</command>.
 	<indexterm role="cp"><primary>Miriad</primary><secondary>tasks</secondary><tertiary>planets</tertiary></indexterm>
@@ -2206,20 +2209,16 @@
       <para>
 	<indexterm role="cp"><primary>observations</primary><secondary>Solar System</secondary></indexterm>
 	Solar system objects differ from most astronomical sources in that the
-	proper motions are large enough that the object position changes in the
-	course of an observation. When observing such objects, the schedule file
-	should be created in absolute time mode to ensure that <command>caobs</command>
-	correctly tracks the object. <command>caobs</command> has the ability to phase track
-	an object with a non-sidereal rate. Note, however, the pointing centre
-	used during a scan does not track the source (the pointing centre used
-	is the mid-position of the object during the scan). Thus the scans must
-	be short enough that there is not significant motion of the source within
-	the primary beam during a scan (the scheduler does not check this).
+	proper motions are large enough that the object position may change in the
+	course of an observation. <command>caobs</command> has the ability to phase track
+	an object with a non-sidereal rate, and command the antennas to correctly track it as well.
+	If the object moves across the sky too quickly however, the antenna speed limits may
+	prevent you from tracking the object.
       </para>
 
       <para>
 	For minor bodies, <command>caobs</command> cannot compute a position, so the correct
-	position must be provided by the user. In absolute time mode, the scheduler
+	position must be provided by the user. The scheduler
 	treats source names beginning with the @ symbol (eg. a source name of
 	<literal>@hbopp</literal>) as pointing to an external ephemeris file (eg. a file
 	<literal>$ATCA_EPHEM:hbopp.eph</literal>).
@@ -2228,11 +2227,11 @@
       <para>
 	Ephemerides for minor solar system bodies can be computed before scheduling
 	using
-	<ulink url="http://ssd.jpl.nasa.gov/?horizons">JPL's Horizons on-line system</ulink>.
+	<ulink url="https://ssd.jpl.nasa.gov/?horizons">JPL's Horizons on-line system</ulink>.
 	<indexterm role="cp"><primary>ephemerides</primary><secondary>Solar system</secondary></indexterm>
 	Only the <command>telnet</command> (terminal-based) access method is described here, but there
 	is also a web-interface method available from the
-	<ulink url="http://ssd.jpl.nasa.gov/?horizons">web page</ulink>
+	<ulink url="https://ssd.jpl.nasa.gov/horizons/app.html#/">web page</ulink>
 	that is self-explanatory.
       </para>
 
@@ -2263,7 +2262,8 @@
 	  <para>
 	    Give the start time of interest, in UTC, in the format
 	    suggested by the prompt. At the next prompt give the end time, and then the
-	    time increment; typically 1 hour is more than adequate, and the scheduler
+	    time increment; typically 1 minute (&#x201C;<literal>1m</literal>&#x201D;)
+	    will give you the best chance to accurately track the object. The scheduler
 	    uses simple linear interpolation of the ephemeris values. The ephemeris
 	    supplied to the scheduler must start at least two time increments before
 	    the scheduled start time, and must extend beyond its end time.
@@ -2343,7 +2343,7 @@
 	passes up the centre of the structure to the receiving and cryogenic
 	equipment in the vertex room.
 	<indexterm role="cp"><primary>vertex room</primary></indexterm>
-	There is a limit to how far these cables can wrap around in either direction,
+	There is a limit to how far these cables can wrap around in either direction
 	(similar to the head of an owl).
       </para>
       
@@ -2444,7 +2444,7 @@
 	these integration times
 	include drive times, so the specified time must be somewhat longer
 	than the amount of integration on source required. This is
-	particularly important for secondary calibrators, when the drive time
+	particularly important for gain calibrators, when the drive time
 	(up to a minute or so) may be comparable to the integration time
 	(one to three minutes). Alternatively, the <literal>ScanType</literal> field can
 	be set to <literal>Dwell</literal> to ensure a source or calibrator
@@ -2648,8 +2648,8 @@
 	    <para>
 	      This presents a list of
 	      nearby calibrators to the right of the scan details, sorted by distance
-	      to the source. The closest strong (&gt; 1 Jy) source to the program source is
-	      shown to be 0454-234, at a distance of 6.02&#x00B0;.
+	      to the source. The closest source to the program source with a moderate flux density
+	      (&gt; 1 Jy) is shown to be 0454-234, at a distance of 6.02&#x00B0;.
 	    </para>
 	  </listitem>
 	</varlistentry>
@@ -2661,7 +2661,7 @@
 	    <para>
 	      The details for this source are displayed from the calibrator database
 	      below the source list. This source is a suitable gain calibrator
-	      as it is strong, has a defect less than 0.1% and a closure phase less than
+	      as it has a decent flux density, has a defect less than 0.1% and a closure phase less than
 	      0.3%.
 	    </para>
 	  </listitem>
@@ -2683,6 +2683,9 @@
 	    <emphasis role="bold">Select source 1, and change the <literal>ScanLength</literal>
 	    field to 00:05:00.</emphasis>
 	  </term>
+	  <listitem></listitem>
+	</varlistentry>
+	<varlistentry>
 	  <term>
 	    <emphasis role="bold">To copy this source to the end of the schedule, click on the 
 	    <literal>Edit</literal> menu and select <literal>Copy</literal>, then select the 
@@ -3174,7 +3177,7 @@
 	  This works out to be a data rate of 0.300 MiB per second, or roughly 1.055 GiB per hour.
 	  <emphasis role="bold">Note:</emphasis> we use the binary prefixes MiB and GiB (the mebibyte and
 	  gibibyte) for data sizes. See <ulink url="https://en.wikipedia.org/wiki/Gibibyte">Wikipedia</ulink>
-	  for a better explanation.
+	  for a good explanation.
 	</para>
 
 	<para>
@@ -3308,7 +3311,7 @@
 	<para>
 	  <indexterm role="cp"><primary>data</primary><secondary>rate</secondary>
 	  <tertiary>pulsar binning</tertiary></indexterm>
-	  For an observation using <acronym>CABB</acronym>s pulsar-binning mode, we have:
+	  For an observation using <acronym>CABB</acronym>'s pulsar-binning mode, we have:
 	  <itemizedlist>
 	    <listitem>
 	      <para>
@@ -3614,16 +3617,16 @@
 	Permission to do your observations remotely is given at the discretion of science operations staff,
 	and you should not presume that permission will be forthcoming. Should permission be refused and
 	you are not able to come to the observatory, you may need to find a local collaborator to do the
-	observations for you. Your observing &#x201C;friend&#x201D;
+	observations for you. <!-- Your observing &#x201C;friend&#x201D;
 	<indexterm role="cp"><primary>friend</primary></indexterm>
 	<indexterm role="cp"><primary>observations</primary><secondary>friend</secondary></indexterm>
-	will not generally be available to do your observations. The duty astronomer is also
-	under no obligation to observe for your project if you are unable to.
+	will not generally be available to do your observations. -->
+	The duty astronomer is under no obligation to observe for your project if you are unable to.
       </para>
 
       <para>
 	To apply to make an observation remotely, use the &#x201C;Booking&#x201D; tab on the
-	<ulink url="https://ca-ops.atnf.csiro.au/PORTAL/"><acronym>ATCA</acronym> observing PORTAL</ulink>,
+	<ulink url="https://ca-ops.atnf.csiro.au/jPORTAL/"><acronym>ATCA</acronym> observing PORTAL</ulink>,
 	which will look something like <xref linkend="portal-booking-tab"></xref>.
 	First, fill out the &#x201C;Booking details&#x201D; form (which is revealed by clicking on that
 	button), and hit the &#x201C;Book&#x201D; button in the &#x201C;Status&#x201D; column.
@@ -3634,7 +3637,7 @@
 	  <title>The &#x201C;Booking&#x201D; tab on the <acronym>ATCA</acronym> observing PORTAL.</title>
 	  <mediaobject>
 	    <imageobject>
-	      <imagedata fileref="figures/portal-booking-tab.jpg" format="JPG">
+	      <imagedata fileref="figures/new-portal-booking-tab.png" format="PNG">
 	      </imagedata>
 	    </imageobject>
 	  </mediaobject>
