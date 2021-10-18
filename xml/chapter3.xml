@@ -59,9 +59,9 @@
   <para>
     In general, observing takes place in the <acronym>SOC</acronym> in Marsfield.
     It is possible to remote observe from anywhere with adequate network and
-    phone connectivity: see the
+    phone connectivity.<!--: see the
     <ulink url="http://www.narrabri.atnf.csiro.au/observing/remote.html">
-      remote observing web page</ulink> for details on remote observing.
+      remote observing web page</ulink> for details on remote observing.-->
     <indexterm role="cp"><primary>observations</primary><secondary>remote</secondary></indexterm>
   </para>
 
@@ -135,7 +135,7 @@
     </para>
     <para>
       Before the start of observations, observers need to log into the 
-      <ulink url="https://ca-ops.atnf.csiro.au/PORTAL/login.php?return=/PORTAL/index.php"> ATCA Portal</ulink>.
+      <ulink url="https://ca-ops.atnf.csiro.au/jPORTAL/login.jsp"> ATCA Portal</ulink>.
     </para>
     <para>
       <indexterm role="cp"><primary>observations</primary><secondary>changeover</secondary></indexterm>
@@ -144,8 +144,9 @@
     <itemizedlist>
       <listitem>
         <para>
-          The xbones session runs <command>caobs</command>, <command>vis</command>, <command>assistance</command> 
-	  and <command>winds</command>.
+          The xbones session runs <command>caobs</command>, <command>vis</command> and
+	  <command>assistance</command>.
+	  <!-- and <command>winds</command>.-->
         </para>
       </listitem>
 
@@ -452,7 +453,7 @@
         <indexterm role="cp"><primary>attenuators</primary><secondary>levels</secondary><tertiary>setting</tertiary></indexterm>
         The rms digitiser quantisation levels (as displayed in the
         sampler tab of <command>cacor</command>; see <xref linkend="samplerlevels"></xref>) should be close to 20
-	(Range: Approximately 18-22).
+	(Range: Approximately 15-25).
         To set the levels, attenuation can be added or removed.
         The values in the <literal>Atten</literal> section of the window show the settings of the <command>cacor</command>
         attenuators. They have a range of 0-15 dB. <indexterm role="cp"><primary>observations</primary><secondary>samplers</secondary></indexterm>
@@ -711,7 +712,7 @@
 	<indexterm role="cp"><primary>observations</primary><secondary>tvchannels</secondary></indexterm>
         <indexterm role="cp"><primary>tvchannels</primary></indexterm>
         <indexterm role="cp"><primary>channels</primary></indexterm>
-        <command>cacor</command> generates an average visibility (either the average or the median across
+        <command>cacor</command> generates an average visibility (either the mean or the median across
         the spectrum) that is used for T<subscript>sys</subscript>
         and array calibration. In general, the median is much more stable and allows for a more reliable calibration.
         Otherwise, care needs to be taken to ensure that the range of <command>cacor</command> channels used for
@@ -948,14 +949,14 @@
         <indexterm role="cp"><primary>delavg</primary></indexterm>
         To calculate the delay of an individual <acronym>IF</acronym>, <command>cacor</command> 
         checks the phase in each channel in the <literal>tvchan</literal> range
-        (just defined) and calculates a linear fit of 
-        these phase measurements as a function of frequency; the slope of this line is the delay.
+        (just defined) and calculates an average linear slope from
+        the phase measurements as a function of frequency; this slope is the delay.
       </para>
 
       <para>
         If the noise on the phase is high (due to a faint source or poor weather, for example)
         or there is some strong unavoidable RFI in the <literal>tvchan</literal>
-        range, then the least-squares line of best fit may not accurately represent the real
+        range, then the average slope may not accurately represent the real
         slope due to the delay. 
       </para>
 
@@ -1271,7 +1272,7 @@
         <para>
           <indexterm role="cp"><primary>calibration</primary><secondary>delays</secondary></indexterm>
           Delay offsets need to be determined and corrected at the start of the observation.
-          Failure to correct for delay offsets will result in decorrelation, and loss of data.
+          Failure to correct for delay offsets may result in decorrelation, and loss of data.
         </para>
 
         <para>
@@ -1281,11 +1282,13 @@
         </para>
 
         <para>
-          To calibrate the delays, track a strong unresolved source (e.g. <literal>PKS1934-638</literal> or 
-          <literal>PKS0823-500</literal> for cm
+          To calibrate the delays, track an unresolved source with large flux density
+	  (e.g. <literal>PKS1934-638</literal> or <literal>PKS0823-500</literal> for cm
           observations; for mm observations use <literal>PKS1253-055</literal>, 
           <literal>PKS1921-293</literal>, <literal>PKS2223-052</literal> or
-          <literal>PKS0537-441</literal>). <emphasis role="bold"><literal>PKS1934-638</literal> and <literal>PKS0823-500</literal> are not strong enough to calibrate at mm frequencies.</emphasis>
+          <literal>PKS0537-441</literal>).
+	  <emphasis role="bold"><literal>PKS1934-638</literal> and <literal>PKS0823-500</literal>
+	  do not have enough flux density to calibrate at mm frequencies.</emphasis>
         </para>
 
         <para>
@@ -1335,7 +1338,7 @@
               <row>
                 <entry></entry>
                 <entry>caobs <literal>&gt; corr dcal </literal></entry>
-                <entry><literal>dcal</literal> calculates and applies the required correction></entry>
+                <entry><literal>dcal</literal> calculates and applies the required correction.</entry>
               </row>
             </tbody>
           </tgroup>
@@ -1662,7 +1665,7 @@
 
       <para>
         <emphasis role="bold">Note:</emphasis> Pointing using the selfcal algorithm (default mode) requires 4 
-          or more antennas to calculate amplitudes. If using 3 or fewer antennas, holography mode is needed. 
+          or more antennas to calculate gains. If using 3 or fewer antennas, holography mode is needed. 
           To enable holography, set the <literal>Integration Cycles</literal> to the negative (e.g. -2) value.
         <informaltable frame="none" rowsep="0" colsep="0" tabstyle="command-table">
           <tgroup cols="3">
@@ -1744,7 +1747,7 @@
 
       <para>
         For more information on offset pointing, see the
-          <ulink url="http://www.narrabri.atnf.csiro.au/observing/pointing">Reference Pointing Guide</ulink>.
+          <ulink url="https://www.narrabri.atnf.csiro.au/observing/pointing">Reference Pointing Guide</ulink>.
       </para>
     </section>
 
@@ -1840,7 +1843,7 @@
       </para>
 
       <para>
-        The <literal>T<subscript>sys</subscript></literal>s values should be checked in the <command>cacor</command> GUI. 
+        The <literal>T<subscript>sys</subscript></literal> values should be checked in the <command>cacor</command> GUI. 
         Any outlier readings should be checked.
       </para>
     </section>
@@ -1894,7 +1897,7 @@
     </info>
     <para>
       Once setup is complete, science observations can begin. Observations need to include
-      calibration data, including data for flux, bandpass, polarisation and gain calibration.
+      calibration data, including data for flux density, bandpass, polarisation and gain calibration.
     </para>
 
     <section id="ArrayCalibration">
@@ -1903,7 +1906,7 @@
       </info>
       <para>
 	It is important that sufficient calibration data is taken to characterise
-	the array. This means taking flux and bandpass calibration data for all
+	the array. This means taking flux density and bandpass calibration data for all
 	observations, and leakage calibration data for polarisation observations.
 	<indexterm role="cp"><primary>observations</primary><secondary>calibration</secondary></indexterm>
       </para>
@@ -1916,12 +1919,12 @@
       </para>
 
       <para>
-	For cm and 15mm observations, <literal>PKS1934-638</literal> is the
-	appropriate flux calibrator and can also usually be used as a bandpass calibrator (although spectral line observations at 
-	15mm will ordinarily require a stronger source).
-	For mm observations, a planet is needed for flux calibration (<literal>PKS1934-638</literal> can also be used
-	in the 7mm band), and a strong
-	source (e.g. <literal>PKS1921-293</literal> or <literal>PKS1253-055</literal>) is required to calibrate the bandpass.
+	For cm, 15mm and 7mm observations, <literal>PKS1934-638</literal> is the
+	appropriate flux calibrator and can also usually be used as a bandpass
+	calibrator (although spectral line observations at 15mm or 7mm will ordinarily require a stronger source).
+	For 3mm observations, a planet is needed for flux calibration, and a
+	source with large flux density (e.g. <literal>PKS1921-293</literal> or <literal>PKS1253-055</literal>)
+	is required to calibrate the bandpass.
       </para>
 
       <para>
@@ -1994,8 +1997,8 @@
       <para>
           <indexterm role="cp"><primary>storm stows</primary></indexterm>
           In addition to high winds, electrical storms present a real danger to the ATCA.  Storms and lightning strikes within a 56 km radius of the array are closely monitored.  Threat levels (from 0 - no threat, to 4 - high threat) are assigned based on the number of approaching lightning strikes and those within 9 km of the array.  When the threat level reaches 3, the back up generators are turned on.  At a threat level of 4, xbones stows the array.
-          In fact, if PMon has issued the stow you will have
-  to wait 15 minutes until after the stow condition is no longer present before the antenna will be allowed to drive again.
+          <!-- In fact, if PMon has issued the stow you will have
+  to wait 15 minutes until after the stow condition is no longer present before the antenna will be allowed to drive again. -->
       </para>
       
     </section>
@@ -2006,7 +2009,10 @@
       </info>
         <para>
             <indexterm role="cp"><primary>heat stows</primary></indexterm>
-            On very hot days (above 40&#x00B0;C), especially with a strong wind, the cryogenic compressors can become overwhelmed.  In order to protect the receivers, if the ambient temperature in the internal system of the antennas reaches 50&#x00B0;C, xbones stows the array and turns the antennas to shadow the compressors from the wind.
+            On very hot days (above 40&#x00B0;C), especially with a strong wind, the cryogenic compressors
+	    can become overwhelmed.  In order to protect the receivers, if the ambient temperature in the
+	    internal system of the scroll compressors on the antennas (mm systems) reaches 91&#x00B0;C,
+	    xbones stows the array and turns the antennas to shadow the compressors from the wind.
         </para>
     </section>
         
@@ -2026,7 +2032,10 @@
       <info>
 	<title>Audible Alarms</title>
       </info>
-
+      <para>
+	If observing in the <acronym>ATCA</acronym> control building, you may hear alarms when certain
+	problems occur. If you are observing remotely, you may ignore this section.
+      </para>
       <para>
 	<informalfigure id="AlarmFlowChart">
           <mediaobject>
@@ -2056,16 +2065,16 @@
 	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no fringes</secondary></indexterm> 
 	<emphasis role="bold">Antenna(s) not 'on source'</emphasis> 
 	<indexterm role="cp"><primary>troubleshooting</primary><secondary>antennas not 'on source'</secondary></indexterm> 
-	and <emphasis role="bold">VNC Problems</emphasis>
-	<indexterm role="cp"><primary>troubleshooting</primary><secondary>VNC problems</secondary></indexterm>, respectively.
+	and <emphasis role="bold">VNC Problems</emphasis>.
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>VNC problems</secondary></indexterm>
       </para>
 
   
       <para>
 	If you are unable to fix or diagnose your problem after following the flowchart you should call your Duty Astronomer. 
 	Sometimes you may be able to diagnose your problem but not be qualified to execute the required fix and in this case 
-	you should also call your Duty Astronomer. This will be the case if you need to reboot a CABB block
-	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation (or funny correlation)</secondary><tertiary>rebooting a CABB block</tertiary></indexterm>, for example.
+	you should also call your Duty Astronomer. This may be the case if you need to reboot a CABB block,
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation (or funny correlation)</secondary><tertiary>rebooting a CABB block</tertiary></indexterm> for example.
 	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation (or funny correlation)</secondary><tertiary>high tsys</tertiary></indexterm>
 	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation (or funny correlation)</secondary><tertiary>rtminit</tertiary></indexterm>
 	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation (or funny correlation)</secondary><tertiary>diginit</tertiary></indexterm>
@@ -2078,15 +2087,28 @@
 	<indexterm role="cp"><primary>troubleshooting</primary><secondary>antennas not 'on source'</secondary><tertiary>translator</tertiary></indexterm>
       </para>
 
-	   <para>
       <informalfigure id="NoFringesFlowChart">
-        <mediaobject>
+        <mediaobject role="html">
           <imageobject>
-          <imagedata fileref="figures/ATUG_noCorrelation_flowChart.png" format="PNG"></imagedata>
-        </imageobject>
-      </mediaobject>
-    </informalfigure>
-     </para>
+            <imagedata fileref="figures/ATUG_noCorrelation_flowChart.png" format="PNG"></imagedata>
+          </imageobject>
+	</mediaobject>
+        <mediaobject role="fop">
+          <imageobject>
+            <imagedata fileref="figures/ATUG_noCorrelation_flowChart_page1.png" format="PNG"></imagedata>
+          </imageobject>
+	</mediaobject>
+        <mediaobject role="fop">
+          <imageobject>
+            <imagedata fileref="figures/ATUG_noCorrelation_flowChart_page2.png" format="PNG"></imagedata>
+          </imageobject>
+	</mediaobject>
+        <mediaobject role="fop">
+          <imageobject>
+            <imagedata fileref="figures/ATUG_noCorrelation_flowChart_page3.png" format="PNG"></imagedata>
+          </imageobject>
+	</mediaobject>
+      </informalfigure>
    <!--    <para>
         <informalfigure id="NoFringesFlowChart1">
           <mediaobject>

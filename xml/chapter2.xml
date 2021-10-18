@@ -4,6 +4,17 @@
     <date>$Date: 2017-06-01 17:33:47 +1000 (Thu, 01 Jun 2017) $</date>
     <revhistory>
       <revision>
+	<revnumber>1.6</revnumber>
+	<date>2021 October 15</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Improved some sloppy language. Fixed links where necessary. Updated recommended
+	frequency table. Fixed incorrect channel numbers for 64 MHz mode. Fixed 4cm focus statement.
+	Removed advice to observe solar system objects with UTC schedules. Stop linking to obsolete
+	remote observing pages and the current issues page. Removed references to friends. Updated
+	information about how rapid response mode works now. Changed the portal booking picture and
+	updated to reflect how it now works.</revremark>
+      </revision>
+      <revision>
 	<revnumber>1.5</revnumber>
 	<date>2017 June 1</date>
 	<authorinitials>jbs</authorinitials>
@@ -3628,8 +3639,10 @@
 	To apply to make an observation remotely, use the &#x201C;Booking&#x201D; tab on the
 	<ulink url="https://ca-ops.atnf.csiro.au/jPORTAL/"><acronym>ATCA</acronym> observing PORTAL</ulink>,
 	which will look something like <xref linkend="portal-booking-tab"></xref>.
-	First, fill out the &#x201C;Booking details&#x201D; form (which is revealed by clicking on that
-	button), and hit the &#x201C;Book&#x201D; button in the &#x201C;Status&#x201D; column.
+	<!-- First, fill out the &#x201C;Booking details&#x201D; form (which is revealed by clicking on that
+	     button), and hit the &#x201C;Book&#x201D; button in the &#x201C;Status&#x201D; column. -->
+	To book for a slot, click on the start time and then drag out a box to the end time of the
+	booking. A booking box will pop up, and you can adjust the start and stop times if you need to.
       </para>
 
       <para>
@@ -3647,10 +3660,10 @@
       <para>
 	  Remote observers must
 	  have their own <acronym>ATNF</acronym> UNIX account and remember their password for this account.
-	  The <acronym>ATCA</acronym> website has pages describing
-	  <ulink url="http://www.narrabri.atnf.csiro.au/observing/remote_conditions.html">current remote observing conditions</ulink>
+	  <!-- The <acronym>ATCA</acronym> website has pages describing
+	  <ulink url="https://www.narrabri.atnf.csiro.au/observing/remote_conditions.html">current remote observing conditions</ulink>
 	  and
-	  <ulink url="http://www.narrabri.atnf.csiro.au/observing/rem_obs.html">instructions for observing remotely</ulink>.
+	  <ulink url="https://www.narrabri.atnf.csiro.au/observing/rem_obs.html">instructions for observing remotely</ulink>. -->
       </para>
       
       <para>
@@ -3717,7 +3730,7 @@
     <para>
       <indexterm role="cp"><primary>rapid response</primary></indexterm>
       <indexterm role="cp"><primary>NAPA</primary><secondary>rapid response</secondary><see>rapid response</see></indexterm>
-      For the 2017APR semester, a rapid response mode was introduced. This is designed to allow the
+      In the 2017APR semester, a rapid response mode was introduced. This is designed to allow the
       <acronym>ATCA</acronym> to respond almost instantly to a request for a <acronym>NAPA</acronym> over-ride.
       This section describes how to use this mode.
     </para>
@@ -3761,7 +3774,7 @@
 	    <para>
 	      At some point during the semester, you decide to trigger your <acronym>NAPA</acronym> proposal.
 	      You (or more likely your software) creates a <acronym>CABB</acronym> schedule that
-	      observes both the target of interest and a nearby phase calibrator.
+	      observes both the target of interest and a nearby gain calibrator.
 	    </para>
 	  </listitem>
 	  <listitem>
@@ -3777,7 +3790,7 @@
 		</listitem>
 		<listitem>
 		  <para>
-		    The minimum amount of time that you have requested is still available to be
+		    It then checks that the minimum amount of time that you have requested is still available to be
 		    scheduled for your project, considering the amount of time you requested from
 		    the TAC, and the amount of time you have used before this request. If you do
 		    not have sufficient time, the request is rejected.
@@ -3785,26 +3798,9 @@
 		</listitem>
 		<listitem>
 		  <para>
-		    A start time is determined where
-		    <itemizedlist>
-		      <listitem>
-			<para>
-			  the source is above the <acronym>ATCA</acronym> lower elevation limit,
-			</para>
-		      </listitem>
-		      <listitem>
-			<para>
-			  the project that must be over-ridden has a lower grade than the
-			  <acronym>NAPA</acronym>,
-			</para>
-		      </listitem>
-		      <listitem>
-			<para>
-			  and that the schedule can be executed for at least the minimum required
-			  amount of time while still meeting the above conditions.
-			</para>
-		      </listitem>
-		    </itemizedlist>
+		    A start time is determined where the source is above the <acronym>ATCA</acronym>
+		    lower elevation limit, and that the schedule can be executed for at least the minimum required
+		    amount of time while still being above the horizon.
 		    The search for this suitable start time is limited to either 100 hours after the
 		    request submission, or to a user-specified duration, if it is less than 100 hours.
 		    The 100 hour limit is designed to allow for an automated response even for long
@@ -3845,19 +3841,13 @@
 		</listitem>
 		<listitem>
 		  <para>
-		    The project currently being observed has a grade that is lower than the grade
-		    of the <acronym>NAPA</acronym>.
-		  </para>
-		</listitem>
-		<listitem>
-		  <para>
 		    The array is not stowed due to weather conditions.
 		  </para>
 		</listitem>
 		<listitem>
 		  <para>
-		    <acronym>CABB</acronym> is configured in either 1 MHz continuum mode, or
-		    1 MHz zooms mode.
+		    <acronym>CABB</acronym> is configured in either 1 MHz continuum mode,
+		    1 MHz zooms mode, or 64 MHz zooms mode.
 		  </para>
 		</listitem>
 	      </orderedlist>
@@ -3877,7 +3867,7 @@
 		<listitem>
 		  <para>
 		    The schedule is shortened if necessary, to fit in the time available at this start
-		    time. The amount of time scheduled will always at least the minimum required.
+		    time. The amount of time scheduled will always be at least the minimum required.
 		  </para>
 		</listitem>
 		<listitem>
@@ -3939,6 +3929,15 @@
 		    </itemizedlist>
 		  </para>
 		</listitem>
+		<listitem>
+		  <para>
+		    If CABB is currently configured in 64 MHz zooms mode, several scans are added
+		    at the beginning of the schedule to do an automatic delay calibration for the
+		    user-specified frequencies. A description of how this is done can be found
+		    <ulink url="https://www.narrabri.atnf.csiro.au/observing/automatic_calibration.html">
+		      at this link.</ulink>
+		  </para>
+		</listitem>
 	      </itemizedlist>
 	    </para>
 	  </listitem>
@@ -3972,9 +3971,12 @@
 	Blocks of time scheduled for reconfigures, maintenance and VLBI cannot be over-ridden.
       </para>
       <para>
-	In the 2017APR semester, it is not possible to over-ride time scheduled for legacy projects,
-	but this will change in the 2017OCT semester, so that any over-ride project that has a score
-	higher than or equal to the lowest score given to a scheduled project may over-ride successfully.
+	Any over-ride project that has a score higher than or equal to the lowest score given to a
+	scheduled project may over-ride any other scheduled project. The theory for this is that if
+	we knew at the beginning of the semester when a NAPA would trigger, and that NAPA had a score
+	about the lowest score that was actually scheduled, we would have attempted to schedule it
+	at the appropriate time and scheduled the displaced project at another time, regardless of the
+	score of the displaced project.
       </para>
     </section>
     <section>
@@ -3991,7 +3993,7 @@
 	Because many of the existing libraries that astronomers use to deal with transient
 	event streams are written in Python, the choice was made to focus first on providing
 	a Python library for schedule manipulation. This library is targetted toward Python
-	2.7.
+	2.7, but will work with 3.8.
       </para>
       <para>
 	Documentation on how to use the library in your own code is part of the GitHub repository.
@@ -4220,7 +4222,7 @@
 	  <listitem>
 	    <para>
 	      The hard end time of the available slot is determined. This may be because the source has
-	      set, or a project has started with a score higher than that of your project. All scans that
+	      set, or some sort of maintenance or reconfigure is scheduled. All scans that
 	      end after that hard end time are immediately deleted from the schedule, except if it is the
 	      flux density calibrator scan that the service added.
 	    </para>
@@ -4319,11 +4321,6 @@
       </listitem>
       <listitem>
 	<para>
-	  Contacted your observing friend if assistance is required to prepare your schedules.
-	</para>
-      </listitem>
-      <listitem>
-	<para>
 	  Prepared a schedule file using the <acronym>CABB</acronym> web scheduler for:
 	</para>
 	<itemizedlist>
@@ -4399,9 +4396,7 @@
       </listitem>
       <listitem>
 	<para>
-	  Checked
-	  <ulink url="http://www.narrabri.atnf.csiro.au/observing/CurrentIssues.html">current issues page</ulink>
-	  for issues that may cause problems with the observations.
+	  Checked the Portal for issues that may cause problems with the observations.
 	</para>
       </listitem>
       <listitem>

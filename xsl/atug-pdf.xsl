@@ -358,4 +358,13 @@
   </l:i18n>
   <!-- END Cross reference style. -->
 
+  <!-- Don't include mediaobjects that are only supposed to go in the HTML. -->
+  <xsl:template match="mediaobject[@role='html']">
+    <fo:block>
+      <!-- Don't show this image -->
+    </fo:block>
+  </xsl:template>
+  <!-- END PDF mediaobjects exclusion. -->
+
+  
 </xsl:stylesheet>

@@ -11,4 +11,11 @@
   </xsl:template>
   <!-- END SSI includes. -->
 
+  <!-- Don't include mediaobjects that are only supposed to go in the PDF. -->
+  <xsl:template match="mediaobject[@role='fop']">
+    <xsl:text>
+      <!-- Don't show this image -->
+    </xsl:text>
+  </xsl:template>
+  <!-- END PDF mediaobjects exclusion. -->
 </xsl:stylesheet>
