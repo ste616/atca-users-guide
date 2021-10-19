@@ -4,6 +4,15 @@
     <date>$Date: 2015-10-22 15:02:00 +1100 (Thu, 22 Oct 2015) $</date>
     <revhistory>
       <revision>
+	<revnumber>1.2</revnumber>
+	<date>2021 Oct 19</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Remove screen line for chat. Remove reference to caobs having a bell, which
+	was removed after it was discovered it caused major problems with caobs in the latest Linux.
+	Remove incorrect advice about the CA06 subreflector. Update advice on the use of the init
+	command. Add a warning about starting a UTC schedule early.</revremark>
+      </revision>
+      <revision>
 	<revnumber>1.1</revnumber>
 	<date>2014 Apr 1</date>
 	<authorinitials>jbs</authorinitials>
@@ -58,7 +67,6 @@
 	<programlisting>
 There are screens on:
         16310.catag	(06/03/14 15:26:40)	(Attached)
-        5202.chat	(05/03/14 15:11:17)	(Attached)
         5001.caobs	(05/03/14 15:07:17)	(Attached)
 3 Sockets in /var/run/screen/S-atcaobs.
 	</programlisting>
@@ -409,17 +417,6 @@ There are screens on:
 	    </para>
 	    <variablelist>
 	      <varlistentry>
-		<term>
-		  <literal>disable|enable bell</literal>
-		</term>
-		<listitem>
-		  <para>
-		    Turn off the <command>caobs</command> terminal alarm. The terminal alarm is
-		    sounded when <command>caobs</command> detects an error condition that you should know about.
-		  </para>
-		</listitem>
-	      </varlistentry>
-	      <varlistentry>
 		<term><literal>disable|enable ca0<replaceable>#</replaceable>|all</literal></term>
 		<listitem>
 		  <para>
@@ -565,9 +562,6 @@ There are screens on:
 	    <para>
 	      <emphasis role="bold">Note:</emphasis> Only attached and enabled antennas can be focussed.
 	    </para>
-	    <para>
-	      <emphasis role="bold">Note:</emphasis> The subreflector on CA06 cannot be moved.
-	    </para>
 	  </listitem>
 	</varlistentry>
 	<varlistentry>
@@ -575,12 +569,11 @@ There are screens on:
 	  <listitem>
 	    <para>
 	      Initialise <emphasis role="bold">all</emphasis> <command>caobs</command> parameters to default values,
-	      and send initialisation commands to the antennas. This
-	      is equivalent to exiting <command>caobs</command> and restarting, only faster.
+	      and send initialisation commands to the antennas.
 	    </para>
 	    <para>
 	      <emphasis role="bold">
-	      Treat this command with caution</emphasis>. 
+	      Treat this command with caution. It is very rarely useful outside of maintenance activities.</emphasis>
 	    </para>
 	    <para>
 	      <emphasis role="bold">Related commands:</emphasis> <literal>reset</literal>
@@ -1404,6 +1397,14 @@ There are screens on:
 		    direct it to produce data, and the antennas will not move. Until the UTC of the
 		    first scan, you may see an error message in <command>assistance</command> stating
 		    that there is no recent data from the correlator.
+		  </para>
+		  <para>
+		    <emphasis role="bold">WARNING:</emphasis> In this case, the correlator will NOT start until the
+		    start time of the scan you have started. Even if you stop the scan in <command>caobs</command>
+		    and start another, the correlator is waiting for the previous start time and cannot
+		    be interrupted. In other words,
+		    <emphasis role="bold">DO NOT START A UTC SCHEDULE BEFORE THE START
+		    TIME OF ITS EARLIEST SCAN</emphasis>.
 		  </para>
 		</listitem>
 	      </itemizedlist>
