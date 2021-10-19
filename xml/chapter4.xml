@@ -4,6 +4,16 @@
     <date>$Date: 2016-05-09 10:42:02 +1000 (Mon, 09 May 2016) $</date>
     <revhistory>
       <revision>
+	<revnumber>1.5</revnumber>
+	<date>2021 Oct 19</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>
+	  Remove references to kaputar, after it was turned off in Sep 2021. Update links
+	  that were no longer correct. Correct description of how importmiriad works.
+	  Update the recommendation of how to acknowledge ATCA in publications.
+	</revremark>
+      </revision>
+      <revision>
 	<revnumber>1.4</revnumber>
 	<date>2018 Jun 19</date>
 	<authorinitials>jbs</authorinitials>
@@ -72,21 +82,21 @@
 	You can copy your data to your laptop from the Marsfield <acronym>SOC</acronym>.
 	When your laptop is plugged
 	in to a pink cable, you will have to use an SSH tunnel through <hardware>venice</hardware>
-	to access the area on <hardware>kaputar</hardware> where your data resides.
+	to access the area on <hardware>cetus</hardware> where your data resides.
       </para>
 
       <para>
 	To set up the SSH tunnel, type the following in a terminal on your
 	computer:
-	<programlisting>$ ssh -L 2222:kaputar:22 usr123@venice.atnf.csiro.au</programlisting>
+	<programlisting>$ ssh -L 2222:cetus:22 usr123@venice.atnf.csiro.au</programlisting>
       </para>
 
       <para>
 	This makes all traffic directed at port 2222 on your computer get transported
-	through <hardware>venice</hardware> to <hardware>kaputar</hardware> via the usual SSH/SCP port of 22. This
+	through <hardware>venice</hardware> to <hardware>cetus</hardware> via the usual SSH/SCP port of 22. This
 	tunnel will exist as long as you remain logged into <hardware>venice</hardware> in this
 	terminal. Thus to copy your data across, type the following in another terminal:
-	<programlisting>$ scp -P 2222 &#x201C;usr123@localhost:/data/ARCHIVE_1/ATCA/archive/*.CX167&#x201D; .</programlisting>
+	<programlisting>$ scp -P 2222 &#x201C;usr123@localhost:/DATA/NEWDATA_1/ATCA/archive/*.CX167&#x201D; .</programlisting>
       </para>
 
       <para>
@@ -97,8 +107,8 @@
       <para>
 	If you are a <acronym>CSIRO</acronym> staff member and can connect your laptop directly to
 	the <acronym>ATNF</acronym> network via a blue cable, you may copy the data directly from
-	<hardware>kaputar</hardware>:
-	<programlisting>$ scp &#x201C;usr123@kaputar:/data/ARCHIVE_1/ATCA/archive/*.CX167&#x201D; .</programlisting>
+	<hardware>cetus</hardware>:
+	<programlisting>$ scp &#x201C;usr123@cetus:/DATA/NEWDATA_1/ATCA/archive/*.CX167&#x201D; .</programlisting>
       </para>
     </section>
 
@@ -124,20 +134,20 @@
 
       <para>
 	If you are unable to get your data from the <acronym>ATOA</acronym> as soon as you would
-	like, then you may get it directly from the disk on <hardware>kaputar</hardware> that
+	like, then you may get it directly from the disk on <hardware>cetus</hardware> that
 	buffers the data.
       </para>
 
       <para>
 	To do this, you must set up an SSH tunnel from your local machine to
-	<hardware>kaputar</hardware> via the <acronym>ATNF</acronym> gateway machine <hardware>venice</hardware>. This can be set
+	<hardware>cetus</hardware> via the <acronym>ATNF</acronym> gateway machine <hardware>venice</hardware>. This can be set
 	up with the command:
-	<programlisting>$ ssh -L 2222:kaputar:22 usr123@venice.atnf.csiro.au</programlisting>
+	<programlisting>$ ssh -L 2222:cetus:22 usr123@venice.atnf.csiro.au</programlisting>
 	where <literal>usr123</literal> is your <acronym>ATNF</acronym> username. This will log you into
 	<hardware>venice</hardware> and set up the SSH tunnel, which will remain until you
-	log out. To copy data from <hardware>kaputar</hardware>
+	log out. To copy data from <hardware>cetus</hardware>
 	you should go to another terminal and do something like:
-	<programlisting>$ scp -P 2222 &#x201C;usr123@localhost:/data/ARCHIVE_1/ATCA/archive/*.CX167&#x201D; .</programlisting>
+	<programlisting>$ scp -P 2222 &#x201C;usr123@localhost:/DATA/NEWDATA_1/ATCA/archive/*.CX167&#x201D; .</programlisting>
       </para>
     </section>
   </section>
@@ -149,7 +159,7 @@
     <para>
       After your observations, please provide us with feedback by completing
       the online
-      <ulink url="https://www.narrabri.atnf.csiro.au/feedback">Observer's Questionnaire</ulink>.
+      <ulink url="https://www.atnf.csiro.au/observers/feedback/index.php/417272?lang=en">Observer's Questionnaire</ulink>.
       The feedback you give provides us with a way of measuring the success or failure of
       Compact Array operations, and allows us to identify areas that need
       attention.
@@ -176,7 +186,7 @@
       <para>
 	There are now several software packages that are capable of reducing <acronym>CABB</acronym>
 	data. For the purposes of calibration, the <application>Miriad</application> software package
-	is still probably the best choice. It is possible though to do a full reduction without ever
+	is still probably the best choice. It is possible though to do a full reduction without really
 	using <application>Miriad</application>, if you prefer to use the <application>CASA</application>
 	package. Below is a high-level comparison of what each package is capable of doing, and this
 	may help you decide on how to proceed.
@@ -188,12 +198,11 @@
 	</info>
 
 	<para>
-	  Both <application>Miriad</application> and <application>CASA</application> can read in raw
-	  <acronym>CABB</acronym> <acronym>RPFITS</acronym> files. In <application>Miriad</application>,
-	  the task <command>atlod</command> is used to convert the raw files into a
-	  <application>Miriad</application>-specific data format, while in
-	  <application>CASA</application>, the task <command>importmiriad</command> is used to convert
-	  them into the more commonly-used MeasurementSet (<acronym>MS</acronym>) format.
+	  Only <application>Miriad</application> can read in raw <acronym>CABB</acronym>
+	  <acronym>RPFITS</acronym> files, with the <command>atlod</command> task. However,
+	  <application>CASA</application> can use its <command>importmiriad</command> task to take
+	  the output of <command>atlod</command> and convert
+	  it into the more commonly-used MeasurementSet (<acronym>MS</acronym>) format.
 	</para>
       </section>
 
@@ -263,8 +272,8 @@
 	their first data reduction. This section will summarise how reduction
 	differs for <acronym>CABB</acronym> data, and give a reasonable guide on how to do a
 	simple continuum reduction. The <application>Miriad</application> manual has been updated to
-	incorporate information on <acronym>CABB</acronym> data reduction, but work continues on
-	improving it.
+	incorporate information on <acronym>CABB</acronym> data reduction.<!--, but work continues on
+	improving it.-->
       </para>
       
       <section id="Updating-Miriad">
@@ -283,7 +292,7 @@
 	  <ulink url="https://www.atnf.csiro.au/computing/software/miriad/INSTALL.html">in the install guide</ulink>.
 	  Once you have it installed on your computer, it is easy to keep up-to-date. If you installed the
 	  binary version of <application>Miriad</application> (which is highly recommended), you can receive
-	  updates by running <programlisting>$ mirsync -u abc123</programlisting>where <command>abc123</command>
+	  updates by running <programlisting>$ mirsync -u usr123</programlisting>where <literal>usr123</literal>
 	  should be replaced with your <acronym>ATNF</acronym> UNIX user name. If you installed from source,
 	  then you can use the <command>mirimport</command> command to get updates, after which you will
 	  need to recompile <application>Miriad</application>.
@@ -567,7 +576,7 @@
 	</info>
 	<para>
 	  In most cases, if the <option>birdie</option> and <option>rfiflag</option> options are given
-	  to <command>atlod</command>, the data will be mostly free from RFI at this point. However,
+	  to <command>atlod</command>, the data will be mostly free from the most destructive RFI at this point. However,
 	  you should always examine your data with the <command>uvplt</command> and <command>uvspec</command> tasks
 	  to make sure.
 	  <indexterm role="cp"><primary>interference</primary><secondary>flagging</secondary>
@@ -621,7 +630,7 @@
 		a channel-time waterfall plot and allows direct selection of ranges of bad
 		data and flexible flagging options. It also includes an automatic flagging routine
 		that uses the <firstterm>SumThreshold</firstterm> method that is available in the
-		<ulink url="https://sourceforge.net/p/aoflagger/wiki/Home/"><application>AOFlagger</application></ulink>, and is
+		<ulink url="https://gitlab.com/aroffringa/aoflagger"><application>AOFlagger</application></ulink>, and is
 		highly recommended for use during continuum reductions.
 	      </para>
 	    </listitem>
@@ -925,7 +934,7 @@
 	  
 	  <para>
 	    Bandpass calibration in the cm bands (16 &amp; 4) is usually done with the <acronym>ATCA</acronym>
-	    primary flux calibrator 1934-638, as it is quite bright at these frequencies. Since the flux
+	    primary flux density calibrator 1934-638, as it has a large flux density at these frequencies. Since the flux
 	    density of 1934-638 is known as a function of frequency, the bandpass solution obtained in these
 	    bands is very good and takes into account how 1934-638 varies across the band. But if you use another
 	    calibrator for which <application>Miriad</application> doesn't have a flux density model, then
@@ -1005,7 +1014,7 @@
 	    You should use an <parameter>nfbin</parameter> of at least 2 for all bands. This will
 	    allow <command>gpboot</command> to correct any linear slope errors present in the
 	    bandpass table. This also makes it unnecessary to use <command>mfboot</command>
-	    unless your flux calibrator is a planet. You should also increase the
+	    unless your flux density calibrator is a planet. You should also increase the
 	    <parameter>interval</parameter> parameter if the calibrator is not bright enough to
 	    give enough signal-to-noise with 0.1 minutes of integration time.
 	  </para>
@@ -1078,10 +1087,10 @@
 	      <title>Calibration in the mm bands</title>
 	    </info>
 	    <para>
-	      At this point in the mm reduction, you need to do the flux calibration. How this happens
-	      depends on whether you're using a planet as the flux calibrator, or 1934-638. After copying
+	      At this point in the mm reduction, you need to do the flux density calibration. How this happens
+	      depends on whether you're using a planet as the flux density calibrator, or 1934-638. After copying
 	      the calibration tables from the calibrator used in the <command>gpcal</command> step
-	      to the flux calibrator, you use <command>gpcal</command> followed by
+	      to the flux density calibrator, you use <command>gpcal</command> followed by
 	      <command>gpboot</command> if you're using 1934-638, or <command>mfboot</command> for
 	      planets.
 	    </para>
@@ -1151,10 +1160,10 @@
 
 	    <para>
 	      Note the use of the <option>nopol</option> option for the <parameter>options</parameter>
-	      parameter in <command>gpcal</command>, when 1934-638 is being used as the flux calibrator.
+	      parameter in <command>gpcal</command>, when 1934-638 is being used as the flux density calibrator.
 	      This option tells <command>gpcal</command> that it should accept the leakage solution
 	      obtained from the gain calibrator, which should be good since the gain calibrator is likely
-	      to have much greater hour-angle coverage than the flux calibrator.
+	      to have much greater hour-angle coverage than the flux density calibrator.
 	    </para>
 
 	    <para>
@@ -1171,15 +1180,15 @@
 	    </para>
 	    
 	    <para>
-	      At this point the gain calibrator will be reasonably well flux calibrated. If you are
-	      not especially concerned about flux calibration accuracy, you can proceed to analyse your
+	      At this point the gain calibrator will be reasonably well calibrated. If you are
+	      not especially concerned about flux density calibration accuracy, you can proceed to analyse your
 	      science target.
 	    </para>
 
 	    <para>
 	      If you want to flux calibrate your data as well as possible, then you can use data from
 	      the other simultaneously observed band to improve your solution. Basically, the bandpass
-	      solution you made earlier assumed that the bandpass calibrator had a constant amplitude
+	      solution you made earlier assumed that the bandpass calibrator had a constant flux density
 	      with frequency (i.e. a flat-spectrum source). Because of this, the bandpass solution will
 	      likely be in error. Our gain solutions with two bins will have corrected this somewhat,
 	      but we can also try to emulate the situation in the cm band, and provide
@@ -1216,14 +1225,14 @@
 	      select   =  
 	    </screen>
 	    <para>
-	      Note that these steps don't change regardless of the type of flux calibrator you are
+	      Note that these steps don't change regardless of the type of flux density calibrator you are
 	      using.
 	    </para>
 
 	    <para>
 	      You should do the same calibration process with the other simultaneously observed band.
 	      At the end of the process you should have two bandpass calibrator datasets, each being
-	      flux calibrated via the gain calibrator. You can now measure the flux density of the
+	      flux density calibrated via the gain calibrator. You can now measure the flux density of the
 	      bandpass calibrator over the entire range of observed frequencies, using the
 	      <command>uvfmeas</command> task. The principle here is that even if the slope over
 	      a single band is wrong due to the incorrect bandpass calibration assumption, fitting
@@ -1355,8 +1364,8 @@
 
 	    <para>
 	      At this point both the bandpass and gain calibrator datasets will be very accurately
-	      flux calibrated. Simulations suggest that this two-stage process can improve the flux
-	      calibration accuracy to the 1% level for the bandpass calibrator, and to around the
+	      flux density calibrated. Simulations suggest that this two-stage process can improve the flux
+	      density calibration accuracy to the 1% level for the bandpass calibrator, and to around the
 	      3% level for any other calibrators referenced to it. Observations have confirmed this
 	      in the 15mm band, while for the 7mm band the flux calibration accuracy for an arbitrary gain
 	      calibrator is around 10%.
@@ -1503,17 +1512,41 @@
       </para>
       <blockquote>
 	<para>
-	  The Australia Telescope is funded by the Commonwealth of Australia
-	  for operation as a National Facility managed by <acronym>CSIRO</acronym>.
+	  The Australia Telescope Compact Array is part of the Australia Telescope National Facility
+	  (grid.421683.a) which is funded by the Australian Government for operation as a National
+	  Facility managed by CSIRO.
 	</para>
       </blockquote>
       <para>
+	We also encourage an acknowledgement of our Indigenous community as follows:
+      </para>
+      <blockquote>
+	<para>
+	  We acknowledge the Gomeroi people as the traditional owners of the Observatory site.
+	</para>
+      </blockquote>
+      <para>
+	The global research community is increasingly adopting persistent identifiers to improve how
+	resource use is cited and tracked. <acronym>CSIRO</acronym> has adopted the Global Research
+	Identifier Database (GRID) for its National Facilities and Collections, and the
+	<acronym>ATNF</acronym> acknowledgement statements now include these. The GRID code for all
+	<acronym>ATNF</acronym> telescopes is <literal>grid.421683.a</literal>. The use of a
+	persistent identifier ensures our facilities are consistently referenced and described
+	globally, and individual Digital Object Identifiers (DOIs) such as ORCIDs support the inclusion
+	of GRID codes.
+      </para>
+      <para>
+	Information about how to acknowledge other <acronym>ATNF</acronym> facilities is available
+	<ulink url="https://www.atnf.csiro.au/research/publications/Acknowledgements.html">
+	  on our website</ulink>.
+      </para>
+      <!-- <para>
 	Where possible, authors are requested to include one of the terms
 	&#x201C;<acronym>ATNF</acronym>&#x201D; or &#x201C;Australia Telescope&#x201D; 
 	in the Abstract of their papers.
 	This is to facilitate electronic searches for publications that
 	include <acronym>ATNF</acronym> data.
-      </para>
+      </para> -->
       <!-- Please inform TBD (@email{TBD}) -->
       <!-- of any publications that include <acronym>ATNF</acronym> data. -->
       <!-- @node Giving a Talk at <acronym>ATNF</acronym> -->
