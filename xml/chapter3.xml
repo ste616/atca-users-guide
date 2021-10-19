@@ -4,6 +4,16 @@
     <date>$Date: 2018-03-15 14:22:18 +1100 (Thu, 15 Mar 2018) $</date>
     <revhistory>
       <revision>
+        <revnumber>1.7</revnumber>
+        <date>2021 October 19</date>
+        <authorinitials>jbs</authorinitials>
+        <revremark>Remove link to remote observing web page, and update other links. Changed advice on
+	sampler levels. Fixed description of how CABB calculates delays. Fixed description for heat
+	stow trigger conditions. Split the very long flowchart for the printed output. Remove info
+	on how to configure Twitter for SMS, since that is no longer available.
+	</revremark>
+      </revision>
+      <revision>
         <revnumber>1.6</revnumber>
         <date>2018 June 21</date>
         <authorinitials>jfk, ghh</authorinitials>
@@ -2300,19 +2310,7 @@
 	  your mobile device respond in one of several ways to any alarm tweets.
 	</para>
 	<para>
-	  If you'd rather not set up a Twitter account, you can quite easily get tweets via the Twitter
-	  <acronym>SMS</acronym> system. This way, you can still be notified of alarms when you have your
-	  phone with you. The official Twitter <acronym>SMS</acronym> service can be used as described
-	  <ulink url="https://support.twitter.com/articles/20170004">on the SMS follow web page</ulink>.
-	  For example, for Australians, you may get the alarm tweets via <acronym>SMS</acronym> by sending
-	  an <acronym>SMS</acronym> &#x201C;<literal>follow jamie_atca_sss</literal>&#x201D;
-	  (without the quotes) to the number
-	  <literal>0198089488</literal>. You will then get a return message if this has been successful, that
-	  will also tell you how to stop following. In addition, you'll get the most recent tweet from the
-	  alarm feed.
-	</para>
-	<para>
-	  You can also use the free online web service
+	  If you'd rather not set up a Twitter account, you can use the free online web service
 	  <ulink url="https://ifttt.com"><acronym>IFTTT</acronym> (if-this-then-that)</ulink>
 	  to respond in a customisable way to tweets from the ATCA alarm system. You will need to sign
 	  up to <acronym>IFTTT</acronym>, and connect your Twitter account to their
@@ -2321,12 +2319,6 @@
 	  <ulink url="https://ifttt.com/recipes/424650-atca-alarms-to-sms">a published recipe</ulink> that
 	  takes an alarm tweet and sends you an <acronym>SMS</acronym>. But you could also make your smart
 	  lights at home turn red, or get a phone call (in certain regions only).
-	</para>
-	<para>
-	  Using <acronym>IFTTT</acronym> may also be a more convenient way to get <acronym>SMS</acronym> from
-	  the alarm feed, because you can easily turn it on or off via the web interface or their
-	  mobile app, rather than having to send an <acronym>SMS</acronym> each time you want to start
-	  or stop getting alarm notifications.
 	</para>
       </section>
     </section>
