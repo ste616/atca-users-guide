@@ -4,6 +4,15 @@
     <date>$Date: 2015-11-24 09:27:53 +1100 (Tue, 24 Nov 2015) $</date>
     <revhistory>
       <revision>
+	<revnumber>1.4</revnumber>
+	<date>2021 Oct 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>
+	  Clarify how CABB calculates delay slopes. Fix imprecise language. Remove advice about
+	  not using 0823-500 for 64 MHz zoom calibration at 16cm. Add description of tvmedian.
+	</revremark>
+      </revision>
+      <revision>
 	<revnumber>1.3</revnumber>
 	<date>2018 Jun 19</date>
 	<authorinitials>jbs</authorinitials>
@@ -541,15 +550,16 @@
           <para>
 	    To calculate the delay in any particular <acronym>IF</acronym>,
 	    <command>cacor</command> looks at the phase in each channel in the
-	    &#x201C;<literal>tvchannels</literal>&#x201D; range and fits a line to
-	    the phase as a function of frequency; the slope of this line is the delay.
+	    &#x201C;<literal>tvchannels</literal>&#x201D; range and calculates the
+	    average line slope between each pair of phases as a function of frequency;
+	    this average slope is the delay.
 	  </para>
 
 	  <para>
-	    If the noise on the phase is high (due to a faint source or poor weather, for example),
+	    If the noise on the phase is high (due to low signal-to-noise ratio or poor weather, for example),
 	    or there is some strong unavoidable RFI in the &#x201C;<literal>tvchannels</literal>&#x201D;
-	    range, then the least-squares line of best fit may not accurately represent the real
-	    slope due to the delay. 
+	    range, then the average line slope may not accurately represent the real
+	    slope due to the delay.
 	  </para>
 
 	  <para>
@@ -557,15 +567,15 @@
 	    can use this command. This command tells <command>cacor</command> to first
 	    average together each <replaceable>n</replaceable> channels in the
 	    &#x201C;<literal>tvchannels</literal>&#x201D; range before calculating the
-	    slope.
+	    average slope.
 	  </para>
 
 	  <para>
 	    <emphasis role="bold">Example:</emphasis> Suppose the
 	    &#x201C;<literal>tvchannels</literal>&#x201D; are set to include channels
 	    513 to 1537 (a total of 1025 channels). With a &#x201C;<literal>delavg</literal>&#x201D;
-	    of 1, the delay fit would use 1025 points. If you set
-	    &#x201C;<literal>delavg</literal>&#x201D; to 4, then the delay fit would use
+	    of 1, the delay slope calculation would use 1025 points. If you set
+	    &#x201C;<literal>delavg</literal>&#x201D; to 4, then the delay slope calculation would use
 	    only 256 points, and each point would have a signal-to-noise ratio 2 times better
 	    than with &#x201C;<literal>delavg</literal>&#x201D;=1.
 	  </para>
@@ -636,8 +646,8 @@
         <term><literal>diginit {all|ca0<replaceable>#</replaceable> [<replaceable>fp</replaceable>]}</literal></term>
         <listitem>
           <para>
-	    Resynchronises the specified digitisers; the more information you supply to this command,
-	    the more specific the specification. To select one specific digitiser you must supply
+	    Resynchronises the selected digitisers; the more information you supply to this command,
+	    the more specific the selection. To select one specific digitiser you must supply
 	    the antenna number <replaceable>#</replaceable>, the <acronym>IF</acronym>
 	    <replaceable>f</replaceable> (either 1 or 2) and the polarisation
 	    <replaceable>p</replaceable> (either <literal>a</literal> or <literal>b</literal>).
@@ -927,7 +937,7 @@
 	      </term>
 	      <listitem>
 		<para>
-		  <emphasis role="bold">DO NOT ISSUE THIS COMMAND WITHOUT ARGUMENTS.
+		  <emphasis role="bold">DO NOT ISSUE A RESET WITHOUT A COMMAND.
 		  THIS WILL CAUSE THE CORRELATOR GUI TO
 		  FAIL (REQUIRING A RESTART) AND THE UNIVERSE TO MORPH INTO A CATERPILLAR.</emphasis>
 		</para>
@@ -1001,9 +1011,9 @@
 	<term><literal>rtminit {all|ca0<replaceable>#</replaceable> [<replaceable>fp</replaceable>]}</literal></term>
 	<listitem>
 	  <para>
-	    Resynchronises the &#x201C;rear transition module&#x201D; (<acronym>RTM</acronym>);
+	    Resynchronises the selected &#x201C;rear transition module&#x201D; (<acronym>RTM</acronym>);
 	    the more information you supply to this command,
-	    the more specific the specification. To select one specific <acronym>RTM</acronym> you must supply
+	    the more specific the selection. To select one specific <acronym>RTM</acronym> you must supply
 	    the antenna number <replaceable>#</replaceable>, the <acronym>IF</acronym>
 	    <replaceable>f</replaceable> (either 1 or 2) and the polarisation
 	    <replaceable>p</replaceable> (either <literal>a</literal> or <literal>b</literal>).
@@ -1068,7 +1078,7 @@
 	  <para>
 	    The correlator is able to continuously adjust the phases on a cycle-by-cycle
 	    basis in order to keep them as close to zero as possible. This is only possible
-	    while observing a bright calibrator or spacecraft, and is only really useful
+	    while observing a calibrator with a high signal-to-noise or a spacecraft, and is only really useful
 	    for <acronym>VLBI</acronym> and NASA spacecraft tracking.
 	  </para>
 
@@ -1196,6 +1206,50 @@
 	</listitem>
       </varlistentry>
       <varlistentry>
+	<term><literal>tvmedian {on|off on|off}</literal></term>
+	<listitem>
+	  <para>
+	    When averaging quantities across the <literal>tvchannel</literal> range, <command>cacor</command>
+	    will use either the mean or median, depending on the setting of
+	    &#x201C;<literal>tvmedian</literal>&#x201D; for the <acronym>IF</acronym>. This includes the
+	    average delay slope, the average phase, and average amplitude.
+	  </para>
+	  <para>
+	    You can tell <command>cacor</command> to use median averaging by specifying
+	    &#x201C;<literal>on</literal>&#x201D; as the argument for each <acronym>IF</acronym>. If set
+	    to &#x201C;<literal>off</literal>&#x201D; (which is the default), <command>cacor</command>
+	    will use mean averaging.
+	  </para>
+	  <para>
+	    <emphasis role="bold">Example:</emphasis> The command
+	    &#x201C;<literal>tvmedian off on</literal>&#x201D; will make <command>cacor</command>
+	    use mean averaging for <acronym>IF</acronym>1 and median averaging for
+	    <acronym>IF</acronym>2.
+	  </para>
+	  <para>
+	    Giving this command without arguments will return the current state for each <acronym>IF</acronym>.
+	  </para>
+	  <para>
+	    This command only affects the average parameters that are passed to <command>VIS</command> and
+	    <command>assistance</command>, and has no effect on the data written to the file. The only
+	    exception to this is the system temperature values, which are also calculated and written out
+	    using the specified averaging method.
+	  </para>
+	  <para>
+	    <emphasis role="bold">Note:</emphasis> When using median averaging, the amplitude spread may
+	    appear larger in <command>VIS</command>, since the noise on the median average is higher than
+	    on the mean. This also affects <command>assistance</command> which may report errors on the
+	    amplitude spread. It also affects the computation of closure phase, which is only guaranteed to
+	    be very close to 0 when using mean averaging; this too may mean that
+	    <command>assistance</command> will produce closure-phase related errors when nothing is actually
+	    wrong.
+	  </para>
+	  <para>
+	    <emphasis role="bold">Related commands:</emphasis> <literal>tvchannels</literal>
+	  </para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
 	<term><literal>usegtp</literal></term>
 	<listitem>
 	  <para>
@@ -1309,7 +1363,7 @@
             <para><emphasis role="italics"><emphasis role="bold">NOTE:</emphasis> calband resets to the default (f f) every time you exit from the edit menu</emphasis>  </para>
 	  </listitem>
           <listitem>
-            <para>start observing a strong calibrator, e.g.</para>
+            <para>start observing a calibrator, e.g.</para>
 	    <para> <emphasis role="bold">caobs&gt; track 1 </emphasis></para>
           </listitem>
           <listitem>
@@ -1390,7 +1444,7 @@
 	    <para> <emphasis role="bold">cacor&gt; calband</emphasis></para>
 	  </listitem>
           <listitem>
-            <para>start observing a strong calibrator, e.g.</para>
+            <para>start observing a calibrator, e.g.</para>
 	    <para> <emphasis role="bold">caobs&gt; track 1 </emphasis></para>
           </listitem>
           <listitem>
@@ -1433,7 +1487,7 @@
     </info>
     
     <para>
-      <emphasis role="bold">Note:</emphasis> do NOT use 0823-500 for setting up 64MHz zooms at 16cm.
+      <!-- <emphasis role="bold">Note:</emphasis> do NOT use 0823-500 for setting up 64MHz zooms at 16cm. -->
       <indexterm role="cp"><primary>CABB</primary><secondary>reprogramming</secondary><tertiary>64MHz zooms</tertiary></indexterm> 
     </para>
 
@@ -1472,7 +1526,7 @@
             <para>There is no extra flagging needed in this config </para>
 	  </listitem>
           <listitem>
-            <para>start observing a strong calibrator, e.g.</para>
+            <para>start observing a calibrator, e.g.</para>
 	    <para> <emphasis role="bold">caobs&gt; track 1 </emphasis></para>
 	    <para><emphasis role="italics">There are several &#x201C;standard&#x201D; schedule files with a set of zooms for setting - e.g. <emphasis role="bold">setup_1934_64</emphasis> (and similar). </emphasis> </para>
           </listitem>
@@ -1532,7 +1586,7 @@
     
     <para> The issue is that, unless the delays are small, the phases will wrap by more than a turn within a single continuum channel - resulting in the phases just being noise. </para>
     
-    <para>To calibrate, first check (in spd) that the delays aren't already more-or-less calibrated..... Observe a strong source: If the phase across the first zoom in each frequency more-or-less flat (i.e. significantly less than one turn across the band), no extra calibration is needed and you can just proceed as normal. </para>
+    <para>To calibrate, first check (in spd) that the delays aren't already more-or-less calibrated..... Observe a calibrator with high flux density: If the phase across the first zoom in each frequency more-or-less flat (i.e. significantly less than one turn across the band), no extra calibration is needed and you can just proceed as normal. </para>
     <para>Assuming that the delays are large, they need to be determined in two steps: 
     <itemizedlist>
       <listitem>
@@ -1544,7 +1598,7 @@
     </itemizedlist>
     </para>
 
-    <para> The setup scan needs to be on a strong calibrator with the continuum frequency at the same centre frequency as the observations <emphasis role="bold">and the first zoom, in each frequency must be 1 zoom wide (you cannot do the zoom calibration with stitched zooms)</emphasis>. </para>
+    <para> The setup scan needs to be on a calibrator with a high flux density with the continuum frequency at the same centre frequency as the observations <emphasis role="bold">and the first zoom, in each frequency must be 1 zoom wide (you cannot do the zoom calibration with stitched zooms)</emphasis>. </para>
     <para>
     <itemizedlist>
       <listitem>
@@ -1595,7 +1649,7 @@
 	  <para><emphasis role="bold">spd&gt; sel ab</emphasis></para>
 	  <para><emphasis role="bold">spd&gt; p -200 200</emphasis></para>
 	  <para>Check that the phases are not wrapping.</para>
-	  <para><emphasis role="italics"><emphasis role="bold">(Note:</emphasis>Though the phases generally wrap over many channels in the cross correlation products, they can be wrapping quite quickly in the auto-correlation products and delavg may need to be a small number, which may mean that you need a stronger calibrator to sort this out.)</emphasis></para>
+	  <para><emphasis role="italics"><emphasis role="bold">(Note:</emphasis>Though the phases generally wrap over many channels in the cross correlation products, they can be wrapping quite quickly in the auto-correlation products and delavg may need to be a small number, which may mean that you need a calibrator with more flux density to sort this out.)</emphasis></para>
 	</listitem>
       </itemizedlist>
     </para>	
@@ -1611,7 +1665,7 @@
     </info>
     
     <para>
-      <emphasis role="bold">Note:</emphasis> do NOT use 0823-500 for setting up 64MHz zooms at 16cm.
+      <!-- <emphasis role="bold">Note:</emphasis> do NOT use 0823-500 for setting up 64MHz zooms at 16cm. -->
       <indexterm role="cp"><primary>CABB</primary><secondary>reprogramming</secondary><tertiary>hybrid mode</tertiary></indexterm> 
     </para>
 
@@ -1650,7 +1704,7 @@
             <para>There is no extra flagging needed in this config </para>
 	  </listitem>
           <listitem>
-            <para>start observing a strong calibrator, e.g.</para>
+            <para>start observing a calibrator, e.g.</para>
 	    <para> <emphasis role="bold">caobs&gt; track 1 </emphasis></para>
 	    <para><emphasis role="italics">There are several &#x201C;standard&#x201D; schedule files with a set of zooms for setting - e.g. <emphasis role="bold">setup_1934_64</emphasis> (and similar). </emphasis> </para>
           </listitem>
@@ -1722,7 +1776,7 @@
     </itemizedlist>
     </para>
 
-    <para> The setup scan needs to be on a strong calibrator with the continuum frequency at the same centre frequency as the observations <emphasis role="bold">and the first zoom, in each frequency must be 1 zoom wide (you cannot do the zoom calibration with stitched zooms)</emphasis>. </para>
+    <para> The setup scan needs to be on a calibrator with a high flux density with the continuum frequency at the same centre frequency as the observations <emphasis role="bold">and the first zoom, in each frequency must be 1 zoom wide (you cannot do the zoom calibration with stitched zooms)</emphasis>. </para>
     <para>
     <itemizedlist>
       <listitem>
@@ -1730,7 +1784,7 @@
 	<para><emphasis role="bold">cacor&gt; calband f z</emphasis></para>
       </listitem>
       <listitem>
-	<para>Start observing a strong calibrator:</para>
+	<para>Start observing a calibrator:</para>
 	<para><emphasis role="bold">caobs&gt; track 1</emphasis></para>
       </listitem>	
       <listitem>
@@ -1776,7 +1830,7 @@
 	  <para><emphasis role="bold">spd&gt; sel ab</emphasis></para>
 	  <para><emphasis role="bold">spd&gt; p -200 200</emphasis></para>
 	  <para>Check that the phases are not wrapping.</para>
-	  <para><emphasis role="italics"><emphasis role="bold">(Note:</emphasis>Though the phases generally wrap over many channels in the cross correlation products, they can be wrapping quite quickly in the auto-correlation products and delavg may need to be a small number, which may mean that you need a stronger calibrator to sort this out.)</emphasis></para>
+	  <para><emphasis role="italics"><emphasis role="bold">(Note:</emphasis>Though the phases generally wrap over many channels in the cross correlation products, they can be wrapping quite quickly in the auto-correlation products and delavg may need to be a small number, which may mean that you need a calibrator with more flux density to sort this out.)</emphasis></para>
 	</listitem>
       </itemizedlist>
     </para>	
@@ -1853,7 +1907,7 @@
             <para>Calband will be set to the default values - which is what is required</para>
 	  </listitem>
           <listitem>
-            <para>start observing a strong calibrator, e.g.</para>
+            <para>start observing a calibrator, e.g.</para>
 	    <para> <emphasis role="bold">caobs&gt; track 1 </emphasis></para>
           </listitem>
           <listitem>
@@ -1940,9 +1994,9 @@
 	    <para>Calbands should be the default as this happens automatically whenever you exit from the edit menu. This is what you need for this config.</para>
 	  </listitem>
           <listitem>
-            <para>start observing a strong calibrator, e.g.</para>
+            <para>start observing a calibrator, e.g.</para>
 	    <para> <emphasis role="bold">caobs&gt; track 1 </emphasis></para>
-	    <para><emphasis role="italics"><emphasis role="bold">Note: Wz16_cb16_5500</emphasis> is a zoom schedule file with a set of calibrators for setting up.</emphasis> </para>
+	    <para><emphasis role="italics"><emphasis role="bold">Note: wz16_cb16_5500</emphasis> is a zoom schedule file with a set of calibrators for setting up.</emphasis> </para>
           </listitem>
           <listitem>
             <para>Check for rear transition module (rtm) problems</para>

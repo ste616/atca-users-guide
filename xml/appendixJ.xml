@@ -4,6 +4,12 @@
     <date>$Date: 2015-10-22 (Thu, 22 Oct 2015) $</date>
     <revhistory>
       <revision>
+	<revnumber>1.1</revnumber>
+	<date>2021 Oct 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Update links to HTTPS.</revremark>
+      </revision>
+      <revision>
 	<revnumber>1.0</revnumber>
 	<date>2015 Oct 22</date>
 	<authorinitials>klw</authorinitials>
@@ -12,7 +18,7 @@
     </revhistory>
   </info>
 
-<section id="Introduction-to-MoniCA">
+  <section id="Introduction-to-MoniCA">
     <info>
         <title>Introduction to <application>MoniCA</application></title>
     </info>
@@ -24,19 +30,19 @@
     <para>
         During observations, this application can show the state of each system and if there are any values that may indicate a problem.  For example, <application>MoniCA</application> can display information about the weather conditions at the observatory, the state of the power supply and details about antenna focus.  <application>MoniCA</application> can also play a more active role as it can help debug any issues that may occur.
     </para>
-</section>
+  </section>
 
-<section id="Install-MoniCA">
+  <section id="Install-MoniCA">
     <info>
         <title>Installing <application>MoniCA</application></title>
     </info>
     <para>
-        <application>MoniCA</application> can be installed from the <ulink url="http://www.narrabri.atnf.csiro.au/open-monica/OpenMoniCA.JNLP">Open-MoniCA web page</ulink>.  Your computer browser should recognise the link as a Java Web Start application, download the program files from the web server and then install shortcuts on your computer.
+      <application>MoniCA</application> can be installed from the <ulink url="https://www.narrabri.atnf.csiro.au/open-monica/OpenMoniCA.JNLP">Open-MoniCA web page</ulink>.  Your computer browser should recognise the link as a Java Web Start application, download the program files from the web server and then install shortcuts on your computer.
     </para>
     
     <para>
         If the shortcuts do not install properly, <application>MoniCA</application> can also be started using the following terminal command:
-        <programlisting>$ javaws http://www.narrabri.atnf.csiro.au/open-monica/OpenMoniCA.JNLP</programlisting>
+        <programlisting>$ javaws https://www.narrabri.atnf.csiro.au/open-monica/OpenMoniCA.JNLP</programlisting>
     </para>
     
     <para>

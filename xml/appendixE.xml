@@ -4,6 +4,12 @@
     <date>$Date: 2014-06-03 06:26:17 +1000 (Tue, 03 Jun 2014) $</date>
     <revhistory>
       <revision>
+	<revnumber>1.2</revnumber>
+	<date>2021 Oct 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Update links to HTTPS.</revremark>
+      </revision>
+      <revision>
 	<revnumber>1.1</revnumber>
 	<date>2014 May 28</date>
 	<authorinitials>jbs</authorinitials>
@@ -747,7 +753,7 @@
 	  <listitem>
 	    <para>
 	      This button initiates a search through the
-	      <ulink url="http://www.narrabri.atnf.csiro.au/calibrators/">ATCA calibrator database</ulink>
+	      <ulink url="https://www.narrabri.atnf.csiro.au/calibrators/">ATCA calibrator database</ulink>
 	      for calibrators within 20 degrees of the position of the currently selected scan,
 	      with a flux density greater than 125 mJy in the frequency band you have specified.
 	      The results of this search are displayed to the right of the scan parameters,
