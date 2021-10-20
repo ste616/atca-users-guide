@@ -4,6 +4,15 @@
     <date>$Date$</date>
     <revhistory>
       <revision>
+	<revnumber>1.8</revnumber>
+	<date>2021 Oct 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>
+	  Considerable updates to all chapters to clarify some inaccuracies, and to update
+	  broken links and make HTTPS links by default, and update out-of-date information.
+	</revremark>
+      </revision>
+      <revision>
 	<revnumber>1.7</revnumber>
 	<date>2018 Mar 15</date>
 	<authorinitials>jbs</authorinitials>
@@ -163,7 +172,55 @@
     </info>
 
     <para>
-      The latest changes to this manual were made on March 15 2018.
+      The latest changes to this manual were made on October 20 2021.
+      <itemizedlist>
+	<listitem>
+	  New contributors!
+	</listitem>
+	<listitem>
+	  Broken links were fixed or removed, and links were made HTTPS unless not possible.
+	  Links to out-of-date separate web pages were removed.
+	</listitem>
+	<listitem>Update due to change of name to Space &amp; Astronomy.</listitem>
+	<listitem>Remove references to Friends, which are no longer offered.</listitem>
+	<listitem>Clarify how the array works when tracking non-sidereal sources.</listitem>
+	<listitem>
+	  <xref linkend="upcoming_configurations"></xref> was updated for upcoming semesters.
+	</listitem>
+	<listitem>
+	  Remove CABB modes that are never coming from <xref linkend="Bandwidths-and-correlator"></xref>.
+	</listitem>
+	<listitem>
+	  Update <xref linkend="cmsystemps21"></xref> for the new 4cm feedhorns, and improved axis
+	  labels.
+	</listitem>
+	<listitem>
+	  Update <xref linkend="rfi_survey_annotated"></xref> with RFI survey from 2018.
+	</listitem>
+	<listitem>
+	  Update <xref linkend="recommended-continuum-frequencies"></xref> to include advice about
+	  when to use (or not) the 15mm recommended frequencies to avoid SkyMuster RFI.
+	</listitem>
+	<listitem>
+	  Add a new flowchart for problem solving when no correlation is observed in
+	  <xref linkend="Troubleshooting"></xref>.
+	</listitem>
+	<listitem>
+	  Update <xref linkend="twitter-alarms"></xref> to remove references to the SMS service
+	  that Twitter no longer offers.
+	</listitem>
+	<listitem>
+	  Update information in <xref linkend="Remote-Copy"></xref> to show how to access data
+	  now that kaputar has been turned off.
+	</listitem>
+	<listitem>
+	  Updated information on how to properly acknowledge ATCA in publications in
+	  <xref linkend="Publishing-Results"></xref>.
+	</listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      Changes to this manual were made on March 15 2018.
       <itemizedlist>
 	<listitem>
 	  Policies around how <acronym>NAPA</acronym> and <acronym>ToO</acronym> requests are

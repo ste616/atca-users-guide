@@ -1,5 +1,5 @@
 XSLT = xsltproc
-STYLESHEETS_DIR = /usr/share/xml/docbook/stylesheet/docbook-xsl
+STYLESHEETS_DIR = xsl/docbook
 BUILD_DIR = builds
 HTML_BUILD_DIR = $(BUILD_DIR)/html
 PDF_BUILD_DIR = $(BUILD_DIR)/pdf
