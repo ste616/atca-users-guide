@@ -2073,10 +2073,12 @@
 	They explain what to do in the case of <emphasis role="bold">No Correlation (or funny correlation)</emphasis>,
 	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no correlation</secondary></indexterm> 
 	<indexterm role="cp"><primary>troubleshooting</primary><secondary>no fringes</secondary></indexterm> 
-	<emphasis role="bold">Antenna(s) not 'on source'</emphasis> 
+	<emphasis role="bold">Antenna(s) not 'on source'</emphasis>,
 	<indexterm role="cp"><primary>troubleshooting</primary><secondary>antennas not 'on source'</secondary></indexterm> 
-	and <emphasis role="bold">VNC Problems</emphasis>.
+	<emphasis role="bold">VNC Problems</emphasis>,
 	<indexterm role="cp"><primary>troubleshooting</primary><secondary>VNC problems</secondary></indexterm>
+	and <emphasis role="bold">Rebooting a CABB block</emphasis>.
+	<indexterm role="cp"><primary>troubleshooting</primary><secondary>rebooting a CABB block</secondary></indexterm>
       </para>
 
   
