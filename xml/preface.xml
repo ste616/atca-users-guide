@@ -4,6 +4,21 @@
     <date>$Date$</date>
     <revhistory>
       <revision>
+	<revnumber>1.10</revnumber>
+	<date>2022 Apr 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>
+	  Add a figure to illustrate how to reboot CABB block to chapter 3.
+	</revremark>
+      </revision>
+      <revision>
+	<revnumber>1.9</revnumber>
+	<date>2021 Nov 12</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Fix incorrect description of how to set noise diode periods in the caobs command
+	list.</revremark>
+      </revision>
+      <revision>
 	<revnumber>1.8</revnumber>
 	<date>2021 Oct 20</date>
 	<authorinitials>jbs</authorinitials>
@@ -172,7 +187,16 @@
     </info>
 
     <para>
-      The latest changes to this manual were made on October 20 2021.
+      The latest changes to this manual were made on April 20 2022.
+      <itemizedlist>
+	<listitem>
+	  Re-add a slighly modified flowchart to show how to reboot a CABB block <xref linkend="CABBBlockReboot"></xref>.
+	</listitem>
+      </itemizedlist>
+    </para>
+    
+    <para>
+      Changes to this manual were made on October 20 2021.
       <itemizedlist>
 	<listitem>
 	  New contributors!

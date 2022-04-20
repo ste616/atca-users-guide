@@ -4,6 +4,12 @@
     <date>$Date: 2018-03-15 14:22:18 +1100 (Thu, 15 Mar 2018) $</date>
     <revhistory>
       <revision>
+	<revnumber>1.8</revnumber>
+	<date>2022 April 20</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Add CABB block reboot figure back into the troubleshooting section.</revremark>
+      </revision>
+      <revision>
         <revnumber>1.7</revnumber>
         <date>2021 October 19</date>
         <authorinitials>jbs</authorinitials>
@@ -2164,6 +2170,16 @@
           <mediaobject>
             <imageobject>
               <imagedata fileref="figures/VNCProblemsFlowChart.jpg" format="JPG"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </informalfigure>
+      </para>
+
+      <para>
+        <informalfigure id="CABBBlockReboot">
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="figures/block_reboot_chart.jpg" format="JPG"></imagedata>
             </imageobject>
           </mediaobject>
         </informalfigure>

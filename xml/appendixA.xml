@@ -4,6 +4,12 @@
     <date>$Date: 2015-10-22 15:02:00 +1100 (Thu, 22 Oct 2015) $</date>
     <revhistory>
       <revision>
+	<revnumber>1.3</revnumber>
+	<date>2021 Nov 12</date>
+	<authorinitials>jbs</authorinitials>
+	<revremark>Fix incorrect description of how cain cal works.</revremark>
+      </revision>
+      <revision>
 	<revnumber>1.2</revnumber>
 	<date>2021 Oct 19</date>
 	<authorinitials>jbs</authorinitials>
@@ -240,21 +246,21 @@ There are screens on:
 	      <itemizedlist>
 		<listitem>
 		  <para>
-		    waveform pulse duration = 
+		    waveform cycle period = 
 		    <inlineequation><textobject role="tex">(2^{code})\times</textobject></inlineequation>
 		    (<replaceable>prescale</replaceable> + 1) microseconds
 		  </para>
 		</listitem>
 		<listitem>
 		  <para>
-		    waveform cycle period = 2 &#x00D7; pulse duration
+		    waveform pulse duration = cycle period &#x00f7; 2
 		  </para>
 		</listitem>
 	      </itemizedlist>
 	    </para>
 	    <para>
 	      As an example, the default <acronym>ATCA</acronym> waveform parameters are <replaceable>prescale</replaceable>=31999,
-	      <replaceable>code</replaceable>=2, which gives a 128,000 &#x03BC;s pulse duration. The <acronym>ATCA</acronym> cal
+	      <replaceable>code</replaceable>=2, which gives a 128,000 &#x03BC;s cycle period. The <acronym>ATCA</acronym> cal
 	      waveform restarts at the beginning of each integration cycle, so the default is set by:
 	    </para>
 
